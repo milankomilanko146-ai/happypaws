@@ -1,0 +1,2282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Complete Home Dog Training Guide — Train Your Dog at Home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   RESET & ROOT
+   ============================================================ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --white:#ffffff;
+  --cream:#faf7f2;
+  --cream-dark:#f2ede4;
+  --paper:#f7f3ec;
+  --text:#1a1510;
+  --text-mid:#4a3f32;
+  --text-light:#8c7b68;
+  --text-lighter:#bfb09e;
+  --border:#e8dfd0;
+  --border-light:#f0e9de;
+
+  --cta:#c84b0f;
+  --cta-hover:#a83a08;
+  --cta-light:#fdf0ea;
+  --cta-border:#f5c4ab;
+
+  --green:#1a7a4a;
+  --green-light:#e8f5ee;
+  --green-dark:#155e39;
+
+  --gold:#b8860b;
+  --gold-light:#fef9e7;
+  --gold-border:#f4d98a;
+
+  --navy:#1a2744;
+  --navy-mid:#2c3e6b;
+
+  --shadow-sm:0 1px 3px rgba(26,21,16,.06);
+  --shadow:0 4px 16px rgba(26,21,16,.09);
+  --shadow-lg:0 12px 40px rgba(26,21,16,.13);
+  --shadow-xl:0 24px 64px rgba(26,21,16,.18);
+
+  --radius:10px;
+  --radius-lg:16px;
+  --radius-xl:22px;
+  --max-w:700px;
+  --transition:all .28s cubic-bezier(.4,0,.2,1);
+
+  --serif:'Lora',Georgia,serif;
+  --sans:'Plus Jakarta Sans',system-ui,sans-serif;
+}
+
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--sans);
+  color:var(--text);
+  background:var(--white);
+  line-height:1.65;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block;border-radius:var(--radius)}
+a{color:inherit;text-decoration:none}
+button{border:none;cursor:pointer;font-family:var(--sans)}
+input{font-family:var(--sans)}
+
+.container{max-width:var(--max-w);margin:0 auto;padding:0 18px}
+.section{padding:64px 0}
+.section-cream{background:var(--cream)}
+.section-paper{background:var(--paper)}
+
+/* ============================================================
+   TOP BAR
+   ============================================================ */
+.top-bar{
+  background:var(--navy);
+  color:#fff;
+  padding:11px 16px;
+  text-align:center;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.2px;
+  position:relative;
+  z-index:100;
+}
+.top-bar em{color:#fbbf24;font-style:normal}
+.top-bar .timer{color:#fbbf24;font-variant-numeric:tabular-nums;font-weight:800}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.header{
+  background:rgba(255,255,255,.97);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  padding:13px 0;
+  position:sticky;
+  top:0;
+  z-index:90;
+}
+.header .container{display:flex;align-items:center;justify-content:space-between}
+.header-logo{
+  font-family:var(--serif);
+  font-size:17px;
+  font-weight:700;
+  color:var(--text);
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+.header-logo .paw{font-size:20px}
+.header-cta{
+  background:var(--cta);
+  color:#fff;
+  padding:10px 20px;
+  border-radius:8px;
+  font-size:14px;
+  font-weight:800;
+  transition:var(--transition);
+  white-space:nowrap;
+}
+.header-cta:hover{background:var(--cta-hover);transform:translateY(-1px)}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  padding:48px 0 56px;
+  text-align:center;
+  background:linear-gradient(180deg, var(--cream) 0%, var(--white) 100%);
+}
+.hero-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:var(--gold-light);
+  color:var(--gold);
+  font-size:12.5px;
+  font-weight:800;
+  padding:7px 15px;
+  border-radius:100px;
+  border:1px solid var(--gold-border);
+  margin-bottom:22px;
+  letter-spacing:.3px;
+  text-transform:uppercase;
+}
+.hero h1{
+  font-family:var(--serif);
+  font-size:clamp(26px,5.5vw,42px);
+  font-weight:700;
+  line-height:1.18;
+  letter-spacing:-.3px;
+  margin-bottom:18px;
+  color:var(--text);
+}
+.hero h1 .highlight{
+  color:var(--cta);
+  font-style:italic;
+}
+.hero-sub{
+  font-size:clamp(15px,2.5vw,18px);
+  color:var(--text-mid);
+  max-width:540px;
+  margin:0 auto 28px;
+  line-height:1.65;
+}
+.hero-sub strong{color:var(--text)}
+
+/* Buttons */
+.btn-primary{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  background:var(--cta);
+  color:#fff;
+  font-size:17px;
+  font-weight:800;
+  padding:17px 32px;
+  border-radius:var(--radius);
+  transition:var(--transition);
+  width:100%;
+  max-width:420px;
+  box-shadow:0 5px 20px rgba(200,75,15,.35);
+  letter-spacing:-.15px;
+  position:relative;
+  overflow:hidden;
+}
+.btn-primary::before{
+  content:'';
+  position:absolute;
+  top:0;left:-100%;
+  width:100%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent);
+  transition:left .5s ease;
+}
+.btn-primary:hover::before{left:100%}
+.btn-primary:hover{background:var(--cta-hover);transform:translateY(-2px);box-shadow:0 8px 28px rgba(200,75,15,.42)}
+.btn-primary:active{transform:translateY(0)}
+.btn-sub{font-size:12px;font-weight:600;opacity:.85;display:block;margin-top:3px}
+
+.hero-trust{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:14px;
+  margin-top:16px;
+  font-size:12.5px;
+  color:var(--text-light);
+  font-weight:600;
+}
+.hero-trust span{display:flex;align-items:center;gap:4px}
+.hero-trust .chk{color:var(--green);font-weight:800}
+
+/* Book visual */
+.book-wrapper{margin:40px auto 0;max-width:300px;position:relative}
+.book{
+  width:190px;height:265px;
+  margin:0 auto;
+  background:linear-gradient(145deg,#1a2744 0%,#243566 45%,#1a2744 100%);
+  border-radius:3px 14px 14px 3px;
+  box-shadow:-7px 10px 30px rgba(0,0,0,.28),inset -3px 0 10px rgba(255,255,255,.07);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:22px 18px;
+  color:#fff;
+  text-align:center;
+  position:relative;
+  transform:perspective(900px) rotateY(-10deg);
+  transition:var(--transition);
+}
+.book:hover{transform:perspective(900px) rotateY(-3deg)}
+.book::before{
+  content:'';
+  position:absolute;left:0;top:10px;bottom:10px;
+  width:5px;
+  background:linear-gradient(to right,rgba(0,0,0,.22),transparent);
+  border-radius:2px 0 0 2px;
+}
+.book::after{
+  content:'';
+  position:absolute;top:0;right:0;bottom:0;
+  width:12px;
+  background:linear-gradient(to right,rgba(255,255,255,.04),rgba(255,255,255,.08));
+  border-radius:0 14px 14px 0;
+}
+.book-icon{font-size:34px;margin-bottom:10px}
+.book-title{font-family:var(--serif);font-size:13px;font-weight:700;line-height:1.4;margin-bottom:6px}
+.book-subtitle{font-size:9px;font-weight:600;opacity:.65;text-transform:uppercase;letter-spacing:1.2px}
+.book-badge{
+  position:absolute;top:-10px;right:-14px;
+  background:var(--cta);
+  color:#fff;
+  font-size:10px;font-weight:900;
+  padding:5px 9px;
+  border-radius:7px;
+  transform:rotate(8deg);
+  box-shadow:var(--shadow);
+  letter-spacing:.3px;
+}
+.book-stack{
+  position:absolute;
+  right:-18px;bottom:-8px;
+  display:flex;flex-direction:column;gap:3px;
+  align-items:flex-end;
+}
+.book-stack-item{
+  height:8px;
+  background:linear-gradient(90deg,#243566,#1a2744);
+  border-radius:1px 6px 6px 1px;
+  box-shadow:1px 2px 6px rgba(0,0,0,.15);
+}
+
+/* ============================================================
+   PROOF BAR
+   ============================================================ */
+.proof-bar{
+  background:var(--navy);
+  padding:20px 0;
+}
+.proof-bar .container{
+  display:flex;
+  justify-content:center;
+  gap:0;
+  flex-wrap:wrap;
+}
+.proof-stat{
+  text-align:center;
+  padding:0 24px;
+  border-right:1px solid rgba(255,255,255,.12);
+}
+.proof-stat:last-child{border-right:none}
+.proof-stat .num{font-size:22px;font-weight:900;color:#fff;font-family:var(--serif)}
+.proof-stat .label{font-size:11px;color:rgba(255,255,255,.55);font-weight:600;margin-top:3px;text-transform:uppercase;letter-spacing:.5px}
+.proof-stat .stars{color:#fbbf24;font-size:13px;letter-spacing:1.5px}
+
+/* ============================================================
+   SECTION LABELS & HEADINGS
+   ============================================================ */
+.section-label{
+  display:inline-block;
+  font-size:11px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  color:var(--cta);
+  margin-bottom:10px;
+}
+.section-title{
+  font-family:var(--serif);
+  font-size:clamp(22px,4.5vw,34px);
+  font-weight:700;
+  line-height:1.22;
+  letter-spacing:-.2px;
+  margin-bottom:12px;
+  color:var(--text);
+}
+.section-sub{
+  font-size:16px;
+  color:var(--text-mid);
+  max-width:520px;
+  margin-bottom:36px;
+  line-height:1.65;
+}
+
+/* ============================================================
+   PAIN POINTS
+   ============================================================ */
+.pain-grid{display:grid;gap:10px}
+.pain-item{
+  display:flex;gap:14px;align-items:flex-start;
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:15px 17px;
+  transition:var(--transition);
+}
+.pain-item:hover{border-color:var(--cta-border);box-shadow:0 2px 12px rgba(200,75,15,.07)}
+.pain-icon{
+  font-size:22px;flex-shrink:0;
+  width:38px;height:38px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--cta-light);
+  border-radius:10px;
+}
+.pain-text{font-size:14.5px;color:var(--text-mid);line-height:1.55;font-weight:500}
+.pain-text strong{color:var(--text)}
+.pain-empathy{
+  margin-top:26px;
+  padding:22px 24px;
+  background:linear-gradient(135deg,var(--cta-light),#fff8f5);
+  border-radius:var(--radius);
+  border-left:4px solid var(--cta);
+  font-family:var(--serif);
+  font-size:17px;
+  font-weight:600;
+  color:var(--text);
+  line-height:1.55;
+  font-style:italic;
+}
+.pain-empathy em{color:var(--cta);font-style:normal;font-weight:700}
+
+/* ============================================================
+   MEET YOUR TRAINER
+   ============================================================ */
+.trainer-section{padding:64px 0}
+.trainer-card{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:var(--radius-xl);
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.trainer-photo-placeholder{
+  width:100%;
+  height:240px;
+  background:linear-gradient(135deg,#d4c5b0 0%,#c9b89f 100%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  color:var(--text-light);
+  font-size:13px;
+  font-weight:600;
+  position:relative;
+  overflow:hidden;
+}
+.trainer-photo-placeholder::before{
+  content:'';
+  position:absolute;bottom:0;left:0;right:0;
+  height:40%;
+  background:linear-gradient(to top,rgba(26,21,16,.15),transparent);
+}
+.trainer-photo-placeholder .photo-icon{font-size:56px;opacity:.6}
+.trainer-photo-placeholder .photo-label{
+  font-size:11px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  opacity:.7;
+}
+.trainer-body{padding:28px 24px}
+.trainer-name-row{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:6px;flex-wrap:wrap}
+.trainer-name{
+  font-family:var(--serif);
+  font-size:22px;
+  font-weight:700;
+  color:var(--text);
+}
+.trainer-cert{
+  display:inline-flex;align-items:center;gap:5px;
+  background:var(--gold-light);
+  border:1px solid var(--gold-border);
+  color:var(--gold);
+  font-size:11px;font-weight:800;
+  padding:4px 10px;
+  border-radius:100px;
+  white-space:nowrap;
+  text-transform:uppercase;letter-spacing:.5px;
+}
+.trainer-title{font-size:13px;color:var(--text-light);font-weight:600;margin-bottom:16px}
+.trainer-stats{
+  display:flex;gap:0;
+  margin-bottom:18px;
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  overflow:hidden;
+}
+.trainer-stat{
+  flex:1;
+  text-align:center;
+  padding:12px 8px;
+  border-right:1px solid var(--border);
+}
+.trainer-stat:last-child{border-right:none}
+.trainer-stat .s-num{font-size:18px;font-weight:900;color:var(--cta);font-family:var(--serif)}
+.trainer-stat .s-label{font-size:10px;color:var(--text-light);font-weight:600;text-transform:uppercase;letter-spacing:.4px;margin-top:1px}
+.trainer-quote{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:15px;
+  color:var(--text-mid);
+  line-height:1.65;
+  border-left:3px solid var(--cta);
+  padding-left:16px;
+  margin-bottom:16px;
+}
+.trainer-bio{font-size:14px;color:var(--text-mid);line-height:1.65}
+
+/* ============================================================
+   LOOK INSIDE (Blueprint Screenshots)
+   ============================================================ */
+.blueprint-section{padding:64px 0}
+.blueprint-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-top:8px;
+}
+.blueprint-item{
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow-sm);
+  transition:var(--transition);
+  cursor:default;
+}
+.blueprint-item:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.blueprint-screen{
+  width:100%;
+  height:160px;
+  background:var(--paper);
+  position:relative;
+  overflow:hidden;
+  display:flex;flex-direction:column;
+  padding:12px;
+  gap:6px;
+}
+/* Screen 1 - Chapter overview */
+.bp-s1{background:linear-gradient(135deg,#f7f3ec,#f0e9de)}
+.bp-bar{height:8px;border-radius:100px;background:var(--border)}
+.bp-bar.accent{background:var(--cta);width:55%}
+.bp-bar.half{width:70%}
+.bp-bar.short{width:40%}
+.bp-row{display:flex;gap:6px;align-items:center}
+.bp-dot{width:20px;height:20px;border-radius:50%;background:var(--navy);flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.bp-dot span{font-size:7px;color:#fff;font-weight:800}
+.bp-lines{flex:1;display:flex;flex-direction:column;gap:4px;justify-content:center}
+.bp-line{height:6px;border-radius:100px;background:var(--border)}
+.bp-line.w80{width:80%}
+.bp-line.w60{width:60%}
+.bp-line.w90{width:90%}
+/* Screen 2 - checklist */
+.bp-s2{background:linear-gradient(135deg,#f0f8ff,#e8f0f7)}
+.bp-check-row{display:flex;gap:6px;align-items:center;padding:3px 0}
+.bp-check{width:14px;height:14px;border-radius:3px;border:1.5px solid var(--green);flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.bp-check.filled{background:var(--green);border-color:var(--green)}
+.bp-check.filled::after{content:'✓';font-size:8px;color:#fff;font-weight:800}
+.bp-check-text{height:7px;border-radius:100px;background:#c8dce8;flex:1}
+/* Screen 3 - table */
+.bp-s3{background:linear-gradient(135deg,#fff8f0,#fdf0e4);padding:8px}
+.bp-table{width:100%;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:2px}
+.bp-th{height:18px;background:var(--navy);border-radius:3px;margin-bottom:3px}
+.bp-td{height:14px;border-radius:3px;background:var(--border-light)}
+.bp-td.accent{background:var(--cta-light)}
+/* Screen 4 - timeline */
+.bp-s4{background:linear-gradient(135deg,#f0faf5,#e4f7ec)}
+.bp-tl{display:flex;flex-direction:column;gap:0;position:relative;padding-left:20px}
+.bp-tl::before{content:'';position:absolute;left:7px;top:0;bottom:0;width:2px;background:var(--green);opacity:.3}
+.bp-tl-item{display:flex;align-items:flex-start;gap:8px;padding:4px 0;position:relative}
+.bp-tl-dot{width:14px;height:14px;border-radius:50%;background:var(--green);flex-shrink:0;position:absolute;left:-18px;top:3px}
+.bp-tl-content{display:flex;flex-direction:column;gap:3px}
+.bp-tl-tag{height:6px;width:35px;border-radius:100px;background:var(--green);opacity:.5}
+.bp-tl-text{height:7px;width:80px;border-radius:100px;background:var(--border)}
+
+.blueprint-label{
+  padding:10px 14px;
+  background:var(--white);
+  font-size:12px;
+  font-weight:700;
+  color:var(--text-mid);
+  display:flex;align-items:center;gap:6px;
+}
+.blueprint-label span{font-size:14px}
+
+.blueprint-full{
+  grid-column:1/-1;
+}
+.blueprint-full .blueprint-screen{
+  height:120px;
+}
+.bp-s5{background:linear-gradient(135deg,var(--cream),var(--cream-dark));flex-direction:row;gap:12px;align-items:center;padding:14px}
+.bp-s5-left{flex:1;display:flex;flex-direction:column;gap:6px}
+.bp-s5-right{width:80px;height:80px;background:var(--navy);border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:26px}
+
+/* ============================================================
+   SOLUTION
+   ============================================================ */
+.solution-grid{display:grid;gap:14px;margin-top:8px}
+.solution-card{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:22px;
+  transition:var(--transition);
+}
+.solution-card:hover{box-shadow:var(--shadow);border-color:var(--green)}
+.solution-card-icon{
+  font-size:28px;
+  margin-bottom:12px;
+  width:50px;height:50px;
+  background:var(--green-light);
+  border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+}
+.solution-card h3{font-size:16px;font-weight:800;margin-bottom:6px;color:var(--text)}
+.solution-card p{font-size:13.5px;color:var(--text-light);line-height:1.6}
+
+/* ============================================================
+   CHAPTERS / INSIDE
+   ============================================================ */
+.chapters{display:grid;gap:8px;margin-top:8px}
+.chapter{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:14px 16px;
+  border-radius:var(--radius);
+  transition:var(--transition);
+  border:1px solid transparent;
+}
+.chapter:hover{background:var(--cream);border-color:var(--border)}
+.chapter-num{
+  flex-shrink:0;width:34px;height:34px;
+  background:var(--text);color:#fff;
+  border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:800;
+}
+.chapter-num.bonus{background:var(--cta);font-size:9px;letter-spacing:.4px}
+.chapter-info h3{font-size:14.5px;font-weight:700;margin-bottom:2px;color:var(--text)}
+.chapter-info p{font-size:13px;color:var(--text-light);line-height:1.5}
+.chapter-bonus-row{
+  background:var(--cta-light);
+  border:1px solid var(--cta-border);
+  border-radius:var(--radius);
+}
+
+/* ============================================================
+   VALUE STACK
+   ============================================================ */
+.value-stack{padding:64px 0;background:var(--navy)}
+.value-stack .section-label{color:#fbbf24}
+.value-stack .section-title{color:#fff}
+.value-stack .section-sub{color:rgba(255,255,255,.65)}
+
+.vs-grid{display:grid;gap:10px;margin-bottom:24px}
+.vs-item{
+  display:flex;align-items:center;gap:14px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--radius);
+  padding:14px 16px;
+  transition:var(--transition);
+}
+.vs-item:hover{background:rgba(255,255,255,.09)}
+.vs-item-icon{
+  font-size:22px;
+  width:44px;height:44px;
+  background:rgba(255,255,255,.08);
+  border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.vs-item-info{flex:1}
+.vs-item-name{font-size:14.5px;font-weight:700;color:#fff;margin-bottom:2px}
+.vs-item-desc{font-size:12px;color:rgba(255,255,255,.5);line-height:1.4}
+.vs-item-value{
+  text-align:right;
+  flex-shrink:0;
+}
+.vs-item-value .retail{font-size:11px;color:rgba(255,255,255,.4);text-decoration:line-through}
+.vs-item-value .yours{font-size:13px;font-weight:800;color:#fbbf24}
+.vs-item.main-item{border-color:rgba(255,191,36,.3);background:rgba(255,191,36,.05)}
+.vs-item.bonus-item .vs-item-icon{background:rgba(200,75,15,.2)}
+
+.vs-total-box{
+  border:2px solid rgba(255,255,255,.15);
+  border-radius:var(--radius-lg);
+  padding:20px;
+  margin-bottom:20px;
+}
+.vs-total-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:8px 0;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  font-size:14px;
+  color:rgba(255,255,255,.6);
+}
+.vs-total-row:last-child{border-bottom:none}
+.vs-total-row .val{font-weight:700;color:rgba(255,255,255,.85)}
+.vs-grand{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-top:16px;
+  margin-top:6px;
+}
+.vs-grand-label{font-size:14px;font-weight:700;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.5px}
+.vs-grand-price{
+  text-align:right;
+}
+.vs-grand-retail{font-size:15px;color:rgba(255,255,255,.35);text-decoration:line-through;font-weight:600}
+.vs-grand-today{
+  font-family:var(--serif);
+  font-size:42px;font-weight:700;
+  color:#fbbf24;
+  line-height:1;
+}
+.vs-grand-today sup{font-size:20px;font-weight:700;vertical-align:super;margin-right:1px}
+.vs-grand-today .cents{font-size:22px}
+.vs-grand-save{
+  display:inline-block;
+  background:var(--green);
+  color:#fff;
+  font-size:12px;font-weight:800;
+  padding:3px 10px;border-radius:100px;
+  margin-top:4px;
+}
+.vs-cad{font-size:11px;color:rgba(255,255,255,.4);font-weight:600;text-align:center;margin-top:6px}
+
+/* ============================================================
+   MID CTA
+   ============================================================ */
+.mid-cta{text-align:center;padding:48px 0}
+
+/* ============================================================
+   TIMELINE
+   ============================================================ */
+.timeline-items{
+  display:grid;gap:0;
+  margin-top:8px;
+  position:relative;
+}
+.timeline-items::before{
+  content:'';
+  position:absolute;left:20px;top:22px;bottom:22px;
+  width:2px;
+  background:linear-gradient(to bottom,var(--border),var(--green));
+}
+.timeline-item{
+  display:flex;gap:16px;align-items:flex-start;
+  padding:14px 0;position:relative;
+}
+.timeline-dot{
+  flex-shrink:0;width:40px;height:40px;
+  border-radius:50%;
+  background:var(--white);
+  border:2px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;z-index:2;
+  transition:var(--transition);
+}
+.timeline-item:last-child .timeline-dot{border-color:var(--green);background:var(--green-light)}
+.timeline-content h3{font-size:14.5px;font-weight:700;margin-bottom:2px;color:var(--text)}
+.timeline-content .time{font-size:11px;font-weight:800;color:var(--cta);text-transform:uppercase;letter-spacing:.6px;margin-bottom:4px}
+.timeline-content p{font-size:13px;color:var(--text-light);line-height:1.5}
+
+/* ============================================================
+   TESTIMONIALS
+   ============================================================ */
+.testimonial-grid{display:grid;gap:14px;margin-top:8px}
+.testimonial{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:22px;
+  transition:var(--transition);
+  position:relative;
+}
+.testimonial:hover{box-shadow:var(--shadow);border-color:var(--green-light)}
+.testimonial-flag{
+  position:absolute;top:16px;right:16px;
+  font-size:16px;
+  display:flex;align-items:center;gap:4px;
+}
+.testimonial-verified-badge{
+  font-size:10px;font-weight:700;
+  color:var(--green-dark);
+  background:var(--green-light);
+  border:1px solid rgba(26,122,74,.2);
+  padding:2px 7px;border-radius:100px;
+  letter-spacing:.3px;
+}
+.testimonial-stars{color:#f59e0b;font-size:13px;letter-spacing:1px;margin-bottom:10px}
+.testimonial-text{
+  font-family:var(--serif);
+  font-size:14.5px;
+  color:var(--text-mid);
+  line-height:1.7;
+  margin-bottom:16px;
+  font-style:italic;
+}
+.testimonial-text strong{color:var(--text);font-style:normal}
+.testimonial-author{display:flex;align-items:center;gap:10px}
+.testimonial-avatar{
+  width:40px;height:40px;
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:800;color:#fff;
+  flex-shrink:0;
+}
+.testimonial-name{font-size:13.5px;font-weight:800}
+.testimonial-location{font-size:12px;color:var(--text-light)}
+.testimonial-verified{
+  font-size:10.5px;color:var(--green-dark);font-weight:700;
+  display:flex;align-items:center;gap:3px;margin-top:2px;
+}
+
+/* ============================================================
+   COST OF INACTION
+   ============================================================ */
+.inaction-section{padding:64px 0;background:var(--navy)}
+.inaction-section .section-label{color:#fbbf24}
+.inaction-section .section-title{color:#fff}
+.inaction-section .section-sub{color:rgba(255,255,255,.6)}
+.inaction-grid{display:grid;gap:12px;margin-bottom:28px}
+.inaction-item{
+  display:flex;align-items:center;gap:14px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:var(--radius);
+  padding:14px 16px;
+}
+.inaction-item-icon{
+  font-size:24px;
+  width:46px;height:46px;
+  background:rgba(255,255,255,.08);
+  border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.inaction-item-info{flex:1}
+.inaction-item-name{font-size:14px;font-weight:700;color:#fff}
+.inaction-item-desc{font-size:12px;color:rgba(255,255,255,.45)}
+.inaction-item-price{
+  font-size:18px;font-weight:900;color:#f87171;
+  white-space:nowrap;
+  font-family:var(--serif);
+}
+.inaction-vs{
+  text-align:center;
+  padding:20px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--radius-lg);
+}
+.inaction-vs p{color:rgba(255,255,255,.7);font-size:14.5px;line-height:1.6}
+.inaction-vs strong{color:#fbbf24;font-size:18px}
+
+/* ============================================================
+   COMPARISON TABLE
+   ============================================================ */
+.compare-table{width:100%;border-collapse:collapse;margin-top:8px;font-size:13.5px}
+.compare-table th{
+  text-align:left;padding:13px 14px;
+  font-weight:800;font-size:12px;
+  text-transform:uppercase;letter-spacing:.5px;
+  color:var(--text-light);
+  border-bottom:2px solid var(--border);
+}
+.compare-table th:nth-child(2){color:var(--text-lighter)}
+.compare-table th:nth-child(3){
+  color:var(--green-dark);
+  background:var(--green-light);
+  border-radius:8px 8px 0 0;
+}
+.compare-table td{
+  padding:11px 14px;
+  border-bottom:1px solid var(--border-light);
+  vertical-align:middle;
+}
+.compare-table td:nth-child(3){background:var(--green-light)}
+.compare-table tr:last-child td{border-bottom:none}
+.compare-table tr:last-child td:nth-child(3){border-radius:0 0 8px 8px}
+.compare-table .label-cell{font-weight:700;color:var(--text)}
+.compare-table .bad{color:var(--cta);font-weight:600}
+.compare-table .good{color:var(--green-dark);font-weight:700}
+
+/* ============================================================
+   PRICING
+   ============================================================ */
+.pricing{padding:64px 0;text-align:center}
+.pricing-card{
+  max-width:480px;margin:0 auto;
+  background:var(--white);
+  border:2px solid var(--cta);
+  border-radius:var(--radius-xl);
+  overflow:hidden;
+  box-shadow:var(--shadow-xl);
+  position:relative;
+}
+.pricing-badge{
+  background:var(--cta);color:#fff;
+  padding:11px;text-align:center;
+  font-size:13px;font-weight:900;
+  text-transform:uppercase;letter-spacing:1.2px;
+}
+.pricing-body{padding:30px 26px}
+.pricing-amount{margin-bottom:22px}
+.pricing-original{
+  font-size:20px;color:var(--text-lighter);
+  text-decoration:line-through;font-weight:500;margin-bottom:3px;
+}
+.pricing-current{
+  font-family:var(--serif);
+  font-size:52px;font-weight:700;
+  color:var(--text);letter-spacing:-1px;
+  line-height:1;
+}
+.pricing-current sup{font-size:22px;font-weight:700;vertical-align:super;margin-right:2px;font-family:var(--sans)}
+.pricing-current .cents{font-size:24px}
+.pricing-currency{font-size:14px;color:var(--text-light);font-weight:700;margin-top:4px}
+.pricing-save{
+  display:inline-block;
+  background:var(--green-light);color:var(--green-dark);
+  font-size:12px;font-weight:800;
+  padding:4px 12px;border-radius:100px;margin-top:8px;
+}
+.pricing-includes{text-align:left;margin:22px 0;padding:0;list-style:none}
+.pricing-includes li{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:7px 0;font-size:14.5px;font-weight:600;color:var(--text-mid);
+}
+.pricing-includes .li-icon{color:var(--green);font-weight:800;font-size:16px;flex-shrink:0;margin-top:1px}
+.pricing-includes .li-value{
+  margin-left:auto;font-size:12px;
+  color:var(--text-lighter);white-space:nowrap;
+}
+.pricing-guarantee-box{
+  display:flex;align-items:center;gap:10px;
+  background:var(--green-light);
+  border-radius:var(--radius);
+  padding:13px 15px;margin-top:18px;text-align:left;
+}
+.pricing-guarantee-box .g-icon{font-size:26px;flex-shrink:0}
+.pricing-guarantee-box .g-text{font-size:12.5px;color:var(--green-dark);font-weight:700;line-height:1.4}
+.pricing-secure{
+  display:flex;align-items:center;justify-content:center;
+  gap:14px;margin-top:14px;
+  font-size:11.5px;color:var(--text-lighter);font-weight:600;
+  flex-wrap:wrap;
+}
+.pricing-secure span{display:flex;align-items:center;gap:3px}
+
+/* ============================================================
+   GUARANTEE
+   ============================================================ */
+.guarantee{padding:64px 0;text-align:center}
+.guarantee-box{
+  max-width:500px;margin:0 auto;
+  padding:34px 26px;
+  border:2px solid var(--green);
+  border-radius:var(--radius-xl);
+  background:var(--green-light);
+}
+.guarantee-icon{font-size:48px;margin-bottom:12px}
+.guarantee-box h2{
+  font-family:var(--serif);
+  font-size:22px;font-weight:700;
+  color:var(--green-dark);margin-bottom:12px;
+}
+.guarantee-box p{font-size:14.5px;color:var(--green-dark);line-height:1.65}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.faq-list{max-width:580px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-q{
+  width:100%;background:none;text-align:left;
+  padding:17px 0;
+  font-size:15.5px;font-weight:700;
+  color:var(--text);
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  transition:var(--transition);
+}
+.faq-q:hover{color:var(--cta)}
+.faq-arrow{font-size:18px;transition:transform .3s ease;color:var(--text-light);flex-shrink:0}
+.faq-item.open .faq-arrow{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s ease}
+.faq-item.open .faq-a{max-height:320px}
+.faq-a-inner{padding:0 0 17px;font-size:14.5px;color:var(--text-mid);line-height:1.65}
+
+/* ============================================================
+   FINAL CTA
+   ============================================================ */
+.final-cta{
+  padding:80px 0;text-align:center;
+  background:linear-gradient(180deg,var(--cream) 0%,var(--white) 100%);
+}
+.final-cta h2{
+  font-family:var(--serif);
+  font-size:clamp(24px,5vw,36px);
+  font-weight:700;line-height:1.22;
+  margin-bottom:14px;letter-spacing:-.2px;
+}
+.final-cta p{
+  font-size:16px;color:var(--text-mid);
+  max-width:500px;margin:0 auto 26px;line-height:1.7;
+}
+.social-line{font-size:13px;color:var(--text-light);margin-top:14px;font-weight:600}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer{
+  padding:30px 0;border-top:1px solid var(--border);
+  text-align:center;font-size:12px;color:var(--text-lighter);line-height:1.9;
+}
+.footer a{text-decoration:underline;transition:color .2s}
+.footer a:hover{color:var(--text-light)}
+
+/* ============================================================
+   FLOATING MOBILE CTA
+   ============================================================ */
+.float-cta{
+  position:fixed;bottom:0;left:0;right:0;
+  background:rgba(255,255,255,.98);
+  backdrop-filter:blur(16px);
+  border-top:1px solid var(--border);
+  padding:11px 14px;
+  z-index:80;
+  transform:translateY(100%);
+  transition:transform .4s cubic-bezier(.4,0,.2,1);
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+}
+.float-cta.visible{transform:translateY(0)}
+.float-cta-info{text-align:left;line-height:1.2}
+.float-cta-original{
+  font-size:12px;color:var(--text-lighter);
+  text-decoration:line-through;font-weight:600;
+}
+.float-cta-price{
+  font-size:22px;font-weight:900;
+  color:var(--text);font-family:var(--serif);
+}
+.float-cta-cad{font-size:11px;color:var(--text-light);font-weight:700}
+.float-cta-btn{
+  background:var(--cta);color:#fff;
+  padding:13px 20px;border-radius:10px;
+  font-size:14px;font-weight:800;
+  flex-shrink:0;transition:var(--transition);
+  white-space:nowrap;
+}
+.float-cta-btn:hover{background:var(--cta-hover)}
+
+/* ============================================================
+   CHECKOUT PAGE
+   ============================================================ */
+.checkout-page{display:none;min-height:100vh;background:var(--cream)}
+.checkout-header{
+  background:var(--white);border-bottom:1px solid var(--border);padding:15px 0;
+}
+.checkout-header .container{display:flex;align-items:center;justify-content:space-between}
+.checkout-back{
+  background:none;font-size:13.5px;color:var(--text-light);font-weight:700;
+  display:flex;align-items:center;gap:5px;transition:color .2s;padding:0;
+}
+.checkout-back:hover{color:var(--text)}
+.checkout-secure{font-size:13px;color:var(--green);font-weight:700;display:flex;align-items:center;gap:4px}
+.checkout-body{padding:22px 0 80px}
+.checkout-body .container{max-width:500px}
+
+/* Express Checkout */
+.express-checkout{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:18px;
+  margin-bottom:16px;
+}
+.express-title{
+  font-size:12px;font-weight:800;text-transform:uppercase;
+  letter-spacing:.8px;color:var(--text-lighter);
+  text-align:center;margin-bottom:12px;position:relative;
+}
+.express-title::before,.express-title::after{
+  content:'';position:absolute;top:50%;width:30%;height:1px;background:var(--border);
+}
+.express-title::before{left:0}
+.express-title::after{right:0}
+.express-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.express-btn{
+  padding:13px;border-radius:9px;font-size:15px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  transition:var(--transition);cursor:pointer;border:none;
+}
+.apple-pay-btn{background:#000;color:#fff;}
+.apple-pay-btn:hover{background:#1a1a1a;transform:translateY(-1px)}
+.google-pay-btn{background:#fff;color:#3c4043;border:1.5px solid #dadce0;}
+.google-pay-btn:hover{background:#f8f9fa;transform:translateY(-1px)}
+.express-or{
+  text-align:center;font-size:12px;font-weight:700;
+  color:var(--text-lighter);text-transform:uppercase;letter-spacing:1px;
+  margin-top:14px;position:relative;
+}
+.express-or::before,.express-or::after{
+  content:'';position:absolute;top:50%;width:44%;height:1px;background:var(--border);
+}
+.express-or::before{left:0}
+.express-or::after{right:0}
+
+/* Order Summary */
+.order-summary{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--radius-lg);padding:18px;margin-bottom:16px;
+}
+.order-summary h3{
+  font-size:12px;font-weight:800;text-transform:uppercase;
+  letter-spacing:.5px;color:var(--text-light);margin-bottom:12px;
+}
+.order-item{display:flex;align-items:center;gap:12px;padding:6px 0}
+.order-item-icon{
+  width:44px;height:44px;
+  background:linear-gradient(135deg,var(--navy),var(--navy-mid));
+  border-radius:8px;display:flex;align-items:center;justify-content:center;
+  font-size:20px;flex-shrink:0;
+}
+.order-item-info{flex:1}
+.order-item-name{font-size:14px;font-weight:800}
+.order-item-desc{font-size:11.5px;color:var(--text-light)}
+.order-item-price{font-size:15px;font-weight:800;text-align:right}
+.order-item-original{font-size:11px;color:var(--text-lighter);text-decoration:line-through;text-align:right}
+.order-divider{border:none;border-top:1px solid var(--border-light);margin:10px 0}
+
+/* Order Bump */
+.order-bump{
+  background:var(--gold-light);
+  border:2px solid var(--gold-border);
+  border-radius:var(--radius);
+  padding:14px;
+  margin:10px 0;
+  transition:var(--transition);
+  cursor:pointer;
+}
+.order-bump:hover{border-color:var(--gold)}
+.order-bump-header{display:flex;align-items:flex-start;gap:10px}
+.bump-checkbox{
+  width:20px;height:20px;
+  border:2px solid var(--gold);
+  border-radius:5px;flex-shrink:0;
+  background:var(--white);
+  display:flex;align-items:center;justify-content:center;
+  transition:var(--transition);margin-top:1px;
+}
+.bump-checkbox.checked{background:var(--gold);border-color:var(--gold)}
+.bump-checkbox.checked::after{content:'✓';color:#fff;font-size:13px;font-weight:900}
+.bump-title{
+  font-size:13.5px;font-weight:800;color:var(--text);line-height:1.3;
+}
+.bump-title em{color:var(--gold);font-style:normal}
+.bump-bullets{margin-top:10px;padding-left:0;list-style:none;display:grid;gap:5px}
+.bump-bullets li{
+  display:flex;gap:7px;align-items:flex-start;
+  font-size:12.5px;color:var(--text-mid);line-height:1.4;
+}
+.bump-bullets li::before{content:'✓';color:var(--gold);font-weight:900;flex-shrink:0;margin-top:1px}
+.bump-price-row{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-top:10px;padding-top:10px;
+  border-top:1px solid var(--gold-border);
+}
+.bump-retail{font-size:12px;color:var(--text-lighter);text-decoration:line-through}
+.bump-today{font-size:15px;font-weight:900;color:var(--gold)}
+
+.order-total{
+  display:flex;justify-content:space-between;align-items:center;
+  font-weight:800;padding:4px 0;
+}
+.order-total-label{font-size:14px}
+.order-total-price{font-size:20px;color:var(--cta)}
+
+/* Checkout Form */
+.checkout-form{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--radius-lg);padding:22px;margin-bottom:16px;
+}
+.form-title{font-size:15px;font-weight:800;margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.form-group{margin-bottom:14px}
+.form-label{display:block;font-size:12.5px;font-weight:800;color:var(--text-mid);margin-bottom:5px;text-transform:uppercase;letter-spacing:.4px}
+.form-input{
+  width:100%;padding:14px 15px;
+  border:1.5px solid var(--border);border-radius:9px;
+  font-size:16px;color:var(--text);background:var(--white);
+  transition:var(--transition);-webkit-appearance:none;appearance:none;
+}
+.form-input:focus{outline:none;border-color:var(--cta);box-shadow:0 0 0 3px rgba(200,75,15,.1)}
+.form-input::placeholder{color:var(--text-lighter)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.form-hint{font-size:11px;color:var(--text-lighter);margin-top:3px}
+
+.checkout-btn{
+  width:100%;
+  background:var(--cta);color:#fff;
+  font-size:17px;font-weight:900;
+  padding:18px;border-radius:var(--radius);
+  transition:var(--transition);
+  box-shadow:0 5px 18px rgba(200,75,15,.32);
+  margin-bottom:14px;letter-spacing:-.1px;
+}
+.checkout-btn:hover{background:var(--cta-hover);transform:translateY(-1px)}
+
+.checkout-trust{
+  display:flex;flex-wrap:wrap;justify-content:center;
+  gap:10px;font-size:11.5px;color:var(--text-lighter);font-weight:600;margin-bottom:14px;
+}
+.checkout-trust span{display:flex;align-items:center;gap:3px}
+.checkout-guarantee{
+  display:flex;align-items:center;gap:10px;
+  background:var(--green-light);border-radius:var(--radius);padding:13px;
+}
+.checkout-guarantee-text{font-size:12px;color:var(--green-dark);font-weight:700;line-height:1.4}
+
+/* ============================================================
+   THANK YOU PAGE
+   ============================================================ */
+.thankyou-page{display:none;min-height:100vh;background:var(--white)}
+.thankyou-body{padding:56px 0;text-align:center}
+.thankyou-body .container{max-width:480px}
+.thankyou-check{
+  width:76px;height:76px;background:var(--green-light);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  margin:0 auto 22px;font-size:38px;
+}
+.thankyou-body h1{
+  font-family:var(--serif);
+  font-size:28px;font-weight:700;margin-bottom:8px;
+}
+.thankyou-body .sub{font-size:15px;color:var(--text-mid);margin-bottom:30px}
+.thankyou-card{
+  background:var(--paper);border:1px solid var(--border);
+  border-radius:var(--radius-lg);padding:26px;margin-bottom:22px;text-align:left;
+}
+.thankyou-card h3{
+  font-family:var(--serif);
+  font-size:16px;font-weight:700;margin-bottom:14px;text-align:center;
+}
+.download-btn{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;background:var(--green);color:#fff;
+  font-size:16px;font-weight:800;padding:17px;
+  border-radius:var(--radius);transition:var(--transition);
+  box-shadow:0 4px 16px rgba(26,122,74,.28);margin-bottom:18px;
+}
+.download-btn:hover{background:var(--green-dark);transform:translateY(-1px)}
+.next-steps{list-style:none;padding:0}
+.next-steps li{
+  display:flex;gap:10px;align-items:flex-start;
+  padding:7px 0;font-size:13.5px;color:var(--text-mid);line-height:1.5;
+}
+.step-num{
+  flex-shrink:0;width:26px;height:26px;
+  background:var(--text);color:#fff;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:800;margin-top:1px;
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+.fade-up{opacity:0;transform:translateY(22px);transition:opacity .55s ease,transform .55s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+@keyframes pulse{
+  0%,100%{box-shadow:0 5px 20px rgba(200,75,15,.35)}
+  50%{box-shadow:0 5px 28px rgba(200,75,15,.52)}
+}
+.btn-primary{animation:pulse 2.8s ease-in-out infinite}
+.btn-primary:hover{animation:none}
+
+@keyframes pageIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.page-enter{animation:pageIn .38s ease forwards}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media(min-width:640px){
+  .hero{padding:68px 0 76px}
+  .section{padding:80px 0}
+  .pain-grid{grid-template-columns:1fr 1fr}
+  .solution-grid{grid-template-columns:1fr 1fr 1fr}
+  .testimonial-grid{grid-template-columns:1fr 1fr}
+  .float-cta{display:none}
+  .book{width:210px;height:290px}
+  .trainer-card{display:grid;grid-template-columns:200px 1fr}
+  .trainer-photo-placeholder{height:100%;min-height:300px}
+}
+@media(min-width:1024px){
+  .section{padding:96px 0}
+  .hero{padding:80px 0 96px}
+}
+@media(max-width:639px){
+  .compare-table{font-size:12px}
+  .compare-table th,.compare-table td{padding:9px 9px}
+  .checkout-body{padding:14px 0 80px}
+  .pricing-body{padding:22px 18px}
+  .form-row{grid-template-columns:1fr}
+  .blueprint-grid{grid-template-columns:1fr}
+  .blueprint-full{grid-column:auto}
+  .proof-stat{padding:0 14px}
+  .express-btns{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== LANDING PAGE ==================== -->
+<div id="landing-page">
+
+<!-- Top Urgency Bar -->
+<div class="top-bar">
+🔥 <em>Special Launch Price:</em> Save 47% Today — Offer ends in <span class="timer" id="countdown">2:59:47</span>
+</div>
+
+<!-- Sticky Header -->
+<header class="header">
+<div class="container">
+<div class="header-logo"><span class="paw">🐾</span> Happy Paws Training</div>
+<button class="header-cta" onclick="goCheckout()">Get Instant Access — $79.99 CAD</button>
+</div>
+</header>
+
+<!-- ======== HERO ======== -->
+<section class="hero">
+<div class="container">
+<div class="hero-badge fade-up">⭐ Trusted by 14,000+ Canadian Dog Moms</div>
+<h1 class="fade-up">Stop the Pulling, Chaos &amp; <span class="highlight">Embarrassment</span> — Train Your Dog at Home in Just 15 Minutes a Day</h1>
+<p class="hero-sub fade-up">The gentle, step-by-step system that <strong>14,000+ busy women across Canada</strong> use to finally enjoy life with their dogs — no expensive trainers, no driving across town.</p>
+<div class="fade-up">
+<button class="btn-primary" onclick="goCheckout()">
+Yes! I Want a Well-Behaved Dog →
+<span class="btn-sub">Instant PDF Download • $79.99 CAD</span>
+</button>
+</div>
+<div class="hero-trust fade-up">
+<span><span class="chk">✓</span> Instant Download</span>
+<span><span class="chk">✓</span> 60-Day Money-Back Guarantee</span>
+<span><span class="chk">✓</span> Works for Any Breed &amp; Age</span>
+<span><span class="chk">✓</span> 🇨🇦 Made in Canada</span>
+</div>
+<div class="book-wrapper fade-up">
+<div class="book">
+<span class="book-badge">PDF GUIDE</span>
+<div class="book-icon">🐕</div>
+<div class="book-title">The Complete Home Dog Training Guide</div>
+<div class="book-subtitle">+ 3 Bonus Resources</div>
+</div>
+<div class="book-stack">
+<div class="book-stack-item" style="width:170px"></div>
+<div class="book-stack-item" style="width:155px;opacity:.7"></div>
+<div class="book-stack-item" style="width:142px;opacity:.45"></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Social Proof Bar -->
+<div class="proof-bar">
+<div class="container">
+<div class="proof-stat">
+<div class="num">14,000+</div>
+<div class="label">Happy Customers</div>
+</div>
+<div class="proof-stat">
+<div class="stars">★★★★★</div>
+<div class="label">4.9 Avg. Rating</div>
+</div>
+<div class="proof-stat">
+<div class="num">60-Day</div>
+<div class="label">Money-Back Guarantee</div>
+</div>
+<div class="proof-stat">
+<div class="num">🇨🇦</div>
+<div class="label">Canadian Made</div>
+</div>
+</div>
+</div>
+
+<!-- ======== PAIN POINTS ======== -->
+<section class="section section-cream">
+<div class="container">
+<div class="section-label fade-up">Does this sound familiar?</div>
+<h2 class="section-title fade-up">You Love Your Dog — But Life With Them Is Exhausting</h2>
+<p class="section-sub fade-up">You're not alone if any of these hit close to home:</p>
+<div class="pain-grid">
+<div class="pain-item fade-up">
+<div class="pain-icon">🦮</div>
+<div class="pain-text">Your dog pulls so hard on walks that you <strong>actually dread going outside</strong></div>
+</div>
+<div class="pain-item fade-up">
+<div class="pain-icon">📢</div>
+<div class="pain-text">Non-stop barking at the doorbell, other dogs, and every little sound drives you crazy</div>
+</div>
+<div class="pain-item fade-up">
+<div class="pain-icon">🐾</div>
+<div class="pain-text">Jumping on guests the second they walk in — <strong>it's mortifying</strong></div>
+</div>
+<div class="pain-item fade-up">
+<div class="pain-icon">🛋️</div>
+<div class="pain-text">Chewed furniture, scratched floors, accidents on the carpet — your house is a warzone</div>
+</div>
+<div class="pain-item fade-up">
+<div class="pain-icon">📱</div>
+<div class="pain-text">You've tried YouTube videos and Reddit threads but <strong>nothing sticks for more than 2 days</strong></div>
+</div>
+<div class="pain-item fade-up">
+<div class="pain-icon">💸</div>
+<div class="pain-text">Professional trainers in Canada charge $150+/hour — and the waitlists are months long</div>
+</div>
+</div>
+<div class="pain-empathy fade-up">
+💛 "You're not a bad dog mom. You just haven't found <em>the right method</em> yet. There's a reason professional trainers don't share this with you — it would put them out of business."
+</div>
+</div>
+</section>
+
+<!-- ======== AGITATE ======== -->
+<section class="section">
+<div class="container">
+<div class="section-label fade-up">Here's the hard truth</div>
+<h2 class="section-title fade-up" style="max-width:490px">Every Single Day Without Training Makes It Harder</h2>
+<p style="font-size:16px;color:var(--text-mid);line-height:1.7;margin-bottom:16px" class="fade-up">Your dog isn't being "bad" — they're <strong>confused</strong>. They're looking to you for clear leadership, and without a consistent method, both of you spiral into frustration.</p>
+<p style="font-size:16px;color:var(--text-mid);line-height:1.7;margin-bottom:16px" class="fade-up">And honestly — between work, family, groceries, and everything else — <strong>who has time for $150/hour training sessions across town every week?</strong></p>
+<p style="font-size:16px;color:var(--text-mid);line-height:1.7" class="fade-up">That's exactly why Sarah built something different.</p>
+</div>
+</section>
+
+<!-- ======== MEET YOUR TRAINER ======== -->
+<section class="trainer-section section-paper">
+<div class="container">
+<div class="section-label fade-up">Your guide &amp; trainer</div>
+<h2 class="section-title fade-up">Meet Sarah Mitchell</h2>
+<p class="section-sub fade-up">The Canadian trainer behind 14,000+ transformations</p>
+<div class="trainer-card fade-up">
+<div class="trainer-photo-placeholder">
+<!-- REPLACE THIS SECTION WITH: <img src="AUTHOR_PHOTO_PLACEHOLDER.JPG" alt="Sarah Mitchell - Certified Dog Trainer Toronto" style="width:100%;height:100%;object-fit:cover"> -->
+<div class="photo-icon">👩</div>
+<span class="photo-label">📸 AUTHOR_PHOTO_PLACEHOLDER.JPG</span>
+</div>
+<div class="trainer-body">
+<div class="trainer-name-row">
+<div class="trainer-name">Sarah Mitchell</div>
+<div class="trainer-cert">🏅 CPDT-KA Certified</div>
+</div>
+<div class="trainer-title">Certified Professional Dog Trainer • Toronto, Ontario 🇨🇦 • 12+ Years Experience</div>
+<div class="trainer-stats">
+<div class="trainer-stat">
+<div class="s-num">12+</div>
+<div class="s-label">Years</div>
+</div>
+<div class="trainer-stat">
+<div class="s-num">3,400+</div>
+<div class="s-label">Dogs Trained</div>
+</div>
+<div class="trainer-stat">
+<div class="s-num">4.9★</div>
+<div class="s-label">Avg. Rating</div>
+</div>
+</div>
+<div class="trainer-quote">
+"I started training dogs because I was you. My rescue, Maple, was destroying my apartment and I cried more than once. After years working with dogs — and watching frustrated owners spend thousands on trainers who gave them zero tools to use at home — I knew there had to be a better way."
+</div>
+<div class="trainer-bio">
+Sarah specializes in positive reinforcement methods for family dogs. After training over 3,400 dogs in the Greater Toronto Area, she distilled everything that actually works into one comprehensive system built for busy women — no experience required. This guide is the exact framework she uses with private clients, now available to every Canadian dog mom.
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ======== LOOK INSIDE / BLUEPRINT ======== -->
+<section class="blueprint-section section">
+<div class="container">
+<div class="section-label fade-up">Look inside the guide</div>
+<h2 class="section-title fade-up">See Exactly What You're Getting</h2>
+<p class="section-sub fade-up">This isn't a pile of generic dog advice. It's a professionally designed, structured training system — 180+ pages of real, actionable content.</p>
+<div class="blueprint-grid fade-up">
+
+<!-- Screen 1: Chapter overview -->
+<div class="blueprint-item">
+<!-- REPLACE WITH: <img src="SCREENSHOT_CHAPTER_OVERVIEW.JPG" alt="Chapter overview page from the guide"> -->
+<div class="blueprint-screen bp-s1">
+<div class="bp-bar accent" style="margin-bottom:4px"></div>
+<div class="bp-bar" style="width:80%;margin-bottom:8px"></div>
+<div class="bp-row"><div class="bp-dot"><span>1</span></div><div class="bp-lines"><div class="bp-line w90"></div><div class="bp-line w60"></div></div></div>
+<div class="bp-row"><div class="bp-dot"><span>2</span></div><div class="bp-lines"><div class="bp-line w80"></div><div class="bp-line w70"></div></div></div>
+<div class="bp-row"><div class="bp-dot"><span>3</span></div><div class="bp-lines"><div class="bp-line w90"></div><div class="bp-line w50"></div></div></div>
+<div class="bp-row"><div class="bp-dot"><span>4</span></div><div class="bp-lines"><div class="bp-line w75"></div><div class="bp-line w60"></div></div></div>
+</div>
+<div class="blueprint-label"><span>📖</span> Chapter Overview Pages</div>
+</div>
+
+<!-- Screen 2: Checklists -->
+<div class="blueprint-item">
+<!-- REPLACE WITH: <img src="SCREENSHOT_CHECKLIST.JPG" alt="Daily training checklist pages from the guide"> -->
+<div class="blueprint-screen bp-s2">
+<div class="bp-bar" style="width:70%;background:#c8dce8;margin-bottom:10px"></div>
+<div class="bp-check-row"><div class="bp-check filled"></div><div class="bp-check-text" style="width:75%"></div></div>
+<div class="bp-check-row"><div class="bp-check filled"></div><div class="bp-check-text" style="width:60%"></div></div>
+<div class="bp-check-row"><div class="bp-check filled"></div><div class="bp-check-text" style="width:85%"></div></div>
+<div class="bp-check-row"><div class="bp-check"></div><div class="bp-check-text" style="width:65%"></div></div>
+<div class="bp-check-row"><div class="bp-check"></div><div class="bp-check-text" style="width:70%"></div></div>
+<div class="bp-check-row"><div class="bp-check"></div><div class="bp-check-text" style="width:50%"></div></div>
+</div>
+<div class="blueprint-label"><span>✅</span> Daily Training Checklists</div>
+</div>
+
+<!-- Screen 3: Reference tables -->
+<div class="blueprint-item">
+<!-- REPLACE WITH: <img src="SCREENSHOT_TABLES.JPG" alt="Quick-reference tables from the guide"> -->
+<div class="blueprint-screen bp-s3">
+<div class="bp-table">
+<div class="bp-th"></div><div class="bp-th"></div><div class="bp-th"></div>
+<div class="bp-td"></div><div class="bp-td accent"></div><div class="bp-td"></div>
+<div class="bp-td"></div><div class="bp-td"></div><div class="bp-td accent"></div>
+<div class="bp-td accent"></div><div class="bp-td"></div><div class="bp-td"></div>
+<div class="bp-td"></div><div class="bp-td accent"></div><div class="bp-td"></div>
+<div class="bp-td"></div><div class="bp-td"></div><div class="bp-td"></div>
+</div>
+</div>
+<div class="blueprint-label"><span>📊</span> Quick-Reference Tables</div>
+</div>
+
+<!-- Screen 4: 30-day timeline -->
+<div class="blueprint-item">
+<!-- REPLACE WITH: <img src="SCREENSHOT_TIMELINE.JPG" alt="30-day training calendar from the guide"> -->
+<div class="blueprint-screen bp-s4">
+<div class="bp-bar" style="width:55%;background:rgba(26,122,74,.3);margin-bottom:10px"></div>
+<div class="bp-tl">
+<div class="bp-tl-item"><div class="bp-tl-dot" style="background:var(--green)"></div><div class="bp-tl-content"><div class="bp-tl-tag"></div><div class="bp-tl-text"></div></div></div>
+<div class="bp-tl-item"><div class="bp-tl-dot" style="background:var(--green)"></div><div class="bp-tl-content"><div class="bp-tl-tag"></div><div class="bp-tl-text" style="width:65px"></div></div></div>
+<div class="bp-tl-item"><div class="bp-tl-dot"></div><div class="bp-tl-content"><div class="bp-tl-tag" style="opacity:.3"></div><div class="bp-tl-text" style="width:90px;opacity:.5"></div></div></div>
+<div class="bp-tl-item"><div class="bp-tl-dot"></div><div class="bp-tl-content"><div class="bp-tl-tag" style="opacity:.3"></div><div class="bp-tl-text" style="width:70px;opacity:.5"></div></div></div>
+</div>
+</div>
+<div class="blueprint-label"><span>📅</span> 30-Day Training Calendar</div>
+</div>
+
+<!-- Screen 5: Full-width design spread -->
+<div class="blueprint-item blueprint-full">
+<!-- REPLACE WITH: <img src="SCREENSHOT_SPREAD.JPG" alt="Beautiful design spread from the guide"> -->
+<div class="blueprint-screen bp-s5">
+<div class="bp-s5-left">
+<div class="bp-bar accent" style="width:50%"></div>
+<div style="height:8px"></div>
+<div class="bp-bar" style="width:95%"></div>
+<div class="bp-bar" style="width:85%"></div>
+<div class="bp-bar" style="width:90%"></div>
+<div style="height:6px"></div>
+<div class="bp-bar" style="width:70%"></div>
+<div class="bp-bar" style="width:80%"></div>
+</div>
+<div class="bp-s5-right">🐕</div>
+</div>
+<div class="blueprint-label"><span>🎨</span> Beautiful, Professionally Designed Layout — Not Just a Wall of Text</div>
+</div>
+
+</div>
+<p class="fade-up" style="text-align:center;font-size:13px;color:var(--text-lighter);margin-top:16px;font-style:italic">*Mockup previews — actual screenshots replace upon finalization</p>
+</div>
+</section>
+
+<!-- ======== SOLUTION ======== -->
+<section class="section section-cream">
+<div class="container">
+<div class="section-label fade-up">The solution</div>
+<h2 class="section-title fade-up">Train Your Dog From Your Living Room</h2>
+<p class="section-sub fade-up">A step-by-step system designed for <strong>busy Canadian women</strong> who want a well-behaved dog — without the overwhelm or the $150/hour price tag.</p>
+<div class="solution-grid">
+<div class="solution-card fade-up">
+<div class="solution-card-icon">📖</div>
+<h3>Simple, Clear Steps</h3>
+<p>No confusing jargon. Follow the daily 15-minute exercises laid out clearly for you — even if you've never trained a dog.</p>
+</div>
+<div class="solution-card fade-up">
+<div class="solution-card-icon">❤️</div>
+<h3>Gentle &amp; Positive Methods</h3>
+<p>Build a deeper bond while eliminating bad behaviour. No yelling, no punishment — just proven positive reinforcement.</p>
+</div>
+<div class="solution-card fade-up">
+<div class="solution-card-icon">🏠</div>
+<h3>100% At Home</h3>
+<p>Train on your schedule, in your own space. Whether it's 7am before work or 9pm after the kids are in bed — you decide.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ======== WHAT'S INSIDE ======== -->
+<section class="section">
+<div class="container">
+<div class="section-label fade-up">What's inside</div>
+<h2 class="section-title fade-up">180+ Pages of Proven, Actionable Training</h2>
+<p class="section-sub fade-up">Every chapter is written for real dog moms with real lives — not dog trainers with endless free time.</p>
+<div class="chapters">
+<div class="chapter fade-up"><div class="chapter-num">1</div><div class="chapter-info"><h3>Understanding Your Dog's Mind</h3><p>Why your dog acts the way they do — and how to use that knowledge to train effectively from day one.</p></div></div>
+<div class="chapter fade-up"><div class="chapter-num">2</div><div class="chapter-info"><h3>The 7 Essential Commands (In the Right Order)</h3><p>Sit, stay, come, down, leave it, heel, place — taught in the sequence that creates the fastest results.</p></div></div>
+<div class="chapter fade-up"><div class="chapter-num">3</div><div class="chapter-info"><h3>Leash Training — Enjoy Walks Again</h3><p>End the pulling for good with the technique that creates noticeable improvement in as little as 5 days.</p></div></div>
+<div class="chapter fade-up"><div class="chapter-num">4</div><div class="chapter-info"><h3>Stop Barking, Jumping &amp; Destructive Behaviour</h3><p>Proven methods to address the most common — and most frustrating — behaviour problems.</p></div></div>
+<div class="chapter fade-up"><div class="chapter-num">5</div><div class="chapter-info"><h3>House Training &amp; Potty Training</h3><p>Whether you have a new puppy or an adult dog with accidents — this chapter has your solution.</p></div></div>
+<div class="chapter fade-up"><div class="chapter-num">6</div><div class="chapter-info"><h3>Socialization &amp; Confidence Building</h3><p>Help your dog feel calm around new people, other dogs, and unfamiliar environments.</p></div></div>
+<div class="chapter fade-up"><div class="chapter-num">7</div><div class="chapter-info"><h3>Anxiety, Fear &amp; Reactivity Solutions</h3><p>Gentle approaches for dogs who struggle with separation anxiety, loud noises, or reactive behaviour.</p></div></div>
+<div class="chapter fade-up"><div class="chapter-num">8</div><div class="chapter-info"><h3>Advanced Training &amp; Fun Tricks</h3><p>Keep your dog mentally stimulated with advanced commands and impressive tricks the whole family will love.</p></div></div>
+</div>
+</div>
+</section>
+
+<!-- ======== VALUE STACK ======== -->
+<section class="value-stack section">
+<div class="container">
+<div class="section-label fade-up">Everything you get today</div>
+<h2 class="section-title fade-up">Your Complete Training Bundle</h2>
+<p class="section-sub fade-up">You're not just getting a PDF — you're getting a complete system with 3 high-value bonuses included free today.</p>
+
+<div class="vs-grid fade-up">
+<!-- Main product -->
+<div class="vs-item main-item">
+<div class="vs-item-icon">📚</div>
+<div class="vs-item-info">
+<div class="vs-item-name">The Complete Home Dog Training Guide</div>
+<div class="vs-item-desc">180+ pages • All 8 chapters • Quick-reference cheat sheets • 30-Day Calendar</div>
+</div>
+<div class="vs-item-value">
+<div class="retail">$147.00</div>
+<div class="yours">Included</div>
+</div>
+</div>
+<!-- Bonus 1 -->
+<div class="vs-item bonus-item">
+<div class="vs-item-icon">🚀</div>
+<div class="vs-item-info">
+<div class="vs-item-name">🎁 BONUS #1 — 48-Hour Potty Training Fast-Track</div>
+<div class="vs-item-desc">The fastest, gentlest method to potty-train any dog in just 2 days</div>
+</div>
+<div class="vs-item-value">
+<div class="retail">$47.00</div>
+<div class="yours" style="color:#4ade80">FREE</div>
+</div>
+</div>
+<!-- Bonus 2 -->
+<div class="vs-item bonus-item">
+<div class="vs-item-icon">🔇</div>
+<div class="vs-item-info">
+<div class="vs-item-name">🎁 BONUS #2 — Stop Barking Audio Cue Series</div>
+<div class="vs-item-desc">6 pre-recorded audio training exercises for bark reduction — play from your phone</div>
+</div>
+<div class="vs-item-value">
+<div class="retail">$37.00</div>
+<div class="yours" style="color:#4ade80">FREE</div>
+</div>
+</div>
+<!-- Bonus 3 -->
+<div class="vs-item bonus-item">
+<div class="vs-item-icon">♾️</div>
+<div class="vs-item-info">
+<div class="vs-item-name">🎁 BONUS #3 — Lifetime Guide Updates</div>
+<div class="vs-item-desc">As Sarah adds new chapters and techniques, you get every update — forever, at no cost</div>
+</div>
+<div class="vs-item-value">
+<div class="retail">$67.00</div>
+<div class="yours" style="color:#4ade80">FREE</div>
+</div>
+</div>
+</div>
+
+<div class="vs-total-box fade-up">
+<div class="vs-total-row">
+<span>Main Guide (Retail Value)</span>
+<span class="val">$147.00 CAD</span>
+</div>
+<div class="vs-total-row">
+<span>Bonus #1 — Potty Training Fast-Track</span>
+<span class="val">$47.00 CAD</span>
+</div>
+<div class="vs-total-row">
+<span>Bonus #2 — Stop Barking Audio Series</span>
+<span class="val">$37.00 CAD</span>
+</div>
+<div class="vs-total-row">
+<span>Bonus #3 — Lifetime Updates</span>
+<span class="val">$67.00 CAD</span>
+</div>
+<div class="vs-grand">
+<div>
+<div class="vs-grand-label">Total Real Value</div>
+<div class="vs-grand-retail">$298.00 CAD</div>
+</div>
+<div class="vs-grand-price">
+<div class="vs-grand-retail">$298.00 CAD</div>
+<div class="vs-grand-today"><sup>$</sup>79<span class="cents">.99</span></div>
+<div class="vs-grand-save">You Save $218.01 CAD Today</div>
+</div>
+</div>
+</div>
+<div class="vs-cad">* All prices in Canadian Dollars (CAD). One-time payment. No subscription.</div>
+
+<div style="text-align:center" class="fade-up">
+<button class="btn-primary" onclick="goCheckout()" style="animation:pulse 2.8s ease-in-out infinite">
+Claim My Bundle — $79.99 CAD →
+<span class="btn-sub">Instant Download • 60-Day Guarantee</span>
+</button>
+</div>
+</div>
+</section>
+
+<!-- ======== MID CTA ======== -->
+<div class="mid-cta">
+<div class="container fade-up">
+<button class="btn-primary" onclick="goCheckout()">
+Get Instant Access — $79.99 CAD →
+</button>
+<div class="hero-trust" style="margin-top:14px">
+<span><span class="chk">✓</span> Instant Download</span>
+<span><span class="chk">✓</span> 60-Day Guarantee</span>
+<span><span class="chk">✓</span> 🇨🇦 Canadian-Made</span>
+</div>
+</div>
+</div>
+
+<!-- ======== TIMELINE ======== -->
+<section class="section section-cream">
+<div class="container">
+<div class="section-label fade-up">What to expect</div>
+<h2 class="section-title fade-up">Your 30-Day Transformation</h2>
+<p class="section-sub fade-up">Here's what most dog moms experience when they follow the guide consistently:</p>
+<div class="timeline-items">
+<div class="timeline-item fade-up"><div class="timeline-dot">📅</div><div class="timeline-content"><div class="time">Days 1–3</div><h3>Your dog starts responding to your cues</h3><p>You'll build the foundation and see your dog begin to "click" with the new communication style. It feels like magic.</p></div></div>
+<div class="timeline-item fade-up"><div class="timeline-dot">🚶</div><div class="timeline-content"><div class="time">Week 1</div><h3>Noticeable improvement on walks</h3><p>Less pulling, more attention on you. Walks around the block start feeling calm and enjoyable.</p></div></div>
+<div class="timeline-item fade-up"><div class="timeline-dot">🔇</div><div class="timeline-content"><div class="time">Week 2</div><h3>Barking and jumping significantly reduced</h3><p>Your dog understands boundaries. Guests can actually come over without a full-blown chaos episode.</p></div></div>
+<div class="timeline-item fade-up"><div class="timeline-dot">🏡</div><div class="timeline-content"><div class="time">Week 3</div><h3>Friends and family notice the difference</h3><p>"What did you do with your dog?!" becomes the most common question you hear. You'll smile every time.</p></div></div>
+<div class="timeline-item fade-up"><div class="timeline-dot">🏆</div><div class="timeline-content"><div class="time">Day 30</div><h3>A calm, confident dog you're proud of</h3><p>The bond is deeper. The stress is gone. You finally enjoy every single moment with your dog.</p></div></div>
+</div>
+</div>
+</section>
+
+<!-- ======== TESTIMONIALS (CANADIAN) ======== -->
+<section class="section">
+<div class="container">
+<div class="section-label fade-up" style="text-align:center">Real results from real Canadians</div>
+<h2 class="section-title fade-up" style="text-align:center">What Canadian Dog Moms Are Saying</h2>
+<p class="section-sub fade-up" style="text-align:center;margin:0 auto 36px">Join thousands of women across Canada who transformed their relationship with their dogs.</p>
+<div class="testimonial-grid">
+
+<div class="testimonial fade-up">
+<div class="testimonial-flag">🇨🇦 <span class="testimonial-verified-badge">Verified Canadian Purchase</span></div>
+<div class="testimonial-stars">★★★★★</div>
+<div class="testimonial-text">"I was skeptical — another dog training book? But after <strong>just one week</strong>, my golden retriever stopped pulling on our walks around Stanley Park. By week three, she was like a completely different dog. My husband keeps asking what I did differently."</div>
+<div class="testimonial-author">
+<div class="testimonial-avatar" style="background:linear-gradient(135deg,#f472b6,#ec4899)">EL</div>
+<div>
+<div class="testimonial-name">Emma L., 39</div>
+<div class="testimonial-location">Vancouver, BC</div>
+<div class="testimonial-verified">✓ Verified Purchase</div>
+</div>
+</div>
+</div>
+
+<div class="testimonial fade-up">
+<div class="testimonial-flag">🇨🇦 <span class="testimonial-verified-badge">Verified Canadian Purchase</span></div>
+<div class="testimonial-stars">★★★★★</div>
+<div class="testimonial-text">"I spent <strong>$900 on a Calgary trainer</strong> last year and saw less improvement than I got from this guide. The step-by-step format is so easy to follow — even my 11-year-old does the training sessions with our beagle now!"</div>
+<div class="testimonial-author">
+<div class="testimonial-avatar" style="background:linear-gradient(135deg,#a78bfa,#7c3aed)">JR</div>
+<div>
+<div class="testimonial-name">Jessica R., 42</div>
+<div class="testimonial-location">Calgary, AB</div>
+<div class="testimonial-verified">✓ Verified Purchase</div>
+</div>
+</div>
+</div>
+
+<div class="testimonial fade-up">
+<div class="testimonial-flag">🇨🇦 <span class="testimonial-verified-badge">Verified Canadian Purchase</span></div>
+<div class="testimonial-stars">★★★★★</div>
+<div class="testimonial-text">"As a <strong>single mom working two jobs</strong>, I had zero time for training classes. 15 minutes in the morning while my coffee brews — that's all this takes. Our apartment is finally calm and I actually look forward to coming home now."</div>
+<div class="testimonial-author">
+<div class="testimonial-avatar" style="background:linear-gradient(135deg,#fb923c,#c84b0f)">MT</div>
+<div>
+<div class="testimonial-name">Michelle T., 44</div>
+<div class="testimonial-location">Toronto, ON</div>
+<div class="testimonial-verified">✓ Verified Purchase</div>
+</div>
+</div>
+</div>
+
+<div class="testimonial fade-up">
+<div class="testimonial-flag">🇨🇦 <span class="testimonial-verified-badge">Verified Canadian Purchase</span></div>
+<div class="testimonial-stars">★★★★★</div>
+<div class="testimonial-text">"My rescue had terrible separation anxiety — she destroyed my entire couch (a $1,400 sectional!) in one afternoon. <strong>Chapter 7 changed everything.</strong> She's so calm now. I wish I'd found Sarah's guide before I bought a new couch."</div>
+<div class="testimonial-author">
+<div class="testimonial-avatar" style="background:linear-gradient(135deg,#34d399,#059669)">AK</div>
+<div>
+<div class="testimonial-name">Amanda K., 50</div>
+<div class="testimonial-location">Ottawa, ON</div>
+<div class="testimonial-verified">✓ Verified Purchase</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- ======== COST OF INACTION ======== -->
+<section class="inaction-section section">
+<div class="container">
+<div class="section-label fade-up">The real cost of doing nothing</div>
+<h2 class="section-title fade-up">What Inaction Actually Costs You</h2>
+<p class="section-sub fade-up">Still on the fence? Let's put $79.99 in perspective against what an untrained dog actually costs Canadians every year.</p>
+
+<div class="inaction-grid fade-up">
+<div class="inaction-item">
+<div class="inaction-item-icon">🛋️</div>
+<div class="inaction-item-info">
+<div class="inaction-item-name">One replacement sectional sofa (Canada)</div>
+<div class="inaction-item-desc">After your dog chews through the one you have</div>
+</div>
+<div class="inaction-item-price">$1,200+</div>
+</div>
+<div class="inaction-item">
+<div class="inaction-item-icon">👟</div>
+<div class="inaction-item-info">
+<div class="inaction-item-name">Chewed shoes, clothes &amp; belongings per year</div>
+<div class="inaction-item-desc">The average untrained dog destroys $300–$600 in personal items annually</div>
+</div>
+<div class="inaction-item-price">$400+</div>
+</div>
+<div class="inaction-item">
+<div class="inaction-item-icon">🧑‍🏫</div>
+<div class="inaction-item-info">
+<div class="inaction-item-name">A single session with a professional trainer</div>
+<div class="inaction-item-desc">Average rate in major Canadian cities — and that's just one hour</div>
+</div>
+<div class="inaction-item-price">$150/hr</div>
+</div>
+<div class="inaction-item">
+<div class="inaction-item-icon">🏠</div>
+<div class="inaction-item-info">
+<div class="inaction-item-name">Doggy daycare for one month</div>
+<div class="inaction-item-desc">Because you can't leave your dog home unsupervised</div>
+</div>
+<div class="inaction-item-price">$800+</div>
+</div>
+</div>
+
+<div class="inaction-vs fade-up">
+<p>All of the above adds up to <strong>$2,000+ per year</strong> — and none of it actually solves the problem. This guide costs <strong>$79.99 CAD</strong> — once, forever — and gives you the tools to fix it at the root.</p>
+</div>
+</div>
+</section>
+
+<!-- ======== COMPARISON ======== -->
+<section class="section section-paper">
+<div class="container">
+<div class="section-label fade-up" style="text-align:center">Why this guide?</div>
+<h2 class="section-title fade-up" style="text-align:center">Professional Trainer vs. This Guide</h2>
+<p class="section-sub fade-up" style="text-align:center;margin:0 auto 36px">See why 14,000+ Canadian women chose this over spending thousands on trainers.</p>
+<div class="fade-up" style="overflow-x:auto">
+<table class="compare-table">
+<thead>
+<tr>
+<th></th>
+<th>Pro Trainer (Canada)</th>
+<th>This Guide ✨</th>
+</tr>
+</thead>
+<tbody>
+<tr><td class="label-cell">Cost</td><td class="bad">$800–$2,000+</td><td class="good">$79.99 CAD (once)</td></tr>
+<tr><td class="label-cell">Travel required</td><td class="bad">Drive across town weekly</td><td class="good">Your living room</td></tr>
+<tr><td class="label-cell">Your schedule</td><td class="bad">Their schedule</td><td class="good">15 min, whenever works</td></tr>
+<tr><td class="label-cell">Method</td><td>Varies by trainer</td><td class="good">Proven gentle system</td></tr>
+<tr><td class="label-cell">Take-home materials</td><td class="bad">Usually none</td><td class="good">Full guide + cheat sheets + calendar</td></tr>
+<tr><td class="label-cell">Guarantee</td><td class="bad">No refunds</td><td class="good">60-day money back</td></tr>
+<tr><td class="label-cell">Lifetime access</td><td class="bad">✗</td><td class="good">✓ Forever + free updates</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+<!-- ======== PRICING ======== -->
+<section class="pricing section" id="pricing">
+<div class="container">
+<div class="section-label fade-up">Secure your spot</div>
+<h2 class="section-title fade-up">Get Instant Access Today</h2>
+<p class="section-sub fade-up" style="text-align:center;margin:0 auto 36px">One payment. Lifetime access. Everything included.</p>
+<div class="pricing-card fade-up">
+<div class="pricing-badge">🔥 47% OFF — Today Only</div>
+<div class="pricing-body">
+<div class="pricing-amount">
+<div class="pricing-original">$149.00 CAD</div>
+<div class="pricing-current"><sup>$</sup>79<span class="cents">.99</span></div>
+<div class="pricing-currency">Canadian Dollars (CAD)</div>
+<div class="pricing-save">You Save $69.01 CAD Today</div>
+</div>
+<ul class="pricing-includes">
+<li><span class="li-icon">✓</span> Complete 180-page Home Dog Training Guide (PDF) <span class="li-value">Value $147</span></li>
+<li><span class="li-icon">✓</span> 48-Hour Potty Training Fast-Track <span class="li-value">Value $47</span></li>
+<li><span class="li-icon">✓</span> Stop Barking Audio Cue Series <span class="li-value">Value $37</span></li>
+<li><span class="li-icon">✓</span> Lifetime Guide Updates <span class="li-value">Value $67</span></li>
+<li><span class="li-icon">✓</span> Quick-Reference Cheat Sheets (printable)</li>
+<li><span class="li-icon">✓</span> 30-Day Step-by-Step Training Calendar</li>
+<li><span class="li-icon">✓</span> Instant Download — Start in Under 2 Minutes</li>
+</ul>
+<button class="btn-primary" onclick="goCheckout()" style="max-width:100%;animation:pulse 2.8s ease-in-out infinite">
+Claim My Bundle — $79.99 CAD →
+</button>
+<div class="pricing-guarantee-box">
+<div class="g-icon">🛡️</div>
+<div class="g-text">60-Day 100% Money-Back Guarantee — No questions asked. Not happy? Full refund, every penny.</div>
+</div>
+<div class="pricing-secure">
+<span>🔒 256-bit SSL</span>
+<span>💳 Visa / MC / Amex</span>
+<span>⚡ Instant Access</span>
+<span>🇨🇦 CAD Currency</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ======== GUARANTEE ======== -->
+<section class="guarantee section section-cream">
+<div class="container">
+<div class="guarantee-box fade-up">
+<div class="guarantee-icon">🛡️</div>
+<h2>60-Day "Happy Dog" Money-Back Guarantee</h2>
+<p>We're so confident this system will work for your dog that we're giving you a full <strong>60 days</strong> to try it risk-free. Follow the method and if you don't see real, noticeable improvement — simply email Sarah's team for a full refund. No questions, no hassle, no fine print. You have absolutely nothing to lose and a well-behaved dog to gain.</p>
+</div>
+</div>
+</section>
+
+<!-- ======== FAQ ======== -->
+<section class="section">
+<div class="container">
+<div class="section-label fade-up" style="text-align:center">Questions?</div>
+<h2 class="section-title fade-up" style="text-align:center">Frequently Asked Questions</h2>
+<div class="faq-list" style="margin-top:30px">
+
+<div class="faq-item fade-up">
+<button class="faq-q" onclick="toggleFaq(this)">Will this work for my dog's breed? <span class="faq-arrow">▾</span></button>
+<div class="faq-a"><div class="faq-a-inner">Absolutely. The methods are based on canine psychology that applies to all breeds — from Chihuahuas to Great Danes. We've had success stories from owners of over 60 different breeds across Canada.</div></div>
+</div>
+
+<div class="faq-item fade-up">
+<button class="faq-q" onclick="toggleFaq(this)">My dog is older — is it too late? <span class="faq-arrow">▾</span></button>
+<div class="faq-a"><div class="faq-a-inner">"You can't teach an old dog new tricks" is a myth. This guide covers techniques from puppies all the way to senior dogs. Older dogs often learn faster because they're calmer and more focused.</div></div>
+</div>
+
+<div class="faq-item fade-up">
+<button class="faq-q" onclick="toggleFaq(this)">How is it delivered? I'm not very tech-savvy. <span class="faq-arrow">▾</span></button>
+<div class="faq-a"><div class="faq-a-inner">Immediately after purchase, you'll receive an email with a direct download link for the PDF guide and all bonus materials. It opens on any phone, tablet, or computer — no special software needed. If you can open an email, you can access this guide.</div></div>
+</div>
+
+<div class="faq-item fade-up">
+<button class="faq-q" onclick="toggleFaq(this)">What if it doesn't work for my dog? <span class="faq-arrow">▾</span></button>
+<div class="faq-a"><div class="faq-a-inner">You're covered by our 60-day money-back guarantee. If you follow the steps and don't see improvement, simply email us for a full refund. We've processed fewer than 2% refund requests because the method genuinely works when applied consistently.</div></div>
+</div>
+
+<div class="faq-item fade-up">
+<button class="faq-q" onclick="toggleFaq(this)">How soon will I see results? <span class="faq-arrow">▾</span></button>
+<div class="faq-a"><div class="faq-a-inner">Most customers report noticeable changes within the first 3–7 days. Every dog is different, but if you're consistent with the 15-minute daily exercises, you should see meaningful progress within the first two weeks.</div></div>
+</div>
+
+<div class="faq-item fade-up">
+<button class="faq-q" onclick="toggleFaq(this)">Is this positive/force-free training? <span class="faq-arrow">▾</span></button>
+<div class="faq-a"><div class="faq-a-inner">100%. This guide uses only positive reinforcement methods — no shock collars, no yelling, no intimidation. You'll build your dog's confidence and strengthen your bond while eliminating unwanted behaviour. Effective AND humane.</div></div>
+</div>
+
+<div class="faq-item fade-up">
+<button class="faq-q" onclick="toggleFaq(this)">Is the price in Canadian dollars? <span class="faq-arrow">▾</span></button>
+<div class="faq-a"><div class="faq-a-inner">Yes! The price is $79.99 CAD — Canadian dollars. This is a one-time payment with no hidden fees or subscriptions. You get lifetime access to the guide and all future updates at no extra cost.</div></div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- ======== FINAL CTA ======== -->
+<section class="final-cta">
+<div class="container">
+<h2 class="fade-up">Your Dog Is Ready. Are You? 🐾</h2>
+<p class="fade-up">Every day you wait is another day of frustration — for both of you. Your dog <em>wants</em> to make you happy. They just need you to show them how.</p>
+<p class="fade-up">For less than the cost of <strong>one hour</strong> with a professional trainer in Canada, you'll have everything you need to transform your dog's behaviour for life.</p>
+<div class="fade-up">
+<button class="btn-primary" onclick="goCheckout()">
+Yes! I'm Ready to Start — $79.99 CAD →
+<span class="btn-sub">60-Day Guarantee • Instant Download • 🇨🇦 CAD</span>
+</button>
+</div>
+<div class="social-line fade-up">🐾 Join 14,000+ happy Canadian dog moms today</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+<div class="container">
+<p>© 2025 Happy Paws Training. All rights reserved. Toronto, Ontario, Canada 🇨🇦</p>
+<p style="margin-top:4px">
+<a href="#">Privacy Policy</a> · <a href="#">Terms of Service</a> · <a href="#">Contact Us</a> · <a href="#">Refund Policy</a>
+</p>
+<p style="margin-top:8px;max-width:520px;margin-left:auto;margin-right:auto;color:var(--text-lighter)">This product is a digital download (PDF). All prices in CAD. Results may vary. This guide is for educational purposes based on positive reinforcement training methods.</p>
+</div>
+</footer>
+
+<!-- Floating Mobile CTA (with $149 strikethrough) -->
+<div class="float-cta" id="floatCta">
+<div class="float-cta-info">
+<div class="float-cta-original">$149.00 CAD</div>
+<div class="float-cta-price">$79.99</div>
+<div class="float-cta-cad">Canadian Dollars</div>
+</div>
+<button class="float-cta-btn" onclick="goCheckout()">Get Instant Access →</button>
+</div>
+
+</div><!-- END LANDING PAGE -->
+
+
+<!-- ==================== CHECKOUT PAGE ==================== -->
+<div id="checkout-page" class="checkout-page">
+
+<header class="checkout-header">
+<div class="container">
+<button class="checkout-back" onclick="goLanding()">← Back</button>
+<div class="header-logo"><span class="paw">🐾</span> Happy Paws</div>
+<div class="checkout-secure">🔒 Secure Checkout</div>
+</div>
+</header>
+
+<div class="checkout-body">
+<div class="container">
+
+<!-- Express Checkout -->
+<div class="express-checkout">
+<div class="express-title">Express Checkout</div>
+<div class="express-btns">
+<!-- Apple Pay Button - replace onclick with real Stripe Payment Request Button -->
+<button class="express-btn apple-pay-btn" onclick="alert('Apple Pay integration: connect Stripe Payment Request API here')">
+ Apple Pay
+</button>
+<!-- Google Pay Button - replace onclick with real Google Pay integration -->
+<button class="express-btn google-pay-btn" onclick="alert('Google Pay integration: connect Stripe Payment Request API here')">
+<svg width="41" height="16" viewBox="0 0 41 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right:2px"><text y="13" font-family="Arial" font-weight="bold" font-size="13" fill="#4285F4">G</text><text x="10" y="13" font-family="Arial" font-weight="bold" font-size="13" fill="#EA4335">o</text><text x="19" y="13" font-family="Arial" font-weight="bold" font-size="13" fill="#FBBC05">o</text><text x="28" y="13" font-family="Arial" font-weight="bold" font-size="13" fill="#34A853">g</text></svg>Google Pay
+</button>
+</div>
+<div class="express-or">or pay with card</div>
+</div>
+
+<!-- Order Summary -->
+<div class="order-summary">
+<h3>Order Summary</h3>
+<div class="order-item">
+<div class="order-item-icon">🐕</div>
+<div class="order-item-info">
+<div class="order-item-name">The Complete Home Dog Training Guide</div>
+<div class="order-item-desc">PDF Bundle + 3 Bonuses • Instant Download</div>
+</div>
+<div>
+<div class="order-item-original">$149.00 CAD</div>
+<div class="order-item-price">$79.99 CAD</div>
+</div>
+</div>
+
+<hr class="order-divider">
+
+<!-- ========== ORDER BUMP ========== -->
+<div class="order-bump" id="orderBump" onclick="toggleBump()">
+<div class="order-bump-header">
+<div class="bump-checkbox" id="bumpCheckbox"></div>
+<div>
+<div class="bump-title">⚡ Yes! Add the <em>"7-Day Calm Dog Nutrition Protocol"</em> for just $24.99 CAD</div>
+</div>
+</div>
+<ul class="bump-bullets">
+<li>Discover the 5 common foods that spike anxiety and destructive behaviour in dogs</li>
+<li>A done-for-you 7-day meal plan proven to reduce stress &amp; improve focus during training</li>
+<li>Vet-approved supplement guide for calmer, more trainable dogs</li>
+</ul>
+<div class="bump-price-row">
+<div class="bump-retail">Retail Value: $47.00 CAD</div>
+<div class="bump-today">Today Only: $24.99 CAD</div>
+</div>
+</div>
+
+<hr class="order-divider">
+<div class="order-total">
+<div class="order-total-label">Total Today (CAD)</div>
+<div class="order-total-price" id="orderTotal">$79.99</div>
+</div>
+</div>
+
+<!-- Customer Info Form -->
+<div class="checkout-form">
+<div class="form-title">📧 Your Information</div>
+<div class="form-group">
+<label class="form-label" for="email">Email Address</label>
+<input class="form-input" type="email" id="email" placeholder="you@example.com" autocomplete="email" required>
+<div class="form-hint">Your download link will be sent here instantly after purchase</div>
+</div>
+<div class="form-group">
+<label class="form-label" for="fname">First Name</label>
+<input class="form-input" type="text" id="fname" placeholder="Jane" autocomplete="given-name" required>
+</div>
+</div>
+
+<!-- Payment Form -->
+<div class="checkout-form">
+<div class="form-title">💳 Payment Details</div>
+<div class="form-group">
+<label class="form-label" for="cardnum">Card Number</label>
+<input class="form-input" type="text" id="cardnum" placeholder="1234 5678 9012 3456" autocomplete="cc-number" maxlength="19" inputmode="numeric">
+</div>
+<div class="form-row">
+<div class="form-group">
+<label class="form-label" for="expiry">Expiry</label>
+<input class="form-input" type="text" id="expiry" placeholder="MM / YY" autocomplete="cc-exp" maxlength="7" inputmode="numeric">
+</div>
+<div class="form-group">
+<label class="form-label" for="cvc">CVC</label>
+<input class="form-input" type="text" id="cvc" placeholder="123" autocomplete="cc-csc" maxlength="4" inputmode="numeric">
+</div>
+</div>
+</div>
+
+<button class="checkout-btn" id="checkoutBtn" onclick="completePurchase()">
+Complete Purchase — <span id="checkoutBtnPrice">$79.99 CAD</span> →
+</button>
+
+<div class="checkout-trust">
+<span>🔒 256-bit SSL Encrypted</span>
+<span>💳 Visa / Mastercard / Amex</span>
+<span>⚡ Instant Access</span>
+<span>🇨🇦 CAD Pricing</span>
+</div>
+
+<div class="checkout-guarantee">
+<div style="font-size:24px;flex-shrink:0">🛡️</div>
+<div class="checkout-guarantee-text">Protected by our 60-Day "Happy Dog" Money-Back Guarantee. Not satisfied? Full refund — no questions, no hassle.</div>
+</div>
+
+</div>
+</div>
+</div>
+<!-- END CHECKOUT PAGE -->
+
+
+<!-- ==================== THANK YOU PAGE ==================== -->
+<div id="thankyou-page" class="thankyou-page">
+
+<header class="checkout-header">
+<div class="container" style="justify-content:center">
+<div class="header-logo"><span class="paw">🐾</span> Happy Paws Training</div>
+</div>
+</header>
+
+<div class="thankyou-body">
+<div class="container">
+<div class="thankyou-check">✅</div>
+<h1>You're In! 🎉</h1>
+<p class="sub">Your order is confirmed — check your inbox for the download link within 2 minutes.</p>
+
+<div class="thankyou-card">
+<h3>Your Download Is Ready</h3>
+<button class="download-btn" onclick="alert('In a live setup, this downloads your PDF bundle.')">
+📥 Download Your Complete Bundle Now
+</button>
+<p style="text-align:center;font-size:12.5px;color:var(--text-light);margin-bottom:22px">Includes guide + all 3 bonuses • Works on any device</p>
+
+<h3 style="margin-bottom:12px">What to Do Next:</h3>
+<ol class="next-steps">
+<li><span class="step-num">1</span><span><strong>Download &amp; save your guide</strong> to your phone or tablet for easy access during training sessions.</span></li>
+<li><span class="step-num">2</span><span><strong>Print the cheat sheets</strong> and stick them on your fridge — you'll reference them daily.</span></li>
+<li><span class="step-num">3</span><span><strong>Start with Chapter 1 tonight.</strong> It takes 10 minutes to read and sets the foundation for everything.</span></li>
+<li><span class="step-num">4</span><span><strong>Follow the 30-Day Calendar</strong> — it tells you exactly what to practice each day. Zero guesswork!</span></li>
+</ol>
+</div>
+
+<div style="background:var(--paper);border-radius:var(--radius-lg);padding:22px;text-align:center;border:1px solid var(--border)">
+<p style="font-size:14px;color:var(--text-mid);margin-bottom:4px">Need help? Sarah's team is here for you:</p>
+<p style="font-size:15px;font-weight:800;color:var(--cta)">support@happypawstraining.ca</p>
+</div>
+
+<p style="margin-top:22px;font-size:13px;color:var(--text-light)">Thank you for trusting Happy Paws Training. Your dog's transformation starts right now 🐾</p>
+</div>
+</div>
+</div>
+<!-- END THANK YOU PAGE -->
+
+
+<script>
+// ===== COUNTDOWN TIMER =====
+(function(){
+  let total = 3 * 3600;
+  const stored = sessionStorage.getItem('hpt_countdown_end');
+  let endTime;
+  if(stored && parseInt(stored) > Date.now()){
+    endTime = parseInt(stored);
+  } else {
+    endTime = Date.now() + total * 1000;
+    sessionStorage.setItem('hpt_countdown_end', endTime);
+  }
+  function update(){
+    const diff = Math.max(0, Math.floor((endTime - Date.now())/1000));
+    const h = Math.floor(diff/3600);
+    const m = Math.floor((diff%3600)/60);
+    const s = diff%60;
+    document.getElementById('countdown').textContent =
+      h+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+    if(diff > 0) setTimeout(update, 1000);
+  }
+  update();
+})();
+
+// ===== ORDER BUMP LOGIC =====
+let bumpAdded = false;
+const BASE_PRICE = 79.99;
+const BUMP_PRICE = 24.99;
+
+function toggleBump(){
+  bumpAdded = !bumpAdded;
+  const cb = document.getElementById('bumpCheckbox');
+  const total = document.getElementById('orderTotal');
+  const btnPrice = document.getElementById('checkoutBtnPrice');
+  const bump = document.getElementById('orderBump');
+  if(bumpAdded){
+    cb.classList.add('checked');
+    bump.style.borderColor = 'var(--gold)';
+    bump.style.background = '#fef8e4';
+    const t = (BASE_PRICE + BUMP_PRICE).toFixed(2);
+    total.textContent = '$'+t+' CAD';
+    btnPrice.textContent = '$'+t+' CAD';
+  } else {
+    cb.classList.remove('checked');
+    bump.style.borderColor = 'var(--gold-border)';
+    bump.style.background = 'var(--gold-light)';
+    total.textContent = '$'+BASE_PRICE.toFixed(2)+' CAD';
+    btnPrice.textContent = '$'+BASE_PRICE.toFixed(2)+' CAD';
+  }
+}
+
+// ===== PAGE NAVIGATION =====
+function goCheckout(){
+  document.getElementById('landing-page').style.display = 'none';
+  const cp = document.getElementById('checkout-page');
+  cp.style.display = 'block';
+  cp.classList.add('page-enter');
+  document.getElementById('floatCta').classList.remove('visible');
+  window.scrollTo({top:0,behavior:'auto'});
+  setTimeout(()=>{document.getElementById('email').focus()},450);
+}
+
+function goLanding(){
+  document.getElementById('checkout-page').style.display = 'none';
+  document.getElementById('landing-page').style.display = 'block';
+  window.scrollTo({top:0,behavior:'auto'});
+}
+
+function completePurchase(){
+  const email = document.getElementById('email').value;
+  const fname = document.getElementById('fname').value;
+  const card  = document.getElementById('cardnum').value;
+  const err = (el)=>{ el.focus(); el.style.borderColor='#ef4444'; };
+  if(!email || !email.includes('@')) return err(document.getElementById('email'));
+  if(!fname) return err(document.getElementById('fname'));
+  if(!card || card.replace(/\s/g,'').length < 12) return err(document.getElementById('cardnum'));
+  const btn = document.getElementById('checkoutBtn');
+  const finalAmount = bumpAdded ? (BASE_PRICE + BUMP_PRICE).toFixed(2) : BASE_PRICE.toFixed(2);
+  btn.textContent = 'Processing securely...';
+  btn.style.opacity = '0.72';
+  btn.style.pointerEvents = 'none';
+  setTimeout(()=>{
+    document.getElementById('checkout-page').style.display = 'none';
+    const ty = document.getElementById('thankyou-page');
+    ty.style.display = 'block';
+    ty.classList.add('page-enter');
+    window.scrollTo({top:0,behavior:'auto'});
+  }, 1900);
+}
+
+// ===== CARD FORMATTING =====
+document.getElementById('cardnum').addEventListener('input', function(){
+  let v = this.value.replace(/\D/g,'');
+  if(v.length > 16) v = v.slice(0,16);
+  let f = v.match(/.{1,4}/g);
+  this.value = f ? f.join(' ') : '';
+});
+document.getElementById('expiry').addEventListener('input', function(){
+  let v = this.value.replace(/\D/g,'');
+  if(v.length > 4) v = v.slice(0,4);
+  if(v.length >= 2) v = v.slice(0,2) + ' / ' + v.slice(2);
+  this.value = v;
+});
+
+// Reset error borders on focus
+document.querySelectorAll('.form-input').forEach(input=>{
+  input.addEventListener('focus', function(){ this.style.borderColor=''; });
+});
+
+// ===== FAQ =====
+function toggleFaq(btn){
+  const item = btn.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el=>el.classList.remove('open'));
+  if(!isOpen) item.classList.add('open');
+}
+
+// ===== FLOATING CTA =====
+(function(){
+  const float = document.getElementById('floatCta');
+  const hero  = document.querySelector('.hero');
+  function checkScroll(){
+    if(document.getElementById('landing-page').style.display==='none') return;
+    float.classList.toggle('visible', hero.getBoundingClientRect().bottom < 0);
+  }
+  window.addEventListener('scroll', checkScroll, {passive:true});
+})();
+
+// ===== SCROLL ANIMATIONS =====
+(function(){
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  },{threshold:0.08, rootMargin:'0px 0px -36px 0px'});
+  document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+})();
+</script>
+
+</body>
+</html>
