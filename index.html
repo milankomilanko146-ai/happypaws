@@ -2,1054 +2,2479 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Happy Paws — Train Your Dog at Home</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Train Your Dog At Home | The Complete Guide</title>
 <style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --bg:#FDFCFA;--white:#fff;--cream:#F4EDE0;--cream-mid:#EDE4D3;
-  --text:#1A1916;--text-mid:#4B4740;--text-light:#8A847C;--text-xlight:#B8B2AA;
-  --border:#E2D9CC;--border-light:#EDE8E0;
-  --cta:#E8560A;--cta-h:#C4430A;--cta-bg:#FFF3ED;
-  --green:#1A6836;--green-bg:#EAF5EE;--green-mid:#166830;
-  --yellow:#F5A623;--red:#DC2626;
-  --shadow:0 2px 16px rgba(26,25,22,.08);
-  --shadow-lg:0 8px 40px rgba(26,25,22,.12);
-  --r:12px;--r-lg:18px;--max:700px;
-  --ease:cubic-bezier(.4,0,.2,1)
-}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:'DM Sans',system-ui,sans-serif;color:var(--text);background:var(--bg);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-img{max-width:100%;display:block}
-a{color:inherit;text-decoration:none}
-button{border:none;cursor:pointer;font-family:inherit;outline:none}
-input,select{font-family:inherit}
-h1,h2,h3{font-family:'Playfair Display',Georgia,serif;line-height:1.15;letter-spacing:-.3px}
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+  }
 
-.wrap{max-width:var(--max);margin:0 auto;padding:0 18px}
-.page{display:none}
-.page.active{display:block}
+  :root {
+    --primary: #1a1a2e;
+    --accent: #e8a020;
+    --accent-dark: #c8881a;
+    --green: #22c55e;
+    --green-dark: #16a34a;
+    --red: #ef4444;
+    --text: #1f2937;
+    --text-light: #6b7280;
+    --border: #e5e7eb;
+    --bg-light: #f9fafb;
+    --white: #ffffff;
+  }
 
-/* ── TOP BAR ── */
-.topbar{background:#1A1916;color:#fff;padding:10px 18px;text-align:center;font-size:13px;font-weight:600;position:relative;z-index:200}
-.topbar em{color:var(--yellow);font-style:normal}
-.topbar .tmr{font-variant-numeric:tabular-nums;color:var(--yellow)}
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: var(--text);
+    background: var(--white);
+    overflow-x: hidden;
+  }
 
-/* ── STICKY HEADER ── */
-.hdr{position:sticky;top:0;z-index:190;background:rgba(253,252,250,.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--border-light);padding:13px 0}
-.hdr-inner{display:flex;align-items:center;justify-content:space-between}
-.logo{font-family:'Playfair Display',serif;font-size:19px;font-weight:800;display:flex;align-items:center;gap:6px}
-.hdr-btn{background:var(--cta);color:#fff;padding:10px 20px;border-radius:8px;font-size:14px;font-weight:700;transition:background .2s,transform .15s;white-space:nowrap}
-.hdr-btn:hover{background:var(--cta-h)}
-.hdr-btn:active{transform:scale(.97)}
+  /* PAGES */
+  .page { display: none; }
+  .page.active { display: block; }
 
-/* ── HERO ── */
-.hero{padding:32px 0 40px;text-align:center}
-.hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--green-bg);color:var(--green);font-size:13px;font-weight:700;padding:7px 14px;border-radius:100px;margin-bottom:18px}
-.hero h1{font-size:clamp(30px,7vw,46px);font-weight:900;margin-bottom:14px;color:var(--text);max-width:560px;margin-left:auto;margin-right:auto}
-.hero h1 .hl{color:var(--cta);font-style:italic}
-.hero-sub{font-size:17px;color:var(--text-mid);max-width:500px;margin:0 auto 24px;line-height:1.65}
-.hero-sub strong{color:var(--text)}
+  /* TOP BAR */
+  .top-bar {
+    background: var(--primary);
+    color: white;
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .top-bar span { color: var(--accent); }
 
-.cta-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;max-width:420px;margin:0 auto;background:var(--cta);color:#fff;font-size:18px;font-weight:700;padding:19px 28px;border-radius:14px;transition:background .2s,transform .15s,box-shadow .2s;box-shadow:0 4px 20px rgba(232,86,10,.38);letter-spacing:-.2px;animation:glow 2.8s ease-in-out infinite}
-.cta-btn:hover{background:var(--cta-h);transform:translateY(-2px);box-shadow:0 8px 28px rgba(232,86,10,.45);animation:none}
-.cta-btn:active{transform:translateY(0)}
-.cta-btn .arr{transition:transform .2s}
-.cta-btn:hover .arr{transform:translateX(4px)}
-@keyframes glow{0%,100%{box-shadow:0 4px 20px rgba(232,86,10,.38)}50%{box-shadow:0 4px 28px rgba(232,86,10,.52)}}
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #fefefe 0%, #f0f4ff 100%);
+    padding: 40px 20px 50px;
+    text-align: center;
+  }
 
-.trust-row{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:14px}
-.trust-row span{font-size:13px;color:var(--text-light);font-weight:600;display:flex;align-items:center;gap:4px}
-.trust-row .ic{color:var(--green)}
+  .badge {
+    display: inline-block;
+    background: #fef3c7;
+    color: #92400e;
+    border: 1px solid #fcd34d;
+    border-radius: 50px;
+    padding: 6px 16px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+  }
 
-/* ── BOOK VISUAL ── */
-.book-wrap{margin:36px auto 0;width:180px;position:relative}
-.book-3d{width:160px;height:220px;margin:0 auto;background:linear-gradient(155deg,#1B3A5C 0%,#275A8E 45%,#1B3A5C 100%);border-radius:3px 12px 12px 3px;box-shadow:-5px 6px 20px rgba(0,0,0,.28),inset -2px 0 6px rgba(255,255,255,.06);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 16px;color:#fff;text-align:center;transform:perspective(700px) rotateY(-7deg);transition:transform .4s var(--ease)}
-.book-3d:hover{transform:perspective(700px) rotateY(-2deg)}
-.book-3d::before{content:'';position:absolute;left:0;top:6px;bottom:6px;width:3px;background:linear-gradient(to right,rgba(0,0,0,.18),transparent);border-radius:2px 0 0 2px}
-.book-3d .bicon{font-size:32px;margin-bottom:10px}
-.book-3d .btitle{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;line-height:1.3;margin-bottom:6px}
-.book-3d .bsub{font-size:9px;opacity:.65;text-transform:uppercase;letter-spacing:1.2px}
-.book-flag{position:absolute;top:-8px;right:-12px;background:var(--cta);color:#fff;font-size:10px;font-weight:800;padding:5px 9px;border-radius:7px;transform:rotate(5deg);box-shadow:0 2px 8px rgba(232,86,10,.4);white-space:nowrap}
+  .hero h1 {
+    font-size: clamp(26px, 6vw, 42px);
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--primary);
+    margin-bottom: 16px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-/* ── PROOF BAR ── */
-.proof-bar{background:var(--cream);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:18px 0}
-.proof-bar .wrap{display:flex;justify-content:center;gap:0}
-.pstat{flex:1;text-align:center;padding:0 12px}
-.pstat+.pstat{border-left:1px solid var(--border)}
-.pstat .pnum{font-family:'Playfair Display',serif;font-size:22px;font-weight:800}
-.pstat .plabel{font-size:11px;color:var(--text-light);font-weight:600;margin-top:1px}
-.pstat .pstars{color:var(--yellow);font-size:13px;letter-spacing:1px}
+  .hero h1 em {
+    color: var(--accent);
+    font-style: normal;
+  }
 
-/* ── SECTION BASE ── */
-.sec{padding:56px 0}
-.sec-alt{background:var(--cream)}
-.sec-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.8px;color:var(--cta);margin-bottom:10px}
-.sec-title{font-size:clamp(24px,5vw,36px);font-weight:900;margin-bottom:10px}
-.sec-sub{font-size:16px;color:var(--text-mid);margin-bottom:32px;line-height:1.65;max-width:520px}
+  .hero-sub {
+    font-size: clamp(15px, 3.5vw, 18px);
+    color: var(--text-light);
+    max-width: 480px;
+    margin: 0 auto 28px;
+    line-height: 1.6;
+  }
 
-/* ── PAIN ── */
-.pain-list{display:grid;gap:10px}
-.pain-item{display:flex;align-items:flex-start;gap:14px;background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:16px}
-.pain-ic{width:40px;height:40px;background:var(--cta-bg);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
-.pain-text{font-size:15px;font-weight:500;color:var(--text-mid);line-height:1.5;padding-top:2px}
-.pain-text strong{color:var(--text)}
-.pain-note{margin-top:24px;background:var(--green-bg);border-radius:var(--r);padding:18px 20px;border-left:3px solid var(--green);font-size:16px;font-weight:600;color:var(--text);line-height:1.5}
-.pain-note span{color:var(--green)}
+  .hero-img-wrap {
+    position: relative;
+    max-width: 340px;
+    margin: 0 auto 30px;
+  }
 
-/* ── PULL QUOTE ── */
-.pull-quote{padding:48px 0;text-align:center;background:var(--white)}
-.pq-inner{max-width:540px;margin:0 auto;padding:0 18px}
-.pq-marks{font-size:56px;line-height:1;color:var(--cta);opacity:.25;font-family:'Playfair Display',serif;margin-bottom:-8px}
-.pq-text{font-family:'Playfair Display',serif;font-size:clamp(18px,4vw,24px);font-style:italic;color:var(--text);margin-bottom:16px;line-height:1.5}
-.pq-author{font-size:14px;color:var(--text-light);font-weight:600}
-.pq-stars{color:var(--yellow);font-size:13px;margin-bottom:6px}
+  .hero-img-wrap img {
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  }
 
-/* ── INSIDE ── */
-.inside-grid{display:grid;gap:8px}
-.inside-item{display:flex;align-items:flex-start;gap:14px;padding:14px 16px;border-radius:var(--r);border:1px solid transparent;transition:border-color .2s,background .2s}
-.inside-item:hover{background:var(--white);border-color:var(--border)}
-.inside-num{width:34px;height:34px;border-radius:9px;background:var(--text);color:#fff;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.inside-num.bonus{background:var(--cta);font-size:10px;letter-spacing:.3px}
-.inside-info h3{font-size:15px;font-weight:700;margin-bottom:2px;font-family:'DM Sans',sans-serif}
-.inside-info p{font-size:13px;color:var(--text-light);line-height:1.5}
-.bonus-row{background:var(--cta-bg);border:1px solid #F5C4A8;border-radius:var(--r)}
+  .hero-badge-float {
+    position: absolute;
+    bottom: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--green);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+    box-shadow: 0 4px 15px rgba(34,197,94,0.4);
+  }
 
-/* ── TIMELINE ── */
-.tl-items{position:relative;display:grid;gap:0}
-.tl-items::before{content:'';position:absolute;left:19px;top:20px;bottom:20px;width:2px;background:var(--border)}
-.tl-item{display:flex;gap:16px;padding:14px 0;position:relative}
-.tl-dot{width:40px;height:40px;border-radius:50%;background:var(--white);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;z-index:2}
-.tl-item:last-child .tl-dot{border-color:var(--green);background:var(--green-bg)}
-.tl-content .tl-time{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--cta);margin-bottom:2px}
-.tl-content h3{font-size:15px;font-weight:700;margin-bottom:2px;font-family:'DM Sans',sans-serif}
-.tl-content p{font-size:13px;color:var(--text-light);line-height:1.5}
+  .social-proof-mini {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 32px 0 28px;
+    flex-wrap: wrap;
+  }
 
-/* ── TESTIMONIALS ── */
-.testi-grid{display:grid;gap:14px}
-.testi{background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);padding:22px;transition:box-shadow .2s,border-color .2s}
-.testi:hover{box-shadow:var(--shadow);border-color:var(--green)}
-.testi-stars{color:var(--yellow);font-size:13px;letter-spacing:1px;margin-bottom:10px}
-.testi-text{font-size:15px;color:var(--text-mid);line-height:1.65;margin-bottom:14px;font-style:italic}
-.testi-text strong{color:var(--text);font-style:normal}
-.testi-author{display:flex;align-items:center;gap:12px}
-.testi-av{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff;flex-shrink:0}
-.testi-name{font-size:14px;font-weight:700}
-.testi-loc{font-size:12px;color:var(--text-light)}
-.testi-badge{font-size:11px;color:var(--green);font-weight:700;margin-top:2px}
+  .stars {
+    color: #f59e0b;
+    font-size: 20px;
+    letter-spacing: 2px;
+  }
 
-/* ── GUARANTEE ── */
-.gtee-box{background:var(--green-bg);border:2px solid var(--green);border-radius:var(--r-lg);padding:32px 24px;text-align:center}
-.gtee-box .gicon{font-size:44px;margin-bottom:12px}
-.gtee-box h2{font-size:22px;font-weight:800;color:var(--green-mid);margin-bottom:10px}
-.gtee-box p{font-size:15px;color:var(--green-mid);line-height:1.65;max-width:480px;margin:0 auto}
+  .sp-text {
+    font-size: 14px;
+    color: var(--text-light);
+  }
 
-/* ── PRICING ── */
-.price-card{background:var(--white);border:2px solid var(--cta);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-lg);max-width:460px;margin:0 auto}
-.price-top{background:var(--cta);padding:10px;text-align:center;font-size:13px;font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:1px}
-.price-body{padding:28px 24px}
-.price-old{font-size:18px;color:var(--text-xlight);text-decoration:line-through;font-weight:500}
-.price-main{font-family:'Playfair Display',serif;font-size:52px;font-weight:900;line-height:1;color:var(--text)}
-.price-main sup{font-size:24px;vertical-align:top;margin-top:10px;margin-right:2px;font-family:'DM Sans',sans-serif}
-.price-save{display:inline-block;background:var(--green-bg);color:var(--green);font-size:12px;font-weight:700;padding:3px 10px;border-radius:100px;margin-top:6px}
-.price-list{list-style:none;padding:0;margin:20px 0}
-.price-list li{display:flex;align-items:flex-start;gap:9px;padding:7px 0;font-size:15px;font-weight:500;color:var(--text-mid);border-bottom:1px solid var(--border-light)}
-.price-list li:last-child{border-bottom:none}
-.price-list .lic{color:var(--green);font-size:18px;margin-top:1px;flex-shrink:0}
-.price-gtee{display:flex;align-items:center;gap:10px;background:var(--green-bg);border-radius:10px;padding:12px 14px;margin-top:16px}
-.price-gtee-text{font-size:13px;color:var(--green-mid);font-weight:600;line-height:1.4}
-.price-secure{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:14px;font-size:12px;color:var(--text-xlight);font-weight:600}
+  .sp-text strong { color: var(--text); }
 
-/* ── FAQ ── */
-.faq-item{border-bottom:1px solid var(--border)}
-.faq-q{width:100%;background:none;text-align:left;padding:17px 0;font-size:15px;font-weight:700;color:var(--text);display:flex;align-items:center;justify-content:space-between;gap:12px;transition:color .2s}
-.faq-q:hover{color:var(--cta)}
-.faq-q .faq-arr{font-size:18px;color:var(--text-light);transition:transform .3s var(--ease);flex-shrink:0}
-.faq-item.open .faq-arr{transform:rotate(180deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .4s var(--ease)}
-.faq-item.open .faq-a{max-height:300px}
-.faq-a-inner{padding-bottom:18px;font-size:14px;color:var(--text-mid);line-height:1.7}
+  .cta-btn {
+    display: block;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    padding: 18px 24px;
+    font-size: 18px;
+    font-weight: 800;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 8px 30px rgba(34,197,94,0.4);
+    transition: transform 0.15s, box-shadow 0.15s;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.3px;
+  }
 
-/* ── FINAL CTA ── */
-.final-cta{padding:72px 0;text-align:center;background:linear-gradient(180deg,var(--cream) 0%,var(--bg) 100%)}
-.final-cta h2{font-size:clamp(26px,5.5vw,38px);font-weight:900;margin-bottom:14px}
-.final-cta p{font-size:16px;color:var(--text-mid);max-width:480px;margin:0 auto 24px;line-height:1.7}
-.social-proof-line{font-size:13px;color:var(--text-light);font-weight:600;margin-top:14px}
+  .cta-btn::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    animation: shine 2.5s infinite;
+  }
 
-/* ── FOOTER ── */
-.footer{padding:28px 0;border-top:1px solid var(--border);text-align:center;font-size:12px;color:var(--text-xlight);line-height:1.9}
-.footer a{text-decoration:underline;color:var(--text-light);transition:color .2s}
-.footer a:hover{color:var(--text)}
+  @keyframes shine {
+    0% { left: -100%; }
+    100% { left: 200%; }
+  }
 
-/* ── STICKY MOBILE CTA ── */
-.mob-bar{position:fixed;bottom:0;left:0;right:0;background:rgba(253,252,250,.97);backdrop-filter:blur(14px);border-top:1px solid var(--border);padding:10px 16px;z-index:180;transform:translateY(100%);transition:transform .4s var(--ease);display:flex;align-items:center;gap:12px}
-.mob-bar.show{transform:translateY(0)}
-.mob-bar-info{flex:1}
-.mob-bar-was{font-size:12px;color:var(--text-xlight);text-decoration:line-through}
-.mob-bar-price{font-size:20px;font-weight:800;color:var(--text)}
-.mob-bar-btn{background:var(--cta);color:#fff;padding:14px 22px;border-radius:10px;font-size:15px;font-weight:700;flex-shrink:0;transition:background .2s}
-.mob-bar-btn:hover{background:var(--cta-h)}
+  .cta-btn:active { transform: scale(0.98); }
 
-/* ── FADE-UP ANIMATION ── */
-.fu{opacity:0;transform:translateY(20px);transition:opacity .55s var(--ease),transform .55s var(--ease)}
-.fu.vis{opacity:1;transform:none}
+  .cta-sub {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-light);
+    margin-top: 10px;
+  }
 
-/* ====================== CHECKOUT ====================== */
-.co-header{background:var(--white);border-bottom:1px solid var(--border);padding:14px 0}
-.co-hdr-inner{display:flex;align-items:center;justify-content:space-between}
-.co-back{background:none;font-size:14px;color:var(--text-light);font-weight:600;display:flex;align-items:center;gap:5px;transition:color .2s;padding:0}
-.co-back:hover{color:var(--text)}
-.co-secure{font-size:13px;color:var(--green);font-weight:700;display:flex;align-items:center;gap:4px}
+  .cta-sub img, .cta-sub span {
+    vertical-align: middle;
+  }
 
-.co-progress{background:var(--border-light);height:3px}
-.co-progress-fill{background:var(--cta);height:3px;width:100%;transition:width .4s var(--ease)}
+  /* TRUST STRIP */
+  .trust-strip {
+    background: var(--bg-light);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 20px;
+  }
 
-.co-body{padding:20px 0 100px;background:var(--bg);min-height:100vh}
-.co-body .wrap{max-width:500px}
+  .trust-items {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 500px;
+    margin: 0 auto;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
 
-.co-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);padding:20px;margin-bottom:16px}
-.co-card h3{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--text-light);margin-bottom:14px;font-family:'DM Sans',sans-serif}
+  .trust-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text);
+    text-align: center;
+  }
 
-.order-row{display:flex;align-items:center;gap:14px}
-.order-icon{width:48px;height:48px;background:linear-gradient(135deg,#1B3A5C,#275A8E);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
-.order-info{flex:1}
-.order-name{font-size:15px;font-weight:700}
-.order-desc{font-size:12px;color:var(--text-light);margin-top:1px}
-.order-price-col{text-align:right}
-.order-was{font-size:12px;color:var(--text-xlight);text-decoration:line-through}
-.order-price{font-size:17px;font-weight:800;color:var(--text)}
-.order-divider{border:none;border-top:1px solid var(--border-light);margin:14px 0}
-.order-total-row{display:flex;justify-content:space-between;align-items:center}
-.order-total-label{font-size:14px;font-weight:700}
-.order-total-price{font-size:24px;font-weight:900;color:var(--cta);font-family:'Playfair Display',serif}
+  .trust-icon {
+    font-size: 22px;
+  }
 
-/* ORDER BUMP */
-.bump-box{background:var(--cta-bg);border:2px dashed var(--cta);border-radius:var(--r-lg);padding:18px;margin-bottom:16px}
-.bump-header{display:flex;align-items:flex-start;gap:14px}
-.bump-check{width:24px;height:24px;border:2px solid var(--cta);border-radius:6px;background:var(--white);flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:1px;cursor:pointer;transition:background .2s;font-size:14px;font-weight:800;color:#fff}
-.bump-check.checked{background:var(--cta)}
-.bump-label{flex:1}
-.bump-tag{display:inline-block;background:var(--cta);color:#fff;font-size:10px;font-weight:800;padding:3px 8px;border-radius:5px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
-.bump-title{font-size:15px;font-weight:800;color:var(--text);margin-bottom:4px}
-.bump-desc{font-size:13px;color:var(--text-mid);line-height:1.5}
-.bump-price-row{display:flex;align-items:center;gap:8px;margin-top:8px}
-.bump-price{font-size:16px;font-weight:800;color:var(--cta)}
-.bump-was{font-size:13px;color:var(--text-xlight);text-decoration:line-through}
+  /* SECTION */
+  .section {
+    padding: 48px 20px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
 
-/* FORM */
-.form-section-title{font-size:15px;font-weight:800;margin-bottom:18px;display:flex;align-items:center;gap:8px}
-.form-group{margin-bottom:14px}
-.form-label{display:block;font-size:13px;font-weight:700;color:var(--text-mid);margin-bottom:6px}
-.form-input{width:100%;padding:14px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:16px;color:var(--text);background:var(--white);transition:border-color .2s,box-shadow .2s;-webkit-appearance:none;appearance:none}
-.form-input:focus{outline:none;border-color:var(--cta);box-shadow:0 0 0 3px rgba(232,86,10,.1)}
-.form-input::placeholder{color:var(--text-xlight)}
-.form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.form-hint{font-size:11px;color:var(--text-xlight);margin-top:4px}
+  .section-title {
+    font-size: clamp(22px, 5vw, 30px);
+    font-weight: 800;
+    color: var(--primary);
+    text-align: center;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
 
-.co-btn{width:100%;background:var(--cta);color:#fff;font-size:17px;font-weight:800;padding:18px;border-radius:12px;transition:background .2s,transform .15s,box-shadow .2s;box-shadow:0 4px 18px rgba(232,86,10,.32);margin-bottom:14px}
-.co-btn:hover{background:var(--cta-h);transform:translateY(-1px);box-shadow:0 8px 24px rgba(232,86,10,.38)}
-.co-btn:active{transform:translateY(0)}
-.co-trust{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;font-size:12px;color:var(--text-xlight);font-weight:600;margin-bottom:14px}
-.co-trust span{display:flex;align-items:center;gap:3px}
-.co-gtee{display:flex;align-items:center;gap:10px;background:var(--green-bg);border-radius:10px;padding:12px 14px}
-.co-gtee-text{font-size:12px;color:var(--green-mid);font-weight:600;line-height:1.45}
+  .section-sub {
+    text-align: center;
+    color: var(--text-light);
+    font-size: 15px;
+    margin-bottom: 32px;
+    line-height: 1.5;
+  }
 
-/* ====================== UPSELL ====================== */
-.up-page{background:var(--bg);min-height:100vh}
-.up-topbar{background:var(--text);color:#fff;padding:10px;text-align:center;font-size:13px;font-weight:600}
-.up-topbar em{color:var(--yellow);font-style:normal}
-.up-body{padding:32px 0 60px;text-align:center}
-.up-step{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--cta);margin-bottom:10px}
-.up-h1{font-size:clamp(24px,5.5vw,36px);font-weight:900;margin-bottom:12px;max-width:500px;margin-left:auto;margin-right:auto}
-.up-sub{font-size:16px;color:var(--text-mid);max-width:460px;margin:0 auto 28px;line-height:1.65}
-.up-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);padding:24px;max-width:480px;margin:0 auto 20px;text-align:left;box-shadow:var(--shadow)}
-.up-card-icon{font-size:36px;margin-bottom:14px;text-align:center}
-.up-card h3{font-size:18px;font-weight:800;margin-bottom:10px;text-align:center;font-family:'DM Sans',sans-serif}
-.up-card ul{list-style:none;padding:0;display:grid;gap:8px}
-.up-card ul li{display:flex;align-items:flex-start;gap:9px;font-size:14px;color:var(--text-mid)}
-.up-card ul li .lic{color:var(--green);font-size:16px;flex-shrink:0}
-.up-price-row{text-align:center;margin-bottom:20px}
-.up-old{font-size:16px;color:var(--text-xlight);text-decoration:line-through}
-.up-price{font-family:'Playfair Display',serif;font-size:44px;font-weight:900;color:var(--text)}
-.up-price sup{font-size:20px;font-family:'DM Sans',sans-serif;vertical-align:top;margin-top:8px}
-.up-once{font-size:13px;color:var(--text-light);font-weight:600}
-.up-yes{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;max-width:420px;margin:0 auto 12px;background:var(--cta);color:#fff;font-size:17px;font-weight:800;padding:18px 24px;border-radius:12px;transition:background .2s,box-shadow .2s;box-shadow:0 4px 18px rgba(232,86,10,.32)}
-.up-yes:hover{background:var(--cta-h);box-shadow:0 8px 24px rgba(232,86,10,.38)}
-.up-no{display:block;margin:0 auto;background:none;font-size:13px;color:var(--text-xlight);font-weight:600;padding:8px;text-decoration:underline;transition:color .2s}
-.up-no:hover{color:var(--text-light)}
-.up-gtee{display:flex;align-items:center;justify-content:center;gap:8px;font-size:13px;color:var(--green-mid);font-weight:600;margin-top:16px}
+  /* PAIN SECTION */
+  .pain-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
 
-/* ====================== THANK YOU ====================== */
-.ty-page{background:var(--white);min-height:100vh}
-.ty-body{padding:56px 0;text-align:center}
-.ty-body .wrap{max-width:480px}
-.ty-check{width:76px;height:76px;background:var(--green-bg);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;font-size:38px}
-.ty-body h1{font-size:30px;font-weight:900;margin-bottom:8px}
-.ty-sub{font-size:16px;color:var(--text-mid);margin-bottom:32px}
-.ty-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-lg);padding:26px;margin-bottom:20px;text-align:left}
-.ty-card h3{font-size:15px;font-weight:800;text-align:center;margin-bottom:18px;font-family:'DM Sans',sans-serif}
-.dl-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:var(--green);color:#fff;font-size:16px;font-weight:800;padding:17px;border-radius:12px;transition:background .2s,transform .15s;box-shadow:0 4px 16px rgba(26,104,54,.3);margin-bottom:16px}
-.dl-btn:hover{background:var(--green-mid);transform:translateY(-1px)}
-.ty-steps{list-style:none;padding:0;display:grid;gap:0}
-.ty-step{display:flex;gap:12px;align-items:flex-start;padding:10px 0;font-size:14px;color:var(--text-mid);border-bottom:1px solid var(--border-light);line-height:1.5}
-.ty-step:last-child{border-bottom:none}
-.ty-step-num{flex-shrink:0;width:26px;height:26px;background:var(--text);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;margin-top:1px}
-.ty-support{background:var(--bg);border-radius:var(--r-lg);padding:20px;text-align:center;border:1px solid var(--border)}
-.ty-support p{font-size:14px;color:var(--text-mid)}
-.ty-support a{color:var(--cta);font-weight:700}
+  .pain-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: #fff5f5;
+    border: 1px solid #fecaca;
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 15px;
+    line-height: 1.4;
+  }
 
-/* ── RESPONSIVE ── */
-@media(min-width:600px){
-  .pain-list{grid-template-columns:1fr 1fr}
-  .testi-grid{grid-template-columns:1fr 1fr}
-  .mob-bar{display:none}
-  .hero{padding:48px 0 56px}
-  .book-3d{width:180px;height:248px}
-}
-@media(max-width:599px){
-  .form-row-2{grid-template-columns:1fr}
-  .pstat .pnum{font-size:18px}
-}
+  .pain-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
 
-/* Page transition */
-.page-enter{animation:pin .35s var(--ease) forwards}
-@keyframes pin{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+  /* STORY SECTION */
+  .story-box {
+    background: var(--bg-light);
+    border-radius: 16px;
+    padding: 24px 20px;
+    border-left: 4px solid var(--accent);
+    margin-bottom: 24px;
+  }
+
+  .story-box p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+
+  .story-box p:last-child { margin-bottom: 0; }
+
+  .story-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  .author-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 800;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .author-info {
+    font-size: 13px;
+  }
+
+  .author-name {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 14px;
+  }
+
+  /* WHAT YOU GET */
+  .product-showcase {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-radius: 20px;
+    padding: 28px 20px;
+    color: white;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-showcase::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(232,160,32,0.15), transparent);
+    border-radius: 50%;
+  }
+
+  .product-showcase h3 {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  .feature-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+  }
+
+  .feature-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .check-icon {
+    width: 22px;
+    height: 22px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 12px;
+    color: white;
+    font-weight: 700;
+    margin-top: 1px;
+  }
+
+  .chapter-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .chapter-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--bg-light);
+    border-radius: 12px;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+  }
+
+  .chapter-num {
+    width: 32px;
+    height: 32px;
+    background: var(--primary);
+    color: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  .chapter-info {
+    flex: 1;
+  }
+
+  .chapter-title {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--primary);
+    margin-bottom: 2px;
+  }
+
+  .chapter-desc {
+    font-size: 12px;
+    color: var(--text-light);
+  }
+
+  /* REVIEWS */
+  .reviews-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+
+  .review-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  .review-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .reviewer-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 800;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+
+  .reviewer-info {
+    flex: 1;
+  }
+
+  .reviewer-name {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--primary);
+  }
+
+  .reviewer-location {
+    font-size: 11px;
+    color: var(--text-light);
+  }
+
+  .review-stars {
+    color: #f59e0b;
+    font-size: 14px;
+  }
+
+  .review-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .review-dog {
+    font-size: 12px;
+    color: var(--text-light);
+    font-style: italic;
+  }
+
+  .verified-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    color: var(--green-dark);
+    font-weight: 600;
+    margin-top: 6px;
+  }
+
+  /* PRICE BOX */
+  .price-box {
+    background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+    border: 2px solid var(--green);
+    border-radius: 20px;
+    padding: 28px 20px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .price-original {
+    font-size: 15px;
+    color: var(--text-light);
+    text-decoration: line-through;
+    margin-bottom: 4px;
+  }
+
+  .price-current {
+    font-size: 52px;
+    font-weight: 900;
+    color: var(--primary);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .price-current sup {
+    font-size: 24px;
+    vertical-align: super;
+  }
+
+  .price-label {
+    font-size: 13px;
+    color: var(--green-dark);
+    font-weight: 700;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .price-includes {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  .price-includes-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text);
+  }
+
+  .pi-icon {
+    color: var(--green);
+    font-size: 16px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* GUARANTEE */
+  .guarantee-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background: #fffbeb;
+    border: 1px solid #fcd34d;
+    border-radius: 16px;
+    padding: 20px 16px;
+    margin-bottom: 20px;
+  }
+
+  .guarantee-icon {
+    font-size: 40px;
+    flex-shrink: 0;
+  }
+
+  .guarantee-text h4 {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 6px;
+  }
+
+  .guarantee-text p {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.5;
+  }
+
+  /* FAQ */
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .faq-item {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .faq-q {
+    padding: 16px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--white);
+    color: var(--primary);
+    gap: 12px;
+  }
+
+  .faq-arrow {
+    font-size: 18px;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+    color: var(--text-light);
+  }
+
+  .faq-item.open .faq-arrow {
+    transform: rotate(180deg);
+  }
+
+  .faq-a {
+    display: none;
+    padding: 0 16px 16px;
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.6;
+    background: var(--white);
+  }
+
+  .faq-item.open .faq-a {
+    display: block;
+  }
+
+  /* STICKY CTA */
+  .sticky-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-top: 1px solid var(--border);
+    padding: 12px 16px;
+    z-index: 1000;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+  }
+
+  .sticky-cta-inner {
+    max-width: 480px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .sticky-price {
+    flex-shrink: 0;
+    text-align: center;
+  }
+
+  .sticky-price-old {
+    font-size: 11px;
+    color: var(--text-light);
+    text-decoration: line-through;
+  }
+
+  .sticky-price-new {
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--primary);
+  }
+
+  .sticky-btn {
+    flex: 1;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(34,197,94,0.35);
+    transition: transform 0.15s;
+  }
+
+  .sticky-btn:active { transform: scale(0.97); }
+
+  /* CHECKOUT PAGE */
+  .checkout-page {
+    min-height: 100vh;
+    background: var(--bg-light);
+  }
+
+  .checkout-header {
+    background: var(--primary);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .checkout-logo {
+    color: white;
+    font-weight: 800;
+    font-size: 16px;
+  }
+
+  .secure-badge {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .checkout-progress {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    padding: 12px 20px;
+  }
+
+  .progress-steps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    max-width: 340px;
+    margin: 0 auto;
+  }
+
+  .progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex: 1;
+  }
+
+  .step-circle {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 800;
+    background: var(--border);
+    color: var(--text-light);
+  }
+
+  .step-circle.active {
+    background: var(--green);
+    color: white;
+  }
+
+  .step-circle.done {
+    background: var(--green);
+    color: white;
+  }
+
+  .step-label {
+    font-size: 10px;
+    color: var(--text-light);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .step-label.active {
+    color: var(--green-dark);
+  }
+
+  .progress-line {
+    height: 2px;
+    background: var(--border);
+    flex: 1;
+    margin-bottom: 14px;
+    max-width: 40px;
+  }
+
+  .checkout-body {
+    padding: 20px 16px 120px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .order-summary {
+    background: white;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    padding: 16px;
+    margin-bottom: 20px;
+  }
+
+  .order-summary-title {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-light);
+    margin-bottom: 12px;
+  }
+
+  .order-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .order-item-img {
+    width: 50px;
+    height: 65px;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 24px;
+  }
+
+  .order-item-info {
+    flex: 1;
+  }
+
+  .order-item-name {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--primary);
+    margin-bottom: 3px;
+  }
+
+  .order-item-type {
+    font-size: 12px;
+    color: var(--text-light);
+  }
+
+  .order-item-price {
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .order-price-old {
+    font-size: 12px;
+    color: var(--text-light);
+    text-decoration: line-through;
+  }
+
+  .order-price-new {
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--primary);
+  }
+
+  .order-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 12px 0;
+  }
+
+  .order-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .order-total-label {
+    font-weight: 700;
+    font-size: 15px;
+  }
+
+  .order-total-price {
+    font-weight: 900;
+    font-size: 22px;
+    color: var(--green-dark);
+  }
+
+  /* FORM */
+  .form-section {
+    background: white;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    padding: 20px 16px;
+    margin-bottom: 16px;
+  }
+
+  .form-section-title {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .form-title-icon {
+    font-size: 18px;
+  }
+
+  .form-group {
+    margin-bottom: 14px;
+  }
+
+  .form-group:last-child { margin-bottom: 0; }
+
+  .form-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-light);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-size: 16px;
+    color: var(--text);
+    background: white;
+    transition: border-color 0.15s;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .form-input:focus {
+    outline: none;
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(34,197,94,0.1);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .card-input-wrap {
+    position: relative;
+  }
+
+  .card-icons {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 4px;
+    font-size: 20px;
+  }
+
+  .complete-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    padding: 18px 24px;
+    font-size: 18px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 8px 30px rgba(34,197,94,0.4);
+    transition: transform 0.15s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .complete-btn::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    animation: shine 2s infinite;
+  }
+
+  .complete-btn:active { transform: scale(0.98); }
+
+  .checkout-trust {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+
+  .checkout-trust-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    color: var(--text-light);
+    font-weight: 600;
+  }
+
+  /* UPSELL PAGE */
+  .upsell-page {
+    min-height: 100vh;
+    background: var(--bg-light);
+  }
+
+  .upsell-header {
+    background: var(--green);
+    color: white;
+    text-align: center;
+    padding: 18px 20px;
+  }
+
+  .upsell-header h2 {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+
+  .upsell-header p {
+    font-size: 13px;
+    opacity: 0.9;
+  }
+
+  .upsell-body {
+    padding: 24px 16px 100px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .upsell-badge {
+    background: #fef3c7;
+    border: 1px solid #fcd34d;
+    color: #92400e;
+    border-radius: 50px;
+    padding: 6px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .upsell-title {
+    font-size: clamp(22px, 5vw, 28px);
+    font-weight: 800;
+    color: var(--primary);
+    text-align: center;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  .upsell-sub {
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-light);
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+
+  .upsell-product-box {
+    background: white;
+    border: 2px solid var(--accent);
+    border-radius: 20px;
+    padding: 24px 20px;
+    margin-bottom: 20px;
+  }
+
+  .upsell-product-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .upsell-img {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #e8a020, #c8881a);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    flex-shrink: 0;
+  }
+
+  .upsell-product-name {
+    font-weight: 800;
+    font-size: 16px;
+    color: var(--primary);
+    margin-bottom: 4px;
+  }
+
+  .upsell-product-desc {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.4;
+  }
+
+  .upsell-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .upsell-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--text);
+  }
+
+  .upsell-check {
+    color: var(--green);
+    font-weight: 900;
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .upsell-price-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg-light);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+  }
+
+  .upsell-price-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .upsell-price-old {
+    font-size: 12px;
+    color: var(--text-light);
+    text-decoration: line-through;
+  }
+
+  .upsell-price-new {
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--primary);
+  }
+
+  .upsell-save-badge {
+    background: var(--red);
+    color: white;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  .upsell-add-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #e8a020, #c8881a);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    padding: 18px 24px;
+    font-size: 17px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(232,160,32,0.4);
+    transition: transform 0.15s;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 12px;
+  }
+
+  .upsell-add-btn::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    animation: shine 2s infinite;
+  }
+
+  .upsell-add-btn:active { transform: scale(0.98); }
+
+  .upsell-skip {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: var(--text-light);
+    font-size: 13px;
+    cursor: pointer;
+    padding: 8px;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .upsell-warning {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-light);
+    margin-top: 12px;
+    line-height: 1.5;
+  }
+
+  /* THANK YOU PAGE */
+  .thankyou-page {
+    min-height: 100vh;
+    background: var(--white);
+  }
+
+  .thankyou-header {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    padding: 40px 20px;
+    text-align: center;
+    color: white;
+  }
+
+  .thankyou-check {
+    width: 72px;
+    height: 72px;
+    background: var(--green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 32px;
+    box-shadow: 0 0 0 12px rgba(34,197,94,0.2);
+  }
+
+  .thankyou-header h1 {
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+  .thankyou-header p {
+    font-size: 15px;
+    opacity: 0.8;
+    line-height: 1.5;
+  }
+
+  .thankyou-body {
+    padding: 32px 20px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .thankyou-order-box {
+    background: var(--bg-light);
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    padding: 20px;
+    margin-bottom: 24px;
+  }
+
+  .thankyou-order-title {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-light);
+    margin-bottom: 16px;
+  }
+
+  .thankyou-order-items {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .thankyou-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: white;
+    border-radius: 10px;
+    padding: 12px;
+    border: 1px solid var(--border);
+  }
+
+  .thankyou-item-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+  }
+
+  .thankyou-item-name {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--primary);
+    margin-bottom: 2px;
+  }
+
+  .thankyou-item-status {
+    font-size: 12px;
+    color: var(--green-dark);
+    font-weight: 600;
+  }
+
+  .next-steps {
+    margin-bottom: 24px;
+  }
+
+  .next-steps h3 {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 16px;
+  }
+
+  .steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .step-num {
+    width: 32px;
+    height: 32px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .step-content {
+    padding-top: 4px;
+  }
+
+  .step-content h4 {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--primary);
+    margin-bottom: 2px;
+  }
+
+  .step-content p {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.4;
+  }
+
+  .download-btn {
+    display: block;
+    width: 100%;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    padding: 18px 24px;
+    font-size: 17px;
+    font-weight: 800;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 12px;
+  }
+
+  .share-section {
+    text-align: center;
+    padding: 24px 0;
+    border-top: 1px solid var(--border);
+    margin-top: 24px;
+  }
+
+  .share-section h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 14px;
+  }
+
+  .share-btns {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .share-btn {
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .share-fb {
+    background: #1877f2;
+    color: white;
+  }
+
+  /* PROCESSING OVERLAY */
+  .processing-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(255,255,255,0.95);
+    z-index: 9999;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .processing-overlay.show {
+    display: flex;
+  }
+
+  .spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid var(--border);
+    border-top-color: var(--green);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .processing-text {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--primary);
+  }
+
+  .processing-sub {
+    font-size: 13px;
+    color: var(--text-light);
+  }
+
+  /* UTILITIES */
+  .text-center { text-align: center; }
+  .mb-0 { margin-bottom: 0; }
+  .pb-sticky { padding-bottom: 100px; }
+
+  /* HIGHLIGHT */
+  .highlight {
+    background: linear-gradient(120deg, #fef3c7, #fde68a);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 700;
+  }
+
+  /* COUNTER */
+  .counter-box {
+    background: #fff5f5;
+    border: 1px solid #fecaca;
+    border-radius: 12px;
+    padding: 12px 16px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .counter-box strong { color: var(--red); }
+
+  /* COMPARISON TABLE */
+  .comparison {
+    background: var(--bg-light);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    margin-bottom: 24px;
+  }
+
+  .comp-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background: var(--primary);
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .comp-header div, .comp-row div {
+    padding: 10px 12px;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .comp-header div:first-child, .comp-row div:first-child {
+    text-align: left;
+    border-right: 1px solid var(--border);
+  }
+
+  .comp-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-bottom: 1px solid var(--border);
+    background: white;
+    font-size: 13px;
+  }
+
+  .comp-row:last-child { border-bottom: none; }
+  .comp-row.highlight-row { background: #f0fdf4; }
+
+  .comp-good { color: var(--green); font-weight: 700; }
+  .comp-bad { color: var(--red); font-weight: 700; }
+
+  /* BEFORE AFTER */
+  .before-after {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .ba-box {
+    border-radius: 14px;
+    padding: 16px 14px;
+  }
+
+  .ba-before {
+    background: #fff5f5;
+    border: 1px solid #fecaca;
+  }
+
+  .ba-after {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+  }
+
+  .ba-title {
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+  }
+
+  .ba-before .ba-title { color: var(--red); }
+  .ba-after .ba-title { color: var(--green-dark); }
+
+  .ba-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .ba-list li {
+    font-size: 12px;
+    line-height: 1.3;
+    color: var(--text);
+    display: flex;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  /* DIVIDER */
+  .section-divider {
+    height: 8px;
+    background: var(--bg-light);
+    margin: 0 -20px;
+  }
+
+  @media (max-width: 380px) {
+    .before-after {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════ -->
-<!--                LANDING PAGE                -->
-<!-- ═══════════════════════════════════════════ -->
-<div id="pg-landing" class="page active">
+<!-- PROCESSING OVERLAY -->
+<div class="processing-overlay" id="processingOverlay">
+  <div class="spinner"></div>
+  <div class="processing-text">Processing your order...</div>
+  <div class="processing-sub">Please don't close this window</div>
+</div>
 
-  <!-- Urgency Bar -->
-  <div class="topbar">
-    🔥 <em>48% OFF</em> — Offer ends in <span class="tmr" id="countdown">2:59:59</span>
+<!-- ==================== SALES PAGE ==================== -->
+<div class="page active" id="salesPage">
+
+  <div class="top-bar">
+    🇨🇦 Special Offer for Canadian Dog Owners — <span>Limited Time Only</span>
   </div>
 
-  <!-- Sticky Header -->
-  <header class="hdr">
-    <div class="wrap hdr-inner">
-      <div class="logo">🐾 Happy Paws</div>
-      <button class="hdr-btn" onclick="showPage('pg-checkout')">Get Instant Access →</button>
-    </div>
-  </header>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="badge">📘 Instant Digital Download</div>
+    <h1>Train Your Dog to Actually <em>Listen</em> — In 21 Days or Less</h1>
+    <p class="hero-sub">No expensive trainers. No punishment. Just a simple, proven method that works — even if you've tried everything before.</p>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="wrap">
-      <div class="hero-badge fu">⭐ Trusted by 12,847 Dog Owners</div>
-      <h1 class="fu">Finally — <span class="hl">A Dog That Listens.</span><br>In 30 Days, Starting Today.</h1>
-      <p class="hero-sub fu">The <strong>15-minute daily system</strong> that stops pulling, barking &amp; destructive behavior — at home, with zero expensive trainers.</p>
-      <div class="fu">
-        <button class="cta-btn" onclick="showPage('pg-checkout')">
-          Yes! I Want a Calm Dog <span class="arr">→</span>
-        </button>
+    <div class="hero-img-wrap">
+      <!-- Replace src with your actual PDF cover image -->
+      <div style="width:100%;height:220px;background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:16px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;box-shadow:0 20px 60px rgba(0,0,0,0.15);">
+        <div style="font-size:60px;">🐕</div>
+        <div style="color:white;font-weight:800;font-size:18px;text-align:center;padding:0 20px;">The Complete Home Dog Training Guide</div>
+        <div style="color:#e8a020;font-size:13px;font-weight:600;">PDF eBook — 127 Pages</div>
       </div>
-      <div class="trust-row fu">
-        <span><span class="ic">✓</span> Instant PDF</span>
-        <span><span class="ic">✓</span> 60-Day Guarantee</span>
-        <span><span class="ic">✓</span> Any Breed</span>
-      </div>
-      <div class="book-wrap fu">
-        <div class="book-3d">
-          <span class="bicon">🐕</span>
-          <div class="btitle">The Complete Home Dog Training Guide</div>
-          <div class="bsub">Step-by-Step System</div>
-        </div>
-        <div class="book-flag">PDF GUIDE</div>
-      </div>
+      <div class="hero-badge-float">✅ Instant Access After Purchase</div>
     </div>
-  </section>
 
-  <!-- Proof Bar -->
-  <div class="proof-bar">
-    <div class="wrap">
-      <div class="pstat">
-        <div class="pnum">12,847</div>
-        <div class="plabel">Happy Customers</div>
-      </div>
-      <div class="pstat">
-        <div class="pstars">★★★★★</div>
-        <div class="plabel">4.8 / 5.0 Rating</div>
-      </div>
-      <div class="pstat">
-        <div class="pnum">60-Day</div>
-        <div class="plabel">Money-Back</div>
-      </div>
+    <div class="social-proof-mini">
+      <div class="stars">★★★★★</div>
+      <div class="sp-text"><strong>4,821</strong> Canadian dog owners trained their dogs with this guide</div>
     </div>
+
+    <button class="cta-btn" onclick="goToCheckout()">
+      Get Instant Access — $67 CAD
+    </button>
+    <p class="cta-sub">🔒 Secure checkout &nbsp;·&nbsp; 💳 All cards accepted &nbsp;·&nbsp; 30-day guarantee</p>
   </div>
 
-  <!-- Pain -->
-  <section class="sec sec-alt">
-    <div class="wrap">
-      <div class="sec-label fu">Sound familiar?</div>
-      <h2 class="sec-title fu">You Love Your Dog, But…</h2>
-      <div class="pain-list">
-        <div class="pain-item fu">
-          <div class="pain-ic">🦮</div>
-          <div class="pain-text">Walks feel like a <strong>battle you're losing</strong> — your dog pulls hard, you dread going outside</div>
-        </div>
-        <div class="pain-item fu">
-          <div class="pain-ic">📢</div>
-          <div class="pain-text"><strong>Non-stop barking</strong> at the doorbell, strangers, and random noises you can't control</div>
-        </div>
-        <div class="pain-item fu">
-          <div class="pain-ic">🛋️</div>
-          <div class="pain-text">Chewed furniture, accidents, jumping on guests — the <strong>embarrassment never ends</strong></div>
-        </div>
-        <div class="pain-item fu">
-          <div class="pain-ic">💸</div>
-          <div class="pain-text">Trainers cost <strong>$500–$1,500</strong> and YouTube videos haven't made a lasting difference</div>
-        </div>
+  <!-- TRUST STRIP -->
+  <div class="trust-strip">
+    <div class="trust-items">
+      <div class="trust-item">
+        <div class="trust-icon">🔒</div>
+        <div>Secure<br>Payment</div>
       </div>
-      <div class="pain-note fu">
-        💛 You're not a bad owner. Your dog isn't "broken." You just need <span>the right method</span> — one that's clear, consistent, and actually fits your life.
+      <div class="trust-item">
+        <div class="trust-icon">⚡</div>
+        <div>Instant<br>Download</div>
       </div>
-    </div>
-  </section>
-
-  <!-- Pull Quote -->
-  <div class="pull-quote">
-    <div class="pq-inner">
-      <div class="pq-marks fu">"</div>
-      <p class="pq-text fu">I was three sessions into a $1,200 trainer and saw less improvement than I did in my <strong>first week</strong> with this guide.</p>
-      <div class="fu">
-        <div class="pq-stars">★★★★★</div>
-        <div class="pq-author">Jennifer K., 38 — Denver, Colorado · ✓ Verified Purchase</div>
+      <div class="trust-item">
+        <div class="trust-icon">🛡️</div>
+        <div>30-Day<br>Guarantee</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">🇨🇦</div>
+        <div>CAD<br>Pricing</div>
       </div>
     </div>
   </div>
 
-  <!-- What's Inside -->
-  <section class="sec sec-alt">
-    <div class="wrap">
-      <div class="sec-label fu">What's inside</div>
-      <h2 class="sec-title fu">Everything You Need, In One Guide</h2>
-      <p class="sec-sub fu">180+ pages of proven techniques — plus free bonus materials.</p>
-      <div class="inside-grid">
-        <div class="inside-item fu">
-          <div class="inside-num">1</div>
-          <div class="inside-info">
-            <h3>Understanding Your Dog's Mind</h3>
-            <p>Why they act the way they do — and how to use it to train faster and easier.</p>
-          </div>
-        </div>
-        <div class="inside-item fu">
-          <div class="inside-num">2</div>
-          <div class="inside-info">
-            <h3>The 7 Essential Commands</h3>
-            <p>Sit, stay, come, down, leave it, heel &amp; place — taught in the right sequence.</p>
-          </div>
-        </div>
-        <div class="inside-item fu">
-          <div class="inside-num">3</div>
-          <div class="inside-info">
-            <h3>Leash Training — Enjoy Walks Again</h3>
-            <p>The exact technique that stops pulling in as little as 5 days.</p>
-          </div>
-        </div>
-        <div class="inside-item fu">
-          <div class="inside-num">4</div>
-          <div class="inside-info">
-            <h3>Barking, Jumping &amp; Destructive Behavior</h3>
-            <p>Proven methods for the most frustrating everyday problems.</p>
-          </div>
-        </div>
-        <div class="inside-item fu">
-          <div class="inside-num">5</div>
-          <div class="inside-info">
-            <h3>House Training &amp; Potty Training</h3>
-            <p>Works for puppies and adult dogs with accidents — covers every situation.</p>
-          </div>
-        </div>
-        <div class="inside-item fu">
-          <div class="inside-num">6</div>
-          <div class="inside-info">
-            <h3>Anxiety, Fear &amp; Reactivity</h3>
-            <p>Gentle approaches for separation anxiety, loud noises, and reactive behavior.</p>
-          </div>
-        </div>
-        <div class="inside-item fu bonus-row">
-          <div class="inside-num bonus">FREE</div>
-          <div class="inside-info">
-            <h3>🎁 30-Day Training Calendar</h3>
-            <p>Know exactly what to do every day. Zero guesswork, maximum results.</p>
-          </div>
-        </div>
-        <div class="inside-item fu bonus-row">
-          <div class="inside-num bonus">FREE</div>
-          <div class="inside-info">
-            <h3>🎁 Quick-Reference Cheat Sheets</h3>
-            <p>Print-friendly cards to keep on your fridge for daily reminders.</p>
-          </div>
-        </div>
-        <div class="inside-item fu bonus-row">
-          <div class="inside-num bonus">FREE</div>
-          <div class="inside-info">
-            <h3>🎁 Emergency Behavior Fixes Guide</h3>
-            <p>Instant solutions when your dog suddenly acts out — your SOS reference.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- PAIN SECTION -->
+  <div class="section">
+    <div class="section-title">Sound familiar?</div>
+    <p class="section-sub">If any of these hit close to home, you're in the right place.</p>
 
-  <!-- Mid CTA -->
-  <div style="padding:40px 0;text-align:center;background:var(--bg)">
-    <div class="wrap fu">
-      <button class="cta-btn" onclick="showPage('pg-checkout')">
-        Get Instant Access — $49.99 <span class="arr">→</span>
-      </button>
-      <div class="trust-row" style="margin-top:12px">
-        <span><span class="ic">✓</span> Instant Download</span>
-        <span><span class="ic">✓</span> 60-Day Guarantee</span>
+    <ul class="pain-list">
+      <li><span class="pain-icon">😤</span> Your dog barks uncontrollably at strangers, other dogs, or the mailman — and nothing you do stops it</li>
+      <li><span class="pain-icon">😰</span> Walks are a nightmare. Your dog pulls so hard it feels like they're walking YOU</li>
+      <li><span class="pain-icon">😞</span> You've spent hundreds on trainers and nothing stuck. The moment you're alone, your dog forgets everything</li>
+      <li><span class="pain-icon">😱</span> Your dog jumps on everyone who comes through the door — including your kids' friends and elderly relatives</li>
+      <li><span class="pain-icon">😔</span> You feel embarrassed and honestly a little hopeless. You love your dog, but you're exhausted</li>
+    </ul>
+
+    <div class="story-box">
+      <p><strong>"I was THIS close to rehoming my golden retriever Max."</strong> He was 2 years old and completely out of control. Jumping, barking, wouldn't come when called. I tried 3 different trainers. $1,400 later — nothing worked once I was alone with him.</p>
+      <p>Then a friend from my dog park in Vancouver shared this guide with me. Within 3 weeks, Max was a different dog. I cried the first time he sat and stayed on command. For real.</p>
+      <div class="story-author">
+        <div class="author-avatar">S</div>
+        <div class="author-info">
+          <div class="author-name">Sarah M.</div>
+          <div style="font-size:12px;color:var(--text-light);">Vancouver, BC · Golden Retriever owner</div>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- Timeline -->
-  <section class="sec sec-alt">
-    <div class="wrap">
-      <div class="sec-label fu">What to expect</div>
-      <h2 class="sec-title fu">Your 30-Day Transformation</h2>
-      <p class="sec-sub fu">What most owners experience when they follow the guide consistently:</p>
-      <div class="tl-items">
-        <div class="tl-item fu">
-          <div class="tl-dot">📅</div>
-          <div class="tl-content">
-            <div class="tl-time">Days 1–3</div>
-            <h3>Your dog starts responding</h3>
-            <p>First commands click. You both feel the shift in communication.</p>
-          </div>
-        </div>
-        <div class="tl-item fu">
-          <div class="tl-dot">🚶</div>
-          <div class="tl-content">
-            <div class="tl-time">Week 1</div>
-            <h3>Walks noticeably improve</h3>
-            <p>Less pulling. More focus on you. You start looking forward to going outside.</p>
-          </div>
-        </div>
-        <div class="tl-item fu">
-          <div class="tl-dot">🔇</div>
-          <div class="tl-content">
-            <div class="tl-time">Week 2</div>
-            <h3>Barking &amp; jumping drop significantly</h3>
-            <p>Your dog understands boundaries. Guests can visit without chaos.</p>
-          </div>
-        </div>
-        <div class="tl-item fu">
-          <div class="tl-dot">🏆</div>
-          <div class="tl-content">
-            <div class="tl-time">Day 30</div>
-            <h3>A calm, confident dog you're proud of</h3>
-            <p>The bond is deeper. The stress is gone. You finally enjoy every moment together.</p>
-          </div>
-        </div>
+  <div class="section-divider"></div>
+
+  <!-- WHY THIS WORKS -->
+  <div class="section">
+    <div class="section-title">Why most dog training fails</div>
+    <p class="section-sub">It's not your fault — and it's not your dog's fault either.</p>
+
+    <div class="comparison">
+      <div class="comp-header">
+        <div>Method</div>
+        <div>Result</div>
+        <div>Cost</div>
+      </div>
+      <div class="comp-row">
+        <div>Traditional trainer</div>
+        <div class="comp-bad">Works with trainer only</div>
+        <div class="comp-bad">$800–$2,000+</div>
+      </div>
+      <div class="comp-row">
+        <div>YouTube videos</div>
+        <div class="comp-bad">Scattered, no structure</div>
+        <div class="comp-bad">Hours wasted</div>
+      </div>
+      <div class="comp-row">
+        <div>Shock collars</div>
+        <div class="comp-bad">Creates fear & anxiety</div>
+        <div class="comp-bad">Damages trust</div>
+      </div>
+      <div class="comp-row highlight-row">
+        <div><strong>This Guide</strong></div>
+        <div class="comp-good">Step-by-step at home</div>
+        <div class="comp-good">$67 once</div>
       </div>
     </div>
-  </section>
 
-  <!-- Testimonials -->
-  <section class="sec">
-    <div class="wrap">
-      <div class="sec-label fu" style="text-align:center">Real results</div>
-      <h2 class="sec-title fu" style="text-align:center">What Dog Owners Are Saying</h2>
-      <div class="testi-grid" style="margin-top:28px">
-        <div class="testi fu">
-          <div class="testi-stars">★★★★★</div>
-          <div class="testi-text">"After <strong>just one week</strong>, my golden retriever stopped pulling on walks. By week three, she was a completely different dog. My husband can't believe it."</div>
-          <div class="testi-author">
-            <div class="testi-av" style="background:linear-gradient(135deg,#f472b6,#ec4899)">SM</div>
-            <div>
-              <div class="testi-name">Sarah M., 42</div>
-              <div class="testi-loc">Austin, Texas</div>
-              <div class="testi-badge">✓ Verified Purchase</div>
-            </div>
-          </div>
-        </div>
-        <div class="testi fu">
-          <div class="testi-stars">★★★★★</div>
-          <div class="testi-text">"My rescue had terrible separation anxiety. <strong>Chapter 7 was a game-changer.</strong> I finally understand what he needs, and he's so much calmer now."</div>
-          <div class="testi-author">
-            <div class="testi-av" style="background:linear-gradient(135deg,#34d399,#059669)">LT</div>
-            <div>
-              <div class="testi-name">Lisa T., 51</div>
-              <div class="testi-loc">Portland, Oregon</div>
-              <div class="testi-badge">✓ Verified Purchase</div>
-            </div>
-          </div>
-        </div>
-        <div class="testi fu">
-          <div class="testi-stars">★★★★★</div>
-          <div class="testi-text">"As a single mom with two kids, I had <strong>zero time</strong> for training classes. 15 minutes while the kids eat breakfast. It genuinely works."</div>
-          <div class="testi-author">
-            <div class="testi-av" style="background:linear-gradient(135deg,#fb923c,#ea580c)">MR</div>
-            <div>
-              <div class="testi-name">Michelle R., 45</div>
-              <div class="testi-loc">Tampa, Florida</div>
-              <div class="testi-badge">✓ Verified Purchase</div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <p style="font-size:14px;color:var(--text-light);text-align:center;line-height:1.6;">The secret isn't more commands — it's understanding <strong>how your dog actually thinks</strong> and communicating in a way they naturally respond to.</p>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- WHAT'S INSIDE -->
+  <div class="section">
+    <div class="section-title">Everything inside the guide</div>
+    <p class="section-sub">127 pages. Zero fluff. Only what actually works.</p>
+
+    <div class="product-showcase">
+      <h3>🐕 The Complete Home Dog Training Guide</h3>
+      <ul class="feature-list">
+        <li>
+          <div class="check-icon">✓</div>
+          <div>The <strong>21-Day Training Blueprint</strong> — day by day, exactly what to do and when</div>
+        </li>
+        <li>
+          <div class="check-icon">✓</div>
+          <div>The <strong>"5-Minute Rule"</strong> that makes training stick even for stubborn dogs</div>
+        </li>
+        <li>
+          <div class="check-icon">✓</div>
+          <div><strong>8 core commands</strong> with step-by-step instructions: sit, stay, come, heel, down, leave it, place, quiet</div>
+        </li>
+        <li>
+          <div class="check-icon">✓</div>
+          <div>How to stop <strong>barking, jumping, pulling, biting and aggression</strong> — permanently</div>
+        </li>
+        <li>
+          <div class="check-icon">✓</div>
+          <div>The <strong>reward timing system</strong> that 10x's how fast your dog learns</div>
+        </li>
+        <li>
+          <div class="check-icon">✓</div>
+          <div>Works for <strong>any breed, any age</strong> — from 8-week puppies to 8-year-old adults</div>
+        </li>
+      </ul>
     </div>
-  </section>
 
-  <!-- Guarantee -->
-  <section class="sec sec-alt">
-    <div class="wrap">
-      <div class="gtee-box fu">
-        <div class="gicon">🛡️</div>
-        <h2>60-Day "Happy Dog" Guarantee</h2>
-        <p>Follow the method for 60 days. If you don't see real, noticeable improvement in your dog's behavior — email us for a <strong>full refund, no questions asked</strong>. You have everything to gain and nothing to lose.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Pricing -->
-  <section class="sec" id="pricing" style="text-align:center">
-    <div class="wrap">
-      <div class="sec-label fu">Special offer</div>
-      <h2 class="sec-title fu">Get Instant Access Now</h2>
-      <p class="sec-sub fu" style="margin-left:auto;margin-right:auto;text-align:center">One guide. Everything you need. Lifetime access.</p>
-      <div class="price-card fu">
-        <div class="price-top">🔥 48% OFF — Limited Time Only</div>
-        <div class="price-body">
-          <div class="price-old">$97.00</div>
-          <div class="price-main"><sup>$</sup>49<span style="font-size:26px;font-family:'DM Sans',sans-serif;font-weight:900">.99</span></div>
-          <div class="price-save">You Save $47.01</div>
-          <ul class="price-list">
-            <li><span class="lic">✓</span> Complete 180-page Training Guide (PDF)</li>
-            <li><span class="lic">✓</span> Quick-Reference Cheat Sheets (printable)</li>
-            <li><span class="lic">✓</span> 30-Day Step-by-Step Training Calendar</li>
-            <li><span class="lic">✓</span> Emergency Behavior Fixes Guide</li>
-            <li><span class="lic">✓</span> Free Lifetime Updates</li>
-            <li><span class="lic">✓</span> Instant Download — Start in 2 Minutes</li>
-          </ul>
-          <button class="cta-btn" style="max-width:100%" onclick="showPage('pg-checkout')">
-            Get Instant Access — $49.99 <span class="arr">→</span>
-          </button>
-          <div class="price-gtee" style="margin-top:18px">
-            <span style="font-size:26px;flex-shrink:0">🛡️</span>
-            <div class="price-gtee-text">60-Day Money-Back Guarantee — if you don't see results, you get every penny back.</div>
-          </div>
-          <div class="price-secure">
-            <span>🔒 Secure Checkout</span>
-            <span>💳 All Cards Accepted</span>
-            <span>⚡ Instant Access</span>
-          </div>
+    <div class="chapter-list">
+      <div class="chapter-item">
+        <div class="chapter-num">1</div>
+        <div class="chapter-info">
+          <div class="chapter-title">Understanding Your Dog's Mind</div>
+          <div class="chapter-desc">How dogs think, learn and communicate — the foundation of everything</div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="sec sec-alt">
-    <div class="wrap">
-      <div class="sec-label fu" style="text-align:center">Questions?</div>
-      <h2 class="sec-title fu" style="text-align:center">Quick Answers</h2>
-      <div style="max-width:580px;margin:28px auto 0">
-        <div class="faq-item fu">
-          <button class="faq-q" onclick="toggleFaq(this)">Will this work for my dog's breed? <span class="faq-arr">▾</span></button>
-          <div class="faq-a"><div class="faq-a-inner">Yes — the methods are grounded in canine psychology that applies to all breeds, from Chihuahuas to Great Danes. We've had success stories from owners of 50+ different breeds.</div></div>
-        </div>
-        <div class="faq-item fu">
-          <button class="faq-q" onclick="toggleFaq(this)">My dog is older — is it too late? <span class="faq-arr">▾</span></button>
-          <div class="faq-a"><div class="faq-a-inner">"You can't teach an old dog new tricks" is a myth. This guide covers techniques for puppies all the way to senior dogs. Older dogs can and do learn — often faster, because they're calmer.</div></div>
-        </div>
-        <div class="faq-item fu">
-          <button class="faq-q" onclick="toggleFaq(this)">How soon will I see results? <span class="faq-arr">▾</span></button>
-          <div class="faq-a"><div class="faq-a-inner">Most owners report noticeable changes within 3–7 days. With consistent 15-minute daily sessions, you should see meaningful progress in the first two weeks.</div></div>
-        </div>
-        <div class="faq-item fu">
-          <button class="faq-q" onclick="toggleFaq(this)">What if it doesn't work for my dog? <span class="faq-arr">▾</span></button>
-          <div class="faq-a"><div class="faq-a-inner">You're protected by our 60-day money-back guarantee. Follow the steps — if you don't see improvement, simply email us for a full refund. Less than 2% of customers ask for one.</div></div>
-        </div>
-        <div class="faq-item fu">
-          <button class="faq-q" onclick="toggleFaq(this)">Is this positive reinforcement only? <span class="faq-arr">▾</span></button>
-          <div class="faq-a"><div class="faq-a-inner">100%. No shock collars, no yelling, no intimidation. You'll build your dog's confidence and strengthen your bond while eliminating unwanted behavior.</div></div>
+      <div class="chapter-item">
+        <div class="chapter-num">2</div>
+        <div class="chapter-info">
+          <div class="chapter-title">Setting Up for Success</div>
+          <div class="chapter-desc">Your home environment, timing, rewards and the tools you need</div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Final CTA -->
-  <div class="final-cta">
-    <div class="wrap">
-      <h2 class="fu">Your Dog Is Ready to Learn 🐾</h2>
-      <p class="fu">Every day without training is another day of frustration — for both of you. For less than the cost of <strong>one hour</strong> with a trainer, you'll have everything you need to change your dog's behavior for life.</p>
-      <div class="fu">
-        <button class="cta-btn" onclick="showPage('pg-checkout')">
-          Yes! I'm Ready — $49.99 <span class="arr">→</span>
-        </button>
+      <div class="chapter-item">
+        <div class="chapter-num">3</div>
+        <div class="chapter-info">
+          <div class="chapter-title">The 8 Core Commands</div>
+          <div class="chapter-desc">Step-by-step for each command with troubleshooting tips</div>
+        </div>
       </div>
-      <div class="social-proof-line fu">🐾 Join 12,847 happy dog owners today</div>
+      <div class="chapter-item">
+        <div class="chapter-num">4</div>
+        <div class="chapter-info">
+          <div class="chapter-title">Fixing Bad Behaviours</div>
+          <div class="chapter-desc">Barking, jumping, aggression, pulling, destructive chewing</div>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <div class="chapter-num">5</div>
+        <div class="chapter-info">
+          <div class="chapter-title">The 21-Day Plan</div>
+          <div class="chapter-desc">Your complete day-by-day schedule to transform your dog</div>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <div class="chapter-num">6</div>
+        <div class="chapter-info">
+          <div class="chapter-title">Maintaining Results Long-Term</div>
+          <div class="chapter-desc">How to keep your dog well-behaved for years to come</div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="wrap">
-      <p>© 2024 Happy Paws Training. All rights reserved.</p>
-      <p style="margin-top:4px"><a href="#">Privacy Policy</a> · <a href="#">Terms of Service</a> · <a href="#">Contact Us</a> · <a href="#">Refund Policy</a></p>
-      <p style="margin-top:8px;max-width:460px;margin-left:auto;margin-right:auto">Digital download (PDF). Results may vary. Based on positive reinforcement training methods.</p>
-    </div>
-  </footer>
+  <div class="section-divider"></div>
 
-  <!-- Sticky Mobile CTA -->
-  <div class="mob-bar" id="mobBar">
-    <div class="mob-bar-info">
-      <div class="mob-bar-was">$97.00</div>
-      <div class="mob-bar-price">$49.99</div>
-    </div>
-    <button class="mob-bar-btn" onclick="showPage('pg-checkout')">Get Instant Access →</button>
-  </div>
+  <!-- BEFORE AFTER -->
+  <div class="section">
+    <div class="section-title">Your dog. 21 days from now.</div>
+    <p class="section-sub">Here's what changes when you follow the system:</p>
 
-</div><!-- /landing -->
-
-
-<!-- ═══════════════════════════════════════════ -->
-<!--               CHECKOUT PAGE               -->
-<!-- ═══════════════════════════════════════════ -->
-<div id="pg-checkout" class="page">
-
-  <header class="co-header">
-    <div class="wrap co-hdr-inner">
-      <button class="co-back" onclick="showPage('pg-landing')">← Back</button>
-      <div class="logo">🐾 Happy Paws</div>
-      <div class="co-secure">🔒 Secure</div>
-    </div>
-  </header>
-  <div class="co-progress"><div class="co-progress-fill"></div></div>
-
-  <div class="co-body">
-    <div class="wrap">
-
-      <!-- Order Summary -->
-      <div class="co-card">
-        <h3>Your Order</h3>
-        <div class="order-row">
-          <div class="order-icon">🐕</div>
-          <div class="order-info">
-            <div class="order-name">Complete Home Dog Training Guide</div>
-            <div class="order-desc">PDF + All Bonuses · Instant Download</div>
-          </div>
-          <div class="order-price-col">
-            <div class="order-was">$97.00</div>
-            <div class="order-price">$49.99</div>
-          </div>
-        </div>
-        <hr class="order-divider">
-        <div class="order-total-row">
-          <div class="order-total-label">Total Today</div>
-          <div class="order-total-price" id="orderTotal">$49.99</div>
-        </div>
-      </div>
-
-      <!-- ORDER BUMP -->
-      <div class="bump-box">
-        <div class="bump-header">
-          <div class="bump-check" id="bumpCheck" onclick="toggleBump()"></div>
-          <div class="bump-label">
-            <div class="bump-tag">⚡ Special Add-On Offer</div>
-            <div class="bump-title">Dog Training Accelerator Pack — Add for just $17</div>
-            <div class="bump-desc">50 printable flashcards for every command + a quick-reference audio script guide to use during your sessions. Makes the system 2x faster to implement. <strong>Normally $37 — yours for $17 today only.</strong></div>
-            <div class="bump-price-row">
-              <div class="bump-price">+ $17.00</div>
-              <div class="bump-was">$37.00</div>
-              <div style="font-size:12px;color:var(--green);font-weight:700">Save $20!</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Contact Info -->
-      <div class="co-card">
-        <div class="form-section-title">📧 Your Information</div>
-        <div class="form-group">
-          <label class="form-label" for="email">Email Address</label>
-          <input class="form-input" type="email" id="email" placeholder="you@example.com" autocomplete="email" inputmode="email">
-          <div class="form-hint">Your guide will be sent here instantly after purchase</div>
-        </div>
-        <div class="form-group" style="margin-bottom:0">
-          <label class="form-label" for="fname">First Name</label>
-          <input class="form-input" type="text" id="fname" placeholder="Jane" autocomplete="given-name">
-        </div>
-      </div>
-
-      <!-- Payment -->
-      <div class="co-card">
-        <div class="form-section-title">💳 Payment Details</div>
-        <div class="form-group">
-          <label class="form-label" for="cardname">Name on Card</label>
-          <input class="form-input" type="text" id="cardname" placeholder="Jane Smith" autocomplete="cc-name">
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="cardnum">Card Number</label>
-          <input class="form-input" type="text" id="cardnum" placeholder="1234 5678 9012 3456" autocomplete="cc-number" maxlength="19" inputmode="numeric">
-        </div>
-        <div class="form-row-2">
-          <div class="form-group" style="margin-bottom:0">
-            <label class="form-label" for="expiry">Expiry</label>
-            <input class="form-input" type="text" id="expiry" placeholder="MM / YY" autocomplete="cc-exp" maxlength="7" inputmode="numeric">
-          </div>
-          <div class="form-group" style="margin-bottom:0">
-            <label class="form-label" for="cvc">CVC</label>
-            <input class="form-input" type="text" id="cvc" placeholder="123" autocomplete="cc-csc" maxlength="4" inputmode="numeric">
-          </div>
-        </div>
-      </div>
-
-      <!-- Submit -->
-      <button class="co-btn" id="coBtn" onclick="completePurchase()">
-        Complete Purchase — <span id="btnPrice">$49.99</span>
-      </button>
-
-      <div class="co-trust">
-        <span>🔒 256-bit SSL Encrypted</span>
-        <span>💳 Visa · Mastercard · Amex</span>
-        <span>⚡ Instant Access</span>
-      </div>
-
-      <div class="co-gtee">
-        <div style="font-size:24px;flex-shrink:0">🛡️</div>
-        <div class="co-gtee-text">Protected by our 60-Day Money-Back Guarantee — full refund, no questions asked.</div>
-      </div>
-
-    </div>
-  </div>
-</div><!-- /checkout -->
-
-
-<!-- ═══════════════════════════════════════════ -->
-<!--               UPSELL PAGE (OTO)            -->
-<!-- ═══════════════════════════════════════════ -->
-<div id="pg-upsell" class="page">
-
-  <div class="up-topbar">
-    ✅ Order Confirmed! — <em>Wait — One Special Offer Just For You</em>
-  </div>
-
-  <div class="up-body">
-    <div class="wrap">
-      <div class="up-step">Step 2 of 2 — One-Time Offer</div>
-      <h1 class="up-h1">Want Results <span style="color:var(--cta);font-style:italic">Twice as Fast?</span></h1>
-      <p class="up-sub">Add the <strong>Video Training Masterclass</strong> — 25 short videos showing every technique in real-time, with a real dog. This offer disappears when you leave this page.</p>
-
-      <div class="up-card">
-        <div class="up-card-icon">🎬</div>
-        <h3>Video Training Masterclass — Watch It Done Right</h3>
-        <ul>
-          <li><span class="lic">✓</span> 25 short videos (5–10 min each) showing exact hand signals, body language &amp; timing</li>
-          <li><span class="lic">✓</span> Watch the guide's techniques demonstrated live with different dog breeds</li>
-          <li><span class="lic">✓</span> Separate video module for each common behavior problem</li>
-          <li><span class="lic">✓</span> Bonus: "Why Your Dog Is Doing That" behavioral explainer series</li>
-          <li><span class="lic">✓</span> Lifetime access — watch on any device, anytime</li>
+    <div class="before-after">
+      <div class="ba-box ba-before">
+        <div class="ba-title">❌ Before</div>
+        <ul class="ba-list">
+          <li>🔴 Pulls on leash constantly</li>
+          <li>🔴 Barks at everything</li>
+          <li>🔴 Ignores your commands</li>
+          <li>🔴 Jumps on guests</li>
+          <li>🔴 You feel frustrated</li>
+          <li>🔴 Embarrassed in public</li>
         </ul>
       </div>
+      <div class="ba-box ba-after">
+        <div class="ba-title">✅ After</div>
+        <ul class="ba-list">
+          <li>🟢 Walks calmly beside you</li>
+          <li>🟢 Quiet on command</li>
+          <li>🟢 Comes when called</li>
+          <li>🟢 Sits and greets politely</li>
+          <li>🟢 You feel proud</li>
+          <li>🟢 Enjoy walks again</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-      <div class="up-price-row">
-        <div class="up-old">Regular price: $97.00</div>
-        <div class="up-price"><sup>$</sup>37</div>
-        <div class="up-once">One-time upgrade · Won't see this price again</div>
+  <div class="section-divider"></div>
+
+  <!-- REVIEWS -->
+  <div class="section">
+    <div class="section-title">What Canadian dog owners are saying</div>
+    <p class="section-sub">Real results from real people across Canada.</p>
+
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-header">
+          <div class="reviewer-avatar" style="background:linear-gradient(135deg,#667eea,#764ba2);">M</div>
+          <div class="reviewer-info">
+            <div class="reviewer-name">Mike T.</div>
+            <div class="reviewer-location">Toronto, ON</div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+        </div>
+        <p class="review-text">"My German Shepherd Bruno was completely uncontrollable on walks. After just 2 weeks with this guide, he walks right beside me without pulling. My neighbours actually stopped me to ask what I did differently. Worth every penny."</p>
+        <div class="review-dog">🐕 German Shepherd, 3 years old</div>
+        <div class="verified-badge">✅ Verified Purchase</div>
       </div>
 
-      <button class="up-yes" onclick="showPage('pg-thankyou')">
-        Yes! Add the Masterclass for $37 →
+      <div class="review-card">
+        <div class="review-header">
+          <div class="reviewer-avatar" style="background:linear-gradient(135deg,#f093fb,#f5576c);">J</div>
+          <div class="reviewer-info">
+            <div class="reviewer-name">Jessica K.</div>
+            <div class="reviewer-location">Calgary, AB</div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+        </div>
+        <p class="review-text">"I was skeptical of a PDF guide but this is genuinely better than the $1,200 trainer I hired last year. The daily plan makes it so simple — I spend 15 minutes a day and my rescue pup Luna is like a completely different dog. The barking alone stopping was life-changing for my apartment."</p>
+        <div class="review-dog">🐕 Rescue mix, 2 years old</div>
+        <div class="verified-badge">✅ Verified Purchase</div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-header">
+          <div class="reviewer-avatar" style="background:linear-gradient(135deg,#4facfe,#00f2fe);">D</div>
+          <div class="reviewer-info">
+            <div class="reviewer-name">David L.</div>
+            <div class="reviewer-location">Ottawa, ON</div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+        </div>
+        <p class="review-text">"3 kids, 1 hyper Labrador = chaos. This guide saved our sanity. The chapter on jumping and recall alone was worth 10x the price. Our dog Cooper now greets guests politely and comes back to us at the dog park every single time. Incredible."</p>
+        <div class="review-dog">🐕 Labrador Retriever, 18 months</div>
+        <div class="verified-badge">✅ Verified Purchase</div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-header">
+          <div class="reviewer-avatar" style="background:linear-gradient(135deg,#43e97b,#38f9d7);">A</div>
+          <div class="reviewer-info">
+            <div class="reviewer-name">Amanda R.</div>
+            <div class="reviewer-location">Vancouver, BC</div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+        </div>
+        <p class="review-text">"I have an 8-year-old Border Collie who I thought was just 'too old to change'. This guide proved me wrong. Even old dogs can learn. The communication chapter changed how I see my dog completely. Highly recommend to anyone — new or experienced dog owner."</p>
+        <div class="review-dog">🐕 Border Collie, 8 years old</div>
+        <div class="verified-badge">✅ Verified Purchase</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- PRICING -->
+  <div class="section">
+    <div class="section-title">Get instant access today</div>
+    <p class="section-sub">One small investment. A lifetime of a well-behaved dog.</p>
+
+    <div class="counter-box">
+      🔥 <strong>47 people</strong> are viewing this page right now
+    </div>
+
+    <div class="price-box">
+      <div class="price-original">Regular price: $197 CAD</div>
+      <div class="price-current"><sup>$</sup>67</div>
+      <div class="price-label">🇨🇦 Canadian dollars · One-time payment</div>
+
+      <div class="price-includes">
+        <div class="price-includes-item">
+          <span class="pi-icon">✓</span>
+          <span>The Complete Home Dog Training Guide (127 pages)</span>
+        </div>
+        <div class="price-includes-item">
+          <span class="pi-icon">✓</span>
+          <span>21-Day Day-by-Day Training Blueprint</span>
+        </div>
+        <div class="price-includes-item">
+          <span class="pi-icon">✓</span>
+          <span>Instant PDF download — access in 60 seconds</span>
+        </div>
+        <div class="price-includes-item">
+          <span class="pi-icon">✓</span>
+          <span>Works on any device — phone, tablet, computer</span>
+        </div>
+        <div class="price-includes-item">
+          <span class="pi-icon">✓</span>
+          <span>Lifetime access — yours forever</span>
+        </div>
+      </div>
+
+      <button class="cta-btn" onclick="goToCheckout()" style="max-width:100%;">
+        Yes! I Want My Well-Behaved Dog →
       </button>
-      <button class="up-no" onclick="showPage('pg-thankyou')">No thanks — I'll learn from the PDF only</button>
+      <p class="cta-sub" style="margin-top:10px;">🔒 Secure 256-bit SSL checkout · Instant delivery</p>
+    </div>
 
-      <div class="up-gtee">
-        🛡️ Still covered by the 60-Day Money-Back Guarantee
+    <div class="guarantee-box">
+      <div class="guarantee-icon">🛡️</div>
+      <div class="guarantee-text">
+        <h4>30-Day Money-Back Guarantee</h4>
+        <p>Try the entire guide for 30 days. If you don't see real improvement in your dog's behaviour, email us and we'll refund you every cent. Zero questions, zero hassle. We take all the risk so you don't have to.</p>
       </div>
     </div>
   </div>
 
-</div><!-- /upsell -->
+  <div class="section-divider"></div>
 
+  <!-- FAQ -->
+  <div class="section">
+    <div class="section-title">Common questions</div>
+    <p class="section-sub">Everything you might be wondering.</p>
 
-<!-- ═══════════════════════════════════════════ -->
-<!--               THANK YOU PAGE               -->
-<!-- ═══════════════════════════════════════════ -->
-<div id="pg-thankyou" class="page">
-
-  <header class="co-header">
-    <div class="wrap" style="justify-content:center;display:flex">
-      <div class="logo">🐾 Happy Paws</div>
+    <div class="faq-list">
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          Will this work for my specific breed?
+          <span class="faq-arrow">▾</span>
+        </div>
+        <div class="faq-a">Yes. The methods in this guide are based on canine psychology that applies to all breeds — from tiny Chihuahuas to large Rottweilers. Many customers have used it successfully with breeds known to be "difficult" like Huskies, Dachshunds, and Chow Chows.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          My dog is older. Is it too late?
+          <span class="faq-arrow">▾</span>
+        </div>
+        <div class="faq-a">Not at all. The guide includes a specific section for adult and senior dogs. Yes, puppies learn slightly faster, but dogs of any age can and do change with the right approach. Several customers have seen results with dogs 7-10 years old.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          How much time does it take per day?
+          <span class="faq-arrow">▾</span>
+        </div>
+        <div class="faq-a">The training sessions are designed to be 10-15 minutes per day. Short, consistent sessions work dramatically better than long occasional ones. Most people fit it in during their morning or evening routine.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          How do I access the guide after purchase?
+          <span class="faq-arrow">▾</span>
+        </div>
+        <div class="faq-a">Immediately after payment, you'll be sent to a download page where you can save the PDF to any device — phone, tablet, or computer. You'll also receive an email with the download link so you always have access. It's instant.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          What if it doesn't work for my dog?
+          <span class="faq-arrow">▾</span>
+        </div>
+        <div class="faq-a">You're fully covered by our 30-day money-back guarantee. If you follow the guide and don't see any improvement, just email us and you'll get a full refund. We've been running this for years and our refund rate is under 3% — because it works.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          Is this in Canadian dollars?
+          <span class="faq-arrow">▾</span>
+        </div>
+        <div class="faq-a">Yes! The price shown is in CAD. No surprise currency conversion fees. What you see is what you pay.</div>
+      </div>
     </div>
-  </header>
+  </div>
 
-  <div class="ty-body">
-    <div class="wrap">
-      <div class="ty-check">✅</div>
-      <h1>You're In! 🎉</h1>
-      <p class="ty-sub">Your order is confirmed. Check your email for the download link — it arrives within 2 minutes.</p>
+  <!-- FINAL CTA -->
+  <div class="section" style="background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:20px;margin:0 16px 32px;color:white;text-align:center;">
+    <div style="font-size:40px;margin-bottom:16px;">🐕</div>
+    <h2 style="font-size:22px;font-weight:800;margin-bottom:12px;color:white;">Your dog is waiting for you to take this step</h2>
+    <p style="font-size:14px;opacity:0.8;margin-bottom:24px;line-height:1.6;">Thousands of Canadian dog owners have already transformed their relationship with their dog using this guide. You're one decision away from the same result.</p>
+    <button class="cta-btn" onclick="goToCheckout()" style="background:linear-gradient(135deg,#e8a020,#c8881a);box-shadow:0 8px 30px rgba(232,160,32,0.4);">
+      Get Instant Access — $67 CAD
+    </button>
+    <p style="font-size:12px;opacity:0.6;margin-top:10px;">🛡️ 30-Day Money-Back Guarantee · Instant Download</p>
+  </div>
 
-      <div class="ty-card">
-        <h3>Your Download Is Ready Now</h3>
-        <button class="dl-btn" onclick="alert('In production, this triggers the real PDF download.')">
-          📥 Download Your Guide
+  <!-- STICKY CTA -->
+  <div class="sticky-cta">
+    <div class="sticky-cta-inner">
+      <div class="sticky-price">
+        <div class="sticky-price-old">$197</div>
+        <div class="sticky-price-new">$67 CAD</div>
+      </div>
+      <button class="sticky-btn" onclick="goToCheckout()">
+        Get Instant Access →
+      </button>
+    </div>
+  </div>
+
+</div>
+<!-- END SALES PAGE -->
+
+
+<!-- ==================== CHECKOUT PAGE ==================== -->
+<div class="page" id="checkoutPage">
+
+  <div class="checkout-header">
+    <div class="checkout-logo">🐕 DogTrainingGuide</div>
+    <div class="secure-badge">🔒 Secure Checkout</div>
+  </div>
+
+  <div class="checkout-progress">
+    <div class="progress-steps">
+      <div class="progress-step">
+        <div class="step-circle active">1</div>
+        <div class="step-label active">Info</div>
+      </div>
+      <div class="progress-line"></div>
+      <div class="progress-step">
+        <div class="step-circle">2</div>
+        <div class="step-label">Payment</div>
+      </div>
+      <div class="progress-line"></div>
+      <div class="progress-step">
+        <div class="step-circle">3</div>
+        <div class="step-label">Access</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="checkout-body">
+
+    <!-- ORDER SUMMARY -->
+    <div class="order-summary">
+      <div class="order-summary-title">📦 Your Order</div>
+      <div class="order-item">
+        <div class="order-item-img">📘</div>
+        <div class="order-item-info">
+          <div class="order-item-name">Complete Home Dog Training Guide</div>
+          <div class="order-item-type">Digital PDF · Instant Download · 127 pages</div>
+        </div>
+        <div class="order-item-price">
+          <div class="order-price-old">$197</div>
+          <div class="order-price-new">$67</div>
+        </div>
+      </div>
+      <hr class="order-divider">
+      <div class="order-total">
+        <div class="order-total-label">Total (CAD)</div>
+        <div class="order-total-price">$67.00</div>
+      </div>
+    </div>
+
+    <!-- CONTACT INFO -->
+    <div class="form-section">
+      <div class="form-section-title">
+        <span class="form-title-icon">📧</span>
+        Contact Info
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email Address</label>
+        <input type="email" class="form-input" placeholder="you@email.com" id="checkoutEmail">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Full Name</label>
+        <input type="text" class="form-input" placeholder="Your full name" id="checkoutName">
+      </div>
+    </div>
+
+    <!-- PAYMENT -->
+    <div class="form-section">
+      <div class="form-section-title">
+        <span class="form-title-icon">💳</span>
+        Payment Details
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Card Number</label>
+        <div class="card-input-wrap">
+          <input type="tel" class="form-input" placeholder="1234 5678 9012 3456" id="cardNumber" maxlength="19" inputmode="numeric">
+          <div class="card-icons">💳</div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group mb-0">
+          <label class="form-label">Expiry Date</label>
+          <input type="tel" class="form-input" placeholder="MM / YY" id="cardExpiry" maxlength="7" inputmode="numeric">
+        </div>
+        <div class="form-group mb-0">
+          <label class="form-label">CVV</label>
+          <input type="tel" class="form-input" placeholder="123" id="cardCvv" maxlength="4" inputmode="numeric">
+        </div>
+      </div>
+    </div>
+
+    <!-- SUBMIT -->
+    <button class="complete-btn" onclick="processPayment()">
+      🔒 Complete Purchase — $67 CAD
+    </button>
+
+    <div class="checkout-trust">
+      <div class="checkout-trust-item">🔒 256-bit SSL</div>
+      <div class="checkout-trust-item">🛡️ 30-day guarantee</div>
+      <div class="checkout-trust-item">⚡ Instant access</div>
+    </div>
+
+    <p style="font-size:11px;color:var(--text-light);text-align:center;margin-top:16px;line-height:1.5;">
+      By completing your purchase you agree to our terms of service and privacy policy. Your card will be charged $67.00 CAD. No recurring charges. Digital product — no physical shipping.
+    </p>
+
+  </div>
+
+</div>
+<!-- END CHECKOUT PAGE -->
+
+
+<!-- ==================== UPSELL PAGE ==================== -->
+<div class="page" id="upsellPage">
+
+  <div class="upsell-header">
+    <h2>✅ Your order is confirmed!</h2>
+    <p>Wait — you have a one-time special offer below</p>
+  </div>
+
+  <div class="upsell-body">
+
+    <span class="upsell-badge">⚡ One-Time Offer — This Page Only</span>
+
+    <h2 class="upsell-title">Supercharge Your Training with the <em style="color:var(--accent);font-style:normal;">Ultimate Quick-Action Pack</em></h2>
+    <p class="upsell-sub">You have the complete guide — now get the tools that make it 3x faster and easier to use every single day.</p>
+
+    <div class="upsell-product-box">
+      <div class="upsell-product-header">
+        <div class="upsell-img">📋</div>
+        <div>
+          <div class="upsell-product-name">Dog Training Quick-Action Pack</div>
+          <div class="upsell-product-desc">10 printable cheat sheets + 30-day tracker + Bad Behaviour Quick Fix bonus PDF</div>
+        </div>
+      </div>
+
+      <ul class="upsell-features">
+        <li>
+          <span class="upsell-check">✓</span>
+          <span><strong>10 Laminate-Ready Cheat Sheets</strong> — one for each key command, stick them on your fridge or carry them on walks</span>
+        </li>
+        <li>
+          <span class="upsell-check">✓</span>
+          <span><strong>30-Day Progress Tracker</strong> — daily printable log so you can see your dog's improvement day by day and stay consistent</span>
+        </li>
+        <li>
+          <span class="upsell-check">✓</span>
+          <span><strong>"Bad Behaviour Quick Fix" PDF</strong> — instant reference for the 12 most common behaviour problems with the fastest proven solutions</span>
+        </li>
+        <li>
+          <span class="upsell-check">✓</span>
+          <span><strong>Training Session Planner</strong> — weekly schedule template so you never skip a session or lose your place</span>
+        </li>
+        <li>
+          <span class="upsell-check">✓</span>
+          <span>All printable, all instant download — works perfectly alongside your main guide</span>
+        </li>
+      </ul>
+
+      <div class="upsell-price-row">
+        <div class="upsell-price-info">
+          <div class="upsell-price-old">Regular: $97 CAD</div>
+          <div class="upsell-price-new">$37 CAD</div>
+          <div style="font-size:11px;color:var(--text-light);">Added to your order — no new payment info needed</div>
+        </div>
+        <div class="upsell-save-badge">Save $60</div>
+      </div>
+
+      <button class="upsell-add-btn" onclick="addUpsell()">
+        ⚡ Yes! Add This to My Order — $37 CAD
+      </button>
+
+      <button class="upsell-skip" onclick="skipUpsell()">
+        No thanks, I don't need this
+      </button>
+    </div>
+
+    <div class="upsell-warning">
+      ⚠️ This offer disappears when you leave this page.<br>
+      It will never be available at this price again.
+    </div>
+
+  </div>
+
+</div>
+<!-- END UPSELL PAGE -->
+
+
+<!-- ==================== THANK YOU PAGE ==================== -->
+<div class="page" id="thankyouPage">
+
+  <div class="thankyou-header">
+    <div class="thankyou-check">✓</div>
+    <h1>You're all set! 🎉</h1>
+    <p>Your order is confirmed and your guide is ready to download. Check your email for your receipt and download link.</p>
+  </div>
+
+  <div class="thankyou-body">
+
+    <div class="thankyou-order-box">
+      <div class="thankyou-order-title">📦 Your Order Summary</div>
+      <div class="thankyou-order-items" id="thankyouItems">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+
+    <div class="next-steps">
+      <h3>What happens next</h3>
+      <div class="steps-list">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h4>Download your guide now</h4>
+            <p>Click the button below to save your PDF. It works on any device — phone, tablet, computer.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h4>Check your email</h4>
+            <p>We've sent your receipt and a backup download link to your email. Check spam if you don't see it within 5 minutes.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h4>Start with Chapter 1 today</h4>
+            <p>Don't wait. Read Chapter 1 tonight (it takes 15 minutes) and do your first 5-minute session tomorrow morning. That's all it takes to begin.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="download-btn" onclick="alert('In a real implementation, this would download your PDF. Your guide is ready!')">
+      ⬇️ Download My Guide Now
+    </button>
+
+    <div style="background:var(--bg-light);border-radius:14px;padding:18px;text-align:center;margin-bottom:20px;">
+      <div style="font-size:22px;margin-bottom:8px;">🛡️</div>
+      <div style="font-weight:700;font-size:14px;color:var(--primary);margin-bottom:4px;">You're protected by our guarantee</div>
+      <div style="font-size:13px;color:var(--text-light);line-height:1.5;">If you're not happy with your results in 30 days, email us at support@dogtrainingguide.ca for a full refund. No questions asked.</div>
+    </div>
+
+    <div class="share-section">
+      <h4>🐕 Know another dog owner who needs this?</h4>
+      <div class="share-btns">
+        <button class="share-btn share-fb" onclick="alert('Facebook share would open here')">
+          👍 Share on Facebook
         </button>
-        <p style="text-align:center;font-size:13px;color:var(--text-light);margin-bottom:22px">PDF · 180+ pages · Works on any device · Print-friendly</p>
-
-        <h3 style="margin-bottom:12px">What to Do Right Now:</h3>
-        <ol class="ty-steps" style="list-style:none;padding:0">
-          <li class="ty-step">
-            <span class="ty-step-num">1</span>
-            <span><strong>Save your guide</strong> to your phone or tablet — you'll use it during sessions.</span>
-          </li>
-          <li class="ty-step">
-            <span class="ty-step-num">2</span>
-            <span><strong>Print the cheat sheets</strong> and stick them on your fridge. You'll reference them daily.</span>
-          </li>
-          <li class="ty-step">
-            <span class="ty-step-num">3</span>
-            <span><strong>Read Chapter 1 today</strong> — just 10 minutes. It sets the foundation for everything.</span>
-          </li>
-          <li class="ty-step">
-            <span class="ty-step-num">4</span>
-            <span><strong>Follow the 30-Day Calendar</strong> — it tells you exactly what to do each day. No guesswork.</span>
-          </li>
-        </ol>
       </div>
-
-      <div class="ty-support">
-        <p>Need help? We're here for you.<br><a href="mailto:support@happypawstraining.com">support@happypawstraining.com</a></p>
-      </div>
-
-      <p style="margin-top:22px;font-size:14px;color:var(--text-light)">Thank you for trusting Happy Paws 🐾 Your dog's transformation starts now.</p>
     </div>
+
   </div>
 
-</div><!-- /thankyou -->
+</div>
+<!-- END THANK YOU PAGE -->
 
 
 <script>
-// ── PAGE NAVIGATION ──
-function showPage(id){
-  document.querySelectorAll('.page').forEach(p=>{
-    p.classList.remove('active');
-    p.style.display='none';
+  // ─── STATE ───────────────────────────────────────────────
+  let hasUpsell = false;
+
+  // ─── NAVIGATION ──────────────────────────────────────────
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+
+  function goToCheckout() {
+    showPage('checkoutPage');
+  }
+
+  // ─── CARD NUMBER FORMATTING ───────────────────────────────
+  document.addEventListener('DOMContentLoaded', function() {
+    const cardInput = document.getElementById('cardNumber');
+    if (cardInput) {
+      cardInput.addEventListener('input', function(e) {
+        let value = e.target.value.replace(/\D/g, '');
+        let formatted = value.match(/.{1,4}/g);
+        e.target.value = formatted ? formatted.join(' ') : '';
+      });
+    }
+
+    const expiryInput = document.getElementById('cardExpiry');
+    if (expiryInput) {
+      expiryInput.addEventListener('input', function(e) {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length >= 2) {
+          value = value.substring(0,2) + ' / ' + value.substring(2);
+        }
+        e.target.value = value;
+      });
+    }
   });
-  const pg=document.getElementById(id);
-  pg.style.display='block';
-  pg.classList.add('active','page-enter');
-  window.scrollTo({top:0,behavior:'auto'});
-  // Remove animation class after it runs
-  setTimeout(()=>pg.classList.remove('page-enter'),400);
-  // Run fade-up observer on new page
-  observeFadeUps();
-}
-// Init display
-document.querySelectorAll('.page').forEach(p=>p.style.display='none');
-document.getElementById('pg-landing').style.display='block';
 
-// ── COUNTDOWN ──
-(function(){
-  const KEY='hp_end';
-  let end=parseInt(sessionStorage.getItem(KEY)||'0');
-  if(!end||end<=Date.now()){end=Date.now()+3*60*60*1000;sessionStorage.setItem(KEY,end);}
-  function tick(){
-    const d=Math.max(0,Math.floor((end-Date.now())/1000));
-    const h=Math.floor(d/3600);
-    const m=Math.floor((d%3600)/60);
-    const s=d%60;
-    const el=document.getElementById('countdown');
-    if(el) el.textContent=h+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
-    if(d>0)setTimeout(tick,1000);
+  // ─── PAYMENT PROCESSING ───────────────────────────────────
+  function processPayment() {
+    const email = document.getElementById('checkoutEmail').value.trim();
+    const name = document.getElementById('checkoutName').value.trim();
+    const card = document.getElementById('cardNumber').value.trim();
+    const expiry = document.getElementById('cardExpiry').value.trim();
+    const cvv = document.getElementById('cardCvv').value.trim();
+
+    // Basic validation
+    if (!email || !email.includes('@')) {
+      showError('Please enter a valid email address.');
+      document.getElementById('checkoutEmail').focus();
+      return;
+    }
+    if (!name || name.length < 2) {
+      showError('Please enter your full name.');
+      document.getElementById('checkoutName').focus();
+      return;
+    }
+    if (!card || card.replace(/\s/g,'').length < 16) {
+      showError('Please enter a valid card number.');
+      document.getElementById('cardNumber').focus();
+      return;
+    }
+    if (!expiry || expiry.length < 7) {
+      showError('Please enter a valid expiry date.');
+      document.getElementById('cardExpiry').focus();
+      return;
+    }
+    if (!cvv || cvv.length < 3) {
+      showError('Please enter your CVV.');
+      document.getElementById('cardCvv').focus();
+      return;
+    }
+
+    // Show processing
+    document.getElementById('processingOverlay').classList.add('show');
+
+    // Simulate processing delay
+    setTimeout(function() {
+      document.getElementById('processingOverlay').classList.remove('show');
+      showPage('upsellPage');
+    }, 2200);
   }
-  tick();
-})();
 
-// ── ORDER BUMP ──
-let bumpActive=false;
-function toggleBump(){
-  bumpActive=!bumpActive;
-  const check=document.getElementById('bumpCheck');
-  check.classList.toggle('checked',bumpActive);
-  check.textContent=bumpActive?'✓':'';
-  const total=bumpActive?'$66.99':'$49.99';
-  document.getElementById('orderTotal').textContent=total;
-  document.getElementById('btnPrice').textContent=total;
-}
-
-// ── CARD FORMATTING ──
-document.getElementById('cardnum').addEventListener('input',function(){
-  let v=this.value.replace(/\D/g,'').slice(0,16);
-  this.value=v.match(/.{1,4}/g)?.join(' ')||v;
-});
-document.getElementById('expiry').addEventListener('input',function(){
-  let v=this.value.replace(/\D/g,'').slice(0,4);
-  if(v.length>=2) v=v.slice(0,2)+' / '+v.slice(2);
-  this.value=v;
-});
-document.querySelectorAll('.form-input').forEach(i=>{
-  i.addEventListener('focus',function(){this.style.borderColor='';});
-});
-
-// ── VALIDATION + PURCHASE ──
-function completePurchase(){
-  const email=document.getElementById('email').value.trim();
-  const fname=document.getElementById('fname').value.trim();
-  const card=document.getElementById('cardnum').value.replace(/\s/g,'');
-  let ok=true;
-  if(!email||!email.includes('@')){
-    document.getElementById('email').style.borderColor='#DC2626';
-    document.getElementById('email').focus();
-    ok=false;
+  function showError(msg) {
+    // Simple error — in production use a toast/modal
+    alert(msg);
   }
-  if(!fname){
-    if(ok){document.getElementById('fname').focus();}
-    document.getElementById('fname').style.borderColor='#DC2626';
-    ok=false;
+
+  // ─── UPSELL ───────────────────────────────────────────────
+  function addUpsell() {
+    hasUpsell = true;
+    document.getElementById('processingOverlay').classList.add('show');
+    setTimeout(function() {
+      document.getElementById('processingOverlay').classList.remove('show');
+      buildThankYou();
+      showPage('thankyouPage');
+    }, 1400);
   }
-  if(!card||card.length<12){
-    if(ok){document.getElementById('cardnum').focus();}
-    document.getElementById('cardnum').style.borderColor='#DC2626';
-    ok=false;
+
+  function skipUpsell() {
+    hasUpsell = false;
+    buildThankYou();
+    showPage('thankyouPage');
   }
-  if(!ok)return;
-  const btn=document.getElementById('coBtn');
-  btn.textContent='Processing…';
-  btn.style.opacity='.75';
-  btn.style.pointerEvents='none';
-  setTimeout(()=>showPage('pg-upsell'),1800);
-}
 
-// ── FAQ ──
-function toggleFaq(btn){
-  const item=btn.parentElement;
-  const isOpen=item.classList.contains('open');
-  document.querySelectorAll('.faq-item.open').forEach(el=>el.classList.remove('open'));
-  if(!isOpen)item.classList.add('open');
-}
+  // ─── THANK YOU ────────────────────────────────────────────
+  function buildThankYou() {
+    const container = document.getElementById('thankyouItems');
+    let html = `
+      <div class="thankyou-item">
+        <div class="thankyou-item-icon">📘</div>
+        <div>
+          <div class="thankyou-item-name">Complete Home Dog Training Guide</div>
+          <div class="thankyou-item-status">✅ Ready to Download · $67.00 CAD</div>
+        </div>
+      </div>
+    `;
+    if (hasUpsell) {
+      html += `
+        <div class="thankyou-item">
+          <div class="thankyou-item-icon">📋</div>
+          <div>
+            <div class="thankyou-item-name">Dog Training Quick-Action Pack</div>
+            <div class="thankyou-item-status">✅ Ready to Download · $37.00 CAD</div>
+          </div>
+        </div>
+      `;
+    }
+    const total = hasUpsell ? '$104.00 CAD' : '$67.00 CAD';
+    html += `
+      <div style="display:flex;justify-content:space-between;padding:12px 0 0;border-top:1px solid var(--border);margin-top:4px;">
+        <span style="font-weight:800;font-size:15px;">Total Charged</span>
+        <span style="font-weight:900;font-size:17px;color:var(--green-dark);">${total}</span>
+      </div>
+    `;
+    container.innerHTML = html;
+  }
 
-// ── MOBILE STICKY CTA ──
-(function(){
-  const bar=document.getElementById('mobBar');
-  const hero=document.querySelector('.hero');
-  if(!bar||!hero)return;
-  window.addEventListener('scroll',()=>{
-    if(document.getElementById('pg-landing').style.display==='none')return;
-    bar.classList.toggle('show',hero.getBoundingClientRect().bottom<0);
-  },{passive:true});
-})();
+  // ─── FAQ TOGGLE ───────────────────────────────────────────
+  function toggleFaq(el) {
+    el.classList.toggle('open');
+  }
 
-// ── SCROLL FADE-UPS ──
-function observeFadeUps(){
-  const obs=new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target);}
-    });
-  },{threshold:0.08,rootMargin:'0px 0px -36px 0px'});
-  document.querySelectorAll('.fu:not(.vis)').forEach(el=>obs.observe(el));
-}
-observeFadeUps();
+  // ─── STICKY CTA HIDE ON CHECKOUT ─────────────────────────
+  function goToCheckout() {
+    showPage('checkoutPage');
+    document.querySelector('.sticky-cta').style.display = 'none';
+  }
 </script>
+
 </body>
 </html>
