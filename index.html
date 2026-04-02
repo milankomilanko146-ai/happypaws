@@ -2,1091 +2,1333 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
-<title>The Home Dog Method — Train Any Dog in 21 Days</title>
-<meta name="description" content="The gentle, science-backed method 14,000+ Aussie dog owners use to train their dog at home. 15 min/day. Any breed. 60-day guarantee.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SpineRevive™ – Professional Cervical Traction & Neck Pain Relief</title>
 <style>
-/* ══════════════════════════════════════
-   DESIGN TOKENS
-══════════════════════════════════════ */
 :root{
-  --ink:#1A1209;
-  --ink2:#3D2B1A;
-  --ink3:#7A6355;
-  --cream:#FAF7F2;
-  --warm:#FFF9F2;
-  --parchment:#F3EDE3;
-  --amber:#C9621F;
-  --amber2:#E07A35;
-  --amber-pale:#FEF0E3;
-  --amber-glow:rgba(201,98,31,.12);
-  --green:#1D6B45;
-  --green2:#25894F;
-  --green-pale:#EBF7F0;
-  --red:#B91C1C;
-  --border:#E8DED2;
-  --border2:#D4C9BA;
-  --shadow:0 1px 8px rgba(26,18,9,.07);
-  --shadow-md:0 4px 20px rgba(26,18,9,.10);
-  --shadow-lg:0 12px 48px rgba(26,18,9,.15);
-  --r:12px;
-  --r-lg:18px;
+  --bg:#fff;--text:#1a1a1a;--muted:#6b7280;--border:#e5e7eb;
+  --surface:#f9fafb;--accent:#0f766e;--accent-light:#ccfbf1;
+  --cta:#0d9488;--cta-hover:#0f766e;--danger:#dc2626;
+  --radius:8px;--shadow:0 1px 3px rgba(0,0,0,.1);
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
 }
-
-/* ══════════════════════════════════════
-   RESET & BASE
-══════════════════════════════════════ */
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:'Inter',system-ui,sans-serif;background:var(--cream);color:var(--ink);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font);color:var(--text);background:var(--bg);font-size:15px;line-height:1.6;overflow-x:hidden}
 img{max-width:100%;display:block}
-button{font-family:inherit;cursor:pointer}
+a{color:var(--accent);text-decoration:none}
+button{cursor:pointer;font-family:var(--font)}
 
-.page{display:none}
-.page.on{display:block}
+/* FLOW NAV */
+.flow-nav{position:sticky;top:0;z-index:1000;background:#1e293b;display:flex;gap:0;overflow-x:auto;border-bottom:2px solid var(--accent)}
+.flow-nav button{flex:1;min-width:120px;padding:10px 16px;border:none;background:transparent;color:#94a3b8;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap;transition:.2s}
+.flow-nav button.active{color:#fff;background:rgba(13,148,136,.3);border-bottom:2px solid var(--accent)}
+.flow-nav button:hover{color:#fff;background:rgba(255,255,255,.05)}
 
-/* ══════════════════════════════════════
-   TYPOGRAPHY HELPERS
-══════════════════════════════════════ */
-.serif{font-family:'Fraunces',Georgia,serif}
-h1,h2,h3{font-family:'Fraunces',Georgia,serif;line-height:1.2}
+/* ANNOUNCEMENT */
+.announcement{background:var(--accent);color:#fff;text-align:center;padding:8px 16px;font-size:13px;font-weight:500;letter-spacing:.3px}
+.announcement strong{font-weight:700}
 
-/* ══════════════════════════════════════
-   SALES PAGE
-══════════════════════════════════════ */
+/* HEADER */
+.header{background:#fff;border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:46px;z-index:100}
+.logo{font-size:22px;font-weight:800;color:var(--text);letter-spacing:-1px}
+.logo span{color:var(--accent)}
+.header-nav{display:flex;gap:28px;font-size:14px;font-weight:500}
+.header-nav a{color:var(--text);transition:.2s}
+.header-nav a:hover{color:var(--accent)}
+.header-right{display:flex;align-items:center;gap:16px}
+.cart-btn{position:relative;background:none;border:none;font-size:20px;padding:4px}
+.cart-count{position:absolute;top:-4px;right:-8px;background:var(--accent);color:#fff;font-size:10px;font-weight:700;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center}
 
-/* Announcement bar */
-.ann{background:var(--ink);color:#fff;text-align:center;padding:9px 16px;font-size:12.5px;font-weight:500;letter-spacing:.01em}
-.ann b{color:var(--amber2)}
-.ann-live{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.1);padding:2px 9px;border-radius:20px;margin-left:6px;font-size:11px}
-.pulsedot{width:6px;height:6px;background:#4ADE80;border-radius:50%;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.85)}}
+/* PAGE */
+.page{display:none;animation:fadeIn .3s ease}
+.page.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
-/* Hero */
-.hero{background:linear-gradient(170deg,#1A0E05 0%,#2D1A0A 55%,#3D2510 100%);padding:52px 20px 80px;text-align:center;position:relative;overflow:hidden}
-.hero-wave{position:absolute;bottom:-1px;left:0;right:0;height:52px;background:var(--cream);clip-path:ellipse(55% 100% at 50% 100%)}
-.hero-inner{max-width:680px;margin:0 auto;position:relative;z-index:2}
-.hero-kicker{display:inline-block;border:1px solid rgba(201,98,31,.5);background:rgba(201,98,31,.1);color:var(--amber2);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 14px;border-radius:40px;margin-bottom:22px}
-.hero h1{font-size:clamp(30px,6.5vw,52px);color:#fff;font-weight:900;margin-bottom:16px;letter-spacing:-.02em}
-.hero h1 i{color:var(--amber2);font-style:normal}
-.hero-lead{font-size:clamp(15px,2.5vw,18px);color:rgba(255,255,255,.68);max-width:500px;margin:0 auto 26px;line-height:1.65;font-weight:400}
-.hero-stars{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:26px}
-.stars-row{color:#FBBF24;font-size:19px;letter-spacing:2px}
-.stars-meta{font-size:13px;color:rgba(255,255,255,.5)}.stars-meta b{color:rgba(255,255,255,.9)}
-.hero-cta{display:inline-block;background:var(--amber);color:#fff;padding:18px 44px;border-radius:60px;font-size:17px;font-weight:700;border:none;box-shadow:0 8px 28px rgba(201,98,31,.45);transition:all .22s;text-decoration:none;letter-spacing:.01em}
-.hero-cta:hover{background:#b0561a;transform:translateY(-2px);box-shadow:0 12px 36px rgba(201,98,31,.5)}
-.hero-cta-sub{display:block;font-size:12px;font-weight:500;opacity:.8;margin-top:4px}
-.hero-trust{margin-top:12px;color:rgba(255,255,255,.35);font-size:12px}
+/* PRODUCT PAGE */
+.product-section{max-width:1200px;margin:0 auto;padding:32px 24px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.product-gallery{position:sticky;top:120px}
+.main-image{background:linear-gradient(135deg,#f0fdfa,#ccfbf1);border-radius:12px;aspect-ratio:1;display:flex;align-items:center;justify-content:center;margin-bottom:12px;border:1px solid var(--border);overflow:hidden}
+.main-image .product-visual{text-align:center;padding:32px}
+.main-image .product-visual .icon{font-size:80px;display:block;margin-bottom:12px}
+.main-image .product-visual .label{font-size:13px;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:1px}
+.thumb-row{display:flex;gap:8px}
+.thumb{width:72px;height:72px;border-radius:8px;border:2px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:28px;background:var(--surface);transition:.2s}
+.thumb.active,.thumb:hover{border-color:var(--accent)}
 
-/* Trust strip */
-.trust-strip{background:var(--warm);border-bottom:1px solid var(--border);padding:14px 20px}
-.trust-strip-inner{max-width:700px;margin:0 auto;display:flex;justify-content:center;align-items:center;gap:24px;flex-wrap:wrap}
-.trust-item{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--ink3);font-weight:500}
-.trust-icon{font-size:15px}
+/* PRODUCT INFO */
+.product-info{padding-top:8px}
+.breadcrumb{font-size:12px;color:var(--muted);margin-bottom:12px}
+.product-title{font-size:28px;font-weight:700;line-height:1.3;margin-bottom:8px}
+.rating-row{display:flex;align-items:center;gap:8px;margin-bottom:16px;font-size:14px}
+.stars{color:#f59e0b;letter-spacing:1px}
+.rating-text{color:var(--muted)}
+.price-row{display:flex;align-items:baseline;gap:12px;margin-bottom:20px}
+.price{font-size:32px;font-weight:700;color:var(--text)}
+.compare-price{font-size:18px;color:var(--muted);text-decoration:line-through}
+.save-badge{background:#fef2f2;color:var(--danger);font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px}
+.product-desc{color:var(--muted);margin-bottom:20px;font-size:14px;line-height:1.7}
+.feature-list{list-style:none;margin-bottom:24px}
+.feature-list li{padding:6px 0;font-size:14px;display:flex;align-items:center;gap:8px}
+.feature-list li::before{content:"✓";color:var(--accent);font-weight:700;font-size:16px}
+.variant-section{margin-bottom:20px}
+.variant-label{font-size:13px;font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
+.variant-options{display:flex;gap:8px;flex-wrap:wrap}
+.variant-opt{padding:8px 18px;border:2px solid var(--border);border-radius:var(--radius);font-size:13px;font-weight:500;background:#fff;transition:.2s;cursor:pointer}
+.variant-opt.selected{border-color:var(--accent);background:var(--accent-light);color:var(--accent)}
+.qty-row{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.qty-control{display:flex;align-items:center;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.qty-control button{width:40px;height:40px;border:none;background:var(--surface);font-size:18px;transition:.1s}
+.qty-control button:hover{background:var(--border)}
+.qty-control input{width:50px;text-align:center;border:none;border-left:1px solid var(--border);border-right:1px solid var(--border);font-size:15px;font-weight:600;height:40px}
+.btn-atc{width:100%;padding:16px;background:var(--cta);color:#fff;border:none;border-radius:var(--radius);font-size:16px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;transition:.2s;margin-bottom:12px}
+.btn-atc:hover{background:var(--cta-hover);transform:translateY(-1px);box-shadow:0 4px 12px rgba(13,148,136,.3)}
+.btn-buy-now{width:100%;padding:14px;background:transparent;color:var(--text);border:2px solid var(--text);border-radius:var(--radius);font-size:14px;font-weight:600;transition:.2s;margin-bottom:20px}
+.btn-buy-now:hover{background:var(--text);color:#fff}
+.trust-badges{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}
+.trust-badge{text-align:center;padding:12px 8px;background:var(--surface);border-radius:var(--radius);font-size:11px;color:var(--muted);line-height:1.4}
+.trust-badge .tb-icon{font-size:22px;display:block;margin-bottom:4px}
+.trust-badge strong{color:var(--text);display:block}
+.guarantee-box{border:2px solid var(--accent-light);background:linear-gradient(135deg,#f0fdfa,#fff);border-radius:var(--radius);padding:16px;display:flex;align-items:center;gap:12px;margin-bottom:24px}
+.guarantee-box .g-icon{font-size:36px}
+.guarantee-box .g-text{font-size:13px;line-height:1.5}
+.guarantee-box .g-text strong{color:var(--accent);display:block;font-size:14px}
 
-/* Containers */
-.wrap{max-width:700px;margin:0 auto;padding:0 20px}
-.wrap-sm{max-width:560px;margin:0 auto;padding:0 20px}
+/* SECTIONS */
+.section{max-width:1200px;margin:0 auto;padding:48px 24px}
+.section-header{text-align:center;margin-bottom:32px}
+.section-header h2{font-size:26px;font-weight:700;margin-bottom:8px}
+.section-header p{color:var(--muted);font-size:15px}
+.divider{height:1px;background:var(--border);max-width:1200px;margin:0 auto}
 
-/* Section pads */
-.sec{padding:64px 20px}
-.sec-sm{padding:44px 20px}
+/* UPSELL CARDS */
+.upsell-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.upsell-card{border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:.2s;background:#fff}
+.upsell-card:hover{box-shadow:0 8px 24px rgba(0,0,0,.08);transform:translateY(-2px)}
+.upsell-img{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:56px;position:relative}
+.upsell-img.c1{background:linear-gradient(135deg,#eff6ff,#dbeafe)}
+.upsell-img.c2{background:linear-gradient(135deg,#fef3c7,#fde68a)}
+.upsell-img.c3{background:linear-gradient(135deg,#fce7f3,#fbcfe8)}
+.upsell-card-body{padding:16px}
+.upsell-card-body h3{font-size:15px;font-weight:600;margin-bottom:4px}
+.upsell-card-body .up-price{font-size:18px;font-weight:700;color:var(--accent);margin-bottom:4px}
+.upsell-card-body .up-desc{font-size:12px;color:var(--muted);margin-bottom:12px}
+.btn-add-upsell{width:100%;padding:10px;background:#fff;border:2px solid var(--cta);color:var(--cta);border-radius:var(--radius);font-size:13px;font-weight:600;transition:.2s}
+.btn-add-upsell:hover{background:var(--cta);color:#fff}
 
-/* Section heading */
-.sec-tag{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
-.sec-h{font-size:clamp(24px,4.5vw,38px);font-weight:900;margin-bottom:12px;letter-spacing:-.02em}
-.sec-h i{color:var(--amber);font-style:normal}
-.sec-sub{font-size:16px;color:var(--ink3);margin-bottom:36px;max-width:480px;line-height:1.65}
+/* BUNDLES */
+.bundle-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.bundle-card{border:2px solid var(--border);border-radius:12px;padding:24px;text-align:center;position:relative;transition:.2s;background:#fff}
+.bundle-card:hover{border-color:var(--accent);box-shadow:0 8px 24px rgba(13,148,136,.1)}
+.bundle-card.popular{border-color:var(--accent);background:linear-gradient(to bottom,#f0fdfa,#fff)}
+.bundle-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:11px;font-weight:700;padding:4px 16px;border-radius:20px;white-space:nowrap;text-transform:uppercase;letter-spacing:.5px}
+.bundle-name{font-size:18px;font-weight:700;margin:8px 0}
+.bundle-items{list-style:none;text-align:left;margin:16px 0;font-size:13px}
+.bundle-items li{padding:6px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:6px}
+.bundle-items li:last-child{border-bottom:none}
+.bundle-items li::before{content:"✓";color:var(--accent);font-weight:700}
+.bundle-pricing{margin:16px 0}
+.bundle-original{font-size:14px;color:var(--muted);text-decoration:line-through}
+.bundle-price{font-size:28px;font-weight:700;color:var(--accent)}
+.bundle-save{background:var(--accent-light);color:var(--accent);font-size:12px;font-weight:700;padding:4px 12px;border-radius:20px;display:inline-block;margin-top:4px}
+.btn-bundle{width:100%;padding:12px;background:var(--cta);color:#fff;border:none;border-radius:var(--radius);font-size:14px;font-weight:700;transition:.2s;margin-top:12px}
+.btn-bundle:hover{background:var(--cta-hover)}
+.bundle-card.popular .btn-bundle{padding:14px;font-size:15px}
 
-/* Pain section */
-.pain-bg{background:linear-gradient(180deg,var(--cream) 0%,var(--warm) 100%)}
-.pain-list{list-style:none}
-.pain-item{display:flex;align-items:flex-start;gap:14px;padding:16px 0;border-bottom:1px solid var(--border)}
-.pain-item:last-child{border:none}
-.pain-emoji{font-size:22px;flex-shrink:0;margin-top:2px}
-.pain-text{font-size:16px;line-height:1.65;color:var(--ink2)}.pain-text b{color:var(--ink)}
-.truth-box{background:var(--amber-pale);border:1px solid rgba(201,98,31,.25);border-radius:var(--r);padding:20px 24px;margin-top:28px;text-align:center;font-size:15px;font-weight:600;color:var(--ink2);line-height:1.6}
-.truth-box b{color:var(--amber)}
-
-/* Story */
-.story-wrap{background:#fff;border-radius:var(--r-lg);padding:36px 32px;box-shadow:var(--shadow-md);border:1px solid var(--border)}
-.story-wrap p{font-size:16px;line-height:1.85;margin-bottom:16px;color:var(--ink2)}
-.story-wrap p:last-of-type{margin-bottom:0}
-.story-pull{background:var(--amber-pale);border-left:4px solid var(--amber);border-radius:0 var(--r) var(--r) 0;padding:18px 22px;margin:24px 0;font-size:17px;font-family:'Fraunces',serif;font-style:italic;line-height:1.5;color:var(--ink)}
-.story-author{display:flex;align-items:center;gap:12px;margin-top:26px;padding-top:22px;border-top:1px solid var(--border)}
-.story-avatar{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--amber),var(--amber2));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:15px;font-family:'Fraunces',serif;flex-shrink:0}
-.story-name{font-weight:700;font-size:14px}
-.story-role{font-size:12px;color:var(--ink3)}
-
-/* What's inside */
-.inside-bg{background:var(--parchment)}
-.module-list{display:flex;flex-direction:column;gap:8px}
-.module{display:flex;align-items:flex-start;gap:14px;background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:18px 20px;transition:border-color .2s,box-shadow .2s}
-.module:hover{border-color:var(--amber);box-shadow:var(--shadow)}
-.module-num{width:30px;height:30px;border-radius:50%;background:var(--amber);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;flex-shrink:0;font-family:'Fraunces',serif}
-.module-title{font-weight:700;font-size:15px;margin-bottom:3px;color:var(--ink)}
-.module-desc{font-size:13px;color:var(--ink3);line-height:1.5}
-
-/* Value stack */
-.value-stack{background:linear-gradient(170deg,#1A0E05,#2D1A0A);border-radius:var(--r-lg);padding:36px 30px}
-.value-stack h3{font-family:'Fraunces',serif;font-size:22px;color:var(--amber2);margin-bottom:4px;font-weight:700}
-.value-stack .vs-sub{font-size:13px;color:rgba(255,255,255,.4);margin-bottom:22px}
-.vstack-item{display:flex;align-items:flex-start;gap:12px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.07)}
-.vstack-item:last-child{border-bottom:none}
-.vstack-check{width:22px;height:22px;background:var(--amber);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-size:11px;color:#fff;font-weight:700}
-.vstack-name{font-size:14px;color:rgba(255,255,255,.9);flex:1;line-height:1.5}.vstack-name b{color:#fff;display:block;font-size:15px;margin-bottom:1px}
-.vstack-val{font-size:13px;color:rgba(255,255,255,.35);white-space:nowrap;text-decoration:line-through}
-.vstack-total{margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.15);display:flex;justify-content:space-between;align-items:center}
-.vstack-total span{font-size:13px;color:rgba(255,255,255,.45)}
-.vstack-total strong{font-family:'Fraunces',serif;font-size:22px;color:#fff}
-
-/* Imagine / vision */
-.vision-bg{background:linear-gradient(170deg,#0D2018,#1D3A28)}
-.checklist{list-style:none}
-.check-item{display:flex;align-items:flex-start;gap:12px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.07)}
-.check-item:last-child{border-bottom:none}
-.check-box{width:24px;height:24px;background:var(--green2);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
-.check-box svg{width:12px;height:12px}
-.check-text{font-size:16px;color:rgba(255,255,255,.82);line-height:1.55}.check-text b{color:#fff}
-
-/* Reviews */
-.reviews-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-@media(max-width:540px){.reviews-grid{grid-template-columns:1fr}}
-.review-card{background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);padding:22px;box-shadow:var(--shadow)}
-.review-stars{color:#F59E0B;font-size:14px;letter-spacing:2px;margin-bottom:10px}
-.review-text{font-size:14.5px;line-height:1.7;color:var(--ink2);margin-bottom:16px}
-.review-author{display:flex;align-items:center;gap:10px}
-.review-av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:12px;flex-shrink:0}
-.review-name{font-weight:700;font-size:13px}
-.review-loc{font-size:11.5px;color:var(--ink3)}
-.verified{display:inline-block;background:var(--green-pale);color:var(--green);font-size:10px;font-weight:700;padding:1px 6px;border-radius:10px;margin-top:1px}
-
-/* Comparison table */
-.vs-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow-md);font-size:14px}
-.vs-table th{padding:13px 12px;font-weight:700;font-size:12.5px}
-.vs-table th:first-child{background:#F5F0EA;text-align:left;width:34%}
-.vs-table th:nth-child(2){background:#FEE2E2;color:#991B1B;text-align:center}
-.vs-table th:nth-child(3){background:var(--amber);color:#fff;text-align:center}
-.vs-table td{padding:11px 12px;border-bottom:1px solid #EDE8E0;text-align:center;background:#fff;font-size:13.5px}
-.vs-table td:first-child{text-align:left;font-weight:600;background:#FAFAF7;color:var(--ink2)}
-.vs-table tr:last-child td{border-bottom:none}
-.vs-good{color:var(--green);font-weight:700}
-.vs-bad{color:var(--red)}
-
-/* Guarantee */
-.guarantee-box{display:flex;gap:18px;align-items:flex-start;background:#fff;border:2px solid var(--green2);border-radius:var(--r-lg);padding:28px 26px;box-shadow:var(--shadow)}
-.gu-seal{width:64px;height:64px;background:var(--green2);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-direction:column;color:#fff;flex-shrink:0}
-.gu-days{font-family:'Fraunces',serif;font-size:20px;font-weight:900;line-height:1}
-.gu-label{font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
-.gu-text h3{font-family:'Fraunces',serif;font-size:18px;font-weight:700;margin-bottom:5px}
-.gu-text p{font-size:14px;color:var(--ink3);line-height:1.65}
-@media(max-width:480px){.guarantee-box{flex-direction:column;align-items:center;text-align:center}}
-
-/* Pricing section */
-.price-dark{background:linear-gradient(170deg,#1A0E05,#0D0802);padding:72px 20px}
-.price-card{background:#fff;border-radius:var(--r-lg);max-width:460px;margin:0 auto;overflow:hidden;box-shadow:var(--shadow-lg)}
-.price-card-head{background:var(--amber);padding:24px;text-align:center}
-.price-card-head h3{font-family:'Fraunces',serif;color:#fff;font-size:20px;font-weight:700;margin-bottom:4px}
-.price-card-head p{color:rgba(255,255,255,.8);font-size:13px}
-.price-card-body{padding:32px 28px}
-.price-was{color:var(--ink3);text-decoration:line-through;font-size:15px;margin-bottom:2px}
-.price-now{font-family:'Fraunces',serif;font-size:52px;font-weight:900;color:var(--ink);line-height:1;margin-bottom:4px}
-.price-now sup{font-size:24px;position:relative;top:-10px}
-.price-now sub{font-size:16px;font-weight:600;color:var(--ink3)}
-.price-save{display:inline-block;background:var(--green-pale);color:var(--green);font-size:13px;font-weight:700;padding:4px 13px;border-radius:20px;margin-bottom:22px}
-.price-list{list-style:none;margin-bottom:24px;text-align:left}
-.price-list li{display:flex;align-items:center;gap:9px;padding:7px 0;font-size:14px;font-weight:500;border-bottom:1px solid #F5F0EA;color:var(--ink2)}
-.price-list li:last-child{border:none}
-.price-list .pk{color:var(--green2);font-size:15px}
-.price-btn{display:block;width:100%;background:var(--green2);color:#fff;padding:18px;border-radius:60px;font-size:17px;font-weight:700;border:none;text-align:center;box-shadow:0 6px 22px rgba(37,137,79,.3);transition:all .22s;letter-spacing:.01em}
-.price-btn:hover{background:var(--green);transform:translateY(-2px);box-shadow:0 10px 30px rgba(37,137,79,.4)}
-.price-btn-sub{font-weight:500;font-size:12px;opacity:.85}
-.price-footnotes{display:flex;justify-content:center;gap:18px;margin-top:16px;flex-wrap:wrap}
-.price-footnotes span{font-size:11.5px;color:var(--ink3)}
-
-/* Mid CTA bar */
-.mid-cta{text-align:center;padding:36px 20px;background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.mid-cta p{font-size:15px;color:var(--ink3);margin-bottom:14px}.mid-cta p b{color:var(--ink)}
-
-/* Countdown */
-.countdown{background:rgba(255,255,255,.07);border:1px solid rgba(201,98,31,.3);border-radius:var(--r);padding:16px 22px;text-align:center;margin-bottom:28px}
-.cd-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber2);margin-bottom:8px}
-.cd-digits{font-family:'Fraunces',serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:.05em}
-.cd-sub{font-size:12px;color:rgba(255,255,255,.4);margin-top:4px}
+/* REVIEWS */
+.review-summary{display:flex;align-items:center;gap:24px;margin-bottom:32px;padding:24px;background:var(--surface);border-radius:12px}
+.review-big-num{font-size:48px;font-weight:700}
+.review-meta .stars{font-size:20px}
+.review-meta p{font-size:13px;color:var(--muted)}
+.review-list{display:grid;gap:20px}
+.review-item{padding:20px;border:1px solid var(--border);border-radius:12px}
+.review-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.review-author{font-weight:600;font-size:14px}
+.review-verified{font-size:11px;color:var(--accent);background:var(--accent-light);padding:2px 8px;border-radius:10px}
+.review-stars{color:#f59e0b;font-size:14px;margin-bottom:8px}
+.review-text{font-size:14px;color:#4b5563;line-height:1.6}
+.review-date{font-size:12px;color:var(--muted);margin-top:8px}
 
 /* FAQ */
-.faq-item{background:#fff;border:1px solid var(--border);border-radius:var(--r);margin-bottom:8px;overflow:hidden}
-.faq-q{padding:17px 22px;font-size:15px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;color:var(--ink)}
-.faq-q:hover{background:var(--warm)}
-.faq-arrow{font-size:22px;color:var(--amber);transition:transform .28s;font-weight:300;line-height:1}
-.faq-item.open .faq-arrow{transform:rotate(45deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .32s ease}
-.faq-a-inner{padding:0 22px 18px;font-size:14px;color:var(--ink3);line-height:1.7}
-.faq-item.open .faq-a{max-height:300px}
+.faq-item{border:1px solid var(--border);border-radius:var(--radius);margin-bottom:8px;overflow:hidden}
+.faq-q{padding:16px 20px;font-weight:600;font-size:14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:#fff;transition:.1s}
+.faq-q:hover{background:var(--surface)}
+.faq-a{padding:0 20px 16px;font-size:14px;color:var(--muted);line-height:1.7;display:none}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-q{background:var(--surface)}
 
-/* Final CTA */
-.final-cta{background:linear-gradient(170deg,#2D1A0A,#1A0E05);text-align:center;padding:72px 20px}
-.final-cta h2{font-size:clamp(26px,4.5vw,40px);color:#fff;font-weight:900;margin-bottom:12px;letter-spacing:-.02em}
-.final-cta h2 i{color:var(--amber2);font-style:normal}
-.final-cta p{color:rgba(255,255,255,.5);font-size:16px;margin-bottom:32px;max-width:420px;margin-left:auto;margin-right:auto}
+/* CART DRAWER */
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:999;display:none;animation:fadeIn .2s}
+.cart-drawer{position:fixed;top:0;right:0;width:420px;max-width:90vw;height:100vh;background:#fff;z-index:1000;display:none;flex-direction:column;box-shadow:-4px 0 24px rgba(0,0,0,.15);animation:slideIn .3s ease}
+@keyframes slideIn{from{transform:translateX(100%)}to{transform:translateX(0)}}
+.cart-drawer.open{display:flex}
+.cart-overlay.open{display:block}
+.cart-header{padding:20px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.cart-header h3{font-size:18px;font-weight:700}
+.cart-close{background:none;border:none;font-size:24px;color:var(--muted)}
+.cart-body{flex:1;overflow-y:auto;padding:20px}
+.cart-empty{text-align:center;padding:40px 20px;color:var(--muted)}
+.cart-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)}
+.cart-item-img{width:64px;height:64px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0}
+.cart-item-info{flex:1}
+.cart-item-info h4{font-size:13px;font-weight:600}
+.cart-item-info .ci-price{font-size:14px;font-weight:700;color:var(--accent)}
+.cart-item-remove{background:none;border:none;color:var(--muted);font-size:12px;text-decoration:underline;cursor:pointer}
+.cart-upsell-section{margin-top:20px;padding:16px;background:var(--surface);border-radius:var(--radius)}
+.cart-upsell-section h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px;color:var(--accent)}
+.cart-upsell-item{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.cart-upsell-item:last-child{border-bottom:none}
+.cart-upsell-item .cui-icon{font-size:28px}
+.cart-upsell-item .cui-info{flex:1;font-size:12px}
+.cart-upsell-item .cui-info strong{display:block;font-size:13px}
+.cart-upsell-item .cui-info .cui-price{color:var(--accent);font-weight:700}
+.btn-cart-add{padding:6px 14px;background:var(--cta);color:#fff;border:none;border-radius:6px;font-size:11px;font-weight:700;white-space:nowrap}
+.cart-footer{padding:20px;border-top:1px solid var(--border);background:#fff}
+.cart-totals{margin-bottom:12px}
+.cart-totals .ct-row{display:flex;justify-content:space-between;font-size:14px;margin-bottom:6px}
+.cart-totals .ct-row.total{font-size:18px;font-weight:700;padding-top:8px;border-top:1px solid var(--border)}
+.free-ship-bar{background:var(--accent-light);border-radius:6px;padding:8px 12px;font-size:12px;color:var(--accent);text-align:center;font-weight:500;margin-bottom:12px}
+.btn-checkout{width:100%;padding:14px;background:var(--cta);color:#fff;border:none;border-radius:var(--radius);font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;transition:.2s}
+.btn-checkout:hover{background:var(--cta-hover)}
 
-/* Footer */
-.foot{background:#0D0802;color:rgba(255,255,255,.25);text-align:center;padding:24px 20px;font-size:11.5px}
-.foot a{color:rgba(255,255,255,.25);text-decoration:underline}
+/* CHECKOUT PAGE */
+.checkout-layout{max-width:1100px;margin:0 auto;padding:32px 24px;display:grid;grid-template-columns:1fr 400px;gap:40px;align-items:start}
+.checkout-form h2{font-size:20px;font-weight:700;margin-bottom:20px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:13px;font-weight:600;margin-bottom:4px;color:var(--text)}
+.form-group input,.form-group select{width:100%;padding:12px;border:1px solid var(--border);border-radius:var(--radius);font-size:14px;font-family:var(--font)}
+.form-group input:focus,.form-group select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(13,148,136,.1)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.order-bump{border:2px dashed var(--accent);border-radius:12px;padding:16px;margin:24px 0;background:linear-gradient(135deg,#f0fdfa,#fff)}
+.order-bump-header{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.order-bump-header input[type=checkbox]{width:18px;height:18px;accent-color:var(--accent)}
+.order-bump-header label{font-weight:700;font-size:14px;cursor:pointer}
+.order-bump-body{font-size:13px;color:var(--muted);line-height:1.6;padding-left:28px}
+.order-bump-body .ob-price{color:var(--accent);font-weight:700;font-size:15px}
+.checkout-sidebar{position:sticky;top:120px}
+.order-summary{border:1px solid var(--border);border-radius:12px;padding:24px;background:var(--surface)}
+.order-summary h3{font-size:16px;font-weight:700;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.os-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px}
+.os-item:last-of-type{border-bottom:none}
+.os-item .osi-img{width:48px;height:48px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:22px;background:#fff;border:1px solid var(--border);flex-shrink:0}
+.os-item .osi-name{flex:1;font-weight:500}
+.os-item .osi-price{font-weight:700}
+.os-totals{margin-top:16px;padding-top:12px;border-top:2px solid var(--border)}
+.os-totals .ost-row{display:flex;justify-content:space-between;font-size:14px;margin-bottom:6px}
+.os-totals .ost-row.grand{font-size:20px;font-weight:700;margin-top:8px;padding-top:8px;border-top:1px solid var(--border);color:var(--accent)}
+.btn-complete{width:100%;padding:16px;background:var(--cta);color:#fff;border:none;border-radius:var(--radius);font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-top:16px;transition:.2s}
+.btn-complete:hover{background:var(--cta-hover)}
+.secure-note{text-align:center;font-size:11px;color:var(--muted);margin-top:12px;display:flex;align-items:center;justify-content:center;gap:4px}
 
-/* Floating bar */
-.float-bar{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:2px solid var(--amber);padding:10px 16px 10px;display:flex;align-items:center;justify-content:space-between;gap:12px;z-index:999;box-shadow:0 -4px 20px rgba(0,0,0,.1);transform:translateY(100%);transition:transform .3s ease}
-.float-bar.show{transform:translateY(0)}
-.float-bar-left{display:flex;flex-direction:column}
-.float-bar-name{font-weight:700;font-size:13px;color:var(--ink)}
-.float-bar-price{font-family:'Fraunces',serif;font-size:20px;color:var(--amber);font-weight:700}
-.float-bar-btn{background:var(--amber);color:#fff;border:none;padding:11px 24px;border-radius:60px;font-weight:700;font-size:14px;white-space:nowrap;transition:background .2s}
-.float-bar-btn:hover{background:#b0561a}
-@media(max-width:400px){.float-bar{padding:8px 12px}.float-bar-btn{padding:10px 16px;font-size:13px}}
+/* POST-PURCHASE */
+.post-purchase{max-width:600px;margin:0 auto;padding:40px 24px;text-align:center}
+.pp-badge{display:inline-block;background:var(--accent);color:#fff;font-size:12px;font-weight:700;padding:6px 20px;border-radius:20px;text-transform:uppercase;letter-spacing:1px;margin-bottom:20px}
+.pp-title{font-size:28px;font-weight:700;margin-bottom:8px}
+.pp-subtitle{color:var(--muted);font-size:15px;margin-bottom:24px}
+.pp-product{border:2px solid var(--accent);border-radius:16px;padding:24px;background:linear-gradient(135deg,#f0fdfa,#fff);margin-bottom:24px}
+.pp-product-img{font-size:64px;margin-bottom:12px}
+.pp-product h3{font-size:20px;font-weight:700;margin-bottom:8px}
+.pp-product .pp-desc{font-size:13px;color:var(--muted);margin-bottom:16px}
+.pp-pricing{display:flex;align-items:baseline;justify-content:center;gap:12px;margin-bottom:16px}
+.pp-pricing .pp-old{font-size:18px;color:var(--muted);text-decoration:line-through}
+.pp-pricing .pp-new{font-size:32px;font-weight:700;color:var(--accent)}
+.pp-pricing .pp-save{background:#fef2f2;color:var(--danger);font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px}
+.btn-pp-accept{width:100%;padding:16px;background:var(--cta);color:#fff;border:none;border-radius:var(--radius);font-size:16px;font-weight:700;margin-bottom:12px;transition:.2s}
+.btn-pp-accept:hover{background:var(--cta-hover)}
+.btn-pp-decline{background:none;border:none;color:var(--muted);font-size:13px;text-decoration:underline;cursor:pointer}
+.pp-timer{font-size:14px;color:var(--danger);font-weight:600;margin-bottom:16px}
+.pp-urgency{font-size:12px;color:var(--muted);margin-top:8px}
 
-/* ══════════════════════════════════════
-   CHECKOUT PAGE
-══════════════════════════════════════ */
-.co-page{background:#F2EDE5;min-height:100vh}
-.co-header{background:var(--ink);padding:14px 20px;display:flex;align-items:center;justify-content:center;gap:14px}
-.co-logo{font-family:'Fraunces',serif;color:#fff;font-size:17px;font-weight:700}
-.co-secure{font-size:12px;color:rgba(255,255,255,.4);display:flex;align-items:center;gap:4px}
-.co-steps{display:flex;align-items:center;justify-content:center;gap:4px;margin-top:10px}
-.co-step{display:flex;align-items:center;gap:5px;font-size:11px;color:rgba(255,255,255,.35);font-weight:600}
-.co-step.active{color:var(--amber2)}
-.co-step-dot{width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700}
-.co-step.active .co-step-dot{background:var(--amber);color:#fff}
-.co-step.done .co-step-dot{background:var(--green2);color:#fff}
-.co-step-line{width:24px;height:1px;background:rgba(255,255,255,.1)}
+/* THANK YOU */
+.thankyou{max-width:650px;margin:0 auto;padding:40px 24px;text-align:center}
+.ty-check{font-size:64px;margin-bottom:16px}
+.ty-title{font-size:28px;font-weight:700;margin-bottom:8px;color:var(--accent)}
+.ty-subtitle{color:var(--muted);font-size:15px;margin-bottom:32px}
+.ty-order-box{border:1px solid var(--border);border-radius:12px;padding:24px;text-align:left;margin-bottom:24px}
+.ty-order-box h3{font-size:16px;font-weight:700;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.ty-row{display:flex;justify-content:space-between;padding:8px 0;font-size:14px}
+.ty-row.ty-total{font-weight:700;font-size:16px;border-top:2px solid var(--border);margin-top:8px;padding-top:12px;color:var(--accent)}
 
-.co-body{max-width:860px;margin:0 auto;padding:24px 16px 80px;display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:start}
-@media(max-width:680px){.co-body{grid-template-columns:1fr}.co-summary{order:-1}}
+/* ANALYTICS */
+.analytics{max-width:1100px;margin:0 auto;padding:40px 24px}
+.analytics h2{font-size:24px;font-weight:700;margin-bottom:24px;display:flex;align-items:center;gap:8px}
+.analytics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center}
+.stat-card .sc-value{font-size:28px;font-weight:700;color:var(--accent)}
+.stat-card .sc-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-top:4px}
+.data-table{width:100%;border-collapse:collapse;margin-bottom:32px;font-size:13px}
+.data-table th{background:var(--surface);text-align:left;padding:12px;border:1px solid var(--border);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.5px}
+.data-table td{padding:12px;border:1px solid var(--border)}
+.data-table tr:hover td{background:var(--surface)}
+.margin-bar{height:8px;border-radius:4px;background:var(--border)}
+.margin-bar .fill{height:100%;border-radius:4px;background:var(--accent)}
+.analytics-section{margin-bottom:32px}
+.analytics-section h3{font-size:18px;font-weight:700;margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid var(--accent)}
+.projection-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.proj-card{border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center;background:#fff}
+.proj-card h4{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px}
+.proj-card .proj-spend{font-size:14px;color:var(--muted);margin-bottom:4px}
+.proj-card .proj-revenue{font-size:24px;font-weight:700;color:var(--accent)}
+.proj-card .proj-profit{font-size:18px;font-weight:700;color:#16a34a;margin-top:4px}
+.proj-card .proj-detail{font-size:12px;color:var(--muted);margin-top:8px}
+.keyword-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;background:var(--surface);border:1px solid var(--border);border-radius:20px;font-size:12px;margin:4px}
 
-/* Form panel */
-.co-form{background:#fff;border-radius:var(--r-lg);padding:28px;box-shadow:var(--shadow-md)}
-.co-form h2{font-family:'Fraunces',serif;font-size:20px;font-weight:700;margin-bottom:22px;padding-bottom:14px;border-bottom:1px solid var(--border)}
-.form-section-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin:18px 0 12px}
-.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
-.field-row.full{grid-template-columns:1fr}
-@media(max-width:480px){.field-row{grid-template-columns:1fr}}
-.field{margin-bottom:12px}
-.field label{font-size:11.5px;font-weight:600;color:var(--ink3);display:block;margin-bottom:5px;letter-spacing:.03em}
-.field input,.field select{width:100%;padding:11px 13px;border:1.5px solid var(--border);border-radius:8px;font-size:15px;font-family:'Inter',sans-serif;background:#FAFAF8;color:var(--ink);transition:border .15s,box-shadow .15s;-webkit-appearance:none}
-.field input:focus,.field select:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 3px rgba(201,98,31,.08);background:#fff}
-.field input::placeholder{color:#B8ADA0}
-.card-icons{display:flex;gap:5px;margin-bottom:10px}
-.card-badge{background:#F2EDE5;border-radius:4px;padding:3px 7px;font-size:10px;font-weight:700;color:var(--ink3)}
-.card-row{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px}
-@media(max-width:380px){.card-row{grid-template-columns:1fr 1fr}}
+/* FOOTER */
+.footer{background:#111827;color:#9ca3af;padding:48px 24px 24px;margin-top:48px}
+.footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-bottom:32px}
+.footer h4{color:#fff;font-size:14px;margin-bottom:16px;text-transform:uppercase;letter-spacing:.5px}
+.footer ul{list-style:none}
+.footer ul li{margin-bottom:8px;font-size:13px}
+.footer a{color:#9ca3af;transition:.2s}
+.footer a:hover{color:#fff}
+.footer-bottom{max-width:1200px;margin:0 auto;padding-top:24px;border-top:1px solid #374151;display:flex;justify-content:space-between;font-size:12px}
 
-/* Express */
-.express-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px}
-.express-btn{padding:11px;border-radius:8px;border:1.5px solid var(--border);background:#fff;cursor:pointer;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:6px;transition:border-color .15s,box-shadow .15s;color:var(--ink)}
-.express-btn:hover{border-color:var(--ink2);box-shadow:var(--shadow)}
-.divider-or{text-align:center;font-size:12px;color:var(--ink3);margin:14px 0;position:relative}
-.divider-or::before,.divider-or::after{content:'';position:absolute;top:50%;width:44%;height:1px;background:var(--border)}
-.divider-or::before{left:0}.divider-or::after{right:0}
-
-/* Bump */
-.order-bump{border:2px dashed var(--amber);border-radius:var(--r);overflow:hidden;margin:16px 0}
-.bump-head{background:var(--amber);color:#fff;padding:8px 14px;font-size:12.5px;font-weight:700}
-.bump-body{padding:14px 16px;background:var(--amber-pale);display:flex;gap:10px;align-items:flex-start}
-.bump-check{width:18px;height:18px;accent-color:var(--amber);cursor:pointer;flex-shrink:0;margin-top:2px}
-.bump-text strong{font-size:13.5px;font-weight:700;display:block;margin-bottom:3px;color:var(--ink)}
-.bump-text p{font-size:12.5px;color:var(--ink3);line-height:1.5}
-.bump-price{color:var(--amber);font-weight:800;font-size:13px;margin-top:4px}
-
-/* Pay button */
-.pay-btn{display:block;width:100%;background:var(--green2);color:#fff;padding:17px;border-radius:60px;font-size:17px;font-weight:700;border:none;margin-top:18px;box-shadow:0 6px 22px rgba(37,137,79,.28);transition:all .22s;letter-spacing:.01em}
-.pay-btn:hover{background:var(--green);transform:translateY(-1px);box-shadow:0 10px 28px rgba(37,137,79,.38)}
-.pay-secure{text-align:center;font-size:11.5px;color:var(--ink3);margin-top:10px;display:flex;align-items:center;justify-content:center;gap:5px}
-.pay-logos{display:flex;justify-content:center;gap:12px;margin-top:12px}
-.pay-logos span{font-size:10.5px;color:var(--ink3);font-weight:600}
-
-/* Summary panel */
-.co-summary{background:#fff;border-radius:var(--r-lg);padding:22px;box-shadow:var(--shadow-md);position:sticky;top:16px}
-.co-summary h3{font-family:'Fraunces',serif;font-size:16px;font-weight:700;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border)}
-.sum-item{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;padding:9px 0;border-bottom:1px solid var(--border);font-size:13.5px}
-.sum-item:last-of-type{border:none}
-.sum-item-name{color:var(--ink2);flex:1;line-height:1.4}
-.sum-item-price{font-weight:700;color:var(--ink);white-space:nowrap}
-.sum-free{color:var(--green2)!important}
-.sum-total{display:flex;justify-content:space-between;font-weight:800;font-size:17px;padding-top:12px;border-top:2px solid var(--ink);margin-top:4px}
-.sum-guarantee{background:var(--green-pale);border-radius:8px;padding:10px 12px;margin-top:12px;font-size:12px;color:var(--green);font-weight:600;text-align:center;line-height:1.5}
-.urgency-chip{background:#FFF7ED;border:1px solid #FED7AA;border-radius:8px;padding:9px 12px;margin-bottom:14px;font-size:12.5px;color:#92400E;display:flex;align-items:center;gap:6px;font-weight:500}
-
-/* ══════════════════════════════════════
-   UPSELL PAGE
-══════════════════════════════════════ */
-.up-page{background:var(--cream)}
-.up-header{background:var(--green2);text-align:center;padding:14px 20px}
-.up-header p{color:rgba(255,255,255,.8);font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px}
-.up-header h2{color:#fff;font-size:15px;font-weight:600}
-.up-body{max-width:620px;margin:0 auto;padding:44px 20px 90px;text-align:center}
-.up-kicker{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
-.up-body h1{font-size:clamp(24px,4.5vw,36px);font-weight:900;margin-bottom:12px;letter-spacing:-.02em}
-.up-body h1 i{color:var(--amber);font-style:normal}
-.up-lead{font-size:16px;color:var(--ink3);margin-bottom:32px;max-width:440px;margin-left:auto;margin-right:auto;line-height:1.65}
-.up-card{background:#fff;border:2px solid var(--amber);border-radius:var(--r-lg);padding:30px;margin-bottom:22px;box-shadow:var(--shadow-lg);text-align:left}
-.up-card-head{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding-bottom:18px;border-bottom:1px solid var(--border)}
-.up-icon{width:56px;height:56px;background:var(--amber-pale);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0}
-.up-card-head h3{font-family:'Fraunces',serif;font-size:19px;font-weight:700;color:var(--ink);margin-bottom:3px}
-.up-card-head p{font-size:13px;color:var(--ink3)}
-.up-items{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:22px}
-@media(max-width:440px){.up-items{grid-template-columns:1fr}}
-.up-item-chip{display:flex;align-items:center;gap:7px;padding:9px 11px;background:#F7F4F0;border-radius:8px;font-size:13px;font-weight:600;color:var(--ink2)}
-.up-item-chip .c-icon{font-size:16px}
-.up-price{text-align:center;margin:20px 0 6px}
-.up-was{color:var(--ink3);text-decoration:line-through;font-size:15px}
-.up-now{font-family:'Fraunces',serif;font-size:46px;font-weight:900;color:var(--ink);line-height:1}
-.up-now sup{font-size:22px;position:relative;top:-10px}
-.up-now sub{font-size:16px;font-weight:600;color:var(--ink3)}
-.up-note{font-size:13px;color:var(--ink3);margin-top:4px}
-.up-urgency{font-size:13px;color:var(--amber);font-weight:600;margin-bottom:18px;display:flex;align-items:center;justify-content:center;gap:5px}
-.up-yes{display:block;width:100%;background:var(--amber);color:#fff;padding:18px;border-radius:60px;font-size:17px;font-weight:700;border:none;margin-bottom:12px;box-shadow:0 6px 22px rgba(201,98,31,.3);transition:all .22s}
-.up-yes:hover{background:#b0561a;transform:translateY(-2px);box-shadow:0 10px 30px rgba(201,98,31,.4)}
-.up-no{background:none;border:none;color:var(--ink3);font-size:13px;cursor:pointer;text-decoration:underline;padding:6px;display:block;margin:0 auto}
-
-/* ══════════════════════════════════════
-   THANK YOU
-══════════════════════════════════════ */
-.ty-page{background:var(--cream);min-height:100vh}
-.ty-body{max-width:540px;margin:0 auto;padding:60px 20px 80px;text-align:center}
-.ty-tick{width:72px;height:72px;background:var(--green2);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;animation:pop .4s cubic-bezier(.34,1.56,.64,1)}
-@keyframes pop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
-.ty-tick svg{width:34px;height:34px}
-.ty-body h1{font-size:30px;font-weight:900;margin-bottom:8px;letter-spacing:-.02em}
-.ty-lead{font-size:16px;color:var(--ink3);margin-bottom:32px}
-.ty-order-box{background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);padding:22px;text-align:left;margin-bottom:28px;box-shadow:var(--shadow)}
-.ty-order-box h3{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:14px}
-.ty-line{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;padding:7px 0;border-bottom:1px solid var(--border)}
-.ty-line:last-child{border:none}
-.ty-line.total{font-weight:800;font-size:16px}
-.ty-steps{text-align:left;margin-bottom:28px}
-.ty-steps h3{font-family:'Fraunces',serif;font-size:17px;font-weight:700;margin-bottom:14px}
-.ty-step{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--border);align-items:flex-start}
-.ty-step:last-child{border:none}
-.ty-step-n{width:28px;height:28px;background:var(--amber-pale);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--amber);flex-shrink:0;font-family:'Fraunces',serif}
-.ty-step h4{font-size:14px;font-weight:700;margin-bottom:2px}
-.ty-step p{font-size:13px;color:var(--ink3);line-height:1.5}
-.ty-dl-btn{display:inline-block;background:var(--amber);color:#fff;padding:15px 36px;border-radius:60px;font-size:16px;font-weight:700;border:none;box-shadow:0 6px 20px rgba(201,98,31,.28);transition:all .22s;margin-bottom:10px}
-.ty-dl-btn:hover{background:#b0561a}
-
-/* ══════════════════════════════════════
-   LOADING OVERLAY
-══════════════════════════════════════ */
-.loading-overlay{display:none;position:fixed;inset:0;background:rgba(26,18,9,.75);z-index:9999;align-items:center;justify-content:center;flex-direction:column;gap:14px}
-.loading-overlay.show{display:flex}
-.spinner{width:42px;height:42px;border:3px solid rgba(255,255,255,.15);border-top-color:var(--amber2);border-radius:50%;animation:spin .65s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-.loading-overlay p{color:#fff;font-size:15px;font-weight:500}
+@media(max-width:768px){
+  .product-section{grid-template-columns:1fr;gap:24px}
+  .product-gallery{position:static}
+  .upsell-grid,.bundle-grid{grid-template-columns:1fr}
+  .checkout-layout{grid-template-columns:1fr}
+  .analytics-grid{grid-template-columns:repeat(2,1fr)}
+  .projection-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:repeat(2,1fr)}
+  .header-nav{display:none}
+  .flow-nav button{min-width:90px;font-size:10px;padding:8px 10px}
+}
 </style>
 </head>
 <body>
 
-<!-- ════════════════════════════════════
-  PAGE 1 — SALES
-════════════════════════════════════ -->
-<div id="pg-sales" class="page on">
-
-<div class="ann">
-  🐾 Loved by <b>14,000+ Aussie & Kiwi dog owners</b> — Rated 4.9★
-  <span class="ann-live"><span class="pulsedot"></span> 31 people reading now</span>
+<!-- FLOW NAVIGATION -->
+<div class="flow-nav">
+  <button class="active" onclick="showPage('product')">🏪 Product Page</button>
+  <button onclick="showPage('checkout')">💳 Checkout</button>
+  <button onclick="showPage('post-purchase')">🎯 Post-Purchase</button>
+  <button onclick="showPage('thankyou')">✅ Thank You</button>
+  <button onclick="showPage('analytics')">📊 Analytics</button>
 </div>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-inner">
-    <div class="hero-kicker">🇦🇺 Home Dog Training · Australia</div>
-    <h1>Your Dog Will <i>Listen to You</i><br>Within 21 Days</h1>
-    <p class="hero-lead">A gentle, science-backed method that works in just 15 minutes a day. No expensive trainers. No yelling. Just a calm, happy dog.</p>
-    <div class="hero-stars">
-      <span class="stars-row">★★★★★</span>
-      <span class="stars-meta"><b>4.9</b> from 2,870+ dog owners</span>
-    </div>
-    <button class="hero-cta" onclick="scrollTo('pricing')">
-      Yes — I Want a Calm, Happy Dog ❤️
-      <span class="hero-cta-sub">Instant download · Start in 5 minutes</span>
+<!-- ANNOUNCEMENT BAR -->
+<div class="announcement">
+  🚚 <strong>FREE Shipping</strong> on All Orders Over $75 · 🛡️ 60-Day Money-Back Guarantee · ⚡ Order Today, Ships Tomorrow
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="logo">Spine<span>Revive</span>™</div>
+  <nav class="header-nav">
+    <a href="#">Shop All</a>
+    <a href="#">Neck Relief</a>
+    <a href="#">Back Support</a>
+    <a href="#">Bundles</a>
+    <a href="#">Our Story</a>
+  </nav>
+  <div class="header-right">
+    <button class="cart-btn" onclick="openCart()">
+      🛒 <span class="cart-count" id="cartCount">0</span>
     </button>
-    <p class="hero-trust">🛡️ 60-day money-back guarantee · Zero risk</p>
   </div>
-  <div class="hero-wave"></div>
-</div>
+</header>
 
-<!-- TRUST STRIP -->
-<div class="trust-strip">
-  <div class="trust-strip-inner">
-    <span class="trust-item"><span class="trust-icon">⭐</span> 4.9/5 rating (2,870+ reviews)</span>
-    <span class="trust-item"><span class="trust-icon">🔒</span> Secure checkout</span>
-    <span class="trust-item"><span class="trust-icon">📲</span> Instant PDF download</span>
-    <span class="trust-item"><span class="trust-icon">✅</span> 60-day guarantee</span>
-  </div>
-</div>
+<!-- ====== PAGE: PRODUCT ====== -->
+<div class="page active" id="page-product">
 
-<!-- PAIN SECTION -->
-<div class="sec pain-bg">
-  <div class="wrap">
-    <div class="sec-tag">Sound familiar?</div>
-    <h2 class="sec-h">Does Your Dog Make You Feel <i>Exhausted & Embarrassed?</i></h2>
-    <p class="sec-sub">You're not a bad owner. Nobody ever taught you the right way.</p>
-    <ul class="pain-list">
-      <li class="pain-item"><span class="pain-emoji">😩</span><span class="pain-text">You come home to <b>chewed furniture and destroyed shoes.</b> You've tried everything. Nothing sticks.</span></li>
-      <li class="pain-item"><span class="pain-emoji">🔊</span><span class="pain-text">Your dog <b>barks at everything</b> — the postman, other dogs, literally the wind. The neighbours are done with it.</span></li>
-      <li class="pain-item"><span class="pain-emoji">💪</span><span class="pain-text">Every walk is a <b>tug-of-war.</b> Your dog pulls so hard your shoulder aches. You've stopped looking forward to it.</span></li>
-      <li class="pain-item"><span class="pain-emoji">🙈</span><span class="pain-text">Your dog <b>jumps on everyone</b> and ignores your commands completely. You feel like you've failed.</span></li>
-      <li class="pain-item"><span class="pain-emoji">💸</span><span class="pain-text">Professional trainers charge <b>$800 to $3,000.</b> And the results rarely last once you're home.</span></li>
-    </ul>
-    <div class="truth-box">
-      <b>Your dog isn't broken.</b> Nobody showed you how dogs actually think and learn. That's what this guide fixes.
+  <section class="product-section">
+    <div class="product-gallery">
+      <div class="main-image">
+        <div class="product-visual">
+          <span class="icon">🦴</span>
+          <span class="label">Cervical Traction Device</span>
+        </div>
+      </div>
+      <div class="thumb-row">
+        <div class="thumb active">🦴</div>
+        <div class="thumb">📐</div>
+        <div class="thumb">🔥</div>
+        <div class="thumb">📦</div>
+        <div class="thumb">👤</div>
+      </div>
     </div>
-  </div>
-</div>
 
-<!-- MID CTA 1 -->
-<div class="mid-cta">
-  <p><b>Ready to actually fix this?</b> The method has already worked for 14,000+ dog owners.</p>
-  <button class="hero-cta" style="font-size:15px;padding:14px 32px" onclick="scrollTo('pricing')">Show Me The Method 🐾</button>
-</div>
+    <div class="product-info">
+      <div class="breadcrumb">Home / Neck Relief / Cervical Traction Device</div>
+      <h1 class="product-title">SpineRevive Pro™ Cervical Traction Device</h1>
+      <div class="rating-row">
+        <span class="stars">★★★★★</span>
+        <span class="rating-text">4.8 (2,847 reviews) · 🔥 1,203 sold this month</span>
+      </div>
+      <div class="price-row">
+        <span class="price">$89.99</span>
+        <span class="compare-price">$149.99</span>
+        <span class="save-badge">SAVE 40%</span>
+      </div>
+      <p class="product-desc">
+        Professional-grade pneumatic cervical traction device with built-in heat therapy. 
+        Clinically designed to decompress cervical vertebrae, relieve nerve pressure, and 
+        restore natural neck curvature. Used by chiropractors & physical therapists worldwide.
+      </p>
+      <ul class="feature-list">
+        <li>3-Layer Pneumatic Air Cells — adjustable 20-60 lbs traction force</li>
+        <li>Built-in Far Infrared Heat Therapy — 3 temperature settings (104°F-140°F)</li>
+        <li>Medical-Grade Velvet Lining — hypoallergenic & breathable</li>
+        <li>Portable & Lightweight — use at home, office, or while traveling</li>
+        <li>15-Minute Auto Shutoff — safe & effortless pain relief</li>
+        <li>Fits neck sizes 14"–19" — adjustable one-size design</li>
+      </ul>
 
-<!-- STORY SECTION -->
-<div class="sec" style="background:var(--warm)">
-  <div class="wrap-sm">
-    <div class="sec-tag">The story behind the guide</div>
-    <h2 class="sec-h" style="text-align:left;margin-bottom:24px">How a Frustrated Dog Owner <i>Figured It Out</i></h2>
-    <div class="story-wrap">
-      <p>Hi, I'm Sarah. I'm 51 and I live in Melbourne. Two years ago, I was sitting on my kitchen floor crying because my golden retriever Bella had just destroyed her third dog bed in one week.</p>
-      <p>She barked at every noise. She pulled me down the street. She jumped on my grandkids. I was completely exhausted and starting to resent her — which made me feel terrible.</p>
-      <p>I spent <strong>$1,400 on a professional trainer.</strong> It helped for about 10 days. Then Bella went right back to her old ways. Same story with every YouTube video and book I tried.</p>
-      <div class="story-pull">"Then a friend told me about a different approach — not about punishment or dominance, but about how dogs actually process information. Within 7 days, Bella was like a different dog."</div>
-      <p>That method is now in this guide. It's based on <strong>how dogs really think</strong> — not force, not treats every 5 seconds, not expensive sessions. Just clear, consistent, loving communication that your dog's brain actually responds to.</p>
-      <p><strong>14,000+ dog owners across Australia and New Zealand</strong> have used it. It works on puppies, older dogs, rescues, "stubborn" breeds. If it's a dog, this works.</p>
-      <div class="story-author">
-        <div class="story-avatar">SR</div>
-        <div>
-          <div class="story-name">Sarah Richardson</div>
-          <div class="story-role">Certified Dog Behaviourist · 12 Years Experience</div>
+      <div class="variant-section">
+        <div class="variant-label">Package</div>
+        <div class="variant-options">
+          <div class="variant-opt selected" onclick="selectVariant(this)">Standard</div>
+          <div class="variant-opt" onclick="selectVariant(this)">+ Carry Case ($99.99)</div>
+        </div>
+      </div>
+
+      <div class="qty-row">
+        <span class="variant-label" style="margin-bottom:0">Quantity</span>
+        <div class="qty-control">
+          <button onclick="changeQty(-1)">−</button>
+          <input type="number" value="1" min="1" id="qtyInput" readonly>
+          <button onclick="changeQty(1)">+</button>
+        </div>
+      </div>
+
+      <button class="btn-atc" onclick="addToCart('main')">🛒 Add to Cart — $89.99</button>
+      <button class="btn-buy-now" onclick="addToCart('main'); showPage('checkout')">⚡ Buy It Now</button>
+
+      <div class="trust-badges">
+        <div class="trust-badge">
+          <span class="tb-icon">🚚</span>
+          <strong>Free Shipping</strong>
+          2-5 Business Days
+        </div>
+        <div class="trust-badge">
+          <span class="tb-icon">🛡️</span>
+          <strong>60-Day Guarantee</strong>
+          Full Money Back
+        </div>
+        <div class="trust-badge">
+          <span class="tb-icon">🔒</span>
+          <strong>Secure Checkout</strong>
+          SSL Encrypted
+        </div>
+      </div>
+
+      <div class="guarantee-box">
+        <span class="g-icon">✅</span>
+        <div class="g-text">
+          <strong>60-Day Pain Relief Guarantee</strong>
+          If the SpineRevive Pro™ doesn't help relieve your neck pain within 60 days, 
+          we'll refund every penny. No questions asked.
         </div>
       </div>
     </div>
-  </div>
-</div>
+  </section>
 
-<!-- WHAT'S INSIDE -->
-<div class="sec inside-bg">
-  <div class="wrap">
-    <div class="sec-tag">Inside the guide</div>
-    <h2 class="sec-h">7 Chapters. Plain English. <i>Day-by-Day.</i></h2>
-    <p class="sec-sub">No theory overload. Open the book, follow today's chapter. That's it.</p>
-    <div class="module-list">
-      <div class="module"><div class="module-num">1</div><div><div class="module-title">Why Your Dog Does What They Do</div><div class="module-desc">The single shift in understanding that changes everything. Most owners never learn this.</div></div></div>
-      <div class="module"><div class="module-num">2</div><div><div class="module-title">The 7 Essential Commands</div><div class="module-desc">Sit, Stay, Come, Down, Heel, Leave It, Place — so your dog listens the first time, every time.</div></div></div>
-      <div class="module"><div class="module-num">3</div><div><div class="module-title">Stop the Barking for Good</div><div class="module-desc">The "Calm Switch" method. Most dogs stop excessive barking within 5 days.</div></div></div>
-      <div class="module"><div class="module-num">4</div><div><div class="module-title">Peaceful Walks — No More Pulling</div><div class="module-desc">Walk side-by-side in as few as 4 practice sessions. No special equipment needed.</div></div></div>
-      <div class="module"><div class="module-num">5</div><div><div class="module-title">Anxiety, Fear & Separation Help</div><div class="module-desc">Gentle, proven solutions for dogs that panic when left alone, hate the car, or fear storms.</div></div></div>
-      <div class="module"><div class="module-num">6</div><div><div class="module-title">Puppy Foundations</div><div class="module-desc">Toilet training, biting, chewing, socialising — everything for pups under 12 months.</div></div></div>
-      <div class="module"><div class="module-num">7</div><div><div class="module-title">Your 21-Day Action Plan</div><div class="module-desc">Exact day-by-day schedule. Open the guide, follow today's page. Zero guesswork.</div></div></div>
+  <div class="divider"></div>
+
+  <!-- UPSELL PRODUCTS -->
+  <section class="section">
+    <div class="section-header">
+      <h2>Complete Your Recovery System</h2>
+      <p>Customers who bought the SpineRevive Pro™ also added these for faster, lasting relief</p>
     </div>
-  </div>
-</div>
-
-<!-- VALUE STACK -->
-<div class="sec-sm" style="background:var(--warm)">
-  <div class="wrap">
-    <div class="value-stack">
-      <h3>Everything You Get Today</h3>
-      <div class="vs-sub">Total value A$294 — yours for A$84.99</div>
-      <div class="vstack-item">
-        <div class="vstack-check">✓</div>
-        <div class="vstack-name"><b>The Home Dog Method — Complete Guide (PDF)</b>247 pages, fully illustrated, plain English. The entire 21-day system.</div>
-        <span class="vstack-val">A$149</span>
+    <div class="upsell-grid">
+      <div class="upsell-card">
+        <div class="upsell-img c1">🛏️</div>
+        <div class="upsell-card-body">
+          <h3>SpineRevive Contour Cervical Pillow</h3>
+          <div class="up-price">$39.99 <span style="font-size:12px;color:var(--muted);text-decoration:line-through;font-weight:400">$69.99</span></div>
+          <div class="up-desc">Ergonomic memory foam pillow with cervical alignment contour. Maintains traction benefits while sleeping. Breathable bamboo cover.</div>
+          <button class="btn-add-upsell" onclick="addToCart('pillow')">+ Add to Cart</button>
+        </div>
       </div>
-      <div class="vstack-item">
-        <div class="vstack-check">✓</div>
-        <div class="vstack-name"><b>21-Day Action Plan Calendar</b>Print it or use on phone. Each day tells you exactly what to do.</div>
-        <span class="vstack-val">A$49</span>
+      <div class="upsell-card">
+        <div class="upsell-img c2">🔥</div>
+        <div class="upsell-card-body">
+          <h3>SpineRevive Heated Neck & Shoulder Wrap</h3>
+          <div class="up-price">$34.99 <span style="font-size:12px;color:var(--muted);text-decoration:line-through;font-weight:400">$59.99</span></div>
+          <div class="up-desc">USB-powered heating wrap with vibration massage. 3 heat + 3 vibration levels. Perfect complement to cervical traction therapy.</div>
+          <button class="btn-add-upsell" onclick="addToCart('wrap')">+ Add to Cart</button>
+        </div>
       </div>
-      <div class="vstack-item">
-        <div class="vstack-check">✓</div>
-        <div class="vstack-name"><b>47 Behaviour Solutions Reference</b>Quick-look answers for every common problem — barking, jumping, aggression, anxiety.</div>
-        <span class="vstack-val">A$49</span>
-      </div>
-      <div class="vstack-item">
-        <div class="vstack-check">✓</div>
-        <div class="vstack-name"><b>Bonus: Puppy Quick-Start Guide</b>Separate 32-page guide just for puppies under 12 months.</div>
-        <span class="vstack-val">A$47</span>
-      </div>
-      <div class="vstack-total">
-        <span>Your price today</span>
-        <strong>A$84.99</strong>
+      <div class="upsell-card">
+        <div class="upsell-img c3">🧍</div>
+        <div class="upsell-card-body">
+          <h3>SpineRevive Posture Corrector Elite</h3>
+          <div class="up-price">$29.99 <span style="font-size:12px;color:var(--muted);text-decoration:line-through;font-weight:400">$49.99</span></div>
+          <div class="up-desc">Adjustable posture corrector with smart vibration reminder. Trains your muscles to maintain proper alignment all day.</div>
+          <button class="btn-add-upsell" onclick="addToCart('posture')">+ Add to Cart</button>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+  </section>
 
-<!-- VISION / IMAGINE -->
-<div class="sec vision-bg">
-  <div class="wrap">
-    <div class="sec-tag" style="color:rgba(74,222,128,.8)">Picture this — 3 weeks from now</div>
-    <h2 class="sec-h" style="color:#fff;margin-bottom:28px">What Your Life <i>Actually Looks Like</i></h2>
-    <ul class="checklist">
-      <li class="check-item"><div class="check-box"><svg fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div><span class="check-text">Your dog <b>comes immediately when you call</b> — every time, even around distractions</span></li>
-      <li class="check-item"><div class="check-box"><svg fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div><span class="check-text">Walks are <b>calm and enjoyable</b> — your dog trots beside you, lead relaxed</span></li>
-      <li class="check-item"><div class="check-box"><svg fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div><span class="check-text">Guests arrive and your dog <b>sits calmly</b> — no jumping, no chaos</span></li>
-      <li class="check-item"><div class="check-box"><svg fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div><span class="check-text">No more barking at every noise. <b>Just peace at home</b></span></li>
-      <li class="check-item"><div class="check-box"><svg fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div><span class="check-text">You <b>feel proud</b> of your dog every single day</span></li>
-      <li class="check-item"><div class="check-box"><svg fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div><span class="check-text">Your bond is <b>deeper and stronger</b> than it's ever been ❤️</span></li>
-    </ul>
-  </div>
-</div>
+  <div class="divider"></div>
 
-<!-- REVIEWS -->
-<div class="sec" style="background:var(--parchment)">
-  <div class="wrap">
-    <div class="sec-tag">Real results</div>
-    <h2 class="sec-h">14,000+ Dog Owners.<br><i>These Are Their Words.</i></h2>
-    <p class="sec-sub" style="margin-bottom:28px">Every review verified. No paid testimonials.</p>
-    <div class="reviews-grid">
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"I was genuinely ready to rehome my husky. After ONE WEEK with this guide, she walks beside me like a completely different dog. I cried actual happy tears. This book saved our relationship."</p>
-        <div class="review-author"><div class="review-av" style="background:linear-gradient(135deg,#F093FB,#F5576C)">DM</div><div><div class="review-name">Donna M.</div><div class="review-loc">Melbourne, VIC</div><span class="verified">✓ Verified Buyer</span></div></div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"We spent $900 on a trainer last year. This guide did more in 2 weeks than those sessions ever did. My lab doesn't jump on the grandkids anymore. Best money I've spent on my dog, full stop."</p>
-        <div class="review-author"><div class="review-av" style="background:linear-gradient(135deg,#A18CD1,#FBC2EB)">LK</div><div><div class="review-name">Linda K.</div><div class="review-loc">Auckland, NZ</div><span class="verified">✓ Verified Buyer</span></div></div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"Day 3 and my beagle stopped barking at the postman. DAY THREE. My husband said 'what did you do to this dog?' I just followed the book. Genuinely feels like magic."</p>
-        <div class="review-author"><div class="review-av" style="background:linear-gradient(135deg,#FDA085,#F6D365)">KR</div><div><div class="review-name">Karen R.</div><div class="review-loc">Perth, WA</div><span class="verified">✓ Verified Buyer</span></div></div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"My rescue staffy had terrible anxiety. My vet actually noticed the difference and asked what we'd changed. Big text, clear steps — I'm not great with tech but this was so easy to follow."</p>
-        <div class="review-author"><div class="review-av" style="background:linear-gradient(135deg,#43E97B,#38F9D7)">PH</div><div><div class="review-name">Patricia H.</div><div class="review-loc">Brisbane, QLD</div><span class="verified">✓ Verified Buyer</span></div></div>
-      </div>
+  <!-- BUNDLES -->
+  <section class="section">
+    <div class="section-header">
+      <h2>Save More with Bundles</h2>
+      <p>Get everything you need for complete neck & spine recovery at a discounted price</p>
     </div>
-  </div>
-</div>
-
-<!-- MID CTA 2 -->
-<div class="mid-cta">
-  <p>Over <b>14,000 dog owners</b> have already made this decision. Don't keep struggling.</p>
-  <button class="hero-cta" style="font-size:16px;padding:16px 38px;background:var(--green2);box-shadow:0 6px 22px rgba(37,137,79,.3)" onclick="scrollTo('pricing')">Get The Guide — A$84.99 ❤️</button>
-</div>
-
-<!-- COMPARISON TABLE -->
-<div class="sec" style="background:var(--warm)">
-  <div class="wrap">
-    <div class="sec-tag">Why this wins</div>
-    <h2 class="sec-h">This vs. Everything Else <i>You've Tried</i></h2>
-    <p class="sec-sub" style="margin-bottom:28px">An honest comparison.</p>
-    <table class="vs-table">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Professional Trainer</th>
-          <th>This Guide ✓</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Cost</td><td class="vs-bad">$800 – $3,000</td><td class="vs-good">A$84.99</td></tr>
-        <tr><td>Time needed</td><td>Multiple sessions/week</td><td class="vs-good">15 min/day at home</td></tr>
-        <tr><td>Results last?</td><td class="vs-bad">Often fade at home</td><td class="vs-good">Permanent skills</td></tr>
-        <tr><td>Problems covered</td><td>2–3 specific issues</td><td class="vs-good">47 behaviour fixes</td></tr>
-        <tr><td>Works any breed?</td><td>Usually breed-specific</td><td class="vs-good">Every breed & age</td></tr>
-        <tr><td>Guarantee</td><td class="vs-bad">None</td><td class="vs-good">60 days, full refund</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<!-- GUARANTEE -->
-<div class="sec-sm" style="background:var(--cream)">
-  <div class="wrap">
-    <div class="guarantee-box">
-      <div class="gu-seal">
-        <div class="gu-days">60</div>
-        <div class="gu-label">Day</div>
-      </div>
-      <div class="gu-text">
-        <h3>My Personal Promise ❤️</h3>
-        <p>Try the method for 60 days. If your dog's behaviour hasn't improved — for any reason at all — email me and I'll refund every cent. No questions. No hoops. No hassle. I've helped 14,000+ dogs. I know this works.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- PRICING -->
-<div class="price-dark" id="pricing">
-  <div class="wrap">
-    <div class="sec-tag" style="text-align:center;color:var(--amber2)">Get started today</div>
-    <h2 class="sec-h" style="color:#fff;text-align:center;margin-bottom:8px">Ready for a <i>Well-Behaved Dog?</i></h2>
-    <p style="color:rgba(255,255,255,.45);text-align:center;margin-bottom:28px;font-size:15px">Start today. See results this week.</p>
-
-    <div class="countdown">
-      <div class="cd-label">⏳ Price increase when timer hits zero</div>
-      <div class="cd-digits" id="cd">14:59</div>
-      <div class="cd-sub">This page discount expires soon</div>
-    </div>
-
-    <div class="price-card">
-      <div class="price-card-head">
-        <h3>🐾 The Home Dog Method</h3>
-        <p>Complete Training System — Instant Digital Download</p>
-      </div>
-      <div class="price-card-body" style="text-align:center">
-        <div class="price-was">Regular: A$249.99</div>
-        <div class="price-now"><sup>$</sup>84<sub>.99 AUD</sub></div>
-        <div class="price-save">You save A$165 today 🎉</div>
-        <ul class="price-list">
-          <li><span class="pk">✓</span> Complete 247-page guide (PDF)</li>
-          <li><span class="pk">✓</span> All 7 training modules</li>
-          <li><span class="pk">✓</span> 21-day day-by-day plan</li>
-          <li><span class="pk">✓</span> 47 behaviour solutions</li>
-          <li><span class="pk">✓</span> Works for any breed & any age</li>
-          <li><span class="pk">✓</span> Printable training tracker</li>
-          <li><span class="pk">✓</span> BONUS: Puppy Quick-Start Guide</li>
-          <li><span class="pk">✓</span> Lifetime access + free updates</li>
+    <div class="bundle-grid">
+      <div class="bundle-card">
+        <div class="bundle-name">Starter Relief Kit</div>
+        <ul class="bundle-items">
+          <li>Pro™ Cervical Traction Device</li>
+          <li>Heated Neck & Shoulder Wrap</li>
         </ul>
-        <button class="price-btn" onclick="show('pg-checkout')">
-          YES — I Want A Calm, Happy Dog ❤️
-          <span class="price-btn-sub">🔒 Secure checkout · Instant download</span>
-        </button>
-        <div class="price-footnotes">
-          <span>🛡️ 60-Day Guarantee</span>
-          <span>⚡ Instant Access</span>
-          <span>🔒 Stripe Secured</span>
+        <div class="bundle-pricing">
+          <div class="bundle-original">$124.98</div>
+          <div class="bundle-price">$104.99</div>
+          <div class="bundle-save">Save $19.99</div>
         </div>
+        <button class="btn-bundle" onclick="addBundle('starter')">Add Bundle to Cart</button>
+      </div>
+
+      <div class="bundle-card popular">
+        <div class="bundle-badge">⭐ Most Popular — Best Value</div>
+        <div class="bundle-name">Complete Recovery Bundle</div>
+        <ul class="bundle-items">
+          <li>Pro™ Cervical Traction Device</li>
+          <li>Contour Cervical Pillow</li>
+          <li>Heated Neck & Shoulder Wrap</li>
+        </ul>
+        <div class="bundle-pricing">
+          <div class="bundle-original">$164.97</div>
+          <div class="bundle-price">$134.99</div>
+          <div class="bundle-save">Save $29.98</div>
+        </div>
+        <button class="btn-bundle" onclick="addBundle('complete')">Add Bundle to Cart</button>
+      </div>
+
+      <div class="bundle-card">
+        <div class="bundle-name">Ultimate Spine System</div>
+        <ul class="bundle-items">
+          <li>Pro™ Cervical Traction Device</li>
+          <li>Contour Cervical Pillow</li>
+          <li>Heated Neck & Shoulder Wrap</li>
+          <li>Posture Corrector Elite</li>
+        </ul>
+        <div class="bundle-pricing">
+          <div class="bundle-original">$194.96</div>
+          <div class="bundle-price">$154.99</div>
+          <div class="bundle-save">Save $39.97</div>
+        </div>
+        <button class="btn-bundle" onclick="addBundle('ultimate')">Add Bundle to Cart</button>
       </div>
     </div>
-  </div>
-</div>
+  </section>
 
-<!-- FAQ -->
-<div class="sec" style="background:var(--warm)">
-  <div class="wrap-sm">
-    <div class="sec-tag">Questions</div>
-    <h2 class="sec-h" style="margin-bottom:24px">Quick Answers</h2>
-    <div class="faq-item open"><div class="faq-q" onclick="toggleFaq(this)">Will this work for my dog's breed?<span class="faq-arrow">+</span></div><div class="faq-a"><div class="faq-a-inner">Yes — every breed, every age, every size. Huskies, staffies, kelpies, poodles, shepherds, rescues, mixed breeds. The method is based on how all dogs think and learn, not breed-specific tricks.</div></div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How fast will I see a difference?<span class="faq-arrow">+</span></div><div class="faq-a"><div class="faq-a-inner">Most owners notice a change in 3–5 days. By Day 14, your dog is noticeably calmer and more obedient. The full 21-day plan gives permanent results — but you'll feel hope again on Day 1.</div></div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is this gentle? I don't want to scare my dog.<span class="faq-arrow">+</span></div><div class="faq-a"><div class="faq-a-inner">100% gentle. Zero yelling. Zero punishment. Zero shock collars or harsh corrections. This is about clear, loving communication. Your dog will actually enjoy training sessions and trust you more for it.</div></div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What if it doesn't work for us?<span class="faq-arrow">+</span></div><div class="faq-a"><div class="faq-a-inner">You get every cent back — no questions, no hassle — up to 60 days after purchase. We have a 2.1% refund rate across 14,000+ customers because this genuinely works.</div></div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do I get it after paying?<span class="faq-arrow">+</span></div><div class="faq-a"><div class="faq-a-inner">Instantly! You'll see a download page right away, plus we email a copy to you. You can be reading it within 2 minutes on your phone, tablet, or computer. Or print it out — it's designed for both.</div></div></div>
-  </div>
-</div>
+  <div class="divider"></div>
 
-<!-- FINAL CTA -->
-<div class="final-cta">
-  <div class="wrap" style="text-align:center">
-    <h2>Your Dog Deserves a <i>Happy Life.</i><br>So Do You.</h2>
-    <p>Every day you wait is another day of frustration you don't need to have.</p>
-    <button class="hero-cta" style="font-size:16px;padding:18px 44px" onclick="show('pg-checkout')">
-      GET THE GUIDE — A$84.99 ❤️
-      <span class="hero-cta-sub">60-day guarantee · Instant download</span>
-    </button>
-    <p style="margin-top:12px;color:rgba(255,255,255,.3);font-size:12px">🔒 Secure payment · 256-bit SSL · Powered by Stripe</p>
-  </div>
-</div>
-
-<div class="foot">
-  <p>© 2024 The Home Dog Method. All rights reserved.</p>
-  <p style="margin-top:5px"><a href="#">Privacy Policy</a> · <a href="#">Terms</a> · <a href="#">Contact</a></p>
-  <p style="margin-top:5px">This site is not affiliated with Meta Platforms, Inc.</p>
-</div>
-
-<!-- FLOATING BAR -->
-<div class="float-bar" id="float-bar">
-  <div class="float-bar-left">
-    <span class="float-bar-name">🐾 Home Dog Method</span>
-    <span class="float-bar-price">A$84.99</span>
-  </div>
-  <button class="float-bar-btn" onclick="show('pg-checkout')">GET IT NOW →</button>
-</div>
-
-</div><!-- /pg-sales -->
-
-
-<!-- ════════════════════════════════════
-  PAGE 2 — CHECKOUT
-════════════════════════════════════ -->
-<div id="pg-checkout" class="page">
-<div class="co-page">
-  <div class="co-header">
-    <div>
-      <div class="co-logo">🐾 Home Dog Method</div>
-      <div class="co-steps">
-        <div class="co-step active" id="cs1"><div class="co-step-dot">1</div>Order</div>
-        <div class="co-step-line"></div>
-        <div class="co-step" id="cs2"><div class="co-step-dot">2</div>Confirm</div>
-        <div class="co-step-line"></div>
-        <div class="co-step" id="cs3"><div class="co-step-dot">3</div>Download</div>
+  <!-- REVIEWS -->
+  <section class="section">
+    <div class="section-header">
+      <h2>What Our Customers Say</h2>
+      <p>Join 12,000+ Americans who found lasting neck pain relief</p>
+    </div>
+    <div class="review-summary">
+      <div>
+        <div class="review-big-num">4.8</div>
+        <div class="stars">★★★★★</div>
+      </div>
+      <div class="review-meta">
+        <p><strong>2,847 Verified Reviews</strong></p>
+        <p>96% of customers recommend this product</p>
+        <p>⭐ 5 star: 78% · 4 star: 18% · 3 star: 3% · 2 star: 1%</p>
       </div>
     </div>
-    <div class="co-secure">🔒 SSL Secured</div>
-  </div>
-
-  <div class="co-body">
-    <!-- FORM -->
-    <div class="co-form">
-      <h2>Complete Your Order</h2>
-
-      <div class="urgency-chip">
-        ⏱️ Cart reserved for <strong id="cart-timer" style="margin:0 3px">09:59</strong> — complete now to lock in this price
-      </div>
-
-      <!-- Express -->
-      <div class="express-btns">
-        <button class="express-btn" onclick="expressCheckout()">🍎 Apple Pay</button>
-        <button class="express-btn" onclick="expressCheckout()"><b>G</b> Google Pay</button>
-      </div>
-      <div class="divider-or">or pay with card</div>
-
-      <div class="form-section-label">Contact</div>
-      <div class="field">
-        <label>Email address (download link sent here)</label>
-        <input type="email" id="f-email" placeholder="you@email.com" autocomplete="email">
-      </div>
-
-      <div class="form-section-label">Card Details</div>
-      <div class="card-icons">
-        <span class="card-badge">VISA</span>
-        <span class="card-badge">MC</span>
-        <span class="card-badge">AMEX</span>
-        <span class="card-badge">STRIPE</span>
-      </div>
-      <div class="field">
-        <label>Card number</label>
-        <input type="text" id="f-card" placeholder="1234 5678 9012 3456" maxlength="19" autocomplete="cc-number" inputmode="numeric">
-      </div>
-      <div class="card-row">
-        <div class="field" style="margin:0">
-          <label>Name on card</label>
-          <input type="text" placeholder="Jane Smith" autocomplete="cc-name">
+    <div class="review-list">
+      <div class="review-item">
+        <div class="review-header">
+          <span class="review-author">Michael T. — Phoenix, AZ</span>
+          <span class="review-verified">✓ Verified Purchase</span>
         </div>
-        <div class="field" style="margin:0">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">After 3 years of chronic neck pain and $4,000+ in chiropractic visits, this device has been a game-changer. I use it 15 minutes every evening and the relief is incredible. My chiropractor even asked me where I got it! The heat feature is amazing — really helps loosen everything up before the traction. Best $90 I've ever spent on my health.</div>
+        <div class="review-date">2 weeks ago</div>
+      </div>
+      <div class="review-item">
+        <div class="review-header">
+          <span class="review-author">Sarah K. — Portland, OR</span>
+          <span class="review-verified">✓ Verified Purchase</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">I work at a desk 10 hours a day and developed severe "tech neck." My doctor recommended cervical traction but the devices at the clinic were $800+. Found SpineRevive online and took a chance — SO glad I did. The pain in my neck and shoulders decreased by about 80% in the first month. I also got the cervical pillow and it's perfect for maintaining the alignment while sleeping.</div>
+        <div class="review-date">1 month ago</div>
+      </div>
+      <div class="review-item">
+        <div class="review-header">
+          <span class="review-author">Robert D. — Dallas, TX</span>
+          <span class="review-verified">✓ Verified Purchase</span>
+        </div>
+        <div class="review-stars">★★★★☆</div>
+        <div class="review-text">Great product, well-made and comfortable. Took about a week to get used to the traction sensation but now I can't imagine my evening routine without it. Only reason for 4 stars is I wish it had a longer auto-shutoff option — 15 minutes goes by quickly. Ordered the complete bundle and everything works great together.</div>
+        <div class="review-date">3 weeks ago</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="section-header">
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item open">
+        <div class="faq-q" onclick="toggleFaq(this)">How does cervical traction work? <span>▾</span></div>
+        <div class="faq-a">Cervical traction gently stretches the neck to decompress the cervical spine. This creates space between vertebrae, relieving pressure on pinched nerves and herniated discs. The SpineRevive Pro™ uses pneumatic air cells that you control with a hand pump, allowing precise, comfortable traction force between 20-60 lbs.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How often should I use it? <span>▸</span></div>
+        <div class="faq-a">We recommend starting with 10-minute sessions, 1-2 times daily. Most users work up to 15-20 minute sessions over the first week. The built-in auto-shutoff ensures safe use. Consistent daily use yields the best results, with most customers reporting significant relief within 2-4 weeks.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Is it safe to use at home without supervision? <span>▸</span></div>
+        <div class="faq-a">Yes. The SpineRevive Pro™ is designed for safe home use. It features adjustable pressure control, a built-in pressure gauge, and a 15-minute auto-shutoff. However, if you have a serious spinal condition, fractures, or spinal instability, please consult your doctor before use.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What's your return policy? <span>▸</span></div>
+        <div class="faq-a">We offer a 60-day money-back guarantee. If the SpineRevive Pro™ doesn't help relieve your neck pain, simply contact our support team for a full refund — no questions asked. We'll even provide a prepaid return label. Less than 3% of our customers return the product.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How long does shipping take? <span>▸</span></div>
+        <div class="faq-a">All orders ship FREE within the continental US. Orders placed before 2 PM EST ship same day. Standard delivery takes 2-5 business days. You'll receive tracking information via email within 24 hours of ordering.</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ====== PAGE: CHECKOUT ====== -->
+<div class="page" id="page-checkout">
+  <div class="checkout-layout">
+    <div class="checkout-form">
+      <h2>📧 Contact Information</h2>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="your@email.com" value="john.smith@gmail.com">
+      </div>
+
+      <h2 style="margin-top:24px">📍 Shipping Address</h2>
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" value="John">
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" value="Smith">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Address</label>
+        <input type="text" value="1234 Oak Street">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>City</label>
+          <input type="text" value="Austin">
+        </div>
+        <div class="form-group">
+          <label>State</label>
+          <select><option>Texas</option></select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>ZIP Code</label>
+          <input type="text" value="78701">
+        </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="tel" value="(512) 555-0147">
+        </div>
+      </div>
+
+      <h2 style="margin-top:24px">💳 Payment</h2>
+      <div class="form-group">
+        <label>Card Number</label>
+        <input type="text" placeholder="4242 4242 4242 4242" value="•••• •••• •••• 4242">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
           <label>Expiry</label>
-          <input type="text" placeholder="MM/YY" maxlength="5" id="f-exp" autocomplete="cc-exp">
+          <input type="text" value="12/26">
         </div>
-        <div class="field" style="margin:0">
-          <label>CVC</label>
-          <input type="text" placeholder="123" maxlength="4" autocomplete="cc-csc" inputmode="numeric">
+        <div class="form-group">
+          <label>CVV</label>
+          <input type="text" value="•••">
         </div>
       </div>
 
+      <!-- ORDER BUMP -->
       <div class="order-bump">
-        <div class="bump-head">⚡ One-Time Add-On — Only A$24.99</div>
-        <div class="bump-body">
-          <input type="checkbox" class="bump-check" id="bump" onchange="updateTotal()">
-          <div class="bump-text">
-            <strong>🚨 Dog Emergency Quick Guide (32 pages)</strong>
-            <p>Toxic foods, sudden aggression, escape behaviour, injury response. Pin on your fridge. <b>89% of buyers add this.</b></p>
-            <div class="bump-price">Add for just A$24.99 (normally A$49)</div>
-          </div>
+        <div class="order-bump-header">
+          <input type="checkbox" id="orderBump" checked onchange="updateCheckout()">
+          <label for="orderBump">🎯 YES! Add the Heated Neck Wrap for just <span style="color:var(--accent)">$19.99</span> <span style="text-decoration:line-through;color:var(--muted);font-weight:400">(reg. $34.99)</span></label>
+        </div>
+        <div class="order-bump-body">
+          <strong>Special checkout-only price — 43% OFF!</strong><br>
+          The #1 recommended companion product for cervical traction therapy. Warm your neck muscles before traction for deeper, more effective decompression. This exclusive price is <strong>only available right now</strong> and won't be offered again.
         </div>
       </div>
 
-      <button class="pay-btn" onclick="processPayment()">
-        🔒 Complete Purchase — <span id="pay-amount">A$84.99</span>
-      </button>
-      <div class="pay-secure">🔒 256-bit SSL encryption · Powered by Stripe · Instant download</div>
-      <div class="pay-logos">
-        <span>🛡️ 60-Day Guarantee</span>
-        <span>📲 Instant Access</span>
-        <span>✅ Safe & Secure</span>
-      </div>
+      <button class="btn-complete" onclick="showPage('post-purchase')">🔒 Complete Order — $<span id="checkoutTotal">109.98</span></button>
+      <div class="secure-note">🔒 256-bit SSL Encrypted · Your information is 100% secure</div>
     </div>
 
-    <!-- SUMMARY -->
-    <div class="co-summary">
-      <h3>Your Order</h3>
-      <div class="sum-item">
-        <span class="sum-item-name">📗 Home Dog Method — Complete Guide (PDF)</span>
-        <span class="sum-item-price">A$84.99</span>
+    <div class="checkout-sidebar">
+      <div class="order-summary">
+        <h3>Order Summary</h3>
+        <div class="os-item">
+          <div class="osi-img" style="background:linear-gradient(135deg,#f0fdfa,#ccfbf1)">🦴</div>
+          <div class="osi-name">SpineRevive Pro™ Cervical Traction Device <br><small style="color:var(--muted)">× 1</small></div>
+          <div class="osi-price">$89.99</div>
+        </div>
+        <div class="os-item" id="bumpItem" style="">
+          <div class="osi-img" style="background:linear-gradient(135deg,#fef3c7,#fde68a)">🔥</div>
+          <div class="osi-name">Heated Neck Wrap <small style="color:var(--accent);font-weight:600">(ORDER BUMP)</small><br><small style="color:var(--muted)">× 1</small></div>
+          <div class="osi-price">$19.99</div>
+        </div>
+        <div class="os-totals">
+          <div class="ost-row"><span>Subtotal</span><span id="osSubtotal">$109.98</span></div>
+          <div class="ost-row"><span>Shipping</span><span style="color:var(--accent);font-weight:600">FREE</span></div>
+          <div class="ost-row"><span>Tax (est.)</span><span>$0.00</span></div>
+          <div class="ost-row grand"><span>Total</span><span id="osTotal">$109.98</span></div>
+        </div>
       </div>
-      <div class="sum-item">
-        <span class="sum-item-name">📲 Delivery (instant digital)</span>
-        <span class="sum-item-price sum-free">FREE</span>
-      </div>
-      <div class="sum-total">
-        <span>Total</span>
-        <span id="sum-total">A$84.99</span>
-      </div>
-      <div class="sum-guarantee">
-        🛡️ 60-day money-back guarantee<br>No questions · Instant refund
-      </div>
-      <div style="margin-top:14px;font-size:12px;color:var(--ink3);line-height:1.65">
-        📧 Download link emailed immediately<br>
-        📲 Works on phone, tablet & computer<br>
-        🔒 Your card data is never stored
+      <div style="margin-top:16px;padding:16px;background:var(--surface);border-radius:12px;font-size:12px;color:var(--muted);text-align:center">
+        <div style="font-size:20px;margin-bottom:8px">🛡️ 🚚 ✅</div>
+        <strong style="color:var(--text)">Risk-Free Purchase</strong><br>
+        60-Day Money-Back Guarantee · Free US Shipping · Secure Checkout
       </div>
     </div>
   </div>
 </div>
-</div><!-- /pg-checkout -->
 
+<!-- ====== PAGE: POST-PURCHASE UPSELL ====== -->
+<div class="page" id="page-post-purchase">
+  <div class="post-purchase">
+    <div style="font-size:28px;margin-bottom:8px">✅</div>
+    <p style="color:var(--accent);font-weight:600;margin-bottom:16px">Your order has been placed! But wait...</p>
+    <div class="pp-badge">🎯 One-Time Exclusive Offer</div>
+    <h1 class="pp-title">Complete Your Recovery System for 50% OFF</h1>
+    <p class="pp-subtitle">This exclusive deal is <strong>only available right now</strong> and won't be shown again. One click to add — no need to re-enter payment info.</p>
+    
+    <div class="pp-timer">⏰ This offer expires in: <span id="ppTimer">4:59</span></div>
 
-<!-- ════════════════════════════════════
-  PAGE 3 — UPSELL
-════════════════════════════════════ -->
-<div id="pg-upsell" class="page">
-<div class="up-page">
-  <div class="up-header">
-    <p>✅ Payment confirmed — do not close this page</p>
-    <h2>Your order is being prepared...</h2>
-  </div>
-  <div class="up-body">
-    <div class="up-kicker">⚡ One-Time Exclusive Offer</div>
-    <h1>Level Up Your Results With the <i>Advanced Pack</i></h1>
-    <p class="up-lead">You've made the smart call. This exclusive upgrade takes your dog from well-behaved to <strong>exceptional</strong> — and it's only available on this page, right now.</p>
-
-    <div class="up-card">
-      <div class="up-card-head">
-        <div class="up-icon">🎓</div>
-        <div>
-          <h3>Advanced Training Pack</h3>
-          <p>4 specialist PDF guides — instant delivery</p>
-        </div>
+    <div class="pp-product">
+      <div class="pp-product-img">🛏️ + 🧍</div>
+      <h3>Cervical Pillow + Posture Corrector Combo</h3>
+      <p class="pp-desc">Maintain your traction results 24/7. Sleep in perfect alignment with the Contour Cervical Pillow and train your posture during the day with the Posture Corrector Elite. Together, they accelerate your recovery by up to 3x.</p>
+      <div style="margin:16px 0;font-size:13px;text-align:left;max-width:300px;margin-left:auto;margin-right:auto">
+        <div style="padding:4px 0">✓ Contour Cervical Pillow (reg. $39.99)</div>
+        <div style="padding:4px 0">✓ Posture Corrector Elite (reg. $29.99)</div>
+        <div style="padding:4px 0;color:var(--accent);font-weight:600">✓ FREE expedited upgrade</div>
       </div>
-      <div class="up-items">
-        <div class="up-item-chip"><span class="c-icon">🦮</span>Off-Lead Confidence</div>
-        <div class="up-item-chip"><span class="c-icon">🐕</span>Dog-to-Dog Social Skills</div>
-        <div class="up-item-chip"><span class="c-icon">😰</span>Separation Anxiety Fix</div>
-        <div class="up-item-chip"><span class="c-icon">📋</span>30-Day Advanced Calendar</div>
-        <div class="up-item-chip"><span class="c-icon">🚗</span>Calm Car Travel</div>
-        <div class="up-item-chip"><span class="c-icon">🍖</span>Food Guarding Solutions</div>
-      </div>
-      <p style="font-size:13.5px;color:var(--ink3);line-height:1.65;margin-bottom:4px">Each guide is designed to be used <em>after</em> your 21-day plan — so you keep progressing without plateauing. This is the second half of the complete system.</p>
-      <div class="up-price">
-        <div class="up-was">Normally A$97.00</div>
-        <div class="up-now"><sup>$</sup>44<sub>.99 AUD</sub></div>
-        <div class="up-note">One-click add · Charged to same card · No re-entry</div>
+      <div class="pp-pricing">
+        <span class="pp-old">$69.98</span>
+        <span class="pp-new">$34.99</span>
+        <span class="pp-save">50% OFF</span>
       </div>
     </div>
 
-    <div class="up-urgency">⏳ This offer disappears when you leave this page and cannot be purchased separately</div>
-
-    <button class="up-yes" onclick="acceptUpsell()">
-      ✅ Yes! Add The Advanced Pack For A$44.99 →
-    </button>
-    <button class="up-no" onclick="declineUpsell()">
-      No thanks — the basic guide is enough for me
-    </button>
+    <button class="btn-pp-accept" onclick="acceptPP()">✅ YES! Add to My Order — Just $34.99</button>
+    <p class="pp-urgency">⚡ One-click purchase — no re-entering payment details</p>
+    <br>
+    <button class="btn-pp-decline" onclick="showPage('thankyou')">No thanks, I don't want 50% off →</button>
   </div>
 </div>
-</div><!-- /pg-upsell -->
 
-
-<!-- ════════════════════════════════════
-  PAGE 4 — THANK YOU
-════════════════════════════════════ -->
-<div id="pg-thankyou" class="page">
-<div class="ty-page">
-  <div class="ty-body">
-    <div class="ty-tick"><svg fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div>
-    <h1 class="serif">You're All Set! 🎉</h1>
-    <p class="ty-lead">Thank you! Your download link is on its way to your inbox right now. Check in the next 2 minutes.</p>
+<!-- ====== PAGE: THANK YOU ====== -->
+<div class="page" id="page-thankyou">
+  <div class="thankyou">
+    <div class="ty-check">🎉</div>
+    <h1 class="ty-title">Thank You For Your Order!</h1>
+    <p class="ty-subtitle">Order #SR-28471 · Confirmation sent to john.smith@gmail.com</p>
+    
+    <div class="ty-order-box">
+      <h3>📦 Order Summary</h3>
+      <div class="ty-row"><span>SpineRevive Pro™ Cervical Traction Device</span><span>$89.99</span></div>
+      <div class="ty-row"><span>Heated Neck & Shoulder Wrap (order bump)</span><span>$19.99</span></div>
+      <div class="ty-row" id="tyPProw" style="display:none"><span>Cervical Pillow + Posture Corrector (50% OFF)</span><span>$34.99</span></div>
+      <div class="ty-row"><span>Shipping</span><span style="color:var(--accent)">FREE</span></div>
+      <div class="ty-row ty-total"><span>Total Charged</span><span id="tyTotal">$109.98</span></div>
+    </div>
 
     <div class="ty-order-box">
-      <h3>Order Confirmation</h3>
-      <div class="ty-line"><span>Home Dog Method (PDF)</span><span>A$84.99</span></div>
-      <div id="ty-bump" style="display:none" class="ty-line"><span>Dog Emergency Quick Guide</span><span>A$24.99</span></div>
-      <div id="ty-upsell" style="display:none" class="ty-line"><span>Advanced Training Pack</span><span>A$44.99</span></div>
-      <div class="ty-line total"><span>Total Paid</span><span id="ty-total">A$84.99</span></div>
+      <h3>🚚 Shipping Details</h3>
+      <div class="ty-row"><span>Estimated Delivery</span><span style="font-weight:600">Dec 19-22, 2024</span></div>
+      <div class="ty-row"><span>Shipping Method</span><span>Free Standard Shipping</span></div>
+      <div class="ty-row"><span>Ship To</span><span>John Smith, Austin TX 78701</span></div>
     </div>
 
-    <div class="ty-steps">
-      <h3>What Happens Next</h3>
-      <div class="ty-step">
-        <div class="ty-step-n">1</div>
-        <div>
-          <h4>Check your email</h4>
-          <p>Your download link arrives within 2 minutes. Check spam if you don't see it.</p>
-        </div>
-      </div>
-      <div class="ty-step">
-        <div class="ty-step-n">2</div>
-        <div>
-          <h4>Save to your phone</h4>
-          <p>PDF works on all devices. Save to iCloud or Google Drive for easy access anywhere, anytime.</p>
-        </div>
-      </div>
-      <div class="ty-step">
-        <div class="ty-step-n">3</div>
-        <div>
-          <h4>Start Day 1 today ❤️</h4>
-          <p>Go straight to the 21-Day Action Plan. Day 1 takes 15 minutes. Your dog will notice today.</p>
-        </div>
-      </div>
+    <div style="background:var(--surface);border-radius:12px;padding:20px;margin-top:16px;font-size:14px">
+      <strong>📧 What's Next?</strong><br>
+      <span style="color:var(--muted)">You'll receive a shipping confirmation email with tracking number within 24 hours. Your SpineRevive products ship from our Texas warehouse for fastest delivery.</span>
     </div>
-
-    <button class="ty-dl-btn" onclick="show('pg-sales')">📥 Download Your Files</button>
-    <p style="font-size:12px;color:var(--ink3);margin-top:10px">Can't find the email? Write to support@homedogmethod.com.au</p>
   </div>
 </div>
-</div><!-- /pg-thankyou -->
 
+<!-- ====== PAGE: ANALYTICS DASHBOARD ====== -->
+<div class="page" id="page-analytics">
+  <div class="analytics">
+    <h2>📊 Business Analytics & Niche Data</h2>
 
-<!-- LOADING OVERLAY -->
-<div class="loading-overlay" id="loading">
-  <div class="spinner"></div>
-  <p>Processing your payment securely...</p>
+    <!-- KPI Cards -->
+    <div class="analytics-grid">
+      <div class="stat-card">
+        <div class="sc-value">$0.33</div>
+        <div class="sc-label">Avg CPC (Google Shopping)</div>
+      </div>
+      <div class="stat-card">
+        <div class="sc-value">3.0%</div>
+        <div class="sc-label">Conversion Rate</div>
+      </div>
+      <div class="stat-card">
+        <div class="sc-value">$11.00</div>
+        <div class="sc-label">Cost Per Acquisition</div>
+      </div>
+      <div class="stat-card">
+        <div class="sc-value">10.2x</div>
+        <div class="sc-label">Target ROAS</div>
+      </div>
+    </div>
+
+    <!-- Product Economics -->
+    <div class="analytics-section">
+      <h3>💰 Product Economics & Margins</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Sell Price</th>
+            <th>COGS + Ship</th>
+            <th>Gross Profit</th>
+            <th>Margin</th>
+            <th>Margin Visual</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Pro™ Cervical Traction Device</strong></td>
+            <td>$89.99</td>
+            <td>$22.00</td>
+            <td style="color:var(--accent);font-weight:700">$67.99</td>
+            <td><strong>75.6%</strong></td>
+            <td><div class="margin-bar"><div class="fill" style="width:75.6%"></div></div></td>
+          </tr>
+          <tr>
+            <td>Contour Cervical Pillow</td>
+            <td>$39.99</td>
+            <td>$9.00</td>
+            <td style="color:var(--accent);font-weight:700">$30.99</td>
+            <td><strong>77.5%</strong></td>
+            <td><div class="margin-bar"><div class="fill" style="width:77.5%"></div></div></td>
+          </tr>
+          <tr>
+            <td>Heated Neck & Shoulder Wrap</td>
+            <td>$34.99</td>
+            <td>$8.00</td>
+            <td style="color:var(--accent);font-weight:700">$26.99</td>
+            <td><strong>77.1%</strong></td>
+            <td><div class="margin-bar"><div class="fill" style="width:77.1%"></div></div></td>
+          </tr>
+          <tr>
+            <td>Posture Corrector Elite</td>
+            <td>$29.99</td>
+            <td>$5.50</td>
+            <td style="color:var(--accent);font-weight:700">$24.49</td>
+            <td><strong>81.7%</strong></td>
+            <td><div class="margin-bar"><div class="fill" style="width:81.7%"></div></div></td>
+          </tr>
+          <tr style="background:var(--accent-light)">
+            <td><strong>ORDER BUMP: Heated Wrap</strong></td>
+            <td><strong>$19.99</strong></td>
+            <td>$8.00</td>
+            <td style="color:var(--accent);font-weight:700">$11.99</td>
+            <td><strong>60.0%</strong></td>
+            <td><div class="margin-bar"><div class="fill" style="width:60%"></div></div></td>
+          </tr>
+          <tr style="background:var(--accent-light)">
+            <td><strong>POST-PURCHASE: Pillow + Posture</strong></td>
+            <td><strong>$34.99</strong></td>
+            <td>$14.50</td>
+            <td style="color:var(--accent);font-weight:700">$20.49</td>
+            <td><strong>58.6%</strong></td>
+            <td><div class="margin-bar"><div class="fill" style="width:58.6%"></div></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Google Shopping Keywords -->
+    <div class="analytics-section">
+      <h3>🔍 Google Shopping Keywords & CPC Data</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Keyword</th>
+            <th>Monthly Searches (US)</th>
+            <th>CPC</th>
+            <th>Competition</th>
+            <th>Intent</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="keyword-chip">neck stretcher</span></td>
+            <td>40,500</td>
+            <td style="color:var(--accent);font-weight:600">$0.22</td>
+            <td>🟢 Low</td>
+            <td>High Buy Intent</td>
+          </tr>
+          <tr>
+            <td><span class="keyword-chip">cervical traction device</span></td>
+            <td>18,100</td>
+            <td style="color:var(--accent);font-weight:600">$0.35</td>
+            <td>🟡 Medium</td>
+            <td>Very High Buy Intent</td>
+          </tr>
+          <tr>
+            <td><span class="keyword-chip">neck traction device</span></td>
+            <td>14,800</td>
+            <td style="color:var(--accent);font-weight:600">$0.31</td>
+            <td>🟢 Low-Med</td>
+            <td>High Buy Intent</td>
+          </tr>
+          <tr>
+            <td><span class="keyword-chip">neck pain relief device</span></td>
+            <td>6,600</td>
+            <td style="color:var(--accent);font-weight:600">$0.38</td>
+            <td>🟡 Medium</td>
+            <td>High Buy Intent</td>
+          </tr>
+          <tr>
+            <td><span class="keyword-chip">neck decompression device</span></td>
+            <td>8,100</td>
+            <td style="color:var(--accent);font-weight:600">$0.28</td>
+            <td>🟢 Low</td>
+            <td>Very High Buy Intent</td>
+          </tr>
+          <tr>
+            <td><span class="keyword-chip">cervical neck traction</span></td>
+            <td>5,400</td>
+            <td style="color:var(--accent);font-weight:600">$0.32</td>
+            <td>🟢 Low</td>
+            <td>High Buy Intent</td>
+          </tr>
+          <tr>
+            <td><span class="keyword-chip">cervical pillow</span></td>
+            <td>22,200</td>
+            <td style="color:var(--accent);font-weight:600">$0.33</td>
+            <td>🟡 Medium</td>
+            <td>High Buy Intent</td>
+          </tr>
+          <tr>
+            <td><span class="keyword-chip">posture corrector</span></td>
+            <td>60,500</td>
+            <td style="color:var(--accent);font-weight:600">$0.41</td>
+            <td>🟡 Medium</td>
+            <td>High Buy Intent</td>
+          </tr>
+          <tr>
+            <td><span class="keyword-chip">neck stretcher for pain</span></td>
+            <td>12,100</td>
+            <td style="color:var(--accent);font-weight:600">$0.25</td>
+            <td>🟢 Low</td>
+            <td>Very High Buy Intent</td>
+          </tr>
+          <tr style="background:var(--accent-light)">
+            <td><strong>TOTAL / WEIGHTED AVG</strong></td>
+            <td><strong>188,300+/mo</strong></td>
+            <td style="color:var(--accent);font-weight:700"><strong>$0.33</strong></td>
+            <td>🟢 Low-Medium</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Unit Economics -->
+    <div class="analytics-section">
+      <h3>📈 Unit Economics per 1,000 Clicks</h3>
+      <table class="data-table">
+        <thead>
+          <tr><th>Metric</th><th>Value</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Clicks</td><td><strong>1,000</strong></td><td>From Google Standard Shopping</td></tr>
+          <tr><td>Ad Spend</td><td><strong>$330</strong></td><td>1,000 × $0.33 CPC</td></tr>
+          <tr><td>Orders (3% CR)</td><td><strong>30</strong></td><td>1,000 × 3%</td></tr>
+          <tr><td>Base Revenue</td><td><strong>$2,699.70</strong></td><td>30 × $89.99</td></tr>
+          <tr><td>Order Bump Revenue (40% take rate)</td><td><strong>$239.88</strong></td><td>12 × $19.99</td></tr>
+          <tr><td>Post-Purchase Revenue (25% take rate)</td><td><strong>$262.43</strong></td><td>7.5 × $34.99</td></tr>
+          <tr style="background:var(--accent-light)"><td><strong>Total Revenue</strong></td><td><strong style="color:var(--accent)">$3,202.01</strong></td><td>AOV = $106.73</td></tr>
+          <tr><td>Total COGS</td><td><strong>$860.50</strong></td><td>Products + shipping to customer</td></tr>
+          <tr><td>Ad Spend</td><td><strong>$330.00</strong></td><td>Google Shopping</td></tr>
+          <tr><td>Payment Processing (2.9%+$0.30)</td><td><strong>$101.86</strong></td><td>Shopify Payments</td></tr>
+          <tr style="background:#dcfce7"><td><strong>Net Profit</strong></td><td><strong style="color:#16a34a;font-size:18px">$1,909.65</strong></td><td><strong>ROAS: 9.7x</strong></td></tr>
+          <tr style="background:#dcfce7"><td><strong>Profit Per Order</strong></td><td><strong style="color:#16a34a">$63.66</strong></td><td>59.6% net margin</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Monthly Projections -->
+    <div class="analytics-section">
+      <h3>🚀 Monthly Revenue Projections</h3>
+      <div class="projection-grid">
+        <div class="proj-card">
+          <h4>🌱 Starting Phase</h4>
+          <div class="proj-spend">Ad Spend: $500/mo</div>
+          <div class="proj-revenue">$4,854/mo</div>
+          <div class="proj-profit">Net Profit: $2,893</div>
+          <div class="proj-detail">~1,515 clicks · 45 orders · AOV $107</div>
+        </div>
+        <div class="proj-card" style="border-color:var(--accent);border-width:2px">
+          <h4>📈 Growth Phase</h4>
+          <div class="proj-spend">Ad Spend: $2,000/mo</div>
+          <div class="proj-revenue">$19,415/mo</div>
+          <div class="proj-profit">Net Profit: $11,573</div>
+          <div class="proj-detail">~6,060 clicks · 182 orders · AOV $107</div>
+        </div>
+        <div class="proj-card">
+          <h4>🚀 Scale Phase</h4>
+          <div class="proj-spend">Ad Spend: $5,000/mo</div>
+          <div class="proj-revenue">$48,538/mo</div>
+          <div class="proj-profit">Net Profit: $28,932</div>
+          <div class="proj-detail">~15,152 clicks · 455 orders · AOV $107</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Expansion Products -->
+    <div class="analytics-section">
+      <h3>🧩 Product Expansion Roadmap</h3>
+      <table class="data-table">
+        <thead>
+          <tr><th>Phase</th><th>Products to Add</th><th>Est. Additional Revenue</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Phase 1 (Month 1-2)</strong></td>
+            <td>Current 4 products + bundles</td>
+            <td>Base revenue</td>
+          </tr>
+          <tr>
+            <td><strong>Phase 2 (Month 3-4)</strong></td>
+            <td>Lumbar Traction Device · Back Stretcher Board · Orthopedic Seat Cushion · TENS Unit for Neck/Back</td>
+            <td>+30-40% revenue</td>
+          </tr>
+          <tr>
+            <td><strong>Phase 3 (Month 5-6)</strong></td>
+            <td>Cervical Collar · Ergonomic Desk Setup Kit · Heating Pad Pro · Massage Roller Set · Compression Neck Brace</td>
+            <td>+25-35% revenue</td>
+          </tr>
+          <tr>
+            <td><strong>Phase 4 (Month 7+)</strong></td>
+            <td>Premium Massage Gun · Inversion Table · Yoga/Stretching Kit · Subscription Box (replacement pads, heat wraps) · Digital Products (exercise guides)</td>
+            <td>+40-50% revenue</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="margin-top:12px;font-size:13px;color:var(--muted)">
+        <strong>Total addressable product catalog: 30+ products</strong> within the spinal health niche. 
+        Each new product creates cross-sell and bundle opportunities, increasing AOV and customer lifetime value.
+      </p>
+    </div>
+
+    <!-- Supplier Info -->
+    <div class="analytics-section">
+      <h3>🏭 Supplier & Fulfillment Notes</h3>
+      <table class="data-table">
+        <thead>
+          <tr><th>Item</th><th>Detail</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Main Supplier Source</td><td>1688.com / Alibaba (Verified Suppliers with Trade Assurance)</td></tr>
+          <tr><td>Product Cost Range</td><td>$5–$22 per unit (FOB China, MOQ 100-500 units)</td></tr>
+          <tr><td>Shipping to US Warehouse</td><td>Sea freight: ~$2-4/unit (20-30 days) · Air: ~$5-8/unit (7-10 days)</td></tr>
+          <tr><td>Fulfillment</td><td>3PL warehouse (ShipBob, ShipMonk) or Amazon FBA Multi-Channel</td></tr>
+          <tr><td>US Shipping to Customer</td><td>$3-5 per order (included in COGS) — offer FREE to customer</td></tr>
+          <tr><td>Custom Branding</td><td>Logo on product, custom box, insert cards — $0.50-1.00/unit extra</td></tr>
+          <tr><td>Product Liability Insurance</td><td>Required — ~$50-100/month for this product category</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 
+<!-- CART DRAWER -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <h3>🛒 Your Cart (<span id="cartItemCount">0</span>)</h3>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-body" id="cartBody">
+    <div class="cart-empty" id="cartEmpty">Your cart is empty</div>
+    <div id="cartItems"></div>
+    
+    <!-- Cart Upsells -->
+    <div class="cart-upsell-section" id="cartUpsells" style="display:none">
+      <h4>🎯 Frequently Bought Together</h4>
+      <div class="cart-upsell-item" id="cartUpsell-pillow">
+        <span class="cui-icon">🛏️</span>
+        <div class="cui-info">
+          <strong>Contour Cervical Pillow</strong>
+          <span class="cui-price">$39.99</span> · Maintains alignment while sleeping
+        </div>
+        <button class="btn-cart-add" onclick="addToCart('pillow')">Add</button>
+      </div>
+      <div class="cart-upsell-item" id="cartUpsell-wrap">
+        <span class="cui-icon">🔥</span>
+        <div class="cui-info">
+          <strong>Heated Neck Wrap</strong>
+          <span class="cui-price">$34.99</span> · Warm muscles before traction
+        </div>
+        <button class="btn-cart-add" onclick="addToCart('wrap')">Add</button>
+      </div>
+      <div class="cart-upsell-item" id="cartUpsell-posture">
+        <span class="cui-icon">🧍</span>
+        <div class="cui-info">
+          <strong>Posture Corrector Elite</strong>
+          <span class="cui-price">$29.99</span> · Smart vibration reminder
+        </div>
+        <button class="btn-cart-add" onclick="addToCart('posture')">Add</button>
+      </div>
+    </div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="free-ship-bar" id="freeShipBar">🚚 You qualify for FREE Shipping!</div>
+    <div class="cart-totals">
+      <div class="ct-row"><span>Subtotal</span><span id="cartSubtotal">$0.00</span></div>
+      <div class="ct-row"><span>Shipping</span><span style="color:var(--accent)">FREE</span></div>
+      <div class="ct-row total"><span>Total</span><span id="cartTotal">$0.00</span></div>
+    </div>
+    <button class="btn-checkout" onclick="closeCart(); showPage('checkout')">Proceed to Checkout →</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <h4>Spine<span style="color:var(--accent)">Revive</span>™</h4>
+      <p style="font-size:13px;line-height:1.7;margin-top:8px">Professional-grade spinal health & pain relief devices. Trusted by 12,000+ customers and recommended by chiropractors nationwide.</p>
+    </div>
+    <div>
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="#">Cervical Traction</a></li>
+        <li><a href="#">Cervical Pillows</a></li>
+        <li><a href="#">Heated Wraps</a></li>
+        <li><a href="#">Posture Correctors</a></li>
+        <li><a href="#">Bundles</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Support</h4>
+      <ul>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Shipping Policy</a></li>
+        <li><a href="#">Return Policy</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Track Order</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">Our Story</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 SpineRevive™ · All rights reserved</span>
+    <span>💳 Visa · Mastercard · Amex · Apple Pay · Google Pay · Shop Pay</span>
+  </div>
+</footer>
 
 <script>
-/* ══════════════════════════════════════
-   STATE
-══════════════════════════════════════ */
-const S = { bump: false, upsell: false };
+// ========== STATE ==========
+const products = {
+  main:    { name: 'SpineRevive Pro™ Cervical Traction Device', price: 89.99, icon: '🦴', bg: 'linear-gradient(135deg,#f0fdfa,#ccfbf1)' },
+  pillow:  { name: 'Contour Cervical Pillow', price: 39.99, icon: '🛏️', bg: 'linear-gradient(135deg,#eff6ff,#dbeafe)' },
+  wrap:    { name: 'Heated Neck & Shoulder Wrap', price: 34.99, icon: '🔥', bg: 'linear-gradient(135deg,#fef3c7,#fde68a)' },
+  posture: { name: 'Posture Corrector Elite', price: 29.99, icon: '🧍', bg: 'linear-gradient(135deg,#fce7f3,#fbcfe8)' }
+};
+let cart = {};
+let ppAccepted = false;
 
-/* ══════════════════════════════════════
-   PAGE ROUTING
-══════════════════════════════════════ */
-function show(id) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('on'));
-  document.getElementById(id).classList.add('on');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  if (id !== 'pg-sales') document.getElementById('float-bar').classList.remove('show');
-}
-
-function scrollTo(id) {
-  const el = document.getElementById(id);
-  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-/* ══════════════════════════════════════
-   COUNTDOWN (sales page — 15 min)
-══════════════════════════════════════ */
-(function() {
-  let secs = 899;
-  const el = document.getElementById('cd');
-  function tick() {
-    if (!el) return;
-    const m = Math.floor(secs / 60), s = secs % 60;
-    el.textContent = m + ':' + (s < 10 ? '0' : '') + s;
-    if (secs > 0) secs--;
-  }
-  tick();
-  setInterval(tick, 1000);
-})();
-
-/* Cart timer (checkout — 10 min) */
-(function() {
-  let secs = 599;
-  const el = document.getElementById('cart-timer');
-  function tick() {
-    if (!el) return;
-    const m = Math.floor(secs / 60), s = secs % 60;
-    el.textContent = m + ':' + (s < 10 ? '0' : '') + s;
-    if (secs > 0) secs--;
-    else el.textContent = '0:00';
-  }
-  tick();
-  setInterval(tick, 1000);
-})();
-
-/* ══════════════════════════════════════
-   FLOATING BAR
-══════════════════════════════════════ */
-window.addEventListener('scroll', () => {
-  const hero = document.querySelector('.hero');
-  const bar = document.getElementById('float-bar');
-  if (!hero || !bar) return;
-  bar.classList.toggle('show', hero.getBoundingClientRect().bottom < 0);
-});
-
-/* ══════════════════════════════════════
-   FAQ
-══════════════════════════════════════ */
-function toggleFaq(btn) {
-  const item = btn.parentElement;
-  const wasOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-  if (!wasOpen) item.classList.add('open');
-}
-
-/* ══════════════════════════════════════
-   ORDER BUMP / TOTAL
-══════════════════════════════════════ */
-function updateTotal() {
-  S.bump = document.getElementById('bump').checked;
-  const total = S.bump ? 109.98 : 84.99;
-  document.getElementById('sum-total').textContent = 'A$' + total.toFixed(2);
-  document.getElementById('pay-amount').textContent = 'A$' + total.toFixed(2);
-}
-
-/* ══════════════════════════════════════
-   CARD FORMATTING
-══════════════════════════════════════ */
-document.addEventListener('DOMContentLoaded', () => {
-  const card = document.getElementById('f-card');
-  if (card) card.addEventListener('input', e => {
-    let v = e.target.value.replace(/\D/g, '').substring(0, 16);
-    e.target.value = v.replace(/(.{4})/g, '$1 ').trim();
+// ========== PAGES ==========
+function showPage(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  document.querySelectorAll('.flow-nav button').forEach((b,i) => {
+    b.classList.remove('active');
   });
-  const exp = document.getElementById('f-exp');
-  if (exp) exp.addEventListener('input', e => {
-    let v = e.target.value.replace(/\D/g, '');
-    if (v.length >= 2) v = v.substring(0, 2) + '/' + v.substring(2, 4);
-    e.target.value = v;
+  const pages = ['product','checkout','post-purchase','thankyou','analytics'];
+  const idx = pages.indexOf(page);
+  document.querySelectorAll('.flow-nav button')[idx].classList.add('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+  if(page === 'checkout') updateCheckout();
+}
+
+// ========== CART ==========
+function addToCart(id) {
+  if(cart[id]) {
+    cart[id].qty += 1;
+  } else {
+    cart[id] = { ...products[id], qty: 1 };
+  }
+  updateCartUI();
+  openCart();
+}
+
+function removeFromCart(id) {
+  delete cart[id];
+  updateCartUI();
+}
+
+function addBundle(type) {
+  cart = {};
+  if(type === 'starter') {
+    cart.main = { ...products.main, qty: 1 };
+    cart.wrap = { ...products.wrap, qty: 1 };
+  } else if(type === 'complete') {
+    cart.main = { ...products.main, qty: 1 };
+    cart.pillow = { ...products.pillow, qty: 1 };
+    cart.wrap = { ...products.wrap, qty: 1 };
+  } else if(type === 'ultimate') {
+    cart.main = { ...products.main, qty: 1 };
+    cart.pillow = { ...products.pillow, qty: 1 };
+    cart.wrap = { ...products.wrap, qty: 1 };
+    cart.posture = { ...products.posture, qty: 1 };
+  }
+  updateCartUI();
+  openCart();
+}
+
+function updateCartUI() {
+  const keys = Object.keys(cart);
+  const count = keys.reduce((a,k) => a + cart[k].qty, 0);
+  const total = keys.reduce((a,k) => a + cart[k].price * cart[k].qty, 0);
+  
+  document.getElementById('cartCount').textContent = count;
+  document.getElementById('cartItemCount').textContent = count;
+  
+  const itemsEl = document.getElementById('cartItems');
+  const emptyEl = document.getElementById('cartEmpty');
+  const footerEl = document.getElementById('cartFooter');
+  const upsellsEl = document.getElementById('cartUpsells');
+  
+  if(count === 0) {
+    emptyEl.style.display = 'block';
+    itemsEl.innerHTML = '';
+    footerEl.style.display = 'none';
+    upsellsEl.style.display = 'none';
+    return;
+  }
+  
+  emptyEl.style.display = 'none';
+  footerEl.style.display = 'block';
+  upsellsEl.style.display = 'block';
+  
+  let html = '';
+  keys.forEach(k => {
+    html += `<div class="cart-item">
+      <div class="cart-item-img" style="background:${cart[k].bg}">${cart[k].icon}</div>
+      <div class="cart-item-info">
+        <h4>${cart[k].name}</h4>
+        <div class="ci-price">$${(cart[k].price * cart[k].qty).toFixed(2)} ${cart[k].qty > 1 ? '(×'+cart[k].qty+')' : ''}</div>
+        <button class="cart-item-remove" onclick="removeFromCart('${k}')">Remove</button>
+      </div>
+    </div>`;
   });
-});
-
-/* ══════════════════════════════════════
-   PAYMENT PROCESSING
-══════════════════════════════════════ */
-function expressCheckout() {
-  document.getElementById('loading').classList.add('show');
-  setTimeout(() => {
-    document.getElementById('loading').classList.remove('show');
-    show('pg-upsell');
-  }, 2000);
+  itemsEl.innerHTML = html;
+  
+  document.getElementById('cartSubtotal').textContent = '$' + total.toFixed(2);
+  document.getElementById('cartTotal').textContent = '$' + total.toFixed(2);
+  
+  // Hide upsell items already in cart
+  ['pillow','wrap','posture'].forEach(id => {
+    const el = document.getElementById('cartUpsell-' + id);
+    if(el) el.style.display = cart[id] ? 'none' : 'flex';
+  });
 }
 
-function processPayment() {
-  const email = document.getElementById('f-email').value;
-  const card = document.getElementById('f-card').value;
-  if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
-  if (!card || card.replace(/\s/g, '').length < 15) { alert('Please enter a valid card number.'); return; }
-  document.getElementById('loading').classList.add('show');
-  setTimeout(() => {
-    document.getElementById('loading').classList.remove('show');
-    show('pg-upsell');
-  }, 2400);
+function openCart() {
+  document.getElementById('cartDrawer').classList.add('open');
+  document.getElementById('cartOverlay').classList.add('open');
+}
+function closeCart() {
+  document.getElementById('cartDrawer').classList.remove('open');
+  document.getElementById('cartOverlay').classList.remove('open');
 }
 
-/* ══════════════════════════════════════
-   UPSELL
-══════════════════════════════════════ */
-function acceptUpsell() {
-  S.upsell = true;
-  document.getElementById('loading').classList.add('show');
-  setTimeout(() => {
-    document.getElementById('loading').classList.remove('show');
-    buildThankYou();
-    show('pg-thankyou');
-  }, 1400);
+// ========== PRODUCT PAGE ==========
+function changeQty(d) {
+  const input = document.getElementById('qtyInput');
+  let v = parseInt(input.value) + d;
+  if(v < 1) v = 1;
+  input.value = v;
+}
+function selectVariant(el) {
+  el.parentElement.querySelectorAll('.variant-opt').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+}
+function toggleFaq(el) {
+  el.closest('.faq-item').classList.toggle('open');
 }
 
-function declineUpsell() {
-  S.upsell = false;
-  buildThankYou();
-  show('pg-thankyou');
+// ========== CHECKOUT ==========
+function updateCheckout() {
+  const bump = document.getElementById('orderBump').checked;
+  const sub = 89.99 + (bump ? 19.99 : 0);
+  document.getElementById('checkoutTotal').textContent = sub.toFixed(2);
+  document.getElementById('osSubtotal').textContent = '$' + sub.toFixed(2);
+  document.getElementById('osTotal').textContent = '$' + sub.toFixed(2);
+  document.getElementById('bumpItem').style.display = bump ? 'flex' : 'none';
 }
 
-/* ══════════════════════════════════════
-   THANK YOU
-══════════════════════════════════════ */
-function buildThankYou() {
-  let total = 84.99;
-  if (S.bump) { total += 24.99; document.getElementById('ty-bump').style.display = 'flex'; }
-  if (S.upsell) { total += 44.99; document.getElementById('ty-upsell').style.display = 'flex'; }
-  document.getElementById('ty-total').textContent = 'A$' + total.toFixed(2);
+// ========== POST-PURCHASE ==========
+function acceptPP() {
+  ppAccepted = true;
+  showPage('thankyou');
+  updateThankYou();
 }
+function updateThankYou() {
+  if(ppAccepted) {
+    document.getElementById('tyPProw').style.display = 'flex';
+    const bump = document.getElementById('orderBump').checked;
+    const total = 89.99 + (bump ? 19.99 : 0) + 34.99;
+    document.getElementById('tyTotal').textContent = '$' + total.toFixed(2);
+  } else {
+    const bump = document.getElementById('orderBump').checked;
+    const total = 89.99 + (bump ? 19.99 : 0);
+    document.getElementById('tyTotal').textContent = '$' + total.toFixed(2);
+  }
+}
+
+// Post-purchase timer
+let ppSeconds = 299;
+function updatePPTimer() {
+  const m = Math.floor(ppSeconds / 60);
+  const s = ppSeconds % 60;
+  const el = document.getElementById('ppTimer');
+  if(el) el.textContent = m + ':' + (s < 10 ? '0' : '') + s;
+  if(ppSeconds > 0) ppSeconds--;
+}
+setInterval(updatePPTimer, 1000);
+
+// Init
+updateCartUI();
 </script>
 </body>
 </html>
