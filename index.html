@@ -1,1338 +1,1308 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Why Your Back Pain Keeps Coming Back | Health Discovery</title>
-<meta name="robots" content="noindex">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Neck Health Insider – Why Women Over 40 Can't Escape Neck Pain</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-<style>
-  :root {
-    --cream: #f5f0e8;
-    --dark: #1a1a1a;
-    --red: #c0392b;
-    --navy: #1c3557;
-    --gold: #b8860b;
-    --mid: #555;
-    --light-border: #d4cfc5;
-    --green: #2a7a4f;
-  }
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      background: #ffffff;
+      color: #111111;
+      font-size: 17px;
+      line-height: 1.85;
+    }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+    /* ─── HEADER ─── */
+    .site-header {
+      background: #1a2b45;
+      padding: 11px 16px;
+      text-align: center;
+    }
+    .site-header span {
+      color: #ffffff;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
 
-  body {
-    background: var(--cream);
-    font-family: 'Source Sans 3', sans-serif;
-    color: var(--dark);
-    font-size: 17px;
-    line-height: 1.75;
-    -webkit-font-smoothing: antialiased;
-  }
+    /* ─── AD DISCLAIMER BAR ─── */
+    .ad-bar {
+      background: #f4f4f4;
+      border-bottom: 1px solid #ddd;
+      text-align: center;
+      padding: 6px 16px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11px;
+      color: #666;
+      letter-spacing: 0.5px;
+    }
 
-  /* ─── HEADER ─── */
-  .site-header {
-    background: var(--navy);
-    text-align: center;
-    padding: 10px 16px;
-    font-size: 11px;
-    letter-spacing: 2px;
-    color: rgba(255,255,255,0.6);
-    text-transform: uppercase;
-  }
-  .site-name {
-    font-family: 'Lora', serif;
-    font-size: 22px;
-    color: #fff;
-    letter-spacing: 1px;
-    font-weight: 700;
-    display: block;
-    margin-bottom: 2px;
-  }
+    /* ─── MAIN CONTENT ─── */
+    .content {
+      max-width: 620px;
+      margin: 0 auto;
+      padding: 24px 18px 60px;
+    }
 
-  .disclaimer-bar {
-    background: #e8e3d8;
-    border-bottom: 1px solid var(--light-border);
-    text-align: center;
-    padding: 7px 16px;
-    font-size: 11px;
-    color: #888;
-    letter-spacing: 0.5px;
-  }
-  .disclaimer-bar span { font-weight: 600; color: var(--red); }
+    /* ─── HEADLINE ─── */
+    h1 {
+      font-family: Georgia, serif;
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 1.25;
+      color: #111;
+      margin-bottom: 14px;
+    }
+    @media(min-width: 480px){ h1 { font-size: 30px; } }
 
-  /* ─── ARTICLE WRAPPER ─── */
-  .article {
-    max-width: 640px;
-    margin: 0 auto;
-    padding: 0 16px 80px;
-  }
+    .subheadline {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      color: #444;
+      font-style: italic;
+      line-height: 1.55;
+      border-left: 3px solid #1a2b45;
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
 
-  /* ─── CATEGORY + DATE ─── */
-  .meta {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 20px 0 12px;
-    font-size: 12px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--mid);
-  }
-  .meta .cat {
-    color: var(--red);
-    font-weight: 600;
-    border-bottom: 2px solid var(--red);
-    padding-bottom: 1px;
-  }
-  .meta-dot { color: #ccc; }
+    .byline {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      color: #888;
+      margin-bottom: 22px;
+    }
 
-  /* ─── HEADLINE ─── */
-  h1 {
-    font-family: 'Lora', serif;
-    font-size: clamp(24px, 5.5vw, 34px);
-    font-weight: 700;
-    line-height: 1.25;
-    color: var(--dark);
-    margin-bottom: 14px;
-  }
+    /* ─── IMAGES ─── */
+    .img-placeholder {
+      width: 100%;
+      background: #e8e8e8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 22px 0;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .img-placeholder img {
+      width: 100%;
+      display: block;
+    }
+    /* Fallback label inside placeholder */
+    .img-placeholder .img-label {
+      padding: 60px 20px;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      color: #888;
+    }
+    .img-caption {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      color: #888;
+      text-align: center;
+      margin-top: -14px;
+      margin-bottom: 22px;
+      font-style: italic;
+    }
 
-  .deck {
-    font-size: 18px;
-    color: var(--mid);
-    font-style: italic;
-    font-family: 'Lora', serif;
-    line-height: 1.55;
-    margin-bottom: 20px;
-    border-left: 3px solid var(--red);
-    padding-left: 14px;
-  }
+    /* ─── BODY COPY ─── */
+    p {
+      margin-bottom: 18px;
+    }
 
-  .byline {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 14px 0;
-    border-top: 1px solid var(--light-border);
-    border-bottom: 1px solid var(--light-border);
-    margin-bottom: 24px;
-    font-size: 13px;
-    color: var(--mid);
-  }
-  .byline-avatar {
-    width: 42px; height: 42px;
-    border-radius: 50%;
-    background: #c4b89a;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Lora', serif;
-    font-size: 16px;
-    color: #fff;
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-  .byline strong { color: var(--dark); display: block; font-size: 14px; }
+    h2 {
+      font-family: Georgia, serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #111;
+      margin: 32px 0 14px;
+      line-height: 1.3;
+    }
 
-  /* ─── HERO IMAGE PLACEHOLDER ─── */
-  .hero-img {
-    width: 100%;
-    aspect-ratio: 16/9;
-    background: linear-gradient(135deg, #c4b89a 0%, #a09070 100%);
-    border-radius: 2px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgba(255,255,255,0.7);
-    font-size: 13px;
-    font-style: italic;
-    text-align: center;
-    padding: 20px;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero-img::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
-    opacity: 0.4;
-    mix-blend-mode: overlay;
-  }
-  .img-caption {
-    font-size: 12px;
-    color: #999;
-    margin-bottom: 24px;
-    font-style: italic;
-    text-align: center;
-  }
+    strong { font-weight: 700; }
 
-  /* ─── BODY COPY ─── */
-  p {
-    margin-bottom: 20px;
-    color: #2a2a2a;
-  }
+    /* ─── PULL QUOTE ─── */
+    .pull-quote {
+      background: #f7f7f7;
+      border-left: 4px solid #1a2b45;
+      padding: 16px 18px;
+      margin: 24px 0;
+      font-size: 16px;
+      font-style: italic;
+      color: #222;
+      line-height: 1.6;
+    }
 
-  h2 {
-    font-family: 'Lora', serif;
-    font-size: clamp(20px, 4.5vw, 26px);
-    font-weight: 700;
-    line-height: 1.3;
-    margin: 36px 0 14px;
-    color: var(--dark);
-  }
+    /* ─── HIGHLIGHT BOX ─── */
+    .highlight-box {
+      background: #fff8e1;
+      border: 1px solid #f0d060;
+      border-radius: 4px;
+      padding: 16px 18px;
+      margin: 22px 0;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      color: #333;
+    }
 
-  h3 {
-    font-family: 'Lora', serif;
-    font-size: 18px;
-    font-weight: 600;
-    margin: 28px 0 10px;
-    color: var(--navy);
-  }
+    /* ─── STATS LIST ─── */
+    .stat-list {
+      list-style: none;
+      margin: 0 0 20px 0;
+      padding: 0;
+    }
+    .stat-list li {
+      padding: 8px 0 8px 24px;
+      position: relative;
+      border-bottom: 1px solid #eee;
+      font-size: 15px;
+      font-family: Arial, sans-serif;
+      color: #222;
+    }
+    .stat-list li:before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #1a2b45;
+      font-weight: 700;
+    }
 
-  /* ─── PULL QUOTE ─── */
-  .pull-quote {
-    background: var(--navy);
-    color: #fff;
-    padding: 22px 20px;
-    margin: 30px 0;
-    border-radius: 2px;
-    font-family: 'Lora', serif;
-    font-size: clamp(17px, 4vw, 20px);
-    font-style: italic;
-    line-height: 1.55;
-    position: relative;
-  }
-  .pull-quote::before {
-    content: '"';
-    font-size: 60px;
-    color: rgba(255,255,255,0.2);
-    font-family: Georgia, serif;
-    position: absolute;
-    top: -5px;
-    left: 14px;
-    line-height: 1;
-  }
+    /* ─── FEATURE LIST ─── */
+    .feature-list {
+      list-style: none;
+      margin: 0 0 20px 0;
+      padding: 0;
+    }
+    .feature-list li {
+      padding: 9px 0 9px 28px;
+      position: relative;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      color: #222;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .feature-list li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #2a7a2a;
+      font-weight: 700;
+      font-size: 16px;
+    }
 
-  /* ─── HIGHLIGHT BOX ─── */
-  .highlight-box {
-    border: 2px solid var(--red);
-    padding: 18px 18px;
-    margin: 28px 0;
-    border-radius: 2px;
-    background: #fff;
-  }
-  .highlight-box .hb-title {
-    font-family: 'Lora', serif;
-    font-weight: 700;
-    font-size: 16px;
-    color: var(--red);
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  .highlight-box ul {
-    padding-left: 18px;
-  }
-  .highlight-box ul li {
-    margin-bottom: 8px;
-    color: #333;
-    font-size: 15px;
-  }
+    /* ─── TESTIMONIALS ─── */
+    .testimonial {
+      background: #f9f9f9;
+      border: 1px solid #e4e4e4;
+      border-radius: 4px;
+      padding: 16px 18px;
+      margin: 16px 0;
+    }
+    .testimonial p {
+      font-size: 15px;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #333;
+      margin-bottom: 8px;
+      font-style: italic;
+      line-height: 1.6;
+    }
+    .testimonial .tname {
+      font-size: 13px;
+      font-weight: 700;
+      color: #555;
+      font-style: normal;
+      font-family: Arial, sans-serif;
+    }
+    .stars {
+      color: #f5a623;
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
 
-  /* ─── NUMBERED LIST STYLE ─── */
-  .numbered-list {
-    counter-reset: nl;
-    list-style: none;
-    padding: 0;
-    margin: 20px 0;
-  }
-  .numbered-list li {
-    counter-increment: nl;
-    display: flex;
-    gap: 14px;
-    margin-bottom: 22px;
-    align-items: flex-start;
-  }
-  .numbered-list li::before {
-    content: counter(nl);
-    background: var(--red);
-    color: #fff;
-    font-family: 'Lora', serif;
-    font-weight: 700;
-    font-size: 15px;
-    min-width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-  .numbered-list li .nl-content strong {
-    display: block;
-    font-size: 16px;
-    color: var(--navy);
-    margin-bottom: 4px;
-    font-family: 'Lora', serif;
-  }
-  .numbered-list li .nl-content {
-    font-size: 15px;
-    color: #444;
-  }
+    /* ─── CTA BUTTON ─── */
+    .cta-btn {
+      display: block;
+      width: 100%;
+      background: #e03b2e;
+      color: #ffffff;
+      text-align: center;
+      padding: 18px 20px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      margin: 20px 0;
+      line-height: 1.3;
+    }
+    .cta-btn:hover { background: #c73226; }
+    .cta-sub {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      color: #888;
+      margin-top: -12px;
+      margin-bottom: 20px;
+    }
 
-  /* ─── DIVIDER ─── */
-  .divider {
-    border: none;
-    border-top: 1px solid var(--light-border);
-    margin: 30px 0;
-  }
-  .divider-star {
-    text-align: center;
-    margin: 30px 0;
-    color: var(--light-border);
-    font-size: 20px;
-    letter-spacing: 10px;
-  }
+    /* ─── GUARANTEE BOX ─── */
+    .guarantee-box {
+      border: 2px solid #1a2b45;
+      border-radius: 4px;
+      padding: 20px 18px;
+      margin: 28px 0;
+      text-align: center;
+    }
+    .guarantee-box .g-icon { font-size: 36px; margin-bottom: 8px; }
+    .guarantee-box h3 {
+      font-family: Georgia, serif;
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+    .guarantee-box p {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      color: #444;
+      margin: 0;
+    }
 
-  /* ─── TESTIMONIALS ─── */
-  .testimonial {
-    background: #fff;
-    border: 1px solid var(--light-border);
-    border-left: 4px solid var(--gold);
-    padding: 18px;
-    margin: 24px 0;
-    border-radius: 0 2px 2px 0;
-  }
-  .testimonial .stars {
-    color: #f0a500;
-    font-size: 16px;
-    margin-bottom: 8px;
-  }
-  .testimonial .testi-text {
-    font-style: italic;
-    font-family: 'Lora', serif;
-    font-size: 15px;
-    color: #333;
-    margin-bottom: 10px;
-    line-height: 1.6;
-  }
-  .testimonial .testi-author {
-    font-size: 13px;
-    color: var(--mid);
-    font-weight: 600;
-  }
-  .testimonial .testi-img-placeholder {
-    width: 44px; height: 44px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #c4b89a, #a09070);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-family: 'Lora', serif;
-    font-weight: 700;
-    font-size: 16px;
-    float: left;
-    margin-right: 12px;
-    margin-top: 3px;
-  }
-  .testimonial .testi-meta { overflow: hidden; }
+    /* ─── DISCLAIMER ─── */
+    .advertorial-disclaimer {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11px;
+      color: #aaa;
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+      line-height: 1.6;
+    }
 
-  /* ─── PRODUCT REVEAL ─── */
-  .product-reveal {
-    background: #fff;
-    border: 1px solid var(--light-border);
-    border-radius: 4px;
-    padding: 24px 20px;
-    margin: 30px 0;
-    text-align: center;
-  }
-  .product-reveal .pr-label {
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--mid);
-    margin-bottom: 10px;
-  }
-  .product-reveal .pr-name {
-    font-family: 'Lora', serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--navy);
-    margin-bottom: 6px;
-  }
-  .product-reveal .pr-price {
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--red);
-    margin-bottom: 4px;
-  }
-  .product-reveal .pr-old {
-    font-size: 16px;
-    color: #aaa;
-    text-decoration: line-through;
-    margin-bottom: 16px;
-  }
-  .product-img-placeholder {
-    width: 100%;
-    max-width: 280px;
-    aspect-ratio: 4/3;
-    background: linear-gradient(135deg, #e8e3d8 0%, #d4cfc5 100%);
-    margin: 14px auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #aaa;
-    font-size: 13px;
-    font-style: italic;
-    border-radius: 4px;
-  }
-  .trust-badges {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin: 16px 0 20px;
-  }
-  .badge {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    font-size: 11px;
-    color: var(--mid);
-    text-align: center;
-    max-width: 70px;
-  }
-  .badge-icon {
-    width: 36px; height: 36px;
-    background: var(--cream);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-  }
-  .cta-btn {
-    display: block;
-    width: 100%;
-    background: var(--red);
-    color: #fff;
-    padding: 18px 20px;
-    font-size: 18px;
-    font-weight: 600;
-    font-family: 'Source Sans 3', sans-serif;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    text-align: center;
-    letter-spacing: 0.5px;
-    text-decoration: none;
-    margin-bottom: 10px;
-    transition: background 0.2s;
-  }
-  .cta-btn:hover { background: #a93226; }
-  .cta-sub {
-    font-size: 12px;
-    color: #999;
-    text-align: center;
-  }
+    /* ─────────────────────────────────────────── */
+    /* ─── CHECKOUT OVERLAY ─── */
+    /* ─────────────────────────────────────────── */
+    #checkout-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.65);
+      z-index: 9999;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    #checkout-overlay.active { display: block; }
 
-  /* ─── STICKY BOTTOM BAR ─── */
-  .sticky-bar {
-    position: fixed;
-    bottom: 0; left: 0; right: 0;
-    background: var(--navy);
-    padding: 12px 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    z-index: 100;
-    box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
-  }
-  .sticky-bar .sb-text {
-    color: #fff;
-    font-size: 13px;
-    line-height: 1.4;
-  }
-  .sticky-bar .sb-text strong { display: block; font-size: 15px; }
-  .sticky-bar .sb-btn {
-    background: var(--red);
-    color: #fff;
-    padding: 12px 18px;
-    border-radius: 4px;
-    font-weight: 600;
-    font-size: 14px;
-    white-space: nowrap;
-    border: none;
-    cursor: pointer;
-    flex-shrink: 0;
-  }
+    .checkout-modal {
+      background: #ffffff;
+      max-width: 520px;
+      margin: 0 auto;
+      min-height: 100vh;
+      padding: 0 0 40px;
+      position: relative;
+    }
 
-  /* ─── CHECKOUT SECTION ─── */
-  #checkout {
-    background: var(--navy);
-    margin: 0 -16px;
-    padding: 30px 16px 100px;
-    scroll-margin-top: 20px;
-  }
-  #checkout .co-title {
-    font-family: 'Lora', serif;
-    font-size: clamp(22px, 5vw, 28px);
-    font-weight: 700;
-    color: #fff;
-    text-align: center;
-    margin-bottom: 6px;
-  }
-  #checkout .co-sub {
-    text-align: center;
-    color: rgba(255,255,255,0.65);
-    font-size: 14px;
-    margin-bottom: 24px;
-  }
-  .co-card {
-    background: #fff;
-    border-radius: 6px;
-    padding: 22px 18px;
-    max-width: 500px;
-    margin: 0 auto;
-  }
-  .co-product-row {
-    display: flex;
-    gap: 14px;
-    align-items: center;
-    padding-bottom: 18px;
-    border-bottom: 1px solid #eee;
-    margin-bottom: 18px;
-  }
-  .co-product-img {
-    width: 80px; height: 80px;
-    background: linear-gradient(135deg, #e8e3d8, #c4b89a);
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #aaa;
-    font-size: 11px;
-    font-style: italic;
-    text-align: center;
-    flex-shrink: 0;
-    padding: 6px;
-  }
-  .co-product-info .co-pname {
-    font-family: 'Lora', serif;
-    font-weight: 700;
-    font-size: 16px;
-    color: var(--dark);
-    margin-bottom: 4px;
-  }
-  .co-product-info .co-prating {
-    color: #f0a500;
-    font-size: 13px;
-    margin-bottom: 6px;
-  }
-  .co-product-info .co-price-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .co-price-now { font-size: 22px; font-weight: 700; color: var(--red); }
-  .co-price-old { font-size: 14px; color: #aaa; text-decoration: line-through; }
-  .co-savings { font-size: 12px; background: #e8f5ee; color: var(--green); padding: 2px 7px; border-radius: 10px; font-weight: 600; }
+    .checkout-modal-header {
+      background: #1a2b45;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .checkout-modal-header span {
+      color: #fff;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .close-btn {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 0 4px;
+      line-height: 1;
+    }
 
-  .co-badges {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 22px;
-  }
-  .co-badge {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 12px;
-    color: var(--green);
-    font-weight: 600;
-    background: #e8f5ee;
-    padding: 5px 10px;
-    border-radius: 20px;
-  }
+    /* IMAGE GALLERY */
+    .product-gallery {
+      background: #f5f5f5;
+      padding: 16px;
+    }
+    .gallery-main {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: #ddd;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+    .gallery-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .gallery-main .ph {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      color: #999;
+      text-align: center;
+      padding: 20px;
+    }
+    .gallery-thumbs {
+      display: flex;
+      gap: 8px;
+    }
+    .gallery-thumbs .thumb {
+      flex: 1;
+      aspect-ratio: 1/1;
+      background: #ccc;
+      border-radius: 3px;
+      border: 2px solid transparent;
+      cursor: pointer;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .gallery-thumbs .thumb.active { border-color: #1a2b45; }
+    .gallery-thumbs .thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .gallery-thumbs .thumb .tph {
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      color: #888;
+      text-align: center;
+    }
 
-  /* ─── QUANTITY ─── */
-  .co-label {
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--mid);
-    margin-bottom: 8px;
-  }
-  .qty-row {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 18px;
-  }
-  .qty-option {
-    flex: 1;
-    border: 2px solid #ddd;
-    border-radius: 6px;
-    padding: 10px 6px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.2s;
-    position: relative;
-  }
-  .qty-option.selected {
-    border-color: var(--navy);
-    background: #f0f4ff;
-  }
-  .qty-option .qty-num {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--dark);
-  }
-  .qty-option .qty-price {
-    font-size: 12px;
-    color: var(--mid);
-  }
-  .qty-option .qty-badge {
-    position: absolute;
-    top: -10px; left: 50%; transform: translateX(-50%);
-    background: var(--green);
-    color: #fff;
-    font-size: 10px;
-    font-weight: 700;
-    padding: 2px 7px;
-    border-radius: 10px;
-    white-space: nowrap;
-  }
+    /* PRODUCT DETAILS */
+    .product-info {
+      padding: 18px 16px 0;
+    }
+    .product-info h2 {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #111;
+      margin: 0 0 4px;
+    }
+    .product-info .tagline {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 12px;
+    }
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+    .price-current {
+      font-family: Arial, sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #cc2222;
+    }
+    .price-original {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      color: #999;
+      text-decoration: line-through;
+    }
+    .price-save {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      color: #2a7a2a;
+      font-weight: 700;
+      background: #e8f5e9;
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+    .reviews-line {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 16px;
+    }
+    .reviews-line .stars-sm { color: #f5a623; }
 
-  /* ─── FORM FIELDS ─── */
-  .form-section-title {
-    font-family: 'Lora', serif;
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--dark);
-    margin: 22px 0 12px;
-    padding-top: 18px;
-    border-top: 1px solid #eee;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .form-section-title .step-num {
-    width: 24px; height: 24px;
-    background: var(--navy);
-    color: #fff;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 13px;
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-  .form-row {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 12px;
-  }
-  .form-field {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  .form-field label {
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--mid);
-    margin-bottom: 5px;
-  }
-  .form-field input, .form-field select {
-    border: 1.5px solid #ddd;
-    border-radius: 5px;
-    padding: 11px 12px;
-    font-size: 16px; /* 16px prevents iOS zoom */
-    font-family: 'Source Sans 3', sans-serif;
-    color: var(--dark);
-    background: #fff;
-    transition: border 0.2s;
-    width: 100%;
-    -webkit-appearance: none;
-  }
-  .form-field input:focus, .form-field select:focus {
-    outline: none;
-    border-color: var(--navy);
-  }
-  .card-icons {
-    display: flex;
-    gap: 6px;
-    margin-bottom: 10px;
-    align-items: center;
-  }
-  .card-icon {
-    height: 22px;
-    background: #f0f0f0;
-    border-radius: 3px;
-    padding: 0 8px;
-    display: flex;
-    align-items: center;
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--mid);
-    border: 1px solid #ddd;
-  }
-  .secure-note {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 12px;
-    color: var(--green);
-    margin: 10px 0 16px;
-    font-weight: 600;
-  }
-  .submit-btn {
-    display: block;
-    width: 100%;
-    background: var(--green);
-    color: #fff;
-    padding: 18px;
-    font-size: 18px;
-    font-weight: 700;
-    font-family: 'Source Sans 3', sans-serif;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    text-align: center;
-    letter-spacing: 0.3px;
-    margin-bottom: 14px;
-  }
-  .submit-btn:hover { background: #236040; }
-  .order-summary {
-    background: #f8f8f6;
-    border-radius: 5px;
-    padding: 14px;
-    margin: 16px 0;
-    font-size: 14px;
-  }
-  .order-line {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 8px;
-    color: #555;
-  }
-  .order-line.total {
-    font-weight: 700;
-    color: var(--dark);
-    font-size: 16px;
-    border-top: 1px solid #ddd;
-    padding-top: 10px;
-    margin-top: 4px;
-  }
-  .order-line .free { color: var(--green); font-weight: 600; }
+    /* TRUST BADGES TOP */
+    .trust-top {
+      display: flex;
+      gap: 0;
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+      margin: 0 16px 18px;
+    }
+    .trust-top .tb {
+      flex: 1;
+      text-align: center;
+      padding: 10px 4px;
+      font-family: Arial, sans-serif;
+      font-size: 10.5px;
+      color: #444;
+      line-height: 1.4;
+    }
+    .trust-top .tb .tb-icon { font-size: 18px; display: block; margin-bottom: 3px; }
+    .trust-top .tb:not(:last-child) { border-right: 1px solid #eee; }
 
-  .bottom-badges {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    flex-wrap: wrap;
-    margin-top: 14px;
-  }
-  .bottom-badge {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 11px;
-    color: #888;
-  }
+    /* BUNDLE SELECTOR */
+    .bundle-section {
+      padding: 0 16px;
+    }
+    .bundle-label {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .bundle-option {
+      border: 2px solid #ddd;
+      border-radius: 5px;
+      padding: 14px 14px;
+      margin-bottom: 8px;
+      cursor: pointer;
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: border-color 0.15s;
+    }
+    .bundle-option.selected {
+      border-color: #1a2b45;
+      background: #f5f7fa;
+    }
+    .bundle-option input[type="radio"] {
+      width: 18px;
+      height: 18px;
+      accent-color: #1a2b45;
+      flex-shrink: 0;
+    }
+    .bundle-info { flex: 1; }
+    .bundle-name {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: #111;
+    }
+    .bundle-detail {
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      color: #666;
+    }
+    .bundle-price-col { text-align: right; }
+    .bundle-price {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #cc2222;
+    }
+    .bundle-was {
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      color: #aaa;
+      text-decoration: line-through;
+    }
+    .badge-pop {
+      position: absolute;
+      top: -10px;
+      right: 12px;
+      background: #1a2b45;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .badge-best {
+      background: #e03b2e;
+    }
 
-  /* ─── THANK YOU SCREEN ─── */
-  #thankyou {
-    display: none;
-    text-align: center;
-    padding: 40px 20px;
-  }
-  #thankyou .ty-icon {
-    font-size: 60px;
-    margin-bottom: 16px;
-  }
-  #thankyou h2 {
-    font-family: 'Lora', serif;
-    margin-bottom: 10px;
-    color: var(--green);
-    text-align: center;
-  }
-  #thankyou p { color: var(--mid); font-size: 15px; }
+    /* ORDER FORM */
+    .form-section {
+      padding: 20px 16px 0;
+    }
+    .form-section h3 {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .form-row { display: flex; gap: 10px; margin-bottom: 10px; }
+    .form-row .form-group { flex: 1; }
+    .form-group { margin-bottom: 10px; }
+    .form-group label {
+      display: block;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      color: #555;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 11px 12px;
+      font-family: Arial, sans-serif;
+      font-size: 15px;
+      color: #111;
+      background: #fff;
+      -webkit-appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #1a2b45;
+    }
 
-  /* ─── URGENCY BAR ─── */
-  .urgency-bar {
-    background: #fff3cd;
-    border: 1px solid #ffc107;
-    border-radius: 4px;
-    padding: 12px 14px;
-    margin: 20px 0;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 14px;
-    color: #856404;
-  }
-  .urgency-bar .ub-icon { font-size: 20px; flex-shrink: 0; }
+    /* PAYMENT SECTION */
+    .payment-section {
+      padding: 0 16px;
+    }
+    .payment-section h3 {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .card-icons {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .card-icon {
+      background: #f0f0f0;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 4px 10px;
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: #555;
+    }
+    .secure-line {
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      color: #888;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
 
-  /* ─── MISC ─── */
-  .separator-label {
-    text-align: center;
-    position: relative;
-    margin: 30px 0 10px;
-  }
-  .separator-label::before {
-    content: '';
-    position: absolute;
-    top: 50%; left: 0; right: 0;
-    border-top: 1px solid var(--light-border);
-    z-index: 0;
-  }
-  .separator-label span {
-    background: var(--cream);
-    padding: 0 12px;
-    position: relative;
-    z-index: 1;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #aaa;
-  }
+    /* STRIPE PLACEHOLDER */
+    .stripe-placeholder {
+      background: #f8f8f8;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 14px 12px;
+      margin-bottom: 10px;
+    }
+    .stripe-field-label {
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      color: #999;
+      margin-bottom: 6px;
+    }
+    .stripe-field-mock {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .stripe-field-mock span {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      color: #aaa;
+    }
+    .stripe-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .stripe-row .stripe-placeholder { flex: 1; margin-bottom: 0; }
 
-  .science-box {
-    background: #f0f4ff;
-    border-left: 4px solid var(--navy);
-    padding: 16px 18px;
-    margin: 24px 0;
-    border-radius: 0 4px 4px 0;
-  }
-  .science-box .sb-head {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--navy);
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
-  .science-box p {
-    margin: 0;
-    font-size: 14px;
-    color: #444;
-  }
+    /* ORDER BUTTON */
+    .order-btn {
+      display: block;
+      width: 100%;
+      background: #2a7a2a;
+      color: #ffffff;
+      text-align: center;
+      padding: 18px 20px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 16px 0 8px;
+      letter-spacing: 0.3px;
+    }
+    .order-btn:hover { background: #236023; }
+    .order-total-line {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      color: #333;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .order-total-line span { font-weight: 700; }
 
-  @media (max-width: 380px) {
-    .qty-row { gap: 5px; }
-    .qty-option { padding: 8px 4px; }
-    .qty-option .qty-num { font-size: 15px; }
-  }
-</style>
+    /* TRUST BOTTOM */
+    .trust-bottom {
+      border-top: 1px solid #eee;
+      margin: 0 16px;
+      padding-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      color: #444;
+      flex: 1;
+      min-width: 140px;
+    }
+    .trust-item .ti-icon { font-size: 18px; }
+
+    /* CHECKOUT DISCLAIMER */
+    .checkout-disclaimer {
+      padding: 14px 16px 0;
+      font-family: Arial, sans-serif;
+      font-size: 10.5px;
+      color: #bbb;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    /* DIVIDER */
+    .divider {
+      border: none;
+      border-top: 1px solid #eee;
+      margin: 28px 0;
+    }
+  </style>
 </head>
 <body>
 
-<!-- SITE HEADER -->
+<!-- ═══════════════════════════════════════════ -->
+<!--              ADVERTORIAL                    -->
+<!-- ═══════════════════════════════════════════ -->
+
 <header class="site-header">
-  <span class="site-name">American Health Reporter</span>
-  Health &bull; Wellness &bull; Pain Management
+  <span>Neck Health Insider</span>
 </header>
-<div class="disclaimer-bar"><span>Sponsored Content</span> &mdash; Advertorial</div>
 
-<!-- STICKY BOTTOM BAR -->
-<div class="sticky-bar" id="stickyBar">
-  <div class="sb-text">
-    <strong>PulseRelief Pro</strong>
-    From $79.99 &bull; Free Shipping
-  </div>
-  <button class="sb-btn" onclick="scrollToCheckout()">Order Now →</button>
-</div>
+<div class="ad-bar">ADVERTISEMENT — SPONSORED CONTENT</div>
 
-<div class="article">
+<div class="content">
 
-  <!-- META -->
-  <div class="meta">
-    <span class="cat">Pain Management</span>
-    <span class="meta-dot">|</span>
-    <span>April 2025</span>
-  </div>
+  <h1>Researchers Reveal Why Women Over 40 Can't Escape Neck Pain — Even After Years of Treatment</h1>
 
-  <!-- HEADLINE -->
-  <h1>I Had Chronic Back Pain for 7 Years. A Physical Therapist Finally Told Me the Real Reason It Wouldn't Go Away</h1>
+  <p class="subheadline">
+    "New clinical findings expose the hidden 'tension lock' pattern that keeps muscles trapped — and the 2-minute device that's finally breaking the cycle for thousands of women"
+  </p>
 
-  <p class="deck">It wasn't my posture, my mattress, or even my age. The real cause was something I could actually fix — in 10 minutes a day, at home.</p>
+  <p class="byline">Health Reporter &nbsp;|&nbsp; Updated today</p>
 
-  <!-- BYLINE -->
-  <div class="byline">
-    <div class="byline-avatar">M</div>
-    <div>
-      <strong>By Margaret Holloway</strong>
-      Freelance Health Writer &bull; 12 min read
+  <!-- HERO IMAGE -->
+  <div class="img-placeholder">
+    <div class="img-label">
+      📸 IMAGE: Woman holding her neck in pain, home setting, relatable<br><em>(replace with your product lifestyle photo)</em>
     </div>
   </div>
 
-  <!-- HERO IMAGE -->
-  <div class="hero-img">
-    [ Insert: Photo of woman at kitchen table, hand on lower back, morning light ]
+  <p>For millions of women over 40, neck pain isn't just a nuisance.</p>
+
+  <p>It's a daily reality they wake up with it every morning. They carry it through school runs, work meetings, and evening routines.</p>
+
+  <p>They've tried physiotherapy. Massage. Heat packs. Stretching. Anti-inflammatory tablets.</p>
+
+  <p><strong>And still it comes back.</strong></p>
+
+  <div class="highlight-box">
+    ⚠️ A new analysis from leading pain clinics is revealing the reason why — and the answer is surprising even the doctors who've been treating neck pain for decades.
   </div>
-  <p class="img-caption">Photo: Documentary-style image showing someone dealing with morning back pain — a reality for over 65 million Americans.</p>
 
-  <!-- ARTICLE BODY -->
-  <p>For seven years, I woke up every single morning in pain. Lower back. Sometimes shooting into my hip. By midday it was manageable, but by evening — after sitting at a desk all day — it came back with a vengeance.</p>
+  <p>It's not just posture.</p>
+  <p>It's not just stress.</p>
+  <p>And it's not a normal part of ageing that women simply have to accept.</p>
 
-  <p>I tried everything. Ibuprofen. Stretching videos on YouTube. A standing desk. Two different chiropractors. A $400 ergonomic chair. The pain would ease for a few days and then — without fail — return.</p>
+  <h2>The Real Reason Your Neck Never Fully Heals</h2>
 
-  <p>I genuinely believed I was just someone who was going to live with back pain forever. Maybe it was my genes. Maybe I'd just damaged something. I stopped talking about it because I felt embarrassed — like everyone else just pushed through it and I was being dramatic.</p>
+  <p>Most people assume that if they rest, stretch, and wait long enough, the tension will eventually go away.</p>
+
+  <p>But researchers at pain clinics across Europe and Australia are pointing to something different. They call it <strong>neuromuscular tension lock.</strong></p>
+
+  <p>Here's what that means in plain terms.</p>
+
+  <p>When a muscle group stays tense for weeks, months, or years, the nervous system starts treating that tension as the <strong>new "normal" state.</strong></p>
+
+  <p><strong>The muscle essentially forgets how to fully relax.</strong></p>
+
+  <p>Even when the original cause of pain is gone — the stressful period, the bad sleeping position, the long hours at a screen — the tension remains.</p>
+
+  <p>Because the brain is still sending the "stay contracted" signal.</p>
 
   <div class="pull-quote">
-    "I thought I was just going to live with back pain for the rest of my life. Then a physical therapist asked me one question that changed everything."
+    "The muscle hasn't changed its baseline state. It's still locked. This is why massage brings relief for a few hours, then the tension returns within a day. Nothing has changed at the neural level."
   </div>
 
-  <p>The turning point came at a routine doctor's appointment. He referred me to a physical therapist named Don — a straight-talking guy in his 50s who had worked in sports medicine and pain rehabilitation for over two decades.</p>
+  <!-- IMAGE 2 -->
+  <div class="img-placeholder">
+    <div class="img-label">
+      📸 IMAGE: Simple diagram of neck muscle anatomy or woman receiving physio treatment<br><em>(replace with relevant medical/lifestyle image)</em>
+    </div>
+  </div>
 
-  <p>In our very first session, Don asked me something nobody had asked before:</p>
+  <h2>Why Traditional Treatments Only Go So Far</h2>
 
-  <p><em>"When your back hurts — is it the bone that's sore, or is it like a deep, burning muscle kind of pain?"</em></p>
+  <p>Most common neck pain treatments work on the surface.</p>
 
-  <p>Muscle. Definitely muscle. Always felt like something was clenched and wouldn't let go.</p>
+  <ul class="stat-list">
+    <li><strong>Heat packs</strong> — relax tissue temporarily. Tension returns within hours.</li>
+    <li><strong>Massage</strong> — manually releases the muscle. The lock pattern re-forms quickly.</li>
+    <li><strong>Painkillers</strong> — block the pain signal. Do nothing to address what's causing it.</li>
+    <li><strong>Stretching</strong> — can actually aggravate already-stressed muscles when the root pattern is not addressed first.</li>
+  </ul>
 
-  <p>"That's what I thought," he said. "You're treating the wrong thing."</p>
+  <p>None of them <strong>reset the neuromuscular signal</strong> that's keeping the tension in place.</p>
+
+  <p>Until that signal is interrupted, the tension lock stays — and the pain keeps returning.</p>
+
+  <h2>What Physiotherapists Have Been Using in Clinics for Years</h2>
+
+  <p>In professional physiotherapy centres and pain clinics, there's a technology that directly addresses this problem at the source.</p>
+
+  <p>It's called <strong>TENS/EMS</strong> — Transcutaneous Electrical Nerve Stimulation and Electrical Muscle Stimulation.</p>
+
+  <p>For decades, it's been available only in clinical settings because the equipment was bulky, expensive, and required professional training to operate.</p>
+
+  <p><strong>The way it works is straightforward.</strong></p>
+
+  <p>Small, calibrated electrical pulses — completely painless, typically described as a gentle tingling or warming sensation — are delivered directly to the affected muscle group.</p>
+
+  <p>These pulses do two things simultaneously:</p>
+
+  <ul class="stat-list">
+    <li><strong>Interrupt the tension-lock signal.</strong> The electrical input essentially overrides the brain's instruction to stay contracted.</li>
+    <li><strong>Retrain the muscle to relax.</strong> With repeated short sessions, the nervous system relearns that the relaxed state is the default — not the tensed one.</li>
+  </ul>
+
+  <div class="highlight-box">
+    📊 Clinical data shows regular TENS/EMS sessions reduce chronic neck tension in <strong>over 80% of patients</strong> — with most people reporting significant improvement within the first week of use.
+  </div>
+
+  <!-- IMAGE 3 -->
+  <div class="img-placeholder">
+    <div class="img-label">
+      📸 IMAGE: Close-up of the device being used on a woman's neck — clean, natural look<br><em>(replace with your product in-use photo)</em>
+    </div>
+  </div>
+
+  <h2>The Device That Brought This Technology Home</h2>
+
+  <p>For years, accessing this technology meant booking physiotherapy appointments — often $80–$150 per session, weeks of waiting, and scheduling around family life.</p>
+
+  <p>That changed with <strong>[BRAND NAME]</strong>.</p>
+
+  <p>[BRAND NAME] is a purpose-built TENS/EMS device designed specifically for the neck. Unlike generic electrical stimulation devices, it's engineered to fit the natural curve of the neck and upper shoulders — targeting precisely the muscle groups where tension lock most commonly develops in women over 40.</p>
+
+  <p><strong>It takes two minutes to put on.</strong></p>
+
+  <p><strong>No wires. No setup. No appointments.</strong></p>
+
+  <p>And users report feeling a difference from the very first session.</p>
+
+  <!-- IMAGE 4 — PRODUCT PHOTO -->
+  <div class="img-placeholder">
+    <div class="img-label">
+      📸 IMAGE: Clean product photo — the device on white or neutral background<br><em>(replace with your hero product shot)</em>
+    </div>
+  </div>
+
+  <button class="cta-btn" onclick="openCheckout()">
+    ✅ CHECK AVAILABILITY & CURRENT PRICE →
+  </button>
+  <p class="cta-sub">Limited stock — free shipping included</p>
+
+  <h2>What Women Are Saying</h2>
+
+  <div class="testimonial">
+    <div class="stars">★★★★★</div>
+    <p>"I'd had neck pain every single morning for three years. After one week with [BRAND NAME], I woke up and it was just... gone. I couldn't believe it. My husband noticed I stopped complaining about it almost immediately."</p>
+    <div class="tname">— Sarah M., 47, Melbourne — Verified Buyer</div>
+  </div>
+
+  <div class="testimonial">
+    <div class="stars">★★★★★</div>
+    <p>"My physio actually uses the same technology in her clinic. She told me to look into a home device and I found this one. I used to pay $95 a session for the same thing. Now I use it on the couch while I watch TV. Game changer."</p>
+    <div class="tname">— Karen T., 52, Brisbane — Verified Buyer</div>
+  </div>
+
+  <div class="testimonial">
+    <div class="stars">★★★★★</div>
+    <p>"I bought one for myself and one for my sister. We both have chronic neck tension from sitting at desks all day. The difference after two weeks was honestly shocking — I genuinely didn't think something this small could work this well."</p>
+    <div class="tname">— Michelle D., 44, Sydney — Verified Buyer</div>
+  </div>
+
+  <!-- IMAGE 5 — LIFESTYLE -->
+  <div class="img-placeholder">
+    <div class="img-label">
+      📸 IMAGE: Happy, relaxed woman using device at home — lifestyle shot<br><em>(replace with lifestyle customer photo)</em>
+    </div>
+  </div>
+
+  <h2>What Makes [BRAND NAME] Different</h2>
+
+  <ul class="feature-list">
+    <li><strong>Clinically-calibrated pulse patterns</strong> — designed to match the exact frequencies used in professional physiotherapy</li>
+    <li><strong>Neck-specific ergonomic design</strong> — not a generic device, engineered for the muscle groups that drive chronic neck pain</li>
+    <li><strong>10 adjustable intensity levels</strong> — from gentle to deep muscle stimulation, fully customisable</li>
+    <li><strong>Rechargeable and portable</strong> — works at home, at your desk, or while travelling</li>
+    <li><strong>No wires or complicated setup</strong> — on and working in under 2 minutes</li>
+    <li><strong>Auto shut-off timer</strong> — safe for daily use, built-in 15-minute session control</li>
+  </ul>
 
   <hr class="divider">
 
-  <h2>The Problem Isn't What You Think It Is</h2>
+  <h2>How Long Will This Be Available?</h2>
 
-  <p>Don explained something that completely reframed how I understood my own body. Most chronic back pain — especially the kind that <em>keeps coming back</em> — isn't structural. It isn't a slipped disc. It isn't bone damage. It's a neuromuscular problem.</p>
+  <p>[BRAND NAME] recently began offering their device directly to consumers — cutting out the medical retail markup and making the technology accessible at a fraction of the clinic cost.</p>
 
-  <p>Here's what that means in plain English: Over time, when we sit for long hours, sleep poorly, or carry stress in our bodies, certain muscles get locked in a constant low-level contraction. They never fully relax. Your nervous system essentially gets "stuck" sending pain signals — not because there's damage, but because the communication between your nerves and your muscles has gone haywire.</p>
+  <p>Demand has been consistently high since their first coverage in health media.</p>
 
-  <div class="highlight-box">
-    <div class="hb-title">⚠️ The 4 Signs Your Pain Is Neuromuscular (Not Structural)</div>
-    <ul>
-      <li><strong>It always comes back</strong> — no matter what treatment you try, the relief is temporary</li>
-      <li><strong>It's worse after sitting or sleeping</strong> — not after physical activity</li>
-      <li><strong>It feels like tightness or burning</strong>, not a sharp or specific localized pain</li>
-      <li><strong>It migrates or spreads</strong> — sometimes hip, sometimes lower back, sometimes upper back</li>
-    </ul>
+  <p><strong>Right now, stock is still available — but supply is limited.</strong></p>
+
+  <p>Women who've been dealing with neck pain for months or years are ordering two or three units at once — one for home, one for the office, and one for family members with the same issue.</p>
+
+  <button class="cta-btn" onclick="openCheckout()">
+    → CHECK AVAILABILITY — LIMITED STOCK
+  </button>
+  <p class="cta-sub">Ships within 24–48 hours · Free shipping · 30-day returns</p>
+
+  <div class="guarantee-box">
+    <div class="g-icon">🛡️</div>
+    <h3>100% Money-Back Guarantee</h3>
+    <p>Every [BRAND NAME] comes with a full <strong>30-day money-back guarantee.</strong> If it doesn't work for you, return it for a complete refund. No questions asked.</p>
   </div>
 
-  <p>"The problem," Don told me, "is that pain medication doesn't fix this. It just mutes the signal temporarily. The moment the medication wears off, the same locked nerve-muscle pattern kicks back in. Same with stretching — you're lengthening the muscle, but you're not resetting the nerve signal that's keeping it contracted."</p>
+  <p>Don't keep waking up stiff and sore.</p>
 
-  <p>I asked him: "So what actually works?"</p>
+  <p>The solution isn't more massage. More painkillers. More stretching that doesn't hold.</p>
 
-  <p>He walked over to a cabinet and pulled out a small device about the size of a TV remote. It had wires attached to small adhesive pads.</p>
+  <p><strong>It's resetting the signal that's been keeping your muscles locked.</strong></p>
 
-  <p>"This," he said. "EMS and TENS therapy. We've been using this in clinical settings for decades. Most people just don't know they can do it at home."</p>
+  <button class="cta-btn" onclick="openCheckout()">
+    ✅ ORDER [BRAND NAME] — CHECK TODAY'S PRICE
+  </button>
+  <p class="cta-sub">Over 4,800 verified reviews · 30-day guarantee included</p>
 
-  <div class="separator-label"><span>What the science says</span></div>
+  <p class="advertorial-disclaimer">
+    THIS IS AN ADVERTISEMENT AND NOT AN ACTUAL NEWS ARTICLE, BLOG, OR CONSUMER PROTECTION UPDATE.<br>
+    This product is not intended to diagnose, treat, cure, or prevent any disease or medical condition.<br>
+    Results may vary. Individual results are not guaranteed.<br>
+    © 2025 [BRAND NAME]. All Rights Reserved.
+  </p>
 
-  <div class="science-box">
-    <div class="sb-head">📋 Clinical Background</div>
-    <p>EMS (Electrical Muscle Stimulation) and TENS (Transcutaneous Electrical Nerve Stimulation) therapy have been used by physical therapists, sports medicine clinics, and rehabilitation centers since the 1970s. EMS works by sending gentle electrical signals to stimulate muscle contractions — essentially forcing muscles to relax out of their locked state. TENS works on the nervous system directly, interrupting pain signals before they reach the brain. Used together, they address both parts of the neuromuscular problem simultaneously.</p>
-  </div>
+</div><!-- /content -->
 
-  <h2>What Actually Happened When I Tried It</h2>
 
-  <p>Don used the device on me during that first session. I want to be honest — the sensation is strange at first. Not painful. Just an odd pulsing, tingling feeling as the pads send signals into your muscle. Within about six or seven minutes, I felt something I hadn't felt in years: my lower back muscles genuinely letting go. Not just stretching — actually releasing.</p>
+<!-- ═══════════════════════════════════════════ -->
+<!--           CHECKOUT POPUP                    -->
+<!-- ═══════════════════════════════════════════ -->
 
-  <p>I cried. Right there in the clinic. I felt ridiculous, but I couldn't help it.</p>
+<div id="checkout-overlay">
+  <div class="checkout-modal">
 
-  <p>After three sessions over two weeks, Don asked me how things were going. My morning pain had dropped from what I'd describe as a 7 out of 10 to about a 2. The burning, clenched feeling I'd lived with for years was gone.</p>
+    <div class="checkout-modal-header">
+      <span>SECURE CHECKOUT</span>
+      <button class="close-btn" onclick="closeCheckout()" aria-label="Close">✕</button>
+    </div>
 
-  <div class="testimonial">
-    <div class="stars">★★★★★</div>
-    <p class="testi-text">"I was skeptical. I'm a nurse. I know how hard it is to actually find something that works for chronic pain. But after three weeks using this every evening, I'm genuinely pain-free in the mornings for the first time in four years."</p>
-    <div>
-      <div class="testi-img-placeholder">L</div>
-      <div class="testi-meta">
-        <div class="testi-author">Linda R., 54</div>
-        <div style="font-size:12px;color:#aaa;">Registered Nurse, Ohio</div>
+    <!-- PRODUCT IMAGE GALLERY -->
+    <div class="product-gallery">
+      <div class="gallery-main" id="galleryMain">
+        <div class="ph">📸 Main product image<br><em>(replace with real photo)</em></div>
+      </div>
+      <div class="gallery-thumbs">
+        <div class="thumb active" onclick="selectThumb(this, 0)">
+          <div class="tph">View 1</div>
+        </div>
+        <div class="thumb" onclick="selectThumb(this, 1)">
+          <div class="tph">View 2</div>
+        </div>
+        <div class="thumb" onclick="selectThumb(this, 2)">
+          <div class="tph">View 3</div>
+        </div>
+        <div class="thumb" onclick="selectThumb(this, 3)">
+          <div class="tph">In use</div>
+        </div>
       </div>
     </div>
-    <div style="clear:both"></div>
-  </div>
 
-  <h2>Why Haven't Doctors Told Us About This?</h2>
-
-  <p>This was my first question to Don. His answer was frustrating but honest: "They have told people — but clinic TENS units cost $3,000 to $8,000. It was never realistic for home use. That's changed in the last few years."</p>
-
-  <p>The technology that used to require a clinical setting is now available in compact home devices for a fraction of the price. And the results — when used consistently — are comparable.</p>
-
-  <p>The key word is <em>consistently</em>. Unlike a pill you take once and forget, TENS/EMS therapy works cumulatively. The more regularly you use it, the more your nervous system "learns" to reset. Most people see meaningful improvement within 2–3 weeks of daily 10-minute sessions.</p>
-
-  <h2>What to Look For in a Home Device</h2>
-
-  <p>After my sessions with Don, I asked him to help me find a good home unit. He was blunt: "Most of what you'll find on Amazon is junk. Very low intensity, no real programs. You want something with both EMS and TENS modes, multiple intensity levels, and proper electrode pads — not the cheap ones that fall off after three uses."</p>
-
-  <p>He pointed me toward a few things to check:</p>
-
-  <ol class="numbered-list">
-    <li>
-      <div class="nl-content">
-        <strong>Both EMS and TENS modes in one device</strong>
-        EMS targets the muscle directly; TENS targets the nerve signal. You need both for full relief. Single-mode devices are less effective for chronic pain.
+    <!-- PRODUCT INFO -->
+    <div class="product-info">
+      <h2>[BRAND NAME] Neck Relief Device</h2>
+      <div class="tagline">Professional TENS/EMS Technology — For Home Use</div>
+      <div class="reviews-line">
+        <span class="stars-sm">★★★★★</span>&nbsp; 4.8 / 5 &nbsp;·&nbsp; 4,800+ verified reviews
       </div>
-    </li>
-    <li>
-      <div class="nl-content">
-        <strong>Multiple intensity levels (at least 10)</strong>
-        Pain levels and muscle sensitivity vary day to day. You need granular control — not just low/medium/high.
-      </div>
-    </li>
-    <li>
-      <div class="nl-content">
-        <strong>Pre-set programs for different body areas</strong>
-        Lower back, neck, shoulder, knee and hip each have different optimal pulse patterns. Generic settings are less effective.
-      </div>
-    </li>
-    <li>
-      <div class="nl-content">
-        <strong>Medical-grade reusable electrode pads</strong>
-        Cheap pads lose conductivity quickly and don't adhere properly, reducing effectiveness significantly.
-      </div>
-    </li>
-    <li>
-      <div class="nl-content">
-        <strong>Rechargeable battery (not disposable)</strong>
-        Consistency is everything with TENS therapy. If your device keeps running out, you'll skip sessions. Rechargeable = no excuses.
-      </div>
-    </li>
-  </ol>
 
-  <div class="testimonial">
-    <div class="stars">★★★★★</div>
-    <p class="testi-text">"My doctor actually recommended I try TENS before considering surgery for my sciatica. I bought this unit and after 5 weeks of daily use, I cancelled the surgery consultation. The pain is a fraction of what it was."</p>
-    <div>
-      <div class="testi-img-placeholder">R</div>
-      <div class="testi-meta">
-        <div class="testi-author">Robert M., 61</div>
-        <div style="font-size:12px;color:#aaa;">Construction Foreman, Texas</div>
+      <div id="priceDisplay" class="price-row">
+        <span class="price-current" id="currentPrice">$129 AUD</span>
+        <span class="price-original" id="originalPrice">$199 AUD</span>
+        <span class="price-save" id="saveAmount">Save $70</span>
       </div>
     </div>
-    <div style="clear:both"></div>
-  </div>
 
-  <h2>The Device I Now Use Every Day</h2>
-
-  <p>After trying three different units over the following months, I settled on the <strong>PulseRelief Pro</strong>. It was the one that checked every box Don had given me — and the one that, frankly, made me finally stop waking up in pain.</p>
-
-  <!-- PRODUCT REVEAL -->
-  <div class="product-reveal">
-    <div class="pr-label">The device I use daily</div>
-    <div class="pr-name">PulseRelief Pro</div>
-    <div class="pr-label" style="margin-top:-4px;margin-bottom:12px;color:#f0a500;">★★★★★ &nbsp;4.8 / 5 &nbsp;(2,847 reviews)</div>
-    <div class="product-img-placeholder">
-      [ Insert: Product photo — device with pads, clean white background ]
-    </div>
-    <div class="pr-old">Regular price: $149.99</div>
-    <div class="pr-price">$79.99</div>
-    <div class="trust-badges">
-      <div class="badge"><div class="badge-icon">🚚</div>Free Shipping</div>
-      <div class="badge"><div class="badge-icon">↩️</div>60-Day Returns</div>
-      <div class="badge"><div class="badge-icon">🔒</div>Secure Order</div>
-      <div class="badge"><div class="badge-icon">🇺🇸</div>US Stock</div>
-    </div>
-    <a href="#checkout" class="cta-btn" onclick="scrollToCheckout()">Claim My Discount →</a>
-    <div class="cta-sub">Limited stock at this price &bull; Free US shipping</div>
-  </div>
-
-  <p>It has 8 pre-set programs and 20 intensity levels. The electrode pads are medical-grade and have lasted me over 8 months. The battery charges in two hours and lasts weeks. And it's small enough to use while I'm reading or watching TV.</p>
-
-  <p>I do 10 minutes on my lower back every evening before bed. That's it. Seven years of pain. Ten minutes a day. Gone.</p>
-
-  <div class="pull-quote">
-    "My only regret is not finding this sooner. Seven years of pain, thousands of dollars on chiropractors, and this $79 device did what none of it could."
-  </div>
-
-  <div class="testimonial">
-    <div class="stars">★★★★★</div>
-    <p class="testi-text">"I bought one for my husband, then one for my mother, and now I'm ordering one for my sister. Everyone in my family who's tried it has had the same reaction: 'Why didn't I do this sooner?' It really is that simple."</p>
-    <div>
-      <div class="testi-img-placeholder">K</div>
-      <div class="testi-meta">
-        <div class="testi-author">Karen T., 48</div>
-        <div style="font-size:12px;color:#aaa;">Verified Buyer, Florida</div>
+    <!-- TRUST BADGES TOP -->
+    <div class="trust-top" style="margin-top:14px;">
+      <div class="tb">
+        <span class="tb-icon">🚚</span>
+        Free Shipping
+      </div>
+      <div class="tb">
+        <span class="tb-icon">↩️</span>
+        30-Day Returns
+      </div>
+      <div class="tb">
+        <span class="tb-icon">🔒</span>
+        Secure Payment
+      </div>
+      <div class="tb">
+        <span class="tb-icon">🇦🇺</span>
+        AU Stock
       </div>
     </div>
-    <div style="clear:both"></div>
-  </div>
 
-  <div class="urgency-bar">
-    <div class="ub-icon">⚡</div>
-    <div><strong>Limited Offer:</strong> The 47% discount is active for the next 24 hours. Stock is limited due to high demand — over 1,200 units sold this week.</div>
-  </div>
+    <!-- BUNDLE SELECTOR -->
+    <div class="bundle-section">
+      <div class="bundle-label">Select Your Package:</div>
 
-  <p style="text-align:center;"><a href="#checkout" class="cta-btn" onclick="scrollToCheckout()" style="display:inline-block;width:auto;padding:16px 32px;font-size:17px;">Order PulseRelief Pro — $79.99 →</a></p>
-  <p class="cta-sub">Free shipping &bull; 60-day money-back guarantee &bull; Ships from US</p>
-
-</div><!-- end .article -->
-
-<!-- ══════════════════════════════════════════ -->
-<!-- CHECKOUT SECTION -->
-<!-- ══════════════════════════════════════════ -->
-<div id="checkout">
-  <div style="max-width:640px;margin:0 auto;padding:0 16px;">
-
-    <div class="co-title">Complete Your Order</div>
-    <div class="co-sub">Secure checkout &bull; Takes less than 2 minutes</div>
-
-    <div class="co-card" id="checkoutCard">
-
-      <!-- PRODUCT ROW -->
-      <div class="co-product-row">
-        <div class="co-product-img">[ Product photo ]</div>
-        <div class="co-product-info">
-          <div class="co-pname">PulseRelief Pro EMS/TENS Device</div>
-          <div class="co-prating">★★★★★ 4.8 (2,847 reviews)</div>
-          <div class="co-price-row">
-            <span class="co-price-now">$79.99</span>
-            <span class="co-price-old">$149.99</span>
-            <span class="co-savings">SAVE 47%</span>
-          </div>
+      <label class="bundle-option selected" id="bundle1" onclick="selectBundle(1)">
+        <input type="radio" name="bundle" value="1" checked>
+        <div class="bundle-info">
+          <div class="bundle-name">1 Device — Starter Pack</div>
+          <div class="bundle-detail">Perfect to try for yourself</div>
         </div>
-      </div>
+        <div class="bundle-price-col">
+          <div class="bundle-price">$129</div>
+          <div class="bundle-was">was $199</div>
+        </div>
+      </label>
 
-      <!-- TRUST BADGES -->
-      <div class="co-badges">
-        <div class="co-badge">✅ Free Shipping</div>
-        <div class="co-badge">↩️ 60-Day Returns</div>
-        <div class="co-badge">🇺🇸 Ships from US</div>
-      </div>
+      <label class="bundle-option" id="bundle2" onclick="selectBundle(2)" style="position:relative;">
+        <div class="badge-pop">Most Popular</div>
+        <input type="radio" name="bundle" value="2">
+        <div class="bundle-info">
+          <div class="bundle-name">2 Devices — Share Pack</div>
+          <div class="bundle-detail">For you + a partner or family member</div>
+        </div>
+        <div class="bundle-price-col">
+          <div class="bundle-price">$199</div>
+          <div class="bundle-was">was $398</div>
+        </div>
+      </label>
 
-      <!-- QUANTITY -->
-      <div class="co-label">How many do you need?</div>
-      <div class="qty-row">
-        <div class="qty-option selected" onclick="selectQty(this, 1, 79.99)">
-          <div class="qty-num">1</div>
-          <div class="qty-price">$79.99</div>
+      <label class="bundle-option" id="bundle3" onclick="selectBundle(3)" style="position:relative;">
+        <div class="badge-pop badge-best">Best Value</div>
+        <input type="radio" name="bundle" value="3">
+        <div class="bundle-info">
+          <div class="bundle-name">3 Devices — Family Pack</div>
+          <div class="bundle-detail">Home, office + one to share</div>
         </div>
-        <div class="qty-option" onclick="selectQty(this, 2, 139.99)" style="position:relative;">
-          <div class="qty-badge">Most Popular</div>
-          <div class="qty-num">2</div>
-          <div class="qty-price">$139.99</div>
+        <div class="bundle-price-col">
+          <div class="bundle-price">$259</div>
+          <div class="bundle-was">was $597</div>
         </div>
-        <div class="qty-option" onclick="selectQty(this, 3, 179.99)" style="position:relative;">
-          <div class="qty-badge">Best Value</div>
-          <div class="qty-num">3</div>
-          <div class="qty-price">$179.99</div>
-        </div>
-      </div>
+      </label>
+    </div>
 
-      <!-- ORDER SUMMARY -->
-      <div class="order-summary" id="orderSummary">
-        <div class="order-line">
-          <span>PulseRelief Pro × <span id="qtyDisplay">1</span></span>
-          <span id="itemTotal">$79.99</span>
-        </div>
-        <div class="order-line">
-          <span>Shipping</span>
-          <span class="free">FREE</span>
-        </div>
-        <div class="order-line total">
-          <span>Total</span>
-          <span id="orderTotal">$79.99</span>
-        </div>
-      </div>
+    <!-- ORDER FORM — SHIPPING -->
+    <div class="form-section" style="margin-top:20px;">
+      <h3>📦 Shipping Details</h3>
 
-      <!-- CONTACT INFO -->
-      <div class="form-section-title">
-        <div class="step-num">1</div> Contact Information
-      </div>
       <div class="form-row">
-        <div class="form-field">
-          <label>First Name</label>
-          <input type="text" placeholder="Jane" autocomplete="given-name">
+        <div class="form-group">
+          <label>First Name *</label>
+          <input type="text" id="fname" placeholder="Jane" autocomplete="given-name">
         </div>
-        <div class="form-field">
-          <label>Last Name</label>
-          <input type="text" placeholder="Smith" autocomplete="family-name">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-field">
-          <label>Email Address</label>
-          <input type="email" placeholder="jane@email.com" autocomplete="email">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-field">
-          <label>Phone (for shipping updates)</label>
-          <input type="tel" placeholder="(555) 000-0000" autocomplete="tel">
+        <div class="form-group">
+          <label>Last Name *</label>
+          <input type="text" id="lname" placeholder="Smith" autocomplete="family-name">
         </div>
       </div>
 
-      <!-- SHIPPING -->
-      <div class="form-section-title">
-        <div class="step-num">2</div> Shipping Address
+      <div class="form-group">
+        <label>Email Address *</label>
+        <input type="email" id="email" placeholder="jane@email.com" autocomplete="email">
       </div>
-      <div class="form-row">
-        <div class="form-field">
-          <label>Street Address</label>
-          <input type="text" placeholder="123 Main St" autocomplete="address-line1">
-        </div>
+
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" id="phone" placeholder="0400 000 000" autocomplete="tel">
       </div>
+
+      <div class="form-group">
+        <label>Street Address *</label>
+        <input type="text" id="address" placeholder="123 Main Street" autocomplete="street-address">
+      </div>
+
       <div class="form-row">
-        <div class="form-field">
-          <label>City</label>
-          <input type="text" placeholder="New York" autocomplete="address-level2">
+        <div class="form-group">
+          <label>City / Suburb *</label>
+          <input type="text" id="city" placeholder="Melbourne" autocomplete="address-level2">
         </div>
-        <div class="form-field" style="max-width:100px;">
-          <label>State</label>
-          <select autocomplete="address-level1">
-            <option value="">—</option>
-            <option>AL</option><option>AK</option><option>AZ</option><option>AR</option>
-            <option>CA</option><option>CO</option><option>CT</option><option>DE</option>
-            <option>FL</option><option>GA</option><option>HI</option><option>ID</option>
-            <option>IL</option><option>IN</option><option>IA</option><option>KS</option>
-            <option>KY</option><option>LA</option><option>ME</option><option>MD</option>
-            <option>MA</option><option>MI</option><option>MN</option><option>MS</option>
-            <option>MO</option><option>MT</option><option>NE</option><option>NV</option>
-            <option>NH</option><option>NJ</option><option>NM</option><option selected>NY</option>
-            <option>NC</option><option>ND</option><option>OH</option><option>OK</option>
-            <option>OR</option><option>PA</option><option>RI</option><option>SC</option>
-            <option>SD</option><option>TN</option><option>TX</option><option>UT</option>
-            <option>VT</option><option>VA</option><option>WA</option><option>WV</option>
-            <option>WI</option><option>WY</option>
+        <div class="form-group">
+          <label>State *</label>
+          <select id="state" autocomplete="address-level1">
+            <option value="">Select</option>
+            <option>VIC</option><option>NSW</option><option>QLD</option>
+            <option>WA</option><option>SA</option><option>TAS</option>
+            <option>ACT</option><option>NT</option>
           </select>
         </div>
-        <div class="form-field" style="max-width:90px;">
-          <label>ZIP</label>
-          <input type="text" placeholder="10001" maxlength="5" autocomplete="postal-code">
-        </div>
       </div>
 
-      <!-- PAYMENT -->
-      <div class="form-section-title">
-        <div class="step-num">3</div> Payment
+      <div class="form-group">
+        <label>Postcode *</label>
+        <input type="text" id="postcode" placeholder="3000" maxlength="4" inputmode="numeric" autocomplete="postal-code">
       </div>
-      <div class="card-icons">
-        <div class="card-icon">VISA</div>
-        <div class="card-icon">MC</div>
-        <div class="card-icon">AMEX</div>
-        <div class="card-icon" style="background:#ff6b35;color:#fff;border-color:#ff6b35;">DISC</div>
-      </div>
-      <div class="form-row">
-        <div class="form-field">
-          <label>Card Number</label>
-          <input type="text" placeholder="1234 5678 9012 3456" maxlength="19" autocomplete="cc-number" id="cardNum">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-field">
-          <label>Expiry</label>
-          <input type="text" placeholder="MM / YY" maxlength="7" autocomplete="cc-exp">
-        </div>
-        <div class="form-field" style="max-width:110px;">
-          <label>CVC</label>
-          <input type="text" placeholder="123" maxlength="4" autocomplete="cc-csc">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-field">
-          <label>Name on Card</label>
-          <input type="text" placeholder="Jane Smith" autocomplete="cc-name">
-        </div>
-      </div>
-
-      <div class="secure-note">🔒 Your information is encrypted and 100% secure</div>
-
-      <!-- FINAL ORDER SUMMARY -->
-      <div class="order-summary">
-        <div class="order-line">
-          <span>PulseRelief Pro × <span id="qtyDisplay2">1</span></span>
-          <span id="itemTotal2">$79.99</span>
-        </div>
-        <div class="order-line">
-          <span>Shipping</span>
-          <span class="free">FREE</span>
-        </div>
-        <div class="order-line total">
-          <span>Order Total</span>
-          <span id="orderTotal2">$79.99</span>
-        </div>
-      </div>
-
-      <button class="submit-btn" onclick="handleOrder()">
-        🔒 Place My Order — <span id="btnTotal">$79.99</span>
-      </button>
-
-      <div class="bottom-badges">
-        <div class="bottom-badge">🔒 SSL Encrypted</div>
-        <div class="bottom-badge">🚚 Free US Shipping</div>
-        <div class="bottom-badge">↩️ 60-Day Returns</div>
-        <div class="bottom-badge">📦 Ships in 1–2 Days</div>
-      </div>
-
-    </div><!-- end .co-card -->
-
-    <!-- THANK YOU -->
-    <div id="thankyou" class="co-card">
-      <div class="ty-icon">✅</div>
-      <h2>Order Confirmed!</h2>
-      <p>Thank you for your order. You'll receive a confirmation email shortly, along with your tracking number once your PulseRelief Pro ships (usually within 1–2 business days).</p>
-      <br>
-      <p style="font-size:13px;color:#aaa;">Questions? Email us at support@pulserelief.com</p>
     </div>
 
-  </div>
-</div>
+    <!-- PAYMENT SECTION -->
+    <div class="payment-section" style="margin-top:20px;">
+      <h3>💳 Payment Details</h3>
+
+      <div class="card-icons">
+        <span class="card-icon">VISA</span>
+        <span class="card-icon">Mastercard</span>
+        <span class="card-icon">Amex</span>
+        <span class="card-icon">PayPal</span>
+      </div>
+
+      <div class="secure-line">
+        🔒 &nbsp;Your payment is encrypted and secure (256-bit SSL)
+      </div>
+
+      <!-- STRIPE INTEGRATION POINT -->
+      <!-- Replace this placeholder block with your Stripe Elements mount point -->
+      <!-- Example: <div id="stripe-card-element"></div> -->
+
+      <div class="stripe-placeholder">
+        <div class="stripe-field-label">Card Number</div>
+        <div class="stripe-field-mock">
+          <span>•••• •••• •••• ••••</span>
+          <span style="margin-left:auto;">💳</span>
+        </div>
+      </div>
+      <div class="stripe-row">
+        <div class="stripe-placeholder">
+          <div class="stripe-field-label">Expiry Date</div>
+          <div class="stripe-field-mock"><span>MM / YY</span></div>
+        </div>
+        <div class="stripe-placeholder">
+          <div class="stripe-field-label">CVC</div>
+          <div class="stripe-field-mock"><span>•••</span></div>
+        </div>
+      </div>
+
+      <!-- ↑ END STRIPE PLACEHOLDER -->
+
+      <!-- ORDER TOTAL -->
+      <div class="order-total-line" id="orderTotal" style="margin-top:16px; padding-top:14px; border-top:1px solid #eee;">
+        Order Total: <span id="totalAmount">$129 AUD</span> &nbsp;·&nbsp; Free Shipping
+      </div>
+
+      <button class="order-btn" onclick="handleOrder()">
+        🔒 &nbsp;PLACE MY ORDER NOW
+      </button>
+
+      <div style="text-align:center; font-family:Arial,sans-serif; font-size:12px; color:#888; margin-bottom:16px;">
+        By ordering you agree to our <a href="#" style="color:#1a2b45;">Terms & Conditions</a> and <a href="#" style="color:#1a2b45;">Privacy Policy</a>
+      </div>
+    </div>
+
+    <!-- TRUST BADGES BOTTOM -->
+    <div class="trust-bottom">
+      <div class="trust-item">
+        <span class="ti-icon">🚚</span>
+        <div><strong>Free Shipping</strong><br><span style="color:#888; font-size:11px;">On all orders, no minimum</span></div>
+      </div>
+      <div class="trust-item">
+        <span class="ti-icon">↩️</span>
+        <div><strong>30-Day Returns</strong><br><span style="color:#888; font-size:11px;">No questions asked</span></div>
+      </div>
+      <div class="trust-item">
+        <span class="ti-icon">🔒</span>
+        <div><strong>Secure Checkout</strong><br><span style="color:#888; font-size:11px;">256-bit SSL encryption</span></div>
+      </div>
+      <div class="trust-item">
+        <span class="ti-icon">⚡</span>
+        <div><strong>Fast Dispatch</strong><br><span style="color:#888; font-size:11px;">Ships within 24–48 hours</span></div>
+      </div>
+    </div>
+
+    <div class="checkout-disclaimer">
+      This product is not intended to diagnose, treat, cure, or prevent any disease or medical condition.<br>
+      Results may vary. Individual results are not guaranteed.<br>
+      © 2025 [BRAND NAME]. All Rights Reserved. · ABN: XX XXX XXX XXX
+    </div>
+
+  </div><!-- /checkout-modal -->
+</div><!-- /checkout-overlay -->
+
 
 <script>
-  // ─── Qty Selector ───
-  let currentTotal = 79.99;
-  let currentQty = 1;
-
-  function selectQty(el, qty, total) {
-    document.querySelectorAll('.qty-option').forEach(o => o.classList.remove('selected'));
-    el.classList.add('selected');
-    currentQty = qty;
-    currentTotal = total;
-    const fmt = '$' + total.toFixed(2);
-    document.getElementById('qtyDisplay').textContent = qty;
-    document.getElementById('qtyDisplay2').textContent = qty;
-    document.getElementById('itemTotal').textContent = fmt;
-    document.getElementById('itemTotal2').textContent = fmt;
-    document.getElementById('orderTotal').textContent = fmt;
-    document.getElementById('orderTotal2').textContent = fmt;
-    document.getElementById('btnTotal').textContent = fmt;
+  /* ─── CHECKOUT OPEN/CLOSE ─── */
+  function openCheckout() {
+    document.getElementById('checkout-overlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+    // Scroll modal to top
+    document.getElementById('checkout-overlay').scrollTop = 0;
   }
 
-  // ─── Card number formatting ───
-  document.getElementById('cardNum').addEventListener('input', function(e) {
-    let v = e.target.value.replace(/\D/g,'').substring(0,16);
-    e.target.value = v.replace(/(.{4})/g,'$1 ').trim();
+  function closeCheckout() {
+    document.getElementById('checkout-overlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Close on overlay background click
+  document.getElementById('checkout-overlay').addEventListener('click', function(e) {
+    if (e.target === this) closeCheckout();
   });
 
-  // ─── Scroll to checkout ───
-  function scrollToCheckout() {
-    document.getElementById('checkout').scrollIntoView({ behavior: 'smooth' });
+  /* ─── BUNDLE SELECTION ─── */
+  const bundles = {
+    1: { price: '$129', was: '$199', save: 'Save $70',   total: '$129 AUD' },
+    2: { price: '$199', was: '$398', save: 'Save $199',  total: '$199 AUD' },
+    3: { price: '$259', was: '$597', save: 'Save $338',  total: '$259 AUD' }
+  };
+
+  function selectBundle(n) {
+    // Deselect all
+    [1,2,3].forEach(i => {
+      const el = document.getElementById('bundle' + i);
+      el.classList.remove('selected');
+      el.querySelector('input[type=radio]').checked = false;
+    });
+    // Select chosen
+    const chosen = document.getElementById('bundle' + n);
+    chosen.classList.add('selected');
+    chosen.querySelector('input[type=radio]').checked = true;
+    // Update price display
+    const b = bundles[n];
+    document.getElementById('currentPrice').textContent = b.price + ' AUD';
+    document.getElementById('originalPrice').textContent = b.was + ' AUD';
+    document.getElementById('saveAmount').textContent = b.save;
+    document.getElementById('totalAmount').textContent = b.total;
   }
 
-  // ─── Order submission ───
-  function handleOrder() {
-    document.getElementById('checkoutCard').style.display = 'none';
-    document.getElementById('thankyou').style.display = 'block';
-    document.getElementById('stickyBar').style.display = 'none';
-    document.getElementById('thankyou').scrollIntoView({ behavior: 'smooth' });
-  }
+  /* ─── IMAGE GALLERY ─── */
+  // Replace these with real image URLs
+  const productImages = [
+    null, // slot 1 — main product photo URL
+    null, // slot 2 — side view
+    null, // slot 3 — in use
+    null  // slot 4 — lifestyle
+  ];
 
-  // ─── Hide sticky bar near checkout ───
-  window.addEventListener('scroll', function() {
-    const checkout = document.getElementById('checkout');
-    const bar = document.getElementById('stickyBar');
-    const rect = checkout.getBoundingClientRect();
-    if (rect.top < window.innerHeight) {
-      bar.style.opacity = '0';
-      bar.style.pointerEvents = 'none';
+  const galleryLabels = [
+    'Main product photo',
+    'Side view',
+    'In use on neck',
+    'Lifestyle shot'
+  ];
+
+  function selectThumb(el, idx) {
+    document.querySelectorAll('.gallery-thumbs .thumb').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+    const main = document.getElementById('galleryMain');
+    if (productImages[idx]) {
+      main.innerHTML = '<img src="' + productImages[idx] + '" alt="Product view ' + (idx+1) + '">';
     } else {
-      bar.style.opacity = '1';
-      bar.style.pointerEvents = 'auto';
+      main.innerHTML = '<div class="ph">📸 ' + galleryLabels[idx] + '<br><em>(replace with real image)</em></div>';
     }
+  }
+
+  /* ─── ORDER HANDLER ─── */
+  function handleOrder() {
+    // Validate required fields
+    const required = ['fname','lname','email','address','city','state','postcode'];
+    let valid = true;
+    required.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el.value.trim()) {
+        el.style.borderColor = '#cc2222';
+        valid = false;
+      } else {
+        el.style.borderColor = '#ccc';
+      }
+    });
+    if (!valid) {
+      alert('Please fill in all required fields before placing your order.');
+      return;
+    }
+
+    // ─── STRIPE INTEGRATION POINT ───
+    // Replace this block with your Stripe PaymentIntent / Checkout Session call.
+    //
+    // Example flow:
+    // 1. Call your backend: POST /create-payment-intent { bundle, amount, email }
+    // 2. Confirm with stripe.confirmCardPayment(clientSecret, { payment_method: { card: cardElement }})
+    // 3. On success: redirect to thank-you page
+    //
+    // For Stripe Checkout (simplest):
+    // stripe.redirectToCheckout({ sessionId: 'cs_xxx' });
+    //
+    // ─── END STRIPE INTEGRATION POINT ───
+
+    // Placeholder confirmation for demo
+    const bundle = document.querySelector('input[name="bundle"]:checked').value;
+    const total = bundles[bundle].total;
+    alert('✅ Demo mode: Order of ' + bundle + 'x device(s) for ' + total + ' received!\n\nReplace handleOrder() with your Stripe integration.');
+  }
+
+  /* ─── INPUT FIELD CLEANUP ─── */
+  document.querySelectorAll('.form-group input, .form-group select').forEach(el => {
+    el.addEventListener('input', function() {
+      this.style.borderColor = '#ccc';
+    });
   });
 </script>
 
