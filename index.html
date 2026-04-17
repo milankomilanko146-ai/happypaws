@@ -3,20 +3,21 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Neck Pain Insider</title>
+<title>Muscle &amp; Pain Health Review</title>
 <!--
   SETUP CHECKLIST:
-  1. Replace [YOUR PRODUCT NAME] with real name
+  1. Replace [PRODUCT NAME] with real product name (Ctrl+F → [PRODUCT NAME])
   2. Replace hero image src (id="heroImg")
-  3. Replace product images in slider (advSlides data)
-  4. Set Stripe key OR use Shopify checkout (see JS comments)
-  5. Set real variant IDs for Shopify bundles
+  3. Replace product images in slider (.img-slide elements)
+  4. Set real Stripe publishable key OR use Shopify redirect (see JS comments)
+  5. Set real Shopify variant IDs if using Shopify option
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Georgia&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet"/>
 <script src="https://js.stripe.com/v3/"></script>
 <style>
-/* ─── RESET ─────────────────────────────── */
+
+/* ─── RESET ──────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 img{display:block;max-width:100%}
 
@@ -25,9 +26,7 @@ img{display:block;max-width:100%}
   --navy:#1a2e5a;
   --green:#2e7d32;
   --green-bg:#e8f5e9;
-  --green-border:#a5d6a7;
   --red:#c62828;
-  --orange:#e65100;
   --gray:#5f6368;
   --lightgray:#f7f8fa;
   --border:#e0e0e0;
@@ -39,11 +38,11 @@ body{
   font-family:'Source Sans 3',sans-serif;
   background:#fff;
   color:var(--text);
-  font-size:17px;
-  line-height:1.85;
+  font-size:18px;
+  line-height:2;
 }
 
-/* ─── STICKY TOP TRUST BAR ───────────────── */
+/* ─── TRUST BAR ───────────────────────────── */
 .trust-bar{
   background:#fff;
   border-bottom:1px solid var(--border);
@@ -54,14 +53,14 @@ body{
   display:flex;
   justify-content:center;
   flex-wrap:wrap;
-  gap:14px;
+  gap:16px;
 }
 .trust-bar span{display:flex;align-items:center;gap:4px}
 
-/* ─── SITE HEADER ────────────────────────── */
+/* ─── HEADER ──────────────────────────────── */
 .site-header{
   background:var(--navy);
-  padding:13px 16px;
+  padding:14px 16px;
   text-align:center;
 }
 .site-header .brand{
@@ -77,50 +76,50 @@ body{
 .page-layout{
   max-width:700px;
   margin:0 auto;
-  padding:0 16px 60px;
+  padding:0 18px 70px;
 }
 
 /* ─── META ────────────────────────────────── */
 .article-meta{
   font-size:13px;
   color:var(--gray);
-  margin:20px 0 12px;
+  margin:22px 0 12px;
 }
 
 /* ─── H1 ──────────────────────────────────── */
 h1.headline{
   font-family:'Merriweather',Georgia,serif;
-  font-size:clamp(22px,5.5vw,33px);
+  font-size:clamp(22px,5.5vw,34px);
   font-weight:900;
   line-height:1.22;
   color:var(--text);
-  margin-bottom:18px;
+  margin-bottom:20px;
 }
 
-/* ─── PULL QUOTE / GREEN BOX ──────────────── */
+/* ─── PULL QUOTE ──────────────────────────── */
 .pull-quote{
   background:var(--green-bg);
   border-left:4px solid var(--green);
-  padding:14px 18px;
-  margin:0 0 22px;
+  padding:16px 20px;
+  margin:0 0 26px;
   border-radius:0 6px 6px 0;
   font-style:italic;
   font-size:15px;
   color:#1b5e20;
-  line-height:1.72;
+  line-height:1.8;
 }
 
-/* ─── HERO IMAGE ──────────────────────────── */
+/* ─── HERO ────────────────────────────────── */
 .hero-wrap{
-  margin:0 0 28px;
-  border-radius:5px;
+  margin:0 0 30px;
+  border-radius:6px;
   overflow:hidden;
   background:var(--lightgray);
 }
 .hero-wrap img{
   width:100%;
   height:auto;
-  max-height:340px;
+  max-height:360px;
   object-fit:cover;
 }
 .hero-placeholder{
@@ -136,26 +135,26 @@ h1.headline{
 
 /* ─── BODY TEXT ───────────────────────────── */
 .body-text p{
-  margin-bottom:20px;
-  line-height:1.9;
+  margin-bottom:24px;
+  line-height:2;
 }
 .body-text strong{font-weight:700}
 .body-text em{font-style:italic}
 
 .hook-line{
   font-family:'Merriweather',Georgia,serif;
-  font-size:18px;
+  font-size:19px;
   font-weight:900;
-  margin-bottom:20px;
-  line-height:1.35;
+  margin-bottom:22px;
+  line-height:1.4;
 }
 
-/* ─── H2 SECTION HEADS ────────────────────── */
+/* ─── H2 ──────────────────────────────────── */
 .body-text h2{
   font-family:'Merriweather',Georgia,serif;
-  font-size:clamp(17px,4vw,22px);
+  font-size:clamp(18px,4vw,23px);
   font-weight:900;
-  margin:36px 0 14px;
+  margin:42px 0 18px;
   line-height:1.3;
   color:var(--text);
 }
@@ -164,25 +163,25 @@ h1.headline{
 .highlight-box{
   background:#fff8e1;
   border:1px solid #ffe082;
-  border-radius:7px;
-  padding:18px 20px;
-  margin:24px 0;
+  border-radius:8px;
+  padding:22px 24px;
+  margin:28px 0;
 }
-.highlight-box p{margin-bottom:10px}
+.highlight-box p{margin-bottom:14px;line-height:1.9}
 .highlight-box p:last-child{margin-bottom:0}
 
-/* ─── BULLET LIST ─────────────────────────── */
+/* ─── FAIL LIST ───────────────────────────── */
 .fail-list{
-  margin:16px 0 20px 4px;
+  margin:18px 0 24px 4px;
   padding:0;
   list-style:none;
 }
 .fail-list li{
   display:flex;
-  gap:10px;
-  margin-bottom:10px;
-  font-size:16px;
-  line-height:1.6;
+  gap:12px;
+  margin-bottom:14px;
+  font-size:17px;
+  line-height:1.85;
   align-items:flex-start;
 }
 .fail-list li::before{
@@ -190,10 +189,10 @@ h1.headline{
   color:var(--red);
   font-weight:700;
   flex-shrink:0;
-  margin-top:1px;
+  margin-top:3px;
 }
 
-/* ─── CTA BUTTON ──────────────────────────── */
+/* ─── CTA ─────────────────────────────────── */
 .cta-btn{
   display:block;
   width:100%;
@@ -203,11 +202,11 @@ h1.headline{
   font-family:'Source Sans 3',sans-serif;
   font-size:16px;
   font-weight:700;
-  padding:17px 20px;
+  padding:18px 20px;
   border:none;
   border-radius:6px;
   cursor:pointer;
-  margin:28px 0 8px;
+  margin:30px 0 8px;
   letter-spacing:.3px;
   text-decoration:none;
   transition:background .18s;
@@ -217,19 +216,19 @@ h1.headline{
   text-align:center;
   font-size:13px;
   color:var(--gray);
-  margin-bottom:26px;
+  margin-bottom:28px;
 }
 
 /* ─── TESTIMONIAL ─────────────────────────── */
 .testimonial{
   border:1px solid var(--border);
   border-radius:8px;
-  padding:18px 20px;
-  margin:18px 0;
+  padding:22px 24px;
+  margin:22px 0;
   background:#fff;
 }
-.t-stars{color:#f9a825;font-size:15px;margin-bottom:6px}
-.t-text{font-style:italic;font-size:15px;line-height:1.75;margin-bottom:10px}
+.t-stars{color:#f9a825;font-size:15px;margin-bottom:7px}
+.t-text{font-style:italic;font-size:15px;line-height:1.95;margin-bottom:12px}
 .t-name{font-weight:700;font-size:14px}
 .t-loc{font-size:13px;color:var(--gray)}
 
@@ -238,19 +237,19 @@ h1.headline{
   font-size:11px;
   color:var(--gray);
   border-top:1px solid var(--border);
-  padding-top:18px;
-  margin-top:36px;
-  line-height:1.6;
+  padding-top:20px;
+  margin-top:40px;
+  line-height:1.7;
 }
 
-/* ═══════════════════════════════════════════
+/* ══════════════════════════════════════
    CHECKOUT MODAL
-═══════════════════════════════════════════ */
+══════════════════════════════════════ */
 .modal-overlay{
   display:none;
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.6);
+  background:rgba(0,0,0,.5);
   z-index:9000;
   overflow-y:auto;
   -webkit-overflow-scrolling:touch;
@@ -260,35 +259,35 @@ h1.headline{
 .modal-box{
   background:#fff;
   max-width:500px;
-  margin:12px auto;
-  border-radius:10px;
+  margin:16px auto;
+  border-radius:8px;
   overflow:hidden;
   position:relative;
-  box-shadow:0 20px 60px rgba(0,0,0,.3);
+  box-shadow:0 20px 50px rgba(0,0,0,.2);
 }
 
-/* Modal trust bar at top */
+/* Trust strip */
 .modal-trust-top{
-  background:#e8f5e9;
-  border-bottom:1px solid #a5d6a7;
-  padding:9px 16px;
+  background:#f0f4ff;
+  border-bottom:1px solid #d0daf0;
+  padding:10px 16px;
   display:flex;
   justify-content:center;
   flex-wrap:wrap;
-  gap:12px;
+  gap:14px;
   font-size:12px;
-  color:#1b5e20;
+  color:var(--navy);
   font-weight:600;
 }
 .modal-trust-top span{display:flex;align-items:center;gap:4px}
 
 .modal-header{
   background:var(--navy);
-  padding:12px 48px 12px 18px;
+  padding:14px 52px 14px 20px;
 }
 .modal-header p{
   color:#fff;
-  font-size:12px;
+  font-size:11px;
   letter-spacing:2px;
   text-transform:uppercase;
   font-weight:600;
@@ -296,22 +295,21 @@ h1.headline{
 }
 .modal-close{
   position:absolute;
-  top:34px;right:14px;
+  top:38px;right:16px;
   background:none;border:none;
-  color:#fff;font-size:24px;
-  cursor:pointer;line-height:1;
-  padding:4px;
+  color:#fff;font-size:22px;
+  cursor:pointer;line-height:1;padding:4px;
 }
 
-.modal-body{padding:18px 18px 26px}
+.modal-body{padding:20px 20px 28px}
 
-/* Image slider */
+/* Slider */
 .img-slider{
   position:relative;
   width:100%;
   aspect-ratio:3/2;
   background:var(--lightgray);
-  border-radius:8px;
+  border-radius:7px;
   overflow:hidden;
   margin-bottom:12px;
 }
@@ -320,21 +318,22 @@ h1.headline{
   display:flex;align-items:center;justify-content:center;
   opacity:0;transition:opacity .35s;
   font-size:12px;color:var(--gray);
+  text-align:center;padding:16px;
 }
 .img-slide img{width:100%;height:100%;object-fit:cover}
 .img-slide.active{opacity:1}
 .slider-dots{
   display:flex;justify-content:center;
-  gap:6px;margin-bottom:14px;
+  gap:7px;margin-bottom:16px;
 }
 .sdot{
-  width:8px;height:8px;border-radius:50%;
+  width:7px;height:7px;border-radius:50%;
   background:var(--border);border:none;cursor:pointer;
   padding:0;transition:background .2s;
 }
 .sdot.active{background:var(--navy)}
 
-/* Product title block */
+/* Product block */
 .prod-title{
   font-family:'Merriweather',serif;
   font-size:17px;font-weight:900;
@@ -342,36 +341,36 @@ h1.headline{
 }
 .prod-sub{font-size:13px;color:var(--gray);margin-bottom:12px}
 .prod-stars{
-  display:flex;align-items:center;gap:6px;margin-bottom:14px;
+  display:flex;align-items:center;gap:6px;margin-bottom:16px;
 }
 .prod-stars .st{color:#f9a825;font-size:14px}
 .prod-stars span{font-size:13px;color:var(--gray)}
 
-/* Bundle selector */
+/* Bundles */
 .bundle-label{
-  font-weight:700;font-size:12px;
-  text-transform:uppercase;letter-spacing:1px;
-  margin-bottom:9px;
+  font-weight:700;font-size:11px;
+  text-transform:uppercase;letter-spacing:1.2px;
+  margin-bottom:9px;color:#333;
 }
 .bundles{display:flex;flex-direction:column;gap:9px;margin-bottom:18px}
 .bundle{
-  border:2px solid var(--border);border-radius:8px;
-  padding:12px 14px;cursor:pointer;
+  border:1.5px solid var(--border);border-radius:7px;
+  padding:13px 15px;cursor:pointer;
   display:flex;align-items:center;justify-content:space-between;
   transition:border-color .18s,background .18s;
   position:relative;
 }
-.bundle.sel{border-color:var(--navy);background:#f0f4ff}
+.bundle.sel{border-color:var(--navy);background:#f4f6ff}
 .bundle-left{display:flex;align-items:center;gap:11px}
 .brad{
-  width:17px;height:17px;border-radius:50%;
-  border:2px solid var(--border);
+  width:16px;height:16px;border-radius:50%;
+  border:2px solid #ccc;
   display:flex;align-items:center;justify-content:center;
   flex-shrink:0;transition:border-color .18s;
 }
 .bundle.sel .brad{border-color:var(--navy)}
 .brad::after{
-  content:'';width:8px;height:8px;border-radius:50%;
+  content:'';width:7px;height:7px;border-radius:50%;
   background:var(--navy);display:none;
 }
 .bundle.sel .brad::after{display:block}
@@ -381,25 +380,24 @@ h1.headline{
 .bprice{font-size:17px;font-weight:700}
 .borig{font-size:11px;color:var(--gray);text-decoration:line-through}
 .bbadge{
-  display:inline-block;background:var(--red);color:#fff;
+  display:inline-block;background:var(--navy);color:#fff;
   font-size:10px;font-weight:700;
   padding:1px 6px;border-radius:20px;margin-left:5px;
 }
 .bpop{
-  background:var(--orange);color:#fff;
+  background:var(--navy);color:#fff;
   font-size:10px;font-weight:700;
-  padding:2px 9px;border-radius:4px;
+  padding:2px 10px;border-radius:4px;
   position:absolute;top:-9px;left:50%;
   transform:translateX(-50%);white-space:nowrap;
 }
 
-/* Divider */
 .mdivider{border:none;border-top:1px solid var(--border);margin:16px 0}
 
 /* Form */
 .fsec-title{
-  font-weight:700;font-size:12px;
-  text-transform:uppercase;letter-spacing:1px;
+  font-weight:700;font-size:11px;
+  text-transform:uppercase;letter-spacing:1.2px;
   margin-bottom:10px;color:var(--navy);
 }
 .frow{display:flex;gap:9px;margin-bottom:10px}
@@ -407,21 +405,21 @@ h1.headline{
 .fg{margin-bottom:10px}
 .fg label{
   display:block;font-size:11px;font-weight:700;
-  color:#444;margin-bottom:3px;
-  text-transform:uppercase;letter-spacing:.4px;
+  color:#555;margin-bottom:3px;
+  text-transform:uppercase;letter-spacing:.3px;
 }
 .fg input,.fg select{
-  width:100%;padding:11px 12px;
-  border:1px solid #d0d0d0;border-radius:6px;
+  width:100%;padding:11px 13px;
+  border:1px solid #d5d5d5;border-radius:5px;
   font-size:15px;font-family:inherit;
   outline:none;transition:border-color .18s;
-  background:#fff;
+  background:#fff;color:var(--text);
 }
 .fg input:focus,.fg select:focus{border-color:var(--navy)}
 
-/* Card element */
+/* Card */
 .card-wrap{
-  border:1px solid #d0d0d0;border-radius:6px;
+  border:1px solid #d5d5d5;border-radius:5px;
   padding:12px;background:#fff;
   transition:border-color .18s;
 }
@@ -436,8 +434,10 @@ h1.headline{
 
 /* Order summary */
 .order-sum{
-  background:var(--lightgray);border-radius:7px;
-  padding:13px 15px;margin-bottom:14px;
+  background:var(--lightgray);
+  border:1px solid var(--border);
+  border-radius:6px;
+  padding:14px 16px;margin-bottom:14px;
 }
 .orow{
   display:flex;justify-content:space-between;
@@ -447,46 +447,47 @@ h1.headline{
 .orow.total{
   font-weight:700;font-size:16px;
   border-top:1px solid var(--border);
-  padding-top:8px;margin-top:8px;
+  padding-top:9px;margin-top:9px;
 }
 .free-tag{color:var(--green);font-weight:700}
-.save-tag{color:var(--red);font-weight:700}
+.save-tag{color:var(--navy);font-weight:700}
 
 /* Submit */
 .submit-btn{
   width:100%;padding:16px;
   background:#2e7d32;color:#fff;
   font-size:17px;font-weight:700;
-  border:none;border-radius:7px;
+  border:none;border-radius:6px;
   cursor:pointer;font-family:inherit;
   transition:background .18s;letter-spacing:.3px;
 }
 .submit-btn:hover{background:#1b5e20}
 .submit-btn:disabled{background:#9e9e9e;cursor:not-allowed}
 
-/* Bottom trust badges */
+/* Badges */
 .modal-badges{
-  display:flex;flex-wrap:wrap;gap:7px;
+  display:flex;flex-wrap:wrap;gap:6px;
   justify-content:center;margin-top:14px;
 }
 .mbadge{
   display:flex;align-items:center;gap:4px;
-  font-size:11px;color:#333;
-  background:var(--lightgray);
+  font-size:11px;color:#444;
+  background:#fff;
   border:1px solid var(--border);
-  padding:5px 9px;border-radius:5px;
+  padding:5px 9px;border-radius:4px;
 }
 
 /* Guarantee */
 .modal-guarantee{
-  background:#e8f5e9;border:1px solid #a5d6a7;
-  border-radius:8px;padding:13px 15px;
-  margin-top:12px;display:flex;
-  align-items:flex-start;gap:10px;
+  background:#f0f4ff;
+  border:1px solid #d0daf0;
+  border-radius:7px;padding:14px 16px;
+  margin-top:12px;
+  display:flex;align-items:flex-start;gap:10px;
 }
-.mg-icon{font-size:26px;flex-shrink:0}
-.mg-title{font-weight:700;font-size:13px;margin-bottom:2px}
-.mg-text{font-size:12px;color:#2e7d32;line-height:1.5}
+.mg-icon{font-size:24px;flex-shrink:0}
+.mg-title{font-weight:700;font-size:13px;margin-bottom:2px;color:var(--navy)}
+.mg-text{font-size:12px;color:#444;line-height:1.6}
 
 /* Error */
 .form-err{
@@ -497,22 +498,25 @@ h1.headline{
 /* Success */
 .success-screen{
   display:none;text-align:center;
-  padding:40px 18px;
+  padding:46px 20px;
 }
-.success-screen .ck{font-size:52px;margin-bottom:14px}
-.success-screen h3{font-size:20px;font-weight:900;margin-bottom:9px}
-.success-screen p{color:var(--gray);font-size:15px}
+.success-screen .ck{font-size:50px;margin-bottom:14px}
+.success-screen h3{
+  font-family:'Merriweather',serif;
+  font-size:20px;font-weight:900;margin-bottom:10px;
+}
+.success-screen p{color:var(--gray);font-size:15px;line-height:1.7}
 
 @media(max-width:540px){
   .modal-box{margin:0;border-radius:0;min-height:100svh}
   .frow{flex-direction:column;gap:0}
-  .modal-trust-top{gap:8px;font-size:11px}
+  .modal-trust-top{gap:9px;font-size:11px}
 }
 </style>
 </head>
 <body>
 
-<!-- Trust bar -->
+<!-- ─── TRUST BAR ────────────────────────── -->
 <div class="trust-bar">
   <span>🛡️ 30-Day Money-Back Guarantee</span>
   <span>🚚 Free Shipping</span>
@@ -520,254 +524,273 @@ h1.headline{
   <span>🔒 Secure Checkout</span>
 </div>
 
-<!-- Header -->
+<!-- ─── HEADER ───────────────────────────── -->
 <header class="site-header">
-  <span class="brand">Neck Pain Insider</span>
+  <span class="brand">Muscle &amp; Pain Health Review</span>
 </header>
 
-<!-- Article -->
+<!-- ─── ARTICLE ──────────────────────────── -->
 <div class="page-layout">
 
-  <p class="article-meta">June 16, 2025 &nbsp;·&nbsp; Neck Pain Insider Editorial</p>
+  <p class="article-meta">Independent Editorial &nbsp;·&nbsp; Reader Submission</p>
 
   <h1 class="headline">
-    Physio Told Her to "Just Manage It." Four Years Later, She Finally Found Out Why Her Neck Pain Was Never Going to Stop on Its Own.
+    I Spent Four Years Getting Massages That Wore Off in Two Days — Until a Physio Friend Explained the Real Reason My Shoulder Tension Was Never Going to Stop Coming Back
   </h1>
 
   <div class="pull-quote">
-    "Most patients who come to me have already spent thousands on treatments that gave them temporary relief. There's a reason none of it lasted — and almost nobody is honest enough to explain it." — Dr. Amanda Reeves, Pain Physiotherapy Specialist
+    "What most people don't know is that after months of chronic tension, the muscle stops treating that tension as temporary. It resets it as the new normal. At that point, massage and heat can only ever give you a few hours of relief — they're not reaching the actual problem." — Physiotherapist, 6 years clinical practice
   </div>
 
-  <!-- HERO IMAGE — replace src with your image -->
+  <!-- HERO IMAGE — replace src with your real image -->
   <div class="hero-wrap">
-    <img id="heroImg" src="" alt="Woman with neck pain" onerror="this.parentNode.innerHTML='<div class=hero-placeholder>[Replace: woman with neck pain, natural/realistic photo]</div>'" />
+    <img id="heroImg"
+         src=""
+         alt="Woman pressing fingers into tense shoulder"
+         onerror="this.parentNode.innerHTML='<div class=hero-placeholder>[Replace: candid photo — woman pressing into shoulder/neck knot, real and relatable]</div>'"/>
   </div>
 
   <div class="body-text">
 
-    <p class="hook-line">I almost missed my daughter's wedding because of my neck.</p>
+    <p class="hook-line">It was a flight to visit my sister that finally made me face it.</p>
 
-    <p>Not because I wasn't there. I was. I was standing in the front row.</p>
+    <p>I reached up to put my bag in the overhead locker and made a sound I'd never made before. Not a cry. More like a sharp gasp — the kind that escapes before you can stop it.</p>
 
-    <p>But during every single photo, the photographer kept telling me to "lift your chin a little." And I couldn't. The pain was so sharp I had to keep looking down.</p>
+    <p>The man next to me asked if I was okay.</p>
 
-    <p>I smiled through it. I cried in the bathroom afterwards — not because my daughter was getting married, but because I had missed most of it trying not to visibly wince.</p>
+    <p>I said yes. I was 44 years old and I was embarrassed.</p>
 
-    <p>That was four years into daily neck pain.</p>
+    <p>But I wasn't okay. I hadn't been okay for four years.</p>
 
-    <p>If you wake up every morning and your neck is already tense before you've touched your pillow...</p>
+    <p>If your shoulders and neck are almost always tense — not from an injury, just always, always tense...</p>
 
-    <p>If you've had physio, massage, heat packs, anti-inflammatories, or those little patches from the chemist...</p>
+    <p>If massage or heat helps for a day or two and then it comes right back like you never did anything...</p>
 
-    <p>If the relief lasts a day, maybe two — then it's back exactly like before...</p>
+    <p>If you've had it so long that you've basically stopped noticing it — until something sharp reminds you it's still there...</p>
 
-    <p>If your doctor has looked at your scans and said "nothing serious" — but the pain tells a completely different story...</p>
+    <p>If your doctor has checked and said nothing is seriously wrong, but the tension and pain keep telling a different story...</p>
 
-    <p><strong>Then I need you to read this.</strong> Because I spent four years being treated for the wrong thing. And when I finally found out what was actually happening, I was furious at how simple the explanation was.</p>
+    <p><strong>I want you to read this.</strong> Because for four years I was doing everything people told me to do and getting nowhere. And the reason why is something almost nobody explained to me until one specific conversation changed everything.</p>
 
-    <h2>Everything I Tried. Everything That Failed.</h2>
+    <h2>How I Got Here</h2>
 
-    <p>My name is Karen. I'm 47. I live in Brisbane with my husband and our two kids.</p>
+    <p>My name is Rachel. I'm 44. I work part-time and I have two teenagers at home.</p>
 
-    <p>My neck pain started after a minor car accident. Nothing dramatic — a small rear-end collision in a car park. The whiplash was real but mild. My GP said it would settle in 6–8 weeks.</p>
+    <p>My tension didn't start with an injury. No accident. No dramatic moment. It just slowly crept in — around the time my youngest started high school and life got busier and more stressful. I started waking up stiff. By mid-morning my shoulders were up near my ears. By evening my neck ached.</p>
 
-    <p>It didn't.</p>
+    <p>My GP said it was stress. She was probably right. She said to try yoga and take breaks from my desk.</p>
 
-    <p>Over the next four years I tried everything I was told to try:</p>
+    <p>I tried yoga. My shoulders were tense during downward dog.</p>
+
+    <p>Over the next four years I tried everything that seemed reasonable:</p>
 
     <ul class="fail-list">
-      <li>Physiotherapy — twice a week for 6 months. Felt better during sessions. Back to square one within 48 hours.</li>
-      <li>Remedial massage — monthly, then fortnightly. Two hours of relief, then same pain again.</li>
-      <li>Ibuprofen — took it so often my stomach started protesting. Stopped working after a while anyway.</li>
-      <li>Heat packs every night — helped me fall asleep. Woke up stiff and sore every morning regardless.</li>
-      <li>A specialist chiropractor — $180 a session. Six sessions. Zero lasting change.</li>
-      <li>Acupuncture — gave it a genuine go. Felt odd. Did nothing for my neck.</li>
+      <li>Remedial massage — I went fortnightly for over a year. It felt wonderful for about 48 hours. Then exactly the same tension was back.</li>
+      <li>Physiotherapy exercises — neck rolls, shoulder rotations, doorframe stretches. I did them every single morning. Some days they helped a little. They never fixed anything.</li>
+      <li>Heat packs every evening — helped me fall asleep. I still woke up stiff.</li>
+      <li>Anti-inflammatories — took them so regularly I started to worry about my stomach. They worked sometimes. The tension was still there when they wore off.</li>
+      <li>An expensive ergonomic chair — no change. The tension was there even on days I didn't sit at a desk.</li>
+      <li>Pilates for a year — I actually loved it. Great for my core. My shoulders were still tense for the whole class.</li>
     </ul>
 
-    <p>I wasn't lazy about it. I wasn't a bad patient. I showed up, I did the exercises, I followed the advice.</p>
+    <p>I want to say this clearly: I was not lazy. I was not a bad patient. I showed up. I did the work.</p>
 
-    <p><strong>The pain just kept coming back.</strong></p>
+    <p><strong>The tension just kept coming back. Every time. Without fail.</strong></p>
 
-    <p>And nobody ever explained why.</p>
+    <p>And not one person ever properly explained to me why.</p>
 
-    <h2>The Thing Nobody Ever Told Me</h2>
+    <h2>The Conversation That Changed Everything</h2>
 
-    <p>The answer came from the most unlikely place — an offhand comment from a physio I saw once for a second opinion.</p>
+    <p>My friend Kate has been a physiotherapist for six years. We were having coffee and I was doing what I apparently always do — pressing my fingers into the knot under my right shoulder blade without even thinking about it.</p>
 
-    <p>She was looking at my notes and said, almost to herself: "After this long, it's probably not the muscle anymore. It's likely nerve sensitisation."</p>
+    <p>She watched me do it and said: "How long has that been there?"</p>
 
-    <p>I asked her to explain that.</p>
+    <p>I said four years. She made a face.</p>
 
-    <p>She stopped what she was doing, sat down, and said: "Your original injury healed. Or mostly healed. But the nerve pathway that was sending pain signals during the injury — it got stuck. It's still firing. Even though there's nothing to warn you about anymore, the signal keeps going. Your brain keeps receiving pain because the pathway never switched off."</p>
+    <p>"Have you ever heard of chronic muscle hypertonicity?" she asked.</p>
 
-    <p>She called it a <strong>"pain loop."</strong></p>
+    <p>I hadn't.</p>
 
-    <p>That one sentence explained four years of my life.</p>
+    <p>She put her coffee down and explained it like this:</p>
+
+    <p>When a muscle stays tense for a long enough period — not just weeks but months or years — it gradually <strong>resets its resting state</strong>. The tension stops being a temporary reaction to stress. It becomes the new default. The muscle, in a very real sense, forgets what relaxed feels like. It starts receiving signals that tell it "this is normal. Stay here."</p>
+
+    <p>At that point, she said, everything I had been trying was only ever going to give me temporary relief. Massage, heat, and stretching work on the surface — they reduce tension in the moment. But they cannot change the underlying signal the muscle is receiving. The second the treatment is over, the muscle returns to what it now considers its normal position: contracted and tense.</p>
+
+    <p>"It's like trying to flatten a piece of paper that's been rolled up for years," she said. "You can hold it flat while you press on it. The second you let go, it curls straight back."</p>
+
+    <h2>Why Nothing I Tried Could Ever Last</h2>
 
     <div class="highlight-box">
-      <p><strong>Here is the part that made me genuinely angry:</strong></p>
-      <p>Every single treatment I had tried — physio stretches, massage, heat, anti-inflammatories — works on the muscle layer. Which is why they give temporary relief. The muscle relaxes. But the nerve pathway underneath? Still firing. Still looping. Still sending the signal.</p>
-      <p>Nobody was reaching the actual cause. They were treating a wound that had already closed, while the alarm system inside kept screaming.</p>
-      <p>Research suggests this pattern — called <strong>central sensitisation</strong> — affects up to 70% of people with chronic neck pain that lasts more than 3 months. Most of them never find out that's what it is.</p>
+      <p><strong>Here is the simple version of what she explained:</strong></p>
+      <p>Your muscles receive electrical signals from your nervous system telling them to contract or relax. When chronic tension sets in, the "stay contracted" signal becomes the new baseline. The muscle is essentially waiting for a stronger signal to override it.</p>
+      <p>Massage, heat, and stretching cannot send that stronger signal. They work on the tissue from the outside — but the tissue is receiving the wrong instruction at an electrical level, and nothing on the outside can change that instruction.</p>
+      <p>The only thing that can reach that level directly is an electrical signal strong enough to force the muscle through a full contraction-and-release cycle — essentially resetting the neuromuscular pattern, the way a restart resets a frozen computer.</p>
+      <p>This is called <strong>neuromuscular electrical stimulation (TENS/EMS)</strong>. It has been used in clinical physiotherapy for decades. Most people have either never heard of it, or they've only encountered the cheap TENS pads at the pharmacy — which work on a completely different principle (they distract from pain at the surface level, rather than resetting the muscle pattern underneath).</p>
     </div>
 
-    <p>I wasn't broken. I wasn't imagining it. I wasn't "just stressed."</p>
+    <p>I was not broken. I was not imagining it. I was not just stressed.</p>
 
-    <p><strong>My nervous system had learned to stay in pain mode. And nothing I had tried was designed to reach it.</strong></p>
+    <p><strong>My muscles had been tense for so long that they had set tense as their resting position. And nothing I had tried was designed to change that.</strong></p>
 
-    <h2>What Finally Broke the Loop</h2>
+    <h2>What Kate Recommended</h2>
 
-    <p>After that conversation, I started researching obsessively. Eleven PM searches, half-finished cups of tea going cold beside me.</p>
+    <p>I asked her what would actually work.</p>
 
-    <p>I found study after study confirming what she had said. And then I found something that the researchers kept referencing as the one method that directly reaches the nerve pathway level — not just the muscle layer above it.</p>
+    <p>She said she'd recently started recommending a specific device to patients who had this kind of long-term, persistent tension. Clinical-grade TENS and EMS combined. Not the pharmacy kind. She'd been consistently impressed with how it worked for patients who had plateaued with physio.</p>
 
-    <p>It was called <strong>dual-frequency neuromuscular electrical stimulation</strong> — TENS and EMS combined.</p>
+    <p>The key, she explained, was the waveform. Clinical TENS/EMS uses frequencies specifically calibrated to travel along motor nerve pathways and trigger a full contraction-release cycle in the muscle. The cheap pharmacy units use a generic signal that stimulates surface nerves without going deep enough to actually reset the pattern.</p>
 
-    <p>Not the cheap TENS pads from the pharmacy. Those deliver a generic, low-level signal and mostly just distract you from pain for a while.</p>
+    <p>She gave me the name of the device. I ordered it that evening.</p>
 
-    <p>I mean <strong>clinical-grade</strong> TENS/EMS — with a waveform specifically calibrated to travel along the nerve pathways.</p>
+    <p>I want to be completely honest: I had very low expectations. I had spent a lot of money on things that hadn't worked. I was tired of trying. But Kate had been treating patients with chronic pain for six years and had never once steered me wrong.</p>
 
-    <p>Here's what makes it different to everything else I had tried:</p>
+    <p>And she said it clearly: this was one of the only things she had seen actually reach the level where this kind of tension lives.</p>
 
-    <p>The electrical pulses travel along the same nerve pathways that are stuck in the pain loop. They don't mask the signal. They <strong>compete with it and interrupt it</strong> at the source. At the same time, the EMS component activates the deep cervical muscles that pain and tension have been keeping locked — muscles you can't voluntarily engage when everything is seized up.</p>
+    <h2>What Happened</h2>
 
-    <p>Two things happening at once that no massage, stretch, pill or heat pack can do simultaneously.</p>
+    <p>The first session was strange. A pulsing sensation, slightly warm. Not painful. My muscles would contract gently and then release. Contract. Release. Like they were being reminded of something they had forgotten.</p>
 
-    <p>I found one device that had taken this clinical technology — the kind used in hospital pain clinics — and made it accessible for home use. Specifically designed for the neck and cervical area.</p>
+    <p>I used it for 20 minutes that first evening while I watched TV.</p>
 
-    <p>I ordered it. Honestly, with very low expectations. I'd been disappointed so many times.</p>
+    <p>The next morning I lay still for a moment before getting up.</p>
 
-    <h2>What Happened After 10 Days</h2>
+    <p>The tightness under my right shoulder blade — the one I had been pressing on with my fingers for four years — felt different. Not gone. But less dense. Like something had shifted slightly overnight.</p>
 
-    <p>The first session felt strange. A gentle pulsing sensation. No pain. A little warmth spreading through my neck and shoulders.</p>
+    <p>By the end of the first week, my husband said something at dinner.</p>
 
-    <p>On day four, I woke up and lay still for a moment before getting out of bed. Something was different.</p>
+    <p>"You're not doing the shoulder thing," he said.</p>
 
-    <p>The tightness that was always there when I woke — the clenching feeling I had normalised over years — was noticeably less.</p>
+    <p>"What shoulder thing?"</p>
 
-    <p>By day ten, I turned my head at dinner to answer my husband and he stopped mid-sentence.</p>
+    <p>"You roll your shoulders every few minutes. You've done it for years. Every dinner. You're not doing it tonight."</p>
 
-    <p>"You just did that without wincing," he said.</p>
+    <p>I hadn't even noticed I'd been doing it.</p>
 
-    <p>I hadn't even noticed.</p>
+    <p>Three weeks in, I went back to the pool. I'd stopped swimming almost two years ago because the overhead stroke had become too uncomfortable. I swam for 40 minutes. I got out. I drove home.</p>
 
-    <p>Three months on, my daily pain has dropped from what I'd describe as a 6 or 7 most days to a 1 or 2. Some days zero. I use the device for 20 minutes every morning while I have coffee.</p>
+    <p>No pain. No bracing. Nothing.</p>
 
-    <p>I've been back to a physio since — the same one who first mentioned nerve sensitisation. She tested my cervical range of motion and said it was better than it had been in any of my notes. She asked what had changed.</p>
+    <button class="cta-btn" onclick="openModal()">→ Check Availability &amp; Current Price</button>
+    <p class="cta-sub">Clinical-grade TENS/EMS &nbsp;·&nbsp; 30-day money-back guarantee &nbsp;·&nbsp; Free shipping</p>
 
-    <p>I told her about the device. She nodded like she wasn't surprised.</p>
+    <h2>Three Months Later</h2>
 
-    <p>"That's one of the few things that actually reaches the right level," she said.</p>
+    <p>The tension is not completely gone. I want to be honest about that. But what used to be a constant 5 or 6 out of 10 every single day is now a 1 or 2. Some mornings I wake up and I have to actually check whether it is there.</p>
 
-    <button class="cta-btn" onclick="openModal()">→ Check Availability &amp; Price</button>
-    <p class="cta-sub">⚡ 55% discount currently active · Limited stock</p>
+    <p>I have not booked a remedial massage in three months. Not because I don't enjoy them. Because I no longer need one just to get through the week.</p>
 
-    <h2>Why I'm Sharing This Here</h2>
+    <p>When I saw Kate again, she tested my shoulder mobility — she does this occasionally. She said it was significantly better than anything in her notes. More range. Less resistance. She asked what I'd been doing differently.</p>
 
-    <p>I've had so many people — friends, people in my mum's group, colleagues — ask me what changed. I've sent so many individual messages explaining it that I decided to write it all down properly.</p>
+    <p>"Your device," I told her.</p>
 
-    <p>That's why this article exists. Not to sell you something — I'm just a person who found something that worked after years of nothing working. I'm including the link because every time I don't, someone messages me asking for it.</p>
+    <p>She nodded and said: "That's what I thought. It's one of the only things that actually reaches the level where this kind of tension lives."</p>
 
-    <p>The device I used is called <strong>[YOUR PRODUCT NAME]</strong>. It was designed specifically for neck and shoulder pain with the cervical nerve pathway calibration I've described.</p>
+    <h2>Why I'm Writing This</h2>
 
-    <p>It comes with a full 30-day money-back guarantee. If it doesn't work for you, you return it and pay nothing. That's what made me feel comfortable trying it after spending so much on things that failed.</p>
+    <p>Six different people have asked me about my shoulders in the last two months. Friends. My sister. A woman from my swimming group who said she recognised everything I was describing. I kept telling the story one at a time and eventually decided to write it all down properly.</p>
 
-    <h2>Who This Is and Isn't For</h2>
+    <p>I am not a medical professional. This is just my experience.</p>
 
-    <p>This is most effective for chronic, recurring neck and shoulder pain — the kind that keeps returning despite treatment, with no clear structural cause on imaging.</p>
+    <p>The device is called <strong>[PRODUCT NAME]</strong>. It was designed specifically for chronic shoulder and neck tension, with clinical-grade TENS/EMS frequency calibration. It comes with a full 30-day money-back guarantee, which is what made me willing to try it after spending so much on things that hadn't worked.</p>
 
-    <p>If you have a pacemaker or implanted cardiac device, this technology is not appropriate for you.</p>
+    <p>If the guarantee hadn't been there, I probably wouldn't have ordered it. I was that done with trying things. But I thought: if it doesn't work, I return it. I'm no worse off than I already am.</p>
 
-    <p>If your pain started very recently (within the last few weeks), see a healthcare professional first.</p>
+    <h2>Who This Is For and Who It Isn't</h2>
 
-    <p>But if you've been suffering for months or years, trying treatment after treatment with only temporary results — this is almost certainly reaching a mechanism that nothing else has.</p>
+    <p>This is most relevant if you have chronic, recurring tension in your shoulders, neck, or upper back — the kind that has been there for months or years, keeps coming back despite treatment, and has no clear structural cause on imaging.</p>
 
-    <button class="cta-btn" onclick="openModal()">→ Check Availability &amp; Get 55% Off Today</button>
-    <p class="cta-sub">🔒 Free shipping · 30-day returns · No risk</p>
+    <p>It is not appropriate if you have a pacemaker or any implanted cardiac device. Please do not use it if that applies to you.</p>
 
-    <h2>What Others Are Saying</h2>
+    <p>If your pain is very recent — a few weeks or less — see a healthcare professional first to rule out anything structural before trying this.</p>
+
+    <p>But if you have been managing tension for months or years, getting temporary relief at best, this is almost certainly reaching the mechanism that nothing else has been able to reach.</p>
+
+    <button class="cta-btn" onclick="openModal()">→ See Device, Bundles &amp; Current Price</button>
+    <p class="cta-sub">🔒 Secure checkout &nbsp;·&nbsp; Free shipping &nbsp;·&nbsp; 30-day full refund guarantee</p>
+
+    <h2>What Other People Are Saying</h2>
 
     <div class="testimonial">
       <div class="t-stars">★★★★★</div>
-      <p class="t-text">"I had neck pain every single day for six years. Physio, chiro, massage — I tried all of it. Nothing lasted more than two days. I used this device for three weeks and the daily pain just... stopped being constant. I'm not saying it's a miracle but I genuinely cannot explain why nothing else worked and this did. I'm just glad someone finally told me about it."</p>
-      <p class="t-name">Margaret T.</p>
-      <p class="t-loc">53 years old · Brisbane</p>
+      <p class="t-text">"I've had knots in my shoulders for as long as I can remember. Massage every fortnight and the relief lasted maybe 48 hours before it was back. Two weeks with this device and the knots I had felt for years started to actually soften. I don't fully understand the science but I know what I can feel. Nothing else had done that."</p>
+      <p class="t-name">Louise M.</p>
+      <p class="t-loc">48 years old</p>
     </div>
 
     <div class="testimonial">
       <div class="t-stars">★★★★★</div>
-      <p class="t-text">"My physio actually laughed when I told her how much my pain had improved. She said my muscle tension had reduced more than she'd seen from her sessions alone. I've been using it every morning for two months. The pain went from a 7 most days to maybe a 2 on a bad day. I wish I'd found this three years ago."</p>
-      <p class="t-name">Sandra R.</p>
-      <p class="t-loc">46 years old · Melbourne</p>
+      <p class="t-text">"My physio told me my tension was chronic and I'd need to manage it long-term. She was probably right given how long I'd had it. But the management was becoming a part-time job. Since using this my needs have dropped from constant to almost nothing. I still see my physio but she says my muscle tone has improved more than she expected from her sessions alone."</p>
+      <p class="t-name">Carolyn W.</p>
+      <p class="t-loc">51 years old</p>
     </div>
 
     <div class="testimonial">
       <div class="t-stars">★★★★★</div>
-      <p class="t-text">"I sit at a desk for nine hours a day and the neck pain had become just part of my life. I accepted it. I don't know why I decided to try this but I'm so glad I did. After two weeks I was turning to look at people without bracing myself first. Small thing. Huge difference to actually living your life."</p>
-      <p class="t-name">Diane H.</p>
-      <p class="t-loc">44 years old · Sydney</p>
+      <p class="t-text">"I was genuinely cynical. I tried a cheap TENS machine years ago and it did nothing. This felt completely different from the first session — you can feel the muscle actually contracting and releasing instead of just buzzing. After ten days my husband asked why I'd stopped complaining about my neck. I genuinely hadn't noticed I'd stopped."</p>
+      <p class="t-name">Julia T.</p>
+      <p class="t-loc">43 years old</p>
     </div>
 
-    <button class="cta-btn" onclick="openModal()">→ Check Availability &amp; Current Discount</button>
-    <p class="cta-sub">Stock is limited — discount may not last</p>
+    <button class="cta-btn" onclick="openModal()">→ Check Current Availability</button>
+    <p class="cta-sub">Stock is limited &nbsp;·&nbsp; Free shipping included</p>
 
   </div><!-- /body-text -->
 
   <div class="disclaimer">
-    <strong>EDITORIAL DISCLOSURE:</strong> This article reflects the personal experience of the narrator and is not intended as medical advice. Always consult a qualified healthcare professional before beginning any new treatment. The author may receive compensation if you purchase through links in this article. Individual results vary. This article is produced as sponsored editorial content. Statements have not been evaluated by the TGA or any regulatory body.<br><br>
-    THIS IS AN ADVERTISEMENT AND NOT AN ACTUAL NEWS ARTICLE OR MEDICAL PUBLICATION.
+    <strong>EDITORIAL DISCLOSURE:</strong> This article reflects the personal experience of the narrator and is intended for informational purposes only. It does not constitute medical advice. Always consult a qualified healthcare professional before starting any new treatment. The author may receive compensation if you purchase through links in this article. Individual results vary. This content is produced as sponsored editorial material. Statements have not been evaluated by the TGA or equivalent regulatory body in your region.<br><br>
+    THIS IS AN ADVERTISEMENT AND NOT AN ACTUAL NEWS ARTICLE, CLINICAL STUDY, OR MEDICAL PUBLICATION.
   </div>
 
 </div><!-- /page-layout -->
 
 
-<!-- ═══════════════════════════════════════════
+<!-- ══════════════════════════════════════════
      CHECKOUT MODAL
-═══════════════════════════════════════════ -->
+══════════════════════════════════════════ -->
 <div class="modal-overlay" id="checkoutModal">
   <div class="modal-box">
 
-    <!-- Trust bar at very top of modal -->
     <div class="modal-trust-top">
       <span>🛡️ 30-Day Guarantee</span>
       <span>🚚 Free Shipping</span>
       <span>↩️ Easy Returns</span>
-      <span>🔒 Secure</span>
+      <span>🔒 Secure Order</span>
     </div>
 
     <div class="modal-header">
-      <p>🔒 Secure Order — Official Stockist</p>
-      <button class="modal-close" onclick="closeModal()">×</button>
+      <p>Secure Order Form &mdash; Official Stockist</p>
+      <button class="modal-close" onclick="closeModal()" aria-label="Close">×</button>
     </div>
 
-    <!-- SUCCESS -->
+    <!-- SUCCESS SCREEN -->
     <div class="success-screen" id="successScreen">
       <div class="ck">✅</div>
-      <h3>Order Confirmed!</h3>
-      <p>Check your inbox for a confirmation email.<br>[YOUR PRODUCT NAME] ships in 1–2 business days.</p>
+      <h3>Order Confirmed</h3>
+      <p>A confirmation has been sent to your email.<br>[PRODUCT NAME] ships within 1–2 business days.</p>
     </div>
 
     <!-- ORDER FORM -->
     <div class="modal-body" id="orderFormWrap">
 
-      <!-- Product images slider -->
+      <!-- Product image slider -->
       <div class="img-slider" id="imgSlider">
-        <!-- REPLACE: add real product images here -->
+        <!-- REPLACE: add your real product images below -->
         <div class="img-slide active">[Product image 1 — front view]</div>
-        <div class="img-slide">[Product image 2 — in use on neck]</div>
+        <div class="img-slide">[Product image 2 — in use on shoulder/neck]</div>
         <div class="img-slide">[Product image 3 — package contents]</div>
       </div>
       <div class="slider-dots">
-        <button class="sdot active" onclick="goSlide(0)"></button>
-        <button class="sdot" onclick="goSlide(1)"></button>
-        <button class="sdot" onclick="goSlide(2)"></button>
+        <button class="sdot active" onclick="goSlide(0)" aria-label="Image 1"></button>
+        <button class="sdot" onclick="goSlide(1)" aria-label="Image 2"></button>
+        <button class="sdot" onclick="goSlide(2)" aria-label="Image 3"></button>
       </div>
 
-      <p class="prod-title">[YOUR PRODUCT NAME]</p>
-      <p class="prod-sub">Cervical TENS/EMS Pain Relief Device</p>
+      <p class="prod-title">[PRODUCT NAME]</p>
+      <p class="prod-sub">Clinical-Grade TENS/EMS Muscle Reset Device</p>
       <div class="prod-stars">
         <span class="st">★★★★★</span>
-        <span>4.8/5 · 1,240 reviews</span>
+        <span>4.8 / 5 &nbsp;&middot;&nbsp; 1,340 verified reviews</span>
       </div>
 
       <p class="bundle-label">Select Your Package:</p>
@@ -778,27 +801,27 @@ h1.headline{
             <div class="brad"></div>
             <div>
               <div class="bname">1 Device</div>
-              <div class="bper">Standard — ships today</div>
+              <div class="bper">Single unit — ships today</div>
             </div>
           </div>
           <div class="bright">
-            <div class="bprice">$129</div>
-            <div class="borig">Was $289</div>
+            <div class="bprice">$134.99</div>
+            <div class="borig">Was $249.99</div>
           </div>
         </div>
 
         <div class="bundle" id="b2" onclick="selBundle(2)" style="position:relative">
-          <span class="bpop">⭐ MOST POPULAR</span>
+          <span class="bpop">Most Ordered</span>
           <div class="bundle-left">
             <div class="brad"></div>
             <div>
-              <div class="bname">2 Devices <span class="bbadge">SAVE $39</span></div>
-              <div class="bper">$110 each — for you + partner</div>
+              <div class="bname">2 Devices <span class="bbadge">Save $30</span></div>
+              <div class="bper">$119.99 each — for you &amp; partner</div>
             </div>
           </div>
           <div class="bright">
-            <div class="bprice">$219</div>
-            <div class="borig">Was $578</div>
+            <div class="bprice">$239.99</div>
+            <div class="borig">Was $499.98</div>
           </div>
         </div>
 
@@ -806,34 +829,55 @@ h1.headline{
           <div class="bundle-left">
             <div class="brad"></div>
             <div>
-              <div class="bname">3 Devices <span class="bbadge">BEST VALUE</span></div>
-              <div class="bper">$96 each — share with family</div>
+              <div class="bname">3 Devices <span class="bbadge">Best Value</span></div>
+              <div class="bper">$109.99 each — share with family</div>
             </div>
           </div>
           <div class="bright">
-            <div class="bprice">$289</div>
-            <div class="borig">Was $867</div>
+            <div class="bprice">$329.99</div>
+            <div class="borig">Was $749.97</div>
           </div>
         </div>
 
-      </div>
+      </div><!-- /bundles -->
 
       <hr class="mdivider"/>
-      <p class="fsec-title">📦 Shipping Details</p>
+      <p class="fsec-title">Shipping Details</p>
 
       <div class="frow">
-        <div class="fg"><label>First Name</label><input type="text" id="fFirst" placeholder="Jane" autocomplete="given-name"/></div>
-        <div class="fg"><label>Last Name</label><input type="text" id="fLast" placeholder="Smith" autocomplete="family-name"/></div>
-      </div>
-      <div class="fg"><label>Email</label><input type="email" id="fEmail" placeholder="jane@email.com" autocomplete="email"/></div>
-      <div class="fg"><label>Phone</label><input type="tel" id="fPhone" placeholder="+61 400 000 000" autocomplete="tel"/></div>
-      <div class="fg"><label>Street Address</label><input type="text" id="fAddr" placeholder="123 Main Street" autocomplete="street-address"/></div>
-      <div class="frow">
-        <div class="fg"><label>City</label><input type="text" id="fCity" placeholder="Sydney" autocomplete="address-level2"/></div>
-        <div class="fg"><label>Postcode</label><input type="text" id="fPost" placeholder="2000" autocomplete="postal-code"/></div>
+        <div class="fg">
+          <label for="fFirst">First Name</label>
+          <input type="text" id="fFirst" placeholder="Jane" autocomplete="given-name"/>
+        </div>
+        <div class="fg">
+          <label for="fLast">Last Name</label>
+          <input type="text" id="fLast" placeholder="Smith" autocomplete="family-name"/>
+        </div>
       </div>
       <div class="fg">
-        <label>Country</label>
+        <label for="fEmail">Email Address</label>
+        <input type="email" id="fEmail" placeholder="jane@email.com" autocomplete="email"/>
+      </div>
+      <div class="fg">
+        <label for="fPhone">Phone</label>
+        <input type="tel" id="fPhone" placeholder="+1 000 000 0000" autocomplete="tel"/>
+      </div>
+      <div class="fg">
+        <label for="fAddr">Street Address</label>
+        <input type="text" id="fAddr" placeholder="123 Main Street" autocomplete="street-address"/>
+      </div>
+      <div class="frow">
+        <div class="fg">
+          <label for="fCity">City</label>
+          <input type="text" id="fCity" placeholder="City" autocomplete="address-level2"/>
+        </div>
+        <div class="fg">
+          <label for="fPost">Postcode</label>
+          <input type="text" id="fPost" placeholder="00000" autocomplete="postal-code"/>
+        </div>
+      </div>
+      <div class="fg">
+        <label for="fCountry">Country</label>
         <select id="fCountry" autocomplete="country">
           <option value="AU">Australia</option>
           <option value="US">United States</option>
@@ -846,7 +890,7 @@ h1.headline{
       </div>
 
       <hr class="mdivider"/>
-      <p class="fsec-title">💳 Payment</p>
+      <p class="fsec-title">Payment</p>
 
       <div class="card-wrap" id="cardWrap">
         <div id="cardEl"></div>
@@ -854,32 +898,49 @@ h1.headline{
       <div id="cardErr" style="color:#c62828;font-size:13px;margin-top:6px;display:none"></div>
 
       <div class="ssl-line">
-        <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-        256-bit SSL · Your card details are never stored
+        <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <rect x="3" y="11" width="18" height="11" rx="2"/>
+          <path d="M7 11V7a5 5 0 0110 0v4"/>
+        </svg>
+        256-bit SSL encryption &nbsp;&middot;&nbsp; Card details are never stored
       </div>
 
       <div class="order-sum">
-        <div class="orow"><span id="sumDesc">1 × [YOUR PRODUCT NAME]</span><span id="sumPrice">$129</span></div>
-        <div class="orow"><span>Shipping</span><span class="free-tag">FREE</span></div>
-        <div class="orow" id="sumSaveRow" style="display:none"><span>You save</span><span class="save-tag" id="sumSave"></span></div>
-        <div class="orow total"><span>Total Today</span><span id="sumTotal">$129</span></div>
+        <div class="orow">
+          <span id="sumDesc">1 × [PRODUCT NAME]</span>
+          <span id="sumPrice">$134.99</span>
+        </div>
+        <div class="orow">
+          <span>Shipping</span>
+          <span class="free-tag">Free</span>
+        </div>
+        <div class="orow" id="sumSaveRow" style="display:none">
+          <span>Discount applied</span>
+          <span class="save-tag" id="sumSave"></span>
+        </div>
+        <div class="orow total">
+          <span>Total Today</span>
+          <span id="sumTotal">$134.99</span>
+        </div>
       </div>
 
-      <button class="submit-btn" id="submitBtn" onclick="submitOrder()">✅ Complete Secure Order →</button>
+      <button class="submit-btn" id="submitBtn" onclick="submitOrder()">
+        Complete Secure Order →
+      </button>
       <div id="formErrMsg" class="form-err"></div>
 
       <div class="modal-badges">
         <div class="mbadge">🛡️ 30-Day Returns</div>
         <div class="mbadge">🔒 SSL Secure</div>
         <div class="mbadge">🚚 Free Shipping</div>
-        <div class="mbadge">⚡ Ships 24–48h</div>
+        <div class="mbadge">📦 Ships 1–2 Days</div>
       </div>
 
       <div class="modal-guarantee">
         <div class="mg-icon">🛡️</div>
         <div>
           <div class="mg-title">30-Day Money-Back Guarantee</div>
-          <div class="mg-text">Try [YOUR PRODUCT NAME] for 30 days. If you don't feel a real difference, contact us for a full refund — no questions, no hassle.</div>
+          <div class="mg-text">Try [PRODUCT NAME] for 30 days. If you don't feel a real improvement in your tension and pain, contact us for a full refund. No questions, no hassle, no risk.</div>
         </div>
       </div>
 
@@ -889,156 +950,162 @@ h1.headline{
 
 
 <script>
-/* ─── BUNDLE DATA ─────────────────────────── */
+/* ─── BUNDLE DATA ──────────────────────── */
 const BUNDLES = {
-  1:{desc:'1 × [YOUR PRODUCT NAME]',price:129,save:0},
-  2:{desc:'2 × [YOUR PRODUCT NAME]',price:219,save:39},
-  3:{desc:'3 × [YOUR PRODUCT NAME]',price:289,save:98}
+  1: { desc: '1 × [PRODUCT NAME]', price: '$134.99', save: 0 },
+  2: { desc: '2 × [PRODUCT NAME]', price: '$239.99', save: 30 },
+  3: { desc: '3 × [PRODUCT NAME]', price: '$329.99', save: 75 }
 };
 let curBundle = 1;
 
-function selBundle(n){
+function selBundle(n) {
   curBundle = n;
-  [1,2,3].forEach(i=>document.getElementById('b'+i).classList.remove('sel'));
-  document.getElementById('b'+n).classList.add('sel');
+  [1, 2, 3].forEach(i => document.getElementById('b' + i).classList.remove('sel'));
+  document.getElementById('b' + n).classList.add('sel');
   const b = BUNDLES[n];
   document.getElementById('sumDesc').textContent  = b.desc;
-  document.getElementById('sumPrice').textContent = '$'+b.price;
-  document.getElementById('sumTotal').textContent = '$'+b.price;
+  document.getElementById('sumPrice').textContent = b.price;
+  document.getElementById('sumTotal').textContent = b.price;
   const sr = document.getElementById('sumSaveRow');
-  if(b.save>0){
-    sr.style.display='flex';
-    document.getElementById('sumSave').textContent='-$'+b.save;
-  } else { sr.style.display='none'; }
+  if (b.save > 0) {
+    sr.style.display = 'flex';
+    document.getElementById('sumSave').textContent = '-$' + b.save;
+  } else {
+    sr.style.display = 'none';
+  }
 }
 selBundle(1);
 
-/* ─── SLIDER ──────────────────────────────── */
+/* ─── SLIDER ───────────────────────────── */
 let curSlide = 0;
-const slides  = document.querySelectorAll('.img-slide');
-const dots    = document.querySelectorAll('.sdot');
-function goSlide(n){
+const slides = document.querySelectorAll('.img-slide');
+const dots   = document.querySelectorAll('.sdot');
+
+function goSlide(n) {
   slides[curSlide].classList.remove('active');
   dots[curSlide].classList.remove('active');
   curSlide = n;
   slides[n].classList.add('active');
   dots[n].classList.add('active');
 }
-setInterval(()=>goSlide((curSlide+1)%slides.length),3600);
+setInterval(() => goSlide((curSlide + 1) % slides.length), 4000);
 
-/* ─── MODAL ───────────────────────────────── */
-function openModal(){
+/* ─── MODAL ────────────────────────────── */
+function openModal() {
   document.getElementById('checkoutModal').classList.add('open');
-  document.body.style.overflow='hidden';
-  if(!stripeReady) initStripe();
+  document.body.style.overflow = 'hidden';
+  if (!stripeReady) initStripe();
 }
-function closeModal(){
+function closeModal() {
   document.getElementById('checkoutModal').classList.remove('open');
-  document.body.style.overflow='';
+  document.body.style.overflow = '';
 }
-document.getElementById('checkoutModal').addEventListener('click',function(e){
-  if(e.target===this) closeModal();
+document.getElementById('checkoutModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
 });
 
-/* ─── STRIPE ──────────────────────────────── */
+/* ─── STRIPE ────────────────────────────── */
 let stripe, cardEl, stripeReady = false;
-function initStripe(){
+
+function initStripe() {
   try {
-    stripe = Stripe('YOUR_STRIPE_PUBLISHABLE_KEY'); /* ← REPLACE */
+    stripe = Stripe('YOUR_STRIPE_PUBLISHABLE_KEY'); /* ← REPLACE WITH YOUR KEY */
     const els = stripe.elements();
-    cardEl = els.create('card',{
-      style:{base:{
-        fontSize:'15px',color:'#1a1a1a',
-        fontFamily:"'Source Sans 3',sans-serif",
-        '::placeholder':{color:'#9e9e9e'}
-      }}
+    cardEl = els.create('card', {
+      style: {
+        base: {
+          fontSize: '15px',
+          color: '#1a1a1a',
+          fontFamily: "'Source Sans 3', sans-serif",
+          '::placeholder': { color: '#9e9e9e' }
+        }
+      }
     });
     cardEl.mount('#cardEl');
-    cardEl.on('focus',()=>document.getElementById('cardWrap').classList.add('focused'));
-    cardEl.on('blur', ()=>document.getElementById('cardWrap').classList.remove('focused'));
-    cardEl.on('change',e=>{
-      const el=document.getElementById('cardErr');
-      el.style.display=e.error?'block':'none';
-      if(e.error) el.textContent=e.error.message;
+    cardEl.on('focus', () => document.getElementById('cardWrap').classList.add('focused'));
+    cardEl.on('blur',  () => document.getElementById('cardWrap').classList.remove('focused'));
+    cardEl.on('change', e => {
+      const el = document.getElementById('cardErr');
+      el.style.display = e.error ? 'block' : 'none';
+      if (e.error) el.textContent = e.error.message;
     });
-    stripeReady=true;
-  } catch(e){
-    document.getElementById('cardEl').innerHTML=
-      '<input style="width:100%;border:none;outline:none;font-size:15px;font-family:inherit" placeholder="Configure Stripe key to enable card input" />';
+    stripeReady = true;
+  } catch(e) {
+    document.getElementById('cardEl').innerHTML =
+      '<input style="width:100%;border:none;outline:none;font-size:15px;font-family:inherit" placeholder="Configure Stripe key to enable card input"/>';
   }
 }
 
-/* ─── VALIDATION ──────────────────────────── */
-function validate(){
-  const ids=['fFirst','fLast','fEmail','fPhone','fAddr','fCity','fPost'];
-  for(const id of ids){
-    const el=document.getElementById(id);
-    if(!el.value.trim()){el.focus();return 'Please complete all fields.';}
+/* ─── VALIDATION ────────────────────────── */
+function validate() {
+  const ids = ['fFirst', 'fLast', 'fEmail', 'fPhone', 'fAddr', 'fCity', 'fPost'];
+  for (const id of ids) {
+    const el = document.getElementById(id);
+    if (!el.value.trim()) { el.focus(); return 'Please complete all fields.'; }
   }
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(document.getElementById('fEmail').value))
-    return 'Please enter a valid email.';
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(document.getElementById('fEmail').value))
+    return 'Please enter a valid email address.';
   return null;
 }
 
-/* ─── SUBMIT ──────────────────────────────── */
-async function submitOrder(){
-  const err=validate();
-  if(err){
-    const el=document.getElementById('formErrMsg');
-    el.textContent=err; el.style.display='block'; return;
+/* ─── SUBMIT ────────────────────────────── */
+async function submitOrder() {
+  const err = validate();
+  if (err) {
+    const el = document.getElementById('formErrMsg');
+    el.textContent = err; el.style.display = 'block'; return;
   }
-  document.getElementById('formErrMsg').style.display='none';
-  const btn=document.getElementById('submitBtn');
-  btn.disabled=true; btn.textContent='Processing…';
+  document.getElementById('formErrMsg').style.display = 'none';
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true; btn.textContent = 'Processing…';
 
   try {
     /*
-    ═══════════════════════════════════════════════════
-    SHOPIFY OPTION (recommended — no backend needed):
-    ═══════════════════════════════════════════════════
+    ════════════════════════════════════════════
+    SHOPIFY OPTION (no backend needed):
     Replace VARIANT_ID_X with your Shopify variant IDs.
+    ════════════════════════════════════════════
+    const variants = { 1: 'VARIANT_ID_1', 2: 'VARIANT_ID_2', 3: 'VARIANT_ID_3' };
+    window.location.href = '/cart/' + variants[curBundle] + ':1?checkout';
 
-    const variants = { 1:'VARIANT_ID_1', 2:'VARIANT_ID_2', 3:'VARIANT_ID_3' };
-    window.location.href = '/cart/'+variants[curBundle]+':1?checkout';
-
-    ═══════════════════════════════════════════════════
-    STRIPE OPTION (needs backend /api/create-payment-intent):
-    ═══════════════════════════════════════════════════
-    const r = await fetch('/api/create-payment-intent',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
+    ════════════════════════════════════════════
+    STRIPE OPTION (requires backend endpoint):
+    ════════════════════════════════════════════
+    const r = await fetch('/api/create-payment-intent', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
         bundle: curBundle,
-        amount: BUNDLES[curBundle].price * 100,
+        amount: parseFloat(BUNDLES[curBundle].price.replace('$', '')) * 100,
         email: document.getElementById('fEmail').value,
-        name: document.getElementById('fFirst').value+' '+document.getElementById('fLast').value
+        name:  document.getElementById('fFirst').value + ' ' + document.getElementById('fLast').value
       })
     });
-    const {clientSecret} = await r.json();
-    const result = await stripe.confirmCardPayment(clientSecret,{
-      payment_method:{
+    const { clientSecret } = await r.json();
+    const result = await stripe.confirmCardPayment(clientSecret, {
+      payment_method: {
         card: cardEl,
-        billing_details:{
-          name: document.getElementById('fFirst').value+' '+document.getElementById('fLast').value,
+        billing_details: {
+          name:  document.getElementById('fFirst').value + ' ' + document.getElementById('fLast').value,
           email: document.getElementById('fEmail').value
         }
       }
     });
-    if(result.error) throw new Error(result.error.message);
+    if (result.error) throw new Error(result.error.message);
     */
 
-    /* DEMO — remove in production: */
-    await new Promise(r=>setTimeout(r,1500));
+    /* ── DEMO mode — remove in production ── */
+    await new Promise(r => setTimeout(r, 1500));
 
-    document.getElementById('orderFormWrap').style.display='none';
-    document.getElementById('successScreen').style.display='block';
+    document.getElementById('orderFormWrap').style.display = 'none';
+    document.getElementById('successScreen').style.display = 'block';
 
-  } catch(e){
-    const el=document.getElementById('formErrMsg');
-    el.textContent=e.message||'Payment failed. Please try again.';
-    el.style.display='block';
-    btn.disabled=false;
-    btn.textContent='✅ Complete Secure Order →';
+  } catch(e) {
+    const el = document.getElementById('formErrMsg');
+    el.textContent = e.message || 'Payment failed. Please try again.';
+    el.style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = 'Complete Secure Order →';
   }
 }
 </script>
