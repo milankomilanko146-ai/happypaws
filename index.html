@@ -3,1112 +3,1985 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Muscle &amp; Pain Health Review</title>
-<!--
-  SETUP CHECKLIST:
-  1. Replace [PRODUCT NAME] with real product name (Ctrl+F → [PRODUCT NAME])
-  2. Replace hero image src (id="heroImg")
-  3. Replace product images in slider (.img-slide elements)
-  4. Set real Stripe publishable key OR use Shopify redirect (see JS comments)
-  5. Set real Shopify variant IDs if using Shopify option
--->
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet"/>
-<script src="https://js.stripe.com/v3/"></script>
+<title>Vaulten — Minimal Fashion</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
-/* ─── RESET ──────────────────────────────── */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-img{display:block;max-width:100%}
-
-/* ─── TOKENS ─────────────────────────────── */
-:root{
-  --navy:#1a2e5a;
-  --green:#2e7d32;
-  --green-bg:#e8f5e9;
-  --red:#c62828;
-  --gray:#5f6368;
-  --lightgray:#f7f8fa;
-  --border:#e0e0e0;
-  --text:#1a1a1a;
+:root {
+  --black: #0a0a0a;
+  --white: #ffffff;
+  --off-white: #f8f8f6;
+  --mid: #e8e8e4;
+  --muted: #9a9a96;
+  --border: #e2e2de;
 }
 
-/* ─── BODY ────────────────────────────────── */
-body{
-  font-family:'Source Sans 3',sans-serif;
-  background:#fff;
-  color:var(--text);
-  font-size:18px;
-  line-height:2;
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--white);
+  color: var(--black);
+  -webkit-font-smoothing: antialiased;
 }
 
-/* ─── TRUST BAR ───────────────────────────── */
-.trust-bar{
-  background:#fff;
-  border-bottom:1px solid var(--border);
-  padding:8px 16px;
-  text-align:center;
-  font-size:12px;
-  color:var(--gray);
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:16px;
-}
-.trust-bar span{display:flex;align-items:center;gap:4px}
-
-/* ─── HEADER ──────────────────────────────── */
-.site-header{
-  background:var(--navy);
-  padding:14px 16px;
-  text-align:center;
-}
-.site-header .brand{
-  color:#fff;
-  font-family:'Source Sans 3',sans-serif;
-  font-weight:700;
-  font-size:13px;
-  letter-spacing:3.5px;
-  text-transform:uppercase;
+/* ── ANNOUNCEMENT BAR ── */
+.announce-bar {
+  background: var(--black);
+  color: var(--white);
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
-/* ─── LAYOUT ──────────────────────────────── */
-.page-layout{
-  max-width:700px;
-  margin:0 auto;
-  padding:0 18px 70px;
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
 }
 
-/* ─── META ────────────────────────────────── */
-.article-meta{
-  font-size:13px;
-  color:var(--gray);
-  margin:22px 0 12px;
+.nav-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 32px;
+  height: 60px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-/* ─── H1 ──────────────────────────────────── */
-h1.headline{
-  font-family:'Merriweather',Georgia,serif;
-  font-size:clamp(22px,5.5vw,34px);
-  font-weight:900;
-  line-height:1.22;
-  color:var(--text);
-  margin-bottom:20px;
+.nav-left { display: flex; gap: 28px; }
+
+.nav-link {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--black);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s;
+  background: none;
+  border: none;
+  font-family: 'Jost', sans-serif;
 }
 
-/* ─── PULL QUOTE ──────────────────────────── */
-.pull-quote{
-  background:var(--green-bg);
-  border-left:4px solid var(--green);
-  padding:16px 20px;
-  margin:0 0 26px;
-  border-radius:0 6px 6px 0;
-  font-style:italic;
-  font-size:15px;
-  color:#1b5e20;
-  line-height:1.8;
+.nav-link:hover { color: var(--muted); }
+
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-align: center;
+  cursor: pointer;
+  text-transform: uppercase;
 }
 
-/* ─── HERO ────────────────────────────────── */
-.hero-wrap{
-  margin:0 0 30px;
-  border-radius:6px;
-  overflow:hidden;
-  background:var(--lightgray);
-}
-.hero-wrap img{
-  width:100%;
-  height:auto;
-  max-height:360px;
-  object-fit:cover;
-}
-.hero-placeholder{
-  width:100%;
-  height:240px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:13px;
-  color:var(--gray);
-  background:linear-gradient(135deg,#e3e8f0,#c9d4e8);
+.nav-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
 }
 
-/* ─── BODY TEXT ───────────────────────────── */
-.body-text p{
-  margin-bottom:24px;
-  line-height:2;
-}
-.body-text strong{font-weight:700}
-.body-text em{font-style:italic}
-
-.hook-line{
-  font-family:'Merriweather',Georgia,serif;
-  font-size:19px;
-  font-weight:900;
-  margin-bottom:22px;
-  line-height:1.4;
+.nav-icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--black);
+  font-family: 'Jost', sans-serif;
+  position: relative;
+  transition: color 0.2s;
 }
 
-/* ─── H2 ──────────────────────────────────── */
-.body-text h2{
-  font-family:'Merriweather',Georgia,serif;
-  font-size:clamp(18px,4vw,23px);
-  font-weight:900;
-  margin:42px 0 18px;
-  line-height:1.3;
-  color:var(--text);
+.nav-icon-btn:hover { color: var(--muted); }
+
+.cart-count {
+  position: absolute; top: -8px; right: -10px;
+  background: var(--black);
+  color: white;
+  font-size: 0.55rem;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
 }
 
-/* ─── HIGHLIGHT BOX ───────────────────────── */
-.highlight-box{
-  background:#fff8e1;
-  border:1px solid #ffe082;
-  border-radius:8px;
-  padding:22px 24px;
-  margin:28px 0;
-}
-.highlight-box p{margin-bottom:14px;line-height:1.9}
-.highlight-box p:last-child{margin-bottom:0}
+/* ── PAGES ── */
+.page { display: none; }
+.page.active { display: block; }
 
-/* ─── FAIL LIST ───────────────────────────── */
-.fail-list{
-  margin:18px 0 24px 4px;
-  padding:0;
-  list-style:none;
-}
-.fail-list li{
-  display:flex;
-  gap:12px;
-  margin-bottom:14px;
-  font-size:17px;
-  line-height:1.85;
-  align-items:flex-start;
-}
-.fail-list li::before{
-  content:"✕";
-  color:var(--red);
-  font-weight:700;
-  flex-shrink:0;
-  margin-top:3px;
+/* ══════════════════
+   HOME PAGE
+══════════════════ */
+
+/* Hero */
+.hero {
+  position: relative;
+  height: calc(100vh - 96px);
+  min-height: 500px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
 }
 
-/* ─── CTA ─────────────────────────────────── */
-.cta-btn{
-  display:block;
-  width:100%;
-  background:var(--navy);
-  color:#fff;
-  text-align:center;
-  font-family:'Source Sans 3',sans-serif;
-  font-size:16px;
-  font-weight:700;
-  padding:18px 20px;
-  border:none;
-  border-radius:6px;
-  cursor:pointer;
-  margin:30px 0 8px;
-  letter-spacing:.3px;
-  text-decoration:none;
-  transition:background .18s;
-}
-.cta-btn:hover{background:#243e7a}
-.cta-sub{
-  text-align:center;
-  font-size:13px;
-  color:var(--gray);
-  margin-bottom:28px;
+.hero-img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  filter: brightness(0.55);
 }
 
-/* ─── TESTIMONIAL ─────────────────────────── */
-.testimonial{
-  border:1px solid var(--border);
-  border-radius:8px;
-  padding:22px 24px;
-  margin:22px 0;
-  background:#fff;
-}
-.t-stars{color:#f9a825;font-size:15px;margin-bottom:7px}
-.t-text{font-style:italic;font-size:15px;line-height:1.95;margin-bottom:12px}
-.t-name{font-weight:700;font-size:14px}
-.t-loc{font-size:13px;color:var(--gray)}
-
-/* ─── DISCLAIMER ──────────────────────────── */
-.disclaimer{
-  font-size:11px;
-  color:var(--gray);
-  border-top:1px solid var(--border);
-  padding-top:20px;
-  margin-top:40px;
-  line-height:1.7;
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 48px 64px;
+  width: 100%;
+  animation: fadeUp 0.9s ease both;
 }
 
-/* ══════════════════════════════════════
-   CHECKOUT MODAL
-══════════════════════════════════════ */
-.modal-overlay{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.5);
-  z-index:9000;
-  overflow-y:auto;
-  -webkit-overflow-scrolling:touch;
+.hero-tag {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 14px;
+  font-weight: 400;
 }
-.modal-overlay.open{display:block}
 
-.modal-box{
-  background:#fff;
-  max-width:500px;
-  margin:16px auto;
-  border-radius:8px;
-  overflow:hidden;
-  position:relative;
-  box-shadow:0 20px 50px rgba(0,0,0,.2);
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1.05;
+  margin-bottom: 32px;
+  max-width: 700px;
+}
+
+.hero-title em { font-style: italic; }
+
+.btn-hero {
+  display: inline-block;
+  background: var(--white);
+  color: var(--black);
+  padding: 14px 40px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  transition: all 0.25s;
+  text-decoration: none;
+}
+
+.btn-hero:hover {
+  background: var(--black);
+  color: var(--white);
 }
 
 /* Trust strip */
-.modal-trust-top{
-  background:#f0f4ff;
-  border-bottom:1px solid #d0daf0;
-  padding:10px 16px;
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:14px;
-  font-size:12px;
-  color:var(--navy);
-  font-weight:600;
-}
-.modal-trust-top span{display:flex;align-items:center;gap:4px}
-
-.modal-header{
-  background:var(--navy);
-  padding:14px 52px 14px 20px;
-}
-.modal-header p{
-  color:#fff;
-  font-size:11px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  font-weight:600;
-  margin:0;
-}
-.modal-close{
-  position:absolute;
-  top:38px;right:16px;
-  background:none;border:none;
-  color:#fff;font-size:22px;
-  cursor:pointer;line-height:1;padding:4px;
+.trust-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-bottom: 1px solid var(--border);
 }
 
-.modal-body{padding:20px 20px 28px}
-
-/* Slider */
-.img-slider{
-  position:relative;
-  width:100%;
-  aspect-ratio:3/2;
-  background:var(--lightgray);
-  border-radius:7px;
-  overflow:hidden;
-  margin-bottom:12px;
-}
-.img-slide{
-  position:absolute;inset:0;
-  display:flex;align-items:center;justify-content:center;
-  opacity:0;transition:opacity .35s;
-  font-size:12px;color:var(--gray);
-  text-align:center;padding:16px;
-}
-.img-slide img{width:100%;height:100%;object-fit:cover}
-.img-slide.active{opacity:1}
-.slider-dots{
-  display:flex;justify-content:center;
-  gap:7px;margin-bottom:16px;
-}
-.sdot{
-  width:7px;height:7px;border-radius:50%;
-  background:var(--border);border:none;cursor:pointer;
-  padding:0;transition:background .2s;
-}
-.sdot.active{background:var(--navy)}
-
-/* Product block */
-.prod-title{
-  font-family:'Merriweather',serif;
-  font-size:17px;font-weight:900;
-  margin-bottom:3px;line-height:1.3;
-}
-.prod-sub{font-size:13px;color:var(--gray);margin-bottom:12px}
-.prod-stars{
-  display:flex;align-items:center;gap:6px;margin-bottom:16px;
-}
-.prod-stars .st{color:#f9a825;font-size:14px}
-.prod-stars span{font-size:13px;color:var(--gray)}
-
-/* Bundles */
-.bundle-label{
-  font-weight:700;font-size:11px;
-  text-transform:uppercase;letter-spacing:1.2px;
-  margin-bottom:9px;color:#333;
-}
-.bundles{display:flex;flex-direction:column;gap:9px;margin-bottom:18px}
-.bundle{
-  border:1.5px solid var(--border);border-radius:7px;
-  padding:13px 15px;cursor:pointer;
-  display:flex;align-items:center;justify-content:space-between;
-  transition:border-color .18s,background .18s;
-  position:relative;
-}
-.bundle.sel{border-color:var(--navy);background:#f4f6ff}
-.bundle-left{display:flex;align-items:center;gap:11px}
-.brad{
-  width:16px;height:16px;border-radius:50%;
-  border:2px solid #ccc;
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;transition:border-color .18s;
-}
-.bundle.sel .brad{border-color:var(--navy)}
-.brad::after{
-  content:'';width:7px;height:7px;border-radius:50%;
-  background:var(--navy);display:none;
-}
-.bundle.sel .brad::after{display:block}
-.bname{font-weight:700;font-size:14px}
-.bper{font-size:11px;color:var(--gray)}
-.bright{text-align:right}
-.bprice{font-size:17px;font-weight:700}
-.borig{font-size:11px;color:var(--gray);text-decoration:line-through}
-.bbadge{
-  display:inline-block;background:var(--navy);color:#fff;
-  font-size:10px;font-weight:700;
-  padding:1px 6px;border-radius:20px;margin-left:5px;
-}
-.bpop{
-  background:var(--navy);color:#fff;
-  font-size:10px;font-weight:700;
-  padding:2px 10px;border-radius:4px;
-  position:absolute;top:-9px;left:50%;
-  transform:translateX(-50%);white-space:nowrap;
+.trust-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 22px 20px;
+  border-right: 1px solid var(--border);
+  animation: fadeUp 0.6s ease both;
 }
 
-.mdivider{border:none;border-top:1px solid var(--border);margin:16px 0}
+.trust-item:last-child { border-right: none; }
 
-/* Form */
-.fsec-title{
-  font-weight:700;font-size:11px;
-  text-transform:uppercase;letter-spacing:1.2px;
-  margin-bottom:10px;color:var(--navy);
-}
-.frow{display:flex;gap:9px;margin-bottom:10px}
-.frow .fg{flex:1}
-.fg{margin-bottom:10px}
-.fg label{
-  display:block;font-size:11px;font-weight:700;
-  color:#555;margin-bottom:3px;
-  text-transform:uppercase;letter-spacing:.3px;
-}
-.fg input,.fg select{
-  width:100%;padding:11px 13px;
-  border:1px solid #d5d5d5;border-radius:5px;
-  font-size:15px;font-family:inherit;
-  outline:none;transition:border-color .18s;
-  background:#fff;color:var(--text);
-}
-.fg input:focus,.fg select:focus{border-color:var(--navy)}
+.trust-icon { font-size: 1.1rem; }
 
-/* Card */
-.card-wrap{
-  border:1px solid #d5d5d5;border-radius:5px;
-  padding:12px;background:#fff;
-  transition:border-color .18s;
-}
-.card-wrap.focused{border-color:var(--navy)}
-
-/* SSL */
-.ssl-line{
-  display:flex;align-items:center;gap:6px;
-  font-size:11px;color:var(--gray);
-  margin:7px 0 14px;
+.trust-text {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--black);
 }
 
-/* Order summary */
-.order-sum{
-  background:var(--lightgray);
-  border:1px solid var(--border);
-  border-radius:6px;
-  padding:14px 16px;margin-bottom:14px;
-}
-.orow{
-  display:flex;justify-content:space-between;
-  font-size:14px;margin-bottom:5px;
-}
-.orow:last-child{margin-bottom:0}
-.orow.total{
-  font-weight:700;font-size:16px;
-  border-top:1px solid var(--border);
-  padding-top:9px;margin-top:9px;
-}
-.free-tag{color:var(--green);font-weight:700}
-.save-tag{color:var(--navy);font-weight:700}
-
-/* Submit */
-.submit-btn{
-  width:100%;padding:16px;
-  background:#2e7d32;color:#fff;
-  font-size:17px;font-weight:700;
-  border:none;border-radius:6px;
-  cursor:pointer;font-family:inherit;
-  transition:background .18s;letter-spacing:.3px;
-}
-.submit-btn:hover{background:#1b5e20}
-.submit-btn:disabled{background:#9e9e9e;cursor:not-allowed}
-
-/* Badges */
-.modal-badges{
-  display:flex;flex-wrap:wrap;gap:6px;
-  justify-content:center;margin-top:14px;
-}
-.mbadge{
-  display:flex;align-items:center;gap:4px;
-  font-size:11px;color:#444;
-  background:#fff;
-  border:1px solid var(--border);
-  padding:5px 9px;border-radius:4px;
+/* About strip */
+.about-strip {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 80px 32px;
+  animation: fadeUp 0.8s ease both;
 }
 
-/* Guarantee */
-.modal-guarantee{
-  background:#f0f4ff;
-  border:1px solid #d0daf0;
-  border-radius:7px;padding:14px 16px;
-  margin-top:12px;
-  display:flex;align-items:flex-start;gap:10px;
-}
-.mg-icon{font-size:24px;flex-shrink:0}
-.mg-title{font-weight:700;font-size:13px;margin-bottom:2px;color:var(--navy)}
-.mg-text{font-size:12px;color:#444;line-height:1.6}
-
-/* Error */
-.form-err{
-  color:var(--red);font-size:13px;
-  margin-top:8px;text-align:center;display:none;
+.section-eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 20px;
+  font-weight: 500;
 }
 
-/* Success */
-.success-screen{
-  display:none;text-align:center;
-  padding:46px 20px;
+.about-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--black);
+  margin-bottom: 20px;
 }
-.success-screen .ck{font-size:50px;margin-bottom:14px}
-.success-screen h3{
-  font-family:'Merriweather',serif;
-  font-size:20px;font-weight:900;margin-bottom:10px;
-}
-.success-screen p{color:var(--gray);font-size:15px;line-height:1.7}
 
-@media(max-width:540px){
-  .modal-box{margin:0;border-radius:0;min-height:100svh}
-  .frow{flex-direction:column;gap:0}
-  .modal-trust-top{gap:9px;font-size:11px}
+.about-title em { font-style: italic; }
+
+.about-body {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.8;
+  font-weight: 300;
+  margin-bottom: 36px;
+}
+
+.btn-outline {
+  display: inline-block;
+  border: 1px solid var(--black);
+  color: var(--black);
+  padding: 13px 36px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: none;
+  transition: all 0.2s;
+}
+
+.btn-outline:hover {
+  background: var(--black);
+  color: var(--white);
+}
+
+/* Full-width editorial image */
+.editorial-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  height: 600px;
+}
+
+.editorial-img {
+  overflow: hidden;
+}
+
+.editorial-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.editorial-img:hover img { transform: scale(1.03); }
+
+.editorial-text {
+  background: var(--off-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 64px;
+}
+
+.editorial-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.editorial-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  font-weight: 400;
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+.editorial-title em { font-style: italic; }
+
+.editorial-desc {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.75;
+  font-weight: 300;
+  margin-bottom: 32px;
+}
+
+/* Reviews teaser */
+.reviews-strip {
+  background: var(--black);
+  padding: 60px 32px;
+  text-align: center;
+}
+
+.reviews-stars {
+  color: white;
+  font-size: 1rem;
+  letter-spacing: 4px;
+  margin-bottom: 16px;
+}
+
+.reviews-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 400;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.reviews-sub {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.08em;
+}
+
+/* Newsletter */
+.newsletter-block {
+  border-top: 1px solid var(--border);
+  padding: 64px 32px;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.newsletter-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.7rem;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.newsletter-sub {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-bottom: 28px;
+  font-weight: 300;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 0;
+}
+
+.newsletter-input {
+  flex: 1;
+  padding: 13px 16px;
+  border: 1px solid var(--border);
+  border-right: none;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.85rem;
+  color: var(--black);
+  outline: none;
+  background: white;
+}
+
+.newsletter-input:focus { border-color: var(--black); }
+
+.newsletter-btn {
+  background: var(--black);
+  color: white;
+  border: 1px solid var(--black);
+  padding: 13px 20px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.newsletter-btn:hover { background: #333; }
+
+/* ══════════════════
+   PRODUCT PAGE
+══════════════════ */
+.product-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: calc(100vh - 96px);
+}
+
+/* Gallery */
+.prod-gallery {
+  position: sticky;
+  top: 60px;
+  height: calc(100vh - 60px);
+  overflow: hidden;
+  background: var(--off-white);
+  display: grid;
+  grid-template-rows: 1fr 120px;
+}
+
+.gallery-main-wrap {
+  overflow: hidden;
+  cursor: zoom-in;
+}
+
+.gallery-main-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.5s;
+}
+
+.gallery-main-wrap:hover .gallery-main-img { transform: scale(1.04); }
+
+.gallery-thumbs {
+  display: flex;
+  gap: 0;
+  border-top: 1px solid var(--border);
+}
+
+.g-thumb {
+  flex: 1;
+  overflow: hidden;
+  cursor: pointer;
+  border-right: 1px solid var(--border);
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.g-thumb:last-child { border-right: none; }
+.g-thumb.active { opacity: 1; }
+.g-thumb:hover { opacity: 1; }
+
+.g-thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* Product info */
+.prod-info {
+  padding: 48px 52px;
+  overflow-y: auto;
+  border-left: 1px solid var(--border);
+}
+
+.prod-breadcrumb {
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+.prod-breadcrumb span { cursor: pointer; transition: color 0.2s; }
+.prod-breadcrumb span:hover { color: var(--black); }
+
+.prod-badge {
+  display: inline-block;
+  background: var(--black);
+  color: white;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  margin-bottom: 16px;
+}
+
+.prod-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.7rem, 2.5vw, 2.3rem);
+  font-weight: 400;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+.prod-rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.prod-stars { font-size: 0.8rem; letter-spacing: 2px; color: var(--black); }
+
+.prod-rating-text {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.prod-rating-text u { cursor: pointer; }
+
+.prod-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.prod-price-now {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--black);
+}
+
+.prod-price-was {
+  font-size: 1rem;
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.prod-sale-tag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #c0392b;
+  letter-spacing: 0.08em;
+}
+
+.prod-shipping-line {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-bottom: 28px;
+  font-weight: 300;
+}
+
+.prod-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 24px 0;
+}
+
+/* Color */
+.opt-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--black);
+  margin-bottom: 12px;
+}
+
+.opt-label span {
+  font-weight: 300;
+  color: var(--muted);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.color-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.color-btn {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  outline: 2px solid transparent;
+  cursor: pointer;
+  transition: outline-color 0.2s, outline-offset 0.2s;
+}
+
+.color-btn.active {
+  outline-color: var(--black);
+  outline-offset: 3px;
+}
+
+/* Size */
+.size-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.size-btn {
+  min-width: 52px;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  background: white;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--black);
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: center;
+}
+
+.size-btn:hover { border-color: var(--black); }
+
+.size-btn.active {
+  background: var(--black);
+  color: white;
+  border-color: var(--black);
+}
+
+.size-btn.oos {
+  color: var(--muted);
+  text-decoration: line-through;
+  cursor: not-allowed;
+}
+
+.size-guide-link {
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  margin-bottom: 24px;
+  display: inline-block;
+}
+
+.stock-note {
+  font-size: 0.78rem;
+  color: #c0392b;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.btn-atc {
+  width: 100%;
+  background: var(--black);
+  color: white;
+  border: none;
+  padding: 17px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-bottom: 10px;
+}
+
+.btn-atc:hover { background: #333; }
+
+.btn-atc.added { background: #2d6a4f; }
+
+.btn-atc.no-size {
+  background: var(--mid);
+  color: var(--muted);
+  cursor: not-allowed;
+}
+
+.btn-buy-now {
+  width: 100%;
+  background: white;
+  color: var(--black);
+  border: 1px solid var(--black);
+  padding: 17px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 20px;
+}
+
+.btn-buy-now:hover { background: var(--off-white); }
+
+.trust-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.trust-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  font-size: 0.73rem;
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+.trust-pill .icon { font-size: 1rem; }
+
+/* Accordion */
+.accordion-item {
+  border-top: 1px solid var(--border);
+}
+
+.accordion-item:last-child { border-bottom: 1px solid var(--border); }
+
+.accordion-trigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--black);
+  font-family: 'Jost', sans-serif;
+  text-align: left;
+}
+
+.accordion-icon {
+  font-size: 1.1rem;
+  color: var(--muted);
+  transition: transform 0.25s;
+}
+
+.accordion-trigger.open .accordion-icon { transform: rotate(45deg); }
+
+.accordion-body {
+  display: none;
+  padding-bottom: 20px;
+}
+
+.accordion-trigger.open + .accordion-body { display: block; }
+
+.accordion-body p {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+.accordion-body ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.accordion-body ul li {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 300;
+  padding-left: 16px;
+  position: relative;
+}
+
+.accordion-body ul li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--mid);
+}
+
+/* Reviews section on product page */
+.prod-reviews {
+  padding: 64px 32px;
+  border-top: 1px solid var(--border);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.reviews-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.reviews-score {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.reviews-score-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.reviews-meta { display: flex; flex-direction: column; gap: 4px; }
+
+.reviews-stars-lg { font-size: 0.9rem; letter-spacing: 3px; color: var(--black); }
+
+.reviews-count {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.review-card {
+  padding: 28px;
+  border: 1px solid var(--border);
+}
+
+.review-stars { font-size: 0.72rem; letter-spacing: 3px; margin-bottom: 12px; }
+
+.review-title {
+  font-weight: 600;
+  font-size: 0.88rem;
+  margin-bottom: 8px;
+}
+
+.review-text {
+  font-size: 0.83rem;
+  color: var(--muted);
+  line-height: 1.65;
+  font-weight: 300;
+  margin-bottom: 16px;
+}
+
+.review-author {
+  font-size: 0.72rem;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+
+.review-verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.68rem;
+  color: #2d6a4f;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+/* ══════════════════
+   CONTACT PAGE
+══════════════════ */
+.contact-wrap {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 80px 32px;
+}
+
+.contact-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.contact-sub {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: 48px;
+}
+
+.contact-info-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--border);
+}
+
+.contact-info-box { }
+
+.ci-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.ci-value {
+  font-size: 0.88rem;
+  color: var(--black);
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.contact-form { display: flex; flex-direction: column; gap: 0; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.form-label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+.form-input, .form-textarea {
+  padding: 13px 14px;
+  border: 1px solid var(--border);
+  font-family: 'Jost', sans-serif;
+  font-size: 0.88rem;
+  color: var(--black);
+  outline: none;
+  background: white;
+  transition: border-color 0.2s;
+  resize: none;
+}
+
+.form-input:focus, .form-textarea:focus { border-color: var(--black); }
+
+.btn-submit {
+  background: var(--black);
+  color: white;
+  border: none;
+  padding: 16px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 8px;
+}
+
+.btn-submit:hover { background: #333; }
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--border);
+  background: var(--off-white);
+}
+
+.footer-main {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 48px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 52px 32px 40px;
+}
+
+.footer-brand-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.footer-about {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.7;
+  font-weight: 300;
+  max-width: 300px;
+}
+
+.footer-col-title {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  color: var(--black);
+}
+
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+.footer-links li {
+  font-size: 0.82rem;
+  color: var(--muted);
+  cursor: pointer;
+  font-weight: 300;
+  transition: color 0.2s;
+}
+
+.footer-links li:hover { color: var(--black); }
+
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding: 18px 32px;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.footer-copy {
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+.footer-policies {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-policies span {
+  font-size: 0.72rem;
+  color: var(--muted);
+  cursor: pointer;
+  font-weight: 300;
+  transition: color 0.2s;
+}
+
+.footer-policies span:hover { color: var(--black); }
+
+/* ── CART DRAWER ── */
+.drawer-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.drawer-overlay.open { opacity: 1; pointer-events: all; }
+
+.cart-drawer {
+  position: fixed;
+  top: 0; right: 0;
+  width: 400px; height: 100%;
+  background: white;
+  z-index: 201;
+  transform: translateX(100%);
+  transition: transform 0.32s cubic-bezier(0.25,0.46,0.45,0.94);
+  display: flex; flex-direction: column;
+}
+
+.cart-drawer.open { transform: translateX(0); }
+
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.drawer-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+
+.drawer-close {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--muted);
+  transition: color 0.2s;
+  padding: 4px;
+}
+
+.drawer-close:hover { color: var(--black); }
+
+.drawer-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px 28px;
+}
+
+.drawer-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  color: var(--muted);
+  gap: 12px;
+}
+
+.drawer-empty-icon { font-size: 2.5rem; opacity: 0.3; }
+
+.drawer-empty p { font-size: 0.88rem; font-weight: 300; }
+
+.cart-line {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 16px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+  animation: fadeIn 0.25s ease;
+}
+
+.cart-line-img {
+  width: 80px; height: 96px;
+  object-fit: cover;
+  object-position: center top;
+  background: var(--off-white);
+}
+
+.cart-line-name {
+  font-size: 0.88rem;
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+
+.cart-line-variant {
+  font-size: 0.76rem;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.cart-line-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.qty-row {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border: 1px solid var(--border);
+}
+
+.qty-btn {
+  background: none;
+  border: none;
+  width: 28px; height: 28px;
+  font-size: 1rem;
+  cursor: pointer;
+  color: var(--black);
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s;
+}
+
+.qty-btn:hover { background: var(--off-white); }
+
+.qty-num {
+  font-size: 0.82rem;
+  font-weight: 500;
+  min-width: 28px;
+  text-align: center;
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  line-height: 28px;
+}
+
+.cart-line-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.cart-line-remove {
+  font-size: 0.68rem;
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.cart-line-remove:hover { color: #c0392b; }
+
+.drawer-footer {
+  padding: 24px 28px;
+  border-top: 1px solid var(--border);
+}
+
+.subtotal-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 6px;
+}
+
+.subtotal-label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.subtotal-amount {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.subtotal-note {
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.btn-checkout {
+  width: 100%;
+  background: var(--black);
+  color: white;
+  border: none;
+  padding: 16px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-bottom: 10px;
+}
+
+.btn-checkout:hover { background: #333; }
+
+.btn-cont {
+  width: 100%;
+  background: none;
+  border: none;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.78rem;
+  color: var(--muted);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  padding: 8px;
+}
+
+/* ── TOAST ── */
+.toast {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%) translateY(16px);
+  background: var(--black);
+  color: white;
+  padding: 12px 24px;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+  z-index: 300;
+  white-space: nowrap;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  .announce-bar { font-size: 0.65rem; padding: 9px 16px; }
+
+  .nav-inner { padding: 0 16px; }
+
+  .nav-left { display: none; }
+
+  .nav-logo { font-size: 1.25rem; text-align: left; }
+
+  .hero { height: 82vh; }
+
+  .hero-content { padding: 0 20px 40px; }
+
+  .hero-title { font-size: 2.3rem; }
+
+  .trust-strip { grid-template-columns: 1fr; }
+
+  .trust-item { border-right: none; border-bottom: 1px solid var(--border); justify-content: flex-start; padding: 16px 20px; }
+
+  .trust-item:last-child { border-bottom: none; }
+
+  .about-strip { padding: 52px 20px; }
+
+  .editorial-block { grid-template-columns: 1fr; height: auto; }
+
+  .editorial-img { height: 320px; }
+
+  .editorial-text { padding: 36px 24px; }
+
+  .newsletter-block { padding: 48px 20px; }
+
+  .newsletter-form { flex-direction: column; }
+
+  .newsletter-input { border-right: 1px solid var(--border); border-bottom: none; }
+
+  /* Product page mobile */
+  .product-layout { grid-template-columns: 1fr; }
+
+  .prod-gallery {
+    position: relative;
+    top: auto;
+    height: auto;
+    grid-template-rows: 420px 100px;
+  }
+
+  .prod-info { padding: 28px 20px; border-left: none; border-top: 1px solid var(--border); }
+
+  .trust-row { grid-template-columns: 1fr; }
+
+  .reviews-grid { grid-template-columns: 1fr; }
+
+  /* Contact mobile */
+  .contact-info-row { grid-template-columns: 1fr; }
+
+  .form-row { grid-template-columns: 1fr; }
+
+  /* Footer mobile */
+  .footer-main { grid-template-columns: 1fr; gap: 32px; padding: 40px 20px 32px; }
+
+  .footer-bottom { flex-direction: column; align-items: flex-start; padding: 16px 20px; }
+
+  .footer-policies { flex-wrap: wrap; gap: 12px; }
+
+  /* Cart */
+  .cart-drawer { width: 100%; }
+
+  /* Product page gallery mobile */
+  .gallery-main-wrap { height: 320px; }
 }
 </style>
 </head>
 <body>
 
-<!-- ─── TRUST BAR ────────────────────────── -->
-<div class="trust-bar">
-  <span>🛡️ 30-Day Money-Back Guarantee</span>
-  <span>🚚 Free Shipping</span>
-  <span>↩️ Easy Returns</span>
-  <span>🔒 Secure Checkout</span>
+<!-- ANNOUNCE -->
+<div class="announce-bar">Free shipping on all orders · 30-day returns · No questions asked</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-left">
+      <button class="nav-link" onclick="showPage('home')">Home</button>
+      <button class="nav-link" onclick="showPage('product')">Shop</button>
+      <button class="nav-link" onclick="showPage('contact')">Contact</button>
+    </div>
+    <div class="nav-logo" onclick="showPage('home')">Vaulten</div>
+    <div class="nav-right">
+      <button class="nav-link" onclick="showPage('contact')">Contact</button>
+      <button class="nav-icon-btn" onclick="toggleCart()">
+        Cart
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ════════════ HOME ════════════ -->
+<div class="page active" id="page-home">
+
+  <section class="hero">
+    <img class="hero-img" src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=1800&q=85" alt="Fashion"/>
+    <div class="hero-content">
+      <div class="hero-tag">New Arrival · 2025</div>
+      <h1 class="hero-title">Crafted with<br><em>intention.</em><br>Worn with ease.</h1>
+      <button class="btn-hero" onclick="showPage('product')">Shop Now</button>
+    </div>
+  </section>
+
+  <div class="trust-strip">
+    <div class="trust-item">
+      <span class="trust-icon">🚚</span>
+      <span class="trust-text">Free Shipping on All Orders</span>
+    </div>
+    <div class="trust-item" style="animation-delay:0.1s">
+      <span class="trust-icon">↩️</span>
+      <span class="trust-text">30-Day Free Returns</span>
+    </div>
+    <div class="trust-item" style="animation-delay:0.2s">
+      <span class="trust-icon">🔒</span>
+      <span class="trust-text">Secure Checkout</span>
+    </div>
+  </div>
+
+  <div class="about-strip">
+    <div class="section-eyebrow">Our philosophy</div>
+    <h2 class="about-title">Timeless pieces for<br><em>real life.</em></h2>
+    <p class="about-body">We believe in fewer, better things. Each piece in our collection is designed to work harder, last longer, and feel right from the first wear. No seasons. No noise. Just clothing that belongs in your life.</p>
+    <button class="btn-outline" onclick="showPage('product')">Explore the Collection</button>
+  </div>
+
+  <div class="editorial-block">
+    <div class="editorial-img">
+      <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=900&q=80" alt="Editorial"/>
+    </div>
+    <div class="editorial-text">
+      <div class="editorial-label">Craftsmanship</div>
+      <h2 class="editorial-title">Every detail,<br><em>considered.</em></h2>
+      <p class="editorial-desc">From the weight of the fabric to the finish of each seam — we obsess over the details so you don't have to. What arrives at your door is exactly what you saw. No surprises.</p>
+      <button class="btn-outline" onclick="showPage('product')">View Product</button>
+    </div>
+  </div>
+
+  <div class="reviews-strip">
+    <div class="reviews-stars">★★★★★</div>
+    <h3 class="reviews-headline">Rated 4.8 / 5 by our customers</h3>
+    <p class="reviews-sub">Based on 2,400+ verified reviews</p>
+  </div>
+
+  <div class="newsletter-block">
+    <h3 class="newsletter-title">Stay in the loop.</h3>
+    <p class="newsletter-sub">New arrivals, exclusive offers, and nothing else.</p>
+    <div class="newsletter-form">
+      <input class="newsletter-input" type="email" placeholder="Your email address"/>
+      <button class="newsletter-btn" onclick="toast('You\'re subscribed.')">Subscribe</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-main">
+      <div>
+        <div class="footer-brand-name">Vaulten</div>
+        <p class="footer-about">Timeless, considered clothing for everyday wear. Designed to last. Made to be worn.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Quick Links</div>
+        <ul class="footer-links">
+          <li onclick="showPage('home')">Home</li>
+          <li onclick="showPage('product')">Shop</li>
+          <li onclick="showPage('contact')">Contact Us</li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Policies</div>
+        <ul class="footer-links">
+          <li>Shipping Policy</li>
+          <li>Returns & Refunds</li>
+          <li>Privacy Policy</li>
+          <li>Terms of Service</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom" style="max-width:1400px;margin:0 auto">
+      <span class="footer-copy">© 2025 Vaulten. All rights reserved.</span>
+      <div class="footer-policies">
+        <span>Privacy Policy</span>
+        <span>Terms</span>
+        <span>Shipping</span>
+        <span>Returns</span>
+      </div>
+    </div>
+  </footer>
+
 </div>
 
-<!-- ─── HEADER ───────────────────────────── -->
-<header class="site-header">
-  <span class="brand">Muscle &amp; Pain Health Review</span>
-</header>
+<!-- ════════════ PRODUCT PAGE ════════════ -->
+<div class="page" id="page-product">
 
-<!-- ─── ARTICLE ──────────────────────────── -->
-<div class="page-layout">
+  <div class="product-layout">
 
-  <p class="article-meta">Independent Editorial &nbsp;·&nbsp; Reader Submission</p>
+    <!-- Gallery -->
+    <div class="prod-gallery">
+      <div class="gallery-main-wrap">
+        <img class="gallery-main-img" id="mainImg" src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=1000&q=85" alt="Product"/>
+      </div>
+      <div class="gallery-thumbs">
+        <div class="g-thumb active" onclick="switchThumb(this,'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=1000&q=85')">
+          <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=300&q=70" alt="1"/>
+        </div>
+        <div class="g-thumb" onclick="switchThumb(this,'https://images.unsplash.com/photo-1523381294911-8d3cead13475?w=1000&q=85')">
+          <img src="https://images.unsplash.com/photo-1523381294911-8d3cead13475?w=300&q=70" alt="2"/>
+        </div>
+        <div class="g-thumb" onclick="switchThumb(this,'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=1000&q=85')">
+          <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=300&q=70" alt="3"/>
+        </div>
+        <div class="g-thumb" onclick="switchThumb(this,'https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=1000&q=85')">
+          <img src="https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=300&q=70" alt="4"/>
+        </div>
+      </div>
+    </div>
 
-  <h1 class="headline">
-    I Spent Four Years Getting Massages That Wore Off in Two Days — Until a Physio Friend Explained the Real Reason My Shoulder Tension Was Never Going to Stop Coming Back
-  </h1>
+    <!-- Details -->
+    <div class="prod-info">
 
-  <div class="pull-quote">
-    "What most people don't know is that after months of chronic tension, the muscle stops treating that tension as temporary. It resets it as the new normal. At that point, massage and heat can only ever give you a few hours of relief — they're not reaching the actual problem." — Physiotherapist, 6 years clinical practice
+      <div class="prod-breadcrumb">
+        <span onclick="showPage('home')">Home</span> / <span>Shop</span> / Structured Cotton Tee
+      </div>
+
+      <span class="prod-badge">Bestseller</span>
+
+      <h1 class="prod-title">Structured Cotton Tee — Textured Weave</h1>
+
+      <div class="prod-rating">
+        <span class="prod-stars">★★★★★</span>
+        <span class="prod-rating-text">4.8 · 312 reviews · <u onclick="document.querySelector('.prod-reviews').scrollIntoView({behavior:'smooth'})">Read reviews</u></span>
+      </div>
+
+      <div class="prod-price-row">
+        <span class="prod-price-now">$89.95</span>
+        <span class="prod-price-was">$139.95</span>
+        <span class="prod-sale-tag">35% OFF</span>
+      </div>
+
+      <p class="prod-shipping-line">Free shipping · Delivered in 3–7 business days · Tracked</p>
+
+      <hr class="prod-divider"/>
+
+      <div class="opt-label">Colour — <span id="selectedColourLabel">White</span></div>
+      <div class="color-grid">
+        <div class="color-btn active" style="background:#f5f5f0;border:1px solid #ccc" title="White" onclick="selectColour(this,'White')"></div>
+        <div class="color-btn" style="background:#1a1a1a" title="Black" onclick="selectColour(this,'Black')"></div>
+        <div class="color-btn" style="background:#b5b5b0" title="Light Grey" onclick="selectColour(this,'Light Grey')"></div>
+        <div class="color-btn" style="background:#c4a882" title="Sand" onclick="selectColour(this,'Sand')"></div>
+        <div class="color-btn" style="background:#3d6b8a" title="Navy" onclick="selectColour(this,'Navy')"></div>
+      </div>
+
+      <div class="opt-label">Size — <span id="selectedSizeLabel" style="font-weight:300;color:var(--muted)">Select a size</span></div>
+      <div class="size-grid">
+        <button class="size-btn" onclick="selectSize(this,'XS')">XS</button>
+        <button class="size-btn" onclick="selectSize(this,'S')">S</button>
+        <button class="size-btn" onclick="selectSize(this,'M')">M</button>
+        <button class="size-btn" onclick="selectSize(this,'L')">L</button>
+        <button class="size-btn" onclick="selectSize(this,'XL')">XL</button>
+        <button class="size-btn oos" title="Out of stock">2XL</button>
+      </div>
+      <span class="size-guide-link">Size Guide</span>
+
+      <p class="stock-note">⚡ Only a few left in stock</p>
+
+      <button class="btn-atc no-size" id="atcBtn" onclick="handleAtc()">Select a size to add to cart</button>
+      <button class="btn-buy-now" onclick="handleBuyNow()">Buy Now</button>
+
+      <div class="trust-row">
+        <div class="trust-pill"><span class="icon">🚚</span> Free Shipping</div>
+        <div class="trust-pill"><span class="icon">↩️</span> 30-Day Returns</div>
+        <div class="trust-pill"><span class="icon">🔒</span> Secure Checkout</div>
+        <div class="trust-pill"><span class="icon">💬</span> 24h Support</div>
+      </div>
+
+      <!-- Accordions -->
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          Description <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-body">
+          <p>A clean crew-neck tee crafted from structured textured cotton. The wave-pattern surface adds depth and dimension while keeping the silhouette understated. Designed for a true-to-size fit with a straight hem and short sleeves.</p><br>
+          <ul>
+            <li>Crew neckline, pull-on design</li>
+            <li>Short sleeves with straight sleeve end</li>
+            <li>Straight hemline, clean stitched lower edge</li>
+            <li>Textured exterior with wave pattern</li>
+            <li>Regular body shape</li>
+          </ul>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          Size & Fit <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-body">
+          <p>This garment fits true to size. 96% of customers who bought this item confirmed their usual size fits perfectly.</p><br>
+          <p><strong>Model is 183cm and wears size M.</strong></p><br>
+          <ul>
+            <li>S — Chest 104cm / 40.9in · Length 66cm</li>
+            <li>M — Chest 108cm / 42.5in · Length 68cm</li>
+            <li>L — Chest 112cm / 44.1in · Length 70cm</li>
+            <li>XL — Chest 116cm / 45.7in · Length 72cm</li>
+          </ul>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          Shipping & Returns <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-body">
+          <p>Orders are processed within 0–1 business days. Estimated delivery: 3–7 business days. Fully tracked from dispatch to delivery.</p><br>
+          <p>We accept returns within 30 days of delivery — no questions asked. Simply contact us and we'll take care of it.</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          Care Instructions <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-body">
+          <ul>
+            <li>Machine wash cold, gentle cycle</li>
+            <li>Do not tumble dry — lay flat to dry</li>
+            <li>Iron on low heat if needed</li>
+            <li>Do not bleach</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
   </div>
 
-  <!-- HERO IMAGE — replace src with your real image -->
-  <div class="hero-wrap">
-    <img id="heroImg"
-         src=""
-         alt="Woman pressing fingers into tense shoulder"
-         onerror="this.parentNode.innerHTML='<div class=hero-placeholder>[Replace: candid photo — woman pressing into shoulder/neck knot, real and relatable]</div>'"/>
+  <!-- Reviews -->
+  <div class="prod-reviews">
+    <div class="reviews-header">
+      <div class="reviews-score">
+        <span class="reviews-score-num">4.8</span>
+        <div class="reviews-meta">
+          <span class="reviews-stars-lg">★★★★★</span>
+          <span class="reviews-count">Based on 312 reviews</span>
+        </div>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-verified">✓ Verified Purchase</div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-title">Better than expected</div>
+        <p class="review-text">Wasn't sure about ordering from a brand I hadn't heard of, but the quality was honestly better than I expected. Fits true to size and the fabric feels great. Arrived fast.</p>
+        <div class="review-author">Michael A. — Sydney</div>
+      </div>
+      <div class="review-card">
+        <div class="review-verified">✓ Verified Purchase</div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-title">Goes with everything</div>
+        <p class="review-text">Exactly the kind of basic I was looking for. Simple, clean, and feels well-made. I've washed it 8 times and it still looks brand new. Would order again.</p>
+        <div class="review-author">Jessica M. — Melbourne</div>
+      </div>
+      <div class="review-card">
+        <div class="review-verified">✓ Verified Purchase</div>
+        <div class="review-stars">★★★★☆</div>
+        <div class="review-title">Great quality for the price</div>
+        <p class="review-text">The texture is a really nice detail — looks way more premium than the price suggests. Ordered medium as a tall person and fits perfectly. Fast shipping too.</p>
+        <div class="review-author">Daniel T. — Brisbane</div>
+      </div>
+    </div>
   </div>
 
-  <div class="body-text">
+  <footer>
+    <div class="footer-main">
+      <div>
+        <div class="footer-brand-name">Vaulten</div>
+        <p class="footer-about">Timeless, considered clothing for everyday wear.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigation</div>
+        <ul class="footer-links">
+          <li onclick="showPage('home')">Home</li>
+          <li onclick="showPage('product')">Shop</li>
+          <li onclick="showPage('contact')">Contact</li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Policies</div>
+        <ul class="footer-links">
+          <li>Shipping Policy</li>
+          <li>Returns & Refunds</li>
+          <li>Privacy Policy</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom" style="max-width:1400px;margin:0 auto">
+      <span class="footer-copy">© 2025 Vaulten. All rights reserved.</span>
+      <div class="footer-policies">
+        <span>Privacy</span><span>Terms</span><span>Shipping</span><span>Returns</span>
+      </div>
+    </div>
+  </footer>
 
-    <p class="hook-line">It was a flight to visit my sister that finally made me face it.</p>
+</div>
 
-    <p>I reached up to put my bag in the overhead locker and made a sound I'd never made before. Not a cry. More like a sharp gasp — the kind that escapes before you can stop it.</p>
+<!-- ════════════ CONTACT PAGE ════════════ -->
+<div class="page" id="page-contact">
+  <div class="contact-wrap">
+    <h1 class="contact-title">Contact Us</h1>
+    <p class="contact-sub">Have a question about your order, sizing, or returns? We're here to help. We typically respond within a few hours on business days.</p>
 
-    <p>The man next to me asked if I was okay.</p>
-
-    <p>I said yes. I was 44 years old and I was embarrassed.</p>
-
-    <p>But I wasn't okay. I hadn't been okay for four years.</p>
-
-    <p>If your shoulders and neck are almost always tense — not from an injury, just always, always tense...</p>
-
-    <p>If massage or heat helps for a day or two and then it comes right back like you never did anything...</p>
-
-    <p>If you've had it so long that you've basically stopped noticing it — until something sharp reminds you it's still there...</p>
-
-    <p>If your doctor has checked and said nothing is seriously wrong, but the tension and pain keep telling a different story...</p>
-
-    <p><strong>I want you to read this.</strong> Because for four years I was doing everything people told me to do and getting nowhere. And the reason why is something almost nobody explained to me until one specific conversation changed everything.</p>
-
-    <h2>How I Got Here</h2>
-
-    <p>My name is Rachel. I'm 44. I work part-time and I have two teenagers at home.</p>
-
-    <p>My tension didn't start with an injury. No accident. No dramatic moment. It just slowly crept in — around the time my youngest started high school and life got busier and more stressful. I started waking up stiff. By mid-morning my shoulders were up near my ears. By evening my neck ached.</p>
-
-    <p>My GP said it was stress. She was probably right. She said to try yoga and take breaks from my desk.</p>
-
-    <p>I tried yoga. My shoulders were tense during downward dog.</p>
-
-    <p>Over the next four years I tried everything that seemed reasonable:</p>
-
-    <ul class="fail-list">
-      <li>Remedial massage — I went fortnightly for over a year. It felt wonderful for about 48 hours. Then exactly the same tension was back.</li>
-      <li>Physiotherapy exercises — neck rolls, shoulder rotations, doorframe stretches. I did them every single morning. Some days they helped a little. They never fixed anything.</li>
-      <li>Heat packs every evening — helped me fall asleep. I still woke up stiff.</li>
-      <li>Anti-inflammatories — took them so regularly I started to worry about my stomach. They worked sometimes. The tension was still there when they wore off.</li>
-      <li>An expensive ergonomic chair — no change. The tension was there even on days I didn't sit at a desk.</li>
-      <li>Pilates for a year — I actually loved it. Great for my core. My shoulders were still tense for the whole class.</li>
-    </ul>
-
-    <p>I want to say this clearly: I was not lazy. I was not a bad patient. I showed up. I did the work.</p>
-
-    <p><strong>The tension just kept coming back. Every time. Without fail.</strong></p>
-
-    <p>And not one person ever properly explained to me why.</p>
-
-    <h2>The Conversation That Changed Everything</h2>
-
-    <p>My friend Kate has been a physiotherapist for six years. We were having coffee and I was doing what I apparently always do — pressing my fingers into the knot under my right shoulder blade without even thinking about it.</p>
-
-    <p>She watched me do it and said: "How long has that been there?"</p>
-
-    <p>I said four years. She made a face.</p>
-
-    <p>"Have you ever heard of chronic muscle hypertonicity?" she asked.</p>
-
-    <p>I hadn't.</p>
-
-    <p>She put her coffee down and explained it like this:</p>
-
-    <p>When a muscle stays tense for a long enough period — not just weeks but months or years — it gradually <strong>resets its resting state</strong>. The tension stops being a temporary reaction to stress. It becomes the new default. The muscle, in a very real sense, forgets what relaxed feels like. It starts receiving signals that tell it "this is normal. Stay here."</p>
-
-    <p>At that point, she said, everything I had been trying was only ever going to give me temporary relief. Massage, heat, and stretching work on the surface — they reduce tension in the moment. But they cannot change the underlying signal the muscle is receiving. The second the treatment is over, the muscle returns to what it now considers its normal position: contracted and tense.</p>
-
-    <p>"It's like trying to flatten a piece of paper that's been rolled up for years," she said. "You can hold it flat while you press on it. The second you let go, it curls straight back."</p>
-
-    <h2>Why Nothing I Tried Could Ever Last</h2>
-
-    <div class="highlight-box">
-      <p><strong>Here is the simple version of what she explained:</strong></p>
-      <p>Your muscles receive electrical signals from your nervous system telling them to contract or relax. When chronic tension sets in, the "stay contracted" signal becomes the new baseline. The muscle is essentially waiting for a stronger signal to override it.</p>
-      <p>Massage, heat, and stretching cannot send that stronger signal. They work on the tissue from the outside — but the tissue is receiving the wrong instruction at an electrical level, and nothing on the outside can change that instruction.</p>
-      <p>The only thing that can reach that level directly is an electrical signal strong enough to force the muscle through a full contraction-and-release cycle — essentially resetting the neuromuscular pattern, the way a restart resets a frozen computer.</p>
-      <p>This is called <strong>neuromuscular electrical stimulation (TENS/EMS)</strong>. It has been used in clinical physiotherapy for decades. Most people have either never heard of it, or they've only encountered the cheap TENS pads at the pharmacy — which work on a completely different principle (they distract from pain at the surface level, rather than resetting the muscle pattern underneath).</p>
+    <div class="contact-info-row">
+      <div class="contact-info-box">
+        <div class="ci-label">Email</div>
+        <div class="ci-value">support@vaulten.com</div>
+      </div>
+      <div class="contact-info-box">
+        <div class="ci-label">Response Time</div>
+        <div class="ci-value">Within 24 hours<br>Mon – Fri, 9am – 5pm</div>
+      </div>
+      <div class="contact-info-box">
+        <div class="ci-label">Returns</div>
+        <div class="ci-value">30-day free returns<br>No questions asked</div>
+      </div>
+      <div class="contact-info-box">
+        <div class="ci-label">Shipping</div>
+        <div class="ci-value">Free on all orders<br>3–7 business days</div>
+      </div>
     </div>
 
-    <p>I was not broken. I was not imagining it. I was not just stressed.</p>
-
-    <p><strong>My muscles had been tense for so long that they had set tense as their resting position. And nothing I had tried was designed to change that.</strong></p>
-
-    <h2>What Kate Recommended</h2>
-
-    <p>I asked her what would actually work.</p>
-
-    <p>She said she'd recently started recommending a specific device to patients who had this kind of long-term, persistent tension. Clinical-grade TENS and EMS combined. Not the pharmacy kind. She'd been consistently impressed with how it worked for patients who had plateaued with physio.</p>
-
-    <p>The key, she explained, was the waveform. Clinical TENS/EMS uses frequencies specifically calibrated to travel along motor nerve pathways and trigger a full contraction-release cycle in the muscle. The cheap pharmacy units use a generic signal that stimulates surface nerves without going deep enough to actually reset the pattern.</p>
-
-    <p>She gave me the name of the device. I ordered it that evening.</p>
-
-    <p>I want to be completely honest: I had very low expectations. I had spent a lot of money on things that hadn't worked. I was tired of trying. But Kate had been treating patients with chronic pain for six years and had never once steered me wrong.</p>
-
-    <p>And she said it clearly: this was one of the only things she had seen actually reach the level where this kind of tension lives.</p>
-
-    <h2>What Happened</h2>
-
-    <p>The first session was strange. A pulsing sensation, slightly warm. Not painful. My muscles would contract gently and then release. Contract. Release. Like they were being reminded of something they had forgotten.</p>
-
-    <p>I used it for 20 minutes that first evening while I watched TV.</p>
-
-    <p>The next morning I lay still for a moment before getting up.</p>
-
-    <p>The tightness under my right shoulder blade — the one I had been pressing on with my fingers for four years — felt different. Not gone. But less dense. Like something had shifted slightly overnight.</p>
-
-    <p>By the end of the first week, my husband said something at dinner.</p>
-
-    <p>"You're not doing the shoulder thing," he said.</p>
-
-    <p>"What shoulder thing?"</p>
-
-    <p>"You roll your shoulders every few minutes. You've done it for years. Every dinner. You're not doing it tonight."</p>
-
-    <p>I hadn't even noticed I'd been doing it.</p>
-
-    <p>Three weeks in, I went back to the pool. I'd stopped swimming almost two years ago because the overhead stroke had become too uncomfortable. I swam for 40 minutes. I got out. I drove home.</p>
-
-    <p>No pain. No bracing. Nothing.</p>
-
-    <button class="cta-btn" onclick="openModal()">→ Check Availability &amp; Current Price</button>
-    <p class="cta-sub">Clinical-grade TENS/EMS &nbsp;·&nbsp; 30-day money-back guarantee &nbsp;·&nbsp; Free shipping</p>
-
-    <h2>Three Months Later</h2>
-
-    <p>The tension is not completely gone. I want to be honest about that. But what used to be a constant 5 or 6 out of 10 every single day is now a 1 or 2. Some mornings I wake up and I have to actually check whether it is there.</p>
-
-    <p>I have not booked a remedial massage in three months. Not because I don't enjoy them. Because I no longer need one just to get through the week.</p>
-
-    <p>When I saw Kate again, she tested my shoulder mobility — she does this occasionally. She said it was significantly better than anything in her notes. More range. Less resistance. She asked what I'd been doing differently.</p>
-
-    <p>"Your device," I told her.</p>
-
-    <p>She nodded and said: "That's what I thought. It's one of the only things that actually reaches the level where this kind of tension lives."</p>
-
-    <h2>Why I'm Writing This</h2>
-
-    <p>Six different people have asked me about my shoulders in the last two months. Friends. My sister. A woman from my swimming group who said she recognised everything I was describing. I kept telling the story one at a time and eventually decided to write it all down properly.</p>
-
-    <p>I am not a medical professional. This is just my experience.</p>
-
-    <p>The device is called <strong>[PRODUCT NAME]</strong>. It was designed specifically for chronic shoulder and neck tension, with clinical-grade TENS/EMS frequency calibration. It comes with a full 30-day money-back guarantee, which is what made me willing to try it after spending so much on things that hadn't worked.</p>
-
-    <p>If the guarantee hadn't been there, I probably wouldn't have ordered it. I was that done with trying things. But I thought: if it doesn't work, I return it. I'm no worse off than I already am.</p>
-
-    <h2>Who This Is For and Who It Isn't</h2>
-
-    <p>This is most relevant if you have chronic, recurring tension in your shoulders, neck, or upper back — the kind that has been there for months or years, keeps coming back despite treatment, and has no clear structural cause on imaging.</p>
-
-    <p>It is not appropriate if you have a pacemaker or any implanted cardiac device. Please do not use it if that applies to you.</p>
-
-    <p>If your pain is very recent — a few weeks or less — see a healthcare professional first to rule out anything structural before trying this.</p>
-
-    <p>But if you have been managing tension for months or years, getting temporary relief at best, this is almost certainly reaching the mechanism that nothing else has been able to reach.</p>
-
-    <button class="cta-btn" onclick="openModal()">→ See Device, Bundles &amp; Current Price</button>
-    <p class="cta-sub">🔒 Secure checkout &nbsp;·&nbsp; Free shipping &nbsp;·&nbsp; 30-day full refund guarantee</p>
-
-    <h2>What Other People Are Saying</h2>
-
-    <div class="testimonial">
-      <div class="t-stars">★★★★★</div>
-      <p class="t-text">"I've had knots in my shoulders for as long as I can remember. Massage every fortnight and the relief lasted maybe 48 hours before it was back. Two weeks with this device and the knots I had felt for years started to actually soften. I don't fully understand the science but I know what I can feel. Nothing else had done that."</p>
-      <p class="t-name">Louise M.</p>
-      <p class="t-loc">48 years old</p>
-    </div>
-
-    <div class="testimonial">
-      <div class="t-stars">★★★★★</div>
-      <p class="t-text">"My physio told me my tension was chronic and I'd need to manage it long-term. She was probably right given how long I'd had it. But the management was becoming a part-time job. Since using this my needs have dropped from constant to almost nothing. I still see my physio but she says my muscle tone has improved more than she expected from her sessions alone."</p>
-      <p class="t-name">Carolyn W.</p>
-      <p class="t-loc">51 years old</p>
-    </div>
-
-    <div class="testimonial">
-      <div class="t-stars">★★★★★</div>
-      <p class="t-text">"I was genuinely cynical. I tried a cheap TENS machine years ago and it did nothing. This felt completely different from the first session — you can feel the muscle actually contracting and releasing instead of just buzzing. After ten days my husband asked why I'd stopped complaining about my neck. I genuinely hadn't noticed I'd stopped."</p>
-      <p class="t-name">Julia T.</p>
-      <p class="t-loc">43 years old</p>
-    </div>
-
-    <button class="cta-btn" onclick="openModal()">→ Check Current Availability</button>
-    <p class="cta-sub">Stock is limited &nbsp;·&nbsp; Free shipping included</p>
-
-  </div><!-- /body-text -->
-
-  <div class="disclaimer">
-    <strong>EDITORIAL DISCLOSURE:</strong> This article reflects the personal experience of the narrator and is intended for informational purposes only. It does not constitute medical advice. Always consult a qualified healthcare professional before starting any new treatment. The author may receive compensation if you purchase through links in this article. Individual results vary. This content is produced as sponsored editorial material. Statements have not been evaluated by the TGA or equivalent regulatory body in your region.<br><br>
-    THIS IS AN ADVERTISEMENT AND NOT AN ACTUAL NEWS ARTICLE, CLINICAL STUDY, OR MEDICAL PUBLICATION.
+    <form class="contact-form" onsubmit="handleContactSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">First Name</label>
+          <input class="form-input" type="text" placeholder="John" required/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Last Name</label>
+          <input class="form-input" type="text" placeholder="Smith" required/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input class="form-input" type="email" placeholder="your@email.com" required/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Order Number (optional)</label>
+        <input class="form-input" type="text" placeholder="#1001"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Message</label>
+        <textarea class="form-textarea" rows="5" placeholder="How can we help you?" required></textarea>
+      </div>
+      <button class="btn-submit" type="submit">Send Message</button>
+    </form>
   </div>
 
-</div><!-- /page-layout -->
-
-
-<!-- ══════════════════════════════════════════
-     CHECKOUT MODAL
-══════════════════════════════════════════ -->
-<div class="modal-overlay" id="checkoutModal">
-  <div class="modal-box">
-
-    <div class="modal-trust-top">
-      <span>🛡️ 30-Day Guarantee</span>
-      <span>🚚 Free Shipping</span>
-      <span>↩️ Easy Returns</span>
-      <span>🔒 Secure Order</span>
+  <footer>
+    <div class="footer-main">
+      <div>
+        <div class="footer-brand-name">Vaulten</div>
+        <p class="footer-about">Timeless, considered clothing for everyday wear.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigation</div>
+        <ul class="footer-links">
+          <li onclick="showPage('home')">Home</li>
+          <li onclick="showPage('product')">Shop</li>
+          <li onclick="showPage('contact')">Contact</li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Policies</div>
+        <ul class="footer-links">
+          <li>Shipping Policy</li>
+          <li>Returns & Refunds</li>
+          <li>Privacy Policy</li>
+        </ul>
+      </div>
     </div>
-
-    <div class="modal-header">
-      <p>Secure Order Form &mdash; Official Stockist</p>
-      <button class="modal-close" onclick="closeModal()" aria-label="Close">×</button>
+    <div class="footer-bottom" style="max-width:1400px;margin:0 auto">
+      <span class="footer-copy">© 2025 Vaulten. All rights reserved.</span>
+      <div class="footer-policies"><span>Privacy</span><span>Terms</span></div>
     </div>
+  </footer>
 
-    <!-- SUCCESS SCREEN -->
-    <div class="success-screen" id="successScreen">
-      <div class="ck">✅</div>
-      <h3>Order Confirmed</h3>
-      <p>A confirmation has been sent to your email.<br>[PRODUCT NAME] ships within 1–2 business days.</p>
+</div>
+
+<!-- CART DRAWER -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="toggleCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="drawer-header">
+    <span class="drawer-title">Your Cart</span>
+    <button class="drawer-close" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="drawer-body" id="drawerBody">
+    <div class="drawer-empty">
+      <div class="drawer-empty-icon">🛍️</div>
+      <p>Your cart is empty</p>
     </div>
+  </div>
+  <div class="drawer-footer" id="drawerFooter" style="display:none">
+    <div class="subtotal-row">
+      <span class="subtotal-label">Subtotal</span>
+      <span class="subtotal-amount" id="subtotalAmt">$0.00</span>
+    </div>
+    <p class="subtotal-note">Shipping calculated at checkout</p>
+    <button class="btn-checkout" onclick="toast('Redirecting to secure checkout...')">Checkout</button>
+    <button class="btn-cont" onclick="toggleCart()">Continue Shopping</button>
+  </div>
+</div>
 
-    <!-- ORDER FORM -->
-    <div class="modal-body" id="orderFormWrap">
-
-      <!-- Product image slider -->
-      <div class="img-slider" id="imgSlider">
-        <!-- REPLACE: add your real product images below -->
-        <div class="img-slide active">[Product image 1 — front view]</div>
-        <div class="img-slide">[Product image 2 — in use on shoulder/neck]</div>
-        <div class="img-slide">[Product image 3 — package contents]</div>
-      </div>
-      <div class="slider-dots">
-        <button class="sdot active" onclick="goSlide(0)" aria-label="Image 1"></button>
-        <button class="sdot" onclick="goSlide(1)" aria-label="Image 2"></button>
-        <button class="sdot" onclick="goSlide(2)" aria-label="Image 3"></button>
-      </div>
-
-      <p class="prod-title">[PRODUCT NAME]</p>
-      <p class="prod-sub">Clinical-Grade TENS/EMS Muscle Reset Device</p>
-      <div class="prod-stars">
-        <span class="st">★★★★★</span>
-        <span>4.8 / 5 &nbsp;&middot;&nbsp; 1,340 verified reviews</span>
-      </div>
-
-      <p class="bundle-label">Select Your Package:</p>
-      <div class="bundles">
-
-        <div class="bundle" id="b1" onclick="selBundle(1)">
-          <div class="bundle-left">
-            <div class="brad"></div>
-            <div>
-              <div class="bname">1 Device</div>
-              <div class="bper">Single unit — ships today</div>
-            </div>
-          </div>
-          <div class="bright">
-            <div class="bprice">$134.99</div>
-            <div class="borig">Was $249.99</div>
-          </div>
-        </div>
-
-        <div class="bundle" id="b2" onclick="selBundle(2)" style="position:relative">
-          <span class="bpop">Most Ordered</span>
-          <div class="bundle-left">
-            <div class="brad"></div>
-            <div>
-              <div class="bname">2 Devices <span class="bbadge">Save $30</span></div>
-              <div class="bper">$119.99 each — for you &amp; partner</div>
-            </div>
-          </div>
-          <div class="bright">
-            <div class="bprice">$239.99</div>
-            <div class="borig">Was $499.98</div>
-          </div>
-        </div>
-
-        <div class="bundle" id="b3" onclick="selBundle(3)">
-          <div class="bundle-left">
-            <div class="brad"></div>
-            <div>
-              <div class="bname">3 Devices <span class="bbadge">Best Value</span></div>
-              <div class="bper">$109.99 each — share with family</div>
-            </div>
-          </div>
-          <div class="bright">
-            <div class="bprice">$329.99</div>
-            <div class="borig">Was $749.97</div>
-          </div>
-        </div>
-
-      </div><!-- /bundles -->
-
-      <hr class="mdivider"/>
-      <p class="fsec-title">Shipping Details</p>
-
-      <div class="frow">
-        <div class="fg">
-          <label for="fFirst">First Name</label>
-          <input type="text" id="fFirst" placeholder="Jane" autocomplete="given-name"/>
-        </div>
-        <div class="fg">
-          <label for="fLast">Last Name</label>
-          <input type="text" id="fLast" placeholder="Smith" autocomplete="family-name"/>
-        </div>
-      </div>
-      <div class="fg">
-        <label for="fEmail">Email Address</label>
-        <input type="email" id="fEmail" placeholder="jane@email.com" autocomplete="email"/>
-      </div>
-      <div class="fg">
-        <label for="fPhone">Phone</label>
-        <input type="tel" id="fPhone" placeholder="+1 000 000 0000" autocomplete="tel"/>
-      </div>
-      <div class="fg">
-        <label for="fAddr">Street Address</label>
-        <input type="text" id="fAddr" placeholder="123 Main Street" autocomplete="street-address"/>
-      </div>
-      <div class="frow">
-        <div class="fg">
-          <label for="fCity">City</label>
-          <input type="text" id="fCity" placeholder="City" autocomplete="address-level2"/>
-        </div>
-        <div class="fg">
-          <label for="fPost">Postcode</label>
-          <input type="text" id="fPost" placeholder="00000" autocomplete="postal-code"/>
-        </div>
-      </div>
-      <div class="fg">
-        <label for="fCountry">Country</label>
-        <select id="fCountry" autocomplete="country">
-          <option value="AU">Australia</option>
-          <option value="US">United States</option>
-          <option value="GB">United Kingdom</option>
-          <option value="CA">Canada</option>
-          <option value="NZ">New Zealand</option>
-          <option value="IE">Ireland</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-
-      <hr class="mdivider"/>
-      <p class="fsec-title">Payment</p>
-
-      <div class="card-wrap" id="cardWrap">
-        <div id="cardEl"></div>
-      </div>
-      <div id="cardErr" style="color:#c62828;font-size:13px;margin-top:6px;display:none"></div>
-
-      <div class="ssl-line">
-        <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-          <rect x="3" y="11" width="18" height="11" rx="2"/>
-          <path d="M7 11V7a5 5 0 0110 0v4"/>
-        </svg>
-        256-bit SSL encryption &nbsp;&middot;&nbsp; Card details are never stored
-      </div>
-
-      <div class="order-sum">
-        <div class="orow">
-          <span id="sumDesc">1 × [PRODUCT NAME]</span>
-          <span id="sumPrice">$134.99</span>
-        </div>
-        <div class="orow">
-          <span>Shipping</span>
-          <span class="free-tag">Free</span>
-        </div>
-        <div class="orow" id="sumSaveRow" style="display:none">
-          <span>Discount applied</span>
-          <span class="save-tag" id="sumSave"></span>
-        </div>
-        <div class="orow total">
-          <span>Total Today</span>
-          <span id="sumTotal">$134.99</span>
-        </div>
-      </div>
-
-      <button class="submit-btn" id="submitBtn" onclick="submitOrder()">
-        Complete Secure Order →
-      </button>
-      <div id="formErrMsg" class="form-err"></div>
-
-      <div class="modal-badges">
-        <div class="mbadge">🛡️ 30-Day Returns</div>
-        <div class="mbadge">🔒 SSL Secure</div>
-        <div class="mbadge">🚚 Free Shipping</div>
-        <div class="mbadge">📦 Ships 1–2 Days</div>
-      </div>
-
-      <div class="modal-guarantee">
-        <div class="mg-icon">🛡️</div>
-        <div>
-          <div class="mg-title">30-Day Money-Back Guarantee</div>
-          <div class="mg-text">Try [PRODUCT NAME] for 30 days. If you don't feel a real improvement in your tension and pain, contact us for a full refund. No questions, no hassle, no risk.</div>
-        </div>
-      </div>
-
-    </div><!-- /orderFormWrap -->
-  </div><!-- /modal-box -->
-</div><!-- /modal-overlay -->
-
+<!-- TOAST -->
+<div class="toast" id="toastEl"></div>
 
 <script>
-/* ─── BUNDLE DATA ──────────────────────── */
-const BUNDLES = {
-  1: { desc: '1 × [PRODUCT NAME]', price: '$134.99', save: 0 },
-  2: { desc: '2 × [PRODUCT NAME]', price: '$239.99', save: 30 },
-  3: { desc: '3 × [PRODUCT NAME]', price: '$329.99', save: 75 }
-};
-let curBundle = 1;
+// ─── STATE
+let cart = [];
+let selSize = null;
+let selColour = 'White';
 
-function selBundle(n) {
-  curBundle = n;
-  [1, 2, 3].forEach(i => document.getElementById('b' + i).classList.remove('sel'));
-  document.getElementById('b' + n).classList.add('sel');
-  const b = BUNDLES[n];
-  document.getElementById('sumDesc').textContent  = b.desc;
-  document.getElementById('sumPrice').textContent = b.price;
-  document.getElementById('sumTotal').textContent = b.price;
-  const sr = document.getElementById('sumSaveRow');
-  if (b.save > 0) {
-    sr.style.display = 'flex';
-    document.getElementById('sumSave').textContent = '-$' + b.save;
+// ─── PAGES
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+// ─── GALLERY
+function switchThumb(el, url) {
+  document.querySelectorAll('.g-thumb').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('mainImg').src = url;
+}
+
+// ─── SIZE / COLOUR
+function selectSize(btn, size) {
+  if (btn.classList.contains('oos')) return;
+  document.querySelectorAll('.size-btn:not(.oos)').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  selSize = size;
+  document.getElementById('selectedSizeLabel').textContent = size;
+  const atcBtn = document.getElementById('atcBtn');
+  atcBtn.classList.remove('no-size');
+  atcBtn.textContent = 'Add to Cart — $89.95';
+}
+
+function selectColour(el, colour) {
+  document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  selColour = colour;
+  document.getElementById('selectedColourLabel').textContent = colour;
+}
+
+// ─── ATC
+function handleAtc() {
+  if (!selSize) return;
+  const existing = cart.find(i => i.size === selSize && i.colour === selColour);
+  if (existing) {
+    existing.qty++;
   } else {
-    sr.style.display = 'none';
+    cart.push({ name: 'Structured Cotton Tee', size: selSize, colour: selColour, price: 89.95, qty: 1 });
   }
+  updateCart();
+  const btn = document.getElementById('atcBtn');
+  btn.textContent = '✓ Added to Cart';
+  btn.classList.add('added');
+  setTimeout(() => {
+    btn.textContent = 'Add to Cart — $89.95';
+    btn.classList.remove('added');
+  }, 1800);
+  toggleCart();
 }
-selBundle(1);
 
-/* ─── SLIDER ───────────────────────────── */
-let curSlide = 0;
-const slides = document.querySelectorAll('.img-slide');
-const dots   = document.querySelectorAll('.sdot');
-
-function goSlide(n) {
-  slides[curSlide].classList.remove('active');
-  dots[curSlide].classList.remove('active');
-  curSlide = n;
-  slides[n].classList.add('active');
-  dots[n].classList.add('active');
-}
-setInterval(() => goSlide((curSlide + 1) % slides.length), 4000);
-
-/* ─── MODAL ────────────────────────────── */
-function openModal() {
-  document.getElementById('checkoutModal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-  if (!stripeReady) initStripe();
-}
-function closeModal() {
-  document.getElementById('checkoutModal').classList.remove('open');
-  document.body.style.overflow = '';
-}
-document.getElementById('checkoutModal').addEventListener('click', function(e) {
-  if (e.target === this) closeModal();
-});
-
-/* ─── STRIPE ────────────────────────────── */
-let stripe, cardEl, stripeReady = false;
-
-function initStripe() {
-  try {
-    stripe = Stripe('YOUR_STRIPE_PUBLISHABLE_KEY'); /* ← REPLACE WITH YOUR KEY */
-    const els = stripe.elements();
-    cardEl = els.create('card', {
-      style: {
-        base: {
-          fontSize: '15px',
-          color: '#1a1a1a',
-          fontFamily: "'Source Sans 3', sans-serif",
-          '::placeholder': { color: '#9e9e9e' }
-        }
-      }
-    });
-    cardEl.mount('#cardEl');
-    cardEl.on('focus', () => document.getElementById('cardWrap').classList.add('focused'));
-    cardEl.on('blur',  () => document.getElementById('cardWrap').classList.remove('focused'));
-    cardEl.on('change', e => {
-      const el = document.getElementById('cardErr');
-      el.style.display = e.error ? 'block' : 'none';
-      if (e.error) el.textContent = e.error.message;
-    });
-    stripeReady = true;
-  } catch(e) {
-    document.getElementById('cardEl').innerHTML =
-      '<input style="width:100%;border:none;outline:none;font-size:15px;font-family:inherit" placeholder="Configure Stripe key to enable card input"/>';
+function handleBuyNow() {
+  if (!selSize) {
+    toast('Please select a size first');
+    return;
   }
+  handleAtc();
+  toast('Redirecting to checkout...');
 }
 
-/* ─── VALIDATION ────────────────────────── */
-function validate() {
-  const ids = ['fFirst', 'fLast', 'fEmail', 'fPhone', 'fAddr', 'fCity', 'fPost'];
-  for (const id of ids) {
-    const el = document.getElementById(id);
-    if (!el.value.trim()) { el.focus(); return 'Please complete all fields.'; }
+// ─── CART
+function updateCart() {
+  const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  const totalQty = cart.reduce((s, i) => s + i.qty, 0);
+  const countEl = document.getElementById('cartCount');
+  countEl.style.display = totalQty > 0 ? 'flex' : 'none';
+  countEl.textContent = totalQty;
+
+  const body = document.getElementById('drawerBody');
+  const footer = document.getElementById('drawerFooter');
+  document.getElementById('subtotalAmt').textContent = '$' + total.toFixed(2);
+
+  if (cart.length === 0) {
+    body.innerHTML = `<div class="drawer-empty"><div class="drawer-empty-icon">🛍️</div><p>Your cart is empty</p></div>`;
+    footer.style.display = 'none';
+    return;
   }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(document.getElementById('fEmail').value))
-    return 'Please enter a valid email address.';
-  return null;
+
+  footer.style.display = 'block';
+  body.innerHTML = cart.map((item, i) => `
+    <div class="cart-line">
+      <img class="cart-line-img" src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=200&q=70" alt="${item.name}"/>
+      <div>
+        <div class="cart-line-name">${item.name}</div>
+        <div class="cart-line-variant">${item.colour} · ${item.size}</div>
+        <div class="cart-line-bottom">
+          <div class="qty-row">
+            <button class="qty-btn" onclick="adjustQty(${i},-1)">−</button>
+            <span class="qty-num">${item.qty}</span>
+            <button class="qty-btn" onclick="adjustQty(${i},1)">+</button>
+          </div>
+          <span class="cart-line-price">$${(item.price * item.qty).toFixed(2)}</span>
+        </div>
+        <span class="cart-line-remove" onclick="removeItem(${i})">Remove</span>
+      </div>
+    </div>
+  `).join('');
 }
 
-/* ─── SUBMIT ────────────────────────────── */
-async function submitOrder() {
-  const err = validate();
-  if (err) {
-    const el = document.getElementById('formErrMsg');
-    el.textContent = err; el.style.display = 'block'; return;
-  }
-  document.getElementById('formErrMsg').style.display = 'none';
-  const btn = document.getElementById('submitBtn');
-  btn.disabled = true; btn.textContent = 'Processing…';
+function adjustQty(i, d) {
+  cart[i].qty = Math.max(1, cart[i].qty + d);
+  updateCart();
+}
 
-  try {
-    /*
-    ════════════════════════════════════════════
-    SHOPIFY OPTION (no backend needed):
-    Replace VARIANT_ID_X with your Shopify variant IDs.
-    ════════════════════════════════════════════
-    const variants = { 1: 'VARIANT_ID_1', 2: 'VARIANT_ID_2', 3: 'VARIANT_ID_3' };
-    window.location.href = '/cart/' + variants[curBundle] + ':1?checkout';
+function removeItem(i) {
+  cart.splice(i, 1);
+  updateCart();
+}
 
-    ════════════════════════════════════════════
-    STRIPE OPTION (requires backend endpoint):
-    ════════════════════════════════════════════
-    const r = await fetch('/api/create-payment-intent', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        bundle: curBundle,
-        amount: parseFloat(BUNDLES[curBundle].price.replace('$', '')) * 100,
-        email: document.getElementById('fEmail').value,
-        name:  document.getElementById('fFirst').value + ' ' + document.getElementById('fLast').value
-      })
-    });
-    const { clientSecret } = await r.json();
-    const result = await stripe.confirmCardPayment(clientSecret, {
-      payment_method: {
-        card: cardEl,
-        billing_details: {
-          name:  document.getElementById('fFirst').value + ' ' + document.getElementById('fLast').value,
-          email: document.getElementById('fEmail').value
-        }
-      }
-    });
-    if (result.error) throw new Error(result.error.message);
-    */
+function toggleCart() {
+  document.getElementById('drawerOverlay').classList.toggle('open');
+  document.getElementById('cartDrawer').classList.toggle('open');
+}
 
-    /* ── DEMO mode — remove in production ── */
-    await new Promise(r => setTimeout(r, 1500));
+// ─── ACCORDION
+function toggleAccordion(btn) {
+  const allBtns = document.querySelectorAll('.accordion-trigger');
+  allBtns.forEach(b => {
+    if (b !== btn) b.classList.remove('open');
+  });
+  btn.classList.toggle('open');
+}
 
-    document.getElementById('orderFormWrap').style.display = 'none';
-    document.getElementById('successScreen').style.display = 'block';
+// ─── CONTACT SUBMIT
+function handleContactSubmit(e) {
+  e.preventDefault();
+  toast('Message sent — we\'ll reply within 24 hours.');
+  e.target.reset();
+}
 
-  } catch(e) {
-    const el = document.getElementById('formErrMsg');
-    el.textContent = e.message || 'Payment failed. Please try again.';
-    el.style.display = 'block';
-    btn.disabled = false;
-    btn.textContent = 'Complete Secure Order →';
-  }
+// ─── TOAST
+function toast(msg) {
+  const el = document.getElementById('toastEl');
+  el.textContent = msg;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 2800);
 }
 </script>
-
 </body>
 </html>
