@@ -1,1150 +1,1775 @@
 <!DOCTYPE html>
-<html lang="sk">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GlowPro – Red Light Face Mask</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<title>SmartView Pro Doorbell — See Who's There, From Anywhere</title>
 <style>
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-body {
-  font-family: 'Inter', sans-serif;
-  color: #111;
-  background: #fff;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* ================================================
-   PRODUCT SECTION
-================================================ */
-.ps {
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 48px 24px 64px;
-  display: flex;
-  gap: 52px;
-  align-items: flex-start;
-}
-
-/* LEFT */
-.ps-left {
-  flex: 0 0 46%;
-  max-width: 46%;
-  position: sticky;
-  top: 24px;
-}
-
-.ps-main-img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border-radius: 20px;
-  display: block;
-  background: #f4f4f4;
-}
-
-.ps-thumbs {
-  display: flex;
-  gap: 10px;
-  margin-top: 12px;
-}
-
-.ps-thumb {
-  flex: 1;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border-radius: 12px;
-  border: 2px solid #e0e0e0;
-  cursor: pointer;
-  transition: border-color .2s;
-  display: block;
-  min-width: 0;
-}
-.ps-thumb:hover,
-.ps-thumb.active { border-color: #e8213a; }
-
-/* RIGHT */
-.ps-right { flex: 1; min-width: 0; }
-
-.ps-brand {
-  font-family: 'Inter', sans-serif;
-  font-size: .72rem;
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: #e8213a;
-  margin-bottom: 8px;
-}
-
-.ps-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.1rem;
-  font-weight: 900;
-  line-height: 1.12;
-  letter-spacing: -.3px;
-  margin-bottom: 12px;
-  color: #0a0a0a;
-}
-
-.ps-stars-row {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  margin-bottom: 14px;
-}
-.ps-stars { color: #e8213a; font-size: 1rem; letter-spacing: 1px; }
-.ps-stars-txt { font-size: .83rem; color: #111; font-weight: 500; }
-
-.ps-price-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 18px;
-  flex-wrap: wrap;
-}
-.ps-price {
-  font-size: 1.9rem;
-  font-weight: 900;
-  color: #e8213a;
-  line-height: 1;
-  font-family: 'Inter', sans-serif;
-}
-.ps-price-old {
-  font-size: 1.1rem;
-  color: #888;
-  text-decoration: line-through;
-  font-weight: 500;
-}
-.ps-save {
-  background: #e8213a;
-  color: #fff;
-  font-size: .68rem;
-  font-weight: 800;
-  padding: 4px 12px;
-  border-radius: 20px;
-  letter-spacing: .5px;
-  text-transform: uppercase;
-}
-
-/* Trust list */
-.ps-trust {
-  list-style: none;
-  margin-bottom: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-}
-.ps-trust li {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  font-size: .86rem;
-  color: #111;
-  font-weight: 500;
-}
-.ps-trust li .chk {
-  color: #e8213a;
-  font-weight: 900;
-  flex-shrink: 0;
-  font-size: .95rem;
-}
-
-/* Bundle divider */
-.ps-bundle-div {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 12px;
-}
-.ps-bundle-div::before,
-.ps-bundle-div::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: #ddd;
-}
-.ps-bundle-div span {
-  font-size: .65rem;
-  font-weight: 800;
-  color: #111;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-/* Bundle options */
-.ps-bundles {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 18px;
-}
-
-.ps-bundle {
-  display: flex;
-  align-items: center;
-  gap: 13px;
-  border: 2px solid #e0e0e0;
-  border-radius: 14px;
-  padding: 12px 14px;
-  cursor: pointer;
-  position: relative;
-  transition: border-color .18s, background .18s;
-  background: #fff;
-  user-select: none;
-}
-.ps-bundle.sel {
-  border-color: #e8213a;
-  background: #fff8f9;
-}
-.ps-bundle input[type=radio] {
-  width: 17px;
-  height: 17px;
-  accent-color: #e8213a;
-  flex-shrink: 0;
-  cursor: pointer;
-}
-
-/* Bundle image wrappers */
-.ps-b-imgs {
-  position: relative;
-  flex-shrink: 0;
-}
-.ps-b-imgs img {
-  width: 50px;
-  height: 50px;
-  border-radius: 8px;
-  object-fit: cover;
-  display: block;
-  border: 2px solid #fff;
-}
-/* 2 masks stacked */
-.ps-b-imgs.two {
-  width: 62px;
-  height: 54px;
-}
-.ps-b-imgs.two img:first-child {
-  position: absolute;
-  top: 0; left: 0;
-  width: 46px; height: 46px;
-  z-index: 2;
-}
-.ps-b-imgs.two img:last-child {
-  position: absolute;
-  top: 8px; left: 14px;
-  width: 46px; height: 46px;
-  z-index: 1;
-  opacity: .75;
-}
-/* 3 masks stacked */
-.ps-b-imgs.three {
-  width: 66px;
-  height: 58px;
-}
-.ps-b-imgs.three img:nth-child(1) {
-  position: absolute;
-  top: 0; left: 0;
-  width: 44px; height: 44px;
-  z-index: 3;
-}
-.ps-b-imgs.three img:nth-child(2) {
-  position: absolute;
-  top: 7px; left: 10px;
-  width: 44px; height: 44px;
-  z-index: 2;
-  opacity: .8;
-}
-.ps-b-imgs.three img:nth-child(3) {
-  position: absolute;
-  top: 14px; left: 20px;
-  width: 44px; height: 44px;
-  z-index: 1;
-  opacity: .6;
-}
-
-.ps-b-mid { flex: 1; min-width: 0; }
-.ps-b-name {
-  font-weight: 800;
-  font-size: .88rem;
-  color: #111;
-  line-height: 1.2;
-}
-.ps-b-save {
-  font-size: .74rem;
-  color: #555;
-  margin-top: 2px;
-}
-.ps-b-right { text-align: right; flex-shrink: 0; }
-.ps-b-price {
-  font-weight: 900;
-  font-size: .97rem;
-  color: #111;
-  line-height: 1.2;
-}
-.ps-b-old {
-  font-size: .72rem;
-  color: #999;
-  text-decoration: line-through;
-}
-.ps-b-badge {
-  position: absolute;
-  top: -10px;
-  right: 13px;
-  font-size: .63rem;
-  font-weight: 800;
-  padding: 3px 12px;
-  border-radius: 20px;
-  color: #fff;
-  background: #e8213a;
-  letter-spacing: .5px;
-  text-transform: uppercase;
-}
-
-/* Feature row – Free Shipping / Returns / Secure */
-.ps-feats {
-  display: flex;
-  align-items: stretch;
-  border: 1px solid #e0e0e0;
-  border-radius: 12px;
-  overflow: hidden;
-  margin-bottom: 18px;
-}
-.ps-feat {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  padding: 13px 8px;
-  font-size: .73rem;
-  color: #111;
-  font-weight: 600;
-  text-align: center;
-  border-right: 1px solid #e0e0e0;
-  line-height: 1.3;
-}
-.ps-feat:last-child { border-right: none; }
-.ps-feat .f-ico { font-size: 1.15rem; }
-
-/* Buttons */
-.ps-btn-cart {
-  display: block;
-  width: 100%;
-  background: #e8213a;
-  color: #fff;
-  font-family: 'Inter', sans-serif;
-  font-size: .95rem;
-  font-weight: 800;
-  border: none;
-  border-radius: 10px;
-  padding: 17px;
-  cursor: pointer;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-  transition: background .18s;
-}
-.ps-btn-cart:hover { background: #c4102a; }
-
-.ps-btn-buy {
-  display: block;
-  width: 100%;
-  background: #fff;
-  color: #111;
-  font-family: 'Inter', sans-serif;
-  font-size: .95rem;
-  font-weight: 700;
-  border: 2px solid #bbb;
-  border-radius: 10px;
-  padding: 15px;
-  cursor: pointer;
-  margin-bottom: 16px;
-  transition: border-color .18s;
-  letter-spacing: .5px;
-}
-.ps-btn-buy:hover { border-color: #555; }
-
-/* Payment icons */
-.ps-pays {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 7px;
-  margin-bottom: 18px;
-}
-.ps-pay-img {
-  height: 26px;
-  width: auto;
-  object-fit: contain;
-  border: 1px solid #e0e0e0;
-  border-radius: 6px;
-  background: #fff;
-  padding: 3px 8px;
-  display: block;
-}
-
-/* Accordion */
-.ps-acc { border-top: 1px solid #e5e5e5; }
-.ps-acc-item { border-bottom: 1px solid #e5e5e5; }
-.ps-acc-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px 0;
-  cursor: pointer;
-  font-size: .88rem;
-  font-weight: 700;
-  color: #111;
-  user-select: none;
-  letter-spacing: .2px;
-}
-.ps-acc-head .ps-plus {
-  font-size: 1.3rem;
-  color: #111;
-  font-weight: 300;
-  transition: transform .22s;
-  line-height: 1;
-}
-.ps-acc-head.open .ps-plus {
-  transform: rotate(45deg);
-  color: #e8213a;
-}
-.ps-acc-body {
-  display: none;
-  padding: 0 0 14px;
-  font-size: .83rem;
-  color: #333;
-  line-height: 1.8;
-}
-.ps-acc-body.open { display: block; }
-
-/* ================================================
-   BENEFITS SECTION – červená, bez kariet, bez nadpisu
-================================================ */
-.ben-sec {
-  background: #e8213a;
-  padding: 52px 24px;
-}
-.ben-grid {
-  max-width: 900px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-}
-.ben-card {
-  color: #fff;
-  text-align: center;
-  padding: 16px 20px;
-  border-right: 1px solid rgba(255,255,255,.2);
-}
-.ben-card:last-child { border-right: none; }
-.ben-emoji { font-size: 2rem; margin-bottom: 10px; }
-.ben-title {
-  font-weight: 800;
-  font-size: .9rem;
-  margin-bottom: 6px;
-  font-family: 'Inter', sans-serif;
-}
-.ben-desc {
-  font-size: .77rem;
-  color: rgba(255,255,255,.88);
-  line-height: 1.55;
-}
-
-/* ================================================
-   REVIEWS SECTION
-================================================ */
-.rev-sec {
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 72px 24px;
-}
-.sec-h {
-  text-align: center;
-  font-family: 'Playfair Display', serif;
-  font-size: 1.9rem;
-  font-weight: 900;
-  margin-bottom: 6px;
-  color: #0a0a0a;
-}
-.sec-h span { color: #e8213a; }
-.sec-sub {
-  text-align: center;
-  color: #444;
-  font-size: .86rem;
-  margin-bottom: 40px;
-  font-weight: 500;
-}
-.rev-summary {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 48px;
-  flex-wrap: wrap;
-  margin-bottom: 44px;
-}
-.rev-big-num {
-  font-size: 4.5rem;
-  font-weight: 900;
-  color: #0a0a0a;
-  line-height: 1;
-  font-family: 'Playfair Display', serif;
-}
-.rev-big-stars { color: #e8213a; font-size: 1.2rem; margin: 5px 0; }
-.rev-big-sub { font-size: .78rem; color: #444; font-weight: 500; }
-.rev-bars { display: flex; flex-direction: column; gap: 8px; min-width: 220px; }
-.rev-bar-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: .78rem;
-  color: #111;
-  font-weight: 500;
-}
-.rev-bar-bg {
-  flex: 1;
-  height: 7px;
-  background: #f0f0f0;
-  border-radius: 4px;
-  overflow: hidden;
-}
-.rev-bar-fill { height: 100%; background: #e8213a; border-radius: 4px; }
-
-.rev-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-}
-.rev-card {
-  border: 1px solid #e5e5e5;
-  border-radius: 16px;
-  overflow: hidden;
-}
-.rev-card-img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  display: block;
-}
-.rev-card-body { padding: 18px; }
-.rev-verified { font-size: .69rem; color: #27ae60; font-weight: 700; margin-bottom: 5px; letter-spacing: .3px; }
-.rev-stars { color: #e8213a; font-size: .9rem; margin-bottom: 9px; }
-.rev-text { font-size: .82rem; color: #333; line-height: 1.68; margin-bottom: 12px; }
-.rev-author { font-weight: 800; font-size: .83rem; color: #111; }
-.rev-date { font-size: .72rem; color: #999; margin-top: 2px; }
-
-/* ================================================
-   FAQ SECTION
-================================================ */
-.faq-sec {
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 64px 24px 88px;
-}
-.faq-h {
-  text-align: center;
-  font-family: 'Playfair Display', serif;
-  font-size: 1.9rem;
-  font-weight: 900;
-  margin-bottom: 36px;
-  color: #0a0a0a;
-}
-.faq-item { border-bottom: 1px solid #e5e5e5; }
-.faq-q {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 0;
-  cursor: pointer;
-  font-size: .9rem;
-  font-weight: 600;
-  color: #111;
-  user-select: none;
-  gap: 14px;
-}
-.faq-q .faq-plus {
-  font-size: 1.3rem;
-  color: #111;
-  font-weight: 300;
-  transition: transform .22s;
-  flex-shrink: 0;
-}
-.faq-q.open .faq-plus { transform: rotate(45deg); color: #e8213a; }
-.faq-a {
-  display: none;
-  padding: 0 0 16px;
-  font-size: .83rem;
-  color: #333;
-  line-height: 1.8;
-}
-.faq-a.open { display: block; }
-
-/* ================================================
-   STICKY BAR
-================================================ */
-.sticky {
-  position: fixed;
-  bottom: 0; left: 0; right: 0;
-  background: #fff;
-  box-shadow: 0 -3px 20px rgba(0,0,0,.12);
-  padding: 12px 24px;
-  display: none;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  z-index: 9999;
-}
-.sticky.show { display: flex; }
-.sticky-l { display: flex; align-items: center; gap: 12px; min-width: 0; }
-.sticky-img {
-  width: 46px; height: 46px;
-  border-radius: 10px;
-  object-fit: cover;
-  flex-shrink: 0;
-}
-.sticky-name {
-  font-weight: 700;
-  font-size: .85rem;
-  color: #111;
-  font-family: 'Inter', sans-serif;
-}
-.sticky-price { color: #e8213a; font-weight: 800; font-size: .85rem; }
-.sticky-price s { color: #999; font-weight: 400; font-size: .78rem; }
-.sticky-btn {
-  background: #e8213a;
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  padding: 13px 32px;
-  font-weight: 800;
-  font-size: .88rem;
-  cursor: pointer;
-  white-space: nowrap;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  flex-shrink: 0;
-  transition: background .18s;
-}
-.sticky-btn:hover { background: #c4102a; }
-
-/* ================================================
-   RESPONSIVE
-================================================ */
-@media (max-width: 820px) {
-  .ps {
-    flex-direction: column;
-    gap: 0;
-    padding: 20px 16px 52px;
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    background: #fff;
+    color: #111;
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
   }
-  .ps-left {
-    flex: none;
-    max-width: 100%;
+
+  /* ANNOUNCEMENT */
+  .ann-bar {
+    background: #111;
+    color: #fff;
+    text-align: center;
+    padding: 9px 20px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* NAV */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 32px;
+    height: 56px;
+    border-bottom: 1px solid #efefef;
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 100;
+  }
+
+  .nav-logo {
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: #111;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: #888; }
+
+  .nav-icons {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .nav-icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-icon svg { width: 18px; height: 18px; stroke: #111; fill: none; stroke-width: 1.6; }
+
+  /* LAYOUT */
+  .product-wrap {
+    display: grid;
+    grid-template-columns: 55% 45%;
+    max-width: 1280px;
+    margin: 0 auto;
+    min-height: calc(100vh - 56px);
+  }
+
+  /* =====================
+     GALLERY
+  ===================== */
+  .gallery-col {
+    position: sticky;
+    top: 56px;
+    height: calc(100vh - 56px);
+    display: flex;
+    flex-direction: column;
+    background: #f7f7f7;
+  }
+
+  .gallery-main {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    cursor: grab;
+    user-select: none;
+  }
+
+  .gallery-main:active { cursor: grabbing; }
+
+  .gallery-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+  }
+
+  .gallery-track.dragging {
+    transition: none;
+  }
+
+  .gallery-slide {
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f7f7f7;
+    overflow: hidden;
+  }
+
+  .gallery-slide img {
     width: 100%;
-    position: static;
-    margin-bottom: 28px;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    padding: 24px;
+    pointer-events: none;
   }
-  .ps-right { width: 100%; }
-  .ps-title { font-size: 1.65rem; }
-  .ps-price { font-size: 1.65rem; }
 
-  .ben-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0;
+  /* Arrows */
+  .g-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   }
-  .ben-card {
-    border-right: none;
-    border-bottom: 1px solid rgba(255,255,255,.2);
+
+  .g-arrow:hover { background: #111; border-color: #111; }
+  .g-arrow:hover svg { stroke: #fff; }
+  .g-arrow svg { width: 14px; height: 14px; stroke: #111; fill: none; stroke-width: 2; transition: stroke 0.2s; }
+  .g-arrow.prev { left: 14px; }
+  .g-arrow.next { right: 14px; }
+
+  /* Thumbnails */
+  .gallery-thumbs {
+    display: flex;
+    gap: 8px;
+    padding: 12px 16px;
+    background: #f7f7f7;
+    overflow-x: auto;
+    scrollbar-width: none;
+    border-top: 1px solid #efefef;
   }
-  .ben-card:nth-child(odd) { border-right: 1px solid rgba(255,255,255,.2); }
-  .ben-card:nth-child(3),
-  .ben-card:nth-child(4) { border-bottom: none; }
 
-  .rev-grid { grid-template-columns: 1fr 1fr; }
-  .rev-summary { gap: 28px; }
+  .gallery-thumbs::-webkit-scrollbar { display: none; }
 
-  .sticky.show { display: flex; }
-}
+  .g-thumb {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    border: 2px solid transparent;
+    cursor: pointer;
+    overflow: hidden;
+    background: #fff;
+    transition: border-color 0.2s;
+    border-radius: 2px;
+  }
 
-@media (max-width: 560px) {
-  .ps-feats {
+  .g-thumb.active { border-color: #111; }
+
+  .g-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 4px;
+  }
+
+  /* Dots */
+  .gallery-dots {
+    display: none;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px 0 8px;
+    background: #f7f7f7;
+  }
+
+  .g-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.2);
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    transition: all 0.3s;
+  }
+
+  .g-dot.active {
+    background: #111;
+    width: 20px;
+    border-radius: 3px;
+  }
+
+  /* =====================
+     PRODUCT INFO
+  ===================== */
+  .info-col {
+    padding: 40px 48px 140px;
+    overflow-y: auto;
+    max-height: calc(100vh - 56px);
+  }
+
+  .product-title {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin-bottom: 14px;
+  }
+
+  .rating-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 18px;
+    cursor: pointer;
+  }
+
+  .stars-filled {
+    display: flex;
+    gap: 2px;
+  }
+
+  .star-svg {
+    width: 14px;
+    height: 14px;
+    fill: #111;
+  }
+
+  .rating-text {
+    font-size: 13px;
+    color: #555;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .price-main {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+
+  .price-old {
+    font-size: 18px;
+    color: #bbb;
+    text-decoration: line-through;
+    font-weight: 400;
+  }
+
+  .price-save {
+    font-size: 11px;
+    font-weight: 700;
+    background: #111;
+    color: #fff;
+    padding: 3px 9px;
+    letter-spacing: 0.06em;
+  }
+
+  .divider { height: 1px; background: #efefef; margin: 22px 0; }
+
+  /* BUNDLES */
+  .bundles-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #111;
+    margin-bottom: 12px;
+  }
+
+  .bundle-list {
+    display: flex;
     flex-direction: column;
-  }
-  .ps-feat {
-    flex-direction: row;
-    justify-content: flex-start;
-    border-right: none;
-    border-bottom: 1px solid #e0e0e0;
-    padding: 11px 16px;
-    font-size: .8rem;
     gap: 10px;
-    text-align: left;
+    margin-bottom: 22px;
   }
-  .ps-feat:last-child { border-bottom: none; }
 
-  .rev-grid { grid-template-columns: 1fr; }
+  .bundle-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 18px;
+    border: 1.5px solid #e5e5e5;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.18s;
+  }
 
-  .sticky.show { flex-wrap: wrap; }
-  .sticky-l { flex: 1 1 100%; }
-  .sticky-btn { width: 100%; text-align: center; }
+  .bundle-row:hover { border-color: #bbb; }
 
-  .ps-b-imgs img { width: 40px; height: 40px; }
-  .ps-b-imgs.two { width: 52px; height: 46px; }
-  .ps-b-imgs.two img { width: 38px !important; height: 38px !important; }
-  .ps-b-imgs.three { width: 56px; height: 50px; }
-  .ps-b-imgs.three img { width: 36px !important; height: 36px !important; }
+  .bundle-row.sel {
+    border-color: #111;
+    background: #111;
+    color: #fff;
+  }
 
-  .ben-grid { grid-template-columns: 1fr; }
-  .ben-card { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,.2) !important; }
-  .ben-card:last-child { border-bottom: none !important; }
+  .bundle-badge {
+    position: absolute;
+    top: -9px;
+    right: 14px;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: #111;
+    color: #fff;
+    padding: 2px 8px;
+  }
 
-  .sec-h { font-size: 1.5rem; }
-  .faq-h { font-size: 1.5rem; }
-}
+  .bundle-row.sel .bundle-badge {
+    background: #fff;
+    color: #111;
+  }
 
-@media (max-width: 380px) {
-  .ps-title { font-size: 1.4rem; }
-  .ps-price { font-size: 1.4rem; }
-}
+  .bundle-l {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .b-radio {
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    border: 2px solid currentColor;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .b-radio-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0;
+    transition: opacity 0.18s;
+  }
+
+  .bundle-row.sel .b-radio-dot { opacity: 1; background: #fff; }
+
+  .b-name { font-size: 14px; font-weight: 600; }
+  .b-sub { font-size: 11px; opacity: 0.6; margin-top: 1px; }
+
+  .b-price { font-size: 15px; font-weight: 700; text-align: right; }
+  .b-unit { font-size: 10px; opacity: 0.6; margin-top: 1px; }
+
+  /* BENEFITS GRID */
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .benefit-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #333;
+    line-height: 1.4;
+  }
+
+  .benefit-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .benefit-icon svg {
+    width: 16px;
+    height: 16px;
+    stroke: #111;
+    fill: none;
+    stroke-width: 1.8;
+  }
+
+  /* ATC */
+  .atc-btn {
+    width: 100%;
+    background: #111;
+    color: #fff;
+    border: none;
+    padding: 17px 24px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .atc-btn:hover { background: #2a2a2a; }
+  .atc-btn:active { transform: scale(0.995); }
+
+  .buy-now-btn {
+    width: 100%;
+    background: #fff;
+    color: #111;
+    border: 1.5px solid #111;
+    padding: 15px 24px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: block;
+  }
+
+  .buy-now-btn:hover { background: #f5f5f5; }
+
+  .payment-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+
+  .pay-chip {
+    background: #f5f5f5;
+    border: 1px solid #e8e8e8;
+    padding: 4px 8px;
+    font-size: 9px;
+    font-weight: 700;
+    color: #444;
+    letter-spacing: 0.04em;
+    border-radius: 3px;
+  }
+
+  /* ACCORDIONS */
+  .accordions {
+    margin-top: 30px;
+    border-top: 1px solid #efefef;
+  }
+
+  .acc-item { border-bottom: 1px solid #efefef; }
+
+  .acc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 17px 0;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .acc-header:hover { color: #666; }
+
+  .acc-plus {
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 1;
+    transition: transform 0.3s;
+    color: #111;
+  }
+
+  .acc-item.open .acc-plus { transform: rotate(45deg); }
+
+  .acc-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.38s ease;
+  }
+
+  .acc-item.open .acc-body { max-height: 500px; }
+
+  .acc-content {
+    padding: 0 0 20px;
+    font-size: 13.5px;
+    color: #555;
+    line-height: 1.75;
+  }
+
+  .acc-content ul { padding-left: 18px; margin-top: 8px; }
+  .acc-content ul li { margin-bottom: 7px; }
+  .acc-content p { margin-bottom: 8px; }
+
+  /* =====================
+     BLACK BENEFITS BAND
+  ===================== */
+  .black-band {
+    background: #111;
+    padding: 36px 48px;
+  }
+
+  .black-band-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .bb-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    color: #fff;
+  }
+
+  .bb-icon {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .bb-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke: #fff;
+    fill: none;
+    stroke-width: 1.8;
+  }
+
+  .bb-text strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    margin-bottom: 2px;
+    color: #fff;
+  }
+
+  .bb-text span {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.4;
+  }
+
+  /* =====================
+     REVIEWS
+  ===================== */
+  .reviews-wrap {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 80px 48px;
+    border-top: 1px solid #efefef;
+  }
+
+  .section-heading {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    margin-bottom: 6px;
+  }
+
+  .section-sub {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 40px;
+  }
+
+  .reviews-top {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #efefef;
+    margin-bottom: 48px;
+  }
+
+  .rev-score-big {
+    font-size: 72px;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.05em;
+    flex-shrink: 0;
+  }
+
+  .rev-score-right { flex: 1; }
+
+  .rev-stars-big {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 6px;
+  }
+
+  .rev-stars-big svg { width: 18px; height: 18px; fill: #111; }
+
+  .rev-total { font-size: 13px; color: #888; margin-bottom: 16px; }
+
+  .bar-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 7px;
+    font-size: 12px;
+    color: #555;
+  }
+
+  .bar-lbl { width: 10px; text-align: right; flex-shrink: 0; }
+
+  .bar-track {
+    flex: 1;
+    height: 5px;
+    background: #f0f0f0;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .bar-fill { height: 100%; background: #111; border-radius: 10px; }
+  .bar-cnt { width: 28px; text-align: right; color: #aaa; flex-shrink: 0; }
+
+  .rev-recommend {
+    flex-shrink: 0;
+    text-align: center;
+    padding-left: 32px;
+    border-left: 1px solid #efefef;
+  }
+
+  .rev-recommend-pct {
+    font-size: 40px;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .rev-recommend-text { font-size: 12px; color: #888; max-width: 90px; line-height: 1.4; }
+
+  /* PHOTO REVIEWS ROW */
+  .review-photos-row {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+    margin-bottom: 48px;
+  }
+
+  .review-photos-row::-webkit-scrollbar { display: none; }
+
+  .rev-photo-thumb {
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .rev-photo-thumb:hover { border-color: #111; }
+
+  /* REVIEW CARDS */
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+
+  .rev-card {
+    padding: 22px;
+    border: 1px solid #efefef;
+    transition: border-color 0.2s;
+  }
+
+  .rev-card:hover { border-color: #ddd; }
+
+  .rev-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+  }
+
+  .rev-name { font-size: 13px; font-weight: 700; }
+  .rev-verified { font-size: 11px; color: #16a34a; font-weight: 600; margin-top: 2px; display: flex; align-items: center; gap: 3px; }
+  .rev-date { font-size: 11px; color: #ccc; }
+
+  .rev-stars {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 8px;
+  }
+
+  .rev-stars svg { width: 12px; height: 12px; fill: #111; }
+
+  .rev-title { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+  .rev-body { font-size: 12.5px; color: #555; line-height: 1.6; }
+
+  .rev-card-img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    margin-top: 14px;
+    background: #f5f5f5;
+  }
+
+  .rev-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .rev-tag {
+    font-size: 10px;
+    color: #888;
+    border: 1px solid #efefef;
+    padding: 2px 7px;
+    border-radius: 20px;
+  }
+
+  .reviews-load-more {
+    text-align: center;
+    margin-top: 16px;
+  }
+
+  .load-more-btn {
+    border: 1.5px solid #111;
+    background: #fff;
+    padding: 13px 44px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .load-more-btn:hover { background: #f5f5f5; }
+
+  /* =====================
+     FAQ
+  ===================== */
+  .faq-wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 60px 48px 90px;
+    border-top: 1px solid #efefef;
+  }
+
+  .faq-wrap .section-heading { text-align: center; margin-bottom: 40px; }
+
+  .faq-item { border-bottom: 1px solid #efefef; }
+
+  .faq-q {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.2s;
+    gap: 16px;
+  }
+
+  .faq-q:hover { color: #666; }
+
+  .faq-icon {
+    font-size: 22px;
+    font-weight: 300;
+    transition: transform 0.3s;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.38s ease;
+  }
+
+  .faq-item.open .faq-a { max-height: 400px; }
+
+  .faq-a p {
+    padding: 0 0 20px;
+    font-size: 13.5px;
+    color: #555;
+    line-height: 1.75;
+  }
+
+  /* STICKY MOBILE */
+  .sticky-mobile {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-top: 1px solid #efefef;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+    z-index: 300;
+    box-shadow: 0 -4px 24px rgba(0,0,0,0.08);
+  }
+
+  .sticky-inner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .sticky-text { flex: 1; min-width: 0; }
+  .sticky-name { font-size: 13px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .sticky-price { font-size: 13px; color: #555; }
+
+  .sticky-atc {
+    background: #111;
+    color: #fff;
+    border: none;
+    padding: 13px 22px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  /* =====================
+     RESPONSIVE
+  ===================== */
+  @media (max-width: 900px) {
+    .product-wrap {
+      grid-template-columns: 1fr;
+    }
+
+    .gallery-col {
+      position: relative;
+      top: 0;
+      height: auto;
+    }
+
+    .gallery-main {
+      height: 100vw;
+      max-height: 480px;
+    }
+
+    .gallery-track {
+      height: 100%;
+    }
+
+    .gallery-thumbs { display: none; }
+    .gallery-dots { display: flex; }
+
+    .info-col {
+      padding: 24px 20px 100px;
+      max-height: none;
+      overflow-y: visible;
+    }
+
+    .product-title { font-size: 22px; }
+    .price-main { font-size: 22px; }
+
+    .black-band { padding: 28px 20px; }
+    .black-band-inner {
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .reviews-wrap { padding: 48px 20px; }
+
+    .reviews-top {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 28px;
+    }
+
+    .rev-recommend {
+      padding-left: 0;
+      border-left: none;
+      border-top: 1px solid #efefef;
+      padding-top: 20px;
+      width: 100%;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .rev-recommend-text { max-width: none; }
+
+    .rev-score-big { font-size: 56px; }
+
+    .reviews-grid { grid-template-columns: 1fr; }
+
+    .faq-wrap { padding: 48px 20px 90px; }
+
+    .sticky-mobile { display: block; }
+
+    .nav-links { display: none; }
+
+    nav { padding: 0 16px; }
+  }
+
+  @media (max-width: 480px) {
+    .black-band-inner { grid-template-columns: 1fr; gap: 18px; }
+    .benefits-grid { grid-template-columns: 1fr 1fr; }
+  }
 </style>
 </head>
 <body>
 
-<!-- ============================================
-     PRODUCT SECTION
-============================================ -->
-<section>
-<div class="ps">
+<!-- ANNOUNCEMENT -->
+<div class="ann-bar">Free Shipping Over €50 &nbsp;·&nbsp; 30-Day Returns &nbsp;·&nbsp; 2-Year Warranty</div>
 
-  <!-- LEFT -->
-  <div class="ps-left">
-    <img
-      class="ps-main-img"
-      id="mainImg"
-      src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=800&q=80"
-      alt="Red Light Face Mask">
-    <div class="ps-thumbs">
-      <img class="ps-thumb active"
-        src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=200&q=80"
-        alt="v1"
-        onclick="swImg(this,'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=800&q=80')">
-      <img class="ps-thumb"
-        src="https://images.unsplash.com/photo-1612817288484-6f916006741a?w=200&q=80"
-        alt="v2"
-        onclick="swImg(this,'https://images.unsplash.com/photo-1612817288484-6f916006741a?w=800&q=80')">
-      <img class="ps-thumb"
-        src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=200&q=80"
-        alt="v3"
-        onclick="swImg(this,'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=800&q=80')">
-      <img class="ps-thumb"
-        src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=200&q=80"
-        alt="v4"
-        onclick="swImg(this,'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=800&q=80')">
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">VISOBELL</div>
+  <div class="nav-links">
+    <a href="#">Shop</a>
+    <a href="#">How It Works</a>
+    <a href="#">Reviews</a>
+    <a href="#">Support</a>
+  </div>
+  <div class="nav-icons">
+    <div class="nav-icon">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+    </div>
+    <div class="nav-icon">
+      <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    </div>
+    <div class="nav-icon">
+      <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
     </div>
   </div>
+</nav>
 
-  <!-- RIGHT -->
-  <div class="ps-right">
+<!-- PRODUCT -->
+<div class="product-wrap">
 
-    <p class="ps-brand">GlowPro</p>
-    <h1 class="ps-title">Red Light Face Mask</h1>
+  <!-- GALLERY -->
+  <div class="gallery-col">
+    <div class="gallery-main" id="galleryMain">
+      <div class="gallery-track" id="galleryTrack">
 
-    <div class="ps-stars-row">
-      <span class="ps-stars">★★★★★</span>
-      <span class="ps-stars-txt">Rated 4.8/5 &nbsp;|&nbsp; 2,341 Reviews</span>
+        <div class="gallery-slide">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=85" alt="SmartView Pro Doorbell - Front View">
+        </div>
+        <div class="gallery-slide">
+          <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=900&q=85" alt="SmartView Pro - Night Vision">
+        </div>
+        <div class="gallery-slide">
+          <img src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=900&q=85" alt="SmartView Pro - App View">
+        </div>
+        <div class="gallery-slide">
+          <img src="https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?w=900&q=85" alt="SmartView Pro - Installation">
+        </div>
+        <div class="gallery-slide">
+          <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=900&q=85" alt="SmartView Pro - Package">
+        </div>
+
+      </div>
+
+      <button class="g-arrow prev" id="gPrev" aria-label="Previous image">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="g-arrow next" id="gNext" aria-label="Next image">
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+
+      <div class="gallery-dots" id="galleryDots"></div>
     </div>
 
-    <div class="ps-price-row">
-      <span class="ps-price">€79,99</span>
-      <span class="ps-price-old">€129,99</span>
-      <span class="ps-save">Save €50</span>
+    <div class="gallery-thumbs" id="galleryThumbs"></div>
+  </div>
+
+  <!-- INFO -->
+  <div class="info-col">
+
+    <h1 class="product-title">SmartView Pro — HD Video Doorbell with Night Vision</h1>
+
+    <div class="rating-row" onclick="document.getElementById('reviewsSection').scrollIntoView({behavior:'smooth'})">
+      <div class="stars-filled">
+        <svg class="star-svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg class="star-svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg class="star-svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg class="star-svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg class="star-svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <span class="rating-text">4.9 · 2,187 Reviews</span>
     </div>
 
-    <ul class="ps-trust">
-      <li><span class="chk">✔</span> Bundle Deals Available</li>
-      <li><span class="chk">✔</span> Clinically Tested &amp; Dermatologist Approved</li>
-      <li><span class="chk">✔</span> Visible Before &amp; After Results</li>
-    </ul>
-
-    <div class="ps-bundle-div">
-      <span>Bundle &amp; Save</span>
+    <div class="price-row">
+      <span class="price-main">€84.99</span>
+      <span class="price-old">€119.99</span>
+      <span class="price-save">SAVE 29%</span>
     </div>
 
-    <div class="ps-bundles">
+    <div class="divider"></div>
 
-      <!-- 1 MASK -->
-      <label class="ps-bundle sel" id="b1" onclick="selB('b1')">
-        <input type="radio" name="bnd" checked>
-        <div class="ps-b-imgs one">
-          <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=120&q=80" alt="1x">
-        </div>
-        <div class="ps-b-mid">
-          <div class="ps-b-name">1 MASK</div>
-          <div class="ps-b-save">You save €50</div>
-        </div>
-        <div class="ps-b-right">
-          <div class="ps-b-price">€79,99</div>
-          <div class="ps-b-old">€129,99</div>
-        </div>
-      </label>
+    <!-- BUNDLES -->
+    <div class="bundles-label">Choose Your Package</div>
+    <div class="bundle-list">
 
-      <!-- 2 MASKS -->
-      <label class="ps-bundle" id="b2" onclick="selB('b2')">
-        <div class="ps-b-badge">Most Popular</div>
-        <input type="radio" name="bnd">
-        <div class="ps-b-imgs two">
-          <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=120&q=80" alt="2x a">
-          <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=120&q=80" alt="2x b">
+      <div class="bundle-row" data-qty="1" data-price="84.99" onclick="selectBundle(this)">
+        <div class="bundle-l">
+          <div class="b-radio"><div class="b-radio-dot"></div></div>
+          <div>
+            <div class="b-name">1 Doorbell</div>
+            <div class="b-sub">Front door coverage</div>
+          </div>
         </div>
-        <div class="ps-b-mid">
-          <div class="ps-b-name">2 MASKS</div>
-          <div class="ps-b-save">You save €110</div>
+        <div>
+          <div class="b-price">€84.99</div>
+          <div class="b-unit">€84.99 / unit</div>
         </div>
-        <div class="ps-b-right">
-          <div class="ps-b-price">€149,99</div>
-          <div class="ps-b-old">€259,98</div>
-        </div>
-      </label>
+      </div>
 
-      <!-- 3 MASKS -->
-      <label class="ps-bundle" id="b3" onclick="selB('b3')">
-        <div class="ps-b-badge">Best Value</div>
-        <input type="radio" name="bnd">
-        <div class="ps-b-imgs three">
-          <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=120&q=80" alt="3x a">
-          <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=120&q=80" alt="3x b">
-          <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=120&q=80" alt="3x c">
+      <div class="bundle-row sel" data-qty="2" data-price="152.99" onclick="selectBundle(this)">
+        <div class="bundle-badge">MOST POPULAR</div>
+        <div class="bundle-l">
+          <div class="b-radio"><div class="b-radio-dot"></div></div>
+          <div>
+            <div class="b-name">2 Doorbells</div>
+            <div class="b-sub">Front + back door — Save 10%</div>
+          </div>
         </div>
-        <div class="ps-b-mid">
-          <div class="ps-b-name">3 MASKS</div>
-          <div class="ps-b-save">You save €190</div>
+        <div>
+          <div class="b-price">€152.99</div>
+          <div class="b-unit">€76.50 / unit</div>
         </div>
-        <div class="ps-b-right">
-          <div class="ps-b-price">€199,99</div>
-          <div class="ps-b-old">€389,97</div>
+      </div>
+
+      <div class="bundle-row" data-qty="3" data-price="214.99" onclick="selectBundle(this)">
+        <div class="bundle-badge" style="background:#444">BEST VALUE</div>
+        <div class="bundle-l">
+          <div class="b-radio"><div class="b-radio-dot"></div></div>
+          <div>
+            <div class="b-name">3 Doorbells</div>
+            <div class="b-sub">Full home coverage — Save 16%</div>
+          </div>
         </div>
-      </label>
+        <div>
+          <div class="b-price">€214.99</div>
+          <div class="b-unit">€71.66 / unit</div>
+        </div>
+      </div>
 
     </div>
 
-    <!-- Feature row: Free Shipping / Returns / Secure -->
-    <div class="ps-feats">
-      <div class="ps-feat">
-        <span class="f-ico">🚚</span>
-        <span>Free Shipping</span>
+    <!-- BENEFITS -->
+    <div class="benefits-grid">
+      <div class="benefit-item">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <span>Free shipping over €50</span>
       </div>
-      <div class="ps-feat">
-        <span class="f-ico">🔄</span>
-        <span>No Risk 30-Day Returns</span>
+      <div class="benefit-item">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+        </div>
+        <span>30-day free returns</span>
       </div>
-      <div class="ps-feat">
-        <span class="f-ico">🔒</span>
-        <span>Secure Checkout</span>
+      <div class="benefit-item">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <span>24/7 customer support</span>
       </div>
-    </div>
-
-    <button class="ps-btn-cart" id="addToCartBtn">Add to Cart</button>
-    <button class="ps-btn-buy">Buy it Now</button>
-
-    <!-- Payment icons -->
-    <div class="ps-pays">
-      <img class="ps-pay-img"
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/200px-Visa_Inc._logo.svg.png"
-        alt="Visa">
-      <img class="ps-pay-img"
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/200px-Mastercard-logo.svg.png"
-        alt="Mastercard">
-      <img class="ps-pay-img"
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/American_Express_logo_%282018%29.svg/200px-American_Express_logo_%282018%29.svg.png"
-        alt="Amex">
-      <img class="ps-pay-img"
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Apple_Pay_logo.svg/200px-Apple_Pay_logo.svg.png"
-        alt="Apple Pay">
-      <img class="ps-pay-img"
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Google_Pay_Logo.svg/200px-Google_Pay_Logo.svg.png"
-        alt="Google Pay">
-      <img class="ps-pay-img"
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/200px-PayPal.svg.png"
-        alt="PayPal">
-    </div>
-
-    <!-- Accordion -->
-    <div class="ps-acc">
-      <div class="ps-acc-item">
-        <div class="ps-acc-head" onclick="togAcc(this)">
-          Description <span class="ps-plus">+</span>
+      <div class="benefit-item">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
         </div>
-        <div class="ps-acc-body">
-          The GlowPro Red Light Face Mask uses 630nm red &amp; 850nm near-infrared LED technology to stimulate collagen production, reduce fine lines, and improve overall skin texture. FDA-cleared, clinically tested, dermatologist approved. 132 medical-grade LED diodes for full-face even coverage.
-        </div>
-      </div>
-      <div class="ps-acc-item">
-        <div class="ps-acc-head" onclick="togAcc(this)">
-          How To Use <span class="ps-plus">+</span>
-        </div>
-        <div class="ps-acc-body">
-          1. Cleanse your face before use.<br>
-          2. Place the mask on your face and secure the strap.<br>
-          3. Select your preferred light mode and press power.<br>
-          4. Relax for 10–20 minutes per session.<br>
-          5. Use 3–5 times per week. Visible results within 4–8 weeks.
-        </div>
-      </div>
-      <div class="ps-acc-item">
-        <div class="ps-acc-head" onclick="togAcc(this)">
-          Ingredients &amp; Technology <span class="ps-plus">+</span>
-        </div>
-        <div class="ps-acc-body">
-          🔴 630nm Red Light – Collagen &amp; elastin stimulation<br>
-          🟣 850nm Near-Infrared – Deep tissue repair &amp; anti-inflammation<br>
-          🔵 415nm Blue Light – Kills acne-causing bacteria<br>
-          Medical-grade silicone shell. USB rechargeable. 7 selectable light modes.
-        </div>
-      </div>
-      <div class="ps-acc-item">
-        <div class="ps-acc-head" onclick="togAcc(this)">
-          Shipping &amp; Returns <span class="ps-plus">+</span>
-        </div>
-        <div class="ps-acc-body">
-          🚚 Free tracked shipping on all orders.<br>
-          📦 Dispatched within 1–2 business days.<br>
-          🌍 Delivered in 3–7 business days (EU).<br>
-          🔄 30-day hassle-free returns — full refund guaranteed.
-        </div>
+        <span>Secure checkout</span>
       </div>
     </div>
 
+    <!-- ATC -->
+    <button class="atc-btn" id="atcBtn" onclick="handleAtc()">
+      Add to Cart — <span id="atcPriceSpan">€152.99</span>
+    </button>
+    <button class="buy-now-btn">Buy It Now</button>
+
+    <div class="payment-row">
+      <span class="pay-chip">VISA</span>
+      <span class="pay-chip">MASTERCARD</span>
+      <span class="pay-chip">AMEX</span>
+      <span class="pay-chip">APPLE PAY</span>
+      <span class="pay-chip">GOOGLE PAY</span>
+      <span class="pay-chip">KLARNA</span>
+      <span class="pay-chip">PAYPAL</span>
+    </div>
+
+    <!-- ACCORDIONS -->
+    <div class="accordions">
+
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this.parentElement)">
+          <span>Description</span>
+          <span class="acc-plus">+</span>
+        </div>
+        <div class="acc-body">
+          <div class="acc-content">
+            <p>The SmartView Pro is a next-generation video doorbell built for modern homes. With crisp 2K HD video, 160° wide-angle lens and advanced night vision, you'll always see who's at your door — whether you're home or halfway around the world.</p>
+            <ul>
+              <li>2K HD video — crystal clear day & night</li>
+              <li>160° wide-angle lens — covers your full entrance</li>
+              <li>Advanced infrared night vision up to 10m</li>
+              <li>Instant motion alerts to your phone</li>
+              <li>Two-way audio — speak to visitors remotely</li>
+              <li>Works with Alexa, Google Home & Apple HomeKit</li>
+              <li>IP65 weatherproof — built for all conditions</li>
+              <li>Simple wired or battery installation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this.parentElement)">
+          <span>Shipping & Returns</span>
+          <span class="acc-plus">+</span>
+        </div>
+        <div class="acc-body">
+          <div class="acc-content">
+            <ul>
+              <li>Free standard shipping on orders over €50</li>
+              <li>Delivered within 3–5 business days</li>
+              <li>Express 1–2 day shipping available at checkout</li>
+              <li>Free returns within 30 days — no questions asked</li>
+              <li>Easy returns via our online portal</li>
+              <li>Full refund processed within 5 business days</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>
-</section>
 
-<!-- ============================================
-     BENEFITS – červená, bez nadpisu, bez kariet
-============================================ -->
-<section class="ben-sec">
-  <div class="ben-grid">
-    <div class="ben-card">
-      <div class="ben-emoji">🚚</div>
-      <div class="ben-title">Free Shipping</div>
-      <div class="ben-desc">Free tracked shipping on every order. Delivered in 3–7 days.</div>
-    </div>
-    <div class="ben-card">
-      <div class="ben-emoji">🔄</div>
-      <div class="ben-title">30-Day Returns</div>
-      <div class="ben-desc">Not happy? Return within 30 days. Full refund, no questions asked.</div>
-    </div>
-    <div class="ben-card">
-      <div class="ben-emoji">✅</div>
-      <div class="ben-title">Clinically Tested</div>
-      <div class="ben-desc">FDA-cleared LED technology. Dermatologist approved for all skin types.</div>
-    </div>
-    <div class="ben-card">
-      <div class="ben-emoji">🔒</div>
-      <div class="ben-title">Secure Payment</div>
-      <div class="ben-desc">256-bit SSL encryption. All major cards &amp; PayPal accepted.</div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================
-     REVIEWS
-============================================ -->
-<section class="rev-sec">
-  <h2 class="sec-h">What Our <span>Customers Say</span></h2>
-  <p class="sec-sub">2,341 verified reviews — real results from real people</p>
-
-  <div class="rev-summary">
-    <div style="text-align:center">
-      <div class="rev-big-num">4.8</div>
-      <div class="rev-big-stars">★★★★★</div>
-      <div class="rev-big-sub">Based on 2,341 reviews</div>
-    </div>
-    <div class="rev-bars">
-      <div class="rev-bar-row">
-        <span style="min-width:22px;text-align:right">5★</span>
-        <div class="rev-bar-bg"><div class="rev-bar-fill" style="width:78%"></div></div>
-        <span>78%</span>
+<!-- BLACK BENEFITS BAND -->
+<div class="black-band">
+  <div class="black-band-inner">
+    <div class="bb-item">
+      <div class="bb-icon">
+        <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
       </div>
-      <div class="rev-bar-row">
-        <span style="min-width:22px;text-align:right">4★</span>
-        <div class="rev-bar-bg"><div class="rev-bar-fill" style="width:14%"></div></div>
-        <span>14%</span>
+      <div class="bb-text">
+        <strong>Free Shipping</strong>
+        <span>On all orders over €50. Fast & tracked delivery.</span>
       </div>
-      <div class="rev-bar-row">
-        <span style="min-width:22px;text-align:right">3★</span>
-        <div class="rev-bar-bg"><div class="rev-bar-fill" style="width:5%"></div></div>
-        <span>5%</span>
+    </div>
+    <div class="bb-item">
+      <div class="bb-icon">
+        <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
       </div>
-      <div class="rev-bar-row">
-        <span style="min-width:22px;text-align:right">2★</span>
-        <div class="rev-bar-bg"><div class="rev-bar-fill" style="width:2%"></div></div>
-        <span>2%</span>
+      <div class="bb-text">
+        <strong>30-Day Returns</strong>
+        <span>Not happy? Return it free within 30 days.</span>
       </div>
-      <div class="rev-bar-row">
-        <span style="min-width:22px;text-align:right">1★</span>
-        <div class="rev-bar-bg"><div class="rev-bar-fill" style="width:1%"></div></div>
-        <span>1%</span>
+    </div>
+    <div class="bb-item">
+      <div class="bb-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <div class="bb-text">
+        <strong>24/7 Support</strong>
+        <span>Real humans ready to help any time of day.</span>
+      </div>
+    </div>
+    <div class="bb-item">
+      <div class="bb-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </div>
+      <div class="bb-text">
+        <strong>Secure Checkout</strong>
+        <span>SSL encrypted. Your data is always protected.</span>
       </div>
     </div>
   </div>
+</div>
 
-  <div class="rev-grid">
+<!-- REVIEWS -->
+<div class="reviews-wrap" id="reviewsSection">
+  <div class="section-heading">What customers are saying</div>
+  <div class="section-sub">2,187 verified reviews · Updated daily</div>
+
+  <div class="reviews-top">
+    <div class="rev-score-big">4.9</div>
+    <div class="rev-score-right">
+      <div class="rev-stars-big">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <div class="rev-total">Based on 2,187 reviews</div>
+      <div>
+        <div class="bar-row"><span class="bar-lbl">5</span><div class="bar-track"><div class="bar-fill" style="width:89%"></div></div><span class="bar-cnt">1,946</span></div>
+        <div class="bar-row"><span class="bar-lbl">4</span><div class="bar-track"><div class="bar-fill" style="width:8%"></div></div><span class="bar-cnt">175</span></div>
+        <div class="bar-row"><span class="bar-lbl">3</span><div class="bar-track"><div class="bar-fill" style="width:2%"></div></div><span class="bar-cnt">44</span></div>
+        <div class="bar-row"><span class="bar-lbl">2</span><div class="bar-track"><div class="bar-fill" style="width:0.6%"></div></div><span class="bar-cnt">14</span></div>
+        <div class="bar-row"><span class="bar-lbl">1</span><div class="bar-track"><div class="bar-fill" style="width:0.2%"></div></div><span class="bar-cnt">8</span></div>
+      </div>
+    </div>
+    <div class="rev-recommend">
+      <div class="rev-recommend-pct">97%</div>
+      <div class="rev-recommend-text">would recommend to a friend</div>
+    </div>
+  </div>
+
+  <!-- PHOTO STRIP -->
+  <div class="review-photos-row">
+    <img class="rev-photo-thumb" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&q=80" alt="Customer photo">
+    <img class="rev-photo-thumb" src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=200&q=80" alt="Customer photo">
+    <img class="rev-photo-thumb" src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=200&q=80" alt="Customer photo">
+    <img class="rev-photo-thumb" src="https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?w=200&q=80" alt="Customer photo">
+    <img class="rev-photo-thumb" src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=200&q=80" alt="Customer photo">
+    <img class="rev-photo-thumb" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&q=80" alt="Customer photo">
+    <img class="rev-photo-thumb" src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=200&q=80" alt="Customer photo">
+  </div>
+
+  <!-- REVIEW CARDS -->
+  <div class="reviews-grid">
+
     <div class="rev-card">
-      <img class="rev-card-img"
-        src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=600&q=80" alt="Martina">
-      <div class="rev-card-body">
-        <div class="rev-verified">✔ Verified Purchase</div>
-        <div class="rev-stars">★★★★★</div>
-        <p class="rev-text">"I've been using this mask for 6 weeks and the difference is incredible. My skin is so much smoother and my acne scars have faded. 100% recommend!"</p>
-        <div class="rev-author">Martina K.</div>
-        <div class="rev-date">April 12, 2025</div>
+      <div class="rev-card-top">
+        <div>
+          <div class="rev-name">Marcus T.</div>
+          <div class="rev-verified">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            Verified Buyer
+          </div>
+        </div>
+        <div class="rev-date">2 days ago</div>
+      </div>
+      <div class="rev-stars">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <div class="rev-title">Finally feel safe at home</div>
+      <div class="rev-body">Setup took literally 10 minutes. The night vision is unreal — you can see every detail even at 2am. Already caught a package thief on camera.</div>
+      <img class="rev-card-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80" alt="Customer photo">
+      <div class="rev-tags">
+        <span class="rev-tag">Easy Install</span>
+        <span class="rev-tag">Night Vision</span>
+        <span class="rev-tag">Great Quality</span>
       </div>
     </div>
+
     <div class="rev-card">
-      <img class="rev-card-img"
-        src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&q=80" alt="Sofia">
-      <div class="rev-card-body">
-        <div class="rev-verified">✔ Verified Purchase</div>
-        <div class="rev-stars">★★★★★</div>
-        <p class="rev-text">"Absolutely love this! After 3 weeks my fine lines are visibly reduced. Quality feels premium and it's very comfortable to wear every day."</p>
-        <div class="rev-author">Sofia R.</div>
-        <div class="rev-date">March 28, 2025</div>
+      <div class="rev-card-top">
+        <div>
+          <div class="rev-name">Sarah K.</div>
+          <div class="rev-verified">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            Verified Buyer
+          </div>
+        </div>
+        <div class="rev-date">5 days ago</div>
+      </div>
+      <div class="rev-stars">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <div class="rev-title">Best smart home purchase I've made</div>
+      <div class="rev-body">Was skeptical about the price but absolutely worth every cent. The app is incredibly smooth and the video quality blew me away. My neighbours have ordered one too!</div>
+      <img class="rev-card-img" src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=500&q=80" alt="Customer photo">
+      <div class="rev-tags">
+        <span class="rev-tag">App Quality</span>
+        <span class="rev-tag">Worth It</span>
       </div>
     </div>
+
     <div class="rev-card">
-      <img class="rev-card-img"
-        src="https://images.unsplash.com/photo-1546961342-ea5f62d3a23f?w=600&q=80" alt="Zuzana">
-      <div class="rev-card-body">
-        <div class="rev-verified">✔ Verified Purchase</div>
-        <div class="rev-stars">★★★★☆</div>
-        <p class="rev-text">"Bought the 2-mask bundle for me and my sister. Shipping was super fast and packaging really nice. Skin feels rejuvenated after every session!"</p>
-        <div class="rev-author">Zuzana M.</div>
-        <div class="rev-date">April 5, 2025</div>
+      <div class="rev-card-top">
+        <div>
+          <div class="rev-name">Daniel W.</div>
+          <div class="rev-verified">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            Verified Buyer
+          </div>
+        </div>
+        <div class="rev-date">1 week ago</div>
+      </div>
+      <div class="rev-stars">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <div class="rev-title">Replaced my old Ring — no regrets</div>
+      <div class="rev-body">Crystal clear 2K video, motion zones work perfectly, and the two-way audio has zero lag. This completely replaced my Ring and the monthly subscription savings alone pay for it.</div>
+      <div class="rev-tags">
+        <span class="rev-tag">2K Video</span>
+        <span class="rev-tag">No Subscription</span>
+        <span class="rev-tag">Better than Ring</span>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ============================================
-     FAQ
-============================================ -->
-<section class="faq-sec">
-  <h2 class="faq-h">FAQ</h2>
+    <div class="rev-card">
+      <div class="rev-card-top">
+        <div>
+          <div class="rev-name">Emma L.</div>
+          <div class="rev-verified">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            Verified Buyer
+          </div>
+        </div>
+        <div class="rev-date">1 week ago</div>
+      </div>
+      <div class="rev-stars">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <div class="rev-title">Perfect for my apartment building</div>
+      <div class="rev-body">I live alone and this gives me real peace of mind. Instant alerts, super clear video and I can talk to delivery drivers without opening the door. 10/10.</div>
+      <img class="rev-card-img" src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=500&q=80" alt="Customer photo">
+      <div class="rev-tags">
+        <span class="rev-tag">Peace of Mind</span>
+        <span class="rev-tag">Apartment</span>
+      </div>
+    </div>
+
+    <div class="rev-card">
+      <div class="rev-card-top">
+        <div>
+          <div class="rev-name">Ravi P.</div>
+          <div class="rev-verified">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            Verified Buyer
+          </div>
+        </div>
+        <div class="rev-date">2 weeks ago</div>
+      </div>
+      <div class="rev-stars">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <div class="rev-title">Shipping was incredibly fast</div>
+      <div class="rev-body">Ordered Monday, arrived Wednesday. Setup guide is excellent. Works flawlessly with my Google Home setup. The 160° view is massive — see the whole street.</div>
+      <div class="rev-tags">
+        <span class="rev-tag">Fast Delivery</span>
+        <span class="rev-tag">Google Home</span>
+        <span class="rev-tag">Wide Angle</span>
+      </div>
+    </div>
+
+    <div class="rev-card">
+      <div class="rev-card-top">
+        <div>
+          <div class="rev-name">Claire M.</div>
+          <div class="rev-verified">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            Verified Buyer
+          </div>
+        </div>
+        <div class="rev-date">2 weeks ago</div>
+      </div>
+      <div class="rev-stars">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <div class="rev-title">Bought 2 — one for front, one for garage</div>
+      <div class="rev-body">The bundle deal made it really affordable. Both installed in under 30 minutes total. The app lets you see both cameras on one screen. Absolutely love it.</div>
+      <img class="rev-card-img" src="https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?w=500&q=80" alt="Customer photo">
+      <div class="rev-tags">
+        <span class="rev-tag">Bundle Deal</span>
+        <span class="rev-tag">Multi-Camera</span>
+      </div>
+    </div>
+
+    <div class="rev-card">
+      <div class="rev-card-top">
+        <div>
+          <div class="rev-name">Jonas B.</div>
+          <div class="rev-verified">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            Verified Buyer
+          </div>
+        </div>
+        <div class="rev-date">3 weeks ago</div>
+      </div>
+      <div class="rev-stars">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <div class="rev-title">Weatherproof — survived a full winter</div>
+      <div class="rev-body">Been through heavy rain, frost and wind. Still working perfectly. Battery life is impressive too — only charged it twice in 4 months. Build quality is outstanding.</div>
+      <div class="rev-tags">
+        <span class="rev-tag">Weatherproof</span>
+        <span class="rev-tag">Battery Life</span>
+        <span class="rev-tag">Durable</span>
+      </div>
+    </div>
+
+    <div class="rev-card">
+      <div class="rev-card-top">
+        <div>
+          <div class="rev-name">Nina F.</div>
+          <div class="rev-verified">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            Verified Buyer
+          </div>
+        </div>
+        <div class="rev-date">3 weeks ago</div>
+      </div>
+      <div class="rev-stars">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <div class="rev-title">Customer service is exceptional</div>
+      <div class="rev-body">Had a small setup question, support replied within an hour and solved it immediately. The product itself is also fantastic — sharp image, instant notifications.</div>
+      <div class="rev-tags">
+        <span class="rev-tag">Great Support</span>
+        <span class="rev-tag">Fast Response</span>
+      </div>
+    </div>
+
+    <div class="rev-card">
+      <div class="rev-card-top">
+        <div>
+          <div class="rev-name">Thomas R.</div>
+          <div class="rev-verified">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            Verified Buyer
+          </div>
+        </div>
+        <div class="rev-date">1 month ago</div>
+      </div>
+      <div class="rev-stars">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <div class="rev-title">Works seamlessly with Alexa</div>
+      <div class="rev-body">I just say "Alexa, show me the front door" and it instantly appears on my Echo Show. Connection is rock solid and never drops. Incredible value at this price.</div>
+      <img class="rev-card-img" src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=500&q=80" alt="Customer photo">
+      <div class="rev-tags">
+        <span class="rev-tag">Alexa</span>
+        <span class="rev-tag">Smart Home</span>
+        <span class="rev-tag">Great Value</span>
+      </div>
+    </div>
+
+    <div class="rev-card">
+      <div class="rev-card-top">
+        <div>
+          <div class="rev-name">Anouk V.</div>
+          <div class="rev-verified">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            Verified Buyer
+          </div>
+        </div>
+        <div class="rev-date">1 month ago</div>
+      </div>
+      <div class="rev-stars">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <div class="rev-title">Husband installed it in 8 minutes</div>
+      <div class="rev-body">No electrician needed, no hassle. Screw it in, connect the app, done. The motion zones are brilliant — I only get alerts when there's actually someone there, not every car passing.</div>
+      <div class="rev-tags">
+        <span class="rev-tag">DIY Install</span>
+        <span class="rev-tag">Motion Zones</span>
+        <span class="rev-tag">No False Alerts</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="reviews-load-more">
+    <button class="load-more-btn">Load More Reviews</button>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq-wrap">
+  <div class="section-heading">Frequently Asked Questions</div>
 
   <div class="faq-item">
-    <div class="faq-q" onclick="togFaq(this)">
-      How does the Red Light Face Mask work?
-      <span class="faq-plus">+</span>
+    <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+      <span>Does it work without a subscription?</span>
+      <span class="faq-icon">+</span>
     </div>
-    <div class="faq-a">
-      Red light therapy uses specific wavelengths (630nm red and 850nm near-infrared) to penetrate the skin at different depths. This stimulates mitochondria to produce more ATP energy, boosting collagen, accelerating cell repair, and reducing inflammation — resulting in smoother, firmer skin.
-    </div>
+    <div class="faq-a"><p>Yes — SmartView Pro works completely without any monthly fee. Live view, two-way audio and instant motion alerts are all free. Optional cloud storage plans are available if you want 30-day video history, but they're never required.</p></div>
   </div>
 
   <div class="faq-item">
-    <div class="faq-q" onclick="togFaq(this)">
-      Is it safe for all skin types?
-      <span class="faq-plus">+</span>
+    <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+      <span>Is it battery-powered or wired?</span>
+      <span class="faq-icon">+</span>
     </div>
-    <div class="faq-a">
-      Yes. Clinically tested and dermatologist-approved for all skin types including sensitive skin. The LED technology is non-invasive, non-thermal, and completely safe for home use. Consult your doctor if you have a medical condition or are photosensitive.
-    </div>
+    <div class="faq-a"><p>Both. SmartView Pro supports wired installation (connects to your existing doorbell wiring) and wireless battery mode. The built-in rechargeable battery lasts 3–6 months on a single charge depending on usage.</p></div>
   </div>
 
   <div class="faq-item">
-    <div class="faq-q" onclick="togFaq(this)">
-      How long until I see results?
-      <span class="faq-plus">+</span>
+    <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+      <span>What smart home systems does it work with?</span>
+      <span class="faq-icon">+</span>
     </div>
-    <div class="faq-a">
-      Most customers notice improved skin texture and radiance within 2–4 weeks (3–5 sessions per week). Significant results — reduced fine lines, improved skin tone — are typically visible after 6–8 weeks of consistent use.
-    </div>
+    <div class="faq-a"><p>SmartView Pro is compatible with Amazon Alexa, Google Home and Apple HomeKit. You can view live footage on Echo Show, Google Nest Hub or any Apple HomeKit-enabled display.</p></div>
   </div>
 
   <div class="faq-item">
-    <div class="faq-q" onclick="togFaq(this)">
-      How long does each session last?
-      <span class="faq-plus">+</span>
+    <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+      <span>How good is the night vision?</span>
+      <span class="faq-icon">+</span>
     </div>
-    <div class="faq-a">
-      Each session should last 10–20 minutes. Start with 10 minutes and gradually increase to 20. The mask automatically turns off after 20 minutes for safety.
-    </div>
+    <div class="faq-a"><p>Excellent. Our advanced infrared night vision provides clear, detailed footage up to 10 metres in complete darkness. The camera automatically switches between colour and night vision mode depending on light conditions.</p></div>
   </div>
 
   <div class="faq-item">
-    <div class="faq-q" onclick="togFaq(this)">
-      Do you offer free shipping?
-      <span class="faq-plus">+</span>
+    <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+      <span>What if it doesn't work for me?</span>
+      <span class="faq-icon">+</span>
     </div>
-    <div class="faq-a">
-      Yes — free tracked shipping on all EU orders. Dispatched within 1–2 business days, delivered in 3–7 business days. Tracking number sent to your email immediately after dispatch.
-    </div>
+    <div class="faq-a"><p>You're covered by our 30-day no-questions-asked return policy. If you're not completely satisfied, simply use our online returns portal to send it back for a full refund. We also offer a 2-year manufacturer warranty on all units.</p></div>
   </div>
 
   <div class="faq-item">
-    <div class="faq-q" onclick="togFaq(this)">
-      What is your return policy?
-      <span class="faq-plus">+</span>
+    <div class="faq-q" onclick="toggleFaq(this.parentElement)">
+      <span>How does the bundle discount work?</span>
+      <span class="faq-icon">+</span>
     </div>
-    <div class="faq-a">
-      30-day hassle-free returns. If you are not completely satisfied for any reason, contact our support team and we will arrange a full refund — no questions asked.
-    </div>
+    <div class="faq-a"><p>Buying 2 units saves you 10% and buying 3 saves you 16%. The discount is applied automatically when you select your bundle above — no coupon codes needed. Many customers cover their front door and back entrance together.</p></div>
   </div>
 
-</section>
+</div>
 
-<!-- ============================================
-     STICKY BAR
-============================================ -->
-<div class="sticky" id="stickyBar">
-  <div class="sticky-l">
-    <img class="sticky-img"
-      src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=120&q=80" alt="mask">
-    <div>
-      <div class="sticky-name">Red Light Face Mask</div>
-      <div class="sticky-price">€79,99 &nbsp;<s>€129,99</s></div>
+<!-- STICKY MOBILE BAR -->
+<div class="sticky-mobile" id="stickyBar">
+  <div class="sticky-inner">
+    <div class="sticky-text">
+      <div class="sticky-name">SmartView Pro Doorbell</div>
+      <div class="sticky-price" id="stickyPrice">€152.99 — 2 Doorbells</div>
     </div>
+    <button class="sticky-atc" onclick="handleAtc()">Add to Cart</button>
   </div>
-  <button class="sticky-btn">Add to Cart</button>
 </div>
 
 <script>
-function swImg(el, src) {
-  document.getElementById('mainImg').src = src;
-  document.querySelectorAll('.ps-thumb').forEach(t => t.classList.remove('active'));
-  el.classList.add('active');
-}
+(function () {
+  'use strict';
 
-function selB(id) {
-  document.querySelectorAll('.ps-bundle').forEach(b => b.classList.remove('sel'));
-  document.getElementById(id).classList.add('sel');
-}
+  /* ===== GALLERY ===== */
+  var track = document.getElementById('galleryTrack');
+  var slides = track.querySelectorAll('.gallery-slide');
+  var total = slides.length;
+  var current = 0;
+  var startX = 0;
+  var dragX = 0;
+  var isDragging = false;
+  var thumbsContainer = document.getElementById('galleryThumbs');
+  var dotsContainer = document.getElementById('galleryDots');
+  var thumbs = [];
+  var dots = [];
 
-function togAcc(h) {
-  const b = h.nextElementSibling;
-  const open = b.classList.contains('open');
-  document.querySelectorAll('.ps-acc-body').forEach(x => x.classList.remove('open'));
-  document.querySelectorAll('.ps-acc-head').forEach(x => x.classList.remove('open'));
-  if (!open) { b.classList.add('open'); h.classList.add('open'); }
-}
+  // Build thumbnails
+  slides.forEach(function (slide, i) {
+    var img = slide.querySelector('img');
 
-function togFaq(q) {
-  const a = q.nextElementSibling;
-  const open = a.classList.contains('open');
-  document.querySelectorAll('.faq-a').forEach(x => x.classList.remove('open'));
-  document.querySelectorAll('.faq-q').forEach(x => x.classList.remove('open'));
-  if (!open) { a.classList.add('open'); q.classList.add('open'); }
-}
+    // Thumb
+    var thumb = document.createElement('div');
+    thumb.className = 'g-thumb' + (i === 0 ? ' active' : '');
+    var tImg = document.createElement('img');
+    tImg.src = img.src;
+    tImg.alt = img.alt;
+    thumb.appendChild(tImg);
+    thumb.addEventListener('click', function () { goTo(i); });
+    thumbsContainer.appendChild(thumb);
+    thumbs.push(thumb);
 
-const cartBtn = document.getElementById('addToCartBtn');
-const stickyBar = document.getElementById('stickyBar');
-window.addEventListener('scroll', () => {
-  stickyBar.classList.toggle('show', cartBtn.getBoundingClientRect().bottom < 0);
-});
+    // Dot
+    var dot = document.createElement('button');
+    dot.className = 'g-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Image ' + (i + 1));
+    dot.addEventListener('click', function () { goTo(i); });
+    dotsContainer.appendChild(dot);
+    dots.push(dot);
+  });
+
+  function goTo(n) {
+    current = Math.max(0, Math.min(n, total - 1));
+    track.style.transform = 'translateX(-' + (current * 100) + '%)';
+    thumbs.forEach(function (t, i) { t.classList.toggle('active', i === current); });
+    dots.forEach(function (d, i) { d.classList.toggle('active', i === current); });
+  }
+
+  window.ppGalleryGoTo = goTo;
+
+  document.getElementById('gPrev').addEventListener('click', function () { goTo(current - 1); });
+  document.getElementById('gNext').addEventListener('click', function () { goTo(current + 1); });
+
+  // Touch swipe
+  var gMain = document.getElementById('galleryMain');
+
+  gMain.addEventListener('touchstart', function (e) {
+    startX = e.touches[0].clientX;
+  }, { passive: true });
+
+  gMain.addEventListener('touchend', function (e) {
+    var diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) goTo(current + (diff > 0 ? 1 : -1));
+  }, { passive: true });
+
+  // Mouse drag
+  gMain.addEventListener('mousedown', function (e) {
+    isDragging = true;
+    startX = e.clientX;
+    track.classList.add('dragging');
+  });
+
+  window.addEventListener('mousemove', function (e) {
+    if (!isDragging) return;
+    dragX = e.clientX - startX;
+    track.style.transform = 'translateX(calc(-' + (current * 100) + '% + ' + dragX + 'px))';
+  });
+
+  window.addEventListener('mouseup', function () {
+    if (!isDragging) return;
+    isDragging = false;
+    track.classList.remove('dragging');
+    if (Math.abs(dragX) > 60) {
+      goTo(current + (dragX < 0 ? 1 : -1));
+    } else {
+      goTo(current);
+    }
+    dragX = 0;
+  });
+
+  /* ===== BUNDLES ===== */
+  var bundleData = {
+    '1': { price: '€84.99', label: '1 Doorbell' },
+    '2': { price: '€152.99', label: '2 Doorbells' },
+    '3': { price: '€214.99', label: '3 Doorbells' }
+  };
+
+  window.selectBundle = function (el) {
+    document.querySelectorAll('.bundle-row').forEach(function (b) { b.classList.remove('sel'); });
+    el.classList.add('sel');
+    var qty = el.dataset.qty;
+    var d = bundleData[qty];
+    document.getElementById('atcPriceSpan').textContent = d.price;
+    var sp = document.getElementById('stickyPrice');
+    if (sp) sp.textContent = d.price + ' — ' + d.label;
+  };
+
+  /* ===== ATC ===== */
+  window.handleAtc = function () {
+    var btn = document.getElementById('atcBtn');
+    var orig = btn.innerHTML;
+    btn.textContent = 'Added to Cart!';
+    btn.style.background = '#1a1a1a';
+    btn.style.letterSpacing = '0.08em';
+    setTimeout(function () {
+      btn.innerHTML = orig;
+      btn.style.background = '';
+      btn.style.letterSpacing = '';
+    }, 2400);
+  };
+
+  /* ===== ACCORDIONS ===== */
+  window.toggleAcc = function (el) {
+    var open = el.classList.contains('open');
+    document.querySelectorAll('.acc-item').forEach(function (a) { a.classList.remove('open'); });
+    if (!open) el.classList.add('open');
+  };
+
+  /* ===== FAQ ===== */
+  window.toggleFaq = function (el) {
+    var open = el.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function (f) { f.classList.remove('open'); });
+    if (!open) el.classList.add('open');
+  };
+
+  /* ===== STICKY BAR ===== */
+  var atcBtn = document.getElementById('atcBtn');
+  var stickyBar = document.getElementById('stickyBar');
+
+  if (atcBtn && stickyBar) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (window.innerWidth <= 900) {
+          stickyBar.style.display = entry.isIntersecting ? 'none' : 'block';
+        }
+      });
+    }, { threshold: 0 });
+    observer.observe(atcBtn);
+  }
+
+  // Hide sticky on desktop
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 900 && stickyBar) {
+      stickyBar.style.display = 'none';
+    }
+  });
+
+})();
 </script>
-
 </body>
 </html>
