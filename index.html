@@ -3,350 +3,388 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DoorBell Pro — Smart Security Doorbell</title>
+<title>DoorBell Pro — BellCo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
+  --navy:    #0d1e35;
+  --navy-2:  #162440;
+  --navy-3:  #1e2f4d;
   --white:   #ffffff;
-  --navy:    #1e2d40;
-  --navy-lt: #2d3f56;
-  --gray1:   #5a6472;
-  --gray2:   #8a939e;
-  --gray3:   #c8cdd4;
-  --gray4:   #eef0f2;
-  --gray5:   #f7f8f9;
-  --gold:    #c8a55a;
-  --green:   #3a7d50;
-  --red:     #d94f38;
-  --border:  #e4e7ea;
+  --off:     #f8f7f4;
+  --gray1:   #4a5568;
+  --gray2:   #8492a6;
+  --gray3:   #c8cfd8;
+  --gray4:   #eef0f3;
+  --gold:    #c8a040;
+  --green:   #2d7a50;
+  --border:  #e8eaed;
+  --radius:  3px;
 }
 
 html { scroll-behavior: smooth; }
-
 body {
-  font-family: 'Jost', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   background: var(--white);
   color: var(--navy);
   font-size: 15px;
-  line-height: 1.55;
+  line-height: 1.6;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
 }
 
-/* ─── NAV ─────────────────────────────────────────── */
+/* ── ANNOUNCEMENT BAR ──────────────────────────────── */
+.anbar {
+  background: var(--navy);
+  color: rgba(255,255,255,0.75);
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  padding: 10px 20px;
+}
+.anbar strong { color: #fff; font-weight: 500; }
+
+/* ── NAV ────────────────────────────────────────────── */
 nav {
   position: sticky; top: 0; z-index: 200;
   background: var(--white);
   border-bottom: 1px solid var(--border);
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0 48px; height: 64px;
+  padding: 0 52px; height: 70px;
 }
 .nav-logo {
-  font-family: 'Jost', sans-serif;
-  font-size: 17px; font-weight: 600;
-  letter-spacing: 0.18em; text-transform: uppercase;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px; font-weight: 600;
+  letter-spacing: 0.22em; text-transform: uppercase;
   color: var(--navy); text-decoration: none;
-  display: flex; align-items: center; gap: 8px;
+  display: flex; align-items: center; gap: 9px;
 }
-.nav-logo svg { width: 22px; height: 22px; stroke: var(--navy); fill: none; stroke-width: 1.6; }
-.nav-links { display: flex; gap: 32px; }
+.nav-logo-icon { width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; }
+.nav-logo-icon svg { width: 100%; height: 100%; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+.nav-links { display: flex; gap: 36px; }
 .nav-links a {
-  font-size: 13px; font-weight: 400; letter-spacing: 0.05em;
-  color: var(--gray1); text-decoration: none;
-  transition: color 0.18s;
+  font-size: 13px; font-weight: 400; letter-spacing: 0.04em;
+  color: var(--gray1); text-decoration: none; transition: color 0.18s;
 }
 .nav-links a:hover { color: var(--navy); }
-.nav-right { display: flex; align-items: center; gap: 20px; }
+.nav-right { display: flex; align-items: center; gap: 22px; }
 .nav-right svg {
-  width: 20px; height: 20px;
-  stroke: var(--navy); fill: none; stroke-width: 1.6;
-  cursor: pointer; transition: opacity 0.18s; display: block;
+  width: 20px; height: 20px; stroke: var(--navy); fill: none; stroke-width: 1.5;
+  cursor: pointer; opacity: 0.75; transition: opacity 0.18s;
 }
-.nav-right svg:hover { opacity: 0.5; }
+.nav-right svg:hover { opacity: 1; }
 
-/* ─── PAGE ─────────────────────────────────────────── */
-.page { max-width: 1120px; margin: 0 auto; padding: 56px 32px 96px; }
+/* ── PAGE ───────────────────────────────────────────── */
+.page { max-width: 1160px; margin: 0 auto; padding: 60px 40px 100px; }
 
 .product-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 72px;
+  gap: 80px;
   align-items: start;
 }
 
-/* ─── GALLERY ─────────────────────────────────────── */
-.gallery { position: sticky; top: 80px; }
-
+/* ── GALLERY ───────────────────────────────────────── */
+.gallery { position: sticky; top: 90px; }
 .gallery-main {
   width: 100%; aspect-ratio: 1/1;
-  background: var(--gray5);
-  border-radius: 4px; overflow: hidden; position: relative;
+  background: var(--off); border-radius: var(--radius);
+  overflow: hidden; position: relative; cursor: zoom-in;
 }
 .gallery-main img {
-  width: 100%; height: 100%; object-fit: cover;
-  display: block;
-  transition: transform 0.55s cubic-bezier(0.23,1,0.32,1);
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.6s cubic-bezier(0.23,1,0.32,1);
 }
-.gallery-main:hover img { transform: scale(1.03); }
-
-.sale-tag {
-  position: absolute; top: 14px; left: 14px;
-  background: var(--red); color: #fff;
-  font-size: 10px; font-weight: 600; letter-spacing: 0.09em;
-  text-transform: uppercase; padding: 4px 10px; border-radius: 2px;
+.gallery-main:hover img { transform: scale(1.04); }
+.g-counter {
+  position: absolute; bottom: 14px; left: 14px;
+  background: rgba(255,255,255,0.88);
+  font-size: 11px; font-weight: 500; letter-spacing: 0.05em; color: var(--navy);
+  padding: 4px 10px; border-radius: 20px; backdrop-filter: blur(4px);
 }
-
-.gallery-dots {
-  position: absolute; bottom: 14px; right: 14px;
-  display: flex; gap: 6px;
-}
-.dot {
-  width: 7px; height: 7px; border-radius: 50%;
-  background: rgba(255,255,255,0.45); border: none; cursor: pointer;
-  transition: background 0.2s; padding: 0;
-}
-.dot.active { background: #fff; }
-
-.thumbs { display: flex; gap: 8px; margin-top: 10px; }
+.thumbs { display: flex; gap: 7px; margin-top: 8px; }
 .thumb {
-  flex: 1; aspect-ratio: 1/1; background: var(--gray5);
-  border-radius: 3px; overflow: hidden; cursor: pointer;
-  border: 2px solid transparent;
-  transition: border-color 0.2s, opacity 0.2s; opacity: 0.6;
+  flex: 1; aspect-ratio: 1/1; background: var(--off);
+  border-radius: var(--radius); overflow: hidden; cursor: pointer;
+  border: 1.5px solid transparent; transition: border-color 0.2s, opacity 0.2s; opacity: 0.55;
 }
 .thumb.active { border-color: var(--navy); opacity: 1; }
 .thumb:hover { opacity: 0.85; }
 .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-/* ─── INFO ─────────────────────────────────────────── */
-.info { display: flex; flex-direction: column; gap: 22px; }
+/* ── INFO ───────────────────────────────────────────── */
+.info { display: flex; flex-direction: column; gap: 26px; }
 
-.eyebrow {
-  font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--gray2); margin-bottom: 4px;
-}
 .product-title {
-  font-size: 38px; font-weight: 500; line-height: 1.1;
-  letter-spacing: -0.01em; color: var(--navy);
+  font-family: 'DM Serif Display', serif;
+  font-size: 42px; font-weight: 400;
+  line-height: 1.05; letter-spacing: -0.01em; color: var(--navy);
 }
 
-/* Rating */
+/* Rating — stars in NAVY */
 .rating-row {
-  display: flex; align-items: center; gap: 8px;
-  padding-bottom: 22px; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 10px;
+  padding-bottom: 24px; border-bottom: 1px solid var(--border);
 }
-.stars span { color: var(--gold); font-size: 14px; }
+.stars { display: flex; gap: 2px; }
+.stars span { color: var(--navy); font-size: 15px; }
 .r-num { font-size: 13px; font-weight: 500; color: var(--navy); }
+.r-sep { color: var(--gray3); font-size: 13px; }
 .r-link {
   font-size: 13px; color: var(--gray1);
-  text-decoration: underline; text-underline-offset: 2px; cursor: pointer;
+  text-underline-offset: 2px; text-decoration: underline; cursor: pointer; transition: color 0.18s;
 }
 .r-link:hover { color: var(--navy); }
 
-/* Pill badges (Daytime / Indoors style) */
-.badge-row { display: flex; gap: 8px; flex-wrap: wrap; }
-.pill {
-  display: inline-flex; align-items: center; gap: 5px;
-  border: 1px solid var(--border); border-radius: 20px;
-  padding: 4px 12px; font-size: 12px; color: var(--gray1);
-}
-.pill svg { width: 13px; height: 13px; stroke: var(--gray2); fill: none; stroke-width: 1.7; }
-
 /* Price */
-.price-row { display: flex; align-items: baseline; gap: 10px; }
-.p-now { font-size: 30px; font-weight: 500; color: var(--navy); letter-spacing: -0.01em; }
-.p-was { font-size: 18px; font-weight: 300; color: var(--gray2); text-decoration: line-through; }
+.price-row { display: flex; align-items: baseline; gap: 11px; }
+.p-now { font-family: 'DM Serif Display', serif; font-size: 34px; font-weight: 400; color: var(--navy); letter-spacing: -0.01em; }
+.p-was { font-size: 17px; font-weight: 300; color: var(--gray2); text-decoration: line-through; }
 .p-save {
-  font-size: 12px; font-weight: 500; letter-spacing: 0.04em;
-  color: var(--green); background: #edf5ef; padding: 3px 9px; border-radius: 3px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;
+  color: var(--green); background: #e8f4ee; padding: 3px 9px; border-radius: 2px;
 }
 
-/* Feature checks (like "Eliminates Eye Strain" pills in RA) */
-.checks { display: flex; gap: 8px; flex-wrap: wrap; }
-.chk {
-  display: inline-flex; align-items: center; gap: 5px;
-  border: 1px solid var(--border); border-radius: 20px;
-  padding: 4px 12px; font-size: 12px; color: var(--navy);
+/* Bundle picker */
+.var-section { display: flex; flex-direction: column; gap: 14px; }
+.var-label {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray2);
 }
-.chk::before { content: '✓ '; color: var(--navy); font-weight: 600; font-size: 11px; }
-
-/* Trust grid */
-.trust-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.trust-item {
-  display: flex; align-items: flex-start; gap: 11px;
-  padding: 12px 14px; border: 1px solid var(--border); border-radius: 4px;
-}
-.trust-item svg { width: 18px; height: 18px; stroke: var(--navy); fill: none; stroke-width: 1.6; flex-shrink: 0; margin-top: 1px; }
-.t-label { font-size: 13px; font-weight: 500; color: var(--navy); }
-.t-sub { font-size: 11px; color: var(--gray1); margin-top: 1px; }
-
-/* Bundles */
-.b-heading {
-  font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--gray1); margin-bottom: 10px;
-}
-.bundle-list { display: flex; flex-direction: column; gap: 7px; }
+.var-label span { color: var(--navy); font-weight: 500; font-size: 12px; letter-spacing: 0.05em; text-transform: none; }
+.bundle-list { display: flex; flex-direction: column; gap: 8px; }
 .bundle {
-  position: relative; display: flex; align-items: center;
-  justify-content: space-between; padding: 13px 16px;
-  border: 1.5px solid var(--border); border-radius: 4px;
-  cursor: pointer; transition: border-color 0.18s, background 0.18s;
+  position: relative; display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 18px; border: 1.5px solid var(--border);
+  border-radius: var(--radius); cursor: pointer; transition: border-color 0.2s, background 0.2s;
 }
-.bundle:hover { border-color: var(--gray2); }
-.bundle.active { border-color: var(--navy); background: var(--gray5); }
-.b-left { display: flex; align-items: center; gap: 12px; }
+.bundle:hover { border-color: var(--gray3); }
+.bundle.active { border-color: var(--navy); background: #f5f7fa; }
+.b-left { display: flex; align-items: center; gap: 13px; }
 .radio {
-  width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid var(--gray3);
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-  transition: border-color 0.18s;
+  width: 18px; height: 18px; border-radius: 50%;
+  border: 1.5px solid var(--gray3);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: border-color 0.2s;
 }
 .bundle.active .radio { border-color: var(--navy); }
 .radio-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--navy); opacity: 0; transition: opacity 0.18s; }
 .bundle.active .radio-dot { opacity: 1; }
 .b-name { font-size: 14px; font-weight: 500; color: var(--navy); }
-.b-sub { font-size: 12px; color: var(--gray1); margin-top: 1px; }
+.b-sub { font-size: 12px; color: var(--gray2); margin-top: 1px; }
 .b-right { text-align: right; }
 .b-price { font-size: 14px; font-weight: 500; color: var(--navy); }
 .b-each { font-size: 11px; color: var(--gray2); }
-.b-save {
+.b-save-badge {
   display: inline-block; margin-top: 2px;
-  font-size: 10px; font-weight: 600; letter-spacing: 0.05em;
-  color: var(--green); background: #edf5ef; padding: 1px 6px; border-radius: 2px;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--green); background: #e8f4ee; padding: 1px 6px; border-radius: 2px;
 }
 .b-popular {
-  position: absolute; top: -9px; right: 12px;
-  font-size: 10px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase;
-  background: var(--navy); color: #fff; padding: 2px 8px; border-radius: 2px;
+  position: absolute; top: -9px; right: 14px;
+  font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  background: var(--navy); color: #fff; padding: 3px 9px; border-radius: 2px;
 }
+
+/* Trust grid */
+.trust-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.trust-item {
+  display: flex; align-items: flex-start; gap: 11px;
+  padding: 13px 14px; border: 1px solid var(--border); border-radius: var(--radius);
+}
+.trust-item svg { width: 17px; height: 17px; stroke: var(--navy); fill: none; stroke-width: 1.5; flex-shrink: 0; margin-top: 1px; }
+.t-label { font-size: 12px; font-weight: 500; color: var(--navy); }
+.t-sub { font-size: 11px; color: var(--gray2); margin-top: 1px; }
 
 /* CTA */
+.cta-stack { display: flex; flex-direction: column; gap: 10px; }
+.ship-line {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase;
+  color: var(--gray2); text-align: center;
+}
+.ship-line span { color: var(--navy); }
 .btn-primary {
-  width: 100%; padding: 16px;
+  width: 100%; padding: 17px;
   background: var(--navy); color: #fff;
-  font-family: 'Jost', sans-serif; font-size: 14px; font-weight: 500;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  border: none; border-radius: 4px; cursor: pointer;
-  transition: background 0.2s, transform 0.12s;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  border: none; border-radius: var(--radius); cursor: pointer; transition: background 0.2s, transform 0.12s;
 }
-.btn-primary:hover { background: var(--navy-lt); }
-.btn-primary:active { transform: scale(0.993); }
+.btn-primary:hover { background: var(--navy-3); }
+.btn-primary:active { transform: scale(0.995); }
 .btn-secondary {
-  width: 100%; padding: 14px; background: transparent; color: var(--navy);
-  font-family: 'Jost', sans-serif; font-size: 14px; font-weight: 400;
-  letter-spacing: 0.05em; border: 1.5px solid var(--border); border-radius: 4px;
-  cursor: pointer; transition: border-color 0.18s, background 0.18s;
+  width: 100%; padding: 15px; background: transparent; color: var(--navy);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase;
+  border: 1.5px solid var(--border); border-radius: var(--radius); cursor: pointer;
+  transition: border-color 0.18s, background 0.18s;
 }
-.btn-secondary:hover { border-color: var(--navy); background: var(--gray5); }
-
-.pay-row {
-  display: flex; align-items: center; justify-content: center; gap: 5px;
-  padding-top: 2px;
-}
+.btn-secondary:hover { border-color: var(--navy); background: var(--off); }
+.pay-row { display: flex; align-items: center; justify-content: center; gap: 6px; padding-top: 2px; }
 .pay-badge {
-  height: 22px; padding: 0 8px; background: var(--gray5); border-radius: 3px;
-  font-size: 10px; font-weight: 600; letter-spacing: 0.03em; color: var(--gray1);
+  height: 24px; padding: 0 9px; background: var(--gray4); border-radius: 3px;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.02em; color: var(--gray1);
   display: flex; align-items: center;
 }
 
-/* ─── ACCORDION ───────────────────────────────────── */
-.accordion { border-top: 1px solid var(--border); margin-top: 8px; }
+/* ── ACCORDION ─────────────────────────────────────── */
+.accordion { border-top: 1px solid var(--border); }
 .acc-item { border-bottom: 1px solid var(--border); }
 .acc-btn {
   width: 100%; display: flex; align-items: center; justify-content: space-between;
-  padding: 18px 0; background: none; border: none; cursor: pointer;
-  font-family: 'Jost', sans-serif; font-size: 14px; font-weight: 500;
-  letter-spacing: 0.02em; color: var(--navy); text-align: left;
+  padding: 20px 0; background: none; border: none; cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase;
+  color: var(--navy); text-align: left;
 }
-.acc-btn svg {
+.acc-arrow {
   width: 18px; height: 18px; flex-shrink: 0;
-  stroke: var(--gray2); fill: none; stroke-width: 1.8;
-  transition: transform 0.28s;
+  stroke: var(--gray2); fill: none; stroke-width: 1.6; transition: transform 0.28s;
 }
-.acc-item.open .acc-btn svg { transform: rotate(45deg); }
+.acc-item.open .acc-arrow { transform: rotate(45deg); }
 .acc-body {
   overflow: hidden; max-height: 0;
   transition: max-height 0.38s ease, padding-bottom 0.3s;
-  font-size: 14px; color: var(--gray1); line-height: 1.75;
+  font-size: 14px; color: var(--gray1); line-height: 1.8;
 }
-.acc-item.open .acc-body { max-height: 600px; padding-bottom: 18px; }
+.acc-item.open .acc-body { max-height: 700px; padding-bottom: 22px; }
 .acc-body p + p { margin-top: 10px; }
-.acc-body ul { list-style: none; display: flex; flex-direction: column; gap: 5px; margin-top: 10px; }
+.acc-body ul { list-style: none; display: flex; flex-direction: column; gap: 6px; margin-top: 12px; }
 .acc-body li::before { content: '✓  '; color: var(--navy); font-weight: 600; }
 
-/* ─── DIVIDER ─────────────────────────────────────── */
-.divider { border: none; border-top: 1px solid var(--border); margin: 72px 0; }
+/* ── TRUST STRIP (navy band) ────────────────────────── */
+.trust-strip {
+  background: var(--navy);
+  padding: 36px 40px;
+}
+.trust-strip-inner {
+  max-width: 1160px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+}
+.ts-item {
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; padding: 0 24px;
+  border-right: 1px solid rgba(255,255,255,0.12);
+}
+.ts-item:last-child { border-right: none; }
+.ts-emoji { font-size: 22px; margin-bottom: 8px; line-height: 1; }
+.ts-label { font-size: 13px; font-weight: 500; color: #fff; letter-spacing: 0.02em; margin-bottom: 3px; }
+.ts-sub { font-size: 11px; color: rgba(255,255,255,0.55); letter-spacing: 0.03em; }
 
-/* ─── REVIEWS ─────────────────────────────────────── */
-.sec-head { text-align: center; margin-bottom: 40px; }
-.sec-title { font-size: 32px; font-weight: 500; color: var(--navy); letter-spacing: -0.01em; }
-.sec-sub { font-size: 14px; color: var(--gray1); margin-top: 6px; }
+/* ── DIVIDER ───────────────────────────────────────── */
+.divider { border: none; border-top: 1px solid var(--border); margin: 80px 0; }
 
+/* ── SECTION HEADERS ───────────────────────────────── */
+.sec-head { text-align: center; margin-bottom: 48px; }
+.sec-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 38px; font-weight: 400; color: var(--navy); letter-spacing: -0.01em;
+}
+.sec-sub { font-size: 14px; color: var(--gray2); margin-top: 8px; }
+
+/* ── REVIEWS ───────────────────────────────────────── */
 .rev-summary {
-  display: flex; align-items: center; justify-content: center; gap: 20px;
-  padding: 28px; border: 1px solid var(--border); border-radius: 4px; margin-bottom: 28px;
+  display: flex; align-items: center; justify-content: center; gap: 22px;
+  padding: 32px; border: 1px solid var(--border); border-radius: var(--radius);
+  margin-bottom: 32px;
 }
-.rev-big { font-size: 52px; font-weight: 300; color: var(--navy); line-height: 1; }
-.rev-stars-lg { display: flex; gap: 3px; }
-.rev-stars-lg span { color: var(--gold); font-size: 20px; }
-.rev-count { font-size: 13px; color: var(--gray1); margin-top: 4px; }
-
-.reviews-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.rev-big { font-family: 'DM Serif Display', serif; font-size: 64px; font-weight: 400; color: var(--navy); line-height: 1; }
+.rev-stars-lg { display: flex; gap: 3px; margin-bottom: 4px; }
+.rev-stars-lg span { color: var(--navy); font-size: 22px; }
+.rev-count { font-size: 13px; color: var(--gray2); }
+.reviews-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .rev-card {
-  padding: 20px; border: 1px solid var(--border);
-  border-radius: 4px; background: var(--white);
+  padding: 24px; border: 1px solid var(--border);
+  border-radius: var(--radius); background: var(--white);
 }
-.rev-top { display: flex; align-items: center; gap: 11px; margin-bottom: 12px; }
+.rev-top { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
 .rev-avatar {
-  width: 36px; height: 36px; border-radius: 50%; background: var(--gray4);
-  font-size: 12px; font-weight: 500; color: var(--gray1);
-  display: flex; align-items: center; justify-content: center;
-  overflow: hidden; flex-shrink: 0;
+  width: 38px; height: 38px; border-radius: 50%;
+  background: var(--gray4); font-size: 12px; font-weight: 600; color: var(--gray1);
+  display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0;
 }
 .rev-avatar img { width: 100%; height: 100%; object-fit: cover; }
-.rev-name { font-size: 13px; font-weight: 500; color: var(--navy); }
+.rev-name { font-size: 13px; font-weight: 600; color: var(--navy); }
 .rev-verified { font-size: 11px; color: var(--green); display: flex; align-items: center; gap: 3px; margin-top: 1px; }
-.rev-stars-sm { display: flex; gap: 1px; margin-bottom: 7px; }
-.rev-stars-sm span { color: var(--gold); font-size: 12px; }
-.rev-title { font-size: 13px; font-weight: 500; color: var(--navy); margin-bottom: 5px; }
-.rev-body { font-size: 13px; color: var(--gray1); line-height: 1.65; }
+.rev-stars-sm { display: flex; gap: 1px; margin-bottom: 8px; }
+.rev-stars-sm span { color: var(--navy); font-size: 12px; }
+.rev-title { font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+.rev-body { font-size: 13px; color: var(--gray1); line-height: 1.7; }
 .rev-photo {
-  width: 100%; margin-top: 12px; border-radius: 3px;
+  width: 100%; margin-top: 14px; border-radius: 2px;
   aspect-ratio: 16/9; object-fit: cover; display: block; background: var(--gray4);
 }
 .rev-date { font-size: 11px; color: var(--gray3); margin-top: 10px; }
 
-/* ─── FOOTER ──────────────────────────────────────── */
-footer {
-  background: var(--navy); color: rgba(255,255,255,0.45);
-  text-align: center; font-size: 12px; letter-spacing: 0.03em; padding: 24px 32px;
-}
-footer a { color: rgba(255,255,255,0.65); text-decoration: none; }
-footer a:hover { color: #fff; }
-footer p + p { margin-top: 6px; }
+/* ── FAQ ───────────────────────────────────────────── */
+.faq-wrap { max-width: 760px; margin: 0 auto; }
 
-/* ─── RESPONSIVE ──────────────────────────────────── */
-@media (max-width: 860px) {
+/* ── FOOTER BANNER ─────────────────────────────────── */
+.footer-banner {
+  background: var(--navy); padding: 72px 40px; text-align: center; margin-top: 80px;
+}
+.footer-banner-title {
+  font-family: 'DM Serif Display', serif; font-size: 36px; font-weight: 400;
+  color: #fff; margin-bottom: 8px;
+}
+.footer-banner-sub { font-size: 14px; color: rgba(255,255,255,0.55); margin-bottom: 28px; }
+.footer-banner-btn {
+  display: inline-block; padding: 14px 36px;
+  background: #fff; color: var(--navy);
+  font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  border: none; border-radius: var(--radius); cursor: pointer; text-decoration: none; transition: opacity 0.2s;
+}
+.footer-banner-btn:hover { opacity: 0.88; }
+footer {
+  background: var(--navy); border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 20px 40px; display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px;
+}
+footer .f-copy { font-size: 12px; color: rgba(255,255,255,0.35); letter-spacing: 0.03em; }
+.f-links { display: flex; gap: 20px; }
+.f-links a { font-size: 12px; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.18s; }
+.f-links a:hover { color: rgba(255,255,255,0.85); }
+
+/* ── RESPONSIVE ─────────────────────────────────────── */
+@media (max-width: 900px) {
   nav { padding: 0 20px; }
   .nav-links { display: none; }
   .page { padding: 28px 18px 72px; }
-  .product-grid { grid-template-columns: 1fr; gap: 36px; }
+  .product-grid { grid-template-columns: 1fr; gap: 40px; }
   .gallery { position: static; }
-  .product-title { font-size: 30px; }
+  .product-title { font-size: 34px; }
   .reviews-grid { grid-template-columns: 1fr; }
+  .trust-strip-inner { grid-template-columns: 1fr 1fr; gap: 24px 0; }
+  .ts-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 24px; }
+  .ts-item:nth-child(3), .ts-item:nth-child(4) { border-bottom: none; }
+  .trust-strip { padding: 36px 20px; }
+  footer { flex-direction: column; align-items: flex-start; gap: 14px; }
+}
+@media (max-width: 480px) {
+  .trust-strip-inner { grid-template-columns: 1fr; }
+  .ts-item { border-bottom: 1px solid rgba(255,255,255,0.12) !important; }
+  .ts-item:last-child { border-bottom: none !important; }
+  .trust-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 <body>
 
+<!-- ANNOUNCEMENT BAR -->
+<div class="anbar">
+  <strong>Free domestic shipping</strong> &nbsp;·&nbsp; 30 Day Zero-Risk Guarantee
+</div>
+
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="#">
-    <svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+    </div>
     BellCo
   </a>
   <div class="nav-links">
@@ -367,16 +405,15 @@ footer p + p { margin-top: 6px; }
   <!-- GALLERY -->
   <div class="gallery">
     <div class="gallery-main" id="mainGallery">
-      <div class="sale-tag">Sale</div>
       <img id="mainImg" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80" alt="DoorBell Pro">
-      <div class="gallery-dots" id="dotsWrap"></div>
+      <div class="g-counter" id="gCounter">1 / 5</div>
     </div>
     <div class="thumbs" id="thumbsRow">
-      <div class="thumb active" data-idx="0"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&q=75" alt=""></div>
-      <div class="thumb" data-idx="1"><img src="https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?w=300&q=75" alt=""></div>
-      <div class="thumb" data-idx="2"><img src="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?w=300&q=75" alt=""></div>
-      <div class="thumb" data-idx="3"><img src="https://images.unsplash.com/photo-1601924994987-69e26d50dc26?w=300&q=75" alt=""></div>
-      <div class="thumb" data-idx="4"><img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=300&q=75" alt=""></div>
+      <div class="thumb active"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&q=75" alt=""></div>
+      <div class="thumb"><img src="https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?w=300&q=75" alt=""></div>
+      <div class="thumb"><img src="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?w=300&q=75" alt=""></div>
+      <div class="thumb"><img src="https://images.unsplash.com/photo-1601924994987-69e26d50dc26?w=300&q=75" alt=""></div>
+      <div class="thumb"><img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=300&q=75" alt=""></div>
     </div>
   </div>
 
@@ -384,51 +421,71 @@ footer p + p { margin-top: 6px; }
   <div class="info">
 
     <div>
-      <p class="eyebrow">Smart Home Security</p>
       <h1 class="product-title">DoorBell Pro</h1>
     </div>
 
+    <!-- Rating — stars in navy -->
     <div class="rating-row">
-      <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <div class="stars">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      </div>
       <span class="r-num">4.9</span>
+      <span class="r-sep">·</span>
       <a class="r-link" href="#reviews">2,341 Reviews</a>
     </div>
 
-    <div class="badge-row">
-      <span class="pill">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/></svg>
-        Outdoors
-      </span>
-      <span class="pill">
-        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
-        Front Door
-      </span>
-      <span class="pill">
-        <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-        App Controlled
-      </span>
+    <!-- Price -->
+    <div class="price-row">
+      <span class="p-now">$79</span>
+      <span class="p-was">$119</span>
+      <span class="p-save">Save $40</span>
     </div>
 
-    <div>
-      <div class="price-row">
-        <span class="p-now">$79</span>
-        <span class="p-was">$119</span>
-        <span class="p-save">Save $40</span>
+    <!-- Bundle picker -->
+    <div class="var-section">
+      <p class="var-label">Bundle &nbsp;<span id="selectedBundle">Buy 1 — Single entry point</span></p>
+      <div class="bundle-list" id="bundles">
+        <div class="bundle active" data-price="79" data-label="Buy 1 — Single entry point">
+          <div class="b-left">
+            <div class="radio"><div class="radio-dot"></div></div>
+            <div><div class="b-name">Buy 1</div><div class="b-sub">Single entry point</div></div>
+          </div>
+          <div class="b-right">
+            <div class="b-price">$79</div>
+            <div class="b-each">$79 / unit</div>
+          </div>
+        </div>
+        <div class="bundle" data-price="139" data-label="Buy 2 — Front &amp; back door">
+          <div class="b-popular">Most Popular</div>
+          <div class="b-left">
+            <div class="radio"><div class="radio-dot"></div></div>
+            <div><div class="b-name">Buy 2</div><div class="b-sub">Front &amp; back door</div></div>
+          </div>
+          <div class="b-right">
+            <div class="b-price">$139</div>
+            <div class="b-each">$69.50 / unit</div>
+            <span class="b-save-badge">Save $19</span>
+          </div>
+        </div>
+        <div class="bundle" data-price="189" data-label="Buy 3 — Full property coverage">
+          <div class="b-left">
+            <div class="radio"><div class="radio-dot"></div></div>
+            <div><div class="b-name">Buy 3</div><div class="b-sub">Full property coverage</div></div>
+          </div>
+          <div class="b-right">
+            <div class="b-price">$189</div>
+            <div class="b-each">$63 / unit</div>
+            <span class="b-save-badge">Save $48</span>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="checks">
-      <span class="chk">1080p HD Video</span>
-      <span class="chk">Night Vision</span>
-      <span class="chk">Two-Way Audio</span>
-      <span class="chk">Works with Alexa</span>
-      <span class="chk">IP65 Weatherproof</span>
-    </div>
-
+    <!-- Trust items -->
     <div class="trust-grid">
       <div class="trust-item">
         <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h5l2 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-        <div><div class="t-label">Free Shipping</div><div class="t-sub">On all US orders</div></div>
+        <div><div class="t-label">Free Shipping</div><div class="t-sub">All US orders</div></div>
       </div>
       <div class="trust-item">
         <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-.41-4.67"/></svg>
@@ -444,112 +501,91 @@ footer p + p { margin-top: 6px; }
       </div>
     </div>
 
-    <!-- Bundles -->
-    <div>
-      <p class="b-heading">Choose your bundle</p>
-      <div class="bundle-list" id="bundles">
-
-        <div class="bundle active" data-price="79">
-          <div class="b-left">
-            <div class="radio"><div class="radio-dot"></div></div>
-            <div><div class="b-name">Buy 1</div><div class="b-sub">Single entry point</div></div>
-          </div>
-          <div class="b-right">
-            <div class="b-price">$79</div>
-            <div class="b-each">$79 / unit</div>
-          </div>
-        </div>
-
-        <div class="bundle" data-price="139">
-          <div class="b-popular">Most Popular</div>
-          <div class="b-left">
-            <div class="radio"><div class="radio-dot"></div></div>
-            <div><div class="b-name">Buy 2</div><div class="b-sub">Front &amp; back door</div></div>
-          </div>
-          <div class="b-right">
-            <div class="b-price">$139</div>
-            <div class="b-each">$69.50 / unit</div>
-            <span class="b-save">Save $19</span>
-          </div>
-        </div>
-
-        <div class="bundle" data-price="189">
-          <div class="b-left">
-            <div class="radio"><div class="radio-dot"></div></div>
-            <div><div class="b-name">Buy 3</div><div class="b-sub">Full property coverage</div></div>
-          </div>
-          <div class="b-right">
-            <div class="b-price">$189</div>
-            <div class="b-each">$63 / unit</div>
-            <span class="b-save">Save $48</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
     <!-- CTA -->
-    <div style="display:flex;flex-direction:column;gap:9px;">
-      <button class="btn-primary">Checkout Now — $<span id="ctaPrice">79</span></button>
+    <div class="cta-stack">
+      <p class="ship-line">Free domestic shipping &nbsp;·&nbsp; <span>30 Day Zero-Risk Guarantee</span></p>
+      <button class="btn-primary">Add to Cart — $<span id="ctaPrice">79</span></button>
       <button class="btn-secondary">Buy Now</button>
       <div class="pay-row">
         <span class="pay-badge">Visa</span>
         <span class="pay-badge">MC</span>
         <span class="pay-badge">Amex</span>
         <span class="pay-badge">Apple Pay</span>
-        <span class="pay-badge">Google Pay</span>
-        <span class="pay-badge" style="color:#635bff;background:#f0f0ff;">Stripe</span>
+        <span class="pay-badge">G Pay</span>
       </div>
     </div>
 
-    <!-- Accordion -->
+    <!-- Accordion: ONLY Description + Shipping & Returns -->
     <div class="accordion">
-
       <div class="acc-item">
         <button class="acc-btn">
           Description
-          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          <svg class="acc-arrow" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         </button>
         <div class="acc-body">
-          <p>The DoorBell Pro redefines home security with crystal-clear 1080p HD video, infrared night vision up to 30 feet, and instant motion alerts sent directly to your phone. Two-way audio lets you speak with visitors — or deter unwanted guests — from anywhere in the world.</p>
-          <p>Designed with a weatherproof IP65-rated housing, it handles everything from rain to scorching sun. Installation takes under 15 minutes. Works natively with Amazon Alexa and Google Home.</p>
+          <p>The DoorBell Pro is precision-engineered for homes that take security seriously. Crystal-clear 1080p HD video, infrared night vision up to 30 feet, and instant motion alerts sent directly to your phone.</p>
           <ul>
             <li>1080p Full HD with HDR</li>
             <li>140° ultra-wide field of view</li>
             <li>30ft infrared night vision</li>
-            <li>Instant push notifications</li>
-            <li>Cloud &amp; local storage options</li>
+            <li>Two-way audio communication</li>
             <li>IP65 weatherproof rated</li>
+            <li>Works with Alexa &amp; Google Home</li>
           </ul>
         </div>
       </div>
-
       <div class="acc-item">
         <button class="acc-btn">
           Shipping &amp; Returns
-          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          <svg class="acc-arrow" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         </button>
         <div class="acc-body">
           <p><strong style="color:var(--navy);font-weight:500;">Free Standard Shipping</strong> — All US orders ship free within 3–5 business days. Expedited 2-day shipping available at checkout for $9.99.</p>
           <p><strong style="color:var(--navy);font-weight:500;">30-Day Zero-Risk Returns</strong> — Return within 30 days for a full refund, no questions asked. We cover the return label.</p>
-          <p><strong style="color:var(--navy);font-weight:500;">1-Year Warranty</strong> — Every DoorBell Pro is backed by a 12-month manufacturer warranty covering all defects in materials and workmanship.</p>
+          <p><strong style="color:var(--navy);font-weight:500;">1-Year Warranty</strong> — Every DoorBell Pro is backed by a 12-month manufacturer warranty.</p>
         </div>
       </div>
-
     </div>
 
   </div><!-- /info -->
 </div><!-- /product-grid -->
+</div><!-- /page -->
 
-<hr class="divider">
+<!-- NAVY TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-strip-inner">
+    <div class="ts-item">
+      <div class="ts-emoji">🚚</div>
+      <div class="ts-label">Free Shipping</div>
+      <div class="ts-sub">All US orders</div>
+    </div>
+    <div class="ts-item">
+      <div class="ts-emoji">🔄</div>
+      <div class="ts-label">30 Day Returns</div>
+      <div class="ts-sub">Zero-risk guarantee</div>
+    </div>
+    <div class="ts-item">
+      <div class="ts-emoji">💬</div>
+      <div class="ts-label">24/7 Support</div>
+      <div class="ts-sub">Always here for you</div>
+    </div>
+    <div class="ts-item">
+      <div class="ts-emoji">🔒</div>
+      <div class="ts-label">Secure Checkout</div>
+      <div class="ts-sub">SSL encrypted</div>
+    </div>
+  </div>
+</div>
 
 <!-- REVIEWS -->
-<section id="reviews">
+<div class="page">
+<hr class="divider" id="reviews">
+
+<section>
   <div class="sec-head">
     <h2 class="sec-title">See What Customers Are Saying</h2>
-    <p class="sec-sub">4.9 / 5 &nbsp;·&nbsp; Based on 2,341 reviews</p>
+    <p class="sec-sub">4.9/5 out of 5 &nbsp;·&nbsp; Based on 2,341 reviews</p>
   </div>
-
   <div class="rev-summary">
     <div class="rev-big">4.9</div>
     <div>
@@ -557,9 +593,7 @@ footer p + p { margin-top: 6px; }
       <div class="rev-count">Based on 2,341 reviews</div>
     </div>
   </div>
-
   <div class="reviews-grid">
-
     <div class="rev-card">
       <div class="rev-top">
         <div class="rev-avatar"><img src="https://i.pravatar.cc/80?img=1" alt="Sarah M."></div>
@@ -567,11 +601,10 @@ footer p + p { margin-top: 6px; }
       </div>
       <div class="rev-stars-sm"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
       <div class="rev-title">Absolutely worth every penny</div>
-      <div class="rev-body">Setup took 10 minutes and the video quality is stunning. Caught a package thief on the first day — the footage was clear enough for the police to identify them. I refuse to go back to a dumb doorbell.</div>
+      <div class="rev-body">Setup took 10 minutes and the video quality is stunning. Caught a package thief on the first day — the footage was clear enough for the police to identify them.</div>
       <img class="rev-photo" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=70" alt="">
       <div class="rev-date">3 days ago</div>
     </div>
-
     <div class="rev-card">
       <div class="rev-top">
         <div class="rev-avatar"><img src="https://i.pravatar.cc/80?img=5" alt="James K."></div>
@@ -583,7 +616,6 @@ footer p + p { margin-top: 6px; }
       <img class="rev-photo" src="https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?w=600&q=70" alt="">
       <div class="rev-date">1 week ago</div>
     </div>
-
     <div class="rev-card">
       <div class="rev-top">
         <div class="rev-avatar"><img src="https://i.pravatar.cc/80?img=9" alt="Maria L."></div>
@@ -595,7 +627,6 @@ footer p + p { margin-top: 6px; }
       <img class="rev-photo" src="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?w=600&q=70" alt="">
       <div class="rev-date">2 weeks ago</div>
     </div>
-
     <div class="rev-card">
       <div class="rev-top">
         <div class="rev-avatar"><img src="https://i.pravatar.cc/80?img=12" alt="Tom R."></div>
@@ -607,10 +638,8 @@ footer p + p { margin-top: 6px; }
       <img class="rev-photo" src="https://images.unsplash.com/photo-1601924994987-69e26d50dc26?w=600&q=70" alt="">
       <div class="rev-date">3 weeks ago</div>
     </div>
-
     <div class="rev-card">
-      <div class="rev-top">
-        <div class="rev-avatar">CW</div>
+      <div class="rev-top"><div class="rev-avatar">CW</div>
         <div><div class="rev-name">Christine W.</div><div class="rev-verified">✔ Verified Buyer</div></div>
       </div>
       <div class="rev-stars-sm"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
@@ -618,54 +647,8 @@ footer p + p { margin-top: 6px; }
       <div class="rev-body">Genuinely does everything my old smart doorbell did, at half the price. App is clean, notifications are fast. The 30-day return policy gave me confidence to try it — so glad I did.</div>
       <div class="rev-date">1 month ago</div>
     </div>
-
     <div class="rev-card">
-      <div class="rev-top">
-        <div class="rev-avatar">DH</div>
-        <div><div class="rev-name">David H.</div><div class="rev-verified">✔ Verified Buyer</div></div>
-      </div>
-      <div class="rev-stars-sm"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-      <div class="rev-title">Survived a brutal winter</div>
-      <div class="rev-body">We had -15°F nights and this thing didn't skip a beat. Still crisp video, instant notifications. The weatherproofing claims are completely legit. Buying a second one for the garage.</div>
-      <div class="rev-date">1 month ago</div>
-    </div>
-
-    <div class="rev-card">
-      <div class="rev-top">
-        <div class="rev-avatar">NP</div>
-        <div><div class="rev-name">Nicole P.</div><div class="rev-verified">✔ Verified Buyer</div></div>
-      </div>
-      <div class="rev-stars-sm"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-      <div class="rev-title">Looks genuinely premium</div>
-      <div class="rev-body">The brushed nickel finish looks elegant — not cheap plastic like competitors. Neighbours have asked which brand it is. Customer support answered my setup question in 20 minutes.</div>
-      <div class="rev-date">6 weeks ago</div>
-    </div>
-
-    <div class="rev-card">
-      <div class="rev-top">
-        <div class="rev-avatar">BL</div>
-        <div><div class="rev-name">Brian L.</div><div class="rev-verified">✔ Verified Buyer</div></div>
-      </div>
-      <div class="rev-stars-sm"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-      <div class="rev-title">Wide angle is a game changer</div>
-      <div class="rev-body">The 140° FOV captures the entire porch and part of my driveway. My previous doorbell cut off half the frame. This one misses nothing and I get alerts within 2 seconds of motion.</div>
-      <div class="rev-date">2 months ago</div>
-    </div>
-
-    <div class="rev-card">
-      <div class="rev-top">
-        <div class="rev-avatar">AS</div>
-        <div><div class="rev-name">Amanda S.</div><div class="rev-verified">✔ Verified Buyer</div></div>
-      </div>
-      <div class="rev-stars-sm"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-      <div class="rev-title">My whole family feels safer</div>
-      <div class="rev-body">As a mom of three, knowing exactly who's at the door before opening it has been a huge peace-of-mind upgrade. The kids can even check it from their tablets. Highly recommend.</div>
-      <div class="rev-date">2 months ago</div>
-    </div>
-
-    <div class="rev-card">
-      <div class="rev-top">
-        <div class="rev-avatar">MR</div>
+      <div class="rev-top"><div class="rev-avatar">MR</div>
         <div><div class="rev-name">Marcus R.</div><div class="rev-verified">✔ Verified Buyer</div></div>
       </div>
       <div class="rev-stars-sm"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
@@ -673,7 +656,6 @@ footer p + p { margin-top: 6px; }
       <div class="rev-body">Covered all three entry points of our home. Bundle pricing made it a no-brainer. All three sync to the same app and the dashboard is clean and easy to manage. Zero complaints.</div>
       <div class="rev-date">2 months ago</div>
     </div>
-
   </div>
 </section>
 
@@ -684,51 +666,57 @@ footer p + p { margin-top: 6px; }
   <div class="sec-head">
     <h2 class="sec-title">Curious to learn more?</h2>
   </div>
-  <div style="max-width:720px;margin:0 auto;" class="accordion">
-
+  <div class="faq-wrap accordion">
     <div class="acc-item">
       <button class="acc-btn">Does it require professional installation?
-        <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        <svg class="acc-arrow" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
       </button>
       <div class="acc-body">No professional needed. The box includes every piece of hardware — drill template, screws, anchors, and a step-by-step guide. Most customers are up and running in under 15 minutes.</div>
     </div>
-
     <div class="acc-item">
       <button class="acc-btn">Does it work without a subscription?
-        <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        <svg class="acc-arrow" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
       </button>
       <div class="acc-body">Yes. All core features — live view, motion alerts, and two-way audio — are completely free. Optional cloud recording plans start at $2.99/month. Local microSD storage is also supported at no cost.</div>
     </div>
-
     <div class="acc-item">
       <button class="acc-btn">What Wi-Fi speed do I need?
-        <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        <svg class="acc-arrow" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
       </button>
       <div class="acc-body">DoorBell Pro works on 2.4 GHz Wi-Fi networks. We recommend at least 2 Mbps upload speed — most home broadband plans far exceed this. 5 GHz also works if your router broadcasts both bands.</div>
     </div>
-
     <div class="acc-item">
       <button class="acc-btn">Is it truly weatherproof?
-        <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        <svg class="acc-arrow" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
       </button>
       <div class="acc-body">Yes. IP65 rated — fully protected against dust and jets of water from any direction. Tested from -4°F (–20°C) to 122°F (50°C), covering virtually any climate in North America.</div>
     </div>
-
     <div class="acc-item">
       <button class="acc-btn">Can multiple family members access it?
-        <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        <svg class="acc-arrow" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
       </button>
       <div class="acc-body">You can share access with up to 10 household members through the app, each with their own notification preferences and independent access to live footage or recorded clips. No extra cost.</div>
     </div>
-
   </div>
 </section>
 
 </div><!-- /page -->
 
+<!-- FOOTER BANNER -->
+<div class="footer-banner">
+  <div class="footer-banner-title">A safer home is calling.</div>
+  <p class="footer-banner-sub">Join 50,000+ homeowners who trust DoorBell Pro.</p>
+  <a href="#" class="footer-banner-btn">Shop Now</a>
+</div>
+
 <footer>
-  <p>© 2026 BellCo Inc. &nbsp;·&nbsp; <a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Terms of Use</a> &nbsp;·&nbsp; <a href="#">Contact Us</a> &nbsp;·&nbsp; <a href="#">Return &amp; Exchange Policy</a></p>
-  <p>Payments processed securely by Stripe. SSL encrypted. Your card details are never stored on our servers.</p>
+  <span class="f-copy">© 2026 BellCo Inc.</span>
+  <div class="f-links">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of Use</a>
+    <a href="#">Contact</a>
+    <a href="#">Returns</a>
+  </div>
 </footer>
 
 <script>
@@ -742,25 +730,15 @@ const imgs = [
 ];
 const mainImg  = document.getElementById('mainImg');
 const thumbEls = document.querySelectorAll('.thumb');
-const dotsWrap = document.getElementById('dotsWrap');
+const counter  = document.getElementById('gCounter');
 let cur = 0;
-
-imgs.forEach((_, i) => {
-  const d = document.createElement('button');
-  d.className = 'dot' + (i===0?' active':'');
-  d.addEventListener('click', ()=>goTo(i));
-  dotsWrap.appendChild(d);
-});
-
 function goTo(i) {
   cur = i;
   mainImg.src = imgs[i];
+  counter.textContent = (i+1) + ' / ' + imgs.length;
   thumbEls.forEach((t,j) => t.classList.toggle('active', j===i));
-  document.querySelectorAll('.dot').forEach((d,j) => d.classList.toggle('active', j===i));
 }
-
 thumbEls.forEach((t,i) => t.addEventListener('click', ()=>goTo(i)));
-
 let sx=0;
 document.getElementById('mainGallery').addEventListener('touchstart', e=>{ sx=e.touches[0].clientX; },{passive:true});
 document.getElementById('mainGallery').addEventListener('touchend', e=>{
@@ -769,13 +747,15 @@ document.getElementById('mainGallery').addEventListener('touchend', e=>{
 });
 
 // Bundles
-const bundles  = document.querySelectorAll('.bundle');
-const ctaPrice = document.getElementById('ctaPrice');
+const bundles   = document.querySelectorAll('.bundle');
+const ctaPrice  = document.getElementById('ctaPrice');
+const selBundle = document.getElementById('selectedBundle');
 bundles.forEach(b => {
   b.addEventListener('click', ()=>{
     bundles.forEach(x=>x.classList.remove('active'));
     b.classList.add('active');
     ctaPrice.textContent = b.dataset.price;
+    selBundle.textContent = b.dataset.label;
   });
 });
 
