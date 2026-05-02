@@ -3,770 +3,683 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DoorBell Pro — BellCo</title>
+<title>Why Does My Joint Pain Never Go Away? (The Answer Surprised Me)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#111111;--dark:#2a2a2a;--mid:#555;--light:#888;
+  --border:#e5e5e5;--bg:#fff;--accent:#c8371a;--accent-light:#fff3f0;
+  --green:#1a7a3c;--green-light:#f0faf4;--body-bg:#f5f5f3;
+}
+html{scroll-behavior:smooth}
+body{background:var(--body-bg);font-family:'Inter',sans-serif;color:var(--dark);line-height:1.7;font-size:17px}
+#page-article{display:block}
+#page-order{display:none}
 
-:root {
-  --navy:    #0d1e35;
-  --navy-2:  #162440;
-  --navy-3:  #1e2f4d;
-  --white:   #ffffff;
-  --off:     #f8f7f4;
-  --gray1:   #4a5568;
-  --gray2:   #8492a6;
-  --gray3:   #c8cfd8;
-  --gray4:   #eef0f3;
-  --gold:    #c8a040;
-  --green:   #2d7a50;
-  --border:  #e8eaed;
-  --radius:  3px;
-}
+/* ── SITE HEADER ── */
+.site-header{background:var(--bg);border-bottom:1px solid var(--border);padding:11px 0;position:sticky;top:0;z-index:200;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.site-header .inner{max-width:680px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+.site-name{font-size:13px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--mid)}
+.site-tag{font-size:12px;color:var(--light)}
 
-html { scroll-behavior: smooth; }
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--white);
-  color: var(--navy);
-  font-size: 15px;
-  line-height: 1.6;
-  font-weight: 400;
-  -webkit-font-smoothing: antialiased;
-}
+/* ── COLUMN ── */
+.column{max-width:680px;margin:0 auto;background:var(--bg);padding:0 26px 64px}
 
-/* ── ANNOUNCEMENT BAR ──────────────────────────────── */
-.anbar {
-  background: var(--navy);
-  color: rgba(255,255,255,0.75);
-  text-align: center;
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  padding: 10px 20px;
-}
-.anbar strong { color: #fff; font-weight: 500; }
+/* ── SCROLL STOPPER IMAGE ── */
+.scroll-stopper{width:calc(100% + 52px);margin-left:-26px;height:340px;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 40%,#0f3460 100%);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;margin-bottom:0}
+.scroll-stopper::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 60% 50%,rgba(200,55,26,.35) 0%,transparent 70%)}
+.stopper-content{text-align:center;z-index:1;padding:24px}
+.stopper-eyebrow{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:12px}
+.stopper-headline{font-family:'Lora',serif;font-size:clamp(24px,5vw,40px);font-weight:700;color:#fff;line-height:1.2;margin-bottom:16px;max-width:520px}
+.stopper-sub{font-size:15px;color:rgba(255,255,255,.75);max-width:400px;margin:0 auto}
+.stopper-pen{position:absolute;right:-20px;bottom:-10px;width:220px;height:220px;opacity:.12;background:radial-gradient(circle,white 30%,transparent 70%)}
+/* animated pulse */
+.pulse-ring{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:120px;height:120px;border:2px solid rgba(200,55,26,.5);border-radius:50%;animation:pulse 2.5s ease-out infinite}
+.pulse-ring:nth-child(2){width:200px;height:200px;animation-delay:.8s}
+@keyframes pulse{0%{transform:translate(-50%,-50%) scale(.8);opacity:.7}100%{transform:translate(-50%,-50%) scale(1.4);opacity:0}}
 
-/* ── NAV ────────────────────────────────────────────── */
-nav {
-  position: sticky; top: 0; z-index: 200;
-  background: var(--white);
-  border-bottom: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 52px; height: 70px;
-}
-.nav-logo {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px; font-weight: 600;
-  letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--navy); text-decoration: none;
-  display: flex; align-items: center; gap: 9px;
-}
-.nav-logo-icon { width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; }
-.nav-logo-icon svg { width: 100%; height: 100%; stroke: var(--gold); fill: none; stroke-width: 1.5; }
-.nav-links { display: flex; gap: 36px; }
-.nav-links a {
-  font-size: 13px; font-weight: 400; letter-spacing: 0.04em;
-  color: var(--gray1); text-decoration: none; transition: color 0.18s;
-}
-.nav-links a:hover { color: var(--navy); }
-.nav-right { display: flex; align-items: center; gap: 22px; }
-.nav-right svg {
-  width: 20px; height: 20px; stroke: var(--navy); fill: none; stroke-width: 1.5;
-  cursor: pointer; opacity: 0.75; transition: opacity 0.18s;
-}
-.nav-right svg:hover { opacity: 1; }
+/* ── ARTICLE HEADER ── */
+.article-header{padding:30px 0 24px;border-bottom:1px solid var(--border);margin-bottom:28px}
+.article-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:12px;display:block}
+h1{font-family:'Lora',serif;font-size:clamp(25px,5vw,37px);font-weight:700;color:var(--black);line-height:1.25;margin-bottom:14px}
+.article-deck{font-size:18px;color:var(--mid);line-height:1.6;font-family:'Lora',serif;font-style:italic;border-left:3px solid var(--accent);padding-left:16px;margin-bottom:18px}
+.article-meta{font-size:13px;color:var(--light);display:flex;gap:16px;flex-wrap:wrap}
 
-/* ── PAGE ───────────────────────────────────────────── */
-.page { max-width: 1160px; margin: 0 auto; padding: 60px 40px 100px; }
+/* ── ARTICLE BODY ── */
+.article-body p{font-family:'Lora',serif;font-size:18px;color:var(--dark);line-height:1.85;margin-bottom:22px}
+.article-body h2{font-family:'Lora',serif;font-size:clamp(20px,3.5vw,26px);font-weight:700;color:var(--black);margin:40px 0 14px;line-height:1.3}
+.article-body strong{color:var(--black)}
 
-.product-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: start;
-}
+/* callouts */
+.callout{background:var(--accent-light);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;padding:16px 18px;margin:26px 0;font-family:'Lora',serif;font-size:17px;line-height:1.7}
+.callout.green{background:var(--green-light);border-color:var(--green)}
+.callout strong{display:block;margin-bottom:4px;font-family:'Inter',sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--mid)}
 
-/* ── GALLERY ───────────────────────────────────────── */
-.gallery { position: sticky; top: 90px; }
-.gallery-main {
-  width: 100%; aspect-ratio: 1/1;
-  background: var(--off); border-radius: var(--radius);
-  overflow: hidden; position: relative; cursor: zoom-in;
-}
-.gallery-main img {
-  width: 100%; height: 100%; object-fit: cover; display: block;
-  transition: transform 0.6s cubic-bezier(0.23,1,0.32,1);
-}
-.gallery-main:hover img { transform: scale(1.04); }
-.g-counter {
-  position: absolute; bottom: 14px; left: 14px;
-  background: rgba(255,255,255,0.88);
-  font-size: 11px; font-weight: 500; letter-spacing: 0.05em; color: var(--navy);
-  padding: 4px 10px; border-radius: 20px; backdrop-filter: blur(4px);
-}
-.thumbs { display: flex; gap: 7px; margin-top: 8px; }
-.thumb {
-  flex: 1; aspect-ratio: 1/1; background: var(--off);
-  border-radius: var(--radius); overflow: hidden; cursor: pointer;
-  border: 1.5px solid transparent; transition: border-color 0.2s, opacity 0.2s; opacity: 0.55;
-}
-.thumb.active { border-color: var(--navy); opacity: 1; }
-.thumb:hover { opacity: 0.85; }
-.thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* pull quote */
+.pullquote{font-family:'Lora',serif;font-size:clamp(19px,3vw,25px);font-style:italic;font-weight:700;color:var(--black);text-align:center;padding:26px 0;border-top:2px solid var(--black);border-bottom:2px solid var(--black);margin:34px 0;line-height:1.4}
 
-/* ── INFO ───────────────────────────────────────────── */
-.info { display: flex; flex-direction: column; gap: 26px; }
+/* stats */
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:26px 0}
+.stat-box{background:#f8f8f7;border-radius:10px;padding:14px 10px;text-align:center}
+.stat-num{font-family:'Lora',serif;font-size:26px;font-weight:700;color:var(--black);display:block;margin-bottom:4px}
+.stat-label{font-size:12px;color:var(--mid);line-height:1.4}
 
-.product-title {
-  font-family: 'DM Serif Display', serif;
-  font-size: 42px; font-weight: 400;
-  line-height: 1.05; letter-spacing: -0.01em; color: var(--navy);
-}
+/* ── PRODUCT IMAGES IN ARTICLE ── */
+.article-img{width:calc(100% + 52px);margin-left:-26px;margin-bottom:0;overflow:hidden;position:relative}
+.article-img img{width:100%;display:block}
+/* placeholder when no real image */
+.img-placeholder{width:calc(100% + 52px);margin-left:-26px;margin:28px 0;position:relative;overflow:hidden}
+.img-ph-inner{height:240px;display:flex;align-items:center;justify-content:center;position:relative}
+.img-ph-inner.pen-hero{background:linear-gradient(135deg,#0f0f0f 0%,#1a1a1a 50%,#111 100%)}
+.img-ph-inner.meridian{background:linear-gradient(135deg,#f8f3ee 0%,#ede8e1 100%)}
+.img-ph-inner.compare{background:linear-gradient(135deg,#16213e 0%,#1a2f5e 100%)}
+.img-ph-caption{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.55);color:rgba(255,255,255,.85);font-size:12px;padding:8px 16px;text-align:center;backdrop-filter:blur(4px)}
 
-/* Rating — stars in NAVY */
-.rating-row {
-  display: flex; align-items: center; gap: 10px;
-  padding-bottom: 24px; border-bottom: 1px solid var(--border);
-}
-.stars { display: flex; gap: 2px; }
-.stars span { color: var(--navy); font-size: 15px; }
-.r-num { font-size: 13px; font-weight: 500; color: var(--navy); }
-.r-sep { color: var(--gray3); font-size: 13px; }
-.r-link {
-  font-size: 13px; color: var(--gray1);
-  text-underline-offset: 2px; text-decoration: underline; cursor: pointer; transition: color 0.18s;
-}
-.r-link:hover { color: var(--navy); }
+/* pen visualization */
+.pen-vis{display:flex;flex-direction:column;align-items:center;gap:4px}
+.pen-body{width:36px;height:140px;background:linear-gradient(180deg,#d4d4d4 0%,#afafaf 30%,#888 100%);border-radius:18px 18px 6px 6px;position:relative;box-shadow:0 0 30px rgba(200,55,26,.6),0 0 60px rgba(200,55,26,.3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
+.pen-led{width:10px;height:10px;border-radius:50%;background:#ff4422;box-shadow:0 0 12px #ff4422;animation:blink 1.2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.pen-button{width:22px;height:8px;background:#666;border-radius:4px}
+.pen-tip{width:8px;height:20px;background:linear-gradient(180deg,#aaa,#666);border-radius:0 0 4px 4px}
+.pen-label{color:rgba(255,255,255,.7);font-size:12px;margin-top:8px;letter-spacing:.05em;text-transform:uppercase}
 
-/* Price */
-.price-row { display: flex; align-items: baseline; gap: 11px; }
-.p-now { font-family: 'DM Serif Display', serif; font-size: 34px; font-weight: 400; color: var(--navy); letter-spacing: -0.01em; }
-.p-was { font-size: 17px; font-weight: 300; color: var(--gray2); text-decoration: line-through; }
-.p-save {
-  font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;
-  color: var(--green); background: #e8f4ee; padding: 3px 9px; border-radius: 2px;
-}
+/* meridian body viz */
+.meridian-vis{position:relative;width:100px;height:180px}
+.m-body{width:40px;height:160px;border-radius:20px 20px 12px 12px;background:rgba(180,150,120,.3);border:2px solid rgba(180,150,120,.5);margin:0 auto;position:relative}
+.m-dot{position:absolute;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent);animation:glow 1.5s ease-in-out infinite alternate}
+@keyframes glow{from{box-shadow:0 0 4px var(--accent)}to{box-shadow:0 0 16px var(--accent),0 0 24px rgba(200,55,26,.5)}}
+.m-line{position:absolute;left:50%;top:0;width:2px;height:100%;background:linear-gradient(180deg,transparent,rgba(200,55,26,.4),rgba(200,55,26,.6),rgba(200,55,26,.4),transparent);transform:translateX(-50%)}
+.meridian-caption{color:var(--mid);font-size:13px;text-align:center;margin-top:12px;font-style:italic}
 
-/* Bundle picker */
-.var-section { display: flex; flex-direction: column; gap: 14px; }
-.var-label {
-  font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray2);
-}
-.var-label span { color: var(--navy); font-weight: 500; font-size: 12px; letter-spacing: 0.05em; text-transform: none; }
-.bundle-list { display: flex; flex-direction: column; gap: 8px; }
-.bundle {
-  position: relative; display: flex; align-items: center; justify-content: space-between;
-  padding: 14px 18px; border: 1.5px solid var(--border);
-  border-radius: var(--radius); cursor: pointer; transition: border-color 0.2s, background 0.2s;
-}
-.bundle:hover { border-color: var(--gray3); }
-.bundle.active { border-color: var(--navy); background: #f5f7fa; }
-.b-left { display: flex; align-items: center; gap: 13px; }
-.radio {
-  width: 18px; height: 18px; border-radius: 50%;
-  border: 1.5px solid var(--gray3);
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: border-color 0.2s;
-}
-.bundle.active .radio { border-color: var(--navy); }
-.radio-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--navy); opacity: 0; transition: opacity 0.18s; }
-.bundle.active .radio-dot { opacity: 1; }
-.b-name { font-size: 14px; font-weight: 500; color: var(--navy); }
-.b-sub { font-size: 12px; color: var(--gray2); margin-top: 1px; }
-.b-right { text-align: right; }
-.b-price { font-size: 14px; font-weight: 500; color: var(--navy); }
-.b-each { font-size: 11px; color: var(--gray2); }
-.b-save-badge {
-  display: inline-block; margin-top: 2px;
-  font-size: 10px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
-  color: var(--green); background: #e8f4ee; padding: 1px 6px; border-radius: 2px;
-}
-.b-popular {
-  position: absolute; top: -9px; right: 14px;
-  font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-  background: var(--navy); color: #fff; padding: 3px 9px; border-radius: 2px;
-}
+/* compare viz */
+.compare-vis{display:flex;align-items:center;gap:24px;padding:0 20px}
+.cv-box{text-align:center;flex:1}
+.cv-price{font-family:'Lora',serif;font-size:36px;font-weight:700;color:white;margin-bottom:4px}
+.cv-label{font-size:12px;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px}
+.cv-desc{font-size:12px;color:rgba(255,255,255,.55)}
+.cv-vs{font-size:20px;font-weight:700;color:rgba(255,255,255,.3);flex-shrink:0}
 
-/* Trust grid */
-.trust-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.trust-item {
-  display: flex; align-items: flex-start; gap: 11px;
-  padding: 13px 14px; border: 1px solid var(--border); border-radius: var(--radius);
-}
-.trust-item svg { width: 17px; height: 17px; stroke: var(--navy); fill: none; stroke-width: 1.5; flex-shrink: 0; margin-top: 1px; }
-.t-label { font-size: 12px; font-weight: 500; color: var(--navy); }
-.t-sub { font-size: 11px; color: var(--gray2); margin-top: 1px; }
+/* diagram box */
+.diagram-box{background:#f8f8f7;border-radius:12px;padding:22px;margin:26px 0}
+.diagram-title{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:14px}
+.point-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.point-item{display:flex;gap:12px;align-items:flex-start}
+.point-dot{width:26px;height:26px;border-radius:50%;background:var(--black);color:white;font-size:10px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.point-text{font-size:15px;color:var(--dark);line-height:1.5}
+.point-text strong{color:var(--black)}
 
-/* CTA */
-.cta-stack { display: flex; flex-direction: column; gap: 10px; }
-.ship-line {
-  font-size: 11px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase;
-  color: var(--gray2); text-align: center;
-}
-.ship-line span { color: var(--navy); }
-.btn-primary {
-  width: 100%; padding: 17px;
-  background: var(--navy); color: #fff;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
-  border: none; border-radius: var(--radius); cursor: pointer; transition: background 0.2s, transform 0.12s;
-}
-.btn-primary:hover { background: var(--navy-3); }
-.btn-primary:active { transform: scale(0.995); }
-.btn-secondary {
-  width: 100%; padding: 15px; background: transparent; color: var(--navy);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase;
-  border: 1.5px solid var(--border); border-radius: var(--radius); cursor: pointer;
-  transition: border-color 0.18s, background 0.18s;
-}
-.btn-secondary:hover { border-color: var(--navy); background: var(--off); }
-.pay-row { display: flex; align-items: center; justify-content: center; gap: 6px; padding-top: 2px; }
-.pay-badge {
-  height: 24px; padding: 0 9px; background: var(--gray4); border-radius: 3px;
-  font-size: 10px; font-weight: 600; letter-spacing: 0.02em; color: var(--gray1);
-  display: flex; align-items: center;
-}
+/* product reveal dark box */
+.product-reveal{background:var(--black);color:white;border-radius:14px;padding:30px 26px;margin:34px 0}
+.product-reveal .reveal-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.5);margin-bottom:10px;display:block}
+.product-reveal h3{font-family:'Lora',serif;font-size:clamp(19px,3.5vw,25px);font-weight:700;color:white;line-height:1.3;margin-bottom:14px}
+.product-reveal p{font-family:'Inter',sans-serif;font-size:15px;color:rgba(255,255,255,.8);line-height:1.7;margin-bottom:12px}
+.reveal-step{display:flex;gap:12px;align-items:flex-start;margin-bottom:10px}
+.reveal-num{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.15);font-size:11px;font-weight:600;color:white;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.reveal-step-text{font-size:14px;color:rgba(255,255,255,.85);line-height:1.5;padding-top:3px}
 
-/* ── ACCORDION ─────────────────────────────────────── */
-.accordion { border-top: 1px solid var(--border); }
-.acc-item { border-bottom: 1px solid var(--border); }
-.acc-btn {
-  width: 100%; display: flex; align-items: center; justify-content: space-between;
-  padding: 20px 0; background: none; border: none; cursor: pointer;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase;
-  color: var(--navy); text-align: left;
-}
-.acc-arrow {
-  width: 18px; height: 18px; flex-shrink: 0;
-  stroke: var(--gray2); fill: none; stroke-width: 1.6; transition: transform 0.28s;
-}
-.acc-item.open .acc-arrow { transform: rotate(45deg); }
-.acc-body {
-  overflow: hidden; max-height: 0;
-  transition: max-height 0.38s ease, padding-bottom 0.3s;
-  font-size: 14px; color: var(--gray1); line-height: 1.8;
-}
-.acc-item.open .acc-body { max-height: 700px; padding-bottom: 22px; }
-.acc-body p + p { margin-top: 10px; }
-.acc-body ul { list-style: none; display: flex; flex-direction: column; gap: 6px; margin-top: 12px; }
-.acc-body li::before { content: '✓  '; color: var(--navy); font-weight: 600; }
+/* mini benefits */
+.mini-benefits{margin:20px 0;display:flex;flex-direction:column;gap:8px}
+.mini-benefit{display:flex;gap:10px;align-items:flex-start;font-size:15px;color:var(--dark);line-height:1.5}
+.check{color:var(--green);font-size:16px;flex-shrink:0;margin-top:2px}
 
-/* ── TRUST STRIP (navy band) ────────────────────────── */
-.trust-strip {
-  background: var(--navy);
-  padding: 36px 40px;
-}
-.trust-strip-inner {
-  max-width: 1160px; margin: 0 auto;
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
-}
-.ts-item {
-  display: flex; flex-direction: column; align-items: center;
-  text-align: center; padding: 0 24px;
-  border-right: 1px solid rgba(255,255,255,0.12);
-}
-.ts-item:last-child { border-right: none; }
-.ts-emoji { font-size: 22px; margin-bottom: 8px; line-height: 1; }
-.ts-label { font-size: 13px; font-weight: 500; color: #fff; letter-spacing: 0.02em; margin-bottom: 3px; }
-.ts-sub { font-size: 11px; color: rgba(255,255,255,0.55); letter-spacing: 0.03em; }
+/* testimonials */
+.testimonials{margin:30px 0;display:flex;flex-direction:column;gap:12px}
+.testimonial{background:#f8f8f7;border-radius:10px;padding:16px 18px}
+.t-text{font-family:'Lora',serif;font-size:16px;font-style:italic;color:var(--dark);line-height:1.6;margin-bottom:10px}
+.t-author{display:flex;align-items:center;gap:10px}
+.t-avatar{width:34px;height:34px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:var(--mid);flex-shrink:0}
+.t-name{font-size:13px;font-weight:600;color:var(--black)}
+.t-detail{font-size:12px;color:var(--light)}
+.stars{color:#f0a500;font-size:12px}
 
-/* ── DIVIDER ───────────────────────────────────────── */
-.divider { border: none; border-top: 1px solid var(--border); margin: 80px 0; }
+/* main CTA */
+.main-cta{background:var(--accent);color:white;text-align:center;padding:34px 26px;border-radius:14px;margin:34px 0}
+.main-cta .cta-hook{font-family:'Lora',serif;font-size:clamp(17px,3vw,23px);font-weight:700;line-height:1.35;margin-bottom:10px}
+.main-cta .cta-sub{font-size:15px;color:rgba(255,255,255,.85);margin-bottom:20px;line-height:1.5}
+.btn-primary{display:inline-block;background:white;color:var(--accent);font-family:'Inter',sans-serif;font-size:16px;font-weight:700;padding:15px 34px;border-radius:50px;text-decoration:none;border:none;cursor:pointer;transition:transform .15s,box-shadow .15s;letter-spacing:.01em}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.cta-guarantee{font-size:13px;color:rgba(255,255,255,.7);margin-top:12px}
 
-/* ── SECTION HEADERS ───────────────────────────────── */
-.sec-head { text-align: center; margin-bottom: 48px; }
-.sec-title {
-  font-family: 'DM Serif Display', serif;
-  font-size: 38px; font-weight: 400; color: var(--navy); letter-spacing: -0.01em;
-}
-.sec-sub { font-size: 14px; color: var(--gray2); margin-top: 8px; }
+.divider{height:1px;background:var(--border);margin:30px 0}
 
-/* ── REVIEWS ───────────────────────────────────────── */
-.rev-summary {
-  display: flex; align-items: center; justify-content: center; gap: 22px;
-  padding: 32px; border: 1px solid var(--border); border-radius: var(--radius);
-  margin-bottom: 32px;
-}
-.rev-big { font-family: 'DM Serif Display', serif; font-size: 64px; font-weight: 400; color: var(--navy); line-height: 1; }
-.rev-stars-lg { display: flex; gap: 3px; margin-bottom: 4px; }
-.rev-stars-lg span { color: var(--navy); font-size: 22px; }
-.rev-count { font-size: 13px; color: var(--gray2); }
-.reviews-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.rev-card {
-  padding: 24px; border: 1px solid var(--border);
-  border-radius: var(--radius); background: var(--white);
-}
-.rev-top { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
-.rev-avatar {
-  width: 38px; height: 38px; border-radius: 50%;
-  background: var(--gray4); font-size: 12px; font-weight: 600; color: var(--gray1);
-  display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0;
-}
-.rev-avatar img { width: 100%; height: 100%; object-fit: cover; }
-.rev-name { font-size: 13px; font-weight: 600; color: var(--navy); }
-.rev-verified { font-size: 11px; color: var(--green); display: flex; align-items: center; gap: 3px; margin-top: 1px; }
-.rev-stars-sm { display: flex; gap: 1px; margin-bottom: 8px; }
-.rev-stars-sm span { color: var(--navy); font-size: 12px; }
-.rev-title { font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
-.rev-body { font-size: 13px; color: var(--gray1); line-height: 1.7; }
-.rev-photo {
-  width: 100%; margin-top: 14px; border-radius: 2px;
-  aspect-ratio: 16/9; object-fit: cover; display: block; background: var(--gray4);
-}
-.rev-date { font-size: 11px; color: var(--gray3); margin-top: 10px; }
+/* ════════════════════════════════
+   ORDER PAGE
+════════════════════════════════ */
+.order-sticky-header{background:var(--black);color:white;padding:14px 20px;text-align:center;position:sticky;top:0;z-index:200;box-shadow:0 2px 12px rgba(0,0,0,.3)}
+.order-sticky-header h2{font-family:'Lora',serif;font-size:clamp(15px,3vw,19px);font-weight:700;line-height:1.3}
+.order-sticky-header p{font-size:12px;color:rgba(255,255,255,.6);margin-top:3px}
 
-/* ── FAQ ───────────────────────────────────────────── */
-.faq-wrap { max-width: 760px; margin: 0 auto; }
+.order-col{max-width:560px;margin:0 auto;background:white;padding:0 22px 60px}
 
-/* ── FOOTER BANNER ─────────────────────────────────── */
-.footer-banner {
-  background: var(--navy); padding: 72px 40px; text-align: center; margin-top: 80px;
-}
-.footer-banner-title {
-  font-family: 'DM Serif Display', serif; font-size: 36px; font-weight: 400;
-  color: #fff; margin-bottom: 8px;
-}
-.footer-banner-sub { font-size: 14px; color: rgba(255,255,255,0.55); margin-bottom: 28px; }
-.footer-banner-btn {
-  display: inline-block; padding: 14px 36px;
-  background: #fff; color: var(--navy);
-  font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  border: none; border-radius: var(--radius); cursor: pointer; text-decoration: none; transition: opacity 0.2s;
-}
-.footer-banner-btn:hover { opacity: 0.88; }
-footer {
-  background: var(--navy); border-top: 1px solid rgba(255,255,255,0.08);
-  padding: 20px 40px; display: flex; align-items: center; justify-content: space-between;
-  flex-wrap: wrap; gap: 12px;
-}
-footer .f-copy { font-size: 12px; color: rgba(255,255,255,0.35); letter-spacing: 0.03em; }
-.f-links { display: flex; gap: 20px; }
-.f-links a { font-size: 12px; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.18s; }
-.f-links a:hover { color: rgba(255,255,255,0.85); }
+/* ── IMAGE GALLERY ── */
+.gallery{margin:0 -22px 0;position:relative;background:#f0f0ee}
+.gallery-track-wrap{overflow:hidden}
+.gallery-track{display:flex;transition:transform .35s ease;will-change:transform}
+.gallery-slide{min-width:100%;height:280px;display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0}
+.gs-bg1{background:linear-gradient(135deg,#111 0%,#1f1f1f 100%)}
+.gs-bg2{background:linear-gradient(135deg,#1a2236 0%,#243050 100%)}
+.gs-bg3{background:linear-gradient(135deg,#f8f3ee 0%,#ede8e1 100%)}
+.gs-bg4{background:linear-gradient(135deg,#0f1f0f 0%,#1a3a1a 100%)}
+.gallery-label{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.5);color:rgba(255,255,255,.9);font-size:12px;padding:8px 14px;text-align:center;backdrop-filter:blur(4px)}
 
-/* ── RESPONSIVE ─────────────────────────────────────── */
-@media (max-width: 900px) {
-  nav { padding: 0 20px; }
-  .nav-links { display: none; }
-  .page { padding: 28px 18px 72px; }
-  .product-grid { grid-template-columns: 1fr; gap: 40px; }
-  .gallery { position: static; }
-  .product-title { font-size: 34px; }
-  .reviews-grid { grid-template-columns: 1fr; }
-  .trust-strip-inner { grid-template-columns: 1fr 1fr; gap: 24px 0; }
-  .ts-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 24px; }
-  .ts-item:nth-child(3), .ts-item:nth-child(4) { border-bottom: none; }
-  .trust-strip { padding: 36px 20px; }
-  footer { flex-direction: column; align-items: flex-start; gap: 14px; }
-}
-@media (max-width: 480px) {
-  .trust-strip-inner { grid-template-columns: 1fr; }
-  .ts-item { border-bottom: 1px solid rgba(255,255,255,0.12) !important; }
-  .ts-item:last-child { border-bottom: none !important; }
-  .trust-grid { grid-template-columns: 1fr; }
+/* gallery nav arrows */
+.g-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.15);backdrop-filter:blur(6px);border:none;color:white;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;z-index:10;transition:background .15s}
+.g-arrow:hover{background:rgba(255,255,255,.3)}
+.g-prev{left:10px}
+.g-next{right:10px}
+.gallery-dots{display:flex;justify-content:center;gap:6px;padding:10px 0;background:#f0f0ee}
+.g-dot{width:7px;height:7px;border-radius:50%;background:#ccc;border:none;cursor:pointer;transition:background .15s;padding:0}
+.g-dot.active{background:var(--black)}
+
+/* ── PRODUCT CARD ── */
+.product-card{display:flex;align-items:center;gap:14px;padding:18px 0;border-bottom:1px solid var(--border)}
+.product-icon{width:58px;height:58px;background:#f0f0ee;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
+.product-info-name{font-weight:600;font-size:15px;color:var(--black);margin-bottom:3px}
+.product-info-desc{font-size:13px;color:var(--mid);line-height:1.4}
+
+/* ── BUNDLE ── */
+.bundle-section{padding:20px 0 0}
+.bundle-label-top{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:10px}
+.bundle-options{display:flex;flex-direction:column;gap:9px}
+.bundle-opt{border:2px solid var(--border);border-radius:12px;padding:14px 16px;cursor:pointer;transition:border-color .15s,background .15s;display:flex;align-items:center;gap:12px;position:relative}
+.bundle-opt.selected{border-color:var(--black);background:#fafafa}
+.bundle-opt.best-val{border-color:var(--black)}
+.best-badge{position:absolute;top:-10px;right:12px;background:var(--accent);color:white;font-size:10px;font-weight:700;padding:2px 10px;border-radius:20px;letter-spacing:.04em}
+.bundle-radio{width:19px;height:19px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .15s}
+.bundle-opt.selected .bundle-radio{border-color:var(--black)}
+.radio-dot{width:9px;height:9px;border-radius:50%;background:var(--black);display:none}
+.bundle-opt.selected .radio-dot{display:block}
+.bundle-info{flex:1}
+.bundle-info-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:2px}
+.bundle-qty-label{font-size:14px;font-weight:600;color:var(--black)}
+.bundle-price-label{font-size:15px;font-weight:700;color:var(--black)}
+.bundle-info-bot{font-size:12px;color:var(--mid);display:flex;align-items:center;gap:6px}
+.save-pill{font-size:10px;font-weight:600;background:var(--green-light);color:var(--green);padding:1px 7px;border-radius:20px}
+
+/* ── ORDER SUMMARY ── */
+.order-summary{background:#f8f8f7;border-radius:12px;padding:16px 18px;margin:18px 0}
+.summary-row{display:flex;justify-content:space-between;font-size:14px;color:var(--mid);margin-bottom:7px}
+.summary-row.total{font-size:16px;font-weight:700;color:var(--black);border-top:1px solid var(--border);padding-top:9px;margin-top:4px;margin-bottom:0}
+
+/* ── CHECKOUT FORM ── */
+.form-section{margin-top:22px}
+.form-section-title{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--mid);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.form-row.single{grid-template-columns:1fr}
+.form-row.thirds{grid-template-columns:1fr 1fr 1fr}
+.form-group{display:flex;flex-direction:column;gap:5px}
+.form-group label{font-size:12px;font-weight:500;color:var(--mid)}
+.form-group input,
+.form-group select{width:100%;padding:11px 13px;border:1.5px solid var(--border);border-radius:8px;font-size:15px;font-family:'Inter',sans-serif;color:var(--dark);outline:none;transition:border-color .15s;background:white;-webkit-appearance:none}
+.form-group input:focus,
+.form-group select:focus{border-color:var(--black)}
+.form-group input::placeholder{color:#bbb}
+.card-icons{display:flex;gap:6px;margin-bottom:8px}
+.card-icon{padding:4px 8px;background:#f0f0ee;border-radius:5px;font-size:11px;font-weight:600;color:var(--mid);letter-spacing:.03em}
+
+/* ── ORDER BUTTON ── */
+.btn-order{display:block;width:100%;background:var(--accent);color:white;font-family:'Inter',sans-serif;font-size:17px;font-weight:700;padding:17px;border-radius:50px;text-align:center;border:none;cursor:pointer;transition:transform .15s,box-shadow .15s;letter-spacing:.01em;margin-bottom:12px;margin-top:20px}
+.btn-order:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,55,26,.35)}
+
+/* ── TRUST ── */
+.trust-row{display:flex;justify-content:center;gap:18px;margin:14px 0;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--mid)}
+.trust-icon{font-size:14px}
+
+.guarantee-box{border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin:14px 0;display:flex;gap:12px;align-items:flex-start}
+.guarantee-icon{font-size:26px;flex-shrink:0}
+.guarantee-title{font-size:14px;font-weight:600;color:var(--black);margin-bottom:3px}
+.guarantee-text{font-size:13px;color:var(--mid);line-height:1.5}
+
+.back-link{display:block;text-align:center;font-size:13px;color:var(--light);padding:14px 0;cursor:pointer;text-decoration:underline;background:none;border:none;width:100%}
+.back-link:hover{color:var(--mid)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:500px){
+  .column{padding:0 16px 56px}
+  .img-placeholder{width:calc(100% + 32px);margin-left:-16px}
+  .scroll-stopper{width:calc(100% + 32px);margin-left:-16px;height:280px}
+  .gallery{margin:0 -16px 0}
+  .order-col{padding:0 14px 52px}
+  .stat-row{gap:7px}
+  .stat-num{font-size:22px}
+  .form-row{grid-template-columns:1fr}
+  .form-row.thirds{grid-template-columns:1fr 1fr}
+  .trust-row{gap:12px}
+  .product-reveal{padding:22px 18px}
 }
 </style>
 </head>
 <body>
 
-<!-- ANNOUNCEMENT BAR -->
-<div class="anbar">
-  <strong>Free domestic shipping</strong> &nbsp;·&nbsp; 30 Day Zero-Risk Guarantee
+<!-- ═══════════════════
+     ARTICLE PAGE
+══════════════════════ -->
+<div id="page-article">
+<header class="site-header">
+  <div class="inner">
+    <span class="site-name">Health Insider</span>
+    <span class="site-tag">Wellness · Research · Solutions</span>
+  </div>
+</header>
+
+<!-- SCROLL STOPPER -->
+<div class="scroll-stopper">
+  <div class="pulse-ring"></div>
+  <div class="pulse-ring"></div>
+  <div class="stopper-content">
+    <div class="stopper-eyebrow">Joint Pain · New Discovery</div>
+    <div class="stopper-headline">The Ancient Pain Technique Western Medicine Keeps Ignoring</div>
+    <div class="stopper-sub">3,000 years of clinical practice. Finally available at home. For under $50.</div>
+  </div>
+  <div class="stopper-pen"></div>
 </div>
 
-<!-- NAV -->
-<nav>
-  <a class="nav-logo" href="#">
-    <div class="nav-logo-icon">
-      <svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-    </div>
-    BellCo
-  </a>
-  <div class="nav-links">
-    <a href="#">Shop</a>
-    <a href="#">Our Story</a>
-    <a href="#">Learn</a>
-  </div>
-  <div class="nav-right">
-    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-    <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-    <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-  </div>
-</nav>
-
-<div class="page">
-<div class="product-grid">
-
-  <!-- GALLERY -->
-  <div class="gallery">
-    <div class="gallery-main" id="mainGallery">
-      <img id="mainImg" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80" alt="DoorBell Pro">
-      <div class="g-counter" id="gCounter">1 / 5</div>
-    </div>
-    <div class="thumbs" id="thumbsRow">
-      <div class="thumb active"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&q=75" alt=""></div>
-      <div class="thumb"><img src="https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?w=300&q=75" alt=""></div>
-      <div class="thumb"><img src="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?w=300&q=75" alt=""></div>
-      <div class="thumb"><img src="https://images.unsplash.com/photo-1601924994987-69e26d50dc26?w=300&q=75" alt=""></div>
-      <div class="thumb"><img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=300&q=75" alt=""></div>
+<main>
+<div class="column">
+  <div class="article-header">
+    <span class="article-label">Joint Pain · Chronic Pain · Natural Relief</span>
+    <h1>Why Does Your Joint Pain Never Go Away? (The Answer Changed Everything For Me)</h1>
+    <p class="article-deck">Ibuprofen masks it. Rest doesn't fix it. The real reason your pain keeps coming back has nothing to do with inflammation — and most doctors will never tell you this.</p>
+    <div class="article-meta">
+      <span>📅 Updated May 2025</span>
+      <span>⏱ 6 min read</span>
+      <span>👁 142,000 readers</span>
     </div>
   </div>
 
-  <!-- PRODUCT INFO -->
-  <div class="info">
+  <div class="article-body">
 
+    <p>If you've been dealing with knee pain, shoulder pain, or stiff joints for more than a few months — and nothing seems to help for long — you're not imagining it.</p>
+
+    <p>You've probably tried ibuprofen. Maybe physical therapy. Ice packs. Rest. And it worked... for a day or two. Then the pain came back, exactly where it always does.</p>
+
+    <div class="callout">
+      <strong>Sound familiar?</strong>
+      That's not bad luck. That's not your age. That's your body sending you a very specific signal — and we've been taught to ignore it.
+    </div>
+
+    <p>I spent three years with chronic knee pain. Walking up stairs was the worst. Getting out of a chair felt like an obstacle course. My doctor's advice? <em>"Take some anti-inflammatories and see if it improves."</em></p>
+    <p>It didn't improve. And I started wondering: <strong>why does the pain always come back?</strong></p>
+
+    <h2>The Real Problem Isn't the Pain Itself</h2>
+    <p>Here's what most people don't know: pain is a symptom. It's your body's alarm system going off. When you take a painkiller, you're not fixing anything — you're just turning off the alarm while the problem keeps going.</p>
+
+    <div class="stat-row">
+      <div class="stat-box"><span class="stat-num">80%</span><span class="stat-label">of chronic pain patients say meds only partially help</span></div>
+      <div class="stat-box"><span class="stat-num">3.4B</span><span class="stat-label">people worldwide live with chronic pain every day</span></div>
+      <div class="stat-box"><span class="stat-num">$635B</span><span class="stat-label">spent on pain treatment in the US every year</span></div>
+    </div>
+
+    <p>So if we spend that much money and that many people are still in pain — something is clearly wrong with the approach. The real question isn't <em>how do I make the pain stop</em>. It's: <strong>why is my body creating this pain in the first place?</strong></p>
+
+    <h2>What 3,000 Years of Medicine Figured Out</h2>
+    <p>Long before painkillers existed, Chinese doctors were successfully treating pain. Not with drugs. Not with surgery. With something much simpler.</p>
+    <p>They discovered that the human body has a network of invisible pathways — called <strong>meridians</strong> — that carry energy through every organ, joint, and muscle. When those pathways get blocked, the energy stops flowing. And that blockage shows up as pain, stiffness, or tension.</p>
+
+    <!-- IMAGE: meridian diagram placeholder -->
+    <div class="img-placeholder">
+      <div class="img-ph-inner meridian" style="height:220px">
+        <div style="display:flex;align-items:center;gap:40px;padding:20px">
+          <div class="meridian-vis">
+            <div class="m-body">
+              <div class="m-line"></div>
+              <div class="m-dot" style="top:20%;left:50%;transform:translateX(-50%)"></div>
+              <div class="m-dot" style="top:45%;left:50%;transform:translateX(-50%);animation-delay:.5s"></div>
+              <div class="m-dot" style="top:70%;left:50%;transform:translateX(-50%);animation-delay:1s"></div>
+            </div>
+          </div>
+          <div style="flex:1">
+            <div style="font-size:13px;font-weight:600;color:#444;margin-bottom:10px;text-transform:uppercase;letter-spacing:.06em">Meridian Energy Flow</div>
+            <div style="font-size:13px;color:#666;line-height:1.6">When meridians flow freely → no pain<br>When meridians are blocked → pain signal</div>
+            <div style="margin-top:12px;display:flex;flex-direction:column;gap:6px">
+              <div style="display:flex;align-items:center;gap:8px"><div style="width:8px;height:8px;border-radius:50%;background:var(--accent)"></div><span style="font-size:12px;color:#666">Blocked point = pain area</span></div>
+              <div style="display:flex;align-items:center;gap:8px"><div style="width:8px;height:8px;border-radius:50%;background:var(--green)"></div><span style="font-size:12px;color:#666">Cleared point = relief</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="img-ph-caption">Add real meridian map image here — e.g. body with highlighted energy pathways</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Think of it like this:</strong>
+      Your garden hose. When water flows freely, everything works perfectly. When you step on the hose, the pressure builds up. That pressure is what we call pain.
+    </div>
+
+    <p>In 2019, the World Health Organization officially recognized acupuncture as a valid medical treatment. Not because it's "alternative." Because decades of studies showed it actually works.</p>
+
+    <div class="diagram-box">
+      <div class="diagram-title">Key Acupuncture Points for Common Pain Areas</div>
+      <ul class="point-list">
+        <li class="point-item"><div class="point-dot">ST34</div><div class="point-text"><strong>Knee pain (ST34):</strong> Just above the kneecap. Releases tension in surrounding tissue and improves circulation to the joint.</div></li>
+        <li class="point-item"><div class="point-dot">LI4</div><div class="point-text"><strong>General pain (LI4):</strong> Between thumb and index finger. Known as the "great eliminator" — used for pain anywhere in the upper body.</div></li>
+        <li class="point-item"><div class="point-dot">BL23</div><div class="point-text"><strong>Lower back (BL23):</strong> Either side of the spine. Direct connection to the lumbar energy pathways.</div></li>
+        <li class="point-item"><div class="point-dot">GB21</div><div class="point-text"><strong>Shoulder & neck (GB21):</strong> Top of the trapezius. The most common point for desk workers with upper body tension.</div></li>
+      </ul>
+    </div>
+
+    <h2>The Problem With Traditional Acupuncture</h2>
+    <p>By now you might be thinking: "OK, but I'm not going to get needles stuck in me every week."</p>
+    <p>Fair enough. Traditional acupuncture sessions cost $80–$150 each. You need at least 6–10 sessions to see real results. That's up to $1,500 — and you have to drive to a clinic every single time.</p>
+
+    <div class="pullquote">"The principle works. Access to it has always been the problem."</div>
+
+    <p>But here's what changed everything — for me and for hundreds of thousands of people who've discovered this in the last few years.</p>
+
+    <h2>What Happens at the Acupuncture Point</h2>
+    <p>Modern researchers wanted to understand <em>why</em> acupuncture works. So they looked at what happens to the body at the point of stimulation.</p>
+    <p>What they found: stimulating these points sends a tiny electrical signal through the nervous system. This signal tells the brain to release natural pain-blocking chemicals. It also improves local blood flow, reduces muscle tension, and calms the nervous system's alarm response.</p>
+
+    <div class="callout green">
+      <strong>The key insight:</strong>
+      You don't need a needle. You need the right stimulation at the right point. Needles are one way. Electrical stimulation is another — and research shows it works just as well.
+    </div>
+
+    <!-- PRODUCT REVEAL with image placeholder -->
+    <div class="product-reveal">
+      <span class="reveal-label">The Discovery</span>
+      <h3>Electric Acupuncture: Same Principle. No Needles. No Clinic.</h3>
+
+      <!-- product image placeholder inside dark box -->
+      <div style="background:rgba(255,255,255,.06);border-radius:10px;padding:20px;margin:16px 0;display:flex;align-items:center;justify-content:center;gap:28px">
+        <div class="pen-vis">
+          <div class="pen-body">
+            <div class="pen-led"></div>
+            <div class="pen-button"></div>
+          </div>
+          <div class="pen-tip"></div>
+          <div class="pen-label">AcuPulse Pro</div>
+        </div>
+        <div style="flex:1;max-width:240px">
+          <div style="font-size:12px;color:rgba(255,255,255,.5);margin-bottom:8px;text-transform:uppercase;letter-spacing:.07em">Replace with product photo</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="font-size:13px;color:rgba(255,255,255,.75);display:flex;align-items:center;gap:8px"><span style="color:var(--accent)">●</span> LED detects exact point</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.75);display:flex;align-items:center;gap:8px"><span style="color:var(--accent)">●</span> Delivers painless micro-pulse</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.75);display:flex;align-items:center;gap:8px"><span style="color:var(--accent)">●</span> USB rechargeable</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.75);display:flex;align-items:center;gap:8px"><span style="color:var(--accent)">●</span> Weighs just 30g</div>
+          </div>
+        </div>
+      </div>
+
+      <p>Chinese medicine clinics have been using small handheld devices to electrically stimulate acupuncture points for years. It's faster, more precise — and now, anyone can have one at home.</p>
+      <div class="reveal-step"><div class="reveal-num">1</div><div class="reveal-step-text"><strong>Finds the exact point:</strong> A small sensor detects the acupuncture point by measuring electrical resistance in the skin — these points register lower resistance than surrounding tissue.</div></div>
+      <div class="reveal-step"><div class="reveal-num">2</div><div class="reveal-step-text"><strong>Delivers a micro-pulse:</strong> Completely painless. Stimulates the point the same way a needle would — without breaking the skin.</div></div>
+      <div class="reveal-step"><div class="reveal-num">3</div><div class="reveal-step-text"><strong>Your body responds:</strong> Natural pain-blocking compounds are released. Circulation improves. Tension releases.</div></div>
+
+      <!-- price anchor image placeholder -->
+      <div style="margin-top:20px;background:rgba(255,255,255,.06);border-radius:10px;padding:16px;display:flex;gap:16px">
+        <div style="flex:1;text-align:center;padding:12px;background:rgba(255,255,255,.08);border-radius:8px">
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:rgba(255,255,255,.5);margin-bottom:6px">Clinic session</div>
+          <div style="font-family:'Lora',serif;font-size:30px;font-weight:700;color:white;text-decoration:line-through;opacity:.6">$120</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.4);margin-top:4px">Per visit, 1–2× per week</div>
+        </div>
+        <div style="display:flex;align-items:center;font-size:18px;color:rgba(255,255,255,.25);font-weight:700">vs</div>
+        <div style="flex:1;text-align:center;padding:12px;background:var(--accent);border-radius:8px">
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:rgba(255,255,255,.8);margin-bottom:6px">Your device</div>
+          <div style="font-family:'Lora',serif;font-size:30px;font-weight:700;color:white">$47</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.8);margin-top:4px">One time. Use every day.</div>
+        </div>
+      </div>
+    </div>
+
+    <h2>Who Is This For?</h2>
+    <div class="mini-benefits">
+      <div class="mini-benefit"><span class="check">✓</span> Chronic knee pain that comes and goes</div>
+      <div class="mini-benefit"><span class="check">✓</span> Shoulder or neck stiffness from sitting at a desk</div>
+      <div class="mini-benefit"><span class="check">✓</span> Lower back tension that never fully goes away</div>
+      <div class="mini-benefit"><span class="check">✓</span> Wrist and elbow pain from repetitive work</div>
+      <div class="mini-benefit"><span class="check">✓</span> Hip flexor tightness from long hours of sitting</div>
+      <div class="mini-benefit"><span class="check">✓</span> General stiffness and body aches in the morning</div>
+    </div>
+
+    <!-- IMAGE: product in use placeholder -->
+    <div class="img-placeholder">
+      <div class="img-ph-inner" style="height:200px;background:linear-gradient(135deg,#f5f0eb 0%,#ede5d8 100%)">
+        <div style="text-align:center">
+          <div style="font-size:36px;margin-bottom:10px">🤲</div>
+          <div style="font-size:14px;font-weight:500;color:#555">Replace with lifestyle image</div>
+          <div style="font-size:12px;color:#888;margin-top:4px">E.g. person using pen on knee / shoulder</div>
+        </div>
+        <div class="img-ph-caption">Lifestyle image: product in use — real person, authentic setting</div>
+      </div>
+    </div>
+
+    <div class="testimonials">
+      <div class="testimonial">
+        <div class="t-text">"I had knee pain for 2 years and tried everything. Three weeks using this every morning and I'm walking up stairs without even thinking about it. I genuinely don't understand why this isn't more well known."</div>
+        <div class="t-author"><div class="t-avatar">MR</div><div><div class="t-name">Michael R.</div><div class="t-detail">Portland, OR · <span class="stars">★★★★★</span></div></div></div>
+      </div>
+      <div class="testimonial">
+        <div class="t-text">"My shoulder has been bothering me since I started working from home. I'd never heard of electric acupuncture before reading this. Two months later — the difference is real. I use it every morning before I start work."</div>
+        <div class="t-author"><div class="t-avatar">SK</div><div><div class="t-name">Sarah K.</div><div class="t-detail">Toronto, Canada · <span class="stars">★★★★★</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="main-cta">
+      <div class="cta-hook">Stop Managing the Pain. Start Actually Fixing It.</div>
+      <div class="cta-sub">See the exact device that's helped thousands of people — and which acupuncture points to use for your specific pain area.</div>
+      <button class="btn-primary" onclick="goToOrder()">See the AcuPulse Pro →</button>
+      <div class="cta-guarantee">🔒 30-day money-back guarantee · Free shipping to US, CA & AU</div>
+    </div>
+
+    <div class="divider"></div>
+    <p style="font-size:13px;color:var(--light);line-height:1.6"><em>Disclaimer: This article is for informational purposes only and does not constitute medical advice. Always consult a healthcare professional before starting any new health regimen. Results may vary.</em></p>
+
+  </div>
+</div>
+</main>
+</div><!-- end page-article -->
+
+
+<!-- ═══════════════════
+     ORDER PAGE
+══════════════════════ -->
+<div id="page-order">
+
+<div class="order-sticky-header">
+  <h2>AcuPulse Pro — Electric Acupuncture Pen</h2>
+  <p>🔒 Secure checkout · Free shipping · 30-day guarantee</p>
+</div>
+
+<div class="order-col">
+
+  <!-- IMAGE GALLERY -->
+  <div class="gallery" id="gallery">
+    <div class="gallery-track-wrap">
+      <div class="gallery-track" id="gallery-track">
+
+        <div class="gallery-slide gs-bg1">
+          <div class="pen-vis" style="transform:scale(1.3)">
+            <div class="pen-body"><div class="pen-led"></div><div class="pen-button"></div></div>
+            <div class="pen-tip"></div>
+          </div>
+          <div class="gallery-label">AcuPulse Pro — Main product view [replace with photo]</div>
+        </div>
+
+        <div class="gallery-slide gs-bg2">
+          <div style="text-align:center;padding:20px">
+            <div style="font-size:48px;margin-bottom:12px">📍</div>
+            <div style="font-size:14px;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:6px">Includes Full Body Point Map</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.6)">Laminated reference card for all pain areas</div>
+          </div>
+          <div class="gallery-label">In-box contents [replace with photo]</div>
+        </div>
+
+        <div class="gallery-slide gs-bg3">
+          <div style="text-align:center;padding:20px">
+            <div style="font-size:48px;margin-bottom:12px">🤲</div>
+            <div style="font-size:14px;font-weight:600;color:#555;margin-bottom:6px">Easy to Use Anywhere</div>
+            <div style="font-size:13px;color:#888">10 minutes at your desk, on the couch, anywhere</div>
+          </div>
+          <div class="gallery-label">Lifestyle — in use [replace with photo]</div>
+        </div>
+
+        <div class="gallery-slide gs-bg4">
+          <div style="text-align:center;padding:20px">
+            <div style="font-size:48px;margin-bottom:12px">⚡</div>
+            <div style="font-size:14px;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:6px">USB Rechargeable</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.6)">No batteries. Charges in 60 minutes.</div>
+          </div>
+          <div class="gallery-label">USB charging detail [replace with photo]</div>
+        </div>
+
+      </div>
+    </div>
+    <button class="g-arrow g-prev" onclick="galleryMove(-1)">‹</button>
+    <button class="g-arrow g-next" onclick="galleryMove(1)">›</button>
+    <div class="gallery-dots" id="gallery-dots">
+      <button class="g-dot active" onclick="galleryGo(0)"></button>
+      <button class="g-dot" onclick="galleryGo(1)"></button>
+      <button class="g-dot" onclick="galleryGo(2)"></button>
+      <button class="g-dot" onclick="galleryGo(3)"></button>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="product-icon">⚡</div>
     <div>
-      <h1 class="product-title">DoorBell Pro</h1>
-    </div>
-
-    <!-- Rating — stars in navy -->
-    <div class="rating-row">
-      <div class="stars">
-        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-      </div>
-      <span class="r-num">4.9</span>
-      <span class="r-sep">·</span>
-      <a class="r-link" href="#reviews">2,341 Reviews</a>
-    </div>
-
-    <!-- Price -->
-    <div class="price-row">
-      <span class="p-now">$79</span>
-      <span class="p-was">$119</span>
-      <span class="p-save">Save $40</span>
-    </div>
-
-    <!-- Bundle picker -->
-    <div class="var-section">
-      <p class="var-label">Bundle &nbsp;<span id="selectedBundle">Buy 1 — Single entry point</span></p>
-      <div class="bundle-list" id="bundles">
-        <div class="bundle active" data-price="79" data-label="Buy 1 — Single entry point">
-          <div class="b-left">
-            <div class="radio"><div class="radio-dot"></div></div>
-            <div><div class="b-name">Buy 1</div><div class="b-sub">Single entry point</div></div>
-          </div>
-          <div class="b-right">
-            <div class="b-price">$79</div>
-            <div class="b-each">$79 / unit</div>
-          </div>
-        </div>
-        <div class="bundle" data-price="139" data-label="Buy 2 — Front &amp; back door">
-          <div class="b-popular">Most Popular</div>
-          <div class="b-left">
-            <div class="radio"><div class="radio-dot"></div></div>
-            <div><div class="b-name">Buy 2</div><div class="b-sub">Front &amp; back door</div></div>
-          </div>
-          <div class="b-right">
-            <div class="b-price">$139</div>
-            <div class="b-each">$69.50 / unit</div>
-            <span class="b-save-badge">Save $19</span>
-          </div>
-        </div>
-        <div class="bundle" data-price="189" data-label="Buy 3 — Full property coverage">
-          <div class="b-left">
-            <div class="radio"><div class="radio-dot"></div></div>
-            <div><div class="b-name">Buy 3</div><div class="b-sub">Full property coverage</div></div>
-          </div>
-          <div class="b-right">
-            <div class="b-price">$189</div>
-            <div class="b-each">$63 / unit</div>
-            <span class="b-save-badge">Save $48</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Trust items -->
-    <div class="trust-grid">
-      <div class="trust-item">
-        <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h5l2 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-        <div><div class="t-label">Free Shipping</div><div class="t-sub">All US orders</div></div>
-      </div>
-      <div class="trust-item">
-        <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-.41-4.67"/></svg>
-        <div><div class="t-label">30 Day Returns</div><div class="t-sub">Zero-risk guarantee</div></div>
-      </div>
-      <div class="trust-item">
-        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        <div><div class="t-label">Secure Checkout</div><div class="t-sub">SSL encrypted</div></div>
-      </div>
-      <div class="trust-item">
-        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.6 19.79 19.79 0 0 1 1.61 5 2 2 0 0 1 3.58 3h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.6a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 18v-.08z"/></svg>
-        <div><div class="t-label">24/7 Support</div><div class="t-sub">Always here for you</div></div>
-      </div>
-    </div>
-
-    <!-- CTA -->
-    <div class="cta-stack">
-      <p class="ship-line">Free domestic shipping &nbsp;·&nbsp; <span>30 Day Zero-Risk Guarantee</span></p>
-      <button class="btn-primary">Add to Cart — $<span id="ctaPrice">79</span></button>
-      <button class="btn-secondary">Buy Now</button>
-      <div class="pay-row">
-        <span class="pay-badge">Visa</span>
-        <span class="pay-badge">MC</span>
-        <span class="pay-badge">Amex</span>
-        <span class="pay-badge">Apple Pay</span>
-        <span class="pay-badge">G Pay</span>
-      </div>
-    </div>
-
-    <!-- Accordion: ONLY Description + Shipping & Returns -->
-    <div class="accordion">
-      <div class="acc-item">
-        <button class="acc-btn">
-          Description
-          <svg class="acc-arrow" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </button>
-        <div class="acc-body">
-          <p>The DoorBell Pro is precision-engineered for homes that take security seriously. Crystal-clear 1080p HD video, infrared night vision up to 30 feet, and instant motion alerts sent directly to your phone.</p>
-          <ul>
-            <li>1080p Full HD with HDR</li>
-            <li>140° ultra-wide field of view</li>
-            <li>30ft infrared night vision</li>
-            <li>Two-way audio communication</li>
-            <li>IP65 weatherproof rated</li>
-            <li>Works with Alexa &amp; Google Home</li>
-          </ul>
-        </div>
-      </div>
-      <div class="acc-item">
-        <button class="acc-btn">
-          Shipping &amp; Returns
-          <svg class="acc-arrow" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </button>
-        <div class="acc-body">
-          <p><strong style="color:var(--navy);font-weight:500;">Free Standard Shipping</strong> — All US orders ship free within 3–5 business days. Expedited 2-day shipping available at checkout for $9.99.</p>
-          <p><strong style="color:var(--navy);font-weight:500;">30-Day Zero-Risk Returns</strong> — Return within 30 days for a full refund, no questions asked. We cover the return label.</p>
-          <p><strong style="color:var(--navy);font-weight:500;">1-Year Warranty</strong> — Every DoorBell Pro is backed by a 12-month manufacturer warranty.</p>
-        </div>
-      </div>
-    </div>
-
-  </div><!-- /info -->
-</div><!-- /product-grid -->
-</div><!-- /page -->
-
-<!-- NAVY TRUST STRIP -->
-<div class="trust-strip">
-  <div class="trust-strip-inner">
-    <div class="ts-item">
-      <div class="ts-emoji">🚚</div>
-      <div class="ts-label">Free Shipping</div>
-      <div class="ts-sub">All US orders</div>
-    </div>
-    <div class="ts-item">
-      <div class="ts-emoji">🔄</div>
-      <div class="ts-label">30 Day Returns</div>
-      <div class="ts-sub">Zero-risk guarantee</div>
-    </div>
-    <div class="ts-item">
-      <div class="ts-emoji">💬</div>
-      <div class="ts-label">24/7 Support</div>
-      <div class="ts-sub">Always here for you</div>
-    </div>
-    <div class="ts-item">
-      <div class="ts-emoji">🔒</div>
-      <div class="ts-label">Secure Checkout</div>
-      <div class="ts-sub">SSL encrypted</div>
+      <div class="product-info-name">AcuPulse Pro — Electric Acupuncture Pen</div>
+      <div class="product-info-desc">Auto-detects points · USB rechargeable · Full point map included</div>
     </div>
   </div>
-</div>
 
-<!-- REVIEWS -->
-<div class="page">
-<hr class="divider" id="reviews">
-
-<section>
-  <div class="sec-head">
-    <h2 class="sec-title">See What Customers Are Saying</h2>
-    <p class="sec-sub">4.9/5 out of 5 &nbsp;·&nbsp; Based on 2,341 reviews</p>
+  <!-- BUNDLE -->
+  <div class="bundle-section">
+    <div class="bundle-label-top">Choose your pack:</div>
+    <div class="bundle-options">
+      <div class="bundle-opt" id="b1" onclick="selectBundle(1)">
+        <div class="bundle-radio"><div class="radio-dot"></div></div>
+        <div class="bundle-info">
+          <div class="bundle-info-top"><span class="bundle-qty-label">1 Unit — For yourself</span><span class="bundle-price-label">$47</span></div>
+          <div class="bundle-info-bot">$47 per pen</div>
+        </div>
+      </div>
+      <div class="bundle-opt best-val selected" id="b2" onclick="selectBundle(2)">
+        <div class="best-badge">Most popular</div>
+        <div class="bundle-radio"><div class="radio-dot"></div></div>
+        <div class="bundle-info">
+          <div class="bundle-info-top"><span class="bundle-qty-label">2 Units — Home + Office</span><span class="bundle-price-label">$85</span></div>
+          <div class="bundle-info-bot">$42.50 per pen · <span class="save-pill">Save $9</span></div>
+        </div>
+      </div>
+      <div class="bundle-opt" id="b3" onclick="selectBundle(3)">
+        <div class="best-badge" style="background:var(--green)">Best deal</div>
+        <div class="bundle-radio"><div class="radio-dot"></div></div>
+        <div class="bundle-info">
+          <div class="bundle-info-top"><span class="bundle-qty-label">3 Units — Family / Gift</span><span class="bundle-price-label">$119</span></div>
+          <div class="bundle-info-bot">$39.67 per pen · <span class="save-pill">Save $22</span></div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="rev-summary">
-    <div class="rev-big">4.9</div>
+
+  <!-- ORDER SUMMARY -->
+  <div class="order-summary">
+    <div class="summary-row"><span id="qty-label">2 × AcuPulse Pro</span><span id="subtotal-val">$85.00</span></div>
+    <div class="summary-row"><span>Shipping</span><span style="color:var(--green);font-weight:500">FREE</span></div>
+    <div class="summary-row total"><span>Total today</span><span id="total-val">$85.00</span></div>
+  </div>
+
+  <!-- CHECKOUT FORM -->
+  <div class="form-section">
+    <div class="form-section-title">Contact</div>
+    <div class="form-row single"><div class="form-group"><label>Email address</label><input type="email" placeholder="you@email.com"></div></div>
+    <div class="form-row"><div class="form-group"><label>First name</label><input type="text" placeholder="Jane"></div><div class="form-group"><label>Last name</label><input type="text" placeholder="Smith"></div></div>
+  </div>
+
+  <div class="form-section">
+    <div class="form-section-title">Shipping address</div>
+    <div class="form-row single"><div class="form-group"><label>Address</label><input type="text" placeholder="123 Main Street"></div></div>
+    <div class="form-row single"><div class="form-group"><label>Apartment, suite, etc. (optional)</label><input type="text" placeholder="Apt 4B"></div></div>
+    <div class="form-row"><div class="form-group"><label>City</label><input type="text" placeholder="New York"></div><div class="form-group"><label>State / Province</label><input type="text" placeholder="NY"></div></div>
+    <div class="form-row"><div class="form-group"><label>ZIP / Postal code</label><input type="text" placeholder="10001"></div><div class="form-group"><label>Country</label><select><option>United States</option><option>Canada</option><option>Australia</option><option>United Kingdom</option></select></div></div>
+  </div>
+
+  <div class="form-section">
+    <div class="form-section-title">Payment</div>
+    <div class="card-icons"><span class="card-icon">VISA</span><span class="card-icon">MC</span><span class="card-icon">AMEX</span><span class="card-icon">PayPal</span></div>
+    <div class="form-row single"><div class="form-group"><label>Card number</label><input type="text" placeholder="1234 5678 9012 3456" maxlength="19"></div></div>
+    <div class="form-row"><div class="form-group"><label>Expiry date</label><input type="text" placeholder="MM / YY" maxlength="7"></div><div class="form-group"><label>Security code</label><input type="text" placeholder="CVV" maxlength="4"></div></div>
+    <div class="form-row single"><div class="form-group"><label>Name on card</label><input type="text" placeholder="Jane Smith"></div></div>
+  </div>
+
+  <button class="btn-order" onclick="handleOrder()">Complete Order — Free Shipping →</button>
+
+  <div class="trust-row">
+    <div class="trust-item"><span class="trust-icon">🔒</span> SSL Secure</div>
+    <div class="trust-item"><span class="trust-icon">🚚</span> Free shipping</div>
+    <div class="trust-item"><span class="trust-icon">↩️</span> 30-day returns</div>
+    <div class="trust-item"><span class="trust-icon">⭐</span> 4.9 / 5 stars</div>
+  </div>
+
+  <div class="guarantee-box">
+    <div class="guarantee-icon">🛡️</div>
     <div>
-      <div class="rev-stars-lg"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-      <div class="rev-count">Based on 2,341 reviews</div>
+      <div class="guarantee-title">30-Day Money-Back Guarantee</div>
+      <div class="guarantee-text">Try AcuPulse Pro for a full 30 days. If you don't feel a real difference, we'll refund you completely. No questions, no hassle.</div>
     </div>
   </div>
-  <div class="reviews-grid">
-    <div class="rev-card">
-      <div class="rev-top">
-        <div class="rev-avatar"><img src="https://i.pravatar.cc/80?img=1" alt="Sarah M."></div>
-        <div><div class="rev-name">Sarah M.</div><div class="rev-verified">✔ Verified Buyer</div></div>
-      </div>
-      <div class="rev-stars-sm"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-      <div class="rev-title">Absolutely worth every penny</div>
-      <div class="rev-body">Setup took 10 minutes and the video quality is stunning. Caught a package thief on the first day — the footage was clear enough for the police to identify them.</div>
-      <img class="rev-photo" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=70" alt="">
-      <div class="rev-date">3 days ago</div>
-    </div>
-    <div class="rev-card">
-      <div class="rev-top">
-        <div class="rev-avatar"><img src="https://i.pravatar.cc/80?img=5" alt="James K."></div>
-        <div><div class="rev-name">James K.</div><div class="rev-verified">✔ Verified Buyer</div></div>
-      </div>
-      <div class="rev-stars-sm"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-      <div class="rev-title">Night vision is exceptional</div>
-      <div class="rev-body">I was skeptical about night vision at this price point — completely changed my mind. Crystal clear at 2 AM. Works flawlessly with my Alexa. Best smart home purchase of the year.</div>
-      <img class="rev-photo" src="https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?w=600&q=70" alt="">
-      <div class="rev-date">1 week ago</div>
-    </div>
-    <div class="rev-card">
-      <div class="rev-top">
-        <div class="rev-avatar"><img src="https://i.pravatar.cc/80?img=9" alt="Maria L."></div>
-        <div><div class="rev-name">Maria L.</div><div class="rev-verified">✔ Verified Buyer</div></div>
-      </div>
-      <div class="rev-stars-sm"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-      <div class="rev-title">Installed in 8 minutes flat</div>
-      <div class="rev-body">The included instructions are genuinely clear — no electrician needed. Bought the 2-pack and both are running perfectly. Love being able to see visitors on my phone while at the office.</div>
-      <img class="rev-photo" src="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?w=600&q=70" alt="">
-      <div class="rev-date">2 weeks ago</div>
-    </div>
-    <div class="rev-card">
-      <div class="rev-top">
-        <div class="rev-avatar"><img src="https://i.pravatar.cc/80?img=12" alt="Tom R."></div>
-        <div><div class="rev-name">Tom R.</div><div class="rev-verified">✔ Verified Buyer</div></div>
-      </div>
-      <div class="rev-stars-sm"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-      <div class="rev-title">Wife loves the two-way audio</div>
-      <div class="rev-body">She can talk to delivery drivers without opening the door. Motion sensitivity is customisable — zero false alarms after I tuned it. Solid build quality and the app is clean.</div>
-      <img class="rev-photo" src="https://images.unsplash.com/photo-1601924994987-69e26d50dc26?w=600&q=70" alt="">
-      <div class="rev-date">3 weeks ago</div>
-    </div>
-    <div class="rev-card">
-      <div class="rev-top"><div class="rev-avatar">CW</div>
-        <div><div class="rev-name">Christine W.</div><div class="rev-verified">✔ Verified Buyer</div></div>
-      </div>
-      <div class="rev-stars-sm"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-      <div class="rev-title">Replaced a $200 competitor</div>
-      <div class="rev-body">Genuinely does everything my old smart doorbell did, at half the price. App is clean, notifications are fast. The 30-day return policy gave me confidence to try it — so glad I did.</div>
-      <div class="rev-date">1 month ago</div>
-    </div>
-    <div class="rev-card">
-      <div class="rev-top"><div class="rev-avatar">MR</div>
-        <div><div class="rev-name">Marcus R.</div><div class="rev-verified">✔ Verified Buyer</div></div>
-      </div>
-      <div class="rev-stars-sm"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-      <div class="rev-title">5 stars for the 3-pack deal</div>
-      <div class="rev-body">Covered all three entry points of our home. Bundle pricing made it a no-brainer. All three sync to the same app and the dashboard is clean and easy to manage. Zero complaints.</div>
-      <div class="rev-date">2 months ago</div>
-    </div>
-  </div>
-</section>
 
-<hr class="divider">
-
-<!-- FAQ -->
-<section>
-  <div class="sec-head">
-    <h2 class="sec-title">Curious to learn more?</h2>
-  </div>
-  <div class="faq-wrap accordion">
-    <div class="acc-item">
-      <button class="acc-btn">Does it require professional installation?
-        <svg class="acc-arrow" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-      </button>
-      <div class="acc-body">No professional needed. The box includes every piece of hardware — drill template, screws, anchors, and a step-by-step guide. Most customers are up and running in under 15 minutes.</div>
-    </div>
-    <div class="acc-item">
-      <button class="acc-btn">Does it work without a subscription?
-        <svg class="acc-arrow" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-      </button>
-      <div class="acc-body">Yes. All core features — live view, motion alerts, and two-way audio — are completely free. Optional cloud recording plans start at $2.99/month. Local microSD storage is also supported at no cost.</div>
-    </div>
-    <div class="acc-item">
-      <button class="acc-btn">What Wi-Fi speed do I need?
-        <svg class="acc-arrow" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-      </button>
-      <div class="acc-body">DoorBell Pro works on 2.4 GHz Wi-Fi networks. We recommend at least 2 Mbps upload speed — most home broadband plans far exceed this. 5 GHz also works if your router broadcasts both bands.</div>
-    </div>
-    <div class="acc-item">
-      <button class="acc-btn">Is it truly weatherproof?
-        <svg class="acc-arrow" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-      </button>
-      <div class="acc-body">Yes. IP65 rated — fully protected against dust and jets of water from any direction. Tested from -4°F (–20°C) to 122°F (50°C), covering virtually any climate in North America.</div>
-    </div>
-    <div class="acc-item">
-      <button class="acc-btn">Can multiple family members access it?
-        <svg class="acc-arrow" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-      </button>
-      <div class="acc-body">You can share access with up to 10 household members through the app, each with their own notification preferences and independent access to live footage or recorded clips. No extra cost.</div>
-    </div>
-  </div>
-</section>
-
-</div><!-- /page -->
-
-<!-- FOOTER BANNER -->
-<div class="footer-banner">
-  <div class="footer-banner-title">A safer home is calling.</div>
-  <p class="footer-banner-sub">Join 50,000+ homeowners who trust DoorBell Pro.</p>
-  <a href="#" class="footer-banner-btn">Shop Now</a>
+  <button class="back-link" onclick="goToArticle()">← Back to article</button>
 </div>
-
-<footer>
-  <span class="f-copy">© 2026 BellCo Inc.</span>
-  <div class="f-links">
-    <a href="#">Privacy Policy</a>
-    <a href="#">Terms of Use</a>
-    <a href="#">Contact</a>
-    <a href="#">Returns</a>
-  </div>
-</footer>
+</div><!-- end page-order -->
 
 <script>
-// Gallery
-const imgs = [
-  'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80',
-  'https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?w=900&q=80',
-  'https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?w=900&q=80',
-  'https://images.unsplash.com/photo-1601924994987-69e26d50dc26?w=900&q=80',
-  'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=900&q=80',
-];
-const mainImg  = document.getElementById('mainImg');
-const thumbEls = document.querySelectorAll('.thumb');
-const counter  = document.getElementById('gCounter');
-let cur = 0;
-function goTo(i) {
-  cur = i;
-  mainImg.src = imgs[i];
-  counter.textContent = (i+1) + ' / ' + imgs.length;
-  thumbEls.forEach((t,j) => t.classList.toggle('active', j===i));
+/* ── BUNDLE ── */
+const bundles={1:{price:47,label:'1 × AcuPulse Pro'},2:{price:85,label:'2 × AcuPulse Pro'},3:{price:119,label:'3 × AcuPulse Pro'}};
+let sel=2;
+function selectBundle(n){
+  sel=n;
+  document.querySelectorAll('.bundle-opt').forEach(el=>el.classList.remove('selected'));
+  document.getElementById('b'+n).classList.add('selected');
+  document.getElementById('qty-label').textContent=bundles[n].label;
+  document.getElementById('subtotal-val').textContent='$'+bundles[n].price+'.00';
+  document.getElementById('total-val').textContent='$'+bundles[n].price+'.00';
 }
-thumbEls.forEach((t,i) => t.addEventListener('click', ()=>goTo(i)));
-let sx=0;
-document.getElementById('mainGallery').addEventListener('touchstart', e=>{ sx=e.touches[0].clientX; },{passive:true});
-document.getElementById('mainGallery').addEventListener('touchend', e=>{
-  const dx = sx - e.changedTouches[0].clientX;
-  if (Math.abs(dx)>40) goTo(dx>0 ? Math.min(cur+1,imgs.length-1) : Math.max(cur-1,0));
-});
 
-// Bundles
-const bundles   = document.querySelectorAll('.bundle');
-const ctaPrice  = document.getElementById('ctaPrice');
-const selBundle = document.getElementById('selectedBundle');
-bundles.forEach(b => {
-  b.addEventListener('click', ()=>{
-    bundles.forEach(x=>x.classList.remove('active'));
-    b.classList.add('active');
-    ctaPrice.textContent = b.dataset.price;
-    selBundle.textContent = b.dataset.label;
-  });
-});
+/* ── GALLERY ── */
+let cur=0;const total=4;
+function galleryMove(dir){cur=(cur+dir+total)%total;galleryApply()}
+function galleryGo(i){cur=i;galleryApply()}
+function galleryApply(){
+  document.getElementById('gallery-track').style.transform='translateX(-'+cur*100+'%)';
+  document.querySelectorAll('.g-dot').forEach((d,i)=>d.classList.toggle('active',i===cur));
+}
+/* swipe support */
+let tx=0;
+const gw=document.getElementById('gallery');
+gw.addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
+gw.addEventListener('touchend',e=>{const dx=tx-e.changedTouches[0].clientX;if(Math.abs(dx)>40)galleryMove(dx>0?1:-1)},{passive:true});
 
-// Accordion
-document.querySelectorAll('.acc-btn').forEach(btn => {
-  btn.addEventListener('click', ()=>{
-    const item   = btn.closest('.acc-item');
-    const isOpen = item.classList.contains('open');
-    item.closest('.accordion').querySelectorAll('.acc-item').forEach(i=>i.classList.remove('open'));
-    if(!isOpen) item.classList.add('open');
-  });
+/* ── PAGE NAV ── */
+function goToOrder(){
+  document.getElementById('page-article').style.display='none';
+  document.getElementById('page-order').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function goToArticle(){
+  document.getElementById('page-order').style.display='none';
+  document.getElementById('page-article').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function handleOrder(){
+  alert('Connect this button to your Shopify / payment processor.\n\nSelected bundle: '+bundles[sel].label+' — $'+bundles[sel].price);
+}
+/* card number formatting */
+document.addEventListener('input',e=>{
+  if(e.target.placeholder==='1234 5678 9012 3456'){
+    let v=e.target.value.replace(/\D/g,'').substring(0,16);
+    e.target.value=v.replace(/(.{4})/g,'$1 ').trim();
+  }
+  if(e.target.placeholder==='MM / YY'){
+    let v=e.target.value.replace(/\D/g,'').substring(0,4);
+    if(v.length>=2)v=v.substring(0,2)+' / '+v.substring(2);
+    e.target.value=v;
+  }
 });
 </script>
 </body>
