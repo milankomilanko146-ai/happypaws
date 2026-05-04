@@ -1,686 +1,530 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Why Does My Joint Pain Never Go Away? (The Answer Surprised Me)</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --black:#111111;--dark:#2a2a2a;--mid:#555;--light:#888;
-  --border:#e5e5e5;--bg:#fff;--accent:#c8371a;--accent-light:#fff3f0;
-  --green:#1a7a3c;--green-light:#f0faf4;--body-bg:#f5f5f3;
-}
-html{scroll-behavior:smooth}
-body{background:var(--body-bg);font-family:'Inter',sans-serif;color:var(--dark);line-height:1.7;font-size:17px}
-#page-article{display:block}
-#page-order{display:none}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Health Insider – Advertorial</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* ── SITE HEADER ── */
-.site-header{background:var(--bg);border-bottom:1px solid var(--border);padding:11px 0;position:sticky;top:0;z-index:200;box-shadow:0 1px 4px rgba(0,0,0,.06)}
-.site-header .inner{max-width:680px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
-.site-name{font-size:13px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--mid)}
-.site-tag{font-size:12px;color:var(--light)}
+    :root {
+      --navy:    #1b2a4a;
+      --black:   #111111;
+      --text:    #222222;
+      --muted:   #666666;
+      --line:    #e2e2e2;
+      --quote-bg:#edf7f4;
+      --quote-b: #5bbba4;
+      --stat-bg: #f5f5f5;
+      --cta:     #d0390e;
+      --max:     640px;
+    }
 
-/* ── COLUMN ── */
-.column{max-width:680px;margin:0 auto;background:var(--bg);padding:0 26px 64px}
+    html { scroll-behavior: smooth; }
 
-/* ── SCROLL STOPPER IMAGE ── */
-.scroll-stopper{width:calc(100% + 52px);margin-left:-26px;height:340px;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 40%,#0f3460 100%);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;margin-bottom:0}
-.scroll-stopper::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 60% 50%,rgba(200,55,26,.35) 0%,transparent 70%)}
-.stopper-content{text-align:center;z-index:1;padding:24px}
-.stopper-eyebrow{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:12px}
-.stopper-headline{font-family:'Lora',serif;font-size:clamp(24px,5vw,40px);font-weight:700;color:#fff;line-height:1.2;margin-bottom:16px;max-width:520px}
-.stopper-sub{font-size:15px;color:rgba(255,255,255,.75);max-width:400px;margin:0 auto}
-.stopper-pen{position:absolute;right:-20px;bottom:-10px;width:220px;height:220px;opacity:.12;background:radial-gradient(circle,white 30%,transparent 70%)}
-/* animated pulse */
-.pulse-ring{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:120px;height:120px;border:2px solid rgba(200,55,26,.5);border-radius:50%;animation:pulse 2.5s ease-out infinite}
-.pulse-ring:nth-child(2){width:200px;height:200px;animation-delay:.8s}
-@keyframes pulse{0%{transform:translate(-50%,-50%) scale(.8);opacity:.7}100%{transform:translate(-50%,-50%) scale(1.4);opacity:0}}
+    body {
+      background: #fff;
+      color: var(--text);
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 16px;
+      line-height: 1.78;
+      -webkit-font-smoothing: antialiased;
+    }
 
-/* ── ARTICLE HEADER ── */
-.article-header{padding:30px 0 24px;border-bottom:1px solid var(--border);margin-bottom:28px}
-.article-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:12px;display:block}
-h1{font-family:'Lora',serif;font-size:clamp(25px,5vw,37px);font-weight:700;color:var(--black);line-height:1.25;margin-bottom:14px}
-.article-deck{font-size:18px;color:var(--mid);line-height:1.6;font-family:'Lora',serif;font-style:italic;border-left:3px solid var(--accent);padding-left:16px;margin-bottom:18px}
-.article-meta{font-size:13px;color:var(--light);display:flex;gap:16px;flex-wrap:wrap}
+    /* ── HEADER ── */
+    header {
+      background: var(--navy);
+      padding: 0 28px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+    .adv-tag {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.38);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 3px 8px 2px;
+      border-radius: 2px;
+    }
 
-/* ── ARTICLE BODY ── */
-.article-body p{font-family:'Lora',serif;font-size:18px;color:var(--dark);line-height:1.85;margin-bottom:22px}
-.article-body h2{font-family:'Lora',serif;font-size:clamp(20px,3.5vw,26px);font-weight:700;color:var(--black);margin:40px 0 14px;line-height:1.3}
-.article-body strong{color:var(--black)}
+    /* ── WRAP ── */
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 32px 20px 80px;
+    }
 
-/* callouts */
-.callout{background:var(--accent-light);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;padding:16px 18px;margin:26px 0;font-family:'Lora',serif;font-size:17px;line-height:1.7}
-.callout.green{background:var(--green-light);border-color:var(--green)}
-.callout strong{display:block;margin-bottom:4px;font-family:'Inter',sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--mid)}
+    /* ── CATEGORY ── */
+    .category {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 11px;
+    }
 
-/* pull quote */
-.pullquote{font-family:'Lora',serif;font-size:clamp(19px,3vw,25px);font-style:italic;font-weight:700;color:var(--black);text-align:center;padding:26px 0;border-top:2px solid var(--black);border-bottom:2px solid var(--black);margin:34px 0;line-height:1.4}
+    /* ── H1 ── */
+    h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(22px, 4vw, 32px);
+      font-weight: 700;
+      line-height: 1.22;
+      color: var(--black);
+      margin-bottom: 13px;
+    }
 
-/* stats */
-.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:26px 0}
-.stat-box{background:#f8f8f7;border-radius:10px;padding:14px 10px;text-align:center}
-.stat-num{font-family:'Lora',serif;font-size:26px;font-weight:700;color:var(--black);display:block;margin-bottom:4px}
-.stat-label{font-size:12px;color:var(--mid);line-height:1.4}
+    /* ── META ── */
+    .meta {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
 
-/* ── PRODUCT IMAGES IN ARTICLE ── */
-.article-img{width:calc(100% + 52px);margin-left:-26px;margin-bottom:0;overflow:hidden;position:relative}
-.article-img img{width:100%;display:block}
-/* placeholder when no real image */
-.img-placeholder{width:calc(100% + 52px);margin-left:-26px;margin:28px 0;position:relative;overflow:hidden}
-.img-ph-inner{height:240px;display:flex;align-items:center;justify-content:center;position:relative}
-.img-ph-inner.pen-hero{background:linear-gradient(135deg,#0f0f0f 0%,#1a1a1a 50%,#111 100%)}
-.img-ph-inner.meridian{background:linear-gradient(135deg,#f8f3ee 0%,#ede8e1 100%)}
-.img-ph-inner.compare{background:linear-gradient(135deg,#16213e 0%,#1a2f5e 100%)}
-.img-ph-caption{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.55);color:rgba(255,255,255,.85);font-size:12px;padding:8px 16px;text-align:center;backdrop-filter:blur(4px)}
+    /* ── TOP EXPERT QUOTE (teal box like Purrify) ── */
+    .top-quote {
+      background: var(--quote-bg);
+      border-left: 3px solid var(--quote-b);
+      padding: 11px 15px;
+      margin-bottom: 22px;
+      font-style: italic;
+      font-size: 15px;
+      color: #333;
+      line-height: 1.65;
+    }
 
-/* pen visualization */
-.pen-vis{display:flex;flex-direction:column;align-items:center;gap:4px}
-.pen-body{width:36px;height:140px;background:linear-gradient(180deg,#d4d4d4 0%,#afafaf 30%,#888 100%);border-radius:18px 18px 6px 6px;position:relative;box-shadow:0 0 30px rgba(200,55,26,.6),0 0 60px rgba(200,55,26,.3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
-.pen-led{width:10px;height:10px;border-radius:50%;background:#ff4422;box-shadow:0 0 12px #ff4422;animation:blink 1.2s ease-in-out infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-.pen-button{width:22px;height:8px;background:#666;border-radius:4px}
-.pen-tip{width:8px;height:20px;background:linear-gradient(180deg,#aaa,#666);border-radius:0 0 4px 4px}
-.pen-label{color:rgba(255,255,255,.7);font-size:12px;margin-top:8px;letter-spacing:.05em;text-transform:uppercase}
+    /* ── IMAGES ── */
+    .hero-img { width: 100%; display: block; border-radius: 4px; margin-bottom: 24px; }
+    .img-wrap { margin: 26px 0; }
+    .img-wrap img { width: 100%; display: block; border-radius: 4px; }
+    .img-cap {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12.5px;
+      color: #999;
+      margin-top: 6px;
+      font-style: italic;
+    }
 
-/* meridian body viz */
-.meridian-vis{position:relative;width:100px;height:180px}
-.m-body{width:40px;height:160px;border-radius:20px 20px 12px 12px;background:rgba(180,150,120,.3);border:2px solid rgba(180,150,120,.5);margin:0 auto;position:relative}
-.m-dot{position:absolute;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent);animation:glow 1.5s ease-in-out infinite alternate}
-@keyframes glow{from{box-shadow:0 0 4px var(--accent)}to{box-shadow:0 0 16px var(--accent),0 0 24px rgba(200,55,26,.5)}}
-.m-line{position:absolute;left:50%;top:0;width:2px;height:100%;background:linear-gradient(180deg,transparent,rgba(200,55,26,.4),rgba(200,55,26,.6),rgba(200,55,26,.4),transparent);transform:translateX(-50%)}
-.meridian-caption{color:var(--mid);font-size:13px;text-align:center;margin-top:12px;font-style:italic}
+    /* ── PARAGRAPHS ── */
+    p { margin-bottom: 15px; font-size: 16px; line-height: 1.78; color: var(--text); }
 
-/* compare viz */
-.compare-vis{display:flex;align-items:center;gap:24px;padding:0 20px}
-.cv-box{text-align:center;flex:1}
-.cv-price{font-family:'Lora',serif;font-size:36px;font-weight:700;color:white;margin-bottom:4px}
-.cv-label{font-size:12px;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px}
-.cv-desc{font-size:12px;color:rgba(255,255,255,.55)}
-.cv-vs{font-size:20px;font-weight:700;color:rgba(255,255,255,.3);flex-shrink:0}
+    .opener { font-size: 17px; font-weight: 700; color: var(--black); margin-bottom: 16px; }
 
-/* diagram box */
-.diagram-box{background:#f8f8f7;border-radius:12px;padding:22px;margin:26px 0}
-.diagram-title{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:14px}
-.point-list{list-style:none;display:flex;flex-direction:column;gap:10px}
-.point-item{display:flex;gap:12px;align-items:flex-start}
-.point-dot{width:26px;height:26px;border-radius:50%;background:var(--black);color:white;font-size:10px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
-.point-text{font-size:15px;color:var(--dark);line-height:1.5}
-.point-text strong{color:var(--black)}
+    strong { font-weight: 700; color: var(--black); }
 
-/* product reveal dark box */
-.product-reveal{background:var(--black);color:white;border-radius:14px;padding:30px 26px;margin:34px 0}
-.product-reveal .reveal-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.5);margin-bottom:10px;display:block}
-.product-reveal h3{font-family:'Lora',serif;font-size:clamp(19px,3.5vw,25px);font-weight:700;color:white;line-height:1.3;margin-bottom:14px}
-.product-reveal p{font-family:'Inter',sans-serif;font-size:15px;color:rgba(255,255,255,.8);line-height:1.7;margin-bottom:12px}
-.reveal-step{display:flex;gap:12px;align-items:flex-start;margin-bottom:10px}
-.reveal-num{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.15);font-size:11px;font-weight:600;color:white;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.reveal-step-text{font-size:14px;color:rgba(255,255,255,.85);line-height:1.5;padding-top:3px}
+    /* ── H2 — BLACK, bold, Georgia ── */
+    h2 {
+      font-family: Georgia, serif;
+      font-size: clamp(17px, 2.8vw, 21px);
+      font-weight: 700;
+      color: var(--black);
+      margin: 34px 0 13px;
+      line-height: 1.28;
+    }
 
-/* mini benefits */
-.mini-benefits{margin:20px 0;display:flex;flex-direction:column;gap:8px}
-.mini-benefit{display:flex;gap:10px;align-items:flex-start;font-size:15px;color:var(--dark);line-height:1.5}
-.check{color:var(--green);font-size:16px;flex-shrink:0;margin-top:2px}
+    /* ── MID PULL QUOTE ── */
+    blockquote {
+      background: var(--quote-bg);
+      border-left: 3px solid var(--quote-b);
+      padding: 12px 16px;
+      margin: 24px 0;
+      font-style: italic;
+      font-size: 15.5px;
+      color: #333;
+      line-height: 1.65;
+    }
+    blockquote p { margin: 0; font-size: 15.5px; }
+    blockquote p::first-letter { all: unset; }
+    blockquote cite {
+      display: block;
+      margin-top: 7px;
+      font-style: normal;
+      font-size: 13px;
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-/* testimonials */
-.testimonials{margin:30px 0;display:flex;flex-direction:column;gap:12px}
-.testimonial{background:#f8f8f7;border-radius:10px;padding:16px 18px}
-.t-text{font-family:'Lora',serif;font-size:16px;font-style:italic;color:var(--dark);line-height:1.6;margin-bottom:10px}
-.t-author{display:flex;align-items:center;gap:10px}
-.t-avatar{width:34px;height:34px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:var(--mid);flex-shrink:0}
-.t-name{font-size:13px;font-weight:600;color:var(--black)}
-.t-detail{font-size:12px;color:var(--light)}
-.stars{color:#f0a500;font-size:12px}
+    /* ── STAT / HIGHLIGHT BOX ── */
+    .stat-box {
+      background: var(--stat-bg);
+      border-left: 3px solid #bbb;
+      padding: 13px 16px;
+      margin: 22px 0;
+      font-size: 15px;
+      line-height: 1.65;
+    }
+    .stat-box p { margin: 0; font-size: 15px; }
+    .stat-box p::first-letter { all: unset; }
 
-/* main CTA */
-.main-cta{background:var(--accent);color:white;text-align:center;padding:34px 26px;border-radius:14px;margin:34px 0}
-.main-cta .cta-hook{font-family:'Lora',serif;font-size:clamp(17px,3vw,23px);font-weight:700;line-height:1.35;margin-bottom:10px}
-.main-cta .cta-sub{font-size:15px;color:rgba(255,255,255,.85);margin-bottom:20px;line-height:1.5}
-.btn-primary{display:inline-block;background:white;color:var(--accent);font-family:'Inter',sans-serif;font-size:16px;font-weight:700;padding:15px 34px;border-radius:50px;text-decoration:none;border:none;cursor:pointer;transition:transform .15s,box-shadow .15s;letter-spacing:.01em}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.25)}
-.cta-guarantee{font-size:13px;color:rgba(255,255,255,.7);margin-top:12px}
+    /* ── DASH BULLET LIST (like Purrify) ── */
+    ul.plain { list-style: none; padding: 0; margin: 4px 0 18px; }
+    ul.plain li {
+      padding: 3px 0 3px 18px;
+      position: relative;
+      font-size: 16px;
+      line-height: 1.75;
+    }
+    ul.plain li::before {
+      content: '-';
+      position: absolute;
+      left: 0;
+      font-weight: 700;
+    }
 
-.divider{height:1px;background:var(--border);margin:30px 0}
+    /* ── PROBLEM ITEMS ── */
+    .prob { margin-bottom: 16px; }
+    .prob .prob-title { font-weight: 700; font-size: 16px; color: var(--black); margin-bottom: 3px; }
 
-/* ════════════════════════════════
-   ORDER PAGE
-════════════════════════════════ */
-.order-sticky-header{background:var(--black);color:white;padding:14px 20px;text-align:center;position:sticky;top:0;z-index:200;box-shadow:0 2px 12px rgba(0,0,0,.3)}
-.order-sticky-header h2{font-family:'Lora',serif;font-size:clamp(15px,3vw,19px);font-weight:700;line-height:1.3}
-.order-sticky-header p{font-size:12px;color:rgba(255,255,255,.6);margin-top:3px}
+    /* ── HR ── */
+    hr { border: none; border-top: 1px solid var(--line); margin: 30px 0; }
 
-.order-col{max-width:560px;margin:0 auto;background:white;padding:0 22px 60px}
+    /* ── TESTIMONIALS ── */
+    .testimonials { margin: 24px 0; }
+    .testimonial { border-top: 1px solid var(--line); padding: 18px 0; }
+    .testimonial:last-child { border-bottom: 1px solid var(--line); }
+    .testimonial p { font-style: italic; font-size: 15px; margin: 0 0 7px; line-height: 1.7; color: #333; }
+    .testimonial p::first-letter { all: unset; }
+    .testimonial .tname {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13px; font-weight: 700;
+      font-style: normal; color: #555;
+    }
 
-/* ── IMAGE GALLERY ── */
-.gallery{margin:0 -22px 0;position:relative;background:#f0f0ee}
-.gallery-track-wrap{overflow:hidden}
-.gallery-track{display:flex;transition:transform .35s ease;will-change:transform}
-.gallery-slide{min-width:100%;height:280px;display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0}
-.gs-bg1{background:linear-gradient(135deg,#111 0%,#1f1f1f 100%)}
-.gs-bg2{background:linear-gradient(135deg,#1a2236 0%,#243050 100%)}
-.gs-bg3{background:linear-gradient(135deg,#f8f3ee 0%,#ede8e1 100%)}
-.gs-bg4{background:linear-gradient(135deg,#0f1f0f 0%,#1a3a1a 100%)}
-.gallery-label{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.5);color:rgba(255,255,255,.9);font-size:12px;padding:8px 14px;text-align:center;backdrop-filter:blur(4px)}
+    /* ── CTA — button only ── */
+    .cta-wrap { text-align: center; margin: 34px 0; }
+    .cta-btn {
+      display: inline-block;
+      background: var(--cta);
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 15px 42px;
+      border-radius: 3px;
+      text-decoration: none;
+      transition: background 0.18s;
+    }
+    .cta-btn:hover { background: #b52e08; }
 
-/* gallery nav arrows */
-.g-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.15);backdrop-filter:blur(6px);border:none;color:white;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;z-index:10;transition:background .15s}
-.g-arrow:hover{background:rgba(255,255,255,.3)}
-.g-prev{left:10px}
-.g-next{right:10px}
-.gallery-dots{display:flex;justify-content:center;gap:6px;padding:10px 0;background:#f0f0ee}
-.g-dot{width:7px;height:7px;border-radius:50%;background:#ccc;border:none;cursor:pointer;transition:background .15s;padding:0}
-.g-dot.active{background:var(--black)}
+    /* ── DISCLAIMER ── */
+    .disclaimer { border-top: 1px solid var(--line); margin-top: 34px; padding-top: 16px; }
+    .disclaimer p {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11.5px; color: #999;
+      margin-bottom: 5px; line-height: 1.6;
+    }
+    .disclaimer p::first-letter { all: unset; }
 
-/* ── PRODUCT CARD ── */
-.product-card{display:flex;align-items:center;gap:14px;padding:18px 0;border-bottom:1px solid var(--border)}
-.product-icon{width:58px;height:58px;background:#f0f0ee;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
-.product-info-name{font-weight:600;font-size:15px;color:var(--black);margin-bottom:3px}
-.product-info-desc{font-size:13px;color:var(--mid);line-height:1.4}
+    /* ── FOOTER ── */
+    footer { background: var(--navy); padding: 16px 24px; text-align: center; }
+    footer p {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px; color: rgba(255,255,255,0.32); margin: 0;
+    }
+    footer p::first-letter { all: unset; }
 
-/* ── BUNDLE ── */
-.bundle-section{padding:20px 0 0}
-.bundle-label-top{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:10px}
-.bundle-options{display:flex;flex-direction:column;gap:9px}
-.bundle-opt{border:2px solid var(--border);border-radius:12px;padding:14px 16px;cursor:pointer;transition:border-color .15s,background .15s;display:flex;align-items:center;gap:12px;position:relative}
-.bundle-opt.selected{border-color:var(--black);background:#fafafa}
-.bundle-opt.best-val{border-color:var(--black)}
-.best-badge{position:absolute;top:-10px;right:12px;background:var(--accent);color:white;font-size:10px;font-weight:700;padding:2px 10px;border-radius:20px;letter-spacing:.04em}
-.bundle-radio{width:19px;height:19px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .15s}
-.bundle-opt.selected .bundle-radio{border-color:var(--black)}
-.radio-dot{width:9px;height:9px;border-radius:50%;background:var(--black);display:none}
-.bundle-opt.selected .radio-dot{display:block}
-.bundle-info{flex:1}
-.bundle-info-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:2px}
-.bundle-qty-label{font-size:14px;font-weight:600;color:var(--black)}
-.bundle-price-label{font-size:15px;font-weight:700;color:var(--black)}
-.bundle-info-bot{font-size:12px;color:var(--mid);display:flex;align-items:center;gap:6px}
-.save-pill{font-size:10px;font-weight:600;background:var(--green-light);color:var(--green);padding:1px 7px;border-radius:20px}
-
-/* ── ORDER SUMMARY ── */
-.order-summary{background:#f8f8f7;border-radius:12px;padding:16px 18px;margin:18px 0}
-.summary-row{display:flex;justify-content:space-between;font-size:14px;color:var(--mid);margin-bottom:7px}
-.summary-row.total{font-size:16px;font-weight:700;color:var(--black);border-top:1px solid var(--border);padding-top:9px;margin-top:4px;margin-bottom:0}
-
-/* ── CHECKOUT FORM ── */
-.form-section{margin-top:22px}
-.form-section-title{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--mid);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
-.form-row.single{grid-template-columns:1fr}
-.form-row.thirds{grid-template-columns:1fr 1fr 1fr}
-.form-group{display:flex;flex-direction:column;gap:5px}
-.form-group label{font-size:12px;font-weight:500;color:var(--mid)}
-.form-group input,
-.form-group select{width:100%;padding:11px 13px;border:1.5px solid var(--border);border-radius:8px;font-size:15px;font-family:'Inter',sans-serif;color:var(--dark);outline:none;transition:border-color .15s;background:white;-webkit-appearance:none}
-.form-group input:focus,
-.form-group select:focus{border-color:var(--black)}
-.form-group input::placeholder{color:#bbb}
-.card-icons{display:flex;gap:6px;margin-bottom:8px}
-.card-icon{padding:4px 8px;background:#f0f0ee;border-radius:5px;font-size:11px;font-weight:600;color:var(--mid);letter-spacing:.03em}
-
-/* ── ORDER BUTTON ── */
-.btn-order{display:block;width:100%;background:var(--accent);color:white;font-family:'Inter',sans-serif;font-size:17px;font-weight:700;padding:17px;border-radius:50px;text-align:center;border:none;cursor:pointer;transition:transform .15s,box-shadow .15s;letter-spacing:.01em;margin-bottom:12px;margin-top:20px}
-.btn-order:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,55,26,.35)}
-
-/* ── TRUST ── */
-.trust-row{display:flex;justify-content:center;gap:18px;margin:14px 0;flex-wrap:wrap}
-.trust-item{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--mid)}
-.trust-icon{font-size:14px}
-
-.guarantee-box{border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin:14px 0;display:flex;gap:12px;align-items:flex-start}
-.guarantee-icon{font-size:26px;flex-shrink:0}
-.guarantee-title{font-size:14px;font-weight:600;color:var(--black);margin-bottom:3px}
-.guarantee-text{font-size:13px;color:var(--mid);line-height:1.5}
-
-.back-link{display:block;text-align:center;font-size:13px;color:var(--light);padding:14px 0;cursor:pointer;text-decoration:underline;background:none;border:none;width:100%}
-.back-link:hover{color:var(--mid)}
-
-/* ── RESPONSIVE ── */
-@media(max-width:500px){
-  .column{padding:0 16px 56px}
-  .img-placeholder{width:calc(100% + 32px);margin-left:-16px}
-  .scroll-stopper{width:calc(100% + 32px);margin-left:-16px;height:280px}
-  .gallery{margin:0 -16px 0}
-  .order-col{padding:0 14px 52px}
-  .stat-row{gap:7px}
-  .stat-num{font-size:22px}
-  .form-row{grid-template-columns:1fr}
-  .form-row.thirds{grid-template-columns:1fr 1fr}
-  .trust-row{gap:12px}
-  .product-reveal{padding:22px 18px}
-}
-</style>
+    /* ── MOBILE ── */
+    @media (max-width: 600px) {
+      header { height: 44px; padding: 0 16px; }
+      .logo { font-size: 11px; }
+      .wrap { padding: 22px 16px 60px; }
+      .cta-btn { padding: 14px 28px; font-size: 14px; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- ═══════════════════
-     ARTICLE PAGE
-══════════════════════ -->
-<div id="page-article">
-<header class="site-header">
-  <div class="inner">
-    <span class="site-name">Health Insider</span>
-    <span class="site-tag">Wellness · Research · Solutions</span>
-  </div>
+<header>
+  <div class="logo">The Health Insider</div>
+  <div class="adv-tag">Advertorial</div>
 </header>
 
-<!-- SCROLL STOPPER -->
-<div class="scroll-stopper">
-  <div class="pulse-ring"></div>
-  <div class="pulse-ring"></div>
-  <div class="stopper-content">
-    <div class="stopper-eyebrow">Joint Pain · New Discovery</div>
-    <div class="stopper-headline">The Ancient Pain Technique Western Medicine Keeps Ignoring</div>
-    <div class="stopper-sub">3,000 years of clinical practice. Finally available at home. For under $50.</div>
+<div class="wrap">
+
+  <div class="category">Gut Health · Sponsored</div>
+
+  <h1>Doctor Reveals Why 9 Out of 10 People With Bloating, Low Energy and Digestive Problems Are Getting Worse — Not Better</h1>
+
+  <div class="meta">May 4, 2025 at 8:45 am EDT</div>
+
+  <div class="top-quote">
+    "By the time patients come to me with these symptoms, they've usually tried everything — and made the problem significantly worse without knowing it." — Dr. Michael Torres, Gastroenterology, Johns Hopkins Medical Center
   </div>
-  <div class="stopper-pen"></div>
+
+  <img class="hero-img" src="https://picsum.photos/seed/gut1/1200/700" alt="Woman looking tired and uncomfortable" />
+
+  <p class="opener">Laura was exhausted, bloated, and had no idea why.</p>
+
+  <p>If your stomach feels off more days than not...</p>
+
+  <p>If you've noticed your energy crashing in the afternoon no matter how much sleep you get...</p>
+
+  <p>If you've tried cutting out foods, taking probiotics, or drinking more water — and nothing seems to stick...</p>
+
+  <p>Then what you're about to read might be the most important thing you've seen all year.</p>
+
+  <p>There's a quiet epidemic affecting over 70 million Americans right now.</p>
+
+  <p>It doesn't make headlines. Most doctors only address it after years of chronic complaints.</p>
+
+  <p>And the treatments most people reach for first? They're almost certainly making it worse.</p>
+
+  <h2>The $4,800 Turning Point</h2>
+
+  <p>My name is Laura Simmons. I'm 41, I live in Austin with my husband and two kids, and eighteen months ago I was a mess.</p>
+
+  <p>I was doing everything right — or so I thought. Eating salads. Taking a daily probiotic from the pharmacy. Exercising three times a week.</p>
+
+  <p>But I was constantly bloated. My energy was gone by 2pm. I had brain fog so thick I'd forget words mid-sentence. And I'd gained 12 pounds in eight months despite changing nothing in my diet.</p>
+
+  <p>My doctor ran standard bloodwork. Everything came back "normal."</p>
+
+  <p>"It's probably just stress," he said, and handed me a pamphlet about mindfulness.</p>
+
+  <p>Six months and three specialists later, I was sitting in the office of Dr. Michael Torres — a gastroenterologist with 22 years of experience — when he said something that finally made everything click.</p>
+
+  <p><strong>"Laura, the problem isn't what you're eating. It's what's happening to your food after you eat it."</strong></p>
+
+  <img class="hero-img" src="https://picsum.photos/seed/gut2/1200/750" alt="Doctor consultation" />
+
+  <h2>The Truth About Your Gut Nobody Tells You</h2>
+
+  <p>"But I've been taking probiotics for two years," I told him.</p>
+
+  <p>Dr. Torres nodded. He'd heard this before.</p>
+
+  <p>"When did you last actually feel a difference from them?" he asked.</p>
+
+  <p>I opened my mouth to answer — and realised I couldn't. I'd kept buying them out of habit. Faith, almost.</p>
+
+  <p>"This is the most common thing I see," he said. "People spending twenty dollars a month on supplements that, for the majority of patients, do almost nothing."</p>
+
+  <p>That's when he explained the thing no one in the supplement aisle ever tells you: <strong>most probiotics never survive long enough to reach your gut.</strong></p>
+
+  <p>The stomach is highly acidic — designed to destroy bacteria. Standard probiotic capsules dissolve long before they reach the intestinal lining where they're actually needed.</p>
+
+  <blockquote>
+    <p>"The research is unambiguous at this point. Over 90% of standard probiotic strains are destroyed by stomach acid before they reach the colon. You're essentially buying very expensive placebo."</p>
+    <cite>— Dr. Michael Torres, Gastroenterology, Johns Hopkins Medical Center</cite>
+  </blockquote>
+
+  <p>I felt the kind of anger that comes with wasted years and wasted money.</p>
+
+  <p>But Dr. Torres wasn't done.</p>
+
+  <h2>Your Gut Is Running Your Entire Body — And It's Losing</h2>
+
+  <p>What most people don't realise is that the gut isn't just about digestion.</p>
+
+  <p>It produces roughly 95% of the body's serotonin. It houses 70% of the immune system. It communicates directly with the brain through what scientists now call the gut-brain axis.</p>
+
+  <p>When the gut's bacterial balance collapses — a condition called dysbiosis — the consequences spread far beyond the stomach.</p>
+
+  <div class="stat-box">
+    <p><strong>What the research actually shows:</strong> A landmark 2022 study published in <em>Nature Medicine</em> found that patients with disrupted gut microbiomes were 3.4x more likely to experience chronic fatigue, 2.8x more likely to report persistent brain fog, and showed measurably higher levels of systemic inflammation than those with balanced gut flora.</p>
+  </div>
+
+  <p>Dr. Torres showed me studies I'd never seen referenced anywhere:</p>
+
+  <ul class="plain">
+    <li>Stubborn weight gain despite normal diet — directly linked to specific bacterial imbalances</li>
+    <li>Afternoon energy crashes — now understood to originate in the gut, not the adrenal glands</li>
+    <li>Skin problems, joint aches, and mood instability — all downstream effects of a disrupted microbiome</li>
+    <li>Poor sleep quality — connected to the gut's serotonin production dropping below optimal levels</li>
+  </ul>
+
+  <p><strong>"The worst part," Dr. Torres told me, "is that by the time symptoms become obvious, the damage has usually been accumulating for years."</strong></p>
+
+  <p>I felt sick. All this time, I thought I was being proactive about my health. But I was treating symptoms while the real problem quietly got worse.</p>
+
+  <div class="img-wrap">
+    <img src="https://picsum.photos/seed/gut3/1200/750" alt="Gut microbiome illustration" />
+    <p class="img-cap">The human gut contains over 38 trillion bacteria — more cells than the rest of the body combined.</p>
+  </div>
+
+  <h2>Why 99% of Probiotics Are a Complete Waste of Money</h2>
+
+  <p>At midnight, while my family slept, I did what every desperate person does — I researched for hours.</p>
+
+  <p>Study after study confirmed what Dr. Torres had told me.</p>
+
+  <p>And buried in the research, I found something that explained why every probiotic I'd ever taken had done nothing.</p>
+
+  <p>Most people have tried probiotics and been disappointed. Here's the three-part reason why they fail:</p>
+
+  <div class="prob">
+    <div class="prob-title">Problem #1: Standard capsules can't survive stomach acid</div>
+    <p>The stomach reaches a pH of around 1.5 — similar to battery acid. Standard probiotic capsules dissolve almost immediately. In clinical testing, fewer than 4% of standard probiotic bacteria survive the journey to the intestinal lining where they're needed.</p>
+  </div>
+
+  <div class="prob">
+    <div class="prob-title">Problem #2: Most products use the wrong strains</div>
+    <p>There are thousands of bacterial strains. The handful that are genuinely well-researched — Lactobacillus rhamnosus GG, Bifidobacterium longum, and a few others — rarely appear in pharmacy brands because they're expensive to cultivate. Most products use cheap, generic strains with little clinical evidence behind them.</p>
+  </div>
+
+  <div class="prob">
+    <div class="prob-title">Problem #3: Bacteria alone isn't enough</div>
+    <p>For probiotics to colonise, they need food — specific prebiotic fibres that most gut supplements completely omit. Sending bacteria into a gut without prebiotics is like planting seeds in concrete. The bacteria arrive but have nothing to sustain them.</p>
+  </div>
+
+  <p>"That's why I only recommend one product to my patients," Dr. Torres told me. "It's the only one I've found that solves all three problems simultaneously."</p>
+
+  <p>He was talking about BioCore Complete.</p>
+
+  <div class="img-wrap">
+    <img src="https://picsum.photos/seed/gut4/1200/800" alt="BioCore Complete product" />
+    <p class="img-cap">BioCore Complete uses a patented acid-resistant capsule technology originally developed for pharmaceutical drug delivery.</p>
+  </div>
+
+  <h2>The Science Behind BioCore Complete</h2>
+
+  <p>Unlike every standard probiotic on the market, BioCore was formulated by a team of microbiologists at the University of California specifically to solve the three delivery failures above.</p>
+
+  <div class="prob">
+    <div class="prob-title">1. Patented Acid-Shield Capsule Technology</div>
+    <p>BioCore uses a pharmaceutical-grade delayed-release capsule that doesn't dissolve until it reaches the lower intestine — pH 7 or above. In independent testing, 96% of bacteria survived to reach the intestinal wall. No standard probiotic comes close to that number.</p>
+  </div>
+
+  <div class="prob">
+    <div class="prob-title">2. Seven Clinically Validated Strains</div>
+    <p>Every strain in BioCore has at least three peer-reviewed studies behind it. The formula includes Lactobacillus rhamnosus GG, Bifidobacterium longum BB536, and five additional strains specifically selected for their synergistic effect on immune function, mood regulation, and metabolic health.</p>
+  </div>
+
+  <div class="prob">
+    <div class="prob-title">3. Integrated Prebiotic Complex</div>
+    <p>Each capsule also contains a proprietary blend of inulin and fructooligosaccharides — the exact prebiotic fibres these bacterial strains need to establish and multiply. It's the difference between planting seeds and planting seeds in fertile soil.</p>
+  </div>
+
+  <p>When Dr. Torres gave me my first month's supply, I was cautiously optimistic. I'd been disappointed too many times.</p>
+
+  <p>But within four days, I noticed something I hadn't felt in years — my stomach was quiet.</p>
+
+  <p>Not just "less bad." Actually calm.</p>
+
+  <p>By the end of week two, I was waking up before my alarm — something that hadn't happened since my twenties. The afternoon energy crash that had defined my days simply stopped happening.</p>
+
+  <p>By week four, I'd lost six pounds without changing my diet, my skin had cleared noticeably, and my husband asked if I'd started a new medication.</p>
+
+  <p>At my six-week follow-up, Dr. Torres reviewed my markers.</p>
+
+  <p><strong>"Whatever you're doing," he said, looking at my results, "keep doing it."</strong></p>
+
+  <div class="cta-wrap">
+    <a href="#" class="cta-btn">Check Availability Now →</a>
+  </div>
+
+  <h2>This Isn't Just About Digestion</h2>
+
+  <p>What I've learned over the past year is that fixing the gut changes everything.</p>
+
+  <p><strong>Energy:</strong> Consistent, stable energy throughout the day — because your gut is properly converting food into fuel instead of struggling against inflammation.</p>
+
+  <p><strong>Weight:</strong> Proper gut flora plays a direct role in how the body stores fat and responds to insulin. Patients in one study lost an average of 8.2 lbs over 12 weeks with no other lifestyle changes.</p>
+
+  <p><strong>Sleep:</strong> 95% of the body's serotonin — which converts to melatonin at night — is produced in the gut. Better gut health directly means better, deeper sleep.</p>
+
+  <p><strong>Mood and clarity:</strong> The gut-brain axis is now one of the most studied areas in neuroscience. Clinical trials show measurable improvements in anxiety scores and cognitive function within eight weeks of microbiome restoration.</p>
+
+  <p><strong>Immune function:</strong> 70% of immune activity originates in the gut. Patients who restore their microbiome report getting sick significantly less often in the following year.</p>
+
+  <div class="img-wrap">
+    <img src="https://picsum.photos/seed/gut5/1200/720" alt="Woman with energy and vitality" />
+    <p class="img-cap">Clinical participants reported improvements in energy, mood, and sleep quality within 14 days on average.</p>
+  </div>
+
+  <h2>Why You Can't Find This in Any Pharmacy</h2>
+
+  <p>Here's something most people don't know:</p>
+
+  <p>The Acid-Shield capsule technology in BioCore was originally developed for oncology drug delivery — getting chemotherapy agents to survive stomach acid and reach specific intestinal tissues intact.</p>
+
+  <p>It costs approximately fourteen times more to manufacture than standard capsules.</p>
+
+  <p>That's why you'll never see this technology in a pharmacy probiotic. The margins simply don't support it at a price point that moves off shelves.</p>
+
+  <p>Most supplement companies buy bulk probiotic powder from contract manufacturers in China, press it into standard capsules, and design eye-catching packaging. The bacteria are dead or dying before you even open the bottle.</p>
+
+  <p><strong>BioCore licensed the Acid-Shield technology through an exclusive agreement with the research team at UC Davis. No other consumer supplement brand currently has access to it.</strong></p>
+
+  <hr />
+
+  <h2>The Problem With Waiting</h2>
+
+  <p>I know exactly what you're thinking. "Maybe I'll just try a cheaper option first."</p>
+
+  <p>I get it. I thought the same thing for two years.</p>
+
+  <p>Here's what those two years actually cost me:</p>
+
+  <p><strong>Every month of dysbiosis is another month of inflammation quietly damaging your intestinal lining.</strong></p>
+
+  <p>Gut lining damage doesn't heal overnight. The longer it continues, the longer full recovery takes.</p>
+
+  <p>I was lucky that my gut hadn't progressed to leaky gut syndrome by the time Dr. Torres intervened. Some of his patients aren't so fortunate — they're looking at 12 to 18 months of intensive restoration, not the four to six weeks I needed.</p>
+
+  <p>Don't make my mistake. Don't spend another year on products that can't survive the journey to where they're needed.</p>
+
+  <div class="img-wrap">
+    <img src="https://picsum.photos/seed/gut6/1200/780" alt="BioCore Complete capsules" />
+    <p class="img-cap">BioCore Complete is currently available with a 55% introductory discount and free expedited shipping.</p>
+  </div>
+
+  <p>Right now, BioCore is offering a significant discount for Health Insider readers — the same offer Dr. Torres was able to arrange for his own patients when the product first launched.</p>
+
+  <p>But because the Acid-Shield manufacturing process limits production runs, stock sells out consistently every month.</p>
+
+  <p>Don't let your gut become another statistic.</p>
+
+  <div class="cta-wrap">
+    <a href="#" class="cta-btn">Apply Discount and Check Availability →</a>
+  </div>
+
+  <p style="font-size:15px; color:#555;">P.S. Since starting BioCore, I've shared it with everyone who would listen. Here's what some of them told me:</p>
+
+  <div class="testimonials">
+    <div class="testimonial">
+      <p>"I was skeptical — I'd tried four different probiotics over three years and felt nothing from any of them. My naturopath had actually told me to stop wasting my money. But after reading about the delivery mechanism I figured one more try couldn't hurt. Within ten days the bloating I'd had every single day for four years was just... gone. It's been seven months and I haven't had a single bad day. My husband jokes that I'm a different person. I kind of am."</p>
+      <span class="tname">— Sandra K., Portland, OR</span>
+    </div>
+    <div class="testimonial">
+      <p>"I'm a 58-year-old retired teacher and I've been dealing with IBS symptoms since my forties. I've been hospitalised twice with flare-ups. My gastroenterologist mentioned BioCore after I asked about the research on acid-resistant delivery. Six weeks in: zero flare-ups, first time in years I can eat a full meal without planning my bathroom schedule around it. My last checkup showed inflammation markers down significantly. I cried reading those results."</p>
+      <span class="tname">— David M., Chicago, IL</span>
+    </div>
+    <div class="testimonial">
+      <p>"After spending probably $600 on various gut supplements that did nothing, I was ready to accept that this was just how my body worked now. My colleague showed me this article on a Friday. I ordered that weekend. By the following Thursday I noticed I wasn't hitting that 3pm wall. By the end of the first month I'd lost 9 pounds, my anxiety was noticeably lower, and I was sleeping through the night for the first time since college. I refill every single month without question."</p>
+      <span class="tname">— Anita R., Seattle, WA</span>
+    </div>
+  </div>
+
+  <p style="font-size:15px; color:#555; margin-top:10px;">Click the link above to see if BioCore is still offering their 55% discount and free shipping.</p>
+
+  <div class="disclaimer">
+    <p><strong>Advertorial disclosure:</strong> This article is sponsored content produced in partnership with BioCore Complete. The Health Insider editorial team did not participate in the creation of this content.</p>
+    <p>*Individual results may vary. These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Consult a qualified healthcare professional before beginning any supplement programme.</p>
+    <p>THIS IS AN ADVERTISEMENT AND NOT AN ACTUAL NEWS ARTICLE, BLOG, OR CONSUMER PROTECTION UPDATE.</p>
+  </div>
+
 </div>
 
-<main>
-<div class="column">
-  <div class="article-header">
-    <span class="article-label">Joint Pain · Chronic Pain · Natural Relief</span>
-    <h1>Why Does Your Joint Pain Never Go Away? (The Answer Changed Everything For Me)</h1>
-    <p class="article-deck">Ibuprofen masks it. Rest doesn't fix it. The real reason your pain keeps coming back has nothing to do with inflammation — and most doctors will never tell you this.</p>
-    <div class="article-meta">
-      <span>📅 Updated May 2025</span>
-      <span>⏱ 6 min read</span>
-      <span>👁 142,000 readers</span>
-    </div>
-  </div>
+<footer>
+  <p>© 2025 The Health Insider. All Rights Reserved. &nbsp;·&nbsp; Privacy Policy &nbsp;·&nbsp; Terms of Use</p>
+</footer>
 
-  <div class="article-body">
-
-    <p>If you've been dealing with knee pain, shoulder pain, or stiff joints for more than a few months — and nothing seems to help for long — you're not imagining it.</p>
-
-    <p>You've probably tried ibuprofen. Maybe physical therapy. Ice packs. Rest. And it worked... for a day or two. Then the pain came back, exactly where it always does.</p>
-
-    <div class="callout">
-      <strong>Sound familiar?</strong>
-      That's not bad luck. That's not your age. That's your body sending you a very specific signal — and we've been taught to ignore it.
-    </div>
-
-    <p>I spent three years with chronic knee pain. Walking up stairs was the worst. Getting out of a chair felt like an obstacle course. My doctor's advice? <em>"Take some anti-inflammatories and see if it improves."</em></p>
-    <p>It didn't improve. And I started wondering: <strong>why does the pain always come back?</strong></p>
-
-    <h2>The Real Problem Isn't the Pain Itself</h2>
-    <p>Here's what most people don't know: pain is a symptom. It's your body's alarm system going off. When you take a painkiller, you're not fixing anything — you're just turning off the alarm while the problem keeps going.</p>
-
-    <div class="stat-row">
-      <div class="stat-box"><span class="stat-num">80%</span><span class="stat-label">of chronic pain patients say meds only partially help</span></div>
-      <div class="stat-box"><span class="stat-num">3.4B</span><span class="stat-label">people worldwide live with chronic pain every day</span></div>
-      <div class="stat-box"><span class="stat-num">$635B</span><span class="stat-label">spent on pain treatment in the US every year</span></div>
-    </div>
-
-    <p>So if we spend that much money and that many people are still in pain — something is clearly wrong with the approach. The real question isn't <em>how do I make the pain stop</em>. It's: <strong>why is my body creating this pain in the first place?</strong></p>
-
-    <h2>What 3,000 Years of Medicine Figured Out</h2>
-    <p>Long before painkillers existed, Chinese doctors were successfully treating pain. Not with drugs. Not with surgery. With something much simpler.</p>
-    <p>They discovered that the human body has a network of invisible pathways — called <strong>meridians</strong> — that carry energy through every organ, joint, and muscle. When those pathways get blocked, the energy stops flowing. And that blockage shows up as pain, stiffness, or tension.</p>
-
-    <!-- IMAGE: meridian diagram placeholder -->
-    <div class="img-placeholder">
-      <div class="img-ph-inner meridian" style="height:220px">
-        <div style="display:flex;align-items:center;gap:40px;padding:20px">
-          <div class="meridian-vis">
-            <div class="m-body">
-              <div class="m-line"></div>
-              <div class="m-dot" style="top:20%;left:50%;transform:translateX(-50%)"></div>
-              <div class="m-dot" style="top:45%;left:50%;transform:translateX(-50%);animation-delay:.5s"></div>
-              <div class="m-dot" style="top:70%;left:50%;transform:translateX(-50%);animation-delay:1s"></div>
-            </div>
-          </div>
-          <div style="flex:1">
-            <div style="font-size:13px;font-weight:600;color:#444;margin-bottom:10px;text-transform:uppercase;letter-spacing:.06em">Meridian Energy Flow</div>
-            <div style="font-size:13px;color:#666;line-height:1.6">When meridians flow freely → no pain<br>When meridians are blocked → pain signal</div>
-            <div style="margin-top:12px;display:flex;flex-direction:column;gap:6px">
-              <div style="display:flex;align-items:center;gap:8px"><div style="width:8px;height:8px;border-radius:50%;background:var(--accent)"></div><span style="font-size:12px;color:#666">Blocked point = pain area</span></div>
-              <div style="display:flex;align-items:center;gap:8px"><div style="width:8px;height:8px;border-radius:50%;background:var(--green)"></div><span style="font-size:12px;color:#666">Cleared point = relief</span></div>
-            </div>
-          </div>
-        </div>
-        <div class="img-ph-caption">Add real meridian map image here — e.g. body with highlighted energy pathways</div>
-      </div>
-    </div>
-
-    <div class="callout">
-      <strong>Think of it like this:</strong>
-      Your garden hose. When water flows freely, everything works perfectly. When you step on the hose, the pressure builds up. That pressure is what we call pain.
-    </div>
-
-    <p>In 2019, the World Health Organization officially recognized acupuncture as a valid medical treatment. Not because it's "alternative." Because decades of studies showed it actually works.</p>
-
-    <div class="diagram-box">
-      <div class="diagram-title">Key Acupuncture Points for Common Pain Areas</div>
-      <ul class="point-list">
-        <li class="point-item"><div class="point-dot">ST34</div><div class="point-text"><strong>Knee pain (ST34):</strong> Just above the kneecap. Releases tension in surrounding tissue and improves circulation to the joint.</div></li>
-        <li class="point-item"><div class="point-dot">LI4</div><div class="point-text"><strong>General pain (LI4):</strong> Between thumb and index finger. Known as the "great eliminator" — used for pain anywhere in the upper body.</div></li>
-        <li class="point-item"><div class="point-dot">BL23</div><div class="point-text"><strong>Lower back (BL23):</strong> Either side of the spine. Direct connection to the lumbar energy pathways.</div></li>
-        <li class="point-item"><div class="point-dot">GB21</div><div class="point-text"><strong>Shoulder & neck (GB21):</strong> Top of the trapezius. The most common point for desk workers with upper body tension.</div></li>
-      </ul>
-    </div>
-
-    <h2>The Problem With Traditional Acupuncture</h2>
-    <p>By now you might be thinking: "OK, but I'm not going to get needles stuck in me every week."</p>
-    <p>Fair enough. Traditional acupuncture sessions cost $80–$150 each. You need at least 6–10 sessions to see real results. That's up to $1,500 — and you have to drive to a clinic every single time.</p>
-
-    <div class="pullquote">"The principle works. Access to it has always been the problem."</div>
-
-    <p>But here's what changed everything — for me and for hundreds of thousands of people who've discovered this in the last few years.</p>
-
-    <h2>What Happens at the Acupuncture Point</h2>
-    <p>Modern researchers wanted to understand <em>why</em> acupuncture works. So they looked at what happens to the body at the point of stimulation.</p>
-    <p>What they found: stimulating these points sends a tiny electrical signal through the nervous system. This signal tells the brain to release natural pain-blocking chemicals. It also improves local blood flow, reduces muscle tension, and calms the nervous system's alarm response.</p>
-
-    <div class="callout green">
-      <strong>The key insight:</strong>
-      You don't need a needle. You need the right stimulation at the right point. Needles are one way. Electrical stimulation is another — and research shows it works just as well.
-    </div>
-
-    <!-- PRODUCT REVEAL with image placeholder -->
-    <div class="product-reveal">
-      <span class="reveal-label">The Discovery</span>
-      <h3>Electric Acupuncture: Same Principle. No Needles. No Clinic.</h3>
-
-      <!-- product image placeholder inside dark box -->
-      <div style="background:rgba(255,255,255,.06);border-radius:10px;padding:20px;margin:16px 0;display:flex;align-items:center;justify-content:center;gap:28px">
-        <div class="pen-vis">
-          <div class="pen-body">
-            <div class="pen-led"></div>
-            <div class="pen-button"></div>
-          </div>
-          <div class="pen-tip"></div>
-          <div class="pen-label">AcuPulse Pro</div>
-        </div>
-        <div style="flex:1;max-width:240px">
-          <div style="font-size:12px;color:rgba(255,255,255,.5);margin-bottom:8px;text-transform:uppercase;letter-spacing:.07em">Replace with product photo</div>
-          <div style="display:flex;flex-direction:column;gap:6px">
-            <div style="font-size:13px;color:rgba(255,255,255,.75);display:flex;align-items:center;gap:8px"><span style="color:var(--accent)">●</span> LED detects exact point</div>
-            <div style="font-size:13px;color:rgba(255,255,255,.75);display:flex;align-items:center;gap:8px"><span style="color:var(--accent)">●</span> Delivers painless micro-pulse</div>
-            <div style="font-size:13px;color:rgba(255,255,255,.75);display:flex;align-items:center;gap:8px"><span style="color:var(--accent)">●</span> USB rechargeable</div>
-            <div style="font-size:13px;color:rgba(255,255,255,.75);display:flex;align-items:center;gap:8px"><span style="color:var(--accent)">●</span> Weighs just 30g</div>
-          </div>
-        </div>
-      </div>
-
-      <p>Chinese medicine clinics have been using small handheld devices to electrically stimulate acupuncture points for years. It's faster, more precise — and now, anyone can have one at home.</p>
-      <div class="reveal-step"><div class="reveal-num">1</div><div class="reveal-step-text"><strong>Finds the exact point:</strong> A small sensor detects the acupuncture point by measuring electrical resistance in the skin — these points register lower resistance than surrounding tissue.</div></div>
-      <div class="reveal-step"><div class="reveal-num">2</div><div class="reveal-step-text"><strong>Delivers a micro-pulse:</strong> Completely painless. Stimulates the point the same way a needle would — without breaking the skin.</div></div>
-      <div class="reveal-step"><div class="reveal-num">3</div><div class="reveal-step-text"><strong>Your body responds:</strong> Natural pain-blocking compounds are released. Circulation improves. Tension releases.</div></div>
-
-      <!-- price anchor image placeholder -->
-      <div style="margin-top:20px;background:rgba(255,255,255,.06);border-radius:10px;padding:16px;display:flex;gap:16px">
-        <div style="flex:1;text-align:center;padding:12px;background:rgba(255,255,255,.08);border-radius:8px">
-          <div style="font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:rgba(255,255,255,.5);margin-bottom:6px">Clinic session</div>
-          <div style="font-family:'Lora',serif;font-size:30px;font-weight:700;color:white;text-decoration:line-through;opacity:.6">$120</div>
-          <div style="font-size:12px;color:rgba(255,255,255,.4);margin-top:4px">Per visit, 1–2× per week</div>
-        </div>
-        <div style="display:flex;align-items:center;font-size:18px;color:rgba(255,255,255,.25);font-weight:700">vs</div>
-        <div style="flex:1;text-align:center;padding:12px;background:var(--accent);border-radius:8px">
-          <div style="font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:rgba(255,255,255,.8);margin-bottom:6px">Your device</div>
-          <div style="font-family:'Lora',serif;font-size:30px;font-weight:700;color:white">$47</div>
-          <div style="font-size:12px;color:rgba(255,255,255,.8);margin-top:4px">One time. Use every day.</div>
-        </div>
-      </div>
-    </div>
-
-    <h2>Who Is This For?</h2>
-    <div class="mini-benefits">
-      <div class="mini-benefit"><span class="check">✓</span> Chronic knee pain that comes and goes</div>
-      <div class="mini-benefit"><span class="check">✓</span> Shoulder or neck stiffness from sitting at a desk</div>
-      <div class="mini-benefit"><span class="check">✓</span> Lower back tension that never fully goes away</div>
-      <div class="mini-benefit"><span class="check">✓</span> Wrist and elbow pain from repetitive work</div>
-      <div class="mini-benefit"><span class="check">✓</span> Hip flexor tightness from long hours of sitting</div>
-      <div class="mini-benefit"><span class="check">✓</span> General stiffness and body aches in the morning</div>
-    </div>
-
-    <!-- IMAGE: product in use placeholder -->
-    <div class="img-placeholder">
-      <div class="img-ph-inner" style="height:200px;background:linear-gradient(135deg,#f5f0eb 0%,#ede5d8 100%)">
-        <div style="text-align:center">
-          <div style="font-size:36px;margin-bottom:10px">🤲</div>
-          <div style="font-size:14px;font-weight:500;color:#555">Replace with lifestyle image</div>
-          <div style="font-size:12px;color:#888;margin-top:4px">E.g. person using pen on knee / shoulder</div>
-        </div>
-        <div class="img-ph-caption">Lifestyle image: product in use — real person, authentic setting</div>
-      </div>
-    </div>
-
-    <div class="testimonials">
-      <div class="testimonial">
-        <div class="t-text">"I had knee pain for 2 years and tried everything. Three weeks using this every morning and I'm walking up stairs without even thinking about it. I genuinely don't understand why this isn't more well known."</div>
-        <div class="t-author"><div class="t-avatar">MR</div><div><div class="t-name">Michael R.</div><div class="t-detail">Portland, OR · <span class="stars">★★★★★</span></div></div></div>
-      </div>
-      <div class="testimonial">
-        <div class="t-text">"My shoulder has been bothering me since I started working from home. I'd never heard of electric acupuncture before reading this. Two months later — the difference is real. I use it every morning before I start work."</div>
-        <div class="t-author"><div class="t-avatar">SK</div><div><div class="t-name">Sarah K.</div><div class="t-detail">Toronto, Canada · <span class="stars">★★★★★</span></div></div></div>
-      </div>
-    </div>
-
-    <div class="main-cta">
-      <div class="cta-hook">Stop Managing the Pain. Start Actually Fixing It.</div>
-      <div class="cta-sub">See the exact device that's helped thousands of people — and which acupuncture points to use for your specific pain area.</div>
-      <button class="btn-primary" onclick="goToOrder()">See the AcuPulse Pro →</button>
-      <div class="cta-guarantee">🔒 30-day money-back guarantee · Free shipping to US, CA & AU</div>
-    </div>
-
-    <div class="divider"></div>
-    <p style="font-size:13px;color:var(--light);line-height:1.6"><em>Disclaimer: This article is for informational purposes only and does not constitute medical advice. Always consult a healthcare professional before starting any new health regimen. Results may vary.</em></p>
-
-  </div>
-</div>
-</main>
-</div><!-- end page-article -->
-
-
-<!-- ═══════════════════
-     ORDER PAGE
-══════════════════════ -->
-<div id="page-order">
-
-<div class="order-sticky-header">
-  <h2>AcuPulse Pro — Electric Acupuncture Pen</h2>
-  <p>🔒 Secure checkout · Free shipping · 30-day guarantee</p>
-</div>
-
-<div class="order-col">
-
-  <!-- IMAGE GALLERY -->
-  <div class="gallery" id="gallery">
-    <div class="gallery-track-wrap">
-      <div class="gallery-track" id="gallery-track">
-
-        <div class="gallery-slide gs-bg1">
-          <div class="pen-vis" style="transform:scale(1.3)">
-            <div class="pen-body"><div class="pen-led"></div><div class="pen-button"></div></div>
-            <div class="pen-tip"></div>
-          </div>
-          <div class="gallery-label">AcuPulse Pro — Main product view [replace with photo]</div>
-        </div>
-
-        <div class="gallery-slide gs-bg2">
-          <div style="text-align:center;padding:20px">
-            <div style="font-size:48px;margin-bottom:12px">📍</div>
-            <div style="font-size:14px;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:6px">Includes Full Body Point Map</div>
-            <div style="font-size:13px;color:rgba(255,255,255,.6)">Laminated reference card for all pain areas</div>
-          </div>
-          <div class="gallery-label">In-box contents [replace with photo]</div>
-        </div>
-
-        <div class="gallery-slide gs-bg3">
-          <div style="text-align:center;padding:20px">
-            <div style="font-size:48px;margin-bottom:12px">🤲</div>
-            <div style="font-size:14px;font-weight:600;color:#555;margin-bottom:6px">Easy to Use Anywhere</div>
-            <div style="font-size:13px;color:#888">10 minutes at your desk, on the couch, anywhere</div>
-          </div>
-          <div class="gallery-label">Lifestyle — in use [replace with photo]</div>
-        </div>
-
-        <div class="gallery-slide gs-bg4">
-          <div style="text-align:center;padding:20px">
-            <div style="font-size:48px;margin-bottom:12px">⚡</div>
-            <div style="font-size:14px;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:6px">USB Rechargeable</div>
-            <div style="font-size:13px;color:rgba(255,255,255,.6)">No batteries. Charges in 60 minutes.</div>
-          </div>
-          <div class="gallery-label">USB charging detail [replace with photo]</div>
-        </div>
-
-      </div>
-    </div>
-    <button class="g-arrow g-prev" onclick="galleryMove(-1)">‹</button>
-    <button class="g-arrow g-next" onclick="galleryMove(1)">›</button>
-    <div class="gallery-dots" id="gallery-dots">
-      <button class="g-dot active" onclick="galleryGo(0)"></button>
-      <button class="g-dot" onclick="galleryGo(1)"></button>
-      <button class="g-dot" onclick="galleryGo(2)"></button>
-      <button class="g-dot" onclick="galleryGo(3)"></button>
-    </div>
-  </div>
-
-  <div class="product-card">
-    <div class="product-icon">⚡</div>
-    <div>
-      <div class="product-info-name">AcuPulse Pro — Electric Acupuncture Pen</div>
-      <div class="product-info-desc">Auto-detects points · USB rechargeable · Full point map included</div>
-    </div>
-  </div>
-
-  <!-- BUNDLE -->
-  <div class="bundle-section">
-    <div class="bundle-label-top">Choose your pack:</div>
-    <div class="bundle-options">
-      <div class="bundle-opt" id="b1" onclick="selectBundle(1)">
-        <div class="bundle-radio"><div class="radio-dot"></div></div>
-        <div class="bundle-info">
-          <div class="bundle-info-top"><span class="bundle-qty-label">1 Unit — For yourself</span><span class="bundle-price-label">$47</span></div>
-          <div class="bundle-info-bot">$47 per pen</div>
-        </div>
-      </div>
-      <div class="bundle-opt best-val selected" id="b2" onclick="selectBundle(2)">
-        <div class="best-badge">Most popular</div>
-        <div class="bundle-radio"><div class="radio-dot"></div></div>
-        <div class="bundle-info">
-          <div class="bundle-info-top"><span class="bundle-qty-label">2 Units — Home + Office</span><span class="bundle-price-label">$85</span></div>
-          <div class="bundle-info-bot">$42.50 per pen · <span class="save-pill">Save $9</span></div>
-        </div>
-      </div>
-      <div class="bundle-opt" id="b3" onclick="selectBundle(3)">
-        <div class="best-badge" style="background:var(--green)">Best deal</div>
-        <div class="bundle-radio"><div class="radio-dot"></div></div>
-        <div class="bundle-info">
-          <div class="bundle-info-top"><span class="bundle-qty-label">3 Units — Family / Gift</span><span class="bundle-price-label">$119</span></div>
-          <div class="bundle-info-bot">$39.67 per pen · <span class="save-pill">Save $22</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ORDER SUMMARY -->
-  <div class="order-summary">
-    <div class="summary-row"><span id="qty-label">2 × AcuPulse Pro</span><span id="subtotal-val">$85.00</span></div>
-    <div class="summary-row"><span>Shipping</span><span style="color:var(--green);font-weight:500">FREE</span></div>
-    <div class="summary-row total"><span>Total today</span><span id="total-val">$85.00</span></div>
-  </div>
-
-  <!-- CHECKOUT FORM -->
-  <div class="form-section">
-    <div class="form-section-title">Contact</div>
-    <div class="form-row single"><div class="form-group"><label>Email address</label><input type="email" placeholder="you@email.com"></div></div>
-    <div class="form-row"><div class="form-group"><label>First name</label><input type="text" placeholder="Jane"></div><div class="form-group"><label>Last name</label><input type="text" placeholder="Smith"></div></div>
-  </div>
-
-  <div class="form-section">
-    <div class="form-section-title">Shipping address</div>
-    <div class="form-row single"><div class="form-group"><label>Address</label><input type="text" placeholder="123 Main Street"></div></div>
-    <div class="form-row single"><div class="form-group"><label>Apartment, suite, etc. (optional)</label><input type="text" placeholder="Apt 4B"></div></div>
-    <div class="form-row"><div class="form-group"><label>City</label><input type="text" placeholder="New York"></div><div class="form-group"><label>State / Province</label><input type="text" placeholder="NY"></div></div>
-    <div class="form-row"><div class="form-group"><label>ZIP / Postal code</label><input type="text" placeholder="10001"></div><div class="form-group"><label>Country</label><select><option>United States</option><option>Canada</option><option>Australia</option><option>United Kingdom</option></select></div></div>
-  </div>
-
-  <div class="form-section">
-    <div class="form-section-title">Payment</div>
-    <div class="card-icons"><span class="card-icon">VISA</span><span class="card-icon">MC</span><span class="card-icon">AMEX</span><span class="card-icon">PayPal</span></div>
-    <div class="form-row single"><div class="form-group"><label>Card number</label><input type="text" placeholder="1234 5678 9012 3456" maxlength="19"></div></div>
-    <div class="form-row"><div class="form-group"><label>Expiry date</label><input type="text" placeholder="MM / YY" maxlength="7"></div><div class="form-group"><label>Security code</label><input type="text" placeholder="CVV" maxlength="4"></div></div>
-    <div class="form-row single"><div class="form-group"><label>Name on card</label><input type="text" placeholder="Jane Smith"></div></div>
-  </div>
-
-  <button class="btn-order" onclick="handleOrder()">Complete Order — Free Shipping →</button>
-
-  <div class="trust-row">
-    <div class="trust-item"><span class="trust-icon">🔒</span> SSL Secure</div>
-    <div class="trust-item"><span class="trust-icon">🚚</span> Free shipping</div>
-    <div class="trust-item"><span class="trust-icon">↩️</span> 30-day returns</div>
-    <div class="trust-item"><span class="trust-icon">⭐</span> 4.9 / 5 stars</div>
-  </div>
-
-  <div class="guarantee-box">
-    <div class="guarantee-icon">🛡️</div>
-    <div>
-      <div class="guarantee-title">30-Day Money-Back Guarantee</div>
-      <div class="guarantee-text">Try AcuPulse Pro for a full 30 days. If you don't feel a real difference, we'll refund you completely. No questions, no hassle.</div>
-    </div>
-  </div>
-
-  <button class="back-link" onclick="goToArticle()">← Back to article</button>
-</div>
-</div><!-- end page-order -->
-
-<script>
-/* ── BUNDLE ── */
-const bundles={1:{price:47,label:'1 × AcuPulse Pro'},2:{price:85,label:'2 × AcuPulse Pro'},3:{price:119,label:'3 × AcuPulse Pro'}};
-let sel=2;
-function selectBundle(n){
-  sel=n;
-  document.querySelectorAll('.bundle-opt').forEach(el=>el.classList.remove('selected'));
-  document.getElementById('b'+n).classList.add('selected');
-  document.getElementById('qty-label').textContent=bundles[n].label;
-  document.getElementById('subtotal-val').textContent='$'+bundles[n].price+'.00';
-  document.getElementById('total-val').textContent='$'+bundles[n].price+'.00';
-}
-
-/* ── GALLERY ── */
-let cur=0;const total=4;
-function galleryMove(dir){cur=(cur+dir+total)%total;galleryApply()}
-function galleryGo(i){cur=i;galleryApply()}
-function galleryApply(){
-  document.getElementById('gallery-track').style.transform='translateX(-'+cur*100+'%)';
-  document.querySelectorAll('.g-dot').forEach((d,i)=>d.classList.toggle('active',i===cur));
-}
-/* swipe support */
-let tx=0;
-const gw=document.getElementById('gallery');
-gw.addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
-gw.addEventListener('touchend',e=>{const dx=tx-e.changedTouches[0].clientX;if(Math.abs(dx)>40)galleryMove(dx>0?1:-1)},{passive:true});
-
-/* ── PAGE NAV ── */
-function goToOrder(){
-  document.getElementById('page-article').style.display='none';
-  document.getElementById('page-order').style.display='block';
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-function goToArticle(){
-  document.getElementById('page-order').style.display='none';
-  document.getElementById('page-article').style.display='block';
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-function handleOrder(){
-  alert('Connect this button to your Shopify / payment processor.\n\nSelected bundle: '+bundles[sel].label+' — $'+bundles[sel].price);
-}
-/* card number formatting */
-document.addEventListener('input',e=>{
-  if(e.target.placeholder==='1234 5678 9012 3456'){
-    let v=e.target.value.replace(/\D/g,'').substring(0,16);
-    e.target.value=v.replace(/(.{4})/g,'$1 ').trim();
-  }
-  if(e.target.placeholder==='MM / YY'){
-    let v=e.target.value.replace(/\D/g,'').substring(0,4);
-    if(v.length>=2)v=v.substring(0,2)+' / '+v.substring(2);
-    e.target.value=v;
-  }
-});
-</script>
 </body>
 </html>
