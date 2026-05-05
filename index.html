@@ -1,703 +1,967 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>I Was Taking Ibuprofen Every Day Just to Move — Health & Recovery Insider</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Your Muscles Are Still Sore (And What Actually Fixes It)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --text:#1c1a17;
-  --text-muted:#5a5650;
-  --text-light:#999;
-  --border:#e3dfd8;
-  --bg:#ffffff;
-  --bg-warm:#faf8f5;
-  --bg-card:#f5f2ee;
-  --red:#bf2d1a;
-  --red-dark:#9a2013;
-  --red-light:#fdf3f1;
-  --green:#1a5c35;
-  --green-bg:#f0f7f3;
-  --blue-bg:#f0f4fb;
-  --blue-border:#c5d3ea;
-  --serif:'Playfair Display',Georgia,serif;
-  --body:'Source Serif 4',Georgia,serif;
-}
-body{font-family:var(--body);font-size:19px;line-height:1.85;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* ── PUB BAR ── */
-.pub-bar{background:#1c1a17;color:#f0ece4;text-align:center;padding:11px 20px;font-family:var(--body);font-size:12px;letter-spacing:3px;text-transform:uppercase}
-.pub-bar em{color:#c9a84c;font-style:normal;margin:0 10px}
+  :root {
+    --bg: #FDFAF5;
+    --surface: #FFFFFF;
+    --text: #1A1A1A;
+    --text-muted: #666666;
+    --text-light: #999999;
+    --accent: #C8410A;
+    --accent-hover: #A33508;
+    --accent-light: #FDF0E8;
+    --border: #E8E2D9;
+    --gold: #B8860B;
+    --green: #2D6A4F;
+    --green-light: #EAF4EF;
+  }
 
-/* ── STICKY BAR ── */
-.sticky{position:sticky;top:0;z-index:200;background:var(--red);color:#fff;text-align:center;padding:9px 16px;font-family:var(--body);font-size:13px;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
-.sticky a{background:#fff;color:var(--red);padding:6px 18px;border-radius:4px;text-decoration:none;font-size:12px;font-weight:600;white-space:nowrap;letter-spacing:.3px}
+  html { scroll-behavior: smooth; }
 
-/* ── LAYOUT ── */
-.wrap{max-width:740px;margin:0 auto;padding:0 22px}
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 17px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
 
-/* ── HEADER ── */
-.hdr{padding:38px 0 26px;border-bottom:1px solid var(--border);margin-bottom:34px}
-.tag{display:inline-block;background:var(--bg-card);border:1px solid var(--border);color:var(--text-muted);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;border-radius:3px;margin-bottom:18px}
-h1{font-family:var(--serif);font-size:clamp(26px,5vw,42px);line-height:1.22;color:var(--text);margin-bottom:18px;font-weight:800}
-.sub{font-size:18px;color:var(--text-muted);font-style:italic;line-height:1.65;margin-bottom:20px}
-.byline{font-size:13px;color:var(--text-light);padding-top:14px;border-top:1px solid var(--border);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.byline strong{color:var(--text-muted);font-weight:600}
+  /* TOPBAR */
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    letter-spacing: 0.03em;
+  }
+  .topbar span { color: var(--accent); font-weight: 600; }
 
-/* ── IMAGES ── */
-.img-wrap{margin:28px 0 8px}
-.img-ph{width:100%;background:#ece9e3;border-radius:6px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--text-light);font-style:italic;font-family:var(--body)}
-.img-ph.hero{aspect-ratio:16/7}
-.img-ph.inline{aspect-ratio:16/8}
-.img-ph.sq{aspect-ratio:4/3}
-.cap{font-size:13px;color:var(--text-light);text-align:center;font-style:italic;margin-bottom:28px;line-height:1.5}
+  /* LAYOUT */
+  .wrapper {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
 
-/* ── BODY ── */
-.body p{margin-bottom:22px}
-.body p.opener{font-size:21px;font-weight:600;font-style:italic;color:#2a2520;line-height:1.6}
-h2{font-family:var(--serif);font-size:clamp(21px,4vw,30px);line-height:1.3;color:var(--text);margin:44px 0 16px;font-weight:700}
-h3{font-family:var(--serif);font-size:21px;color:var(--text);margin:30px 0 12px;font-weight:700}
+  /* HEADER */
+  .article-header {
+    padding: 48px 0 32px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 0;
+  }
 
-/* ── SECTION RULE ── */
-.sec-rule{border:none;border-top:1px solid var(--border);margin:40px 0}
+  .category-label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
 
-/* ── PULL QUOTE ── */
-.pq{border-left:4px solid var(--red);background:var(--red-light);padding:20px 24px;margin:32px 0;border-radius:0 6px 6px 0}
-.pq p{font-size:18px;font-style:italic;color:#2a2520;margin:0!important;line-height:1.7}
-.pq cite{display:block;margin-top:10px;font-size:13px;color:var(--text-muted);font-style:normal;font-weight:600}
+  h1 {
+    font-family: 'Lora', Georgia, serif;
+    font-size: clamp(26px, 4.5vw, 38px);
+    line-height: 1.25;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 18px;
+    letter-spacing: -0.01em;
+  }
 
-/* ── TRIED THINGS ── */
-.tried{background:var(--bg-warm);border:1px solid var(--border);border-radius:8px;padding:24px 28px;margin:26px 0}
-.tried .tried-title{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-muted);font-weight:600;margin-bottom:14px;font-family:var(--body)}
-.tried ul{list-style:none;padding:0;margin:0}
-.tried ul li{padding:6px 0;font-size:17px;display:flex;align-items:flex-start;gap:12px;border-bottom:1px solid var(--border)}
-.tried ul li:last-child{border-bottom:none}
-.tried ul li::before{content:"✕";color:var(--red);font-size:12px;margin-top:6px;flex-shrink:0;font-weight:700}
+  .deck {
+    font-size: clamp(16px, 2.5vw, 19px);
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-weight: 300;
+    margin-bottom: 24px;
+  }
 
-/* ── SCIENCE CALLOUT ── */
-.sci{background:var(--blue-bg);border:1px solid var(--blue-border);border-radius:8px;padding:22px 26px;margin:32px 0}
-.sci .sci-label{font-size:11px;text-transform:uppercase;letter-spacing:2px;color:#2d5099;font-weight:700;margin-bottom:10px;font-family:var(--body)}
-.sci p{font-size:16px;color:#1e2d4a;margin:0!important;line-height:1.75}
+  .byline {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    color: var(--text-light);
+    padding: 16px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .byline-avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: #E0D8CC;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 600; color: #7A6E60;
+    flex-shrink: 0;
+  }
+  .byline strong { color: var(--text-muted); font-weight: 500; }
 
-/* ── HIGHLIGHT BOX ── */
-.highlight{background:var(--bg-card);border-left:4px solid #c9a84c;padding:20px 24px;margin:28px 0;border-radius:0 6px 6px 0}
-.highlight p{font-size:17px;color:var(--text);margin:0!important;line-height:1.75}
+  /* HERO IMAGE */
+  .hero-image {
+    width: 100%;
+    aspect-ratio: 16/7;
+    background: #E8E2D9;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; color: var(--text-light);
+    letter-spacing: 0.05em;
+    margin: 32px 0;
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+  }
+  .hero-image img { width: 100%; height: 100%; object-fit: cover; }
+  .img-placeholder {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 8px;
+    background: #EDE8E0;
+  }
+  .img-placeholder .img-icon {
+    width: 40px; height: 40px; opacity: 0.3;
+  }
+  .img-placeholder p { font-size: 12px; color: var(--text-light); opacity: 0.7; }
 
-/* ── MECHANISM BOX ── */
-.mech{border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:32px 0}
-.mech-title{background:#1c1a17;color:#f0ece4;padding:12px 20px;font-size:13px;letter-spacing:2px;text-transform:uppercase;font-family:var(--body);font-weight:600}
-.mech-body{padding:22px}
-.mech-row{display:flex;gap:14px;margin-bottom:14px;align-items:flex-start}
-.mech-row:last-child{margin-bottom:0}
-.mech-num{background:var(--red);color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;margin-top:2px;font-family:var(--body)}
-.mech-text{font-size:16px;line-height:1.7;color:var(--text)}
-.mech-text strong{display:block;font-size:15px;margin-bottom:3px;color:#1c1a17}
-.mech-text span{color:var(--text-muted)}
+  /* ARTICLE BODY */
+  .article-body { padding: 8px 0 64px; }
 
-/* ── FEATURES ── */
-.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:24px 0}
-.feat{background:var(--bg-warm);border:1px solid var(--border);border-radius:8px;padding:18px 20px;display:flex;gap:14px;align-items:flex-start}
-.feat-icon{font-size:22px;flex-shrink:0;margin-top:1px}
-.feat strong{display:block;font-size:15px;margin-bottom:4px;font-family:var(--body);font-weight:600;color:var(--text)}
-.feat span{font-size:13px;color:var(--text-muted);line-height:1.55;font-style:italic}
+  p { margin-bottom: 20px; }
 
-/* ── WHAT IT DOES ── */
-.does-table{width:100%;border-collapse:collapse;margin:22px 0;font-size:16px}
-.does-table th{text-align:left;padding:10px 14px;background:#1c1a17;color:#f0ece4;font-family:var(--body);font-weight:600;font-size:13px;letter-spacing:.5px}
-.does-table td{padding:12px 14px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.6}
-.does-table tr:last-child td{border-bottom:none}
-.does-table tr:nth-child(even) td{background:var(--bg-warm)}
-.bad{color:var(--red);font-weight:600}
-.good{color:var(--green);font-weight:600}
+  .article-body h2 {
+    font-family: 'Lora', Georgia, serif;
+    font-size: clamp(20px, 3vw, 26px);
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 44px 0 16px;
+    color: var(--text);
+  }
 
-/* ── TESTIMONIALS ── */
-.testi{background:var(--green-bg);border:1px solid #b4d4c2;border-radius:8px;padding:22px 26px;margin:18px 0}
-.stars{color:#d4a017;font-size:15px;letter-spacing:3px;margin-bottom:10px}
-.testi p{font-size:17px;font-style:italic;color:#1a3325;line-height:1.75;margin-bottom:10px!important}
-.testi cite{font-size:13px;color:var(--green);font-weight:600;font-style:normal;display:block}
+  .article-body h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    margin: 28px 0 10px;
+    color: var(--text);
+  }
 
-/* ── CTA BLOCK ── */
-.cta-block{background:var(--bg-warm);border:1px solid var(--border);border-radius:10px;padding:36px 30px;margin:44px 0;text-align:center}
-.cta-urgency{font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--red);font-weight:700;margin-bottom:12px;font-family:var(--body)}
-.cta-block h2{margin:0 0 8px;font-size:clamp(22px,4vw,30px)}
-.cta-sub{font-size:16px;color:var(--text-muted);font-style:italic;margin-bottom:26px}
-.price-row{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:24px;flex-wrap:wrap}
-.price-was{font-size:19px;color:var(--text-light);text-decoration:line-through}
-.price-now{font-size:38px;font-family:var(--serif);font-weight:800;color:var(--text)}
-.price-pill{background:var(--red);color:#fff;font-size:13px;font-weight:700;padding:5px 14px;border-radius:20px;font-family:var(--body)}
-.btn{display:block;background:var(--red);color:#fff;text-decoration:none;font-family:var(--body);font-weight:700;font-size:18px;padding:20px 28px;border-radius:6px;max-width:440px;margin:0 auto 14px;line-height:1.3;letter-spacing:.2px;transition:background .15s;cursor:pointer;border:none}
-.btn:hover{background:var(--red-dark)}
-.btn-note{font-size:13px;color:var(--text-light);font-style:italic;margin-top:4px}
-.guar{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin-top:20px;text-align:left}
-.guar-icon{font-size:32px;flex-shrink:0}
-.guar p{font-size:13px;margin:0!important;color:var(--text-muted);line-height:1.6}
-.guar strong{display:block;font-size:15px;color:var(--text);margin-bottom:3px}
+  /* PULLQUOTE */
+  .pullquote {
+    border-left: 3px solid var(--accent);
+    padding: 16px 24px;
+    margin: 32px 0;
+    background: var(--accent-light);
+    border-radius: 0 6px 6px 0;
+  }
+  .pullquote p {
+    font-family: 'Lora', serif;
+    font-size: clamp(17px, 2.5vw, 21px);
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--text);
+    margin: 0;
+  }
 
-/* ── TWO CHOICES ── */
-.choices{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:30px 0}
-.choice{border-radius:8px;padding:20px 22px}
-.choice.bad{background:#fff8f7;border:1px solid #f0c0ba}
-.choice.good{background:var(--green-bg);border:1px solid #b4d4c2}
-.choice-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;font-family:var(--body)}
-.choice.bad .choice-label{color:var(--red)}
-.choice.good .choice-label{color:var(--green)}
-.choice ul{list-style:none;padding:0;margin:0}
-.choice ul li{font-size:15px;padding:5px 0;display:flex;gap:10px;line-height:1.4}
-.choice.bad ul li::before{content:"✕";color:var(--red);font-weight:700;flex-shrink:0}
-.choice.good ul li::before{content:"✓";color:var(--green);font-weight:700;flex-shrink:0}
+  /* INLINE IMAGE */
+  .inline-image {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #EDE8E0;
+    border-radius: 6px;
+    margin: 28px 0 12px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .inline-image img { width: 100%; height: 100%; object-fit: cover; }
+  .inline-image .img-placeholder { border-radius: 6px; }
+  .img-caption {
+    font-size: 13px;
+    color: var(--text-light);
+    margin: -4px 0 24px;
+    font-style: italic;
+    text-align: center;
+  }
 
-/* ── FINAL CTA STRIP ── */
-.cta-strip{background:var(--red);padding:36px 28px;text-align:center;margin:0 -22px}
-.cta-strip p{color:rgba(255,255,255,.85);font-size:15px;margin-bottom:18px}
-.cta-strip h2{color:#fff;font-family:var(--serif);font-size:clamp(22px,4vw,30px);margin:0 0 10px}
-.btn-white{display:inline-block;background:#fff;color:var(--red);text-decoration:none;font-family:var(--body);font-weight:700;font-size:17px;padding:18px 36px;border-radius:6px;margin-top:8px}
+  /* FLOAT IMAGE - product */
+  .float-right {
+    float: right;
+    width: 200px;
+    margin: 0 0 20px 28px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .float-right .inline-image {
+    width: 200px;
+    aspect-ratio: 3/4;
+    margin: 0;
+  }
+  @media (max-width: 540px) {
+    .float-right { float: none; width: 100%; margin: 0 0 20px 0; }
+    .float-right .inline-image { width: 100%; aspect-ratio: 16/9; }
+  }
 
-/* ── DISCLOSURE ── */
-.disc{font-size:11px;color:#bbb;text-align:center;padding:24px 0 32px;border-top:1px solid var(--border);margin-top:40px;line-height:1.8}
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 32px 0;
+  }
+  .highlight-box .box-title {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
 
-/* ── MOBILE ── */
-@media(max-width:600px){
-  body{font-size:17px}
-  h1{font-size:25px}
-  h2{font-size:22px}
-  .choices{grid-template-columns:1fr}
-  .feat-grid{grid-template-columns:1fr}
-  .sticky{font-size:12px;gap:8px}
-  .cta-block{padding:26px 18px}
-  .guar{flex-direction:column;text-align:center}
-  .does-table{font-size:14px}
-  .cta-strip{margin:0 -22px;padding:28px 18px}
-}
+  /* BENEFIT LIST */
+  .benefit-list { list-style: none; padding: 0; margin: 0; }
+  .benefit-list li {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  .benefit-list li:last-child { border-bottom: none; }
+  .benefit-list .check {
+    width: 20px; height: 20px;
+    background: var(--green);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .benefit-list .check::after {
+    content: '';
+    width: 10px; height: 6px;
+    border-left: 2px solid white;
+    border-bottom: 2px solid white;
+    transform: rotate(-45deg) translateY(-1px);
+    display: block;
+  }
+
+  /* TESTIMONIALS */
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 32px 0;
+  }
+  .testimonial {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 22px;
+  }
+  .stars {
+    color: #F5A623;
+    font-size: 14px;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+  }
+  .testimonial-text {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--text);
+    font-style: italic;
+    margin-bottom: 14px;
+  }
+  .testimonial-author {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+  .testimonial-detail {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-top: 2px;
+  }
+
+  /* PRODUCT BOX */
+  .product-box {
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    margin: 40px 0;
+  }
+  .product-box-inner {
+    padding: 28px 32px;
+  }
+  .product-tag {
+    display: inline-block;
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+  .product-box h2 {
+    font-family: 'Lora', serif;
+    font-size: clamp(20px, 3vw, 26px);
+    margin: 0 0 10px;
+  }
+  .product-subtitle {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+  .price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .price-current {
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .price-old {
+    font-size: 18px;
+    color: var(--text-light);
+    text-decoration: line-through;
+  }
+  .price-save {
+    font-size: 13px;
+    background: var(--green-light);
+    color: var(--green);
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+  .price-note {
+    font-size: 13px;
+    color: var(--text-light);
+    margin-bottom: 24px;
+  }
+
+  /* CTA BUTTON */
+  .cta-btn {
+    display: block;
+    width: 100%;
+    background: var(--accent);
+    color: #FFFFFF;
+    text-align: center;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 16px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.01em;
+    transition: background 0.18s ease, transform 0.12s ease;
+  }
+  .cta-btn:hover { background: var(--accent-hover); transform: translateY(-1px); }
+  .cta-btn:active { transform: translateY(0); }
+  .cta-btn.secondary {
+    background: transparent;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+    margin-top: 10px;
+    font-size: 14px;
+    padding: 12px 24px;
+  }
+  .cta-btn.secondary:hover { background: var(--accent-light); }
+
+  .cta-subtext {
+    text-align: center;
+    font-size: 12.5px;
+    color: var(--text-light);
+    margin-top: 12px;
+    line-height: 1.5;
+  }
+
+  /* TRUST BADGES */
+  .trust-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    margin: 20px 0;
+    justify-content: center;
+  }
+  .trust-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .trust-badge .badge-icon {
+    width: 16px; height: 16px;
+    background: var(--green);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .trust-badge .badge-icon::after {
+    content: '';
+    width: 8px; height: 5px;
+    border-left: 1.5px solid white;
+    border-bottom: 1.5px solid white;
+    transform: rotate(-45deg) translateY(-0.5px);
+    display: block;
+  }
+
+  /* HOW IT WORKS STEPS */
+  .steps-list { list-style: none; padding: 0; margin: 16px 0 0; }
+  .step-item {
+    display: flex; gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .step-item:last-child { border-bottom: none; }
+  .step-number {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .step-content strong {
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .step-content p {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* FAQ */
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    padding: 18px 0;
+  }
+  .faq-question {
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+  .faq-answer {
+    font-size: 14.5px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* MID-ARTICLE CTA BANNER */
+  .mid-cta {
+    background: linear-gradient(135deg, #1A1A1A 0%, #2D2D2D 100%);
+    border-radius: 12px;
+    padding: 28px 28px;
+    margin: 40px 0;
+    text-align: center;
+  }
+  .mid-cta p {
+    color: rgba(255,255,255,0.8);
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  .mid-cta strong {
+    display: block;
+    color: white;
+    font-size: clamp(17px, 2.5vw, 21px);
+    font-family: 'Lora', serif;
+    font-weight: 600;
+    margin-bottom: 18px;
+    line-height: 1.35;
+  }
+  .mid-cta .cta-btn {
+    max-width: 340px;
+    margin: 0 auto;
+    background: var(--accent);
+  }
+
+  /* DIVIDER */
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* DISCLOSURE */
+  .disclosure {
+    font-size: 12px;
+    color: var(--text-light);
+    padding: 20px 0;
+    border-top: 1px solid var(--border);
+    line-height: 1.6;
+  }
+
+  /* STICKY MOBILE CTA */
+  .sticky-cta {
+    display: none;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: white;
+    padding: 12px 20px;
+    border-top: 1px solid var(--border);
+    z-index: 100;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+  }
+  .sticky-cta .cta-btn { font-size: 15px; padding: 14px; }
+  @media (max-width: 640px) { .sticky-cta { display: block; } }
+
+  /* RATING SUMMARY */
+  .rating-summary {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin: 28px 0;
+    flex-wrap: wrap;
+  }
+  .rating-number {
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--text);
+  }
+  .rating-stars { color: #F5A623; font-size: 18px; letter-spacing: 3px; }
+  .rating-count { font-size: 13px; color: var(--text-light); margin-top: 4px; }
+  .rating-bars { flex: 1; min-width: 160px; }
+  .rating-bar-row {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 12px; color: var(--text-light);
+    margin-bottom: 4px;
+  }
+  .rating-bar-row:last-child { margin-bottom: 0; }
+  .bar-track {
+    flex: 1; height: 6px;
+    background: var(--border); border-radius: 3px;
+    overflow: hidden;
+  }
+  .bar-fill { height: 100%; background: #F5A623; border-radius: 3px; }
+
+  /* CALLOUT */
+  .callout {
+    background: var(--green-light);
+    border-left: 3px solid var(--green);
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    margin: 28px 0;
+  }
+  .callout p { margin: 0; font-size: 15px; color: #1A3D2B; }
+  .callout strong { font-weight: 600; }
+
+  /* RESPONSIVE */
+  @media (max-width: 540px) {
+    .article-header { padding: 32px 0 24px; }
+    .product-box-inner { padding: 22px 20px; }
+    .mid-cta { padding: 22px 20px; }
+    body { padding-bottom: 80px; }
+  }
 </style>
 </head>
 <body>
 
-<div class="pub-bar">Health & Recovery Insider <em>|</em> Performance & Wellness</div>
-
-<div class="sticky">
-  ⚡ Limited offer — 50% off + free shipping today only
-  <a href="#">Claim Discount →</a>
+<div class="topbar">
+  Health & Wellness Review &nbsp;|&nbsp; <span>Sponsored Content</span>
 </div>
 
-<div class="wrap">
-
-<!-- HEADER -->
-<header class="hdr">
-  <div class="tag">Sponsored Content</div>
-  <h1>I Was Taking Ibuprofen Every Day Just to Move. Then I Found Out Why My Muscles Were Actually Staying Sore — And It Had Nothing to Do With What I'd Been Told.</h1>
-  <p class="sub">The answer came at 1:47 AM, when I finally stopped ignoring what my body had been trying to tell me for two years.</p>
-  <div class="byline">
-    <strong>By Health & Recovery Insider Staff</strong>
-    <span>|</span><span>Updated May 2025</span>
-    <span>|</span><span>8 min read</span>
-  </div>
-</header>
-
-<!-- HERO IMAGE -->
-<div class="img-wrap">
-  <div class="img-ph hero">[Hero image: person sitting on edge of bed, head in hands, early morning, tired and in pain]</div>
-</div>
-<p class="cap">For two years, Ryan Torres, 37, thought he just had "bad recovery genetics." He was wrong about the cause — and wrong about the solution.</p>
-
-<!-- STORY BODY -->
-<article class="body">
-
-<p class="opener">My wife stopped asking how I was feeling after workouts.</p>
-
-<p>Not because she didn't care.</p>
-
-<p>Because she already knew the answer.</p>
-
-<p>"Sore," she'd say before I even opened my mouth. Then she'd hand me the ibuprofen without a word.</p>
-
-<p>This was my life at 37 years old.</p>
-
-<p>I'd been lifting weights since college. Three, sometimes four days a week. Nothing crazy — just trying to stay in shape, keep my energy up, stay ahead of the slow physical decline that had quietly swallowed three of my closest friends in their thirties.</p>
-
-<p>But somewhere around year three of working from home, something shifted.</p>
-
-<p>The soreness after workouts stopped going away.</p>
-
-<p>Not the standard next-day ache. I'd always had that. I'm talking about the soreness that was <em>still there on Thursday</em> when I'd worked out on Monday. The kind that made me wince when I pulled my shirt over my head. That woke me up at 3 AM when I rolled onto my shoulder without thinking. That made me hesitate at the bottom of the stairs every single morning.</p>
-
-<p>I started skipping workouts. Not because I wanted to. Because I wasn't recovered yet.</p>
-
-<p>Then I started skipping them for a darker reason:</p>
-
-<p><em>What's the point if I'm just going to feel like this for the next week?</em></p>
-
-<p>That thought scared me more than the pain did.</p>
-
-<hr class="sec-rule"/>
-
-<!-- IMAGE -->
-<div class="img-wrap">
-  <div class="img-ph inline">[Image: person lying on couch with ice pack on shoulder, looking frustrated at ceiling]</div>
-</div>
-<p class="cap">Ice, heat, foam rolling, supplements — Ryan tried it all. Nothing broke the cycle.</p>
-
-<h2>Everything I Tried. And Why None of It Worked.</h2>
-
-<p>My buddy Dave told me to ice everything. Said it was what his college trainer recommended.</p>
-
-<p>I iced everything. Bags of frozen peas pressed against my shoulder at 10 PM while my kids wandered in and asked why Dad was holding vegetables against his body.</p>
-
-<p>I bought a foam roller and used it religiously for six weeks. My living room floor still has the dent from where I'd lie there, gritting my teeth, rolling back and forth, telling myself this was helping.</p>
-
-<p>I tried magnesium. Upped my protein to 180 grams a day. Stretched for 20 minutes every morning like I was auditioning for a yoga class I would never actually attend.</p>
-
-<p>I bought a massage gun — the fancy one that came in a hard case like some kind of medical instrument. $280. My wife still glances at it on the shelf with an expression that requires no words.</p>
-
-<p>I started taking Epsom salt baths twice a week. Sitting in the tub like a 19th-century patient taking the waters, waiting for something to change.</p>
-
-<div class="tried">
-  <p class="tried-title">Two years of trying everything:</p>
-  <ul>
-    <li>Ice packs and cold therapy — every single evening</li>
-    <li>Foam roller — 20 minutes minimum, religiously</li>
-    <li>$280 massage gun — used twice, now decorating a shelf</li>
-    <li>Magnesium supplements — $55/month, zero difference</li>
-    <li>Ibuprofen — became daily, which worried my doctor</li>
-    <li>Epsom salt baths — twice a week for four months</li>
-    <li>Heating pads before bed — helped me fall asleep, changed nothing</li>
-    <li>Stretching routine — 20 minutes every morning for 11 weeks</li>
-  </ul>
-</div>
-
-<p>Each one would help a little. In the moment. Just enough to keep me trying the next thing.</p>
-
-<p>But the soreness always came back. Every time. Exactly as stubborn as before.</p>
-
-<p>"I think I just have bad recovery genetics," I told my doctor during a routine visit. He made the kind of non-committal noise that doctors make when they're being polite about something.</p>
-
-<p>I was taking ibuprofen four, sometimes five days a week. He told me to be careful. Said it wasn't meant to be a daily routine.</p>
-
-<p>I knew that. I also couldn't figure out how to stop.</p>
-
-<hr class="sec-rule"/>
-
-<!-- IMAGE -->
-<div class="img-wrap">
-  <div class="img-ph sq">[Image: father sitting alone at kitchen table with coffee, daughter's shoes visible by the door, defeated look]</div>
-</div>
-<p class="cap">The Saturday morning that changed everything.</p>
-
-<h2>The Morning I Realized This Was Actually Stealing My Life</h2>
-
-<p>The moment I knew something had to change wasn't dramatic.</p>
-
-<p>It was a Saturday in November. A normal Saturday.</p>
-
-<p>My daughter Emma — she's 9 — came downstairs in her coat and sneakers and said, "Dad, want to come to the park?"</p>
-
-<p>I said, "Give me 20 minutes, bud."</p>
-
-<p>Then I sat down on the edge of the bed.</p>
-
-<p>And I spent those 20 minutes having a very quiet internal argument with myself about whether getting up and walking to the car was something my body could actually do that morning.</p>
-
-<p>She ended up going with her mom.</p>
-
-<p>I sat at the kitchen table drinking coffee that was getting cold, feeling about 60 years older than I was.</p>
-
-<p>I was 37. I worked out three times a week. I wore fitness tracking devices and ate clean and read articles about recovery. I was supposed to be the <em>healthy</em> one.</p>
-
-<div class="pq">
-  <p>"I sat there thinking: this is exactly what I swore I would never become. And I have no idea how I got here."</p>
-</div>
-
-<p>My wife came home two hours later. Emma ran straight up to her room. I was still at the table.</p>
-
-<p>"You look like you're having a very important argument with yourself," my wife said.</p>
-
-<p>"I am," I said.</p>
-
-<p>"What about?"</p>
-
-<p>I didn't know how to explain it. I just said: "I think I've been doing something wrong for a really long time and I don't know what it is."</p>
-
-<hr class="sec-rule"/>
-
-<h2>1:47 AM. The Thing I Should Have Known Two Years Earlier.</h2>
-
-<div class="img-wrap">
-  <div class="img-ph inline">[Image: phone screen glow in dark room, person reading at night, clock visible showing nearly 2 AM]</div>
-</div>
-<p class="cap">Not looking for products. Just looking for the actual answer to why this kept happening.</p>
-
-<p>That same night I couldn't sleep. Shoulder again. The familiar ache that had become as predictable as an alarm clock.</p>
-
-<p>So I did what every exhausted, frustrated person does at 2 AM when the painkillers aren't touching it: I picked up my phone and started reading.</p>
-
-<p>Not looking for products. I'd bought enough products. I was looking for an actual explanation. <em>Why</em> does this happen? <em>Why</em> do some people bounce back in a day when I'm still suffering four days later?</p>
-
-<p>I went through fitness forums. Sports nutrition sites. Then down into actual research — dense, boring papers that I would never have read unless I was desperate enough to sit with them at 2 AM with a throbbing shoulder.</p>
-
-<p>And then I hit something that made me put my phone down and stare at the ceiling.</p>
-
-<p>A 2019 study on post-exercise muscle recovery. Researchers were examining something called <strong>myofascial compression response</strong> — the way muscle tissue behaves in the hours and days after intense exertion.</p>
-
-<p>Here's what I hadn't understood.</p>
-
-<p>When you push a muscle hard, it doesn't just produce lactic acid and quietly recover.</p>
-
-<p>It <em>seizes</em>.</p>
-
-<div class="sci">
-  <p class="sci-label">What the research actually shows</p>
-  <p>After intense exertion, muscle fibers physically contract into a defensive state — what researchers call a "self-perpetuating compression cycle." This contraction restricts microcirculation to the affected tissue. Without adequate blood flow, inflammatory compounds cannot clear, repair signals cannot reach the site, and lactic acid cannot flush. The soreness persists not because of the lactic acid itself, but because the circulatory blockage prevents recovery from happening. Standard surface treatments — ice, topical creams, external massage — do not address this mechanism.</p>
-</div>
-
-<p>I read that three times.</p>
-
-<p>Then I thought about every solution I'd tried for two years.</p>
-
-<p>Ice slows blood flow further — the opposite of what the tissue needs.</p>
-
-<p>Anti-inflammatories suppress the pain signal without touching the actual blockage.</p>
-
-<p>Foam rollers apply surface pressure that barely reaches the depth where the compression is happening.</p>
-
-<p>Heating pads warm the skin, not the muscle.</p>
-
-<p>The massage gun? Same problem. Surface stimulation.</p>
-
-<p>All of it — every single thing I'd tried — was treating the symptom.</p>
-
-<p>None of it addressed the mechanism.</p>
-
-<p>The compressed muscle, restricting its own blood supply, trapping its own inflammatory compounds, keeping itself in a pain loop that nothing I owned could reach.</p>
-
-<div class="pq">
-  <p>The soreness wasn't the problem. The circulatory blockage causing the soreness was the problem. And I'd spent two years and hundreds of dollars treating the wrong thing.</p>
-</div>
-
-<p>It was 1:47 AM. I remember because I looked at the clock right at that moment, as if the timestamp mattered somehow.</p>
-
-<p>I kept reading.</p>
-
-<hr class="sec-rule"/>
-
-<!-- IMAGE -->
-<div class="img-wrap">
-  <div class="img-ph inline">[Image: anatomical diagram or illustration showing blood flow restriction in muscle tissue — science-feel]</div>
-</div>
-<p class="cap">The real problem isn't lactic acid. It's the compression cycle that traps everything inside — and standard treatments can't reach it.</p>
-
-<h2>What 3,000 Years of Medicine Figured Out That Modern Fitness Forgot</h2>
-
-<p>A different study. This one from a sports rehabilitation journal — the kind of research that gets cited in professional athletic programs but never makes it into fitness Instagram posts.</p>
-
-<p>They were examining a treatment protocol used by elite performance teams. Something I'd seen referenced in articles about NFL recovery rooms and Olympic athlete programs, but always assumed was expensive specialist equipment.</p>
-
-<p>It was called <strong>microcurrent electrical stimulation</strong>.</p>
-
-<p>The same underlying principle as traditional acupuncture — which has been used for 3,000 years specifically to treat pain caused by restricted circulation in muscle tissue — but delivered electronically. Without needles. Without a clinic visit. Without a $200 appointment fee.</p>
-
-<p>Here's what it does:</p>
-
-<p>A precisely calibrated electrical pulse — too low to feel as a shock, more like a deep vibration — is delivered through the skin at specific muscle points. This signal does something that no topical treatment can do: it communicates directly with the compressed muscle fiber.</p>
-
-<p>It tells it to release.</p>
-
-<p>The researchers documented measurable increases in localized microcirculation within minutes of application. Blood flow restored. Inflammatory compounds began clearing. The self-perpetuating compression cycle — the one that had been keeping my soreness alive for four days at a time — broke.</p>
-
-<p>But the part that changed everything for me was what they combined it with.</p>
-
-<p>Near-infrared light therapy.</p>
-
-<p>Not heat. Not a heating pad. A specific wavelength of infrared light — the same wavelength used in clinical pain management settings — that penetrates through the skin surface and reaches 2 to 3 centimeters into underlying muscle tissue.</p>
-
-<p>Where the compression cycle was actually happening.</p>
-
-<div class="mech">
-  <div class="mech-title">Why this combination works when nothing else does</div>
-  <div class="mech-body">
-    <div class="mech-row">
-      <div class="mech-num">1</div>
-      <div class="mech-text"><strong>Electrical stimulation unlocks the compressed muscle</strong><span>The microcurrent signal reaches the muscle at depth, triggering a release response that no surface treatment can produce. The compression cycle begins to open within minutes.</span></div>
+<div class="wrapper">
+
+  <!-- ARTICLE HEADER -->
+  <header class="article-header">
+    <span class="category-label">Pain Relief · Muscle Recovery</span>
+    <h1>Why Your Muscles Won't Stop Hurting — And the Surprisingly Simple Fix That's Changing Everything</h1>
+    <p class="deck">If you've tried stretching, ice packs, and ibuprofen and still wake up stiff and sore, you're not doing anything wrong. The real problem runs deeper than most people realize.</p>
+    <div class="byline">
+      <div class="byline-avatar">SW</div>
+      <div>
+        <strong>By Sarah W., Health Contributor</strong> &nbsp;·&nbsp; 7 min read
+      </div>
     </div>
-    <div class="mech-row">
-      <div class="mech-num">2</div>
-      <div class="mech-text"><strong>Near-infrared penetrates 2–3cm into tissue</strong><span>While the stimulation unlocks the muscle, infrared light simultaneously reaches inside — dilating blood vessels, clearing inflammatory compounds, and accelerating the repair process that was being blocked.</span></div>
-    </div>
-    <div class="mech-row">
-      <div class="mech-num">3</div>
-      <div class="mech-text"><strong>Combined, they break the cycle at the source</strong><span>Neither alone achieves what both do together. One opens the door. The other walks through it. The result: the pain-lock cycle collapses from the inside.</span></div>
+  </header>
+
+  <!-- HERO IMAGE -->
+  <div class="hero-image">
+    <div class="img-placeholder">
+      <svg class="img-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="40" height="40" rx="6" fill="#D4CEC5"/>
+        <path d="M8 28L16 18L22 24L28 16L36 28H8Z" fill="#B8B0A5"/>
+        <circle cx="14" cy="14" r="4" fill="#B8B0A5"/>
+      </svg>
+      <p>[ Replace with: person holding sore back/shoulder, relatable scene ]</p>
     </div>
   </div>
-</div>
 
-<p>I sat with this for about three minutes.</p>
+  <!-- ARTICLE BODY -->
+  <article class="article-body">
 
-<p>Then I searched for a device that used both.</p>
+    <p>You woke up this morning and your body felt like it had been through a rough night. That dull ache in your shoulders. The stiffness in your lower back. Maybe your legs are tight from yesterday's workout — or maybe they're tight for no reason at all.</p>
 
-<hr class="sec-rule"/>
+    <p>You're not imagining it. And you're definitely not alone.</p>
 
-<h2>I Ordered It at 2:23 AM. I'm Not Embarrassed About That.</h2>
+    <p>Muscle soreness is one of the most searched health complaints in the US. Millions of people deal with it every single day — whether they're active gym-goers, people who sit at desks for hours, or just regular folks whose bodies have started talking back.</p>
 
-<!-- IMAGE -->
-<div class="img-wrap">
-  <div class="img-ph inline">[Image: small handheld electronic acupuncture pen device on table, clean product shot]</div>
-</div>
-<p class="cap">The [BRAND NAME] Electronic Acupuncture Pen with Infrared Therapy. Smaller than expected. Works exactly as the research said it would.</p>
+    <p>The frustrating part? Most of the things we try don't actually fix the problem. They just... buy a little time.</p>
 
-<p>It's called the <strong>[BRAND NAME] Electronic Acupuncture Pen with Infrared Therapy</strong>. And yes, I ordered it at 2:23 in the morning, still lying in bed with a sore shoulder, tired and a little desperate.</p>
+    <h2>The Problem With How We Treat Sore Muscles</h2>
 
-<p>It arrived four days later. I opened the box in the driveway.</p>
+    <p>When your muscles hurt, the go-to solutions are pretty predictable:</p>
 
-<p>Smaller than I expected. Pen-sized. USB rechargeable. A soft stimulation tip on one end, an infrared window on the other. Five intensity levels. A simple instruction card: apply to the sore area, move slowly, 2-3 minutes per zone.</p>
-
-<p>My first thought, holding it: <em>This looks like a $12 thing from the internet.</em></p>
-
-<p>My second thought, two hours later: <em>Oh.</em></p>
-
-<p>I used it on my shoulder that evening. Level 3 — the middle setting. Held it against the worst spot and moved slowly.</p>
-
-<p>The first thing I felt was a gentle pulse. Not painful. Not shocking. Just a steady, deep tap — like something very small was knocking from inside the muscle.</p>
-
-<p>Then, about 90 seconds in, came the warmth.</p>
-
-<p>And here's the part I want to describe carefully, because this is where it's different from everything else I'd tried:</p>
-
-<p>It didn't feel like warmth on my skin. It felt like warmth <em>inside</em> the muscle. Like something that had been cold and locked for days was beginning to thaw from the inside out.</p>
-
-<p>Then came the releasing feeling.</p>
-
-<p>The knot — the one that had been sitting in my shoulder for eleven days — began to loosen. Not all at once. Slowly. Like a fist gradually opening.</p>
-
-<p>I did the same on my left quad. Then the right side of my lower back.</p>
-
-<p>Twenty minutes of treatment total. Then I went to bed.</p>
-
-<p>I slept through the night for the first time in two weeks.</p>
-
-<p>I woke up, pressed my hand against my shoulder, and moved my arm in a slow circle.</p>
-
-<p>Almost nothing.</p>
-
-<!-- IMAGE -->
-<div class="img-wrap">
-  <div class="img-ph inline">[Image: person using the acupuncture pen on their shoulder/upper back, relaxed expression, home setting]</div>
-</div>
-<p class="cap">2–3 minutes per area. Most people feel the releasing sensation start within the first 90 seconds.</p>
-
-<p>I want to be careful here because I know exactly how that sounds. So let me just say this:</p>
-
-<p>I've been using the [BRAND NAME] pen every week for four months now. I use it after every workout and on any morning I wake up stiff. My recovery window went from four painful days to about 24 hours. Sometimes less.</p>
-
-<p>I train five days a week. I don't dread the day after a hard session anymore. The ibuprofen bottle in our medicine cabinet is still more than half full — which is something that hasn't happened in about two years.</p>
-
-<p>And two Saturdays after my first use, Emma asked if I wanted to come to the park.</p>
-
-<p>I was up and out the door before she finished the sentence.</p>
-
-<hr class="sec-rule"/>
-
-<h2>Why Everything Else Falls Short</h2>
-
-<table class="does-table">
-  <thead>
-    <tr>
-      <th>Treatment</th>
-      <th>What it does</th>
-      <th>What it misses</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Ice / cold therapy</strong></td>
-      <td>Numbs surface pain temporarily</td>
-      <td class="bad">Reduces blood flow — the opposite of what compressed muscle needs</td>
-    </tr>
-    <tr>
-      <td><strong>Ibuprofen / NSAIDs</strong></td>
-      <td>Suppresses pain signal</td>
-      <td class="bad">Does nothing to restore circulation or break compression cycle</td>
-    </tr>
-    <tr>
-      <td><strong>Foam roller</strong></td>
-      <td>Surface-level pressure, temporary relief</td>
-      <td class="bad">Doesn't penetrate to the depth where compression is occurring</td>
-    </tr>
-    <tr>
-      <td><strong>Massage gun</strong></td>
-      <td>Vibration and blood flow at surface</td>
-      <td class="bad">Same problem — doesn't reach 2–3cm into muscle tissue</td>
-    </tr>
-    <tr>
-      <td><strong>Heating pad</strong></td>
-      <td>Warms skin, feels good</td>
-      <td class="bad">Heat doesn't penetrate to muscle depth. Surface only.</td>
-    </tr>
-    <tr>
-      <td><strong>[BRAND NAME] Acupuncture Pen</strong></td>
-      <td class="good">Electrical stimulation breaks compression + infrared reaches deep tissue</td>
-      <td class="good">Addresses the actual mechanism. Breaks the cycle at the source.</td>
-    </tr>
-  </tbody>
-</table>
-
-<hr class="sec-rule"/>
-
-<h2>What the [BRAND NAME] Pen Does — And How</h2>
-
-<div class="feat-grid">
-  <div class="feat">
-    <div class="feat-icon">⚡</div>
-    <div>
-      <strong>Electrical Microstimulation</strong>
-      <span>Delivers precise pulses directly to compressed muscle tissue — signaling release without needles, pain, or clinic visits.</span>
+    <div class="highlight-box">
+      <div class="box-title">The Usual Suspects</div>
+      <ul class="benefit-list">
+        <li>
+          <div class="check"></div>
+          <span><strong>Ibuprofen or pain killers</strong> — works short-term, but masks the pain without treating what's underneath. And daily use isn't great for your stomach or kidneys.</span>
+        </li>
+        <li>
+          <div class="check"></div>
+          <span><strong>Ice packs or heat pads</strong> — decent for acute injuries, but barely touch deep muscle tension.</span>
+        </li>
+        <li>
+          <div class="check"></div>
+          <span><strong>Stretching</strong> — good habit, but if the underlying circulation is poor, the soreness keeps coming back.</span>
+        </li>
+        <li>
+          <div class="check"></div>
+          <span><strong>Massage therapy</strong> — genuinely helps, but at $80–$150 per session, it's not something most people can do regularly.</span>
+        </li>
+      </ul>
     </div>
-  </div>
-  <div class="feat">
-    <div class="feat-icon">🔆</div>
-    <div>
-      <strong>Near-Infrared Therapy</strong>
-      <span>Penetrates 2–3cm below skin — the same depth where the compression cycle is trapping inflammatory compounds.</span>
+
+    <p>None of these get to the actual root of the issue.</p>
+
+    <div class="pullquote">
+      <p>"The root cause of most chronic muscle soreness is poor circulation and blocked energy pathways in muscle tissue — not just lactic acid build-up."</p>
     </div>
-  </div>
-  <div class="feat">
-    <div class="feat-icon">🎯</div>
-    <div>
-      <strong>Works on Any Muscle Group</strong>
-      <span>Shoulders, neck, lower back, quads, hamstrings, calves, arms. Wherever you're sore, the pen goes.</span>
+
+    <p>When your muscles stay tense for too long, blood flow gets restricted. The muscle can't flush out waste products properly. Nutrients can't get in. The tissue stays locked in a cycle of inflammation and tension.</p>
+
+    <p>That's why you can stretch, sleep, and rest — and still feel awful the next morning.</p>
+
+    <h2>An Ancient Answer — Now Backed by Modern Science</h2>
+
+    <!-- INLINE IMAGE - acupuncture chart -->
+    <div class="inline-image">
+      <div class="img-placeholder">
+        <svg class="img-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="6" fill="#D4CEC5"/><path d="M8 28L16 18L22 24L28 16L36 28H8Z" fill="#B8B0A5"/><circle cx="14" cy="14" r="4" fill="#B8B0A5"/></svg>
+        <p>[ Replace with: traditional acupuncture chart or body meridian diagram ]</p>
+      </div>
     </div>
-  </div>
-  <div class="feat">
-    <div class="feat-icon">⏱️</div>
-    <div>
-      <strong>2–3 Minutes Per Area</strong>
-      <span>No 20-minute foam rolling sessions. Quick, targeted, effective.</span>
+    <p class="img-caption">Traditional acupuncture has been used for over 2,000 years to stimulate energy pathways in the body.</p>
+
+    <p>Acupuncture has been around for over 2,000 years. Traditional Chinese medicine describes a network of "meridians" throughout the body — channels through which energy (called <em>qi</em>) flows. When these pathways get blocked, pain and tension follow.</p>
+
+    <p>For a long time, Western medicine was skeptical. But in recent years, the research has started to catch up.</p>
+
+    <p>Multiple clinical studies have now found that acupuncture <strong>significantly reduces muscle pain, stiffness, and inflammation</strong> — especially in the neck, shoulders, and lower back.</p>
+
+    <p>The problem? Actual acupuncture requires you to visit a licensed practitioner. It's expensive. It takes time. And not everyone is comfortable with needles.</p>
+
+    <p>Which is exactly why a new category of device has been quietly changing the game for thousands of people.</p>
+
+    <!-- MID CTA -->
+    <div class="mid-cta">
+      <p>Thousands of people are already using this at home</p>
+      <strong>Get immediate relief without pills, appointments, or needles</strong>
+      <a href="#checkout" class="cta-btn">See the Device →</a>
     </div>
-  </div>
-  <div class="feat">
-    <div class="feat-icon">🔇</div>
-    <div>
-      <strong>Completely Pain-Free</strong>
-      <span>No needles. No discomfort. The stimulation feels like a gentle deep pulse — not a shock.</span>
+
+    <h2>The Discovery That's Getting Attention</h2>
+
+    <!-- PRODUCT FLOAT IMAGE -->
+    <div class="float-right">
+      <div class="inline-image">
+        <div class="img-placeholder">
+          <svg class="img-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="6" fill="#D4CEC5"/><path d="M8 28L16 18L22 24L28 16L36 28H8Z" fill="#B8B0A5"/><circle cx="14" cy="14" r="4" fill="#B8B0A5"/></svg>
+          <p>[ Product photo ]</p>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="feat">
-    <div class="feat-icon">⚙️</div>
-    <div>
-      <strong>5 Adjustable Intensity Levels</strong>
-      <span>Start low and find what works for you. USB rechargeable, compact enough for a gym bag.</span>
+
+    <p>Over the past few years, a small but growing number of engineers and health tech companies have been working on a simple question:</p>
+
+    <p><em>What if you could get the benefits of acupuncture — without the needles, without the appointment, without the cost?</em></p>
+
+    <p>The result is a new kind of device called an <strong>electronic acupuncture pen</strong>. And combined with <strong>infrared therapy</strong>, it's becoming one of the most talked-about tools in at-home pain relief.</p>
+
+    <p>Here's why it works:</p>
+
+    <h3>1. Electronic stimulation (like acupuncture, minus the needles)</h3>
+    <p>The pen delivers a gentle, low-frequency electrical pulse directly to specific acupuncture points on your skin. This stimulates the same nerve pathways as traditional acupuncture — triggering the release of endorphins, reducing muscle tension, and improving blood flow. No needles. No pain.</p>
+
+    <h3>2. Infrared heat (deep tissue, not surface warmth)</h3>
+    <p>Regular heat pads warm the surface of your skin. Infrared heat is different — it penetrates <strong>2–3 inches into muscle tissue</strong>. This kind of deep warmth loosens tight fibers, increases circulation to the area, and helps flush out the inflammatory compounds that cause soreness.</p>
+
+    <p>Together, these two technologies work on the same problem from two different angles at the same time. And the results people are reporting are hard to ignore.</p>
+
+    <!-- TESTIMONIALS -->
+    <div class="testimonial-grid">
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"I've had lower back pain for 3 years. Tried everything. This thing had me feeling normal again after just two sessions. I genuinely don't know why it works, but it absolutely does."</p>
+        <div class="testimonial-author">Marcus T.</div>
+        <div class="testimonial-detail">Construction worker, Texas</div>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"My legs are always sore after running. I started using this after every long run and the difference is night and day. Recovery is so much faster. It's become part of my routine."</p>
+        <div class="testimonial-author">Jessica R.</div>
+        <div class="testimonial-detail">Marathon runner, Oregon</div>
+      </div>
     </div>
-  </div>
-</div>
 
-<hr class="sec-rule"/>
+    <hr class="section-divider">
 
-<!-- IMAGE -->
-<div class="img-wrap">
-  <div class="img-ph inline">[Image: person using the pen on lower back / quads — active, confident, not in pain]</div>
-</div>
-<p class="cap">Use it after workouts, on stiff mornings, or any time the familiar ache starts. Most users feel a difference in the first session.</p>
+    <h2>Meet the Tool They're Using</h2>
 
-<h2>What Other People Are Experiencing</h2>
+    <!-- PRODUCT SECTION -->
+    <div id="checkout" class="product-box">
+      <!-- Product hero image -->
+      <div style="width:100%; aspect-ratio: 16/7; background: #EDE8E0; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;">
+        <div class="img-placeholder" style="border-radius:0;">
+          <svg class="img-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="6" fill="#D4CEC5"/><path d="M8 28L16 18L22 24L28 16L36 28H8Z" fill="#B8B0A5"/><circle cx="14" cy="14" r="4" fill="#B8B0A5"/></svg>
+          <p>[ Product lifestyle photo — person using device on shoulder/back ]</p>
+        </div>
+      </div>
+      <div class="product-box-inner">
+        <span class="product-tag">As Seen in This Article</span>
+        <h2>Electronic Acupuncture Pen with Infrared Therapy</h2>
+        <p class="product-subtitle">Combines acupuncture-point stimulation with deep-penetrating infrared heat to relieve muscle soreness at the source — in minutes, at home.</p>
 
-<div class="testi">
-  <div class="stars">★★★★★</div>
-  <p>"I've been lifting seriously for 12 years. Bad DOMS was just part of my life — I accepted it. I tried the pen mostly to prove it wouldn't work. Three weeks later, my recovery window is down from 4 days to about 20 hours. I've told everyone in my gym about it. I'm honestly a little annoyed that I wasted two years and several hundred dollars on other stuff first."</p>
-  <cite>— Marcus D., 38 | Competitive powerlifter, Denver CO</cite>
-</div>
+        <!-- Rating summary -->
+        <div class="rating-summary">
+          <div>
+            <div class="rating-number">4.8</div>
+            <div class="rating-stars">★★★★★</div>
+            <div class="rating-count">2,400+ verified reviews</div>
+          </div>
+          <div class="rating-bars">
+            <div class="rating-bar-row"><span>5★</span><div class="bar-track"><div class="bar-fill" style="width:78%"></div></div><span>78%</span></div>
+            <div class="rating-bar-row"><span>4★</span><div class="bar-track"><div class="bar-fill" style="width:15%"></div></div><span>15%</span></div>
+            <div class="rating-bar-row"><span>3★</span><div class="bar-track"><div class="bar-fill" style="width:5%"></div></div><span>5%</span></div>
+            <div class="rating-bar-row"><span>2★</span><div class="bar-track"><div class="bar-fill" style="width:1%"></div></div><span>1%</span></div>
+            <div class="rating-bar-row"><span>1★</span><div class="bar-track"><div class="bar-fill" style="width:1%"></div></div><span>1%</span></div>
+          </div>
+        </div>
 
-<div class="testi">
-  <div class="stars">★★★★★</div>
-  <p>"I'm a registered nurse. Twelve-hour shifts leave my feet, calves, and lower back completely locked up. I'd come home and just... not move. I was using the heating pad every night. The pen is the only thing that actually releases the tightness the same evening. I do 10 minutes while I watch TV. It's non-negotiable for me now. The difference in my mornings is not subtle."</p>
-  <cite>— Jennifer R., 44 | Registered Nurse, Austin TX</cite>
-</div>
+        <!-- Price -->
+        <div class="price-row">
+          <span class="price-current">$49.99</span>
+          <span class="price-old">$89.00</span>
+          <span class="price-save">Save 44%</span>
+        </div>
+        <p class="price-note">One-time purchase · Free shipping · 30-day money-back guarantee</p>
 
-<div class="testi">
-  <div class="stars">★★★★★</div>
-  <p>"I had zero expectations. My right shoulder had been locked up for two straight weeks — I'd tried everything. After the second session with the pen I could raise my arm above my head fully for the first time in two weeks. I'm not a testimonial-writing kind of person but I genuinely feel like I need to tell other people about this."</p>
-  <cite>— Tom W., 52 | Construction manager, Nashville TN</cite>
-</div>
+        <!-- Benefits -->
+        <ul class="benefit-list" style="margin-bottom: 24px;">
+          <li><div class="check"></div><span>Works on back, neck, shoulders, legs, arms — any muscle group</span></li>
+          <li><div class="check"></div><span>Infrared heat penetrates 2–3 inches below the skin surface</span></li>
+          <li><div class="check"></div><span>9 adjustable intensity levels — from gentle to deep relief</span></li>
+          <li><div class="check"></div><span>Results in as little as 10–15 minutes per session</span></li>
+          <li><div class="check"></div><span>No gels, creams, or consumables needed</span></li>
+          <li><div class="check"></div><span>Rechargeable — works anywhere, no cord required</span></li>
+        </ul>
 
-<div class="testi">
-  <div class="stars">★★★★★</div>
-  <p>"My trainer introduced me to this after I kept showing up to sessions still sore from the last one. Within two weeks of using it consistently after workouts I was able to increase my training frequency from 3 days a week to 5. That's the actual result I needed and nothing else produced it."</p>
-  <cite>— Alicia M., 31 | Personal training client, Phoenix AZ</cite>
-</div>
+        <!-- Trust badges -->
+        <div class="trust-row">
+          <div class="trust-badge"><div class="badge-icon"></div> 30-Day Money Back</div>
+          <div class="trust-badge"><div class="badge-icon"></div> Free Shipping</div>
+          <div class="trust-badge"><div class="badge-icon"></div> Secure Checkout</div>
+          <div class="trust-badge"><div class="badge-icon"></div> 2,400+ Happy Customers</div>
+        </div>
 
-<hr class="sec-rule"/>
+        <!-- CTA Buttons -->
+        <a href="#" class="cta-btn">Yes, I Want Sore-Free Muscles — Get Mine →</a>
+        <a href="#" class="cta-btn secondary">See All Reviews First</a>
+        <p class="cta-subtext">🔒 Encrypted checkout &nbsp;·&nbsp; Ships within 1–2 business days &nbsp;·&nbsp; 30-day hassle-free returns</p>
+      </div>
+    </div>
 
-<!-- MAIN CTA -->
-<div class="cta-block">
-  <p class="cta-urgency">⚡ Limited-Time Offer — Today Only</p>
-  <h2>Get [BRAND NAME] At 50% Off Today</h2>
-  <p class="cta-sub">Free shipping included. Ships within 24 hours. 60-day guarantee.</p>
-  <div class="price-row">
-    <span class="price-was">$79.95</span>
-    <span class="price-now">$39.95</span>
-    <span class="price-pill">50% OFF</span>
-  </div>
-  <a class="btn" href="#">Apply Discount & Check Availability →</a>
-  <p class="btn-note">✓ Still in stock as of today &nbsp; ✓ Secure checkout &nbsp; ✓ Ships fast</p>
-  <div class="guar">
-    <div class="guar-icon">🛡️</div>
-    <p><strong>60-Day Money-Back Guarantee</strong>Use it for 60 days. If you don't feel a real, measurable difference in your recovery time, return it for a full refund. No questions. No hassle. Zero risk.</p>
-  </div>
-</div>
+    <!-- CALLOUT - guarantee -->
+    <div class="callout">
+      <p><strong>Our promise:</strong> If you use this device for 30 days and don't feel a real difference in your muscle soreness and recovery, send it back for a full refund. No hoops, no hassle. We mean that.</p>
+    </div>
 
-<hr class="sec-rule"/>
+    <h2>How to Use It (It's Simple)</h2>
 
-<h2>The Choice In Front of You Right Now</h2>
-
-<p>You've been reading this because you already know what I'm talking about. The soreness that won't quit. The recovery days that stretch into the week. The things you've skipped, postponed, missed — because your body wasn't cooperating.</p>
-
-<p>I'm not going to tell you how to feel about that. You already feel it.</p>
-
-<p>I'm just going to tell you what I wish someone had told me two years earlier:</p>
-
-<p>The reason nothing has worked is because nothing you've tried has actually addressed the mechanism. The compression cycle. The thing happening 2–3 centimeters inside your muscle tissue that ice can't reach and ibuprofen can't fix.</p>
-
-<p>Now you know what it is. And you know what addresses it.</p>
-
-<div class="choices">
-  <div class="choice bad">
-    <p class="choice-label">Keep doing what you're doing</p>
-    <ul>
-      <li>Soreness lasting 3–4 days every time</li>
-      <li>Taking ibuprofen more than you should</li>
-      <li>Skipping workouts because still not recovered</li>
-      <li>Missing the things that matter</li>
-      <li>Wondering why nothing works</li>
+    <ul class="steps-list">
+      <li class="step-item">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <strong>Charge the device</strong>
+          <p>Comes charged and ready. USB rechargeable, full charge takes about 2 hours and lasts for several sessions.</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <strong>Find the sore spot</strong>
+          <p>Place the tip directly on the area that hurts — your lower back, shoulder, calf, wherever. The included guide shows the best acupuncture points for common problem areas.</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <strong>Set your intensity and press start</strong>
+          <p>Start at a low level — you'll feel a gentle tingling. Work up to whatever feels comfortable. The infrared function activates automatically during use.</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <strong>10–15 minutes per area</strong>
+          <p>Most people notice relief within the first session. For chronic soreness, daily use for 5–7 days is recommended for best results.</p>
+        </div>
+      </li>
     </ul>
-  </div>
-  <div class="choice good">
-    <p class="choice-label">Break the cycle today</p>
-    <ul>
-      <li>Recovery in ~24 hours instead of 4 days</li>
-      <li>Train harder, more often</li>
-      <li>No needles, no clinic, 2 minutes per area</li>
-      <li>Show up for the things that matter</li>
-      <li>Finally treating the right thing</li>
-    </ul>
-  </div>
+
+    <hr class="section-divider">
+
+    <!-- MORE TESTIMONIALS -->
+    <div class="testimonial-grid">
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"I was skeptical at first — I thought it was just another gimmick. But after my first 15-minute session on my shoulder, I could move my arm without pain for the first time in months. I've told everyone I know."</p>
+        <div class="testimonial-author">Linda M.</div>
+        <div class="testimonial-detail">Office worker, 52, Florida</div>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"As a personal trainer I recommend this to my clients for recovery. It's not magic but it genuinely works — better than foam rolling alone. The infrared heat really does feel different."</p>
+        <div class="testimonial-author">Chris D.</div>
+        <div class="testimonial-detail">Certified personal trainer, Chicago</div>
+      </div>
+    </div>
+
+    <!-- INLINE IMAGE - lifestyle -->
+    <div class="inline-image" style="margin-top: 32px;">
+      <div class="img-placeholder">
+        <svg class="img-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="6" fill="#D4CEC5"/><path d="M8 28L16 18L22 24L28 16L36 28H8Z" fill="#B8B0A5"/><circle cx="14" cy="14" r="4" fill="#B8B0A5"/></svg>
+        <p>[ Replace with: lifestyle shot — person relaxed, using device at home on sofa ]</p>
+      </div>
+    </div>
+    <p class="img-caption">Most users report significant relief after just 1–3 sessions.</p>
+
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <p class="faq-question">Does it actually feel like acupuncture?</p>
+      <p class="faq-answer">The sensation is described as a light tingling or pulsing. It's not painful — most people find it relaxing. The electrical stimulation targets the same nerve points as traditional acupuncture, without any needles penetrating the skin.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-question">How soon will I feel a difference?</p>
+      <p class="faq-answer">Most people notice relief during or right after their first session. For stubborn or chronic soreness, full benefits typically appear after 3–7 days of regular use.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-question">Can I use it if I'm not injured — just generally sore?</p>
+      <p class="faq-answer">Absolutely. This is actually the most common use case. It works great for everyday post-workout soreness, tension from sitting, and general stiffness throughout the day.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-question">Is it safe?</p>
+      <p class="faq-answer">Yes. Electronic acupuncture devices of this kind are widely used and considered safe for healthy adults. As with any electrical device, do not use over broken skin, near the heart area, or if you have a pacemaker. When in doubt, consult your doctor first.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-question">What if it doesn't work for me?</p>
+      <p class="faq-answer">It comes with a 30-day money-back guarantee. If you don't feel real improvement in your muscle soreness, you get a full refund. No questions, no hassle.</p>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- FINAL CTA -->
+    <div style="text-align: center; padding: 16px 0 32px;">
+      <p style="font-size: 14px; color: var(--text-light); margin-bottom: 6px;">Join 2,400+ people who found a better way</p>
+      <p style="font-family: 'Lora', serif; font-size: clamp(20px, 3vw, 26px); font-weight: 600; margin-bottom: 24px; line-height: 1.35;">Ready to actually get rid of the soreness?</p>
+
+      <div class="rating-summary" style="justify-content: center; margin: 0 0 24px;">
+        <div style="text-align: center;">
+          <div class="rating-number" style="font-size: 36px;">4.8/5</div>
+          <div class="rating-stars">★★★★★</div>
+          <div class="rating-count" style="margin-top: 4px;">Based on 2,400+ reviews</div>
+        </div>
+      </div>
+
+      <div class="price-row" style="justify-content: center; margin-bottom: 6px;">
+        <span class="price-current">$49.99</span>
+        <span class="price-old">$89.00</span>
+        <span class="price-save">44% Off Today</span>
+      </div>
+      <p style="font-size: 13px; color: var(--text-light); margin-bottom: 24px;">One-time cost · Free shipping · 30-day money-back guarantee</p>
+
+      <a href="#" class="cta-btn" style="max-width: 400px; margin: 0 auto; font-size: 17px; padding: 18px 24px;">Get My Electronic Acupuncture Pen →</a>
+      <p class="cta-subtext" style="margin-top: 14px;">🔒 Secure & encrypted checkout &nbsp;·&nbsp; Ships in 1–2 business days</p>
+    </div>
+
+    <!-- DISCLOSURE -->
+    <div class="disclosure">
+      <strong>Editorial Disclosure:</strong> This is sponsored content. The article was written to provide helpful, educational information about muscle soreness and how electronic acupuncture and infrared therapy work. Individual results may vary. This content is not intended to replace medical advice. If you have a serious injury or medical condition, please consult your healthcare provider.
+    </div>
+
+  </article>
 </div>
 
-<p>The [BRAND NAME] pen is $39.95 right now — that's 50% off the regular price, with free shipping. One session with a physical therapist costs $80 to $150 and doesn't come with a 60-day money-back guarantee.</p>
-
-<p>It's a no-risk decision. Either it works — in which case it's one of the best purchases you've ever made for your health — or you return it and pay nothing.</p>
-
-</article>
-
-<!-- FINAL RED CTA -->
-<div class="cta-strip">
-  <h2>Try [BRAND NAME] for 60 Days — Completely Risk-Free</h2>
-  <p>50% off today. Free shipping. 60-day money-back guarantee. No questions asked.</p>
-  <a class="btn-white" href="#">Apply Discount & Check Availability →</a>
+<!-- STICKY MOBILE CTA -->
+<div class="sticky-cta">
+  <a href="#checkout" class="cta-btn">Get the Acupuncture Pen — $49.99 →</a>
 </div>
 
-<div class="disc">
-  <p>This is an advertisement and not an actual news article, blog, or consumer protection update. The story depicted on this page is illustrative of experiences that some users of this product have reported. Individual results will vary. This page may receive compensation for clicks on or purchases of products featured on this site. Statements about the product have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
-</div>
+<script>
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
 
-</div><!-- /wrap -->
+  // Hide sticky CTA once near bottom product box
+  const stickyCta = document.querySelector('.sticky-cta');
+  const productBox = document.getElementById('checkout');
+  if (stickyCta && productBox) {
+    window.addEventListener('scroll', () => {
+      const rect = productBox.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        stickyCta.style.display = 'none';
+      } else {
+        stickyCta.style.display = 'block';
+      }
+    });
+  }
+</script>
+
 </body>
 </html>
