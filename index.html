@@ -156,29 +156,87 @@
   footer.site-footer a:hover { text-decoration: underline; }
   .footer-disclaimer { font-size: 12px; color: #aabce8; margin: 0 auto 14px; max-width: 700px; line-height: 1.6; }
   .footer-copy { margin-top: 10px; font-size: 11px; color: #7788aa; }
+
+  /* CTA */
   .cta-wrap { text-align: center; margin-top: 48px; margin-bottom: 20px; }
   .cta-btn {
     display: block;
-    background-color: #008a00;
+    background: linear-gradient(180deg, #00a800 0%, #006f00 100%);
     color: #fff;
     font-family: 'Open Sans', sans-serif;
-    font-size: 30px;
+    font-size: 28px;
     font-weight: 700;
     line-height: 32px;
-    padding: 15px 10px;
-    border-radius: 5px;
-    box-shadow: rgba(0,0,0,.25) 4px 4px 16px;
+    padding: 18px 10px 14px;
+    border-radius: 6px;
+    box-shadow: rgba(0,0,0,.35) 0px 6px 18px;
     text-align: center;
     text-decoration: none;
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    border-bottom: 4px solid #004d00;
+    transition: filter 0.15s;
+  }
+  .cta-btn:hover { filter: brightness(1.08); }
+  .cta-sub {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
+  /* TRUST BADGES */
+  .trust-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 24px;
+    padding: 16px 0 4px;
+  }
+  .trust-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .trust-badge-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #e6f4ea;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .trust-badge-icon svg {
+    width: 18px;
+    height: 18px;
+    stroke: #2d7a3a;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .trust-badge-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #1a5c24;
+    line-height: 1.3;
+    display: block;
+  }
+  .trust-badge-sub {
+    font-size: 11px;
+    color: #555;
+    line-height: 1.2;
+    display: block;
   }
 
   @media (max-width: 600px) {
     h1 { font-size: 28px; line-height: 36px; }
     h2 { font-size: 24px; line-height: 30px; }
-    .cta-btn { font-size: 20px; line-height: 25px; padding: 12px 10px; }
+    .cta-btn { font-size: 20px; line-height: 25px; padding: 14px 10px 10px; }
     .page-wrap { padding: 0 15px 80px; }
+    .trust-badges { gap: 8px 16px; }
   }
 </style>
 </head>
@@ -203,6 +261,7 @@
     <span>357 ratings</span>
   </div>
 
+  <!-- HERO IMAGE — zostáva na pôvodnom mieste -->
   <img class="product-img full" src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=1200&q=80" alt="">
 
   <div class="author">
@@ -216,286 +275,234 @@
   </div>
 
   <p>Let me ask you something.</p>
-
   <p>Do you ever wake up with a <strong>tight jaw</strong>?</p>
-
   <p>A dull headache that's just… there?</p>
-
   <p>That weird <strong>pressure in your ears</strong> that comes and goes?</p>
-
   <p>If you said yes to any of those —</p>
-
   <p>This might be the most important thing you read today.</p>
-
   <p>Because what I'm about to show you isn't taught in most <strong>medical schools</strong>.</p>
-
   <p>It's not something your GP will bring up.</p>
-
   <p>And yet — it's been documented for over 2,000 years.</p>
-
   <p>But before I tell you what it is — I need to tell you what's actually causing your pain.</p>
-
   <p>Because most people have no idea.</p>
-
   <p>And once you see it — you can't unsee it.</p>
 
+  <!-- SEKCIA 1 -->
   <h2>Something is going on with your face</h2>
-
-  <p>Here's something most people don't know.</p>
-
-  <p>Your face has a <strong>hidden tension system</strong>.</p>
-
-  <p>There's a joint — tiny, just in front of each ear — that controls everything.</p>
-
-  <p>Your jaw. Your temples. Your neck. Your ears.</p>
-
-  <p>When this joint gets <strong>overloaded</strong>...</p>
-
-  <p>It doesn't send pain to one place.</p>
-
-  <p>It sends it everywhere.</p>
-
-  <p>That headache behind your eyes? Could be coming from your jaw.</p>
-
-  <p>That ringing in your ear that showed up out of nowhere? Same joint.</p>
-
-  <p>That neck stiffness every single morning? Still the same joint.</p>
-
-  <p>It's called the <strong>TMJ</strong>.</p>
-
-  <p>And here's the thing that shocked me when I first learned this —</p>
-
-  <p>Almost nobody knows they have a problem with it.</p>
-
-  <p>Because the pain never shows up where the problem actually is.</p>
-
-  <p>But that's only half the story.</p>
-
-  <p>The other half is why your doctor never looked for it.</p>
-
-  <p>And that part — I'll get to in a moment.</p>
-
   <img class="product-img" src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&q=80" alt="">
 
+  <p>Here's something most people don't know.</p>
+  <p>Your face has a <strong>hidden tension system</strong>.</p>
+  <p>There's a joint — tiny, just in front of each ear — that controls everything.</p>
+  <p>Your jaw. Your temples. Your neck. Your ears.</p>
+  <p>When this joint gets <strong>overloaded</strong>...</p>
+  <p>It doesn't send pain to one place.</p>
+  <p>It sends it everywhere.</p>
+  <p>That headache behind your eyes? Could be coming from your jaw.</p>
+  <p>That ringing in your ear that showed up out of nowhere? Same joint.</p>
+  <p>That neck stiffness every single morning? Still the same joint.</p>
+  <p>It's called the <strong>TMJ</strong>.</p>
+  <p>And here's the thing that shocked me when I first learned this —</p>
+  <p>Almost nobody knows they have a problem with it.</p>
+  <p>Because the pain never shows up where the problem actually is.</p>
+  <p>But that's only half the story.</p>
+  <p>The other half is why your doctor never looked for it.</p>
+  <p>And that part — I'll get to in a moment.</p>
+
+  <!-- SEKCIA 2 -->
   <h2>I'm a doctor. And I almost missed this too.</h2>
-
-  <p>I've been practicing medicine for years.</p>
-
-  <p>And I'll be honest with you.</p>
-
-  <p>We're not trained to look here.</p>
-
-  <p>We prescribe <strong>painkillers</strong>. We say "reduce your stress." We send people home.</p>
-
-  <p>And those people come back three months later with the same headache.</p>
-
-  <p>The same tight jaw.</p>
-
-  <p>The same unanswered question: why does my face feel like this?</p>
-
-  <p>The turning point for me came when I started studying something my medical training never covered.</p>
-
-  <p><strong>Ancient Chinese pressure point medicine.</strong></p>
-
-  <p>Specifically — the way certain points on your face directly communicate with your <strong>nervous system</strong>.</p>
-
-  <p>Not metaphorically.</p>
-
-  <p>Literally — there are nerve pathways running through your face that, when you activate the right point, send a signal all the way to your brain saying:</p>
-
-  <p>Release. Let go. Stop clenching.</p>
-
-  <p>And one point in particular stopped me in my tracks.</p>
-
-  <p>I'm going to tell you exactly what it is.</p>
-
-  <p>But first — I need to explain why your fingers can never reach it properly.</p>
-
-  <p>Because that's the part nobody talks about.</p>
-
   <img class="product-img" src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=1200&q=80" alt="">
 
+  <p>I've been practicing medicine for years.</p>
+  <p>And I'll be honest with you.</p>
+  <p>We're not trained to look here.</p>
+  <p>We prescribe <strong>painkillers</strong>. We say "reduce your stress." We send people home.</p>
+  <p>And those people come back three months later with the same headache.</p>
+  <p>The same tight jaw.</p>
+  <p>The same unanswered question: why does my face feel like this?</p>
+  <p>The turning point for me came when I started studying something my medical training never covered.</p>
+  <p><strong>Ancient Chinese pressure point medicine.</strong></p>
+  <p>Specifically — the way certain points on your face directly communicate with your <strong>nervous system</strong>.</p>
+  <p>Not metaphorically.</p>
+  <p>Literally — there are nerve pathways running through your face that, when you activate the right point, send a signal all the way to your brain saying:</p>
+  <p>Release. Let go. Stop clenching.</p>
+  <p>And one point in particular stopped me in my tracks.</p>
+  <p>I'm going to tell you exactly what it is.</p>
+  <p>But first — I need to explain why your fingers can never reach it properly.</p>
+  <p>Because that's the part nobody talks about.</p>
+
+  <!-- SEKCIA 3 -->
   <h2>The point nobody told you about</h2>
-
-  <p>It's called <strong>ST6</strong>.</p>
-
-  <p>The "Jaw Chariot."</p>
-
-  <p>It sits right at the <strong>angle of your jaw</strong> — the spot where your chewing muscle bunches up when you clench.</p>
-
-  <p>Most people, when I press there for the first time, flinch.</p>
-
-  <p>Not because I'm pressing hard.</p>
-
-  <p>Because it's already that tender.</p>
-
-  <p>That tenderness tells you everything.</p>
-
-  <p>It means the <strong>muscle has been locked up</strong> for a long time.</p>
-
-  <p>Possibly years.</p>
-
-  <p>And your body got so used to it — you stopped noticing.</p>
-
-  <p>When you properly activate ST6, something interesting happens.</p>
-
-  <p>The muscle that's been clenching 24 hours a day finally gets the signal to stop.</p>
-
-  <p>The tension that radiates up to your temple — starts to dissolve.</p>
-
-  <p>The pressure behind your ear — fades.</p>
-
-  <p>The grinding that happens at night while you sleep — begins to slow down.</p>
-
-  <p>But here's the part that took me a while to figure out.</p>
-
-  <p>And when I did — it changed everything about how I treat my patients.</p>
-
   <img class="product-img" src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=1200&q=80" alt="">
 
+  <p>It's called <strong>ST6</strong>.</p>
+  <p>The "Jaw Chariot."</p>
+  <p>It sits right at the <strong>angle of your jaw</strong> — the spot where your chewing muscle bunches up when you clench.</p>
+  <p>Most people, when I press there for the first time, flinch.</p>
+  <p>Not because I'm pressing hard.</p>
+  <p>Because it's already that tender.</p>
+  <p>That tenderness tells you everything.</p>
+  <p>It means the <strong>muscle has been locked up</strong> for a long time.</p>
+  <p>Possibly years.</p>
+  <p>And your body got so used to it — you stopped noticing.</p>
+  <p>When you properly activate ST6, something interesting happens.</p>
+  <p>The muscle that's been clenching 24 hours a day finally gets the signal to stop.</p>
+  <p>The tension that radiates up to your temple — starts to dissolve.</p>
+  <p>The pressure behind your ear — fades.</p>
+  <p>The grinding that happens at night while you sleep — begins to slow down.</p>
+  <p>But here's the part that took me a while to figure out.</p>
+  <p>And when I did — it changed everything about how I treat my patients.</p>
+
+  <!-- SEKCIA 4 -->
   <h2>Fingers aren't enough</h2>
-
-  <p>For months, I was telling patients to press the point themselves.</p>
-
-  <p>With their fingers. Every morning.</p>
-
-  <p>Some of them got results.</p>
-
-  <p>Most of them didn't.</p>
-
-  <p>And I couldn't understand why — until I actually watched them do it.</p>
-
-  <p>The problem wasn't the technique.</p>
-
-  <p>The problem was <strong>precision</strong>.</p>
-
-  <p>When you use a fingertip, you're covering an area the size of a coin.</p>
-
-  <p>But the actual <strong>pressure point</strong>?</p>
-
-  <p>It's smaller than a pencil tip.</p>
-
-  <p>Miss it by a few <strong>millimeters</strong> — and you get nothing.</p>
-
-  <p>You're pressing near the point.</p>
-
-  <p>Not on it.</p>
-
-  <p>That's the difference between results and frustration.</p>
-
-  <p>And that's the exact problem this pen was designed to solve.</p>
-
-  <p>But here's what I didn't expect.</p>
-
-  <p>The pen does something else entirely — something I hadn't planned for.</p>
-
-  <p>And it's the reason the results are so different.</p>
-
   <img class="product-img" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&q=80" alt="">
 
-  <h2>Why this tool is different from everything else</h2>
-
-  <p>The acupressure pen I use — and now recommend to every patient who comes to me with jaw tension, headaches, or facial pain — does something fingers physically cannot.</p>
-
-  <p>It focuses the pressure to a <strong>single point</strong>.</p>
-
-  <p>Exact. Precise. Every time.</p>
-
-  <p>No guessing. No missing.</p>
-
-  <p>And it combines that pressure with <strong>red light therapy</strong> — which penetrates the tissue, increases circulation, and amplifies the signal your nervous system receives.</p>
-
-  <p>The first time I used it on myself, I felt the difference within about <strong>90 seconds</strong>.</p>
-
-  <p>A warmth. Then a release.</p>
-
-  <p>Like something I'd been carrying in my face for years — just let go.</p>
-
-  <p>I want to be careful here, because I don't say things like that lightly.</p>
-
-  <p>But that's what happened.</p>
-
-  <p>And since then, I've seen it happen with patients over and over again.</p>
-
-  <p>Over 800 of them in the last year alone.</p>
-
-  <p>The results surprised even me.</p>
-
-  <p>But what surprised me most — was what happened when people used it consistently.</p>
-
-  <img class="product-img" src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1200&q=80" alt="">
-
-  <h2>The part that surprises people most</h2>
-
-  <p>They expect one session to fix everything.</p>
-
-  <p>It doesn't work like that — and I want you to understand why.</p>
-
-  <p>Your jaw has been clenching for a long time.</p>
-
-  <p>The <strong>muscle memory</strong> is deep.</p>
-
-  <p>The nervous system has learned that tense is the default.</p>
-
-  <p>What the pen does — used consistently — is slowly <strong>rewrite that default</strong>.</p>
-
-  <p>Two minutes. ST6. Every morning.</p>
-
-  <p>Week one — most people notice the mornings feel different. Looser.</p>
-
-  <p>Week two — the headaches start to come less often.</p>
-
-  <p>Week three — some patients tell me the <strong>night grinding</strong> has almost stopped.</p>
-
-  <p>Week four — they stop thinking about their jaw entirely.</p>
-
-  <p>That's when you know it worked.</p>
-
-  <p>But ST6 is only the beginning.</p>
-
-  <p>There are three other points I haven't told you about yet.</p>
-
-  <p>And one of them is in a place you'd never expect.</p>
-
-  <img class="product-img" src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1200&q=80" alt="">
-
-  <h2>One more thing I need to tell you</h2>
-
-  <p>There are other pressure points involved.</p>
-
-  <p>ST6 is the most important one for <strong>jaw tension</strong>.</p>
-
-  <p>But there's a point behind your earlobe — <strong>SJ17</strong> — that handles the radiating pain.</p>
-
-  <p>There's a point in front of your ear — ST7 — that unlocks the joint itself.</p>
-
-  <p>And there's a point on the back of your hand — yes, your hand — that somehow reduces <strong>facial pain</strong> better than most things I've seen.</p>
-
-  <p>I'll walk you through all of it when you get the pen.</p>
-
-  <p>Because this isn't just a tool.</p>
-
-  <p>It's a protocol.</p>
-
-  <p>And the protocol is what makes it work.</p>
-
-  <p>This is the exact pen I use in my practice.</p>
-
-  <p>No waiting room. No consultation fee. No prescription needed.</p>
-
-  <p>Order today and you'll get the full protocol — exactly how to use it, which points to hit, and in what order.</p>
-
-  <img class="product-img" src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1200&q=80" alt="">
+  <p>For months, I was telling patients to press the point themselves.</p>
+  <p>With their fingers. Every morning.</p>
+  <p>Some of them got results.</p>
+  <p>Most of them didn't.</p>
+  <p>And I couldn't understand why — until I actually watched them do it.</p>
+  <p>The problem wasn't the technique.</p>
+  <p>The problem was <strong>precision</strong>.</p>
+  <p>When you use a fingertip, you're covering an area the size of a coin.</p>
+  <p>But the actual <strong>pressure point</strong>?</p>
+  <p>It's smaller than a pencil tip.</p>
+  <p>Miss it by a few <strong>millimeters</strong> — and you get nothing.</p>
+  <p>You're pressing near the point.</p>
+  <p>Not on it.</p>
+  <p>That's the difference between results and frustration.</p>
+  <p>And that's the exact problem this pen was designed to solve.</p>
+  <p>But here's what I didn't expect.</p>
+  <p>The pen does something else entirely — something I hadn't planned for.</p>
+  <p>And it's the reason the results are so different.</p>
 
   <div class="cta-wrap">
     <a class="cta-btn" href="#">Get The Acupressure Pen →</a>
+    <div class="trust-badges">
+      <div class="trust-badge">
+        <div class="trust-badge-icon">
+          <svg viewBox="0 0 24 24"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/><circle cx="12" cy="16" r="1"/><circle cx="20" cy="16" r="1"/></svg>
+        </div>
+        <div>
+          <span class="trust-badge-title">Free Shipping</span>
+          <span class="trust-badge-sub">On all orders</span>
+        </div>
+      </div>
+      <div class="trust-badge">
+        <div class="trust-badge-icon">
+          <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.95"/></svg>
+        </div>
+        <div>
+          <span class="trust-badge-title">Risk-Free Returns</span>
+          <span class="trust-badge-sub">30-day guarantee</span>
+        </div>
+      </div>
+      <div class="trust-badge">
+        <div class="trust-badge-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <div>
+          <span class="trust-badge-title">Secure Checkout</span>
+          <span class="trust-badge-sub">SSL encrypted</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEKCIA 5 -->
+  <h2>Why this tool is different from everything else</h2>
+  <img class="product-img" src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1200&q=80" alt="">
+
+  <p>The acupressure pen I use — and now recommend to every patient who comes to me with jaw tension, headaches, or facial pain — does something fingers physically cannot.</p>
+  <p>It focuses the pressure to a <strong>single point</strong>.</p>
+  <p>Exact. Precise. Every time.</p>
+  <p>No guessing. No missing.</p>
+  <p>And it combines that pressure with <strong>red light therapy</strong> — which penetrates the tissue, increases circulation, and amplifies the signal your nervous system receives.</p>
+  <p>The first time I used it on myself, I felt the difference within about <strong>90 seconds</strong>.</p>
+  <p>A warmth. Then a release.</p>
+  <p>Like something I'd been carrying in my face for years — just let go.</p>
+  <p>I want to be careful here, because I don't say things like that lightly.</p>
+  <p>But that's what happened.</p>
+  <p>And since then, I've seen it happen with patients over and over again.</p>
+  <p>Over 800 of them in the last year alone.</p>
+  <p>The results surprised even me.</p>
+  <p>But what surprised me most — was what happened when people used it consistently.</p>
+
+  <!-- SEKCIA 6 -->
+  <h2>The part that surprises people most</h2>
+  <img class="product-img" src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1200&q=80" alt="">
+
+  <p>They expect one session to fix everything.</p>
+  <p>It doesn't work like that — and I want you to understand why.</p>
+  <p>Your jaw has been clenching for a long time.</p>
+  <p>The <strong>muscle memory</strong> is deep.</p>
+  <p>The nervous system has learned that tense is the default.</p>
+  <p>What the pen does — used consistently — is slowly <strong>rewrite that default</strong>.</p>
+  <p>Two minutes. ST6. Every morning.</p>
+  <p>Week one — most people notice the mornings feel different. Looser.</p>
+  <p>Week two — the headaches start to come less often.</p>
+  <p>Week three — some patients tell me the <strong>night grinding</strong> has almost stopped.</p>
+  <p>Week four — they stop thinking about their jaw entirely.</p>
+  <p>That's when you know it worked.</p>
+  <p>But ST6 is only the beginning.</p>
+  <p>There are three other points I haven't told you about yet.</p>
+  <p>And one of them is in a place you'd never expect.</p>
+
+  <!-- SEKCIA 7 -->
+  <h2>One more thing I need to tell you</h2>
+  <img class="product-img" src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1200&q=80" alt="">
+
+  <p>There are other pressure points involved.</p>
+  <p>ST6 is the most important one for <strong>jaw tension</strong>.</p>
+  <p>But there's a point behind your earlobe — <strong>SJ17</strong> — that handles the radiating pain.</p>
+  <p>There's a point in front of your ear — ST7 — that unlocks the joint itself.</p>
+  <p>And there's a point on the back of your hand — yes, your hand — that somehow reduces <strong>facial pain</strong> better than most things I've seen.</p>
+  <p>I'll walk you through all of it when you get the pen.</p>
+  <p>Because this isn't just a tool.</p>
+  <p>It's a protocol.</p>
+  <p>And the protocol is what makes it work.</p>
+  <p>This is the exact pen I use in my practice.</p>
+  <p>No waiting room. No consultation fee. No prescription needed.</p>
+  <p>Order today and you'll get the full protocol — exactly how to use it, which points to hit, and in what order.</p>
+
+  <div class="cta-wrap">
+    <a class="cta-btn" href="#">Get The Acupressure Pen →</a>
+    <div class="trust-badges">
+      <div class="trust-badge">
+        <div class="trust-badge-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#2d7a3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/><circle cx="12" cy="16" r="1"/><circle cx="20" cy="16" r="1"/></svg>
+        </div>
+        <div>
+          <span class="trust-badge-title">Free Shipping</span>
+          <span class="trust-badge-sub">On all orders</span>
+        </div>
+      </div>
+      <div class="trust-badge">
+        <div class="trust-badge-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#2d7a3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.95"/></svg>
+        </div>
+        <div>
+          <span class="trust-badge-title">Risk-Free Returns</span>
+          <span class="trust-badge-sub">30-day guarantee</span>
+        </div>
+      </div>
+      <div class="trust-badge">
+        <div class="trust-badge-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#2d7a3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <div>
+          <span class="trust-badge-title">Secure Checkout</span>
+          <span class="trust-badge-sub">SSL encrypted</span>
+        </div>
+      </div>
+    </div>
   </div>
 
 </div>
 
 <footer class="site-footer">
   <div class="footer-disclaimer">
-    <strong>MEDICAL & HEALTH DISCLAIMER:</strong> The information on this page is not intended as medical advice and is not a substitute for professional medical expertise or treatment. This website is an advertorial. Results may vary. These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Always consult a qualified healthcare professional before starting any new health regimen.
+    <strong>MEDICAL &amp; HEALTH DISCLAIMER:</strong> The information on this page is not intended as medical advice and is not a substitute for professional medical expertise or treatment. This website is an advertorial. Results may vary. These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Always consult a qualified healthcare professional before starting any new health regimen.
   </div>
   <div>
     <a href="#">Privacy Policy</a> -
@@ -504,4 +511,5 @@
   </div>
   <div class="footer-copy">© Copyright Dr. Michael Harris MD 2026</div>
 </footer>
+</body>
 </html>
