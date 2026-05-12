@@ -231,6 +231,53 @@
     display: block;
   }
 
+  /* REVIEWS */
+  .reviews-section {
+    margin-top: 56px;
+    border-top: 2px solid #ebebeb;
+    padding-top: 36px;
+  }
+  .reviews-section h2 {
+    margin-top: 0;
+    margin-bottom: 28px;
+  }
+  .review-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 0;
+    border-bottom: 1px solid #ebebeb;
+  }
+  .review-card:last-child { border-bottom: none; }
+  .review-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .review-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .review-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .review-meta { display: flex; flex-direction: column; gap: 2px; }
+  .review-name { font-size: 14px; font-weight: 700; }
+  .review-stars { color: #f5a623; font-size: 14px; letter-spacing: 1px; }
+  .review-date { font-size: 12px; color: #999; }
+  .review-text { font-size: 15px; line-height: 24px; color: #222; margin: 0; }
+  .review-reply {
+    margin-top: 4px;
+    margin-left: 20px;
+    padding: 12px 14px;
+    background: #f5f7fa;
+    border-left: 3px solid #1a4f8a;
+    border-radius: 4px;
+  }
+  .review-reply-name { font-size: 12px; font-weight: 700; color: #1a4f8a; margin-bottom: 4px; }
+  .review-reply-text { font-size: 14px; line-height: 22px; color: #444; margin: 0; }
+
   @media (max-width: 600px) {
     h1 { font-size: 28px; line-height: 36px; }
     h2 { font-size: 24px; line-height: 30px; }
@@ -496,6 +543,111 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- REVIEWS -->
+  <div class="reviews-section">
+    <h2>What people are saying</h2>
+
+    <!-- Review 1 — skeptik, nakoniec pozitivny -->
+    <div class="review-card">
+      <div class="review-top">
+        <div class="review-avatar"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&q=80" alt=""></div>
+        <div class="review-meta">
+          <span class="review-name">James T., 51</span>
+          <span class="review-stars">★★★★☆</span>
+          <span class="review-date">March 12, 2026</span>
+        </div>
+      </div>
+      <p class="review-text">Honestly I was ready to send it back after the first week. Nothing seemed to be happening. Stuck with it and by week three something shifted. Not magic, just… less. Less tension, less waking up clenched. Glad I didn't quit early.</p>
+    </div>
+
+    <!-- Review 2 — kratka, jednoducha -->
+    <div class="review-card">
+      <div class="review-top">
+        <div class="review-avatar"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&q=80" alt=""></div>
+        <div class="review-meta">
+          <span class="review-name">Sandra M., 44</span>
+          <span class="review-stars">★★★★★</span>
+          <span class="review-date">February 28, 2026</span>
+        </div>
+      </div>
+      <p class="review-text">My mornings used to start with a headache. Now they don't. That's really it.</p>
+    </div>
+
+    <!-- Review 3 — s reply -->
+    <div class="review-card">
+      <div class="review-top">
+        <div class="review-avatar"><img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=80&q=80" alt=""></div>
+        <div class="review-meta">
+          <span class="review-name">David K., 38</span>
+          <span class="review-stars">★★★☆☆</span>
+          <span class="review-date">January 19, 2026</span>
+        </div>
+      </div>
+      <p class="review-text">Mixed feelings. The tension relief is real, I won't argue that. But I expected faster results based on what I read. Took closer to 5 weeks before I really noticed a difference. Maybe I was using it wrong at first.</p>
+      <div class="review-reply">
+        <div class="review-reply-name">Dr. Harris — Author</div>
+        <p class="review-reply-text">David, thank you for being honest. 5 weeks is still within normal range — some people need longer depending on how chronic the tension is. If you're open to it, make sure you're hitting the point and not just the general area. Happy to help you refine the technique.</p>
+      </div>
+    </div>
+
+    <!-- Review 4 — zena, jednoducha -->
+    <div class="review-card">
+      <div class="review-top">
+        <div class="review-avatar"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&q=80" alt=""></div>
+        <div class="review-meta">
+          <span class="review-name">Rachel B., 29</span>
+          <span class="review-stars">★★★★★</span>
+          <span class="review-date">March 3, 2026</span>
+        </div>
+      </div>
+      <p class="review-text">I've tried three different things for this and nothing worked. This is the first time I've felt actual relief that lasted past the same day. I don't know why it works but it does.</p>
+    </div>
+
+    <!-- Review 5 — starsi muz, trochu skepticky ale spokojny -->
+    <div class="review-card">
+      <div class="review-top">
+        <div class="review-avatar"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&q=80" alt=""></div>
+        <div class="review-meta">
+          <span class="review-name">Robert H., 63</span>
+          <span class="review-stars">★★★★☆</span>
+          <span class="review-date">February 5, 2026</span>
+        </div>
+      </div>
+      <p class="review-text">My doctor had no idea what I was talking about when I mentioned this. He wasn't against it, just unfamiliar. So I tried it on my own. The ear pressure I'd had for two years is about 70% better. Not gone, but 70% is not nothing.</p>
+    </div>
+
+    <!-- Review 6 — kratka zena -->
+    <div class="review-card">
+      <div class="review-top">
+        <div class="review-avatar"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&q=80" alt=""></div>
+        <div class="review-meta">
+          <span class="review-name">Lisa W., 47</span>
+          <span class="review-stars">★★★★★</span>
+          <span class="review-date">March 21, 2026</span>
+        </div>
+      </div>
+      <p class="review-text">Two minutes every morning. I don't skip it anymore. It's become part of the routine the same way brushing my teeth is.</p>
+    </div>
+
+    <!-- Review 7 — muz s rizikovou poznamkou + reply -->
+    <div class="review-card">
+      <div class="review-top">
+        <div class="review-avatar"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80" alt=""></div>
+        <div class="review-meta">
+          <span class="review-name">Mark C., 55</span>
+          <span class="review-stars">★★★★☆</span>
+          <span class="review-date">January 31, 2026</span>
+        </div>
+      </div>
+      <p class="review-text">Worth noting — I have a nerve condition in my face and I was a little worried about pressing on anything. Checked with my specialist first who said it was fine to try. No issues at all, and the jaw tightness I've had since my 40s is noticeably better. Just check with your doctor first if you have something going on.</p>
+      <div class="review-reply">
+        <div class="review-reply-name">Dr. Harris — Author</div>
+        <p class="review-reply-text">Mark, really appreciate you mentioning that. This is good advice for anyone with an existing nerve or joint condition — check with your provider first. Glad it worked out well for you.</p>
+      </div>
+    </div>
+
   </div>
 
 </div>
