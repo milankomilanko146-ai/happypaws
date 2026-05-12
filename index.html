@@ -8,710 +8,642 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;0,800;1,400&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+background: #fff;
+font-family: 'Open Sans', sans-serif;
+font-size: 17px;
+font-weight: 400;
+line-height: 26px;
+color: #000;
+}
+header { background: #1a4f8a; width: 100%; }
+.header-inner { max-width: 860px; margin: 0 auto; padding: 20px 15px; text-align: center; }
+.header-logo {
+font-family: 'Montserrat', sans-serif;
+font-size: 18px;
+font-weight: 700;
+color: #fff;
+letter-spacing: 2px;
+text-transform: uppercase;
+}
+.page-wrap {
+max-width: 650px;
+margin: 0 auto;
+padding: 0 15px 20px;
+}
+h1 {
+font-family: 'Open Sans', sans-serif;
+font-size: 43px;
+font-weight: 700;
+line-height: 52px;
+margin-top: 36px;
+margin-bottom: 12px;
+color: #000;
+}
+p.deck {
+font-family: 'Open Sans', sans-serif;
+font-size: 18px;
+font-style: italic;
+font-weight: 400;
+line-height: 36px;
+color: #000;
+margin-bottom: 16px;
+}
+.ratings {
+display: flex;
+align-items: center;
+gap: 8px;
+margin-bottom: 16px;
+font-size: 14px;
+font-weight: 700;
+}
+.stars { font-size: 18px; letter-spacing: 2px; }
+.star-full { color: #f5a623; }
+.star-half {
+position: relative;
+display: inline-block;
+color: #ddd;
+}
+.star-half::before {
+content: '★';
+position: absolute;
+left: 0;
+width: 50%;
+overflow: hidden;
+color: #f5a623;
+}
+.star-half::after {
+content: '★';
+color: #ddd;
+}
+.author {
+display: flex;
+align-items: center;
+gap: 10px;
+margin-bottom: 24px;
+padding-bottom: 20px;
+border-bottom: 1px solid #ebebeb;
+}
+.author-photo {
+width: 46px;
+height: 46px;
+border-radius: 50%;
+overflow: hidden;
+flex-shrink: 0;
+}
+.author-photo img { width: 100%; height: 100%; object-fit: cover; }
+.author-name { font-size: 14px; font-weight: 600; }
+.author-date { font-size: 13px; color: #888; font-style: italic; }
+p {
+font-family: 'Open Sans', sans-serif;
+font-size: 17px;
+line-height: 26px;
+margin-bottom: 20px;
+color: #000;
+}
+h2 {
+font-family: 'Open Sans', sans-serif;
+font-size: 33px;
+font-weight: 800;
+line-height: 40px;
+color: #000;
+margin-top: 44px;
+margin-bottom: 16px;
+}
+img { max-width: 100%; height: auto; display: block; }
+.product-img {
+width: 100%;
+aspect-ratio: 16/9;
+object-fit: cover;
+border-radius: 6px;
+margin: 20px 0;
+}
+@media (min-width: 601px) {
+.product-img { width: 85%; margin-left: 0; margin-right: auto; }
+.product-img.full { width: 100%; }
+}
+footer.site-footer {
+background-color: #1a4f8a;
+color: #ccd6f0;
+text-align: center;
+padding: 24px 20px;
+font-size: 13px;
+line-height: 1.8;
+margin-top: 40px;
+}
+footer.site-footer a { color: #aabce8; text-decoration: none; margin: 0 8px; }
+footer.site-footer a:hover { text-decoration: underline; }
+.footer-disclaimer { font-size: 12px; color: #aabce8; margin: 0 auto 14px; max-width: 700px; line-height: 1.6; }
+.footer-copy { margin-top: 10px; font-size: 11px; color: #7788aa; }
 
-  body {
-    background: #fff;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 17px;
-    font-weight: 400;
-    line-height: 26px;
-    color: #000;
-  }
+/* STOCK BADGE */
+.stock-badge {
+display: inline-flex;
+align-items: center;
+gap: 7px;
+font-size: 14px;
+font-weight: 700;
+color: #1a5c24;
+margin-bottom: 10px;
+}
+@keyframes blink {
+0%, 100% { opacity: 1; }
+50% { opacity: 0.2; }
+}
+.stock-dot {
+width: 9px;
+height: 9px;
+border-radius: 50%;
+background: #2d7a3a;
+flex-shrink: 0;
+animation: blink 2.4s ease-in-out infinite;
+}
 
-  /* HEADER */
-  header { background: #1a4f8a; width: 100%; }
-  .header-inner { max-width: 860px; margin: 0 auto; padding: 20px 15px; text-align: center; }
-  .header-logo {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
+/* CTA */
+.cta-wrap { text-align: center; margin-top: 48px; margin-bottom: 20px; }
+.cta-btn {
+display: block;
+background: linear-gradient(180deg, #00a800 0%, #006f00 100%);
+color: #fff;
+font-family: 'Open Sans', sans-serif;
+font-size: 22px;
+font-weight: 700;
+line-height: 28px;
+padding: 18px 10px 14px;
+border-radius: 6px;
+box-shadow: rgba(0,0,0,.35) 0px 6px 18px;
+text-align: center;
+text-decoration: none;
+width: 100%;
+margin-bottom: 10px;
+border-bottom: 4px solid #004d00;
+transition: filter 0.15s;
+}
+.cta-btn:hover { filter: brightness(1.08); }
+.cta-btn-price {
+display: block;
+font-size: 15px;
+font-weight: 400;
+opacity: 0.9;
+margin-top: 3px;
+}
 
-  /* WRAP */
-  .page-wrap {
-    max-width: 650px;
-    margin: 0 auto;
-    padding: 0 15px 20px;
-  }
+/* TRUST BADGES */
+.trust-badges {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 10px 24px;
+padding: 16px 0 4px;
+}
+.trust-badge {
+display: flex;
+align-items: center;
+gap: 8px;
+}
+.trust-badge-icon {
+width: 36px;
+height: 36px;
+border-radius: 50%;
+background: #e6f4ea;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0;
+}
+.trust-badge-icon svg {
+width: 18px;
+height: 18px;
+stroke: #2d7a3a;
+fill: none;
+stroke-width: 2;
+stroke-linecap: round;
+stroke-linejoin: round;
+}
+.trust-badge-title {
+font-size: 12px;
+font-weight: 700;
+color: #1a5c24;
+line-height: 1.3;
+display: block;
+}
+.trust-badge-sub {
+font-size: 11px;
+color: #555;
+line-height: 1.2;
+display: block;
+}
+.ratings-review-link {
+font-size: 13px;
+font-weight: 600;
+color: #1a4f8a;
+text-decoration: underline;
+text-underline-offset: 2px;
+cursor: pointer;
+white-space: nowrap;
+}
+.ratings-review-link:hover { color: #0d3360; }
+.cta-nudge {
+margin-top: 14px;
+font-size: 13px;
+color: #888;
+margin-bottom: 0;
+}
+.cta-nudge a {
+color: #1a4f8a;
+font-weight: 600;
+text-decoration: underline;
+text-underline-offset: 2px;
+}
+.cta-nudge a:hover { color: #0d3360; }
 
-  /* HEADLINE */
-  h1 {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 43px;
-    font-weight: 700;
-    line-height: 52px;
-    margin-top: 36px;
-    margin-bottom: 12px;
-    color: #000;
-  }
+/* REVIEWS */
+.reviews-section {
+margin-top: 56px;
+border-top: 2px solid #ebebeb;
+padding-top: 36px;
+margin-bottom: 16px;
+}
+.reviews-section h2 { margin-top: 0; margin-bottom: 28px; }
+.review-card {
+display: flex;
+flex-direction: column;
+gap: 10px;
+padding: 20px 0;
+border-bottom: 1px solid #ebebeb;
+}
+.review-card:last-child { border-bottom: none; }
+.review-top { display: flex; align-items: center; gap: 12px; }
+.review-avatar { width: 44px; height: 44px; border-radius: 50%; overflow: hidden; flex-shrink: 0; }
+.review-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.review-meta { display: flex; flex-direction: column; gap: 2px; }
+.review-name { font-size: 14px; font-weight: 700; }
+.review-stars { color: #f5a623; font-size: 14px; letter-spacing: 1px; }
+.review-date { font-size: 12px; color: #999; }
+.review-text { font-size: 15px; line-height: 24px; color: #222; margin: 0; }
+.review-reply {
+margin-top: 4px;
+margin-left: 20px;
+padding: 12px 14px;
+background: #fff;
+border: 2px solid #1a4f8a;
+border-radius: 6px;
+}
+.review-reply-name { font-size: 12px; font-weight: 700; color: #1a4f8a; margin-bottom: 4px; }
+.review-reply-text { font-size: 14px; line-height: 22px; color: #444; margin: 0; }
 
-  /* DECK */
-  p.deck {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 18px;
-    font-style: italic;
-    font-weight: 400;
-    line-height: 36px;
-    color: #000;
-    margin-bottom: 16px;
-  }
-
-  /* RATINGS */
-  .ratings {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 16px;
-    font-size: 14px;
-    font-weight: 700;
-  }
-  .stars { font-size: 18px; letter-spacing: 2px; }
-  .star-full { color: #f5a623; }
-  .star-half {
-    position: relative;
-    display: inline-block;
-    color: #ddd;
-  }
-  .star-half::before {
-    content: '★';
-    position: absolute;
-    left: 0;
-    width: 50%;
-    overflow: hidden;
-    color: #f5a623;
-  }
-  .star-half::after {
-    content: '★';
-    color: #ddd;
-  }
-
-  /* AUTHOR */
-  .author {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 24px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #ebebeb;
-  }
-  .author-photo {
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    overflow: hidden;
-    flex-shrink: 0;
-  }
-  .author-photo img { width: 100%; height: 100%; object-fit: cover; }
-  .author-name { font-size: 14px; font-weight: 600; }
-  .author-date { font-size: 13px; color: #888; font-style: italic; }
-
-  /* BODY TEXT */
-  p {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 17px;
-    line-height: 26px;
-    margin-bottom: 20px;
-    color: #000;
-  }
-
-  /* H2 */
-  h2 {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 33px;
-    font-weight: 800;
-    line-height: 40px;
-    color: #000;
-    margin-top: 44px;
-    margin-bottom: 16px;
-  }
-
-  /* IMAGES */
-  img { max-width: 100%; height: auto; display: block; }
-  .product-img {
-    width: 100%;
-    aspect-ratio: 16/9;
-    object-fit: cover;
-    border-radius: 6px;
-    margin: 20px 0;
-  }
-  @media (min-width: 601px) {
-    .product-img { width: 85%; margin-left: 0; margin-right: auto; }
-    .product-img.full { width: 100%; }
-  }
-
-  footer.site-footer {
-    background-color: #1a4f8a;
-    color: #ccd6f0;
-    text-align: center;
-    padding: 24px 20px;
-    font-size: 13px;
-    line-height: 1.8;
-    margin-top: 40px;
-  }
-  footer.site-footer a { color: #aabce8; text-decoration: none; margin: 0 8px; }
-  footer.site-footer a:hover { text-decoration: underline; }
-  .footer-disclaimer { font-size: 12px; color: #aabce8; margin: 0 auto 14px; max-width: 700px; line-height: 1.6; }
-  .footer-copy { margin-top: 10px; font-size: 11px; color: #7788aa; }
-
-  /* CTA */
-  .cta-wrap { text-align: center; margin-top: 48px; margin-bottom: 20px; }
-  .cta-btn {
-    display: block;
-    background: linear-gradient(180deg, #00a800 0%, #006f00 100%);
-    color: #fff;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 28px;
-    font-weight: 700;
-    line-height: 32px;
-    padding: 18px 10px 14px;
-    border-radius: 6px;
-    box-shadow: rgba(0,0,0,.35) 0px 6px 18px;
-    text-align: center;
-    text-decoration: none;
-    width: 100%;
-    margin-bottom: 10px;
-    border-bottom: 4px solid #004d00;
-    transition: filter 0.15s;
-  }
-  .cta-btn:hover { filter: brightness(1.08); }
-  .cta-sub {
-    font-size: 13px;
-    color: #666;
-    margin-bottom: 0;
-    margin-top: 0;
-  }
-
-  /* TRUST BADGES */
-  .trust-badges {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px 24px;
-    padding: 16px 0 4px;
-  }
-  .trust-badge {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .trust-badge-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: #e6f4ea;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-  .trust-badge-icon svg {
-    width: 18px;
-    height: 18px;
-    stroke: #2d7a3a;
-    fill: none;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-  .trust-badge-title {
-    font-size: 12px;
-    font-weight: 700;
-    color: #1a5c24;
-    line-height: 1.3;
-    display: block;
-  }
-  .trust-badge-sub {
-    font-size: 11px;
-    color: #555;
-    line-height: 1.2;
-    display: block;
-  }
-
-  /* RATINGS REVIEW LINK */
-  .ratings-review-link {
-    font-size: 13px;
-    font-weight: 600;
-    color: #1a4f8a;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-    cursor: pointer;
-    white-space: nowrap;
-  }
-  .ratings-review-link:hover { color: #0d3360; }
-
-  /* NOT SURE NUDGE */
-  .cta-nudge {
-    margin-top: 14px;
-    font-size: 13px;
-    color: #888;
-    margin-bottom: 0;
-  }
-  .cta-nudge a {
-    color: #1a4f8a;
-    font-weight: 600;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-  .cta-nudge a:hover { color: #0d3360; }
-
-  /* PULL QUOTE */
-  .pull-quote {
-    border-left: 4px solid #f5a623;
-    background: #fdf8f0;
-    margin: 36px 0;
-    padding: 22px 24px;
-    border-radius: 0 6px 6px 0;
-  }
-  .pull-quote-text {
-    font-size: 19px;
-    font-style: italic;
-    line-height: 30px;
-    color: #222;
-    margin-bottom: 10px;
-  }
-  .pull-quote-attr {
-    font-size: 13px;
-    font-weight: 700;
-    color: #888;
-    margin-bottom: 0;
-  }
-  .pull-quote-stars {
-    color: #f5a623;
-    font-size: 13px;
-    letter-spacing: 1px;
-    margin-right: 6px;
-  }
-
-  /* REVIEWS */
-  .reviews-section {
-    margin-top: 56px;
-    border-top: 2px solid #ebebeb;
-    padding-top: 36px;
-    margin-bottom: 16px;
-  }
-  .reviews-section h2 {
-    margin-top: 0;
-    margin-bottom: 28px;
-  }
-  .review-card {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 20px 0;
-    border-bottom: 1px solid #ebebeb;
-  }
-  .review-card:last-child { border-bottom: none; }
-  .review-top {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .review-avatar {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    overflow: hidden;
-    flex-shrink: 0;
-  }
-  .review-avatar img { width: 100%; height: 100%; object-fit: cover; }
-  .review-meta { display: flex; flex-direction: column; gap: 2px; }
-  .review-name { font-size: 14px; font-weight: 700; }
-  .review-stars { color: #f5a623; font-size: 14px; letter-spacing: 1px; }
-  .review-date { font-size: 12px; color: #999; }
-  .review-text { font-size: 15px; line-height: 24px; color: #222; margin: 0; }
-  .review-reply {
-    margin-top: 4px;
-    margin-left: 20px;
-    padding: 12px 14px;
-    background: #fff;
-    border: 2px solid #1a4f8a;
-    border-radius: 6px;
-  }
-  .review-reply-name { font-size: 12px; font-weight: 700; color: #1a4f8a; margin-bottom: 4px; }
-  .review-reply-text { font-size: 14px; line-height: 22px; color: #444; margin: 0; }
-
-  @media (max-width: 600px) {
-    h1 { font-size: 28px; line-height: 36px; }
-    h2 { font-size: 24px; line-height: 30px; }
-    .cta-btn { font-size: 20px; line-height: 25px; padding: 14px 10px 10px; }
-    .page-wrap { padding: 0 15px 80px; }
-    .trust-badges { gap: 8px 16px; }
-  }
+@media (max-width: 600px) {
+h1 { font-size: 28px; line-height: 36px; }
+h2 { font-size: 24px; line-height: 30px; }
+.cta-btn { font-size: 18px; line-height: 24px; padding: 14px 10px 10px; }
+.cta-btn-price { font-size: 14px; }
+.page-wrap { padding: 0 15px 20px; }
+.trust-badges { gap: 8px 16px; }
+}
 </style>
 </head>
 <body>
-
 <header>
-  <div class="header-inner">
-    <div class="header-logo">Dr. Michael Harris's Blog</div>
-  </div>
+<div class="header-inner">
+<div class="header-logo">Dr. Michael Harris's Blog</div>
+</div>
 </header>
-
 <div class="page-wrap">
+<h1>The Real Reason Your Face Hurts.</h1>
+<p class="deck">It's one tiny spot — and almost nobody knows it exists.</p>
+<div class="ratings">
+<span class="stars">
+<span class="star-full">★★★★</span><span class="star-half"></span>
+</span>
+<span>357 ratings</span>
+<a class="ratings-review-link" href="#reviews" onclick="document.getElementById('reviews').scrollIntoView({behavior:'smooth'});return false;">See reviews ↓</a>
+</div>
+<img class="product-img full" src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=1200&q=80" alt="">
+<div class="author">
+<div class="author-photo">
+<img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=80&q=80" alt="Dr. Harris">
+</div>
+<div>
+<div class="author-name">Dr. Michael Harris, MD</div>
+<div class="author-date">October 14, 2024 · 8 min read</div>
+</div>
+</div>
 
-  <h1>The Real Reason Your Face Hurts.</h1>
+<p>Let me ask you something.</p>
+<p>Do you ever wake up with a <strong>tight jaw</strong>?</p>
+<p>A dull headache that's just… there?</p>
+<p>That weird <strong>pressure in your ears</strong> that comes and goes?</p>
+<p>If you said yes to any of those —</p>
+<p>This might be the most important thing you read today.</p>
+<p>Because what I'm about to show you isn't taught in most <strong>medical schools</strong>.</p>
+<p>It's not something your GP will bring up.</p>
+<p>And yet — it's been documented for over 2,000 years.</p>
+<p>But before I tell you what it is — I need to tell you what's actually causing your pain.</p>
+<p>Because most people have no idea.</p>
+<p>And once you see it — you can't unsee it.</p>
 
-  <p class="deck">It's one tiny spot — and almost nobody knows it exists.</p>
+<h2>Something is going on with your face</h2>
+<img class="product-img" src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&q=80" alt="">
+<p>Here's something most people don't know.</p>
+<p>Your face has a <strong>hidden tension system</strong>.</p>
+<p>There's a joint — tiny, just in front of each ear — that controls everything.</p>
+<p>Your jaw. Your temples. Your neck. Your ears.</p>
+<p>When this joint gets <strong>overloaded</strong>...</p>
+<p>It doesn't send pain to one place.</p>
+<p>It sends it everywhere.</p>
+<p>That headache behind your eyes? Could be coming from your jaw.</p>
+<p>That ringing in your ear that showed up out of nowhere? Same joint.</p>
+<p>That neck stiffness every single morning? Still the same joint.</p>
+<p>It's called the <strong>TMJ</strong>.</p>
+<p>And here's the thing that shocked me when I first learned this —</p>
+<p>Almost nobody knows they have a problem with it.</p>
+<p>Because the pain never shows up where the problem actually is.</p>
+<p>But that's only half the story.</p>
+<p>The other half is why your doctor never looked for it.</p>
+<p>TMJ doesn't fall cleanly under any one specialty. It sits between dentistry and neurology — so most doctors simply don't check for it. The symptoms are too scattered. And so are the referrals.</p>
+<p>And that part — I'll get to in a moment.</p>
 
-  <div class="ratings">
-    <span class="stars">
-      <span class="star-full">★★★★</span><span class="star-half"></span>
-    </span>
-    <span>357 ratings</span>
-    <a class="ratings-review-link" href="#reviews" onclick="document.getElementById('reviews').scrollIntoView({behavior:'smooth'});return false;">See reviews ↓</a>
-  </div>
+<h2>I'm a doctor. And I almost missed this too.</h2>
+<img class="product-img" src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=1200&q=80" alt="">
+<p>I've been practicing medicine for years.</p>
+<p>And I'll be honest with you.</p>
+<p>We're not trained to look here.</p>
+<p>We prescribe <strong>painkillers</strong>. We say "reduce your stress." We send people home.</p>
+<p>And those people come back three months later with the same headache.</p>
+<p>The same tight jaw.</p>
+<p>The same unanswered question: why does my face feel like this?</p>
+<p>The turning point for me came when I started studying something my medical training never covered.</p>
+<p><strong>Ancient Chinese pressure point medicine.</strong></p>
+<p>Specifically — the way certain points on your face directly communicate with your <strong>nervous system</strong>.</p>
+<p>Not metaphorically.</p>
+<p>Literally — there are nerve pathways running through your face that, when you activate the right point, send a signal all the way to your brain saying:</p>
+<p>Release. Let go. Stop clenching.</p>
+<p>And one point in particular stopped me in my tracks.</p>
+<p>I'm going to tell you exactly what it is.</p>
+<p>But first — I need to explain why your fingers can never reach it properly.</p>
+<p>Because that's the part nobody talks about.</p>
 
-  <!-- HERO IMAGE — zostáva na pôvodnom mieste -->
-  <img class="product-img full" src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=1200&q=80" alt="">
+<h2>The point nobody told you about</h2>
+<img class="product-img" src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=1200&q=80" alt="">
+<p>It's called <strong>ST6</strong>.</p>
+<p>The "Jaw Chariot."</p>
+<p>It sits right at the <strong>angle of your jaw</strong> — the spot where your chewing muscle bunches up when you clench.</p>
+<p>Most people, when I press there for the first time, flinch.</p>
+<p>Not because I'm pressing hard.</p>
+<p>Because it's already that tender.</p>
+<p>That tenderness tells you everything.</p>
+<p>It means the <strong>muscle has been locked up</strong> for a long time.</p>
+<p>Possibly years.</p>
+<p>And your body got so used to it — you stopped noticing.</p>
+<p>When you properly activate ST6, something interesting happens.</p>
+<p>The muscle that's been clenching 24 hours a day finally gets the signal to stop.</p>
+<p>The tension that radiates up to your temple — starts to dissolve.</p>
+<p>The pressure behind your ear — fades.</p>
+<p>The grinding that happens at night while you sleep — begins to slow down.</p>
+<p>But here's the part that took me a while to figure out.</p>
+<p>And when I did — it changed everything about how I treat my patients.</p>
 
-  <div class="author">
-    <div class="author-photo">
-      <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=80&q=80" alt="Dr. Harris">
-    </div>
-    <div>
-      <div class="author-name">Dr. Michael Harris, MD</div>
-      <div class="author-date">May 3, 2026 · 8 min read</div>
-    </div>
-  </div>
+<h2>Fingers aren't enough</h2>
+<img class="product-img" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&q=80" alt="">
+<p>For months, I was telling patients to press the point themselves.</p>
+<p>With their fingers. Every morning.</p>
+<p>Some of them got results.</p>
+<p>Most of them didn't.</p>
+<p>And I couldn't understand why — until I actually watched them do it.</p>
+<p>The problem wasn't the technique.</p>
+<p>The problem was <strong>precision</strong>.</p>
+<p>When you use a fingertip, you're covering an area the size of a coin.</p>
+<p>But the actual <strong>pressure point</strong>?</p>
+<p>It's smaller than a pencil tip.</p>
+<p>Miss it by a few <strong>millimeters</strong> — and you get nothing.</p>
+<p>You're pressing near the point.</p>
+<p>Not on it.</p>
+<p>That's the difference between results and frustration.</p>
+<p>And that's the exact problem this pen was designed to solve.</p>
+<p>But here's what I didn't expect.</p>
+<p>The pen does something else entirely — something I hadn't planned for.</p>
+<p>And it's the reason the results are so different.</p>
 
-  <p>Let me ask you something.</p>
-  <p>Do you ever wake up with a <strong>tight jaw</strong>?</p>
-  <p>A dull headache that's just… there?</p>
-  <p>That weird <strong>pressure in your ears</strong> that comes and goes?</p>
-  <p>If you said yes to any of those —</p>
-  <p>This might be the most important thing you read today.</p>
-  <p>Because what I'm about to show you isn't taught in most <strong>medical schools</strong>.</p>
-  <p>It's not something your GP will bring up.</p>
-  <p>And yet — it's been documented for over 2,000 years.</p>
-  <p>But before I tell you what it is — I need to tell you what's actually causing your pain.</p>
-  <p>Because most people have no idea.</p>
-  <p>And once you see it — you can't unsee it.</p>
+<div class="cta-wrap">
+<div class="stock-badge"><span class="stock-dot"></span> Currently In Stock</div>
+<a class="cta-btn" href="#">
+<span>Relieve Jaw Pain Today →</span>
+<span class="cta-btn-price">Get The Acupressure Pen — $49.99</span>
+</a>
+<div class="trust-badges">
+<div class="trust-badge">
+<div class="trust-badge-icon">
+<svg viewBox="0 0 24 24"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/><circle cx="12" cy="16" r="1"/><circle cx="20" cy="16" r="1"/></svg>
+</div>
+<div>
+<span class="trust-badge-title">Free Shipping</span>
+<span class="trust-badge-sub">On all orders</span>
+</div>
+</div>
+<div class="trust-badge">
+<div class="trust-badge-icon">
+<svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.95"/></svg>
+</div>
+<div>
+<span class="trust-badge-title">Risk-Free Returns</span>
+<span class="trust-badge-sub">30-day guarantee</span>
+</div>
+</div>
+<div class="trust-badge">
+<div class="trust-badge-icon">
+<svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+</div>
+<div>
+<span class="trust-badge-title">Secure Checkout</span>
+<span class="trust-badge-sub">SSL encrypted</span>
+</div>
+</div>
+</div>
+<p class="cta-nudge">Not convinced? <a href="#reviews" onclick="document.getElementById('reviews').scrollIntoView({behavior:'smooth'});return false;">See reviews ↓</a></p>
+</div>
 
-  <!-- SEKCIA 1 -->
-  <h2>Something is going on with your face</h2>
-  <img class="product-img" src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&q=80" alt="">
+<h2>Why this tool is different from everything else</h2>
+<img class="product-img" src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1200&q=80" alt="">
+<p>The acupressure pen I use — and now recommend to every patient who comes to me with jaw tension, headaches, or facial pain — does something fingers physically cannot.</p>
+<p>It focuses the pressure to a <strong>single point</strong>.</p>
+<p>Exact. Precise. Every time.</p>
+<p>No guessing. No missing.</p>
+<p>And it combines that pressure with <strong>red light therapy</strong> — which penetrates the tissue, increases circulation, and amplifies the signal your nervous system receives.</p>
+<p>The first time I used it on myself, I felt the difference within about <strong>90 seconds</strong>.</p>
+<p>A warmth. Then a release.</p>
+<p>Like something I'd been carrying in my face for years — just let go.</p>
+<p>I want to be careful here, because I don't say things like that lightly.</p>
+<p>But that's what happened.</p>
+<p>And since then, I've seen it happen with patients over and over again.</p>
+<p>Over 800 of them in the last year alone.</p>
+<p>The results surprised even me.</p>
+<p>But what surprised me most — was what happened when people used it consistently.</p>
 
-  <p>Here's something most people don't know.</p>
-  <p>Your face has a <strong>hidden tension system</strong>.</p>
-  <p>There's a joint — tiny, just in front of each ear — that controls everything.</p>
-  <p>Your jaw. Your temples. Your neck. Your ears.</p>
-  <p>When this joint gets <strong>overloaded</strong>...</p>
-  <p>It doesn't send pain to one place.</p>
-  <p>It sends it everywhere.</p>
-  <p>That headache behind your eyes? Could be coming from your jaw.</p>
-  <p>That ringing in your ear that showed up out of nowhere? Same joint.</p>
-  <p>That neck stiffness every single morning? Still the same joint.</p>
-  <p>It's called the <strong>TMJ</strong>.</p>
-  <p>And here's the thing that shocked me when I first learned this —</p>
-  <p>Almost nobody knows they have a problem with it.</p>
-  <p>Because the pain never shows up where the problem actually is.</p>
-  <p>But that's only half the story.</p>
-  <p>The other half is why your doctor never looked for it.</p>
-  <p>And that part — I'll get to in a moment.</p>
+<h2>The part that surprises people most</h2>
+<img class="product-img" src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1200&q=80" alt="">
+<p>They expect one session to fix everything.</p>
+<p>It doesn't work like that — and I want you to understand why.</p>
+<p>Your jaw has been clenching for a long time.</p>
+<p>The <strong>muscle memory</strong> is deep.</p>
+<p>The nervous system has learned that tense is the default.</p>
+<p>What the pen does — used consistently — is slowly <strong>rewrite that default</strong>.</p>
+<p>Two minutes. ST6. Every morning.</p>
+<p>Week one — most people notice the mornings feel different. Looser.</p>
+<p>Week two — the headaches start to come less often.</p>
+<p>Week three — some patients tell me the <strong>night grinding</strong> has almost stopped.</p>
+<p>Week four — they stop thinking about their jaw entirely.</p>
+<p>That's when you know it worked.</p>
+<p>But ST6 is only the beginning.</p>
+<p>There are three other points I haven't told you about yet.</p>
+<p>And one of them is in a place you'd never expect.</p>
 
-  <!-- SEKCIA 2 -->
-  <h2>I'm a doctor. And I almost missed this too.</h2>
-  <img class="product-img" src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=1200&q=80" alt="">
+<h2>One more thing I need to tell you</h2>
+<img class="product-img" src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1200&q=80" alt="">
+<p>There are other pressure points involved.</p>
+<p>ST6 is the most important one for <strong>jaw tension</strong>.</p>
+<p>But there's a point behind your earlobe — <strong>SJ17</strong> — that handles the radiating pain.</p>
+<p>There's a point in front of your ear — ST7 — that unlocks the joint itself.</p>
+<p>And there's a point on the back of your hand — yes, your hand — that somehow reduces <strong>facial pain</strong> better than most things I've seen.</p>
+<p>I'll walk you through all of it when you get the pen.</p>
+<p>Because this isn't just a tool.</p>
+<p>It's a protocol.</p>
+<p>And the protocol is what makes it work.</p>
+<p>This is the exact pen I use in my practice.</p>
+<p>No waiting room. No consultation fee. No prescription needed.</p>
+<p>Order today and you'll get the pen, a full text guide walking you through all four points, and free shipping.</p>
 
-  <p>I've been practicing medicine for years.</p>
-  <p>And I'll be honest with you.</p>
-  <p>We're not trained to look here.</p>
-  <p>We prescribe <strong>painkillers</strong>. We say "reduce your stress." We send people home.</p>
-  <p>And those people come back three months later with the same headache.</p>
-  <p>The same tight jaw.</p>
-  <p>The same unanswered question: why does my face feel like this?</p>
-  <p>The turning point for me came when I started studying something my medical training never covered.</p>
-  <p><strong>Ancient Chinese pressure point medicine.</strong></p>
-  <p>Specifically — the way certain points on your face directly communicate with your <strong>nervous system</strong>.</p>
-  <p>Not metaphorically.</p>
-  <p>Literally — there are nerve pathways running through your face that, when you activate the right point, send a signal all the way to your brain saying:</p>
-  <p>Release. Let go. Stop clenching.</p>
-  <p>And one point in particular stopped me in my tracks.</p>
-  <p>I'm going to tell you exactly what it is.</p>
-  <p>But first — I need to explain why your fingers can never reach it properly.</p>
-  <p>Because that's the part nobody talks about.</p>
+<div class="cta-wrap">
+<div class="stock-badge"><span class="stock-dot"></span> Currently In Stock</div>
+<a class="cta-btn" href="#">
+<span>Relieve Jaw Pain Today →</span>
+<span class="cta-btn-price">Get The Acupressure Pen — $49.99</span>
+</a>
+<div class="trust-badges">
+<div class="trust-badge">
+<div class="trust-badge-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="#2d7a3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/><circle cx="12" cy="16" r="1"/><circle cx="20" cy="16" r="1"/></svg>
+</div>
+<div>
+<span class="trust-badge-title">Free Shipping</span>
+<span class="trust-badge-sub">On all orders</span>
+</div>
+</div>
+<div class="trust-badge">
+<div class="trust-badge-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="#2d7a3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.95"/></svg>
+</div>
+<div>
+<span class="trust-badge-title">Risk-Free Returns</span>
+<span class="trust-badge-sub">30-day guarantee</span>
+</div>
+</div>
+<div class="trust-badge">
+<div class="trust-badge-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="#2d7a3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+</div>
+<div>
+<span class="trust-badge-title">Secure Checkout</span>
+<span class="trust-badge-sub">SSL encrypted</span>
+</div>
+</div>
+</div>
+<p class="cta-nudge">Not convinced? <a href="#reviews" onclick="document.getElementById('reviews').scrollIntoView({behavior:'smooth'});return false;">See reviews ↓</a></p>
+</div>
 
-  <!-- SEKCIA 3 -->
-  <h2>The point nobody told you about</h2>
-  <img class="product-img" src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=1200&q=80" alt="">
-
-  <p>It's called <strong>ST6</strong>.</p>
-  <p>The "Jaw Chariot."</p>
-  <p>It sits right at the <strong>angle of your jaw</strong> — the spot where your chewing muscle bunches up when you clench.</p>
-  <p>Most people, when I press there for the first time, flinch.</p>
-  <p>Not because I'm pressing hard.</p>
-  <p>Because it's already that tender.</p>
-  <p>That tenderness tells you everything.</p>
-  <p>It means the <strong>muscle has been locked up</strong> for a long time.</p>
-  <p>Possibly years.</p>
-  <p>And your body got so used to it — you stopped noticing.</p>
-  <p>When you properly activate ST6, something interesting happens.</p>
-  <p>The muscle that's been clenching 24 hours a day finally gets the signal to stop.</p>
-  <p>The tension that radiates up to your temple — starts to dissolve.</p>
-  <p>The pressure behind your ear — fades.</p>
-  <p>The grinding that happens at night while you sleep — begins to slow down.</p>
-  <p>But here's the part that took me a while to figure out.</p>
-  <p>And when I did — it changed everything about how I treat my patients.</p>
-
-  <!-- SEKCIA 4 -->
-  <h2>Fingers aren't enough</h2>
-  <img class="product-img" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&q=80" alt="">
-
-  <p>For months, I was telling patients to press the point themselves.</p>
-  <p>With their fingers. Every morning.</p>
-  <p>Some of them got results.</p>
-  <p>Most of them didn't.</p>
-  <p>And I couldn't understand why — until I actually watched them do it.</p>
-  <p>The problem wasn't the technique.</p>
-  <p>The problem was <strong>precision</strong>.</p>
-  <p>When you use a fingertip, you're covering an area the size of a coin.</p>
-  <p>But the actual <strong>pressure point</strong>?</p>
-  <p>It's smaller than a pencil tip.</p>
-  <p>Miss it by a few <strong>millimeters</strong> — and you get nothing.</p>
-  <p>You're pressing near the point.</p>
-  <p>Not on it.</p>
-  <p>That's the difference between results and frustration.</p>
-  <p>And that's the exact problem this pen was designed to solve.</p>
-  <p>But here's what I didn't expect.</p>
-  <p>The pen does something else entirely — something I hadn't planned for.</p>
-  <p>And it's the reason the results are so different.</p>
-
-  <div class="cta-wrap">
-    <a class="cta-btn" href="#">Get The Acupressure Pen →</a>
-    <div class="trust-badges">
-      <div class="trust-badge">
-        <div class="trust-badge-icon">
-          <svg viewBox="0 0 24 24"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/><circle cx="12" cy="16" r="1"/><circle cx="20" cy="16" r="1"/></svg>
-        </div>
-        <div>
-          <span class="trust-badge-title">Free Shipping</span>
-          <span class="trust-badge-sub">On all orders</span>
-        </div>
-      </div>
-      <div class="trust-badge">
-        <div class="trust-badge-icon">
-          <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.95"/></svg>
-        </div>
-        <div>
-          <span class="trust-badge-title">Risk-Free Returns</span>
-          <span class="trust-badge-sub">30-day guarantee</span>
-        </div>
-      </div>
-      <div class="trust-badge">
-        <div class="trust-badge-icon">
-          <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        </div>
-        <div>
-          <span class="trust-badge-title">Secure Checkout</span>
-          <span class="trust-badge-sub">SSL encrypted</span>
-        </div>
-      </div>
-    </div>
-    <p class="cta-nudge">Not convinced? <a href="#reviews" onclick="document.getElementById('reviews').scrollIntoView({behavior:'smooth'});return false;">See reviews ↓</a></p>
-  </div>
-
-  <!-- SEKCIA 5 -->
-  <h2>Why this tool is different from everything else</h2>
-  <img class="product-img" src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1200&q=80" alt="">
-
-  <p>The acupressure pen I use — and now recommend to every patient who comes to me with jaw tension, headaches, or facial pain — does something fingers physically cannot.</p>
-  <p>It focuses the pressure to a <strong>single point</strong>.</p>
-  <p>Exact. Precise. Every time.</p>
-  <p>No guessing. No missing.</p>
-  <p>And it combines that pressure with <strong>red light therapy</strong> — which penetrates the tissue, increases circulation, and amplifies the signal your nervous system receives.</p>
-  <p>The first time I used it on myself, I felt the difference within about <strong>90 seconds</strong>.</p>
-  <p>A warmth. Then a release.</p>
-  <p>Like something I'd been carrying in my face for years — just let go.</p>
-  <p>I want to be careful here, because I don't say things like that lightly.</p>
-  <p>But that's what happened.</p>
-  <p>And since then, I've seen it happen with patients over and over again.</p>
-  <p>Over 800 of them in the last year alone.</p>
-  <p>The results surprised even me.</p>
-  <p>But what surprised me most — was what happened when people used it consistently.</p>
-
-  <!-- SEKCIA 6 -->
-  <h2>The part that surprises people most</h2>
-  <img class="product-img" src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1200&q=80" alt="">
-
-  <p>They expect one session to fix everything.</p>
-  <p>It doesn't work like that — and I want you to understand why.</p>
-  <p>Your jaw has been clenching for a long time.</p>
-  <p>The <strong>muscle memory</strong> is deep.</p>
-  <p>The nervous system has learned that tense is the default.</p>
-  <p>What the pen does — used consistently — is slowly <strong>rewrite that default</strong>.</p>
-  <p>Two minutes. ST6. Every morning.</p>
-  <p>Week one — most people notice the mornings feel different. Looser.</p>
-  <p>Week two — the headaches start to come less often.</p>
-  <p>Week three — some patients tell me the <strong>night grinding</strong> has almost stopped.</p>
-  <p>Week four — they stop thinking about their jaw entirely.</p>
-  <p>That's when you know it worked.</p>
-  <p>But ST6 is only the beginning.</p>
-  <p>There are three other points I haven't told you about yet.</p>
-  <p>And one of them is in a place you'd never expect.</p>
-
-  <!-- SEKCIA 7 -->
-  <h2>One more thing I need to tell you</h2>
-  <img class="product-img" src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1200&q=80" alt="">
-
-  <p>There are other pressure points involved.</p>
-  <p>ST6 is the most important one for <strong>jaw tension</strong>.</p>
-  <p>But there's a point behind your earlobe — <strong>SJ17</strong> — that handles the radiating pain.</p>
-  <p>There's a point in front of your ear — ST7 — that unlocks the joint itself.</p>
-  <p>And there's a point on the back of your hand — yes, your hand — that somehow reduces <strong>facial pain</strong> better than most things I've seen.</p>
-  <p>I'll walk you through all of it when you get the pen.</p>
-  <p>Because this isn't just a tool.</p>
-  <p>It's a protocol.</p>
-  <p>And the protocol is what makes it work.</p>
-  <p>This is the exact pen I use in my practice.</p>
-  <p>No waiting room. No consultation fee. No prescription needed.</p>
-  <p>Order today and you'll get the full protocol — exactly how to use it, which points to hit, and in what order.</p>
-
-  <div class="cta-wrap">
-    <a class="cta-btn" href="#">Get The Acupressure Pen →</a>
-    <div class="trust-badges">
-      <div class="trust-badge">
-        <div class="trust-badge-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#2d7a3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/><circle cx="12" cy="16" r="1"/><circle cx="20" cy="16" r="1"/></svg>
-        </div>
-        <div>
-          <span class="trust-badge-title">Free Shipping</span>
-          <span class="trust-badge-sub">On all orders</span>
-        </div>
-      </div>
-      <div class="trust-badge">
-        <div class="trust-badge-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#2d7a3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.95"/></svg>
-        </div>
-        <div>
-          <span class="trust-badge-title">Risk-Free Returns</span>
-          <span class="trust-badge-sub">30-day guarantee</span>
-        </div>
-      </div>
-      <div class="trust-badge">
-        <div class="trust-badge-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#2d7a3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        </div>
-        <div>
-          <span class="trust-badge-title">Secure Checkout</span>
-          <span class="trust-badge-sub">SSL encrypted</span>
-        </div>
-      </div>
-    </div>
-    <p class="cta-nudge">Not convinced? <a href="#reviews" onclick="document.getElementById('reviews').scrollIntoView({behavior:'smooth'});return false;">See reviews ↓</a></p>
-  </div>
-
-  <!-- REVIEWS -->
-  <div class="reviews-section" id="reviews">
-    <h2>What people are saying</h2>
-
-    <!-- Review 1 — James: skeptik, helped a lot, reply -->
-    <div class="review-card">
-      <div class="review-top">
-        <div class="review-avatar"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&q=80" alt=""></div>
-        <div class="review-meta">
-          <span class="review-name">James T., 51</span>
-          <span class="review-stars">★★★★☆</span>
-          <span class="review-date">March 12, 2026</span>
-        </div>
-      </div>
-      <p class="review-text">Thought it was nonsense. The 30-day return made it easy to just try. I did not send it back. Helped a lot.</p>
-      <div class="review-reply">
-        <div class="review-reply-name">Dr. Harris — Author</div>
-        <p class="review-reply-text">James, that's all anyone can ask. Really glad it helped.</p>
-      </div>
-    </div>
-
-    <!-- Review 2 — Rachel: dlhsi, problemovy, generic -->
-    <div class="review-card">
-      <div class="review-top">
-        <div class="review-avatar"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&q=80" alt=""></div>
-        <div class="review-meta">
-          <span class="review-name">Rachel B., 29</span>
-          <span class="review-stars">★★★★★</span>
-          <span class="review-date">March 3, 2026</span>
-        </div>
-      </div>
-      <p class="review-text">I ordered mostly because of the return policy — figured worst case I'm out nothing. By the end of the first week I felt something shifting. By week four I realized the thing I'd been dealing with for two years had just… quietly stopped being a problem. I don't know how else to describe it. Still using it every morning.</p>
-    </div>
-
-    <!-- Review 3 — KONKRETNY pain: Sandra headache -->
-    <div class="review-card">
-      <div class="review-top">
-        <div class="review-avatar"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&q=80" alt=""></div>
-        <div class="review-meta">
-          <span class="review-name">Sandra M., 44</span>
-          <span class="review-stars">★★★★★</span>
-          <span class="review-date">February 28, 2026</span>
-        </div>
-      </div>
-      <p class="review-text">My mornings used to start with a headache. Now they don't. That's really it.</p>
-      <div class="review-reply">
-        <div class="review-reply-name">Dr. Harris — Author</div>
-        <p class="review-reply-text">Sandra, simple and says everything. Thank you.</p>
-      </div>
-    </div>
-
-    <!-- Review 4 — Rachel -> David: kvalita + shipping, reply -->
-    <div class="review-card">
-      <div class="review-top">
-        <div class="review-avatar"><img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=80&q=80" alt=""></div>
-        <div class="review-meta">
-          <span class="review-name">David K., 38</span>
-          <span class="review-stars">★★★★★</span>
-          <span class="review-date">January 19, 2026</span>
-        </div>
-      </div>
-      <p class="review-text">Came in 5 days, looks and feels solid. The little guide that comes with it is hard to read, but figured it out. Works well.</p>
-      <div class="review-reply">
-        <div class="review-reply-name">Dr. Harris — Author</div>
-        <p class="review-reply-text">David, noted on the guide. Glad you got there.</p>
-      </div>
-    </div>
-
-    <!-- Review 5 — Robert: kratky, cautiously impressed -->
-    <div class="review-card">
-      <div class="review-top">
-        <div class="review-avatar"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&q=80" alt=""></div>
-        <div class="review-meta">
-          <span class="review-name">Robert H., 63</span>
-          <span class="review-stars">★★★★☆</span>
-          <span class="review-date">February 5, 2026</span>
-        </div>
-      </div>
-      <p class="review-text">My wife talked me into it. I thought it was a waste of money. 30 days to return it so whatever. It wasn't a waste of money.</p>
-    </div>
-
-    <!-- Review 6 — Mark: kratky, kvalita + rychlo pomohlo -->
-    <div class="review-card">
-      <div class="review-top">
-        <div class="review-avatar"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80" alt=""></div>
-        <div class="review-meta">
-          <span class="review-name">Mark C., 55</span>
-          <span class="review-stars">★★★★★</span>
-          <span class="review-date">January 31, 2026</span>
-        </div>
-      </div>
-      <p class="review-text">Better quality than I expected. Showed up in four days. Started noticing a difference around week two. Really glad I tried it.</p>
-    </div>
-
-  </div>
-
+<div class="reviews-section" id="reviews">
+<h2>What people are saying</h2>
+<div class="review-card">
+<div class="review-top">
+<div class="review-avatar"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&q=80" alt=""></div>
+<div class="review-meta">
+<span class="review-name">James T., 51</span>
+<span class="review-stars">★★★★☆</span>
+<span class="review-date">March 12, 2024</span>
+</div>
+</div>
+<p class="review-text">Thought it was nonsense. The 30-day return made it easy to just try. I did not send it back. Helped a lot.</p>
+<div class="review-reply">
+<div class="review-reply-name">Dr. Harris — Author</div>
+<p class="review-reply-text">James, that's all anyone can ask. Really glad it helped.</p>
+</div>
+</div>
+<div class="review-card">
+<div class="review-top">
+<div class="review-avatar"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&q=80" alt=""></div>
+<div class="review-meta">
+<span class="review-name">Rachel B., 29</span>
+<span class="review-stars">★★★★★</span>
+<span class="review-date">March 3, 2024</span>
+</div>
+</div>
+<p class="review-text">I ordered mostly because of the return policy — figured worst case I'm out nothing. By the end of the first week I felt something shifting. By week four I realized the thing I'd been dealing with for two years had just… quietly stopped being a problem. I don't know how else to describe it. Still using it every morning.</p>
+</div>
+<div class="review-card">
+<div class="review-top">
+<div class="review-avatar"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&q=80" alt=""></div>
+<div class="review-meta">
+<span class="review-name">Sandra M., 44</span>
+<span class="review-stars">★★★☆☆</span>
+<span class="review-date">February 28, 2024</span>
+</div>
+</div>
+<p class="review-text">I didn't get instant results — just to be upfront about that. Took a few weeks before I noticed anything. Probably some people do see it faster, I don't know. But it did work eventually so I can't really complain.</p>
+<div class="review-reply">
+<div class="review-reply-name">Dr. Harris — Author</div>
+<p class="review-reply-text">Sandra, that's fair — it does take consistency. Glad you stuck with it.</p>
+</div>
+</div>
+<div class="review-card">
+<div class="review-top">
+<div class="review-avatar"><img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=80&q=80" alt=""></div>
+<div class="review-meta">
+<span class="review-name">David K., 38</span>
+<span class="review-stars">★★★★★</span>
+<span class="review-date">January 19, 2024</span>
+</div>
+</div>
+<p class="review-text">Came in 5 days, looks and feels solid. The little guide that comes with it is hard to read, but figured it out. Works well.</p>
+<div class="review-reply">
+<div class="review-reply-name">Dr. Harris — Author</div>
+<p class="review-reply-text">David, noted on the guide. Glad you got there.</p>
+</div>
+</div>
+<div class="review-card">
+<div class="review-top">
+<div class="review-avatar"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&q=80" alt=""></div>
+<div class="review-meta">
+<span class="review-name">Robert H., 63</span>
+<span class="review-stars">★★★★☆</span>
+<span class="review-date">February 5, 2024</span>
+</div>
+</div>
+<p class="review-text">My wife talked me into it. I thought it was a waste of money. 30 days to return it so whatever. It wasn't a waste of money.</p>
+</div>
+<div class="review-card">
+<div class="review-top">
+<div class="review-avatar"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80" alt=""></div>
+<div class="review-meta">
+<span class="review-name">Mark C., 55</span>
+<span class="review-stars">★★★★★</span>
+<span class="review-date">January 31, 2024</span>
+</div>
+</div>
+<p class="review-text">Better quality than I expected. Showed up in four days. Started noticing a difference around week two. Really glad I tried it.</p>
+</div>
+</div>
 </div>
 
 <footer class="site-footer">
-  <div class="footer-disclaimer">
-    <strong>MEDICAL &amp; HEALTH DISCLAIMER:</strong> The information on this page is not intended as medical advice and is not a substitute for professional medical expertise or treatment. This website is an advertorial. Results may vary. These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Always consult a qualified healthcare professional before starting any new health regimen.
-  </div>
-  <div>
-    <a href="#">Privacy Policy</a> -
-    <a href="#">Terms of Service</a> -
-    <a href="#">Contact Us</a>
-  </div>
-  <div class="footer-copy">© Copyright Dr. Michael Harris MD 2026</div>
+<div class="footer-disclaimer">
+<strong>MEDICAL &amp; HEALTH DISCLAIMER:</strong> The information on this page is not intended as medical advice and is not a substitute for professional medical expertise or treatment. This website is an advertorial. Results may vary. These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Always consult a qualified healthcare professional before starting any new health regimen.
+</div>
+<div>
+<a href="#">Privacy Policy</a> -
+<a href="#">Terms of Service</a> -
+<a href="#">Contact Us</a>
+</div>
+<div class="footer-copy">© Copyright Dr. Michael Harris MD 2024</div>
 </footer>
 </body>
 </html>
