@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Checkout — Acupuncture Pen</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Serif+Display&display=swap" rel="stylesheet">
 <style>
 :root {
   --blue: #1a4f8a;
@@ -12,64 +12,104 @@
   --blue-light: #eef4fc;
   --green: #1a7a3c;
   --green-bg: #e8f5ee;
-  --red: #d32f2f;
+  --red: #c0392b;
   --border: #e2e8f0;
   --text: #0f172a;
   --muted: #64748b;
-  --radius: 12px;
-  --shadow: 0 1px 3px rgba(0,0,0,.07), 0 4px 16px rgba(0,0,0,.05);
+  --radius: 10px;
+  --shadow: 0 1px 3px rgba(0,0,0,.06), 0 4px 14px rgba(0,0,0,.06);
+  --max: 520px;
 }
-* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 html { font-size: 16px; }
 body {
-  font-family: 'DM Sans', sans-serif;
-  background: #f0f4f9;
+  font-family: 'Inter', sans-serif;
+  background: #fff;
   color: var(--text);
   min-height: 100vh;
-  padding-bottom: 48px;
+  padding-bottom: 60px;
 }
 
-/* BACK */
+/* ─── LAYOUT WRAPPER ─── */
+.page-col {
+  max-width: var(--max);
+  margin: 0 auto;
+  position: relative;
+}
+
+/* ─── BACK BUTTON ─── */
 .back-btn {
-  position: fixed; top: 12px; left: 12px; z-index: 100;
-  background: rgba(255,255,255,.92);
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 200;
+  background: rgba(255,255,255,.18);
   backdrop-filter: blur(8px);
-  border: 1px solid var(--border);
+  border: 1px solid rgba(255,255,255,.28);
   border-radius: 50%;
-  width: 38px; height: 38px;
+  width: 36px; height: 36px;
   display: flex; align-items: center; justify-content: center;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0,0,0,.12);
+  transition: background .15s;
 }
+.back-btn:hover { background: rgba(255,255,255,.28); }
 
-/* HEADER */
+/* ─── HEADER ─── */
 .header {
   background: var(--blue);
   padding: 52px 20px 28px;
   text-align: center;
+  border-radius: 0 0 0 0;
+}
+@media (min-width: 560px) {
+  .header { border-radius: 0 0 14px 14px; }
 }
 .offer-chip {
   display: inline-block;
   background: rgba(255,255,255,.15);
   color: #fff;
-  font-size: 11px; font-weight: 700; letter-spacing: 1px;
+  font-size: 10px; font-weight: 800; letter-spacing: 1.2px;
   text-transform: uppercase;
-  padding: 4px 12px; border-radius: 20px; margin-bottom: 10px;
+  padding: 4px 13px; border-radius: 20px; margin-bottom: 10px;
 }
-.header h1 { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 4px; line-height: 1.25; }
-.header p { font-size: 13px; color: rgba(255,255,255,.72); margin-bottom: 18px; }
-.header-badges { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
-.header-badge { display: flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; color: rgba(255,255,255,.88); }
+.header h1 {
+  font-family: 'Inter', sans-serif;
+  font-size: 21px; font-weight: 800; color: #fff;
+  margin-bottom: 4px; line-height: 1.25;
+}
+.header p { font-size: 13px; color: rgba(255,255,255,.7); margin-bottom: 18px; }
 
-/* OUTER */
-.wrap-outer { max-width: 480px; margin: 0 auto; }
+/* Rating row in header */
+.header-rating {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  margin-bottom: 14px;
+}
+.tp-stars-sm { color: #00b67a; font-size: 14px; letter-spacing: 1px; }
+.header-rating-text {
+  font-size: 12px; font-weight: 600; color: rgba(255,255,255,.85);
+}
+.header-rating a {
+  font-size: 12px; font-weight: 700;
+  color: #fff;
+  text-decoration: underline; text-underline-offset: 2px;
+  opacity: .85;
+  cursor: pointer;
+}
+.header-rating a:hover { opacity: 1; }
+
+.header-badges { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; margin-top: 2px; }
+.header-badge { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: rgba(255,255,255,.88); }
+.header-badge svg { flex-shrink: 0; }
+
+/* ─── INNER WRAP ─── */
 .wrap { padding: 0 14px; }
 
-/* CARD */
+/* ─── CARD ─── */
 .card {
   background: #fff;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  border: 1px solid var(--border);
   margin-top: 14px;
   overflow: hidden;
 }
@@ -91,19 +131,18 @@ body {
 }
 .card-body { padding: 14px 16px; }
 
-/* BUNDLES */
+/* ─── BUNDLES ─── */
 .bundle {
   display: flex; align-items: center; gap: 11px;
   padding: 11px 12px;
   border: 2px solid var(--border);
-  border-radius: 10px; cursor: pointer;
+  border-radius: 9px; cursor: pointer;
   background: #fff;
   transition: border-color .12s, background .12s;
   margin-bottom: 10px; position: relative;
 }
 .bundle:last-child { margin-bottom: 0; }
 .bundle.sel { border-color: var(--blue); background: var(--blue-light); }
-
 .b-radio {
   width: 18px; height: 18px; border-radius: 50%;
   border: 2px solid #cbd5e1; flex-shrink: 0;
@@ -111,15 +150,11 @@ body {
   transition: border-color .12s;
 }
 .bundle.sel .b-radio { border-color: var(--blue); }
-.b-dot {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: var(--blue); display: none;
-}
+.b-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); display: none; }
 .bundle.sel .b-dot { display: block; }
-
 .b-img {
   width: 42px; height: 42px; border-radius: 8px;
-  background: #eef3fb; flex-shrink: 0;
+  background: #f1f4f9; flex-shrink: 0;
   display: flex; align-items: center; justify-content: center;
 }
 .b-info { flex: 1; min-width: 0; }
@@ -129,7 +164,6 @@ body {
 .b-orig { font-size: 11px; color: #94a3b8; text-decoration: line-through; }
 .b-main { font-size: 16px; font-weight: 800; line-height: 1.1; }
 .b-off { font-size: 11px; font-weight: 700; color: var(--red); }
-
 .b-tag {
   position: absolute; top: -9px; right: 12px;
   color: #fff; font-size: 9px; font-weight: 800;
@@ -137,19 +171,18 @@ body {
   padding: 2px 9px; border-radius: 20px;
 }
 
-/* PAYMENT */
+/* ─── PAYMENT ─── */
 .pay-opts { display: flex; flex-direction: column; gap: 8px; }
 .pay-opt {
   display: flex; align-items: center; gap: 10px;
   padding: 12px 14px;
-  border: 2px solid var(--border); border-radius: 10px;
+  border: 2px solid var(--border); border-radius: 9px;
   cursor: pointer; background: #fff;
   transition: border-color .12s, background .12s;
 }
 .pay-opt.sel { border-color: var(--blue); background: var(--blue-light); }
 .pay-label { flex: 1; font-size: 14px; font-weight: 600; }
 .pay-logos { display: flex; gap: 4px; align-items: center; }
-
 .pill {
   height: 24px; padding: 2px 7px;
   border: 1px solid var(--border); border-radius: 5px;
@@ -161,15 +194,15 @@ body {
 .pill.apple  { background: #000; color: #fff; border-color: #000; }
 .pill.gpay   { background: #fff; color: #111; }
 
-/* CARD FIELDS */
+/* ─── CARD FIELDS ─── */
 .cf { margin-top: 12px; display: flex; flex-direction: column; gap: 10px; }
 .field { display: flex; flex-direction: column; gap: 5px; }
 .field label { font-size: 11px; font-weight: 600; color: var(--muted); letter-spacing: .3px; }
 .fw { position: relative; }
 .field input, .field select {
-  width: 100%; padding: 13px 14px;
-  border: 1.5px solid var(--border); border-radius: 9px;
-  font-family: 'DM Sans', sans-serif; font-size: 15px;
+  width: 100%; padding: 12px 14px;
+  border: 1.5px solid var(--border); border-radius: 8px;
+  font-family: 'Inter', sans-serif; font-size: 15px;
   color: var(--text); background: #fff;
   outline: none; -webkit-appearance: none; appearance: none;
   transition: border-color .12s, box-shadow .12s;
@@ -185,8 +218,6 @@ body {
 }
 .has-icon { padding-right: 40px; }
 .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-
-/* Select arrow */
 .sel-wrap { position: relative; }
 .sel-wrap::after {
   content: '';
@@ -197,9 +228,9 @@ body {
 }
 .sel-wrap select { padding-right: 34px; }
 
-/* SUMMARY */
+/* ─── SUMMARY ─── */
 .summary {
-  background: var(--blue-light); border-radius: 10px;
+  background: var(--blue-light); border-radius: 9px;
   padding: 14px; border: 1px solid #c9ddf5;
 }
 .s-row {
@@ -214,108 +245,254 @@ body {
 }
 .s-orig { font-size: 12px; color: #94a3b8; text-decoration: line-through; }
 
-/* CTA */
+/* ─── CTA ─── */
 .cta-wrap { margin-top: 14px; }
 .cta-btn {
-  width: 100%; background: var(--blue); color: #fff;
-  border: none; border-radius: 12px; padding: 16px 20px;
-  font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 800;
+  width: 100%; background: linear-gradient(180deg, #00a800 0%, #006f00 100%);
+  color: #fff;
+  border: none; border-bottom: 3px solid #004d00;
+  border-radius: 10px; padding: 16px 20px;
+  font-family: 'Inter', sans-serif; font-size: 17px; font-weight: 800;
   cursor: pointer;
   display: flex; align-items: center; justify-content: center; gap: 8px;
-  box-shadow: 0 4px 16px rgba(26,79,138,.35);
-  transition: background .12s, transform .1s;
+  box-shadow: 0 4px 18px rgba(0,120,0,.28);
+  transition: filter .15s, transform .1s;
 }
-.cta-btn:hover { background: var(--blue-dark); }
+.cta-btn:hover { filter: brightness(1.06); }
 .cta-btn:active { transform: scale(.98); }
 
-/* TRUST BAR */
-.trust-bar {
-  display: flex; margin-top: 12px;
-  background: #fff; border-radius: 10px;
-  border: 1px solid var(--border); overflow: hidden;
+/* ─── TRUST BADGES (below button) ─── */
+.trust-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 24px;
+  padding: 16px 0 4px;
 }
-.t-item {
-  flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px;
-  padding: 12px 4px; text-align: center;
-  border-right: 1px solid var(--border);
+.trust-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
-.t-item:last-child { border-right: none; }
-.t-icon {
-  width: 30px; height: 30px; border-radius: 50%;
-  background: var(--green-bg);
+.trust-badge-icon {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: #e6f4ea;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.trust-badge-icon svg {
+  width: 18px; height: 18px;
+  stroke: #2d7a3a; fill: none;
+  stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+}
+.trust-badge-title { font-size: 12px; font-weight: 700; color: #1a5c24; line-height: 1.3; display: block; }
+.trust-badge-sub { font-size: 11px; color: #555; line-height: 1.2; display: block; }
+
+/* ─── REVIEWS ─── */
+
+/* Trustpilot header bar */
+.tp-header {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 10px;
+}
+.tp-logo-wrap {
+  display: flex; align-items: center; gap: 6px;
+}
+.tp-logo-star {
+  width: 28px; height: 28px; border-radius: 4px;
+  background: #00b67a;
   display: flex; align-items: center; justify-content: center;
 }
-.t-icon svg { stroke: var(--green); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.t-label { font-size: 10px; font-weight: 700; color: var(--text); line-height: 1.2; }
-.t-sub { font-size: 9px; color: var(--muted); }
-
-/* REVIEWS */
-.tp-bar {
-  display: flex; align-items: center; gap: 8px;
-  padding: 13px 16px; border-bottom: 1px solid var(--border);
+.tp-logo-star svg { width: 16px; height: 16px; fill: #fff; }
+.tp-logo-text {
+  font-size: 15px; font-weight: 800; color: #191919;
+  letter-spacing: -.3px;
 }
-.tp-logo { font-size: 13px; font-weight: 900; }
-.tp-logo span { color: #00b67a; }
-.tp-stars { color: #00b67a; font-size: 13px; }
-.tp-count { font-size: 11px; color: var(--muted); margin-left: auto; }
+.tp-logo-text span { color: #00b67a; }
+.tp-overall {
+  margin-left: auto;
+  text-align: right;
+}
+.tp-overall-score {
+  font-size: 15px; font-weight: 800; color: #191919;
+  line-height: 1;
+}
+.tp-overall-sub { font-size: 10px; color: var(--muted); margin-top: 2px; }
+.tp-stars-row {
+  display: flex; gap: 2px; margin-top: 3px;
+}
+.tp-star {
+  width: 16px; height: 16px; border-radius: 2px;
+  background: #00b67a;
+  display: flex; align-items: center; justify-content: center;
+}
+.tp-star svg { width: 10px; height: 10px; fill: #fff; }
 
-.review { padding: 13px 16px; border-bottom: 1px solid var(--border); }
+/* Individual review */
+.review {
+  padding: 16px 16px;
+  border-bottom: 1px solid var(--border);
+}
 .review:last-child { border-bottom: none; }
-.r-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
-.r-stars { color: #f5a623; font-size: 12px; }
-.r-badge { font-size: 10px; font-weight: 700; color: #00b67a; }
-.r-title { font-size: 13px; font-weight: 700; margin-bottom: 3px; }
-.r-body { font-size: 13px; color: #475569; line-height: 1.5; margin-bottom: 4px; }
-.r-author { font-size: 11px; color: #94a3b8; }
 
-/* FOOTER */
+.r-stars-row {
+  display: flex; gap: 2px; margin-bottom: 7px;
+}
+.r-star {
+  width: 18px; height: 18px; border-radius: 2px;
+  display: flex; align-items: center; justify-content: center;
+}
+.r-star.full { background: #00b67a; }
+.r-star.empty { background: #ddd; }
+.r-star svg { width: 11px; height: 11px; fill: #fff; }
+
+.r-title { font-size: 14px; font-weight: 700; color: #191919; margin-bottom: 5px; line-height: 1.3; }
+.r-body { font-size: 13px; color: #3d3d3d; line-height: 1.58; margin-bottom: 8px; }
+
+/* Product photo thumbnail */
+.r-photo {
+  width: 72px; height: 72px; border-radius: 7px;
+  object-fit: cover; margin-bottom: 9px;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  transition: transform .15s;
+}
+.r-photo:hover { transform: scale(1.04); }
+
+/* Author row */
+.r-author-row {
+  display: flex; align-items: center; gap: 8px;
+}
+.r-avatar {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--blue);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 800; color: #fff;
+  flex-shrink: 0;
+}
+.r-author-info { flex: 1; }
+.r-author-name { font-size: 12px; font-weight: 700; color: #191919; }
+.r-author-meta { font-size: 11px; color: var(--muted); }
+.r-verified {
+  font-size: 10px; font-weight: 700; color: #00b67a;
+  display: flex; align-items: center; gap: 3px;
+}
+.r-verified svg { width: 10px; height: 10px; }
+
+/* Author reply */
+.r-reply {
+  margin-top: 10px;
+  background: #f8fafc;
+  border-left: 3px solid var(--blue);
+  border-radius: 0 7px 7px 0;
+  padding: 10px 12px;
+}
+.r-reply-author {
+  font-size: 11px; font-weight: 700; color: var(--blue); margin-bottom: 4px;
+  display: flex; align-items: center; gap: 5px;
+}
+.r-reply-author svg { width: 12px; height: 12px; }
+.r-reply-body { font-size: 12px; color: #475569; line-height: 1.5; font-style: italic; }
+
+/* Lightbox */
+.lightbox {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(0,0,0,.85);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none; transition: opacity .2s;
+}
+.lightbox.open { opacity: 1; pointer-events: all; }
+.lightbox img {
+  max-width: 92vw; max-height: 88vh;
+  border-radius: 10px; box-shadow: 0 8px 40px rgba(0,0,0,.5);
+}
+.lightbox-close {
+  position: absolute; top: 16px; right: 16px;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(255,255,255,.15); border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; color: #fff;
+  font-size: 20px; font-weight: 300;
+}
+
+/* ─── FOOTER ─── */
 .pg-footer {
   text-align: center; padding: 20px 20px 0;
   font-size: 11px; color: #94a3b8;
-  max-width: 480px; margin: 0 auto;
 }
 .pg-footer a { color: #94a3b8; text-decoration: none; margin: 0 3px; }
 .pg-footer a:hover { color: var(--blue); }
 
-/* RESPONSIVE */
+/* ─── RESPONSIVE ─── */
 @media (max-width: 360px) {
   .header h1 { font-size: 17px; }
   .row2 { grid-template-columns: 1fr; }
   .b-main { font-size: 14px; }
 }
 @media (min-width: 560px) {
-  body { padding-top: 24px; }
-  .header { border-radius: 14px 14px 0 0; }
-  .wrap-outer { padding: 24px 20px 0; }
-  .wrap { padding: 0; }
+  body { padding-top: 28px; background: #f0f4f9; }
+  .page-col { border: 1px solid var(--border); border-radius: 16px; overflow: hidden; box-shadow: 0 4px 32px rgba(0,0,0,.09); }
+  .pg-footer { padding: 20px 20px 28px; }
 }
 </style>
 </head>
 <body>
 
-<button class="back-btn" onclick="history.back()" aria-label="Back">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1a4f8a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-    <polyline points="15 18 9 12 15 6"/>
-  </svg>
-</button>
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">×</button>
+  <img id="lb-img" src="" alt="">
+</div>
 
-<div class="wrap-outer">
+<div class="page-col">
 
+  <!-- Back button inside the column, positioned absolute in header -->
+  <button class="back-btn" onclick="history.back()" aria-label="Back">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 18 9 12 15 6"/>
+    </svg>
+  </button>
+
+  <!-- HEADER -->
   <div class="header">
     <div class="offer-chip">Limited — 75% OFF Today</div>
     <h1>Electronic Acupuncture Pen</h1>
-    <p>Drug-free pain relief. Clinically inspired. Instant results.</p>
+    <p>Drug-free jaw pain relief. Clinically inspired. Instant results.</p>
+
+    <!-- Rating row linking to reviews -->
+    <div class="header-rating">
+      <div class="tp-logo-star" style="width:18px;height:18px;border-radius:3px;background:#00b67a;display:inline-flex;align-items:center;justify-content:center;">
+        <svg viewBox="0 0 24 24" width="11" height="11" fill="#fff"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <span class="tp-stars-sm">★★★★★</span>
+      <span class="header-rating-text">4.8 · 3,200+ reviews</span>
+      <a href="#reviews" onclick="scrollToReviews(event)">See reviews ↓</a>
+    </div>
+
     <div class="header-badges">
       <div class="header-badge">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.95"/></svg>
+        <!-- Same truck icon as advertorial free shipping -->
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="1" y="3" width="15" height="13" rx="1"/>
+          <path d="M16 8h4l3 5v5h-7V8z"/>
+          <circle cx="5.5" cy="18.5" r="2.5"/>
+          <circle cx="18.5" cy="18.5" r="2.5"/>
+        </svg>
         Free Shipping
       </div>
       <div class="header-badge">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <!-- Same shield/check icon as advertorial 30-day returns -->
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <polyline points="9 12 11 14 15 10"/>
+        </svg>
         30-Day Returns
       </div>
       <div class="header-badge">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="11" rx="2"/>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
         Secure Checkout
       </div>
     </div>
@@ -323,7 +500,7 @@ body {
 
   <div class="wrap">
 
-    <!-- 1 BUNDLE -->
+    <!-- 1. BUNDLE -->
     <div class="card">
       <div class="card-head">
         <div class="card-num">1</div>
@@ -334,15 +511,7 @@ body {
         <div class="bundle" id="b1" onclick="selBundle(1)">
           <div class="b-radio"><div class="b-dot"></div></div>
           <div class="b-img">
-            <svg viewBox="0 0 40 64" fill="none" width="28" height="28">
-              <rect x="12" y="1" width="16" height="38" rx="8" fill="#c8c4f0"/>
-              <rect x="14" y="3" width="12" height="22" rx="6" fill="#e0ddf8"/>
-              <rect x="13" y="32" width="14" height="9" rx="2" fill="#9f99d8"/>
-              <rect x="15" y="34" width="10" height="5" rx="1" fill="#6b63c4"/>
-              <rect x="14" y="41" width="12" height="13" rx="4" fill="#b0abdf"/>
-              <circle cx="20" cy="56" r="3.5" fill="#8880cc"/>
-              <circle cx="18" cy="19" r="2" fill="#e53935"/>
-            </svg>
+            <svg viewBox="0 0 40 64" fill="none" width="28" height="28"><rect x="12" y="1" width="16" height="38" rx="8" fill="#c8c4f0"/><rect x="14" y="3" width="12" height="22" rx="6" fill="#e0ddf8"/><rect x="13" y="32" width="14" height="9" rx="2" fill="#9f99d8"/><rect x="15" y="34" width="10" height="5" rx="1" fill="#6b63c4"/><rect x="14" y="41" width="12" height="13" rx="4" fill="#b0abdf"/><circle cx="20" cy="56" r="3.5" fill="#8880cc"/><circle cx="18" cy="19" r="2" fill="#e53935"/></svg>
           </div>
           <div class="b-info">
             <div class="b-name">1× Pen</div>
@@ -358,20 +527,7 @@ body {
         <div class="bundle sel" id="b2" onclick="selBundle(2)">
           <div class="b-radio"><div class="b-dot"></div></div>
           <div class="b-img">
-            <svg viewBox="0 0 58 64" fill="none" width="36" height="36">
-              <rect x="2" y="5" width="14" height="34" rx="7" fill="#c8c4f0"/>
-              <rect x="4" y="7" width="10" height="20" rx="5" fill="#e0ddf8"/>
-              <rect x="3" y="31" width="12" height="8" rx="2" fill="#9f99d8"/>
-              <rect x="4" y="39" width="10" height="12" rx="4" fill="#b0abdf"/>
-              <circle cx="9" cy="53" r="3" fill="#8880cc"/>
-              <circle cx="7" cy="19" r="2" fill="#e53935"/>
-              <rect x="22" y="1" width="14" height="38" rx="7" fill="#b8b3e8"/>
-              <rect x="24" y="3" width="10" height="22" rx="5" fill="#d8d4f5"/>
-              <rect x="23" y="32" width="12" height="9" rx="2" fill="#9590d0"/>
-              <rect x="24" y="41" width="10" height="13" rx="4" fill="#a8a3d8"/>
-              <circle cx="29" cy="56" r="3.5" fill="#7f78c0"/>
-              <circle cx="27" cy="18" r="2" fill="#e53935"/>
-            </svg>
+            <svg viewBox="0 0 58 64" fill="none" width="36" height="36"><rect x="2" y="5" width="14" height="34" rx="7" fill="#c8c4f0"/><rect x="4" y="7" width="10" height="20" rx="5" fill="#e0ddf8"/><rect x="3" y="31" width="12" height="8" rx="2" fill="#9f99d8"/><rect x="4" y="39" width="10" height="12" rx="4" fill="#b0abdf"/><circle cx="9" cy="53" r="3" fill="#8880cc"/><circle cx="7" cy="19" r="2" fill="#e53935"/><rect x="22" y="1" width="14" height="38" rx="7" fill="#b8b3e8"/><rect x="24" y="3" width="10" height="22" rx="5" fill="#d8d4f5"/><rect x="23" y="32" width="12" height="9" rx="2" fill="#9590d0"/><rect x="24" y="41" width="10" height="13" rx="4" fill="#a8a3d8"/><circle cx="29" cy="56" r="3.5" fill="#7f78c0"/><circle cx="27" cy="18" r="2" fill="#e53935"/></svg>
           </div>
           <div class="b-info">
             <div class="b-name">2× Pens</div>
@@ -388,24 +544,7 @@ body {
         <div class="bundle" id="b3" onclick="selBundle(3)">
           <div class="b-radio"><div class="b-dot"></div></div>
           <div class="b-img">
-            <svg viewBox="0 0 70 64" fill="none" width="44" height="44">
-              <rect x="1" y="7" width="13" height="30" rx="6.5" fill="#c8c4f0"/>
-              <rect x="3" y="9" width="9" height="17" rx="4.5" fill="#e0ddf8"/>
-              <rect x="2" y="29" width="11" height="7" rx="2" fill="#9f99d8"/>
-              <rect x="3" y="36" width="9" height="11" rx="3.5" fill="#b0abdf"/>
-              <circle cx="7.5" cy="49" r="2.5" fill="#8880cc"/>
-              <rect x="20" y="1" width="14" height="38" rx="7" fill="#b8b3e8"/>
-              <rect x="22" y="3" width="10" height="22" rx="5" fill="#d8d4f5"/>
-              <rect x="21" y="32" width="12" height="9" rx="2" fill="#9590d0"/>
-              <rect x="22" y="41" width="10" height="13" rx="4" fill="#a8a3d8"/>
-              <circle cx="27" cy="56" r="3.5" fill="#7f78c0"/>
-              <circle cx="25" cy="18" r="2" fill="#e53935"/>
-              <rect x="40" y="7" width="13" height="30" rx="6.5" fill="#c8c4f0"/>
-              <rect x="42" y="9" width="9" height="17" rx="4.5" fill="#e0ddf8"/>
-              <rect x="41" y="29" width="11" height="7" rx="2" fill="#9f99d8"/>
-              <rect x="42" y="36" width="9" height="11" rx="3.5" fill="#b0abdf"/>
-              <circle cx="46.5" cy="49" r="2.5" fill="#8880cc"/>
-            </svg>
+            <svg viewBox="0 0 70 64" fill="none" width="44" height="44"><rect x="1" y="7" width="13" height="30" rx="6.5" fill="#c8c4f0"/><rect x="3" y="9" width="9" height="17" rx="4.5" fill="#e0ddf8"/><rect x="2" y="29" width="11" height="7" rx="2" fill="#9f99d8"/><rect x="3" y="36" width="9" height="11" rx="3.5" fill="#b0abdf"/><circle cx="7.5" cy="49" r="2.5" fill="#8880cc"/><rect x="20" y="1" width="14" height="38" rx="7" fill="#b8b3e8"/><rect x="22" y="3" width="10" height="22" rx="5" fill="#d8d4f5"/><rect x="21" y="32" width="12" height="9" rx="2" fill="#9590d0"/><rect x="22" y="41" width="10" height="13" rx="4" fill="#a8a3d8"/><circle cx="27" cy="56" r="3.5" fill="#7f78c0"/><circle cx="25" cy="18" r="2" fill="#e53935"/><rect x="40" y="7" width="13" height="30" rx="6.5" fill="#c8c4f0"/><rect x="42" y="9" width="9" height="17" rx="4.5" fill="#e0ddf8"/><rect x="41" y="29" width="11" height="7" rx="2" fill="#9f99d8"/><rect x="42" y="36" width="9" height="11" rx="3.5" fill="#b0abdf"/><circle cx="46.5" cy="49" r="2.5" fill="#8880cc"/></svg>
           </div>
           <div class="b-info">
             <div class="b-name">3× Pens</div>
@@ -416,13 +555,13 @@ body {
             <div class="b-main">119.97€</div>
             <div class="b-off">70% OFF</div>
           </div>
-          <div class="b-tag" style="background:#c47000;">Best Value</div>
+          <div class="b-tag" style="background:#b45309;">Best Value</div>
         </div>
 
       </div>
     </div>
 
-    <!-- 2 PAYMENT -->
+    <!-- 2. PAYMENT -->
     <div class="card">
       <div class="card-head">
         <div class="card-num">2</div>
@@ -493,7 +632,7 @@ body {
       </div>
     </div>
 
-    <!-- 3 YOUR DETAILS -->
+    <!-- 3. YOUR DETAILS -->
     <div class="card">
       <div class="card-head">
         <div class="card-num">3</div>
@@ -521,7 +660,7 @@ body {
       </div>
     </div>
 
-    <!-- 4 DELIVERY -->
+    <!-- 4. DELIVERY -->
     <div class="card">
       <div class="card-head">
         <div class="card-num">4</div>
@@ -532,12 +671,7 @@ body {
           <label>Country</label>
           <div class="sel-wrap">
             <select autocomplete="country">
-              <option value="US">United States</option>
-              <option value="CA">Canada</option>
-              <option value="AU">Australia</option>
-              <option value="GB">United Kingdom</option>
-              <option disabled>──────────</option>
-              <option value="AF">Afghanistan</option><option value="AL">Albania</option><option value="DZ">Algeria</option><option value="AD">Andorra</option><option value="AO">Angola</option><option value="AR">Argentina</option><option value="AM">Armenia</option><option value="AT">Austria</option><option value="AZ">Azerbaijan</option><option value="BS">Bahamas</option><option value="BH">Bahrain</option><option value="BD">Bangladesh</option><option value="BY">Belarus</option><option value="BE">Belgium</option><option value="BZ">Belize</option><option value="BR">Brazil</option><option value="BG">Bulgaria</option><option value="KH">Cambodia</option><option value="CM">Cameroon</option><option value="CL">Chile</option><option value="CN">China</option><option value="CO">Colombia</option><option value="HR">Croatia</option><option value="CY">Cyprus</option><option value="CZ">Czech Republic</option><option value="DK">Denmark</option><option value="DO">Dominican Republic</option><option value="EC">Ecuador</option><option value="EG">Egypt</option><option value="EE">Estonia</option><option value="ET">Ethiopia</option><option value="FI">Finland</option><option value="FR">France</option><option value="GE">Georgia</option><option value="DE">Germany</option><option value="GH">Ghana</option><option value="GR">Greece</option><option value="GT">Guatemala</option><option value="HU">Hungary</option><option value="IS">Iceland</option><option value="IN">India</option><option value="ID">Indonesia</option><option value="IE">Ireland</option><option value="IL">Israel</option><option value="IT">Italy</option><option value="JP">Japan</option><option value="JO">Jordan</option><option value="KZ">Kazakhstan</option><option value="KE">Kenya</option><option value="KW">Kuwait</option><option value="LV">Latvia</option><option value="LB">Lebanon</option><option value="LT">Lithuania</option><option value="LU">Luxembourg</option><option value="MY">Malaysia</option><option value="MT">Malta</option><option value="MX">Mexico</option><option value="MA">Morocco</option><option value="NL">Netherlands</option><option value="NZ">New Zealand</option><option value="NG">Nigeria</option><option value="NO">Norway</option><option value="OM">Oman</option><option value="PK">Pakistan</option><option value="PA">Panama</option><option value="PE">Peru</option><option value="PH">Philippines</option><option value="PL">Poland</option><option value="PT">Portugal</option><option value="QA">Qatar</option><option value="RO">Romania</option><option value="RU">Russia</option><option value="SA">Saudi Arabia</option><option value="RS">Serbia</option><option value="SG">Singapore</option><option value="SK">Slovakia</option><option value="SI">Slovenia</option><option value="ZA">South Africa</option><option value="ES">Spain</option><option value="LK">Sri Lanka</option><option value="SE">Sweden</option><option value="CH">Switzerland</option><option value="TW">Taiwan</option><option value="TH">Thailand</option><option value="TN">Tunisia</option><option value="TR">Turkey</option><option value="UA">Ukraine</option><option value="AE">United Arab Emirates</option><option value="UY">Uruguay</option><option value="VN">Vietnam</option><option value="YE">Yemen</option><option value="ZW">Zimbabwe</option>
+              <option value="US">United States</option><option value="CA">Canada</option><option value="AU">Australia</option><option value="GB">United Kingdom</option><option disabled>──────────</option><option value="AF">Afghanistan</option><option value="AL">Albania</option><option value="DZ">Algeria</option><option value="AD">Andorra</option><option value="AO">Angola</option><option value="AR">Argentina</option><option value="AM">Armenia</option><option value="AT">Austria</option><option value="AZ">Azerbaijan</option><option value="BS">Bahamas</option><option value="BH">Bahrain</option><option value="BD">Bangladesh</option><option value="BY">Belarus</option><option value="BE">Belgium</option><option value="BZ">Belize</option><option value="BR">Brazil</option><option value="BG">Bulgaria</option><option value="KH">Cambodia</option><option value="CM">Cameroon</option><option value="CL">Chile</option><option value="CN">China</option><option value="CO">Colombia</option><option value="HR">Croatia</option><option value="CY">Cyprus</option><option value="CZ">Czech Republic</option><option value="DK">Denmark</option><option value="DO">Dominican Republic</option><option value="EC">Ecuador</option><option value="EG">Egypt</option><option value="EE">Estonia</option><option value="ET">Ethiopia</option><option value="FI">Finland</option><option value="FR">France</option><option value="GE">Georgia</option><option value="DE">Germany</option><option value="GH">Ghana</option><option value="GR">Greece</option><option value="GT">Guatemala</option><option value="HU">Hungary</option><option value="IS">Iceland</option><option value="IN">India</option><option value="ID">Indonesia</option><option value="IE">Ireland</option><option value="IL">Israel</option><option value="IT">Italy</option><option value="JP">Japan</option><option value="JO">Jordan</option><option value="KZ">Kazakhstan</option><option value="KE">Kenya</option><option value="KW">Kuwait</option><option value="LV">Latvia</option><option value="LB">Lebanon</option><option value="LT">Lithuania</option><option value="LU">Luxembourg</option><option value="MY">Malaysia</option><option value="MT">Malta</option><option value="MX">Mexico</option><option value="MA">Morocco</option><option value="NL">Netherlands</option><option value="NZ">New Zealand</option><option value="NG">Nigeria</option><option value="NO">Norway</option><option value="OM">Oman</option><option value="PK">Pakistan</option><option value="PA">Panama</option><option value="PE">Peru</option><option value="PH">Philippines</option><option value="PL">Poland</option><option value="PT">Portugal</option><option value="QA">Qatar</option><option value="RO">Romania</option><option value="RU">Russia</option><option value="SA">Saudi Arabia</option><option value="RS">Serbia</option><option value="SG">Singapore</option><option value="SK">Slovakia</option><option value="SI">Slovenia</option><option value="ZA">South Africa</option><option value="ES">Spain</option><option value="LK">Sri Lanka</option><option value="SE">Sweden</option><option value="CH">Switzerland</option><option value="TW">Taiwan</option><option value="TH">Thailand</option><option value="TN">Tunisia</option><option value="TR">Turkey</option><option value="UA">Ukraine</option><option value="AE">United Arab Emirates</option><option value="UY">Uruguay</option><option value="VN">Vietnam</option><option value="YE">Yemen</option><option value="ZW">Zimbabwe</option>
             </select>
           </div>
         </div>
@@ -558,7 +692,7 @@ body {
       </div>
     </div>
 
-    <!-- 5 SUMMARY -->
+    <!-- 5. SUMMARY -->
     <div class="card">
       <div class="card-head">
         <div class="card-num">5</div>
@@ -591,57 +725,247 @@ body {
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
         Complete Order — Free Shipping
       </button>
-      <div class="trust-bar">
-        <div class="t-item">
-          <div class="t-icon"><svg width="14" height="14" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.95"/></svg></div>
-          <div class="t-label">30-Day Returns</div>
-          <div class="t-sub">Risk-free</div>
+
+      <!-- Trust badges below button — same icons as advertorial -->
+      <div class="trust-badges">
+        <div class="trust-badge">
+          <div class="trust-badge-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <polyline points="9 12 11 14 15 10"/>
+            </svg>
+          </div>
+          <div>
+            <span class="trust-badge-title">30-Day Returns</span>
+            <span class="trust-badge-sub">Risk-free guarantee</span>
+          </div>
         </div>
-        <div class="t-item">
-          <div class="t-icon"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/><circle cx="12" cy="16" r="1"/><circle cx="20" cy="16" r="1"/></svg></div>
-          <div class="t-label">Free Shipping</div>
-          <div class="t-sub">All orders</div>
+        <div class="trust-badge">
+          <div class="trust-badge-icon">
+            <svg viewBox="0 0 24 24">
+              <rect x="1" y="3" width="15" height="13" rx="1"/>
+              <path d="M16 8h4l3 5v5h-7V8z"/>
+              <circle cx="5.5" cy="18.5" r="2.5"/>
+              <circle cx="18.5" cy="18.5" r="2.5"/>
+            </svg>
+          </div>
+          <div>
+            <span class="trust-badge-title">Free Shipping</span>
+            <span class="trust-badge-sub">On all orders</span>
+          </div>
         </div>
-        <div class="t-item">
-          <div class="t-icon"><svg width="14" height="14" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-          <div class="t-label">Secure Checkout</div>
-          <div class="t-sub">SSL encrypted</div>
+        <div class="trust-badge">
+          <div class="trust-badge-icon">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+          </div>
+          <div>
+            <span class="trust-badge-title">Secure Checkout</span>
+            <span class="trust-badge-sub">SSL encrypted</span>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- REVIEWS -->
-    <div class="card" style="margin-top:20px;">
-      <div class="tp-bar">
-        <div class="tp-logo"><span>★</span> Trustpilot</div>
-        <div class="tp-stars">★★★★★</div>
-        <div class="tp-count">3,200+ reviews</div>
+    <div class="card" id="reviews" style="margin-top:20px;">
+
+      <!-- Trustpilot-style header -->
+      <div class="tp-header">
+        <div class="tp-logo-wrap">
+          <div class="tp-logo-star">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <div class="tp-logo-text">Trust<span>pilot</span></div>
+        </div>
+        <div style="margin-left:10px;">
+          <div class="tp-stars-row">
+            <div class="tp-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+            <div class="tp-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+            <div class="tp-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+            <div class="tp-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+            <div class="tp-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          </div>
+          <div style="font-size:10px;color:var(--muted);margin-top:2px;font-weight:600;">Excellent</div>
+        </div>
+        <div class="tp-overall">
+          <div class="tp-overall-score">4.8</div>
+          <div class="tp-overall-sub">3,200+ reviews</div>
+        </div>
       </div>
+
+      <!-- Review 1: James T. — 4 stars, with photo, author reply -->
       <div class="review">
-        <div class="r-top"><span class="r-stars">★★★★★</span><span class="r-badge">✓ Verified</span></div>
-        <div class="r-title">Super powerful</div>
-        <div class="r-body">Three sessions in and I can finally sleep through the night. Worth every cent.</div>
-        <div class="r-author">Rory L.</div>
+        <div class="r-stars-row">
+          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="r-star empty"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        </div>
+        <div class="r-title">Thought it was nonsense. It wasn't.</div>
+        <div class="r-body">The 30-day return made it easy to just try. I did not send it back. Helped a lot.</div>
+        <img class="r-photo" src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=70" alt="Product photo by James T." onclick="openLightbox(this.src)">
+        <div class="r-author-row">
+          <div class="r-avatar">JT</div>
+          <div class="r-author-info">
+            <div class="r-author-name">James T., 51</div>
+            <div class="r-author-meta">March 12, 2024</div>
+          </div>
+          <div class="r-verified">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Verified
+          </div>
+        </div>
+        <div class="r-reply">
+          <div class="r-reply-author">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Dr. Harris — Author
+          </div>
+          <div class="r-reply-body">James, that's all anyone can ask. Really glad it helped.</div>
+        </div>
       </div>
+
+      <!-- Review 2: Rachel B. — 5 stars, with photo -->
       <div class="review">
-        <div class="r-top"><span class="r-stars">★★★★★</span><span class="r-badge">✓ Verified</span></div>
-        <div class="r-title">Sooo good</div>
-        <div class="r-body">Works really well on my shoulder tension. Took about 10 days to arrive, but the product itself is great. Would buy again.</div>
-        <div class="r-author">Rosie W.</div>
+        <div class="r-stars-row">
+          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        </div>
+        <div class="r-title">Two years of problems. Gone.</div>
+        <div class="r-body">I ordered mostly because of the return policy — figured worst case I'm out nothing. By the end of the first week I felt something shifting. By week four I realized the thing I'd been dealing with for two years had just… quietly stopped being a problem. I don't know how else to describe it. Still using it every morning.</div>
+        <img class="r-photo" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200&q=70" alt="Product photo by Rachel B." onclick="openLightbox(this.src)">
+        <div class="r-author-row">
+          <div class="r-avatar" style="background:#6b21a8;">RB</div>
+          <div class="r-author-info">
+            <div class="r-author-name">Rachel B., 29</div>
+            <div class="r-author-meta">March 3, 2024</div>
+          </div>
+          <div class="r-verified">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Verified
+          </div>
+        </div>
       </div>
+
+      <!-- Review 3: Sandra M. — 3 stars, with reply -->
       <div class="review">
-        <div class="r-top"><span class="r-stars">★★★★★</span><span class="r-badge">✓ Verified</span></div>
-        <div class="r-title">Worth the money</div>
-        <div class="r-body">Used it on my knee and the swelling went down noticeably within two days. Highly recommend.</div>
-        <div class="r-author">Logan N.</div>
+        <div class="r-stars-row">
+          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="r-star empty"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="r-star empty"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        </div>
+        <div class="r-title">Took a few weeks, but it did work</div>
+        <div class="r-body">I didn't get instant results — just to be upfront about that. Took a few weeks before I noticed anything. Probably some people do see it faster, I don't know. But it did work eventually so I can't really complain.</div>
+        <div class="r-author-row">
+          <div class="r-avatar" style="background:#0f766e;">SM</div>
+          <div class="r-author-info">
+            <div class="r-author-name">Sandra M., 44</div>
+            <div class="r-author-meta">February 28, 2024</div>
+          </div>
+          <div class="r-verified">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Verified
+          </div>
+        </div>
+        <div class="r-reply">
+          <div class="r-reply-author">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Dr. Harris — Author
+          </div>
+          <div class="r-reply-body">Sandra, that's fair — it does take consistency. Glad you stuck with it.</div>
+        </div>
       </div>
+
+      <!-- Review 4: David K. — 5 stars, photo, author reply -->
       <div class="review">
-        <div class="r-top"><span class="r-stars">★★★★★</span><span class="r-badge">✓ Verified</span></div>
-        <div class="r-title">Recommend it</div>
-        <div class="r-body">Been using it daily for a year and it still works like new. Makes the whole evening routine 10x more relaxing.</div>
-        <div class="r-author">Sienna W.</div>
+        <div class="r-stars-row">
+          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        </div>
+        <div class="r-title">Solid product, fast delivery</div>
+        <div class="r-body">Came in 5 days, looks and feels solid. The little guide that comes with it is hard to read, but figured it out. Works well.</div>
+        <img class="r-photo" src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=200&q=70" alt="Product photo by David K." onclick="openLightbox(this.src)">
+        <div class="r-author-row">
+          <div class="r-avatar" style="background:#b45309;">DK</div>
+          <div class="r-author-info">
+            <div class="r-author-name">David K., 38</div>
+            <div class="r-author-meta">January 19, 2024</div>
+          </div>
+          <div class="r-verified">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Verified
+          </div>
+        </div>
+        <div class="r-reply">
+          <div class="r-reply-author">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Dr. Harris — Author
+          </div>
+          <div class="r-reply-body">David, noted on the guide. Glad you got there.</div>
+        </div>
       </div>
-    </div>
+
+      <!-- Review 5: Robert H. — 4 stars, no photo -->
+      <div class="review">
+        <div class="r-stars-row">
+          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="r-star empty"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        </div>
+        <div class="r-title">My wife was right. Again.</div>
+        <div class="r-body">My wife talked me into it. I thought it was a waste of money. 30 days to return it so whatever. It wasn't a waste of money.</div>
+        <div class="r-author-row">
+          <div class="r-avatar" style="background:#374151;">RH</div>
+          <div class="r-author-info">
+            <div class="r-author-name">Robert H., 63</div>
+            <div class="r-author-meta">February 5, 2024</div>
+          </div>
+          <div class="r-verified">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Verified
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 6: Mark C. — 5 stars, with photo -->
+      <div class="review">
+        <div class="r-stars-row">
+          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        </div>
+        <div class="r-title">Better quality than I expected</div>
+        <div class="r-body">Better quality than I expected. Showed up in four days. Started noticing a difference around week two. Really glad I tried it.</div>
+        <img class="r-photo" src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=200&q=70" alt="Product photo by Mark C." onclick="openLightbox(this.src)">
+        <div class="r-author-row">
+          <div class="r-avatar" style="background:#1a4f8a;">MC</div>
+          <div class="r-author-info">
+            <div class="r-author-name">Mark C., 55</div>
+            <div class="r-author-meta">January 31, 2024</div>
+          </div>
+          <div class="r-verified">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Verified
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /reviews card -->
 
   </div><!-- /wrap -->
 
@@ -649,7 +973,7 @@ body {
     <a href="#">Terms</a> · <a href="#">Privacy</a> · <a href="#">Refund Policy</a> · <a href="#">Contact</a>
   </div>
 
-</div><!-- /wrap-outer -->
+</div><!-- /page-col -->
 
 <script>
 const bdata = {
@@ -671,9 +995,8 @@ function selBundle(n) {
 function selPay(m) {
   ['card','apple','google'].forEach(k => {
     const el = document.getElementById('p-'+k);
-    const dot = el.querySelector('.b-dot');
     el.classList.toggle('sel', k===m);
-    dot.style.display = k===m ? 'block' : 'none';
+    el.querySelector('.b-dot').style.display = k===m ? 'block' : 'none';
   });
   document.getElementById('cf').style.display = m==='card' ? 'flex' : 'none';
 }
@@ -687,6 +1010,19 @@ function fmtExp(el) {
   let v = el.value.replace(/\D/g,'').slice(0,4);
   if (v.length >= 2) v = v.slice(0,2) + ' / ' + v.slice(2);
   el.value = v;
+}
+
+function scrollToReviews(e) {
+  e.preventDefault();
+  document.getElementById('reviews').scrollIntoView({behavior:'smooth'});
+}
+
+function openLightbox(src) {
+  document.getElementById('lb-img').src = src;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
 }
 </script>
 </body>
