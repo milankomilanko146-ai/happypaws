@@ -2,1028 +2,1030 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Checkout — Acupuncture Pen</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Electronic Acupuncture Pen – Checkout</title>
 <style>
-:root {
-  --blue: #1a4f8a;
-  --blue-dark: #133d6e;
-  --blue-light: #eef4fc;
-  --green: #1a7a3c;
-  --green-bg: #e8f5ee;
-  --red: #c0392b;
-  --border: #e2e8f0;
-  --text: #0f172a;
-  --muted: #64748b;
-  --radius: 10px;
-  --shadow: 0 1px 3px rgba(0,0,0,.06), 0 4px 14px rgba(0,0,0,.06);
-  --max: 520px;
-}
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-html { font-size: 16px; }
-body {
-  font-family: 'Inter', sans-serif;
-  background: #fff;
-  color: var(--text);
-  min-height: 100vh;
-  padding-bottom: 60px;
-}
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* ─── LAYOUT WRAPPER ─── */
-.page-col {
-  max-width: var(--max);
-  margin: 0 auto;
-  position: relative;
-}
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #f5f5f7;
+    color: #1a1a1a;
+    min-height: 100vh;
+  }
 
-/* ─── BACK BUTTON ─── */
-.back-btn {
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  z-index: 200;
-  background: rgba(255,255,255,.18);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255,255,255,.28);
-  border-radius: 50%;
-  width: 36px; height: 36px;
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer;
-  transition: background .15s;
-}
-.back-btn:hover { background: rgba(255,255,255,.28); }
+  /* Back button */
+  .back-btn {
+    position: fixed;
+    top: 14px;
+    left: 14px;
+    z-index: 100;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 1px 4px rgba(0,0,0,.10);
+    text-decoration: none;
+    color: #1a1a1a;
+    font-size: 18px;
+  }
 
-/* ─── HEADER ─── */
-.header {
-  background: var(--blue);
-  padding: 52px 20px 28px;
-  text-align: center;
-  border-radius: 0 0 0 0;
-}
-@media (min-width: 560px) {
-  .header { border-radius: 0 0 14px 14px; }
-}
-.offer-chip {
-  display: inline-block;
-  background: rgba(255,255,255,.15);
-  color: #fff;
-  font-size: 10px; font-weight: 800; letter-spacing: 1.2px;
-  text-transform: uppercase;
-  padding: 4px 13px; border-radius: 20px; margin-bottom: 10px;
-}
-.header h1 {
-  font-family: 'Inter', sans-serif;
-  font-size: 21px; font-weight: 800; color: #fff;
-  margin-bottom: 4px; line-height: 1.25;
-}
-.header p { font-size: 13px; color: rgba(255,255,255,.7); margin-bottom: 18px; }
+  /* Top promo bar */
+  .promo-bar {
+    background: #1a1a1a;
+    color: #fff;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .3px;
+    padding: 9px 16px;
+  }
 
-/* Rating row in header */
-.header-rating {
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  margin-bottom: 14px;
-}
-.tp-stars-sm { color: #00b67a; font-size: 14px; letter-spacing: 1px; }
-.header-rating-text {
-  font-size: 12px; font-weight: 600; color: rgba(255,255,255,.85);
-}
-.header-rating a {
-  font-size: 12px; font-weight: 700;
-  color: #fff;
-  text-decoration: underline; text-underline-offset: 2px;
-  opacity: .85;
-  cursor: pointer;
-}
-.header-rating a:hover { opacity: 1; }
+  /* Main layout */
+  .page-wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 0 60px 0;
+  }
 
-.header-badges { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; margin-top: 2px; }
-.header-badge { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: rgba(255,255,255,.88); }
-.header-badge svg { flex-shrink: 0; }
+  @media(min-width: 1000px) {
+    .page-wrap { max-width: 820px; }
+  }
 
-/* ─── INNER WRAP ─── */
-.wrap { padding: 0 14px; }
+  /* Hero section */
+  .hero {
+    background: #fff;
+    padding: 32px 20px 24px;
+    text-align: center;
+    border-bottom: 1px solid #ebebeb;
+  }
 
-/* ─── CARD ─── */
-.card {
-  background: #fff;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  border: 1px solid var(--border);
-  margin-top: 14px;
-  overflow: hidden;
-}
-.card-head {
-  padding: 13px 16px;
-  border-bottom: 1px solid var(--border);
-  display: flex; align-items: center; gap: 8px;
-}
-.card-num {
-  width: 22px; height: 22px; border-radius: 50%;
-  background: var(--blue); color: #fff;
-  font-size: 11px; font-weight: 800;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
-.card-title {
-  font-size: 11px; font-weight: 700;
-  letter-spacing: .8px; text-transform: uppercase; color: var(--muted);
-}
-.card-body { padding: 14px 16px; }
+  .hero-badge {
+    display: inline-block;
+    background: #fff3cd;
+    color: #8a6000;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 4px 10px;
+    margin-bottom: 10px;
+  }
 
-/* ─── BUNDLES ─── */
-.bundle {
-  display: flex; align-items: center; gap: 11px;
-  padding: 11px 12px;
-  border: 2px solid var(--border);
-  border-radius: 9px; cursor: pointer;
-  background: #fff;
-  transition: border-color .12s, background .12s;
-  margin-bottom: 10px; position: relative;
-}
-.bundle:last-child { margin-bottom: 0; }
-.bundle.sel { border-color: var(--blue); background: var(--blue-light); }
-.b-radio {
-  width: 18px; height: 18px; border-radius: 50%;
-  border: 2px solid #cbd5e1; flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center;
-  transition: border-color .12s;
-}
-.bundle.sel .b-radio { border-color: var(--blue); }
-.b-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); display: none; }
-.bundle.sel .b-dot { display: block; }
-.b-img {
-  width: 42px; height: 42px; border-radius: 8px;
-  background: #f1f4f9; flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center;
-}
-.b-info { flex: 1; min-width: 0; }
-.b-name { font-size: 14px; font-weight: 700; }
-.b-sub { font-size: 11px; color: var(--muted); margin-top: 1px; }
-.b-price { text-align: right; flex-shrink: 0; }
-.b-orig { font-size: 11px; color: #94a3b8; text-decoration: line-through; }
-.b-main { font-size: 16px; font-weight: 800; line-height: 1.1; }
-.b-off { font-size: 11px; font-weight: 700; color: var(--red); }
-.b-tag {
-  position: absolute; top: -9px; right: 12px;
-  color: #fff; font-size: 9px; font-weight: 800;
-  letter-spacing: .8px; text-transform: uppercase;
-  padding: 2px 9px; border-radius: 20px;
-}
+  .hero h1 {
+    font-size: 22px;
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 6px;
+    line-height: 1.25;
+  }
 
-/* ─── PAYMENT ─── */
-.pay-opts { display: flex; flex-direction: column; gap: 8px; }
-.pay-opt {
-  display: flex; align-items: center; gap: 10px;
-  padding: 12px 14px;
-  border: 2px solid var(--border); border-radius: 9px;
-  cursor: pointer; background: #fff;
-  transition: border-color .12s, background .12s;
-}
-.pay-opt.sel { border-color: var(--blue); background: var(--blue-light); }
-.pay-label { flex: 1; font-size: 14px; font-weight: 600; }
-.pay-logos { display: flex; gap: 4px; align-items: center; }
-.pill {
-  height: 24px; padding: 2px 7px;
-  border: 1px solid var(--border); border-radius: 5px;
-  background: #fff;
-  display: flex; align-items: center; gap: 3px;
-  font-size: 10px; font-weight: 800;
-}
-.pill.stripe { background: #635bff; color: #fff; border-color: #635bff; }
-.pill.apple  { background: #000; color: #fff; border-color: #000; }
-.pill.gpay   { background: #fff; color: #111; }
+  .hero p.tagline {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
 
-/* ─── CARD FIELDS ─── */
-.cf { margin-top: 12px; display: flex; flex-direction: column; gap: 10px; }
-.field { display: flex; flex-direction: column; gap: 5px; }
-.field label { font-size: 11px; font-weight: 600; color: var(--muted); letter-spacing: .3px; }
-.fw { position: relative; }
-.field input, .field select {
-  width: 100%; padding: 12px 14px;
-  border: 1.5px solid var(--border); border-radius: 8px;
-  font-family: 'Inter', sans-serif; font-size: 15px;
-  color: var(--text); background: #fff;
-  outline: none; -webkit-appearance: none; appearance: none;
-  transition: border-color .12s, box-shadow .12s;
-}
-.field input:focus, .field select:focus {
-  border-color: var(--blue);
-  box-shadow: 0 0 0 3px rgba(26,79,138,.1);
-}
-.field input::placeholder { color: #c0cce0; }
-.fi {
-  position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
-  color: #c0cce0; pointer-events: none;
-}
-.has-icon { padding-right: 40px; }
-.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.sel-wrap { position: relative; }
-.sel-wrap::after {
-  content: '';
-  position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
-  width: 0; height: 0;
-  border-left: 5px solid transparent; border-right: 5px solid transparent;
-  border-top: 5px solid #94a3b8; pointer-events: none;
-}
-.sel-wrap select { padding-right: 34px; }
+  .hero-rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 14px;
+    font-size: 13px;
+    color: #444;
+  }
 
-/* ─── SUMMARY ─── */
-.summary {
-  background: var(--blue-light); border-radius: 9px;
-  padding: 14px; border: 1px solid #c9ddf5;
-}
-.s-row {
-  display: flex; justify-content: space-between; align-items: center;
-  font-size: 14px; color: var(--muted); padding: 3px 0;
-}
-.s-row.disc { color: var(--green); font-weight: 600; }
-.s-row.ship { color: var(--blue); font-weight: 600; }
-.s-row.total {
-  border-top: 1px solid #b8d0ee; margin-top: 6px; padding-top: 10px;
-  font-size: 17px; font-weight: 800; color: var(--text);
-}
-.s-orig { font-size: 12px; color: #94a3b8; text-decoration: line-through; }
+  .stars { color: #00b67a; font-size: 15px; letter-spacing: 1px; }
 
-/* ─── CTA ─── */
-.cta-wrap { margin-top: 14px; }
-.cta-btn {
-  width: 100%; background: linear-gradient(180deg, #00a800 0%, #006f00 100%);
-  color: #fff;
-  border: none; border-bottom: 3px solid #004d00;
-  border-radius: 10px; padding: 16px 20px;
-  font-family: 'Inter', sans-serif; font-size: 17px; font-weight: 800;
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  box-shadow: 0 4px 18px rgba(0,120,0,.28);
-  transition: filter .15s, transform .1s;
-}
-.cta-btn:hover { filter: brightness(1.06); }
-.cta-btn:active { transform: scale(.98); }
+  .hero-rating a {
+    color: #4a4af4;
+    text-decoration: underline;
+    font-size: 12.5px;
+  }
 
-/* ─── TRUST BADGES (below button) ─── */
-.trust-badges {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px 24px;
-  padding: 16px 0 4px;
-}
-.trust-badge {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.trust-badge-icon {
-  width: 36px; height: 36px; border-radius: 50%;
-  background: #e6f4ea;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
-.trust-badge-icon svg {
-  width: 18px; height: 18px;
-  stroke: #2d7a3a; fill: none;
-  stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
-}
-.trust-badge-title { font-size: 12px; font-weight: 700; color: #1a5c24; line-height: 1.3; display: block; }
-.trust-badge-sub { font-size: 11px; color: #555; line-height: 1.2; display: block; }
+  .trust-pills {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    font-size: 12.5px;
+    color: #333;
+    font-weight: 600;
+  }
 
-/* ─── REVIEWS ─── */
+  .trust-pills span { display: flex; align-items: center; gap: 5px; }
 
-/* Trustpilot header bar */
-.tp-header {
-  padding: 14px 16px;
-  border-bottom: 1px solid var(--border);
-  display: flex; align-items: center; gap: 10px;
-}
-.tp-logo-wrap {
-  display: flex; align-items: center; gap: 6px;
-}
-.tp-logo-star {
-  width: 28px; height: 28px; border-radius: 4px;
-  background: #00b67a;
-  display: flex; align-items: center; justify-content: center;
-}
-.tp-logo-star svg { width: 16px; height: 16px; fill: #fff; }
-.tp-logo-text {
-  font-size: 15px; font-weight: 800; color: #191919;
-  letter-spacing: -.3px;
-}
-.tp-logo-text span { color: #00b67a; }
-.tp-overall {
-  margin-left: auto;
-  text-align: right;
-}
-.tp-overall-score {
-  font-size: 15px; font-weight: 800; color: #191919;
-  line-height: 1;
-}
-.tp-overall-sub { font-size: 10px; color: var(--muted); margin-top: 2px; }
-.tp-stars-row {
-  display: flex; gap: 2px; margin-top: 3px;
-}
-.tp-star {
-  width: 16px; height: 16px; border-radius: 2px;
-  background: #00b67a;
-  display: flex; align-items: center; justify-content: center;
-}
-.tp-star svg { width: 10px; height: 10px; fill: #fff; }
+  .hero-img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    margin: 16px auto 0;
+    display: block;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,.12));
+  }
 
-/* Individual review */
-.review {
-  padding: 16px 16px;
-  border-bottom: 1px solid var(--border);
-}
-.review:last-child { border-bottom: none; }
+  /* Section card */
+  .section-card {
+    background: #fff;
+    border-radius: 14px;
+    margin: 16px 12px 0;
+    padding: 22px 18px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.07);
+  }
 
-.r-stars-row {
-  display: flex; gap: 2px; margin-bottom: 7px;
-}
-.r-star {
-  width: 18px; height: 18px; border-radius: 2px;
-  display: flex; align-items: center; justify-content: center;
-}
-.r-star.full { background: #00b67a; }
-.r-star.empty { background: #ddd; }
-.r-star svg { width: 11px; height: 11px; fill: #fff; }
+  .section-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 14px;
+    letter-spacing: -.2px;
+  }
 
-.r-title { font-size: 14px; font-weight: 700; color: #191919; margin-bottom: 5px; line-height: 1.3; }
-.r-body { font-size: 13px; color: #3d3d3d; line-height: 1.58; margin-bottom: 8px; }
+  /* Package options */
+  .package-option {
+    border: 2px solid #e8e8e8;
+    border-radius: 10px;
+    padding: 14px 14px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: border-color .15s, background .15s;
+    position: relative;
+  }
 
-/* Product photo thumbnail */
-.r-photo {
-  width: 72px; height: 72px; border-radius: 7px;
-  object-fit: cover; margin-bottom: 9px;
-  cursor: pointer;
-  border: 1px solid var(--border);
-  transition: transform .15s;
-}
-.r-photo:hover { transform: scale(1.04); }
+  .package-option.selected {
+    border-color: #4a4af4;
+    background: #f6f6ff;
+  }
 
-/* Author row */
-.r-author-row {
-  display: flex; align-items: center; gap: 8px;
-}
-.r-avatar {
-  width: 28px; height: 28px; border-radius: 50%;
-  background: var(--blue);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 11px; font-weight: 800; color: #fff;
-  flex-shrink: 0;
-}
-.r-author-info { flex: 1; }
-.r-author-name { font-size: 12px; font-weight: 700; color: #191919; }
-.r-author-meta { font-size: 11px; color: var(--muted); }
-.r-verified {
-  font-size: 10px; font-weight: 700; color: #00b67a;
-  display: flex; align-items: center; gap: 3px;
-}
-.r-verified svg { width: 10px; height: 10px; }
+  .package-option input[type="radio"] {
+    accent-color: #4a4af4;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
 
-/* Author reply */
-.r-reply {
-  margin-top: 10px;
-  background: #f8fafc;
-  border-left: 3px solid var(--blue);
-  border-radius: 0 7px 7px 0;
-  padding: 10px 12px;
-}
-.r-reply-author {
-  font-size: 11px; font-weight: 700; color: var(--blue); margin-bottom: 4px;
-  display: flex; align-items: center; gap: 5px;
-}
-.r-reply-author svg { width: 12px; height: 12px; }
-.r-reply-body { font-size: 12px; color: #475569; line-height: 1.5; font-style: italic; }
+  .pkg-img {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: #f9f9f9;
+    padding: 4px;
+  }
 
-/* Lightbox */
-.lightbox {
-  position: fixed; inset: 0; z-index: 9999;
-  background: rgba(0,0,0,.85);
-  display: flex; align-items: center; justify-content: center;
-  opacity: 0; pointer-events: none; transition: opacity .2s;
-}
-.lightbox.open { opacity: 1; pointer-events: all; }
-.lightbox img {
-  max-width: 92vw; max-height: 88vh;
-  border-radius: 10px; box-shadow: 0 8px 40px rgba(0,0,0,.5);
-}
-.lightbox-close {
-  position: absolute; top: 16px; right: 16px;
-  width: 36px; height: 36px; border-radius: 50%;
-  background: rgba(255,255,255,.15); border: none; cursor: pointer;
-  display: flex; align-items: center; justify-content: center; color: #fff;
-  font-size: 20px; font-weight: 300;
-}
+  .pkg-info { flex: 1; }
 
-/* ─── FOOTER ─── */
-.pg-footer {
-  text-align: center; padding: 20px 20px 0;
-  font-size: 11px; color: #94a3b8;
-}
-.pg-footer a { color: #94a3b8; text-decoration: none; margin: 0 3px; }
-.pg-footer a:hover { color: var(--blue); }
+  .pkg-label {
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: .7px;
+    text-transform: uppercase;
+    border-radius: 3px;
+    padding: 2px 7px;
+    display: inline-block;
+    margin-bottom: 3px;
+  }
 
-/* ─── RESPONSIVE ─── */
-@media (max-width: 360px) {
-  .header h1 { font-size: 17px; }
-  .row2 { grid-template-columns: 1fr; }
-  .b-main { font-size: 14px; }
-}
-@media (min-width: 560px) {
-  body { padding-top: 28px; background: #f0f4f9; }
-  .page-col { border: 1px solid var(--border); border-radius: 16px; overflow: hidden; box-shadow: 0 4px 32px rgba(0,0,0,.09); }
-  .pg-footer { padding: 20px 20px 28px; }
-}
+  .pkg-label.bestseller { background: #4a4af4; color: #fff; }
+  .pkg-label.bestvalue { background: #f59e0b; color: #fff; }
+
+  .pkg-name { font-size: 14px; font-weight: 700; color: #111; }
+
+  .pkg-price {
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .pkg-original {
+    font-size: 12px;
+    color: #aaa;
+    text-decoration: line-through;
+    display: block;
+  }
+
+  .pkg-current {
+    font-size: 16px;
+    font-weight: 800;
+    color: #111;
+  }
+
+  .pkg-off {
+    font-size: 11px;
+    font-weight: 700;
+    color: #e53935;
+    display: block;
+  }
+
+  /* Payment */
+  .payment-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .pay-tab {
+    flex: 1;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 10px 6px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    color: #555;
+    background: #fff;
+    transition: border-color .15s, background .15s;
+  }
+
+  .pay-tab.active {
+    border-color: #4a4af4;
+    background: #f6f6ff;
+    color: #4a4af4;
+  }
+
+  .pay-tab svg, .pay-tab img { display: block; margin: 0 auto 4px; }
+
+  .card-fields { display: flex; flex-direction: column; gap: 10px; }
+
+  .card-fields input, .customer-fields input, .address-fields input, .address-fields select {
+    width: 100%;
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 14px;
+    color: #111;
+    background: #fff;
+    outline: none;
+    transition: border-color .15s;
+    -webkit-appearance: none;
+  }
+
+  .card-fields input:focus, .customer-fields input:focus, .address-fields input:focus, .address-fields select:focus {
+    border-color: #4a4af4;
+  }
+
+  .card-row { display: flex; gap: 10px; }
+  .card-row input { flex: 1; }
+
+  /* Customer */
+  .customer-fields { display: flex; flex-direction: column; gap: 10px; }
+  .name-row { display: flex; gap: 10px; }
+  .name-row input { flex: 1; }
+
+  /* Phone row */
+  .phone-row {
+    display: flex;
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .phone-prefix {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 12px;
+    border-right: 1.5px solid #ddd;
+    font-size: 14px;
+    background: #f8f8f8;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .phone-prefix select {
+    border: none;
+    background: transparent;
+    font-size: 14px;
+    outline: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    width: 70px;
+  }
+
+  .phone-row input {
+    border: none;
+    border-radius: 0;
+    flex: 1;
+  }
+
+  /* Address */
+  .address-fields { display: flex; flex-direction: column; gap: 10px; }
+  .city-row { display: flex; gap: 10px; }
+  .city-row select, .city-row input { flex: 1; }
+
+  /* Complete button */
+  .btn-complete {
+    width: 100%;
+    background: #4a4af4;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 800;
+    border: none;
+    border-radius: 10px;
+    padding: 17px;
+    cursor: pointer;
+    letter-spacing: .2px;
+    margin-top: 4px;
+    transition: background .15s, transform .1s;
+  }
+
+  .btn-complete:hover { background: #3a3ae0; }
+  .btn-complete:active { transform: scale(.98); }
+
+  .secure-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 12px;
+    color: #777;
+    margin-top: 10px;
+  }
+
+  /* Trust strip */
+  .trust-strip {
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+    flex-wrap: wrap;
+    margin: 18px 12px 0;
+    padding: 16px 12px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.06);
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #111;
+  }
+
+  .trust-item .t-icon {
+    font-size: 18px;
+    filter: grayscale(1) brightness(.3);
+  }
+
+  /* Trustpilot Reviews */
+  .reviews-section {
+    margin: 16px 12px 0;
+    background: #fff;
+    border-radius: 14px;
+    padding: 22px 18px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.07);
+  }
+
+  .tp-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+
+  .tp-logo {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .tp-logo svg { width: 120px; }
+
+  .tp-overall {
+    margin-bottom: 16px;
+  }
+
+  .tp-overall-score {
+    font-size: 28px;
+    font-weight: 800;
+    color: #111;
+    line-height: 1;
+  }
+
+  .tp-stars-row {
+    display: flex;
+    gap: 3px;
+    margin: 4px 0 2px;
+  }
+
+  .tp-star {
+    width: 22px;
+    height: 22px;
+    background: #00b67a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tp-star svg { width: 13px; height: 13px; fill: #fff; }
+
+  .tp-count { font-size: 12.5px; color: #555; }
+
+  .tp-reviews-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .tp-review {
+    border: 1px solid #ebebeb;
+    border-radius: 8px;
+    padding: 14px 14px;
+  }
+
+  .tp-review-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+
+  .tp-reviewer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .tp-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #4a4af4;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tp-reviewer-name { font-size: 13.5px; font-weight: 700; color: #111; }
+
+  .tp-verified {
+    font-size: 11px;
+    color: #00b67a;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+
+  .tp-review-stars {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 5px;
+  }
+
+  .tp-review-star {
+    width: 18px;
+    height: 18px;
+    background: #00b67a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tp-review-star svg { width: 11px; height: 11px; fill: #fff; }
+
+  .tp-review-title { font-size: 13.5px; font-weight: 700; color: #111; margin-bottom: 4px; }
+  .tp-review-body { font-size: 13px; color: #444; line-height: 1.5; }
+  .tp-review-date { font-size: 11.5px; color: #aaa; margin-top: 6px; }
+
+  /* Policies */
+  .policies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px 18px;
+    margin: 16px 12px 0;
+    padding: 10px 0;
+  }
+
+  .policies a {
+    font-size: 12px;
+    color: #888;
+    text-decoration: underline;
+  }
+
+  /* Express checkout */
+  .express-checkout {
+    margin-bottom: 16px;
+  }
+
+  .express-label {
+    text-align: center;
+    font-size: 12px;
+    color: #aaa;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .express-label::before, .express-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #e8e8e8;
+  }
+
+  .express-btns {
+    display: flex;
+    gap: 8px;
+  }
+
+  .btn-apple {
+    flex: 1;
+    background: #000;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 13px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+  }
+
+  .btn-google {
+    flex: 1;
+    background: #fff;
+    color: #111;
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
+    padding: 13px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+  }
+
+  .or-divider {
+    text-align: center;
+    font-size: 12px;
+    color: #aaa;
+    margin: 12px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .or-divider::before, .or-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #e8e8e8;
+  }
+
+  .stripe-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 11.5px;
+    color: #aaa;
+    margin-top: 8px;
+  }
+
+  .card-brand-icons {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    margin-top: 8px;
+  }
+
+  .card-brand {
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 10px;
+    font-weight: 700;
+    color: #555;
+    background: #fff;
+  }
+
+  .card-brand.visa { color: #1a1f71; }
+  .card-brand.mc { color: #eb001b; }
+  .card-brand.amex { color: #007bc1; }
+
+  #anchor-reviews { scroll-margin-top: 20px; }
 </style>
 </head>
 <body>
 
-<!-- Lightbox -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <button class="lightbox-close" onclick="closeLightbox()">×</button>
-  <img id="lb-img" src="" alt="">
+<a class="back-btn" href="#" onclick="history.back(); return false;" title="Go back">&#8592;</a>
+
+<div class="promo-bar">🔥 LIMITED OFFER — GET 75% OFF TODAY ONLY</div>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-badge">Limited — 75% OFF Today</div>
+  <h1>Electronic Acupuncture Pen</h1>
+  <p class="tagline">Drug-free jaw pain relief. Clinically inspired. Instant results.</p>
+  <div class="hero-rating">
+    <span class="stars">★★★★★</span>
+    <span><strong>4.8</strong> · 3,200+ reviews</span>
+    <a href="#anchor-reviews">See reviews ↓</a>
+  </div>
+  <div class="trust-pills">
+    <span>🚚 Free Shipping</span>
+    <span>🔄 Risk-Free 30-Day Returns</span>
+    <span>🔒 Secure Checkout</span>
+  </div>
+  <img class="hero-img"
+    src="data:image/jpeg;base64,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"
+    alt="Electronic Acupuncture Pen"
+  />
 </div>
 
-<div class="page-col">
+<div class="page-wrap">
 
-  <!-- Back button inside the column, positioned absolute in header -->
-  <button class="back-btn" onclick="history.back()" aria-label="Back">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="15 18 9 12 15 6"/>
-    </svg>
-  </button>
+  <!-- Package -->
+  <div class="section-card">
+    <div class="section-title">Choose Your Package</div>
 
-  <!-- HEADER -->
-  <div class="header">
-    <div class="offer-chip">Limited — 75% OFF Today</div>
-    <h1>Electronic Acupuncture Pen</h1>
-    <p>Drug-free jaw pain relief. Clinically inspired. Instant results.</p>
-
-    <!-- Rating row linking to reviews -->
-    <div class="header-rating">
-      <div class="tp-logo-star" style="width:18px;height:18px;border-radius:3px;background:#00b67a;display:inline-flex;align-items:center;justify-content:center;">
-        <svg viewBox="0 0 24 24" width="11" height="11" fill="#fff"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    <label class="package-option" onclick="selectPkg(this)">
+      <input type="radio" name="pkg" value="1">
+      <img class="pkg-img" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/wAARCABkAGQDASIAAhEBAxEB/8QAGwABAAMBAQEBAAAAAAAAAAAAAAQFBgMHAgH/xAA3EAABAwMCBAQDBgUFAAAAAAABAAIDBAUREiExBhNBUWFxFCIjMoGRFSRCUqGxwdHh8FOC/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAEC/8QAFREBAQAAAAAAAAAAAAAAAAAAABH/2gAMAwEAAhEDEQA/AP0dERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERASEREAREQBERAEREAREQBERAEREAREQBERAFr7ldqW00xmqH4JHZaPmd4BbBYfEtWWUbKdh9+c82dyB0H5/5QZrUGordqSm4lJMBID7VMnZw9D3HkVsLzHC65V+kL7HPST+0UFb7LoZuyfMdD5gZHkc+i9OoqynoKGaqqpWxwRML3vccABAc0REAREQBERAEREAREQBERAEREAREQHlcLjSWynM9bOyFo/ueefIdT5BYvWfE9Nt6O3UhqZZXhoc4kRMDjzJxxcRnbjHqsLrfV0+p9ZVMk8j2Wqjla2hpwcDsMXk+pOCsrSaGoq5nBx4WMccnGcnlgfrj0XpYXDVWstSao1LVanqJBSTHsUkIOGQR9mjHM43J6k5PVZZERSUoiIqCIiAIiIAiIgCIiAIiIAiIgCIiAIiIBERBERQEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREB/9k=" alt="pen">
+      <div class="pkg-info">
+        <div class="pkg-name">1× Electronic Acupuncture Pen</div>
       </div>
-      <span class="tp-stars-sm">★★★★★</span>
-      <span class="header-rating-text">4.8 · 3,200+ reviews</span>
-      <a href="#reviews" onclick="scrollToReviews(event)">See reviews ↓</a>
+      <div class="pkg-price">
+        <span class="pkg-original">199.99€</span>
+        <span class="pkg-current">49.99€<small>/each</small></span>
+        <span class="pkg-off">60% OFF</span>
+      </div>
+    </label>
+
+    <label class="package-option" onclick="selectPkg(this)">
+      <input type="radio" name="pkg" value="2">
+      <img class="pkg-img" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/wAARCABkAGQDASIAAhEBAxEB/8QAGwABAAMBAQEBAAAAAAAAAAAAAAQFBgMHAgH/xAA3EAABAwMCBAQDBgUFAAAAAAABAAIDBAUREiExBhNBUWFxFCIjMoGRFSRCUqGxwdHh8FOC/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAEC/8QAFREBAQAAAAAAAAAAAAAAAAAAABH/2gAMAwEAAhEDEQA/AP0dERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERASEREAREQBERAEREAREQBERAEREAREQBERAFr7ldqW00xmqH4JHZaPmd4BbBYfEtWWUbKdh9+c82dyB0H5/5QZrUGordqSm4lJMBID7VMnZw9D3HkVsLzHC65V+kL7HPSS+0UFb7LoZuyfMdD5gZHkc+i9OoqynoKGaqqpWxwRML3vccABAc0REAREQBERAEREAREQBERAEREAREQHlcLjSWynM9bOyFo/ueefIdT5BYvWfE9Nt6O3UhqZZXhoc4kRMDjzJxxcRnbjHqsLrfV0+p9ZVMk8j2Wqjla2hpwcDsMXk+pOCsrSaGoq5nBx4WMccnGcnlgfrj0XpYXDVWstSao1LVanqJBSTHsUkIOGQR9mjHM43J6k5PVZZERSUoiIqCIiAIiIAiIgCIiAIiIAiIgCIiAIiIBERBERQEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREB/9k=" alt="pen">
+      <div class="pkg-info">
+        <div class="pkg-name">2× Electronic Acupuncture Pen</div>
+      </div>
+      <div class="pkg-price">
+        <span class="pkg-original">399.98€</span>
+        <span class="pkg-current">44.95€<small>/each</small></span>
+        <span class="pkg-off">65% OFF</span>
+      </div>
+    </label>
+
+    <label class="package-option selected" onclick="selectPkg(this)">
+      <input type="radio" name="pkg" value="3" checked>
+      <img class="pkg-img" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/wAARCABkAGQDASIAAhEBAxEB/8QAGwABAAMBAQEBAAAAAAAAAAAAAAQFBgMHAgH/xAA3EAABAwMCBAQDBgUFAAAAAAABAAIDBAUREiExBhNBUWFxFCIjMoGRFSRCUqGxwdHh8FOC/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAEC/8QAFREBAQAAAAAAAAAAAAAAAAAAABH/2gAMAwEAAhEDEQA/AP0dERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERASEREAREQBERAEREAREQBERAEREAREQBERAFr7ldqW00xmqH4JHZaPmd4BbBYfEtWWUbKdh9+c82dyB0H5/5QZrUGordqSm4lJMBID7VMnZw9D3HkVsLzHC65V+kL7HPSS+0UFb7LoZuyfMdD5gZHkc+i9OoqynoKGaqqpWxwRML3vccABAc0REAREQBERAEREAREQBERAEREAREQHlcLjSWynM9bOyFo/ueefIdT5BYvWfE9Nt6O3UhqZZXhoc4kRMDjzJxxcRnbjHqsLrfV0+p9ZVMk8j2Wqjla2hpwcDsMXk+pOCsrSaGoq5nBx4WMccnGcnlgfrj0XpYXDVWstSao1LVanqJBSTHsUkIOGQR9mjHM43J6k5PVZZERSUoiIqCIiAIiIAiIgCIiAIiIAiIgCIiAIiIBERBERQEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREB/9k=" alt="pen">
+      <div class="pkg-info">
+        <span class="pkg-label bestseller">Best Seller</span>
+        <div class="pkg-name">3× Electronic Acupuncture Pen</div>
+      </div>
+      <div class="pkg-price">
+        <span class="pkg-original">599.97€</span>
+        <span class="pkg-current">39.99€<small>/each</small></span>
+        <span class="pkg-off">70% OFF</span>
+      </div>
+    </label>
+
+  </div>
+
+  <!-- Payment -->
+  <div class="section-card">
+    <div class="section-title">Payment Method</div>
+
+    <div class="express-checkout">
+      <div class="express-label">Express checkout</div>
+      <div class="express-btns">
+        <button class="btn-apple" onclick="alert('Apple Pay')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          Apple Pay
+        </button>
+        <button class="btn-google" onclick="alert('Google Pay')">
+          <svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 11.1V13h5.82a5.52 5.52 0 01-5.82 4.4A6.1 6.1 0 016 11.2 6.1 6.1 0 0112 5.1c1.5 0 2.85.55 3.87 1.44l1.54-1.54A8.2 8.2 0 0012 3 8.2 8.2 0 003.8 11.2 8.2 8.2 0 0012 19.4c4.7 0 7.8-3.3 7.8-8a7.7 7.7 0 00-.12-1.3H12z" fill="#4285F4"/></svg>
+          Google Pay
+        </button>
+      </div>
     </div>
 
-    <div class="header-badges">
-      <div class="header-badge">
-        <!-- Same truck icon as advertorial free shipping -->
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="1" y="3" width="15" height="13" rx="1"/>
-          <path d="M16 8h4l3 5v5h-7V8z"/>
-          <circle cx="5.5" cy="18.5" r="2.5"/>
-          <circle cx="18.5" cy="18.5" r="2.5"/>
-        </svg>
-        Free Shipping
+    <div class="or-divider">Or pay with card</div>
+
+    <div class="card-fields">
+      <div>
+        <input type="text" placeholder="Card number" maxlength="19" oninput="formatCard(this)">
       </div>
-      <div class="header-badge">
-        <!-- Same shield/check icon as advertorial 30-day returns -->
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-          <polyline points="9 12 11 14 15 10"/>
-        </svg>
-        30-Day Returns
+      <div class="card-row">
+        <input type="text" placeholder="MM / YY" maxlength="7" oninput="formatExpiry(this)">
+        <input type="text" placeholder="CVV / CVC" maxlength="4">
       </div>
-      <div class="header-badge">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="11" width="18" height="11" rx="2"/>
-          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-        </svg>
-        Secure Checkout
+    </div>
+
+    <div class="card-brand-icons">
+      <span class="card-brand visa">VISA</span>
+      <span class="card-brand mc">MC</span>
+      <span class="card-brand amex">AMEX</span>
+      <span class="card-brand">Maestro</span>
+    </div>
+
+    <div class="stripe-badge">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="#888"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+      Secured by Stripe · SSL Encrypted
+    </div>
+  </div>
+
+  <!-- Customer Info -->
+  <div class="section-card">
+    <div class="section-title">Customer Information</div>
+    <div class="customer-fields">
+      <div class="name-row">
+        <input type="text" placeholder="First Name">
+        <input type="text" placeholder="Last Name">
+      </div>
+      <input type="email" placeholder="Email Address">
+      <div class="phone-row">
+        <div class="phone-prefix">
+          <select>
+            <option value="+421">🇸🇰 +421</option>
+            <option value="+1">🇺🇸 +1</option>
+            <option value="+44">🇬🇧 +44</option>
+            <option value="+49">🇩🇪 +49</option>
+            <option value="+33">🇫🇷 +33</option>
+            <option value="+39">🇮🇹 +39</option>
+            <option value="+34">🇪🇸 +34</option>
+            <option value="+48">🇵🇱 +48</option>
+            <option value="+43">🇦🇹 +43</option>
+            <option value="+420">🇨🇿 +420</option>
+          </select>
+          <span>▾</span>
+        </div>
+        <input type="tel" placeholder="912 123 456">
       </div>
     </div>
   </div>
 
-  <div class="wrap">
-
-    <!-- 1. BUNDLE -->
-    <div class="card">
-      <div class="card-head">
-        <div class="card-num">1</div>
-        <div class="card-title">Choose your package</div>
-      </div>
-      <div class="card-body">
-
-        <div class="bundle" id="b1" onclick="selBundle(1)">
-          <div class="b-radio"><div class="b-dot"></div></div>
-          <div class="b-img">
-            <svg viewBox="0 0 40 64" fill="none" width="28" height="28"><rect x="12" y="1" width="16" height="38" rx="8" fill="#c8c4f0"/><rect x="14" y="3" width="12" height="22" rx="6" fill="#e0ddf8"/><rect x="13" y="32" width="14" height="9" rx="2" fill="#9f99d8"/><rect x="15" y="34" width="10" height="5" rx="1" fill="#6b63c4"/><rect x="14" y="41" width="12" height="13" rx="4" fill="#b0abdf"/><circle cx="20" cy="56" r="3.5" fill="#8880cc"/><circle cx="18" cy="19" r="2" fill="#e53935"/></svg>
-          </div>
-          <div class="b-info">
-            <div class="b-name">1× Pen</div>
-            <div class="b-sub">Personal use</div>
-          </div>
-          <div class="b-price">
-            <div class="b-orig">124.98€</div>
-            <div class="b-main">49.99€</div>
-            <div class="b-off">60% OFF</div>
-          </div>
-        </div>
-
-        <div class="bundle sel" id="b2" onclick="selBundle(2)">
-          <div class="b-radio"><div class="b-dot"></div></div>
-          <div class="b-img">
-            <svg viewBox="0 0 58 64" fill="none" width="36" height="36"><rect x="2" y="5" width="14" height="34" rx="7" fill="#c8c4f0"/><rect x="4" y="7" width="10" height="20" rx="5" fill="#e0ddf8"/><rect x="3" y="31" width="12" height="8" rx="2" fill="#9f99d8"/><rect x="4" y="39" width="10" height="12" rx="4" fill="#b0abdf"/><circle cx="9" cy="53" r="3" fill="#8880cc"/><circle cx="7" cy="19" r="2" fill="#e53935"/><rect x="22" y="1" width="14" height="38" rx="7" fill="#b8b3e8"/><rect x="24" y="3" width="10" height="22" rx="5" fill="#d8d4f5"/><rect x="23" y="32" width="12" height="9" rx="2" fill="#9590d0"/><rect x="24" y="41" width="10" height="13" rx="4" fill="#a8a3d8"/><circle cx="29" cy="56" r="3.5" fill="#7f78c0"/><circle cx="27" cy="18" r="2" fill="#e53935"/></svg>
-          </div>
-          <div class="b-info">
-            <div class="b-name">2× Pens</div>
-            <div class="b-sub">44.95€ / pen</div>
-          </div>
-          <div class="b-price">
-            <div class="b-orig">256.96€</div>
-            <div class="b-main">89.90€</div>
-            <div class="b-off">65% OFF</div>
-          </div>
-          <div class="b-tag" style="background:var(--blue);">Most Popular</div>
-        </div>
-
-        <div class="bundle" id="b3" onclick="selBundle(3)">
-          <div class="b-radio"><div class="b-dot"></div></div>
-          <div class="b-img">
-            <svg viewBox="0 0 70 64" fill="none" width="44" height="44"><rect x="1" y="7" width="13" height="30" rx="6.5" fill="#c8c4f0"/><rect x="3" y="9" width="9" height="17" rx="4.5" fill="#e0ddf8"/><rect x="2" y="29" width="11" height="7" rx="2" fill="#9f99d8"/><rect x="3" y="36" width="9" height="11" rx="3.5" fill="#b0abdf"/><circle cx="7.5" cy="49" r="2.5" fill="#8880cc"/><rect x="20" y="1" width="14" height="38" rx="7" fill="#b8b3e8"/><rect x="22" y="3" width="10" height="22" rx="5" fill="#d8d4f5"/><rect x="21" y="32" width="12" height="9" rx="2" fill="#9590d0"/><rect x="22" y="41" width="10" height="13" rx="4" fill="#a8a3d8"/><circle cx="27" cy="56" r="3.5" fill="#7f78c0"/><circle cx="25" cy="18" r="2" fill="#e53935"/><rect x="40" y="7" width="13" height="30" rx="6.5" fill="#c8c4f0"/><rect x="42" y="9" width="9" height="17" rx="4.5" fill="#e0ddf8"/><rect x="41" y="29" width="11" height="7" rx="2" fill="#9f99d8"/><rect x="42" y="36" width="9" height="11" rx="3.5" fill="#b0abdf"/><circle cx="46.5" cy="49" r="2.5" fill="#8880cc"/></svg>
-          </div>
-          <div class="b-info">
-            <div class="b-name">3× Pens</div>
-            <div class="b-sub">39.99€ / pen</div>
-          </div>
-          <div class="b-price">
-            <div class="b-orig">399.90€</div>
-            <div class="b-main">119.97€</div>
-            <div class="b-off">70% OFF</div>
-          </div>
-          <div class="b-tag" style="background:#b45309;">Best Value</div>
-        </div>
-
+  <!-- Delivery Address -->
+  <div class="section-card">
+    <div class="section-title">Delivery Address</div>
+    <div class="address-fields">
+      <select>
+        <option>Slovakia</option>
+        <option>Czech Republic</option>
+        <option>Austria</option>
+        <option>Germany</option>
+        <option>Hungary</option>
+        <option>Poland</option>
+        <option>United Kingdom</option>
+        <option>France</option>
+        <option>Italy</option>
+        <option>Spain</option>
+      </select>
+      <input type="text" placeholder="Address">
+      <input type="text" placeholder="City">
+      <div class="city-row">
+        <select>
+          <option value="">State / Region</option>
+          <option>Bratislava</option>
+          <option>Košice</option>
+          <option>Nitra</option>
+          <option>Prešov</option>
+          <option>Žilina</option>
+          <option>Banská Bystrica</option>
+          <option>Trenčín</option>
+          <option>Trnava</option>
+        </select>
+        <input type="text" placeholder="ZIP / Postcode">
       </div>
     </div>
 
-    <!-- 2. PAYMENT -->
-    <div class="card">
-      <div class="card-head">
-        <div class="card-num">2</div>
-        <div class="card-title">Payment method</div>
-      </div>
-      <div class="card-body">
-        <div class="pay-opts">
-
-          <div class="pay-opt sel" id="p-card" onclick="selPay('card')">
-            <div class="b-radio"><div class="b-dot"></div></div>
-            <div class="pay-label">Credit / Debit Card</div>
-            <div class="pay-logos">
-              <div class="pill">
-                <svg viewBox="0 0 38 14" width="28" height="11"><text x="0" y="11" font-family="Arial" font-weight="900" font-style="italic" font-size="13" fill="#1a1f71">VISA</text></svg>
-              </div>
-              <div class="pill">
-                <svg viewBox="0 0 30 20" width="22" height="15"><circle cx="10" cy="10" r="9" fill="#EB001B"/><circle cx="20" cy="10" r="9" fill="#F79E1B"/><path d="M15 3.2a9 9 0 0 1 0 13.6A9 9 0 0 1 15 3.2z" fill="#FF5F00"/></svg>
-              </div>
-              <div class="pill stripe">
-                <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                Stripe
-              </div>
-            </div>
-          </div>
-
-          <div class="pay-opt" id="p-apple" onclick="selPay('apple')">
-            <div class="b-radio"><div class="b-dot"></div></div>
-            <div class="pay-label">Apple Pay</div>
-            <div class="pill apple">
-              <svg width="10" height="10" viewBox="0 0 814 1000" fill="white"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-37.5-155.5-127.4C46 790.4 0 663.3 0 541.6c0-148.4 97.6-226.8 193.4-226.8 64.1 0 117.5 42.5 157.6 42.5 38.3 0 98.4-45 170.9-45 27.5 0 127.9 2.6 197.2 98.2zm-234-181.5c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-28.5 32.4-55.1 83.6-55.1 135.5 0 7.8 1.3 15.6 1.9 18.1 3.2.6 8.4 1.3 13.6 1.3 45.4 0 102.5-30.4 135.5-71.3z"/></svg>
-              Pay
-            </div>
-          </div>
-
-          <div class="pay-opt" id="p-google" onclick="selPay('google')">
-            <div class="b-radio"><div class="b-dot"></div></div>
-            <div class="pay-label">Google Pay</div>
-            <div class="pill gpay">
-              <svg width="14" height="14" viewBox="0 0 48 48"><path fill="#4285F4" d="M45.5 24.5c0-1.4-.1-2.8-.4-4H24v7.6h12.1c-.5 2.8-2.1 5.1-4.5 6.7v5.5h7.3c4.3-4 6.6-9.9 6.6-15.8z"/><path fill="#34A853" d="M24 46c6.1 0 11.2-2 14.9-5.5l-7.3-5.5c-2 1.4-4.6 2.2-7.6 2.2-5.9 0-10.8-4-12.6-9.3H4v5.7C7.7 41.4 15.3 46 24 46z"/><path fill="#FBBC05" d="M11.4 27.9c-.5-1.4-.7-2.8-.7-4.4s.3-3 .7-4.4V13.4H4C2.4 16.5 1.5 20.1 1.5 24s.9 7.5 2.5 10.6l7.4-6.7z"/><path fill="#EA4335" d="M24 9.8c3.3 0 6.3 1.1 8.6 3.4l6.5-6.5C35.2 3 29.6.5 24 .5 15.3.5 7.7 5.1 4 13.4l7.4 6.1C13.2 13.8 18.1 9.8 24 9.8z"/></svg>
-              Pay
-            </div>
-          </div>
-
-        </div>
-
-        <div class="cf" id="cf">
-          <div class="field">
-            <label>Card number</label>
-            <div class="fw">
-              <input type="tel" class="has-icon" placeholder="1234 5678 9012 3456" maxlength="19" oninput="fmtCard(this)" autocomplete="cc-number">
-              <span class="fi"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></span>
-            </div>
-          </div>
-          <div class="row2">
-            <div class="field">
-              <label>Expiry (MM / YY)</label>
-              <input type="tel" placeholder="MM / YY" maxlength="7" oninput="fmtExp(this)" autocomplete="cc-exp">
-            </div>
-            <div class="field">
-              <label>CVV / CVC</label>
-              <div class="fw">
-                <input type="tel" class="has-icon" placeholder="•••" maxlength="4" autocomplete="cc-csc">
-                <span class="fi"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <br>
+    <button class="btn-complete" onclick="submitOrder()">Complete Order</button>
+    <div class="secure-note">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="#888"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+      All transactions are SSL secure and encrypted
     </div>
-
-    <!-- 3. YOUR DETAILS -->
-    <div class="card">
-      <div class="card-head">
-        <div class="card-num">3</div>
-        <div class="card-title">Your details</div>
-      </div>
-      <div class="card-body" style="display:flex;flex-direction:column;gap:10px;">
-        <div class="row2">
-          <div class="field">
-            <label>First name</label>
-            <input type="text" placeholder="John" autocomplete="given-name">
-          </div>
-          <div class="field">
-            <label>Last name</label>
-            <input type="text" placeholder="Smith" autocomplete="family-name">
-          </div>
-        </div>
-        <div class="field">
-          <label>Email address</label>
-          <input type="email" placeholder="john@email.com" autocomplete="email" inputmode="email">
-        </div>
-        <div class="field">
-          <label>Phone number</label>
-          <input type="tel" placeholder="+1 555 000 0000" autocomplete="tel" inputmode="tel">
-        </div>
-      </div>
-    </div>
-
-    <!-- 4. DELIVERY -->
-    <div class="card">
-      <div class="card-head">
-        <div class="card-num">4</div>
-        <div class="card-title">Delivery address</div>
-      </div>
-      <div class="card-body" style="display:flex;flex-direction:column;gap:10px;">
-        <div class="field">
-          <label>Country</label>
-          <div class="sel-wrap">
-            <select autocomplete="country">
-              <option value="US">United States</option><option value="CA">Canada</option><option value="AU">Australia</option><option value="GB">United Kingdom</option><option disabled>──────────</option><option value="AF">Afghanistan</option><option value="AL">Albania</option><option value="DZ">Algeria</option><option value="AD">Andorra</option><option value="AO">Angola</option><option value="AR">Argentina</option><option value="AM">Armenia</option><option value="AT">Austria</option><option value="AZ">Azerbaijan</option><option value="BS">Bahamas</option><option value="BH">Bahrain</option><option value="BD">Bangladesh</option><option value="BY">Belarus</option><option value="BE">Belgium</option><option value="BZ">Belize</option><option value="BR">Brazil</option><option value="BG">Bulgaria</option><option value="KH">Cambodia</option><option value="CM">Cameroon</option><option value="CL">Chile</option><option value="CN">China</option><option value="CO">Colombia</option><option value="HR">Croatia</option><option value="CY">Cyprus</option><option value="CZ">Czech Republic</option><option value="DK">Denmark</option><option value="DO">Dominican Republic</option><option value="EC">Ecuador</option><option value="EG">Egypt</option><option value="EE">Estonia</option><option value="ET">Ethiopia</option><option value="FI">Finland</option><option value="FR">France</option><option value="GE">Georgia</option><option value="DE">Germany</option><option value="GH">Ghana</option><option value="GR">Greece</option><option value="GT">Guatemala</option><option value="HU">Hungary</option><option value="IS">Iceland</option><option value="IN">India</option><option value="ID">Indonesia</option><option value="IE">Ireland</option><option value="IL">Israel</option><option value="IT">Italy</option><option value="JP">Japan</option><option value="JO">Jordan</option><option value="KZ">Kazakhstan</option><option value="KE">Kenya</option><option value="KW">Kuwait</option><option value="LV">Latvia</option><option value="LB">Lebanon</option><option value="LT">Lithuania</option><option value="LU">Luxembourg</option><option value="MY">Malaysia</option><option value="MT">Malta</option><option value="MX">Mexico</option><option value="MA">Morocco</option><option value="NL">Netherlands</option><option value="NZ">New Zealand</option><option value="NG">Nigeria</option><option value="NO">Norway</option><option value="OM">Oman</option><option value="PK">Pakistan</option><option value="PA">Panama</option><option value="PE">Peru</option><option value="PH">Philippines</option><option value="PL">Poland</option><option value="PT">Portugal</option><option value="QA">Qatar</option><option value="RO">Romania</option><option value="RU">Russia</option><option value="SA">Saudi Arabia</option><option value="RS">Serbia</option><option value="SG">Singapore</option><option value="SK">Slovakia</option><option value="SI">Slovenia</option><option value="ZA">South Africa</option><option value="ES">Spain</option><option value="LK">Sri Lanka</option><option value="SE">Sweden</option><option value="CH">Switzerland</option><option value="TW">Taiwan</option><option value="TH">Thailand</option><option value="TN">Tunisia</option><option value="TR">Turkey</option><option value="UA">Ukraine</option><option value="AE">United Arab Emirates</option><option value="UY">Uruguay</option><option value="VN">Vietnam</option><option value="YE">Yemen</option><option value="ZW">Zimbabwe</option>
-            </select>
-          </div>
-        </div>
-        <div class="field">
-          <label>Street address</label>
-          <input type="text" placeholder="Street and number" autocomplete="street-address">
-        </div>
-        <div class="row2">
-          <div class="field">
-            <label>City</label>
-            <input type="text" placeholder="New York" autocomplete="address-level2">
-          </div>
-          <div class="field">
-            <label>ZIP / Postcode</label>
-            <input type="text" placeholder="10001" inputmode="numeric" autocomplete="postal-code">
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 5. SUMMARY -->
-    <div class="card">
-      <div class="card-head">
-        <div class="card-num">5</div>
-        <div class="card-title">Order summary</div>
-      </div>
-      <div class="card-body">
-        <div class="summary">
-          <div class="s-row">
-            <span id="s-label">2× Electronic Acupuncture Pen</span>
-            <span id="s-orig" class="s-orig">256.96€</span>
-          </div>
-          <div class="s-row disc">
-            <span>Discount (<span id="s-pct">65</span>% OFF)</span>
-            <span id="s-disc">−167.06€</span>
-          </div>
-          <div class="s-row ship">
-            <span>Shipping</span><span>FREE</span>
-          </div>
-          <div class="s-row total">
-            <span>Total</span>
-            <span id="s-total">89.90€</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CTA -->
-    <div class="cta-wrap">
-      <button class="cta-btn">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        Complete Order — Free Shipping
-      </button>
-
-      <!-- Trust badges below button — same icons as advertorial -->
-      <div class="trust-badges">
-        <div class="trust-badge">
-          <div class="trust-badge-icon">
-            <svg viewBox="0 0 24 24">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              <polyline points="9 12 11 14 15 10"/>
-            </svg>
-          </div>
-          <div>
-            <span class="trust-badge-title">30-Day Returns</span>
-            <span class="trust-badge-sub">Risk-free guarantee</span>
-          </div>
-        </div>
-        <div class="trust-badge">
-          <div class="trust-badge-icon">
-            <svg viewBox="0 0 24 24">
-              <rect x="1" y="3" width="15" height="13" rx="1"/>
-              <path d="M16 8h4l3 5v5h-7V8z"/>
-              <circle cx="5.5" cy="18.5" r="2.5"/>
-              <circle cx="18.5" cy="18.5" r="2.5"/>
-            </svg>
-          </div>
-          <div>
-            <span class="trust-badge-title">Free Shipping</span>
-            <span class="trust-badge-sub">On all orders</span>
-          </div>
-        </div>
-        <div class="trust-badge">
-          <div class="trust-badge-icon">
-            <svg viewBox="0 0 24 24">
-              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-            </svg>
-          </div>
-          <div>
-            <span class="trust-badge-title">Secure Checkout</span>
-            <span class="trust-badge-sub">SSL encrypted</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- REVIEWS -->
-    <div class="card" id="reviews" style="margin-top:20px;">
-
-      <!-- Trustpilot-style header -->
-      <div class="tp-header">
-        <div class="tp-logo-wrap">
-          <div class="tp-logo-star">
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          </div>
-          <div class="tp-logo-text">Trust<span>pilot</span></div>
-        </div>
-        <div style="margin-left:10px;">
-          <div class="tp-stars-row">
-            <div class="tp-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-            <div class="tp-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-            <div class="tp-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-            <div class="tp-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-            <div class="tp-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          </div>
-          <div style="font-size:10px;color:var(--muted);margin-top:2px;font-weight:600;">Excellent</div>
-        </div>
-        <div class="tp-overall">
-          <div class="tp-overall-score">4.8</div>
-          <div class="tp-overall-sub">3,200+ reviews</div>
-        </div>
-      </div>
-
-      <!-- Review 1: James T. — 4 stars, with photo, author reply -->
-      <div class="review">
-        <div class="r-stars-row">
-          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="r-star empty"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-        </div>
-        <div class="r-title">Thought it was nonsense. It wasn't.</div>
-        <div class="r-body">The 30-day return made it easy to just try. I did not send it back. Helped a lot.</div>
-        <img class="r-photo" src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=70" alt="Product photo by James T." onclick="openLightbox(this.src)">
-        <div class="r-author-row">
-          <div class="r-avatar">JT</div>
-          <div class="r-author-info">
-            <div class="r-author-name">James T., 51</div>
-            <div class="r-author-meta">March 12, 2024</div>
-          </div>
-          <div class="r-verified">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-            Verified
-          </div>
-        </div>
-        <div class="r-reply">
-          <div class="r-reply-author">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            Dr. Harris — Author
-          </div>
-          <div class="r-reply-body">James, that's all anyone can ask. Really glad it helped.</div>
-        </div>
-      </div>
-
-      <!-- Review 2: Rachel B. — 5 stars, with photo -->
-      <div class="review">
-        <div class="r-stars-row">
-          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-        </div>
-        <div class="r-title">Two years of problems. Gone.</div>
-        <div class="r-body">I ordered mostly because of the return policy — figured worst case I'm out nothing. By the end of the first week I felt something shifting. By week four I realized the thing I'd been dealing with for two years had just… quietly stopped being a problem. I don't know how else to describe it. Still using it every morning.</div>
-        <img class="r-photo" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200&q=70" alt="Product photo by Rachel B." onclick="openLightbox(this.src)">
-        <div class="r-author-row">
-          <div class="r-avatar" style="background:#6b21a8;">RB</div>
-          <div class="r-author-info">
-            <div class="r-author-name">Rachel B., 29</div>
-            <div class="r-author-meta">March 3, 2024</div>
-          </div>
-          <div class="r-verified">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-            Verified
-          </div>
-        </div>
-      </div>
-
-      <!-- Review 3: Sandra M. — 3 stars, with reply -->
-      <div class="review">
-        <div class="r-stars-row">
-          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="r-star empty"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="r-star empty"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-        </div>
-        <div class="r-title">Took a few weeks, but it did work</div>
-        <div class="r-body">I didn't get instant results — just to be upfront about that. Took a few weeks before I noticed anything. Probably some people do see it faster, I don't know. But it did work eventually so I can't really complain.</div>
-        <div class="r-author-row">
-          <div class="r-avatar" style="background:#0f766e;">SM</div>
-          <div class="r-author-info">
-            <div class="r-author-name">Sandra M., 44</div>
-            <div class="r-author-meta">February 28, 2024</div>
-          </div>
-          <div class="r-verified">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-            Verified
-          </div>
-        </div>
-        <div class="r-reply">
-          <div class="r-reply-author">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            Dr. Harris — Author
-          </div>
-          <div class="r-reply-body">Sandra, that's fair — it does take consistency. Glad you stuck with it.</div>
-        </div>
-      </div>
-
-      <!-- Review 4: David K. — 5 stars, photo, author reply -->
-      <div class="review">
-        <div class="r-stars-row">
-          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-        </div>
-        <div class="r-title">Solid product, fast delivery</div>
-        <div class="r-body">Came in 5 days, looks and feels solid. The little guide that comes with it is hard to read, but figured it out. Works well.</div>
-        <img class="r-photo" src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=200&q=70" alt="Product photo by David K." onclick="openLightbox(this.src)">
-        <div class="r-author-row">
-          <div class="r-avatar" style="background:#b45309;">DK</div>
-          <div class="r-author-info">
-            <div class="r-author-name">David K., 38</div>
-            <div class="r-author-meta">January 19, 2024</div>
-          </div>
-          <div class="r-verified">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-            Verified
-          </div>
-        </div>
-        <div class="r-reply">
-          <div class="r-reply-author">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            Dr. Harris — Author
-          </div>
-          <div class="r-reply-body">David, noted on the guide. Glad you got there.</div>
-        </div>
-      </div>
-
-      <!-- Review 5: Robert H. — 4 stars, no photo -->
-      <div class="review">
-        <div class="r-stars-row">
-          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="r-star empty"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-        </div>
-        <div class="r-title">My wife was right. Again.</div>
-        <div class="r-body">My wife talked me into it. I thought it was a waste of money. 30 days to return it so whatever. It wasn't a waste of money.</div>
-        <div class="r-author-row">
-          <div class="r-avatar" style="background:#374151;">RH</div>
-          <div class="r-author-info">
-            <div class="r-author-name">Robert H., 63</div>
-            <div class="r-author-meta">February 5, 2024</div>
-          </div>
-          <div class="r-verified">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-            Verified
-          </div>
-        </div>
-      </div>
-
-      <!-- Review 6: Mark C. — 5 stars, with photo -->
-      <div class="review">
-        <div class="r-stars-row">
-          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="r-star full"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-        </div>
-        <div class="r-title">Better quality than I expected</div>
-        <div class="r-body">Better quality than I expected. Showed up in four days. Started noticing a difference around week two. Really glad I tried it.</div>
-        <img class="r-photo" src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=200&q=70" alt="Product photo by Mark C." onclick="openLightbox(this.src)">
-        <div class="r-author-row">
-          <div class="r-avatar" style="background:#1a4f8a;">MC</div>
-          <div class="r-author-info">
-            <div class="r-author-name">Mark C., 55</div>
-            <div class="r-author-meta">January 31, 2024</div>
-          </div>
-          <div class="r-verified">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-            Verified
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /reviews card -->
-
-  </div><!-- /wrap -->
-
-  <div class="pg-footer">
-    <a href="#">Terms</a> · <a href="#">Privacy</a> · <a href="#">Refund Policy</a> · <a href="#">Contact</a>
   </div>
 
-</div><!-- /page-col -->
+  <!-- Trust Strip (repeated) -->
+  <div class="trust-strip">
+    <div class="trust-item">
+      <span style="font-size:22px">🔄</span>
+      <span>Risk-Free 30-Day Returns</span>
+    </div>
+    <div class="trust-item">
+      <span style="font-size:22px">🚚</span>
+      <span>Free Shipping</span>
+    </div>
+    <div class="trust-item">
+      <span style="font-size:22px">🔒</span>
+      <span>Secure Checkout</span>
+    </div>
+  </div>
+
+  <!-- Trustpilot Reviews -->
+  <div class="reviews-section" id="anchor-reviews">
+    <!-- Trustpilot logo replica -->
+    <div style="margin-bottom:14px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+        <svg width="130" height="30" viewBox="0 0 130 30" xmlns="http://www.w3.org/2000/svg">
+          <text x="0" y="22" font-family="'Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="800" fill="#00b67a">★</text>
+          <text x="22" y="22" font-family="'Helvetica Neue',Arial,sans-serif" font-size="18" font-weight="700" fill="#191919">Trustpilot</text>
+        </svg>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="font-size:34px;font-weight:900;color:#111;line-height:1;">4.8</div>
+        <div>
+          <div style="display:flex;gap:3px;margin-bottom:3px;">
+            <div class="tp-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+            <div class="tp-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+            <div class="tp-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+            <div class="tp-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+            <div class="tp-star" style="background:#ddd;position:relative;overflow:hidden;"><div style="position:absolute;left:0;top:0;width:80%;height:100%;background:#00b67a;"></div><svg viewBox="0 0 24 24" style="position:relative;z-index:1;"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          </div>
+          <div style="font-size:12.5px;color:#555;">Excellent · <strong>3,200+ reviews</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tp-reviews-grid">
+
+      <div class="tp-review">
+        <div class="tp-review-header">
+          <div class="tp-reviewer">
+            <div class="tp-avatar" style="background:#00b67a;">M</div>
+            <div>
+              <div class="tp-reviewer-name">Marta K.</div>
+            </div>
+          </div>
+          <div class="tp-verified">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="#00b67a"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            Verified
+          </div>
+        </div>
+        <div class="tp-review-stars">
+          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        </div>
+        <div class="tp-review-title">Incredible relief for jaw tension</div>
+        <div class="tp-review-body">I've struggled with jaw pain for years. This pen gave me noticeable relief after the first session. Drug-free and easy to use — I bring it everywhere.</div>
+        <div class="tp-review-date">May 2, 2026</div>
+      </div>
+
+      <div class="tp-review">
+        <div class="tp-review-header">
+          <div class="tp-reviewer">
+            <div class="tp-avatar" style="background:#4a4af4;">R</div>
+            <div>
+              <div class="tp-reviewer-name">Roman B.</div>
+            </div>
+          </div>
+          <div class="tp-verified">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="#00b67a"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            Verified
+          </div>
+        </div>
+        <div class="tp-review-stars">
+          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        </div>
+        <div class="tp-review-title">Better than I expected</div>
+        <div class="tp-review-body">Skeptical at first but this thing genuinely works. No medication needed. Targets the exact spot. Ordered two more as gifts for my parents who both have chronic pain.</div>
+        <div class="tp-review-date">Apr 18, 2026</div>
+      </div>
+
+      <div class="tp-review">
+        <div class="tp-review-header">
+          <div class="tp-reviewer">
+            <div class="tp-avatar" style="background:#f59e0b;">L</div>
+            <div>
+              <div class="tp-reviewer-name">Lucia V.</div>
+            </div>
+          </div>
+          <div class="tp-verified">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="#00b67a"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            Verified
+          </div>
+        </div>
+        <div class="tp-review-stars">
+          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        </div>
+        <div class="tp-review-title">Fast delivery, works perfectly</div>
+        <div class="tp-review-body">Arrived in 3 days. The pen feels premium and the intensity settings are great. Already noticed less neck and shoulder tension after one week of use. Highly recommend!</div>
+        <div class="tp-review-date">Apr 5, 2026</div>
+      </div>
+
+      <div class="tp-review">
+        <div class="tp-review-header">
+          <div class="tp-reviewer">
+            <div class="tp-avatar" style="background:#e53935;">J</div>
+            <div>
+              <div class="tp-reviewer-name">Jan H.</div>
+            </div>
+          </div>
+          <div class="tp-verified">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="#00b67a"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            Verified
+          </div>
+        </div>
+        <div class="tp-review-stars">
+          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="tp-review-star" style="background:#ddd;"><svg viewBox="0 0 24 24" style="fill:#ddd;"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        </div>
+        <div class="tp-review-title">Great product, solid build</div>
+        <div class="tp-review-body">Decent quality, the display showing intensity level is a nice touch. Would love a carrying case included, but overall very satisfied. Good price for what you get.</div>
+        <div class="tp-review-date">Mar 29, 2026</div>
+      </div>
+
+      <div class="tp-review">
+        <div class="tp-review-header">
+          <div class="tp-reviewer">
+            <div class="tp-avatar" style="background:#00b67a;">E</div>
+            <div>
+              <div class="tp-reviewer-name">Eva M.</div>
+            </div>
+          </div>
+          <div class="tp-verified">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="#00b67a"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            Verified
+          </div>
+        </div>
+        <div class="tp-review-stars">
+          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        </div>
+        <div class="tp-review-title">Finally something that actually delivers</div>
+        <div class="tp-review-body">I've tried many acupuncture tools and this one stands out. The build quality is excellent, results feel instant and the 30-day return policy gave me peace of mind to try it.</div>
+        <div class="tp-review-date">Mar 12, 2026</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Policies -->
+  <div class="policies">
+    <a href="#">Terms &amp; Conditions</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Refund Policy</a>
+    <a href="#">Shipping Policy</a>
+    <a href="#">Contact Us</a>
+  </div>
+
+</div><!-- /page-wrap -->
 
 <script>
-const bdata = {
-  1:{label:'1× Electronic Acupuncture Pen',orig:'124.98€',pct:'60',disc:'−74.99€',total:'49.99€'},
-  2:{label:'2× Electronic Acupuncture Pen',orig:'256.96€',pct:'65',disc:'−167.06€',total:'89.90€'},
-  3:{label:'3× Electronic Acupuncture Pen',orig:'399.90€',pct:'70',disc:'−279.93€',total:'119.97€'}
-};
+  function selectPkg(label) {
+    document.querySelectorAll('.package-option').forEach(el => el.classList.remove('selected'));
+    label.classList.add('selected');
+    label.querySelector('input').checked = true;
+  }
 
-function selBundle(n) {
-  [1,2,3].forEach(i => document.getElementById('b'+i).classList.toggle('sel', i===n));
-  const d = bdata[n];
-  document.getElementById('s-label').textContent = d.label;
-  document.getElementById('s-orig').textContent = d.orig;
-  document.getElementById('s-pct').textContent = d.pct;
-  document.getElementById('s-disc').textContent = d.disc;
-  document.getElementById('s-total').textContent = d.total;
-}
+  function formatCard(input) {
+    let v = input.value.replace(/\D/g, '').substring(0, 16);
+    input.value = v.replace(/(.{4})/g, '$1 ').trim();
+  }
 
-function selPay(m) {
-  ['card','apple','google'].forEach(k => {
-    const el = document.getElementById('p-'+k);
-    el.classList.toggle('sel', k===m);
-    el.querySelector('.b-dot').style.display = k===m ? 'block' : 'none';
-  });
-  document.getElementById('cf').style.display = m==='card' ? 'flex' : 'none';
-}
+  function formatExpiry(input) {
+    let v = input.value.replace(/\D/g, '').substring(0, 4);
+    if (v.length >= 3) v = v.substring(0, 2) + ' / ' + v.substring(2);
+    input.value = v;
+  }
 
-function fmtCard(el) {
-  let v = el.value.replace(/\D/g,'').slice(0,16);
-  el.value = v.replace(/(.{4})/g,'$1 ').trim();
-}
-
-function fmtExp(el) {
-  let v = el.value.replace(/\D/g,'').slice(0,4);
-  if (v.length >= 2) v = v.slice(0,2) + ' / ' + v.slice(2);
-  el.value = v;
-}
-
-function scrollToReviews(e) {
-  e.preventDefault();
-  document.getElementById('reviews').scrollIntoView({behavior:'smooth'});
-}
-
-function openLightbox(src) {
-  document.getElementById('lb-img').src = src;
-  document.getElementById('lightbox').classList.add('open');
-}
-function closeLightbox() {
-  document.getElementById('lightbox').classList.remove('open');
-}
+  function submitOrder() {
+    alert('Order submitted! Thank you.');
+  }
 </script>
 </body>
 </html>
