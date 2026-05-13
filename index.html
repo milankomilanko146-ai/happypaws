@@ -283,15 +283,29 @@ border-bottom: 1px solid #ebebeb;
 .review-date { font-size: 12px; color: #999; }
 .review-text { font-size: 15px; line-height: 24px; color: #222; margin: 0; }
 .review-reply {
-margin-top: 4px;
-margin-left: 20px;
-padding: 12px 14px;
-background: #fff;
-border: 2px solid #1a4f8a;
-border-radius: 6px;
+margin-top: 8px;
+margin-left: 56px;
+padding: 11px 14px;
+background: #f0f4fa;
+border-left: 3px solid #1a4f8a;
+border-radius: 0 6px 6px 0;
+position: relative;
 }
-.review-reply-name { font-size: 12px; font-weight: 700; color: #1a4f8a; margin-bottom: 4px; }
-.review-reply-text { font-size: 14px; line-height: 22px; color: #444; margin: 0; }
+.review-reply-name {
+font-size: 12px;
+font-weight: 700;
+color: #1a4f8a;
+margin-bottom: 4px;
+display: flex;
+align-items: center;
+gap: 5px;
+}
+.review-reply-name::before {
+content: '↩';
+font-size: 13px;
+color: #1a4f8a;
+}
+.review-reply-text { font-size: 14px; line-height: 22px; color: #333; margin: 0; }
 
 @media (max-width: 600px) {
 h1 { font-size: 28px; line-height: 36px; }
