@@ -136,27 +136,19 @@ footer.site-footer a { color: #aabce8; text-decoration: none; margin: 0 8px; }
 footer.site-footer a:hover { text-decoration: underline; }
 .footer-disclaimer { font-size: 12px; color: #aabce8; margin: 0 auto 14px; max-width: 700px; line-height: 1.6; }
 .footer-copy { margin-top: 10px; font-size: 11px; color: #7788aa; }
-.stock-badge {
-display: inline-flex;
-align-items: center;
-gap: 7px;
-font-size: 14px;
-font-weight: 700;
-color: #1a5c24;
-margin-bottom: 10px;
+
+.ratings-review-link {
+font-size: 13px;
+font-weight: 600;
+color: #1a4f8a;
+text-decoration: underline;
+text-underline-offset: 2px;
+cursor: pointer;
+white-space: nowrap;
 }
-@keyframes blink {
-0%, 100% { opacity: 1; }
-50% { opacity: 0.2; }
-}
-.stock-dot {
-width: 9px;
-height: 9px;
-border-radius: 50%;
-background: #2d7a3a;
-flex-shrink: 0;
-animation: blink 2.4s ease-in-out infinite;
-}
+.ratings-review-link:hover { color: #0d3360; }
+
+/* Simplified CTA */
 .cta-wrap { text-align: center; margin-top: 48px; margin-bottom: 20px; }
 .cta-btn {
 display: block;
@@ -172,7 +164,7 @@ box-shadow: rgba(0,0,0,.35) 0px 6px 18px;
 text-align: center;
 text-decoration: none;
 width: 100%;
-margin-bottom: 10px;
+margin-bottom: 12px;
 border-bottom: 4px solid #004d00;
 transition: filter 0.15s;
 }
@@ -184,80 +176,22 @@ font-weight: 400;
 opacity: 0.9;
 margin-top: 3px;
 }
-.trust-badges {
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-gap: 10px 24px;
-padding: 16px 0 4px;
-}
-.trust-badge {
-display: flex;
-align-items: center;
-gap: 8px;
-}
-.trust-badge-icon {
-width: 36px;
-height: 36px;
-border-radius: 50%;
-background: #e6f4ea;
-display: flex;
-align-items: center;
-justify-content: center;
-flex-shrink: 0;
-}
-.trust-badge-icon svg {
-width: 18px;
-height: 18px;
-stroke: #2d7a3a;
-fill: none;
-stroke-width: 2;
-stroke-linecap: round;
-stroke-linejoin: round;
-}
-.trust-badge-title {
-font-size: 12px;
-font-weight: 700;
-color: #1a5c24;
-line-height: 1.3;
-display: block;
-}
-.trust-badge-sub {
-font-size: 11px;
-color: #555;
-line-height: 1.2;
-display: block;
-}
-.ratings-review-link {
+.cta-reviews-link {
+display: inline-block;
 font-size: 13px;
 font-weight: 600;
 color: #1a4f8a;
 text-decoration: underline;
 text-underline-offset: 2px;
-cursor: pointer;
-white-space: nowrap;
 }
-.ratings-review-link:hover { color: #0d3360; }
-.cta-nudge {
-margin-top: 14px;
-font-size: 13px;
-color: #888;
-margin-bottom: 0;
-}
-.cta-nudge a {
-color: #1a4f8a;
-font-weight: 600;
-text-decoration: underline;
-text-underline-offset: 2px;
-}
-.cta-nudge a:hover { color: #0d3360; }
+.cta-reviews-link:hover { color: #0d3360; }
+
 @media (max-width: 600px) {
 h1 { font-size: 28px; line-height: 36px; }
 h2 { font-size: 24px; line-height: 30px; }
 .cta-btn { font-size: 18px; line-height: 24px; padding: 14px 10px 10px; }
 .cta-btn-price { font-size: 14px; }
 .page-wrap { padding: 0 15px 20px; }
-.trust-badges { gap: 8px 16px; }
 }
 </style>
 </head>
@@ -384,52 +318,11 @@ h2 { font-size: 24px; line-height: 30px; }
 <p>And it's the reason the results are so different.</p>
 
 <div class="cta-wrap">
-<div class="stock-badge"><span class="stock-dot"></span> Currently In Stock</div>
 <a class="cta-btn" href="checkout.html">
 <span>Relieve Jaw Pain Today →</span>
 <span class="cta-btn-price">Get The Acupressure Pen — $49.99</span>
 </a>
-<div class="trust-badges">
-  <div class="trust-badge">
-    <div class="trust-badge-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#2d7a3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-        <polyline points="9 12 11 14 15 10"/>
-      </svg>
-    </div>
-    <div>
-      <span class="trust-badge-title">30-Day Returns</span>
-      <span class="trust-badge-sub">Risk-free guarantee</span>
-    </div>
-  </div>
-  <div class="trust-badge">
-    <div class="trust-badge-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#2d7a3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
-        <rect x="1" y="3" width="15" height="13" rx="1"/>
-        <path d="M16 8h4l3 5v5h-7V8z"/>
-        <circle cx="5.5" cy="18.5" r="2.5"/>
-        <circle cx="18.5" cy="18.5" r="2.5"/>
-      </svg>
-    </div>
-    <div>
-      <span class="trust-badge-title">Free Shipping</span>
-      <span class="trust-badge-sub">On all orders</span>
-    </div>
-  </div>
-  <div class="trust-badge">
-    <div class="trust-badge-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#2d7a3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
-        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-      </svg>
-    </div>
-    <div>
-      <span class="trust-badge-title">Secure Checkout</span>
-      <span class="trust-badge-sub">SSL encrypted</span>
-    </div>
-  </div>
-</div>
-<p class="cta-nudge">Not convinced? <a href="checkout.html#reviews">See reviews ↓</a></p>
+<a class="cta-reviews-link" href="checkout.html#reviews">Not convinced? See reviews ↓</a>
 </div>
 
 <h2>Why this tool is different from everything else</h2>
@@ -483,52 +376,11 @@ h2 { font-size: 24px; line-height: 30px; }
 <p>Order today and you'll get the pen, a full text guide walking you through all four points, and free shipping.</p>
 
 <div class="cta-wrap">
-<div class="stock-badge"><span class="stock-dot"></span> Currently In Stock</div>
 <a class="cta-btn" href="checkout.html">
 <span>Relieve Jaw Pain Today →</span>
 <span class="cta-btn-price">Get The Acupressure Pen — $49.99</span>
 </a>
-<div class="trust-badges">
-  <div class="trust-badge">
-    <div class="trust-badge-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#2d7a3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-        <polyline points="9 12 11 14 15 10"/>
-      </svg>
-    </div>
-    <div>
-      <span class="trust-badge-title">30-Day Returns</span>
-      <span class="trust-badge-sub">Risk-free guarantee</span>
-    </div>
-  </div>
-  <div class="trust-badge">
-    <div class="trust-badge-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#2d7a3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
-        <rect x="1" y="3" width="15" height="13" rx="1"/>
-        <path d="M16 8h4l3 5v5h-7V8z"/>
-        <circle cx="5.5" cy="18.5" r="2.5"/>
-        <circle cx="18.5" cy="18.5" r="2.5"/>
-      </svg>
-    </div>
-    <div>
-      <span class="trust-badge-title">Free Shipping</span>
-      <span class="trust-badge-sub">On all orders</span>
-    </div>
-  </div>
-  <div class="trust-badge">
-    <div class="trust-badge-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#2d7a3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
-        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-      </svg>
-    </div>
-    <div>
-      <span class="trust-badge-title">Secure Checkout</span>
-      <span class="trust-badge-sub">SSL encrypted</span>
-    </div>
-  </div>
-</div>
-<p class="cta-nudge">Not convinced? <a href="checkout.html#reviews">See reviews ↓</a></p>
+<a class="cta-reviews-link" href="checkout.html#reviews">Not convinced? See reviews ↓</a>
 </div>
 
 </div>
