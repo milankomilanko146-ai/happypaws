@@ -5,543 +5,407 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Electronic Acupuncture Pen – Checkout</title>
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: #f0f2f5;
-  color: #1a1a1a;
-  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  background: #f4f4f4;
+  color: #222;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
-/* ── BACK ROW ── */
+/* ── BACK ── */
 .back-row {
   background: #fff;
-  border-bottom: 1px solid #e8e8e8;
-  padding: 0 4px;
+  border-bottom: 1px solid #ddd;
+  padding: 0 12px;
 }
 .back-btn {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
+  color: #444;
+  font-size: 13px;
+  text-decoration: none;
+  padding: 11px 0;
+  min-height: 42px;
   background: none;
   border: none;
   cursor: pointer;
-  text-decoration: none;
-  color: #555;
-  font-size: 15px;
-  font-weight: 500;
-  padding: 14px 12px;
-  min-height: 48px;
 }
-.back-btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+.back-btn svg { width: 15px; height: 15px; }
 
 /* ── HERO ── */
 .hero {
   background: #fff;
-  padding: 16px 16px 20px;
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid #ddd;
+  padding: 16px 16px 14px;
   text-align: center;
 }
-.hero-badge {
-  display: inline-block;
-  background: #1a4f8a;
-  color: #fff;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: .7px;
-  text-transform: uppercase;
-  border-radius: 6px;
-  padding: 5px 12px;
-  margin-bottom: 10px;
-}
 .hero h1 {
-  font-size: 20px;
-  font-weight: 800;
+  font-size: 18px;
+  font-weight: 700;
   color: #111;
-  margin-bottom: 5px;
-  line-height: 1.25;
+  margin-bottom: 4px;
 }
 .hero .tagline {
-  font-size: 13.5px;
-  color: #555;
+  font-size: 13px;
+  color: #666;
   margin-bottom: 12px;
-  line-height: 1.5;
 }
-
-/* Hero rating */
 .hero-rating {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin-bottom: 14px;
-  font-size: 13px;
-  color: #444;
+  margin-bottom: 12px;
   flex-wrap: wrap;
+  font-size: 12.5px;
+  color: #555;
 }
-.tp-stars-inline { display: flex; gap: 2px; }
-.tp-star-inline {
-  width: 20px; height: 20px;
+.stars-wrap { display: flex; gap: 2px; }
+.star {
+  width: 17px; height: 17px;
   background: #00b67a;
   display: flex; align-items: center; justify-content: center;
   position: relative; overflow: hidden;
 }
-.tp-star-inline svg { width: 12px; height: 12px; fill: #fff; position: relative; z-index: 1; }
-.tp-star-inline.partial { background: #ddd; }
-.tp-star-inline.partial::before {
-  content: '';
-  position: absolute; left: 0; top: 0;
-  width: 80%; height: 100%;
-  background: #00b67a; z-index: 0;
-}
-.rating-text { font-size: 13px; color: #444; font-weight: 600; }
-.hero-rating a { color: #1a4f8a; text-decoration: underline; font-size: 13px; font-weight: 600; }
+.star svg { width: 10px; height: 10px; fill: #fff; position: relative; z-index: 1; }
+.star.partial { background: #ccc; }
+.star.partial::before { content: ''; position: absolute; left: 0; top: 0; width: 80%; height: 100%; background: #00b67a; z-index: 0; }
+.hero-rating a { color: #1a56a0; }
 
-/* Trust badges hero — horizontal scroll on very small screens */
-.trust-badges-hero {
+.trust-row {
   display: flex;
   justify-content: center;
-  gap: 6px 16px;
+  gap: 6px 20px;
   flex-wrap: wrap;
 }
-.trust-badge-item { display: flex; align-items: center; gap: 6px; }
-.trust-badge-icon-wrap {
-  width: 30px; height: 30px;
+.trust-item { display: flex; align-items: center; gap: 5px; font-size: 11.5px; color: #555; }
+.trust-item svg { width: 13px; height: 13px; stroke: #2a7a3a; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+
+/* ── WRAP ── */
+.page-wrap {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 14px 12px 70px;
+}
+
+/* ── CARD ── */
+.card {
+  background: #fff;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+.card-head {
+  padding: 11px 14px;
+  border-bottom: 1px solid #eee;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #111;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.step-num {
+  width: 20px; height: 20px;
   border-radius: 50%;
-  background: #e6f4ea;
+  background: #1a56a0;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
 }
-.trust-badge-icon-wrap svg {
-  width: 15px; height: 15px;
-  stroke: #2d7a3a; fill: none;
-  stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
-}
-.trust-badge-label strong { font-size: 11.5px; font-weight: 700; color: #1a5c24; line-height: 1.3; display: block; }
-.trust-badge-label span { font-size: 10.5px; color: #555; line-height: 1.2; display: block; }
-
-/* ── MAIN WRAP ── */
-.page-wrap {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 12px 12px 80px;
-}
-
-/* ── SECTION CARD ── */
-.section-card {
-  background: #fff;
-  border-radius: 14px;
-  margin-bottom: 12px;
-  padding: 20px 16px;
-  box-shadow: 0 1px 3px rgba(0,0,0,.08);
-}
-.section-title {
-  font-size: 16px;
-  font-weight: 800;
-  color: #111;
-  margin-bottom: 14px;
-  letter-spacing: -.2px;
-}
+.card-body { padding: 14px; }
 
 /* ── PACKAGES ── */
-.package-option {
-  border: 2px solid #e8e8e8;
-  border-radius: 12px;
-  padding: 14px 12px;
-  margin-bottom: 10px;
+.pkg {
+  border: 1px solid #ddd;
+  padding: 11px 12px;
+  margin-bottom: 7px;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 10px;
-  transition: border-color .15s, background .15s;
-  position: relative;
   -webkit-user-select: none;
   user-select: none;
-  min-height: 72px;
+  background: #fff;
 }
-.package-option.selected { border-color: #4a4af4; background: #f6f6ff; }
-.package-option input[type="radio"] {
-  accent-color: #4a4af4;
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
-  cursor: pointer;
-}
+.pkg:last-child { margin-bottom: 0; }
+.pkg.selected { border-color: #1a56a0; background: #f0f5ff; }
+.pkg input[type="radio"] { accent-color: #1a56a0; width: 16px; height: 16px; flex-shrink: 0; cursor: pointer; }
 .pkg-img {
-  width: 52px;
-  height: 52px;
+  width: 44px; height: 44px;
   object-fit: contain;
+  border: 1px solid #eee;
+  background: #fafafa;
+  padding: 2px;
   flex-shrink: 0;
-  border-radius: 6px;
-  background: #f9f9f9;
-  padding: 3px;
 }
-.pkg-info { flex: 1; min-width: 0; }
-.pkg-label {
+.pkg-meta { flex: 1; min-width: 0; }
+.pkg-badge {
+  display: inline-block;
   font-size: 9px;
   font-weight: 700;
-  letter-spacing: .6px;
+  letter-spacing: .5px;
   text-transform: uppercase;
-  border-radius: 3px;
-  padding: 2px 6px;
-  display: inline-block;
-  margin-bottom: 3px;
+  padding: 1px 5px;
+  margin-bottom: 2px;
+  border: 1px solid;
 }
-.pkg-label.bestvalue { background: #f59e0b; color: #fff; }
-.pkg-label.bestdeal  { background: #e53935; color: #fff; }
-.pkg-name { font-size: 13px; font-weight: 700; color: #111; line-height: 1.3; }
+.pkg-badge.popular { color: #1a56a0; border-color: #1a56a0; background: #edf3ff; }
+.pkg-badge.best    { color: #276527; border-color: #2a7a3a; background: #edf7ee; }
+.pkg-name { font-size: 13px; font-weight: 600; color: #111; }
+.pkg-sub  { font-size: 11px; color: #888; }
 .pkg-price { text-align: right; flex-shrink: 0; }
-.pkg-original { font-size: 11px; color: #aaa; text-decoration: line-through; display: block; }
-.pkg-current { font-size: 15px; font-weight: 800; color: #111; }
-.pkg-off { font-size: 11px; font-weight: 700; color: #e53935; display: block; }
+.pkg-orig { font-size: 11px; color: #aaa; text-decoration: line-through; display: block; }
+.pkg-cur  { font-size: 15px; font-weight: 700; color: #111; display: block; }
+.pkg-save { font-size: 10.5px; color: #276527; font-weight: 600; }
 
 /* ── PAYMENT TABS ── */
-.payment-method-tabs {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 16px;
-}
-.pay-method-tab {
+.pay-tabs { display: flex; gap: 6px; margin-bottom: 14px; }
+.pay-tab {
   flex: 1;
-  border: 2px solid #e0e0e0;
-  border-radius: 10px;
-  padding: 12px 6px 10px;
+  border: 1px solid #ddd;
+  padding: 10px 6px;
   text-align: center;
   cursor: pointer;
   font-size: 11px;
   font-weight: 600;
   color: #555;
   background: #fff;
-  transition: border-color .15s, background .15s;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 5px;
-  min-height: 60px;
-  line-height: 1.3;
+  gap: 4px;
+  min-height: 50px;
 }
-.pay-method-tab.active { border-color: #4a4af4; background: #f6f6ff; color: #4a4af4; }
+.pay-tab.active { border-color: #1a56a0; background: #f0f5ff; color: #1a56a0; }
 
-/* ── FORM FIELDS ── */
-.field-group { display: flex; flex-direction: column; gap: 12px; }
-.field-row { display: flex; gap: 10px; }
+/* ── FORM ── */
+.field-group { display: flex; flex-direction: column; gap: 9px; }
+.field-row { display: flex; gap: 8px; }
 .field-row > * { flex: 1; min-width: 0; }
+
+.field-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 3px;
+  text-transform: uppercase;
+  letter-spacing: .3px;
+}
 
 input[type="text"],
 input[type="email"],
 input[type="tel"],
 select {
   width: 100%;
-  border: 1.5px solid #ddd;
-  border-radius: 10px;
-  padding: 14px 14px;
-  font-size: 16px; /* 16px prevents iOS zoom */
-  color: #111;
+  border: 1px solid #ccc;
+  padding: 10px 11px;
+  font-size: 15px;
+  font-family: inherit;
+  color: #222;
   background: #fff;
   outline: none;
-  transition: border-color .15s;
   -webkit-appearance: none;
   appearance: none;
+  border-radius: 0;
   display: block;
 }
-input:focus, select:focus { border-color: #4a4af4; }
-input::placeholder { color: #aaa; }
+input:focus, select:focus { border-color: #1a56a0; outline: 2px solid rgba(26,86,160,.15); outline-offset: 0; }
+input::placeholder { color: #bbb; }
 
-/* Phone row */
 .phone-row {
   display: flex;
-  border: 1.5px solid #ddd;
-  border-radius: 10px;
-  overflow: hidden;
+  border: 1px solid #ccc;
   background: #fff;
-  transition: border-color .15s;
 }
-.phone-row:focus-within { border-color: #4a4af4; }
+.phone-row:focus-within { border-color: #1a56a0; }
 .phone-prefix {
   display: flex;
   align-items: center;
-  padding: 0 10px 0 14px;
+  padding: 0 8px 0 10px;
   background: #f8f8f8;
-  border-right: 1.5px solid #ddd;
-  white-space: nowrap;
+  border-right: 1px solid #ccc;
   flex-shrink: 0;
 }
 .phone-prefix select {
   border: none;
   background: transparent;
-  font-size: 15px;
-  padding: 14px 4px;
+  font-size: 14px;
+  padding: 10px 2px;
   width: auto;
-  border-radius: 0;
+  outline: none;
 }
-.phone-prefix-arrow { font-size: 10px; color: #888; margin-left: 2px; }
-.phone-row input {
-  border: none;
-  border-radius: 0;
-  flex: 1;
-  min-width: 0;
-  padding-left: 12px;
-}
+.phone-prefix select:focus { outline: none; }
+.phone-row input { border: none; flex: 1; min-width: 0; padding-left: 10px; }
+.phone-row input:focus { outline: none; }
 
-/* Card brand icons */
-.card-brand-icons { display: flex; gap: 6px; align-items: center; margin-top: 10px; flex-wrap: wrap; }
-.card-brand {
-  border: 1px solid #e0e0e0;
-  border-radius: 4px;
-  padding: 3px 7px;
-  font-size: 10px;
+.card-brands { display: flex; gap: 5px; margin-top: 10px; flex-wrap: wrap; }
+.brand-pill {
+  border: 1px solid #ddd;
+  padding: 2px 7px;
+  font-size: 9.5px;
   font-weight: 700;
-  color: #555;
-  background: #fff;
+  color: #666;
+  letter-spacing: .3px;
 }
-.card-brand.visa { color: #1a1f71; }
-.card-brand.mc { color: #eb001b; }
-.card-brand.amex { color: #007bc1; }
+.brand-pill.visa { color: #1a1f71; }
+.brand-pill.mc   { color: #c0392b; }
+.brand-pill.amex { color: #007bc1; }
 
-.stripe-badge {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  font-size: 11.5px;
-  color: #aaa;
-  margin-top: 10px;
-}
+.stripe-note { display: flex; align-items: center; justify-content: center; gap: 4px; font-size: 11px; color: #999; margin-top: 9px; }
 
-/* Express payment */
-.btn-apple {
-  width: 100%;
-  background: #000;
-  color: #fff;
-  border: none;
-  border-radius: 12px;
-  padding: 18px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  min-height: 56px;
-}
-.btn-google {
-  width: 100%;
-  background: #fff;
-  color: #111;
-  border: 1.5px solid #ddd;
-  border-radius: 12px;
-  padding: 18px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  min-height: 56px;
-}
-.express-note { text-align: center; font-size: 12px; color: #aaa; margin-top: 8px; }
 #apple-panel, #google-panel { display: none; }
-
-/* ── ORDER BUTTON ── */
-.btn-complete {
+.btn-express {
   width: 100%;
-  background: #4a4af4;
-  color: #fff;
-  font-size: 17px;
-  font-weight: 800;
-  border: none;
-  border-radius: 12px;
-  padding: 18px;
+  border: 1px solid #ddd;
+  padding: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
   cursor: pointer;
-  letter-spacing: .2px;
-  margin-top: 6px;
-  min-height: 56px;
-  transition: background .15s, transform .1s;
-  border-bottom: 3px solid #3333cc;
-}
-.btn-complete:active { transform: scale(.98); }
-
-.secure-note {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
-  font-size: 12px;
-  color: #888;
-  margin-top: 10px;
-  text-align: center;
+  gap: 7px;
+  min-height: 48px;
+  border-radius: 0;
 }
+.btn-express.apple { background: #111; color: #fff; border-color: #111; }
+.btn-express.google { background: #fff; color: #222; }
+.express-hint { text-align: center; font-size: 11px; color: #999; margin-top: 6px; }
+
+/* ── DIVIDER ── */
+hr { border: none; border-top: 1px solid #eee; margin: 14px 0; }
+
+/* ── SUMMARY ── */
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 5px;
+}
+.summary-row.total {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111;
+  border-top: 1px solid #ddd;
+  padding-top: 9px;
+  margin-top: 4px;
+}
+.summary-row.total span:last-child { font-size: 16px; }
+.free-ship { color: #276527; font-weight: 600; }
+
+/* ── BUTTON ── */
+.btn-order {
+  width: 100%;
+  background: #1a56a0;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: inherit;
+  border: none;
+  border-bottom: 3px solid #123d74;
+  padding: 15px;
+  cursor: pointer;
+  margin-top: 8px;
+  min-height: 50px;
+  letter-spacing: .2px;
+  border-radius: 0;
+}
+.btn-order:active { transform: scale(.99); }
+
+.secure-note { display: flex; align-items: center; justify-content: center; gap: 4px; font-size: 11px; color: #999; margin-top: 8px; text-align: center; }
 
 /* ── TRUST STRIP ── */
 .trust-strip {
   display: flex;
   justify-content: center;
-  gap: 8px 20px;
+  gap: 6px 22px;
   flex-wrap: wrap;
-  margin-bottom: 12px;
-  padding: 16px 12px;
+  padding: 14px 12px;
   background: #fff;
-  border-radius: 14px;
-  box-shadow: 0 1px 3px rgba(0,0,0,.07);
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
 }
-.trust-strip-item { display: flex; align-items: center; gap: 7px; }
-.trust-strip-icon {
-  width: 32px; height: 32px;
-  border-radius: 50%;
-  background: #e6f4ea;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
-.trust-strip-icon svg {
-  width: 16px; height: 16px;
-  stroke: #2d7a3a; fill: none;
-  stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
-}
-.trust-strip-text strong { font-size: 11.5px; font-weight: 700; color: #1a5c24; line-height: 1.3; display: block; }
-.trust-strip-text span { font-size: 10.5px; color: #555; line-height: 1.2; display: block; }
+.ts-item { display: flex; align-items: center; gap: 6px; }
+.ts-item svg { width: 14px; height: 14px; stroke: #2a7a3a; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+.ts-text { font-size: 11.5px; color: #444; }
+.ts-text strong { display: block; font-weight: 700; color: #222; font-size: 11.5px; }
 
 /* ── REVIEWS ── */
 .reviews-section {
   background: #fff;
-  border-radius: 14px;
-  padding: 20px 16px;
-  box-shadow: 0 1px 3px rgba(0,0,0,.07);
-  margin-bottom: 12px;
+  border: 1px solid #ddd;
+  padding: 16px 14px;
+  margin-bottom: 10px;
 }
-.tp-overall-wrap { margin-bottom: 16px; }
-.tp-logo-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-.tp-score-row { display: flex; align-items: center; gap: 12px; }
-.tp-overall-score { font-size: 32px; font-weight: 900; color: #111; line-height: 1; }
-.tp-stars-row { display: flex; gap: 3px; margin-bottom: 3px; }
-.tp-star {
-  width: 24px; height: 24px;
-  background: #00b67a;
-  display: flex; align-items: center; justify-content: center;
-  position: relative; overflow: hidden;
-}
-.tp-star svg { width: 14px; height: 14px; fill: #fff; position: relative; z-index: 1; }
-.tp-star.partial { background: #ddd; }
-.tp-star.partial::before {
-  content: ''; position: absolute; left: 0; top: 0;
-  width: 80%; height: 100%; background: #00b67a; z-index: 0;
-}
-.tp-count { font-size: 13px; color: #555; font-weight: 500; }
-.tp-excellent { font-size: 13px; font-weight: 700; color: #111; }
+.section-label { font-size: 13.5px; font-weight: 700; color: #111; margin-bottom: 12px; }
+.tp-score-block { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.tp-score-num { font-size: 32px; font-weight: 800; color: #111; line-height: 1; }
+.tp-stars-lg { display: flex; gap: 2px; margin-bottom: 3px; }
+.tp-star-lg { width: 20px; height: 20px; background: #00b67a; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+.tp-star-lg svg { width: 12px; height: 12px; fill: #fff; position: relative; z-index: 1; }
+.tp-star-lg.partial { background: #ccc; }
+.tp-star-lg.partial::before { content: ''; position: absolute; left: 0; top: 0; width: 80%; height: 100%; background: #00b67a; z-index: 0; }
+.tp-excel { font-size: 13px; font-weight: 700; color: #111; }
+.tp-count { font-size: 11.5px; color: #888; }
 
-.tp-reviews-grid { display: flex; flex-direction: column; gap: 12px; }
-.tp-review { border: 1px solid #ebebeb; border-radius: 10px; padding: 14px 12px; }
-.tp-review-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 8px;
-  gap: 8px;
-}
-.tp-reviewer { display: flex; align-items: center; gap: 8px; }
-.tp-avatar {
-  width: 34px; height: 34px;
+.reviews-grid { display: flex; flex-direction: column; gap: 8px; }
+.review { border: 1px solid #eee; padding: 12px; }
+.review-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 7px; }
+.reviewer { display: flex; align-items: center; gap: 7px; }
+.avatar {
+  width: 30px; height: 30px;
   border-radius: 50%;
-  background: #4a4af4;
   color: #fff;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 700;
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
 }
-.tp-reviewer-name { font-size: 13.5px; font-weight: 700; color: #111; }
-.tp-verified {
-  font-size: 11px;
-  color: #00b67a;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 3px;
-  white-space: nowrap;
-}
-.tp-review-stars { display: flex; gap: 2px; margin-bottom: 6px; }
-.tp-review-star {
-  width: 18px; height: 18px;
-  background: #00b67a;
-  display: flex; align-items: center; justify-content: center;
-  position: relative; overflow: hidden;
-}
-.tp-review-star svg { width: 11px; height: 11px; fill: #fff; position: relative; z-index: 1; }
-.tp-review-star.empty { background: #ddd; }
-.tp-review-star.half { background: #ddd; }
-.tp-review-star.half::before {
-  content: ''; position: absolute; left: 0; top: 0;
-  width: 50%; height: 100%; background: #00b67a; z-index: 0;
-}
-.tp-review-title { font-size: 13.5px; font-weight: 700; color: #111; margin-bottom: 4px; }
-.tp-review-body { font-size: 13px; color: #444; line-height: 1.55; }
-.tp-review-date { font-size: 11.5px; color: #aaa; margin-top: 6px; }
-
-.review-attachment { margin-top: 10px; }
-.review-thumb {
-  width: 72px; height: 72px;
-  object-fit: cover;
-  border-radius: 8px;
-  cursor: zoom-in;
-  border: 1px solid #e0e0e0;
-}
+.reviewer-name { font-size: 13px; font-weight: 600; color: #111; }
+.verified-badge { font-size: 10.5px; color: #00b67a; font-weight: 600; display: flex; align-items: center; gap: 2px; white-space: nowrap; }
+.rev-stars { display: flex; gap: 2px; margin-bottom: 5px; }
+.rev-star { width: 14px; height: 14px; background: #00b67a; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+.rev-star svg { width: 8px; height: 8px; fill: #fff; position: relative; z-index: 1; }
+.rev-star.empty { background: #ccc; }
+.rev-star.half { background: #ccc; }
+.rev-star.half::before { content: ''; position: absolute; left: 0; top: 0; width: 50%; height: 100%; background: #00b67a; }
+.rev-title { font-size: 12.5px; font-weight: 700; color: #111; margin-bottom: 3px; }
+.rev-body  { font-size: 12.5px; color: #555; line-height: 1.5; }
+.rev-date  { font-size: 10.5px; color: #bbb; margin-top: 5px; }
+.rev-img   { margin-top: 8px; }
+.rev-thumb { width: 62px; height: 62px; object-fit: cover; border: 1px solid #ddd; cursor: zoom-in; display: block; }
 
 /* ── POLICIES ── */
-.policies {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 6px 16px;
-  padding: 10px 0 20px;
-}
-.policies a { font-size: 12px; color: #888; text-decoration: underline; }
+.policies { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px 14px; padding: 8px 0 22px; }
+.policies a { font-size: 11.5px; color: #888; text-decoration: underline; }
 
 /* ── LIGHTBOX ── */
-.lightbox-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.8);
-  z-index: 9999;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
+.lightbox-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.75); z-index: 9999; align-items: center; justify-content: center; padding: 20px; }
 .lightbox-overlay.active { display: flex; }
 .lightbox-inner { position: relative; max-width: 480px; width: 100%; }
-.lightbox-inner img { width: 100%; border-radius: 12px; display: block; }
-.lightbox-close {
-  position: absolute;
-  top: -16px; right: -16px;
-  background: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 36px; height: 36px;
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer;
-  font-size: 20px;
-  color: #333;
-  box-shadow: 0 2px 10px rgba(0,0,0,.3);
-  line-height: 1;
-}
+.lightbox-inner img { width: 100%; display: block; }
+.lightbox-close { position: absolute; top: -13px; right: -13px; background: #fff; border: none; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 18px; color: #333; box-shadow: 0 2px 8px rgba(0,0,0,.3); }
 
-#anchor-reviews { scroll-margin-top: 16px; }
+#anchor-reviews { scroll-margin-top: 12px; }
 
-/* ── RESPONSIVE TWEAKS ── */
 @media (max-width: 380px) {
-  .hero h1 { font-size: 18px; }
-  .pkg-name { font-size: 12px; }
-  .pkg-current { font-size: 14px; }
+  .hero h1 { font-size: 16px; }
   .field-row { flex-direction: column; }
 }
 </style>
 </head>
 <body>
 
-<!-- Lightbox -->
 <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox(event)">
   <div class="lightbox-inner">
     <button class="lightbox-close" onclick="document.getElementById('lightbox').classList.remove('active')">×</button>
@@ -549,438 +413,455 @@ input::placeholder { color: #aaa; }
   </div>
 </div>
 
-<!-- Back row -->
+<!-- Back -->
 <div class="back-row">
   <a class="back-btn" href="#" onclick="history.back(); return false;">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="15 18 9 12 15 6"/>
-    </svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
     Back
   </a>
 </div>
 
 <!-- Hero -->
 <div class="hero">
-  <div class="hero-badge">🔥 Limited — 75% OFF Today</div>
   <h1>Electronic Acupuncture Pen</h1>
-  <p class="tagline">Drug-free jaw pain relief. Clinically inspired. Instant results.</p>
+  <p class="tagline">Drug-free relief for jaw, neck &amp; muscle pain. No prescription needed.</p>
 
   <div class="hero-rating">
-    <div class="tp-stars-inline">
-      <div class="tp-star-inline"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-      <div class="tp-star-inline"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-      <div class="tp-star-inline"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-      <div class="tp-star-inline"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-      <div class="tp-star-inline partial"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+    <div class="stars-wrap">
+      <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <div class="star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <div class="star partial"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
     </div>
-    <span class="rating-text"><strong>4.8</strong> · 3,200+ reviews</span>
-    <a href="#anchor-reviews">See reviews ↓</a>
+    <span><strong>4.8</strong> · 3,200+ reviews · <a href="#anchor-reviews">Read reviews ↓</a></span>
   </div>
 
-  <div class="trust-badges-hero">
-    <div class="trust-badge-item">
-      <div class="trust-badge-icon-wrap">
-        <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-      </div>
-      <div class="trust-badge-label">
-        <strong>Free Shipping</strong>
-        <span>On all orders</span>
-      </div>
+  <div class="trust-row">
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      Free Shipping
     </div>
-    <div class="trust-badge-item">
-      <div class="trust-badge-icon-wrap">
-        <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.5"/></svg>
-      </div>
-      <div class="trust-badge-label">
-        <strong>30-Day Returns</strong>
-        <span>Risk-free</span>
-      </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.5"/></svg>
+      30-Day Returns
     </div>
-    <div class="trust-badge-item">
-      <div class="trust-badge-icon-wrap">
-        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      </div>
-      <div class="trust-badge-label">
-        <strong>Secure Checkout</strong>
-        <span>SSL encrypted</span>
-      </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      Secure Checkout
     </div>
   </div>
 </div>
 
-<!-- Page content -->
 <div class="page-wrap">
 
-  <!-- Package -->
-  <div class="section-card">
-    <div class="section-title">Choose Your Package</div>
+  <!-- 1. Package -->
+  <div class="card">
+    <div class="card-head">
+      <div class="step-num">1</div>
+      Select Package
+    </div>
+    <div class="card-body">
 
-    <label class="package-option" onclick="selectPkg(this)">
-      <input type="radio" name="pkg" value="1">
-      <img class="pkg-img"
-        src="https://oss.teemdrop.com/goods-admin/2026/04/05/ba4a806c-ee5b-4f3d-8c5c-fa210eade9de.jpg?x-oss-process=image/resize,m_fill,w_1200,h_1200/format,webp"
-        alt="1x pen" onclick="openLightbox(this.src, event)">
-      <div class="pkg-info">
-        <div class="pkg-name">1× Acupuncture Pen</div>
-      </div>
-      <div class="pkg-price">
-        <span class="pkg-original">199.99€</span>
-        <span class="pkg-current">49.99€</span>
-        <span class="pkg-off">75% OFF</span>
-      </div>
-    </label>
+      <label class="pkg" onclick="selectPkg(this)">
+        <input type="radio" name="pkg" value="1">
+        <img class="pkg-img" src="https://oss.teemdrop.com/goods-admin/2026/04/05/ba4a806c-ee5b-4f3d-8c5c-fa210eade9de.jpg?x-oss-process=image/resize,m_fill,w_1200,h_1200/format,webp" alt="1× pen" onclick="openLightbox(this.src, event)">
+        <div class="pkg-meta">
+          <div class="pkg-name">1× Acupuncture Pen</div>
+          <div class="pkg-sub">Individual unit</div>
+        </div>
+        <div class="pkg-price">
+          <span class="pkg-orig">199.99€</span>
+          <span class="pkg-cur">49.99€</span>
+          <span class="pkg-save">Save 75%</span>
+        </div>
+      </label>
 
-    <label class="package-option" onclick="selectPkg(this)">
-      <input type="radio" name="pkg" value="2">
-      <img class="pkg-img"
-        src="https://oss.teemdrop.com/goods-admin/2026/04/05/ba4a806c-ee5b-4f3d-8c5c-fa210eade9de.jpg?x-oss-process=image/resize,m_fill,w_1200,h_1200/format,webp"
-        alt="2x pen" onclick="openLightbox(this.src, event)">
-      <div class="pkg-info">
-        <span class="pkg-label bestvalue">Most Popular</span>
-        <div class="pkg-name">2× Acupuncture Pen</div>
-      </div>
-      <div class="pkg-price">
-        <span class="pkg-original">399.98€</span>
-        <span class="pkg-current">44.95€</span>
-        <span class="pkg-off">65% OFF</span>
-      </div>
-    </label>
+      <label class="pkg" onclick="selectPkg(this)">
+        <input type="radio" name="pkg" value="2">
+        <img class="pkg-img" src="https://oss.teemdrop.com/goods-admin/2026/04/05/ba4a806c-ee5b-4f3d-8c5c-fa210eade9de.jpg?x-oss-process=image/resize,m_fill,w_1200,h_1200/format,webp" alt="2× pen" onclick="openLightbox(this.src, event)">
+        <div class="pkg-meta">
+          <span class="pkg-badge popular">Most Popular</span>
+          <div class="pkg-name">2× Acupuncture Pen</div>
+          <div class="pkg-sub">Share with family</div>
+        </div>
+        <div class="pkg-price">
+          <span class="pkg-orig">399.98€</span>
+          <span class="pkg-cur">44.95€</span>
+          <span class="pkg-save">Save 65%</span>
+        </div>
+      </label>
 
-    <label class="package-option selected" onclick="selectPkg(this)">
-      <input type="radio" name="pkg" value="3" checked>
-      <img class="pkg-img"
-        src="https://oss.teemdrop.com/goods-admin/2026/04/05/ba4a806c-ee5b-4f3d-8c5c-fa210eade9de.jpg?x-oss-process=image/resize,m_fill,w_1200,h_1200/format,webp"
-        alt="3x pen" onclick="openLightbox(this.src, event)">
-      <div class="pkg-info">
-        <span class="pkg-label bestdeal">Best Deal</span>
-        <div class="pkg-name">3× Acupuncture Pen</div>
-      </div>
-      <div class="pkg-price">
-        <span class="pkg-original">599.97€</span>
-        <span class="pkg-current">39.99€</span>
-        <span class="pkg-off">70% OFF</span>
-      </div>
-    </label>
+      <label class="pkg selected" onclick="selectPkg(this)">
+        <input type="radio" name="pkg" value="3" checked>
+        <img class="pkg-img" src="https://oss.teemdrop.com/goods-admin/2026/04/05/ba4a806c-ee5b-4f3d-8c5c-fa210eade9de.jpg?x-oss-process=image/resize,m_fill,w_1200,h_1200/format,webp" alt="3× pen" onclick="openLightbox(this.src, event)">
+        <div class="pkg-meta">
+          <span class="pkg-badge best">Best Value</span>
+          <div class="pkg-name">3× Acupuncture Pen</div>
+          <div class="pkg-sub">For household use</div>
+        </div>
+        <div class="pkg-price">
+          <span class="pkg-orig">599.97€</span>
+          <span class="pkg-cur">39.99€</span>
+          <span class="pkg-save">Save 70%</span>
+        </div>
+      </label>
+
+    </div>
   </div>
 
-  <!-- Payment -->
-  <div class="section-card">
-    <div class="section-title">Payment Method</div>
+  <!-- 2. Payment -->
+  <div class="card">
+    <div class="card-head">
+      <div class="step-num">2</div>
+      Payment Method
+    </div>
+    <div class="card-body">
+      <div class="pay-tabs">
+        <div class="pay-tab active" onclick="switchPayment('card', this)">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          Card
+        </div>
+        <div class="pay-tab" onclick="switchPayment('apple', this)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          Apple Pay
+        </div>
+        <div class="pay-tab" onclick="switchPayment('google', this)">
+          <svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 11.1V13h5.82a5.52 5.52 0 01-5.82 4.4A6.1 6.1 0 016 11.2 6.1 6.1 0 0112 5.1c1.5 0 2.85.55 3.87 1.44l1.54-1.54A8.2 8.2 0 0012 3 8.2 8.2 0 003.8 11.2 8.2 8.2 0 0012 19.4c4.7 0 7.8-3.3 7.8-8a7.7 7.7 0 00-.12-1.3H12z" fill="#4285F4"/></svg>
+          Google Pay
+        </div>
+      </div>
 
-    <div class="payment-method-tabs">
-      <div class="pay-method-tab active" onclick="switchPayment('card', this)">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
-          <line x1="1" y1="10" x2="23" y2="10"/>
-        </svg>
-        Card
+      <div id="card-panel">
+        <div class="field-group">
+          <div>
+            <label class="field-label">Card Number</label>
+            <input type="text" placeholder="•••• •••• •••• ••••" maxlength="19" oninput="formatCard(this)" inputmode="numeric" autocomplete="cc-number">
+          </div>
+          <div class="field-row">
+            <div>
+              <label class="field-label">Expiry</label>
+              <input type="text" placeholder="MM / YY" maxlength="7" oninput="formatExpiry(this)" inputmode="numeric" autocomplete="cc-exp">
+            </div>
+            <div>
+              <label class="field-label">CVV</label>
+              <input type="text" placeholder="•••" maxlength="4" inputmode="numeric" autocomplete="cc-csc">
+            </div>
+          </div>
+          <div>
+            <label class="field-label">Cardholder Name</label>
+            <input type="text" placeholder="As shown on card" autocomplete="cc-name">
+          </div>
+        </div>
+        <div class="card-brands">
+          <span class="brand-pill visa">VISA</span>
+          <span class="brand-pill mc">MC</span>
+          <span class="brand-pill amex">AMEX</span>
+          <span class="brand-pill">Maestro</span>
+        </div>
+        <div class="stripe-note">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="#999"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+          Secured by Stripe · SSL Encrypted
+        </div>
       </div>
-      <div class="pay-method-tab" onclick="switchPayment('apple', this)">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-        Apple Pay
+
+      <div id="apple-panel">
+        <button class="btn-express apple" onclick="alert('Apple Pay')">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          Continue with Apple Pay
+        </button>
+        <p class="express-hint">You will be redirected to Apple Pay to complete your purchase.</p>
       </div>
-      <div class="pay-method-tab" onclick="switchPayment('google', this)">
-        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 11.1V13h5.82a5.52 5.52 0 01-5.82 4.4A6.1 6.1 0 016 11.2 6.1 6.1 0 0112 5.1c1.5 0 2.85.55 3.87 1.44l1.54-1.54A8.2 8.2 0 0012 3 8.2 8.2 0 003.8 11.2 8.2 8.2 0 0012 19.4c4.7 0 7.8-3.3 7.8-8a7.7 7.7 0 00-.12-1.3H12z" fill="#4285F4"/></svg>
-        Google Pay
+
+      <div id="google-panel">
+        <button class="btn-express google" onclick="alert('Google Pay')">
+          <svg width="17" height="17" viewBox="0 0 24 24"><path d="M12 11.1V13h5.82a5.52 5.52 0 01-5.82 4.4A6.1 6.1 0 016 11.2 6.1 6.1 0 0112 5.1c1.5 0 2.85.55 3.87 1.44l1.54-1.54A8.2 8.2 0 0012 3 8.2 8.2 0 003.8 11.2 8.2 8.2 0 0012 19.4c4.7 0 7.8-3.3 7.8-8a7.7 7.7 0 00-.12-1.3H12z" fill="#4285F4"/></svg>
+          Continue with Google Pay
+        </button>
+        <p class="express-hint">You will be redirected to Google Pay to complete your purchase.</p>
       </div>
     </div>
+  </div>
 
-    <div id="card-panel">
+  <!-- 3. Customer Info -->
+  <div class="card">
+    <div class="card-head">
+      <div class="step-num">3</div>
+      Customer Information
+    </div>
+    <div class="card-body">
       <div class="field-group">
-        <input type="text" placeholder="Card number" maxlength="19" oninput="formatCard(this)" inputmode="numeric">
         <div class="field-row">
-          <input type="text" placeholder="MM / YY" maxlength="7" oninput="formatExpiry(this)" inputmode="numeric">
-          <input type="text" placeholder="CVV / CVC" maxlength="4" inputmode="numeric">
+          <div>
+            <label class="field-label">First Name</label>
+            <input type="text" placeholder="Ján" autocomplete="given-name">
+          </div>
+          <div>
+            <label class="field-label">Last Name</label>
+            <input type="text" placeholder="Novák" autocomplete="family-name">
+          </div>
         </div>
-        <input type="text" placeholder="Cardholder name" autocomplete="cc-name">
+        <div>
+          <label class="field-label">Email Address</label>
+          <input type="email" placeholder="jan.novak@email.sk" autocomplete="email" inputmode="email">
+        </div>
+        <div>
+          <label class="field-label">Phone Number</label>
+          <div class="phone-row">
+            <div class="phone-prefix">
+              <select autocomplete="tel-country-code">
+                <option value="+421">🇸🇰 +421</option>
+                <option value="+1">🇺🇸 +1</option>
+                <option value="+44">🇬🇧 +44</option>
+                <option value="+49">🇩🇪 +49</option>
+                <option value="+33">🇫🇷 +33</option>
+                <option value="+39">🇮🇹 +39</option>
+                <option value="+34">🇪🇸 +34</option>
+                <option value="+48">🇵🇱 +48</option>
+                <option value="+43">🇦🇹 +43</option>
+                <option value="+420">🇨🇿 +420</option>
+              </select>
+            </div>
+            <input type="tel" placeholder="912 123 456" autocomplete="tel-local" inputmode="tel">
+          </div>
+        </div>
       </div>
-      <div class="card-brand-icons">
-        <span class="card-brand visa">VISA</span>
-        <span class="card-brand mc">MC</span>
-        <span class="card-brand amex">AMEX</span>
-        <span class="card-brand">Maestro</span>
-      </div>
-      <div class="stripe-badge">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="#888"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
-        Secured by Stripe · SSL Encrypted
-      </div>
-    </div>
-
-    <div id="apple-panel">
-      <button class="btn-apple" onclick="alert('Apple Pay')">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-        Pay with Apple Pay
-      </button>
-      <p class="express-note">You'll be redirected to Apple Pay to complete payment.</p>
-    </div>
-
-    <div id="google-panel">
-      <button class="btn-google" onclick="alert('Google Pay')">
-        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 11.1V13h5.82a5.52 5.52 0 01-5.82 4.4A6.1 6.1 0 016 11.2 6.1 6.1 0 0112 5.1c1.5 0 2.85.55 3.87 1.44l1.54-1.54A8.2 8.2 0 0012 3 8.2 8.2 0 003.8 11.2 8.2 8.2 0 0012 19.4c4.7 0 7.8-3.3 7.8-8a7.7 7.7 0 00-.12-1.3H12z" fill="#4285F4"/></svg>
-        Pay with Google Pay
-      </button>
-      <p class="express-note">You'll be redirected to Google Pay to complete payment.</p>
     </div>
   </div>
 
-  <!-- Customer Info -->
-  <div class="section-card">
-    <div class="section-title">Customer Information</div>
-    <div class="field-group">
-      <div class="field-row">
-        <input type="text" placeholder="First Name" autocomplete="given-name">
-        <input type="text" placeholder="Last Name" autocomplete="family-name">
-      </div>
-      <input type="email" placeholder="Email Address" autocomplete="email" inputmode="email">
-      <div class="phone-row">
-        <div class="phone-prefix">
-          <select autocomplete="tel-country-code">
-            <option value="+421">🇸🇰 +421</option>
-            <option value="+1">🇺🇸 +1</option>
-            <option value="+44">🇬🇧 +44</option>
-            <option value="+49">🇩🇪 +49</option>
-            <option value="+33">🇫🇷 +33</option>
-            <option value="+39">🇮🇹 +39</option>
-            <option value="+34">🇪🇸 +34</option>
-            <option value="+48">🇵🇱 +48</option>
-            <option value="+43">🇦🇹 +43</option>
-            <option value="+420">🇨🇿 +420</option>
+  <!-- 4. Delivery -->
+  <div class="card">
+    <div class="card-head">
+      <div class="step-num">4</div>
+      Delivery Address
+    </div>
+    <div class="card-body">
+      <div class="field-group">
+        <div>
+          <label class="field-label">Country</label>
+          <select autocomplete="country">
+            <option>Slovakia</option>
+            <option>Czech Republic</option>
+            <option>Austria</option>
+            <option>Germany</option>
+            <option>Hungary</option>
+            <option>Poland</option>
+            <option>United Kingdom</option>
+            <option>France</option>
+            <option>Italy</option>
+            <option>Spain</option>
           </select>
-          <span class="phone-prefix-arrow">▾</span>
         </div>
-        <input type="tel" placeholder="912 123 456" autocomplete="tel-local" inputmode="tel">
+        <div>
+          <label class="field-label">Street Address</label>
+          <input type="text" placeholder="Hlavná 12" autocomplete="address-line1">
+        </div>
+        <div>
+          <label class="field-label">City</label>
+          <input type="text" placeholder="Bratislava" autocomplete="address-level2">
+        </div>
+        <div class="field-row">
+          <div>
+            <label class="field-label">Region</label>
+            <select autocomplete="address-level1">
+              <option value="">Select region</option>
+              <option>Bratislava</option>
+              <option>Košice</option>
+              <option>Nitra</option>
+              <option>Prešov</option>
+              <option>Žilina</option>
+              <option>Banská Bystrica</option>
+              <option>Trenčín</option>
+              <option>Trnava</option>
+            </select>
+          </div>
+          <div>
+            <label class="field-label">ZIP / Postcode</label>
+            <input type="text" placeholder="81101" autocomplete="postal-code" inputmode="numeric">
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <!-- Delivery Address -->
-  <div class="section-card">
-    <div class="section-title">Delivery Address</div>
-    <div class="field-group">
-      <select autocomplete="country">
-        <option>Slovakia</option>
-        <option>Czech Republic</option>
-        <option>Austria</option>
-        <option>Germany</option>
-        <option>Hungary</option>
-        <option>Poland</option>
-        <option>United Kingdom</option>
-        <option>France</option>
-        <option>Italy</option>
-        <option>Spain</option>
-      </select>
-      <input type="text" placeholder="Street Address" autocomplete="address-line1">
-      <input type="text" placeholder="City" autocomplete="address-level2">
-      <div class="field-row">
-        <select autocomplete="address-level1">
-          <option value="">Region</option>
-          <option>Bratislava</option>
-          <option>Košice</option>
-          <option>Nitra</option>
-          <option>Prešov</option>
-          <option>Žilina</option>
-          <option>Banská Bystrica</option>
-          <option>Trenčín</option>
-          <option>Trnava</option>
-        </select>
-        <input type="text" placeholder="ZIP / Postcode" autocomplete="postal-code" inputmode="numeric">
+      <hr>
+
+      <div class="summary-row">
+        <span>3× Acupuncture Pen</span>
+        <span>39.99€</span>
       </div>
-    </div>
-    <br>
-    <button class="btn-complete" onclick="submitOrder()">Complete Order</button>
-    <div class="secure-note">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="#888"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
-      All transactions are SSL secure and encrypted
+      <div class="summary-row">
+        <span>Shipping</span>
+        <span class="free-ship">Free</span>
+      </div>
+      <div class="summary-row total">
+        <span>Total</span>
+        <span>39.99€</span>
+      </div>
+
+      <button class="btn-order" onclick="submitOrder()">Place Secure Order</button>
+      <div class="secure-note">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="#999"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+        256-bit SSL encryption · Your data is safe
+      </div>
     </div>
   </div>
 
   <!-- Trust strip -->
   <div class="trust-strip">
-    <div class="trust-strip-item">
-      <div class="trust-strip-icon">
-        <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-      </div>
-      <div class="trust-strip-text">
-        <strong>Free Shipping</strong>
-        <span>On all orders</span>
-      </div>
+    <div class="ts-item">
+      <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      <div class="ts-text"><strong>Free Shipping</strong><span>On all orders</span></div>
     </div>
-    <div class="trust-strip-item">
-      <div class="trust-strip-icon">
-        <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.5"/></svg>
-      </div>
-      <div class="trust-strip-text">
-        <strong>30-Day Returns</strong>
-        <span>Risk-free guarantee</span>
-      </div>
+    <div class="ts-item">
+      <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.5"/></svg>
+      <div class="ts-text"><strong>30-Day Returns</strong><span>Risk-free guarantee</span></div>
     </div>
-    <div class="trust-strip-item">
-      <div class="trust-strip-icon">
-        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      </div>
-      <div class="trust-strip-text">
-        <strong>Secure Checkout</strong>
-        <span>SSL encrypted</span>
-      </div>
+    <div class="ts-item">
+      <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <div class="ts-text"><strong>Secure Checkout</strong><span>SSL encrypted</span></div>
     </div>
   </div>
 
   <!-- Reviews -->
   <div class="reviews-section" id="anchor-reviews">
-    <div class="tp-overall-wrap">
-      <div class="tp-logo-row">
-        <svg width="130" height="30" viewBox="0 0 140 32" xmlns="http://www.w3.org/2000/svg">
-          <rect width="28" height="28" y="2" fill="#00b67a"/>
-          <text x="14" y="21" font-family="Arial,sans-serif" font-size="18" font-weight="900" fill="#fff" text-anchor="middle">★</text>
-          <text x="36" y="22" font-family="'Helvetica Neue',Arial,sans-serif" font-size="19" font-weight="800" fill="#191919">Trustpilot</text>
-        </svg>
-      </div>
-      <div class="tp-score-row">
-        <div class="tp-overall-score">4.8</div>
-        <div>
-          <div class="tp-stars-row">
-            <div class="tp-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-            <div class="tp-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-            <div class="tp-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-            <div class="tp-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-            <div class="tp-star partial"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          </div>
-          <div class="tp-excellent">Excellent</div>
-          <div class="tp-count"><strong>3,200+</strong> reviews</div>
+    <div class="section-label">Customer Reviews</div>
+    <div class="tp-score-block">
+      <div class="tp-score-num">4.8</div>
+      <div>
+        <div class="tp-stars-lg">
+          <div class="tp-star-lg"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="tp-star-lg"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="tp-star-lg"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="tp-star-lg"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="tp-star-lg partial"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
         </div>
+        <div class="tp-excel">Excellent · <span style="font-weight:400;">Trustpilot</span></div>
+        <div class="tp-count">3,200+ verified reviews</div>
       </div>
     </div>
 
-    <div class="tp-reviews-grid">
+    <div class="reviews-grid">
 
-      <div class="tp-review">
-        <div class="tp-review-header">
-          <div class="tp-reviewer">
-            <div class="tp-avatar" style="background:#00b67a;">M</div>
-            <div><div class="tp-reviewer-name">Marta K.</div></div>
+      <div class="review">
+        <div class="review-top">
+          <div class="reviewer">
+            <div class="avatar" style="background:#00b67a;">M</div>
+            <div class="reviewer-name">Marta K.</div>
           </div>
-          <div class="tp-verified">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="#00b67a"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          <div class="verified-badge">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="#00b67a"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
             Verified
           </div>
         </div>
-        <div class="tp-review-stars">
-          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="tp-review-star half"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <div class="rev-stars">
+          <div class="rev-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="rev-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="rev-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="rev-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="rev-star half"></div>
         </div>
-        <div class="tp-review-title">Incredible relief for jaw tension</div>
-        <div class="tp-review-body">I've struggled with jaw pain for years. This pen gave me noticeable relief after the first session. Drug-free and easy to use — I bring it everywhere.</div>
-        <div class="review-attachment">
-          <img class="review-thumb" src="https://images.unsplash.com/photo-1583947581924-860bda6a26df?w=400&q=80" alt="" onclick="openLightbox(this.src, event)">
-        </div>
-        <div class="tp-review-date">May 2, 2026</div>
+        <div class="rev-title">Incredible relief for jaw tension</div>
+        <div class="rev-body">I've struggled with jaw pain for years. This pen gave me noticeable relief after the first session. Drug-free and easy to use — I bring it everywhere.</div>
+        <div class="rev-img"><img class="rev-thumb" src="https://images.unsplash.com/photo-1583947581924-860bda6a26df?w=400&q=80" alt="" onclick="openLightbox(this.src, event)"></div>
+        <div class="rev-date">2 May 2026</div>
       </div>
 
-      <div class="tp-review">
-        <div class="tp-review-header">
-          <div class="tp-reviewer">
-            <div class="tp-avatar" style="background:#4a4af4;">R</div>
-            <div><div class="tp-reviewer-name">Roman B.</div></div>
+      <div class="review">
+        <div class="review-top">
+          <div class="reviewer">
+            <div class="avatar" style="background:#1a56a0;">R</div>
+            <div class="reviewer-name">Roman B.</div>
           </div>
-          <div class="tp-verified">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="#00b67a"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          <div class="verified-badge">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="#00b67a"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
             Verified
           </div>
         </div>
-        <div class="tp-review-stars">
-          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <div class="rev-stars">
+          <div class="rev-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="rev-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="rev-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="rev-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="rev-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
         </div>
-        <div class="tp-review-title">Better than I expected</div>
-        <div class="tp-review-body">Skeptical at first but this thing genuinely works. No medication needed. Targets the exact spot. Ordered two more as gifts for my parents who both have chronic pain.</div>
-        <div class="review-attachment">
-          <img class="review-thumb" src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&q=80" alt="" onclick="openLightbox(this.src, event)">
-        </div>
-        <div class="tp-review-date">Apr 18, 2026</div>
+        <div class="rev-title">Better than I expected</div>
+        <div class="rev-body">Skeptical at first but this thing genuinely works. No medication needed. Targets the exact spot. Ordered two more as gifts for my parents who both have chronic pain.</div>
+        <div class="rev-img"><img class="rev-thumb" src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&q=80" alt="" onclick="openLightbox(this.src, event)"></div>
+        <div class="rev-date">18 April 2026</div>
       </div>
 
-      <div class="tp-review">
-        <div class="tp-review-header">
-          <div class="tp-reviewer">
-            <div class="tp-avatar" style="background:#f59e0b;">L</div>
-            <div><div class="tp-reviewer-name">Lucia V.</div></div>
+      <div class="review">
+        <div class="review-top">
+          <div class="reviewer">
+            <div class="avatar" style="background:#2a7a3a;">L</div>
+            <div class="reviewer-name">Lucia V.</div>
           </div>
-          <div class="tp-verified">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="#00b67a"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          <div class="verified-badge">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="#00b67a"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
             Verified
           </div>
         </div>
-        <div class="tp-review-stars">
-          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="tp-review-star half"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <div class="rev-stars">
+          <div class="rev-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="rev-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="rev-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="rev-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="rev-star half"></div>
         </div>
-        <div class="tp-review-title">Fast delivery, works perfectly</div>
-        <div class="tp-review-body">Arrived in 3 days. The pen feels premium and the intensity settings are great. Already noticed less neck and shoulder tension after one week of use. Highly recommend!</div>
-        <div class="tp-review-date">Apr 5, 2026</div>
+        <div class="rev-title">Fast delivery, works perfectly</div>
+        <div class="rev-body">Arrived in 3 days. The pen feels premium and the intensity settings are great. Already noticed less neck and shoulder tension after one week of use.</div>
+        <div class="rev-date">5 April 2026</div>
       </div>
 
-      <div class="tp-review">
-        <div class="tp-review-header">
-          <div class="tp-reviewer">
-            <div class="tp-avatar" style="background:#e53935;">J</div>
-            <div><div class="tp-reviewer-name">Jan H.</div></div>
+      <div class="review">
+        <div class="review-top">
+          <div class="reviewer">
+            <div class="avatar" style="background:#888;">J</div>
+            <div class="reviewer-name">Jan H.</div>
           </div>
-          <div class="tp-verified">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="#00b67a"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          <div class="verified-badge">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="#00b67a"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
             Verified
           </div>
         </div>
-        <div class="tp-review-stars">
-          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="tp-review-star empty"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <div class="rev-stars">
+          <div class="rev-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="rev-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="rev-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="rev-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="rev-star empty"></div>
         </div>
-        <div class="tp-review-title">Great product, solid build</div>
-        <div class="tp-review-body">Decent quality, the display showing intensity level is a nice touch. Would love a carrying case included, but overall very satisfied. Good price for what you get.</div>
-        <div class="review-attachment">
-          <img class="review-thumb" src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400&q=80" alt="" onclick="openLightbox(this.src, event)">
-        </div>
-        <div class="tp-review-date">Mar 29, 2026</div>
+        <div class="rev-title">Great product, solid build quality</div>
+        <div class="rev-body">Decent quality, the display showing intensity level is a nice touch. Would love a carrying case included, but overall very satisfied.</div>
+        <div class="rev-img"><img class="rev-thumb" src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400&q=80" alt="" onclick="openLightbox(this.src, event)"></div>
+        <div class="rev-date">29 March 2026</div>
       </div>
 
-      <div class="tp-review">
-        <div class="tp-review-header">
-          <div class="tp-reviewer">
-            <div class="tp-avatar" style="background:#00b67a;">E</div>
-            <div><div class="tp-reviewer-name">Eva M.</div></div>
+      <div class="review">
+        <div class="review-top">
+          <div class="reviewer">
+            <div class="avatar" style="background:#00b67a;">E</div>
+            <div class="reviewer-name">Eva M.</div>
           </div>
-          <div class="tp-verified">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="#00b67a"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          <div class="verified-badge">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="#00b67a"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
             Verified
           </div>
         </div>
-        <div class="tp-review-stars">
-          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="tp-review-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <div class="rev-stars">
+          <div class="rev-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="rev-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="rev-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="rev-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="rev-star"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
         </div>
-        <div class="tp-review-title">Finally something that actually delivers</div>
-        <div class="tp-review-body">I've tried many acupuncture tools and this one stands out. The build quality is excellent, results feel instant and the 30-day return policy gave me peace of mind to try it.</div>
-        <div class="tp-review-date">Mar 12, 2026</div>
+        <div class="rev-title">Finally something that actually delivers</div>
+        <div class="rev-body">I've tried many acupuncture tools and this one stands out. Excellent build quality, results feel instant and the 30-day return policy gave me confidence to try it.</div>
+        <div class="rev-date">12 March 2026</div>
       </div>
 
     </div>
   </div>
 
-  <!-- Policies -->
   <div class="policies">
     <a href="#">Terms &amp; Conditions</a>
     <a href="#">Privacy Policy</a>
@@ -993,48 +874,35 @@ input::placeholder { color: #aaa; }
 
 <script>
 function selectPkg(label) {
-  document.querySelectorAll('.package-option').forEach(el => el.classList.remove('selected'));
+  document.querySelectorAll('.pkg').forEach(el => el.classList.remove('selected'));
   label.classList.add('selected');
   label.querySelector('input').checked = true;
 }
-
 function switchPayment(type, tab) {
-  document.querySelectorAll('.pay-method-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.pay-tab').forEach(t => t.classList.remove('active'));
   tab.classList.add('active');
-  document.getElementById('card-panel').style.display = 'none';
-  document.getElementById('apple-panel').style.display = 'none';
-  document.getElementById('google-panel').style.display = 'none';
-  if (type === 'card')   document.getElementById('card-panel').style.display = 'block';
-  if (type === 'apple')  document.getElementById('apple-panel').style.display = 'block';
-  if (type === 'google') document.getElementById('google-panel').style.display = 'block';
+  ['card-panel','apple-panel','google-panel'].forEach(id => document.getElementById(id).style.display = 'none');
+  document.getElementById(type + '-panel').style.display = 'block';
 }
-
 function openLightbox(src, e) {
   e.stopPropagation();
   document.getElementById('lightbox-img').src = src;
   document.getElementById('lightbox').classList.add('active');
 }
-
 function closeLightbox(e) {
-  if (e.target === document.getElementById('lightbox')) {
+  if (e.target === document.getElementById('lightbox'))
     document.getElementById('lightbox').classList.remove('active');
-  }
 }
-
 function formatCard(input) {
   let v = input.value.replace(/\D/g, '').substring(0, 16);
   input.value = v.replace(/(.{4})/g, '$1 ').trim();
 }
-
 function formatExpiry(input) {
   let v = input.value.replace(/\D/g, '').substring(0, 4);
   if (v.length >= 3) v = v.substring(0, 2) + ' / ' + v.substring(2);
   input.value = v;
 }
-
-function submitOrder() {
-  alert('Order submitted! Thank you.');
-}
+function submitOrder() { alert('Order placed. Thank you!'); }
 </script>
 </body>
 </html>
