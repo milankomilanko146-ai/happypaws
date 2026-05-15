@@ -3,1203 +3,661 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Calm Dog Method — Stop Chaos, Start Connection</title>
-<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Dr. Michael Harris, MD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;0,800;1,400&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-
-:root {
-  --black: #111111;
-  --white: #ffffff;
-  --gray-50: #f9f9f7;
-  --gray-100: #f0f0ec;
-  --gray-200: #e2e2dc;
-  --gray-400: #999990;
-  --gray-600: #555550;
-  --gray-700: #333330;
-  --border: #d8d8d2;
-  /* Gumroad's pink — the actual accent color they use */
-  --gr-pink: #ff90e8;
-  --gr-pink-dark: #e060c0;
-}
-
-html { scroll-behavior: smooth; }
-
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body {
-  font-family: 'Inter', sans-serif;
-  background: var(--white);
-  color: var(--black);
-  font-size: 15px;
-  line-height: 1.6;
+background: #fff;
+font-family: 'Open Sans', sans-serif;
+font-size: 17px;
+font-weight: 400;
+line-height: 26px;
+color: #000;
 }
-
-img { display: block; max-width: 100%; }
-a { color: inherit; }
-
-/* ─── TOP STRIP ─── */
-.top-strip {
-  background: var(--black);
-  color: var(--white);
-  text-align: center;
-  padding: 9px 16px;
-  font-size: 13px;
-  letter-spacing: 0.01em;
+header { background: #1a4f8a; width: 100%; }
+.header-inner { max-width: 860px; margin: 0 auto; padding: 20px 15px; text-align: center; }
+.header-logo {
+font-family: 'Montserrat', sans-serif;
+font-size: 18px;
+font-weight: 700;
+color: #fff;
+letter-spacing: 2px;
+text-transform: uppercase;
 }
-.top-strip strong { color: var(--gr-pink); }
-
-/* ─── LAYOUT ─── */
-.wrap {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 0 20px;
+.page-wrap {
+max-width: 650px;
+margin: 0 auto;
+padding: 0 15px 20px;
 }
-
-/* ─── HERO ─── */
-.hero {
-  padding: 56px 20px 40px;
-  max-width: 700px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.eyebrow {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--gray-600);
-  margin-bottom: 16px;
-}
-
 h1 {
-  font-family: 'Merriweather', serif;
-  font-size: clamp(28px, 4.5vw, 46px);
-  font-weight: 700;
-  line-height: 1.18;
-  letter-spacing: -0.02em;
-  color: var(--black);
-  margin-bottom: 20px;
+font-family: 'Open Sans', sans-serif;
+font-size: 43px;
+font-weight: 700;
+line-height: 52px;
+margin-top: 36px;
+margin-bottom: 12px;
+color: #000;
 }
-h1 em {
-  font-style: italic;
-  font-weight: 400;
+p.deck {
+font-family: 'Open Sans', sans-serif;
+font-size: 18px;
+font-style: italic;
+font-weight: 400;
+line-height: 36px;
+color: #000;
+margin-bottom: 16px;
 }
-
-.hero-lead {
-  font-size: 17px;
-  color: var(--gray-600);
-  max-width: 560px;
-  margin: 0 auto 32px;
-  line-height: 1.65;
+.ratings {
+display: flex;
+align-items: center;
+gap: 8px;
+margin-bottom: 16px;
+font-size: 14px;
+font-weight: 700;
 }
-
-/* ─── HERO IMAGE ─── */
-.hero-img {
-  max-width: 700px;
-  margin: 0 auto 0;
-  padding: 0 20px;
+.stars { font-size: 18px; letter-spacing: 2px; }
+.star-full { color: #f5a623; }
+.star-half {
+position: relative;
+display: inline-block;
+color: #ddd;
 }
-.hero-img img {
-  width: 100%;
-  height: 360px;
-  object-fit: cover;
-  border-radius: 6px;
-  border: 1px solid var(--border);
+.star-half::before {
+content: '★';
+position: absolute;
+left: 0;
+width: 50%;
+overflow: hidden;
+color: #f5a623;
 }
-.img-caption {
-  font-size: 12px;
-  color: var(--gray-400);
-  text-align: center;
-  margin-top: 8px;
-  font-style: italic;
+.star-half::after {
+content: '★';
+color: #ddd;
 }
-
-/* ─── STATS ROW ─── */
-.stats-row {
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  background: var(--gray-50);
-  padding: 20px;
-  margin: 40px 0;
+.author {
+display: flex;
+align-items: center;
+gap: 10px;
+margin-bottom: 24px;
+padding-bottom: 20px;
+border-bottom: 1px solid #ebebeb;
 }
-.stats-inner {
-  max-width: 700px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 16px;
+.author-photo {
+width: 46px;
+height: 46px;
+border-radius: 50%;
+overflow: hidden;
+flex-shrink: 0;
 }
-.stat { text-align: center; }
-.stat-num {
-  font-size: 24px;
-  font-weight: 600;
-  color: var(--black);
-  line-height: 1;
-  display: block;
+.author-photo img { width: 100%; height: 100%; object-fit: cover; }
+.author-name { font-size: 14px; font-weight: 600; }
+.author-date { font-size: 13px; color: #888; font-style: italic; }
+p {
+font-family: 'Open Sans', sans-serif;
+font-size: 17px;
+line-height: 26px;
+margin-bottom: 20px;
+color: #000;
 }
-.stat-label {
-  font-size: 11.5px;
-  color: var(--gray-600);
-  margin-top: 3px;
-  display: block;
-}
-.stat-sep {
-  width: 1px;
-  background: var(--border);
-  align-self: stretch;
-}
-
-/* ─── SECTIONS ─── */
-section { padding: 48px 20px; max-width: 700px; margin: 0 auto; }
-section + section { border-top: 1px solid var(--border); }
-
 h2 {
-  font-family: 'Merriweather', serif;
-  font-size: clamp(22px, 3.5vw, 32px);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-  color: var(--black);
-  margin-bottom: 8px;
+font-family: 'Open Sans', sans-serif;
+font-size: 33px;
+font-weight: 800;
+line-height: 40px;
+color: #000;
+margin-top: 44px;
+margin-bottom: 16px;
 }
-.sec-intro {
-  font-size: 15px;
-  color: var(--gray-600);
-  margin-bottom: 28px;
-  line-height: 1.6;
+img { max-width: 100%; height: auto; display: block; }
+.product-img {
+width: 100%;
+aspect-ratio: 16/9;
+object-fit: cover;
+border-radius: 6px;
+margin: 20px 0;
+}
+@media (min-width: 601px) {
+.product-img { width: 85%; margin-left: 0; margin-right: auto; }
+.product-img.full { width: 100%; }
+}
+footer.site-footer {
+background-color: #1a4f8a;
+color: #ccd6f0;
+text-align: center;
+padding: 24px 20px;
+font-size: 13px;
+line-height: 1.8;
+margin-top: 40px;
+}
+footer.site-footer a { color: #aabce8; text-decoration: none; margin: 0 8px; }
+footer.site-footer a:hover { text-decoration: underline; }
+.footer-disclaimer { font-size: 12px; color: #aabce8; margin: 0 auto 14px; max-width: 700px; line-height: 1.6; }
+.footer-copy { margin-top: 10px; font-size: 11px; color: #7788aa; }
+
+/* STOCK BADGE */
+.stock-badge {
+display: inline-flex;
+align-items: center;
+gap: 7px;
+font-size: 14px;
+font-weight: 700;
+color: #1a5c24;
+margin-bottom: 10px;
+}
+@keyframes blink {
+0%, 100% { opacity: 1; }
+50% { opacity: 0.2; }
+}
+.stock-dot {
+width: 9px;
+height: 9px;
+border-radius: 50%;
+background: #2d7a3a;
+flex-shrink: 0;
+animation: blink 2.4s ease-in-out infinite;
 }
 
-/* pain */
-.pain-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.pain-list li {
-  padding: 14px 16px;
-  background: #fdf5f5;
-  border: 1px solid #e8cccc;
-  border-radius: 4px;
-  font-size: 14.5px;
-  color: var(--gray-700);
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
+/* CTA */
+.cta-wrap { text-align: center; margin-top: 48px; margin-bottom: 20px; }
+.cta-btn {
+display: block;
+background: linear-gradient(180deg, #00a800 0%, #006f00 100%);
+color: #fff;
+font-family: 'Open Sans', sans-serif;
+font-size: 22px;
+font-weight: 700;
+line-height: 28px;
+padding: 18px 10px 14px;
+border-radius: 6px;
+box-shadow: rgba(0,0,0,.35) 0px 6px 18px;
+text-align: center;
+text-decoration: none;
+width: 100%;
+margin-bottom: 10px;
+border-bottom: 4px solid #004d00;
+transition: filter 0.15s;
 }
-.pain-x {
-  color: #b94040;
-  font-weight: 700;
-  font-size: 13px;
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-/* benefits */
-.ben-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-@media(max-width:520px){.ben-grid{grid-template-columns:1fr}}
-.ben-card {
-  padding: 20px 18px;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  background: var(--white);
-}
-.ben-card h3 { font-size: 14px; font-weight: 600; margin-bottom: 5px; color: var(--black); }
-.ben-card p { font-size: 13px; color: var(--gray-600); line-height: 1.55; }
-
-/* mid image */
-.mid-img { max-width: 700px; margin: 0 auto; padding: 0 20px 40px; }
-.mid-img img {
-  width: 100%;
-  height: 280px;
-  object-fit: cover;
-  border-radius: 6px;
-  border: 1px solid var(--border);
+.cta-btn:hover { filter: brightness(1.08); }
+.cta-btn-price {
+display: block;
+font-size: 15px;
+font-weight: 400;
+opacity: 0.9;
+margin-top: 3px;
 }
 
-/* what you get */
-.get-list { list-style: none; display: flex; flex-direction: column; gap: 9px; }
-.get-list li {
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
-  font-size: 14.5px;
-  color: var(--gray-700);
+/* TRUST BADGES */
+.trust-badges {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 10px 24px;
+padding: 16px 0 4px;
 }
-.get-check {
-  width: 18px;
-  height: 18px;
-  background: var(--black);
-  border-radius: 2px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  margin-top: 2px;
+.trust-badge {
+display: flex;
+align-items: center;
+gap: 8px;
 }
-.get-check svg { width: 10px; height: 10px; }
+.trust-badge-icon {
+width: 36px;
+height: 36px;
+border-radius: 50%;
+background: #e6f4ea;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0;
+}
+.trust-badge-icon svg {
+width: 18px;
+height: 18px;
+stroke: #2d7a3a;
+fill: none;
+stroke-width: 2;
+stroke-linecap: round;
+stroke-linejoin: round;
+}
+.trust-badge-title {
+font-size: 12px;
+font-weight: 700;
+color: #1a5c24;
+line-height: 1.3;
+display: block;
+}
+.trust-badge-sub {
+font-size: 11px;
+color: #555;
+line-height: 1.2;
+display: block;
+}
+.ratings-review-link {
+font-size: 13px;
+font-weight: 600;
+color: #1a4f8a;
+text-decoration: underline;
+text-underline-offset: 2px;
+cursor: pointer;
+white-space: nowrap;
+}
+.ratings-review-link:hover { color: #0d3360; }
+.cta-nudge {
+margin-top: 14px;
+font-size: 13px;
+color: #888;
+margin-bottom: 0;
+}
+.cta-nudge a {
+color: #1a4f8a;
+font-weight: 600;
+text-decoration: underline;
+text-underline-offset: 2px;
+}
+.cta-nudge a:hover { color: #0d3360; }
 
-/* ─── REVIEWS ─── */
-.reviews-bg {
-  background: var(--gray-50);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 48px 20px;
+/* REVIEWS */
+.reviews-section {
+margin-top: 56px;
+border-top: 2px solid #ebebeb;
+padding-top: 36px;
+margin-bottom: 16px;
 }
-.reviews-inner { max-width: 700px; margin: 0 auto; }
-.tp-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  border: 1px solid var(--border);
-  background: var(--white);
-  border-radius: 3px;
-  padding: 6px 12px;
-  font-size: 12.5px;
-  font-weight: 600;
-  margin-bottom: 24px;
+.reviews-section h2 { margin-top: 0; margin-bottom: 28px; }
+.review-card {
+display: flex;
+flex-direction: column;
+gap: 10px;
+padding: 20px 0;
+border-bottom: 1px solid #ebebeb;
 }
-.tp-stars { color: #00b67a; font-size: 15px; letter-spacing: 1px; }
-.reviews-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 12px;
+.review-card:last-child { border-bottom: none; }
+.review-top { display: flex; align-items: center; gap: 12px; }
+.review-avatar { width: 44px; height: 44px; border-radius: 50%; overflow: hidden; flex-shrink: 0; }
+.review-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.review-meta { display: flex; flex-direction: column; gap: 2px; }
+.review-name { font-size: 14px; font-weight: 700; }
+.review-stars { color: #f5a623; font-size: 14px; letter-spacing: 1px; }
+.review-date { font-size: 12px; color: #999; }
+.review-text { font-size: 15px; line-height: 24px; color: #222; margin: 0; }
+.review-reply {
+margin-top: 8px;
+margin-left: 56px;
+padding: 11px 14px;
+background: #f0f4fa;
+border-left: 3px solid #1a4f8a;
+border-radius: 0 6px 6px 0;
+position: relative;
 }
-@media(max-width:620px){.reviews-grid{grid-template-columns:1fr}}
-.rev-card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 20px;
+.review-reply-name {
+font-size: 12px;
+font-weight: 700;
+color: #1a4f8a;
+margin-bottom: 4px;
+display: flex;
+align-items: center;
+gap: 5px;
 }
-.rev-stars { color: #00b67a; font-size: 13px; letter-spacing: 1px; margin-bottom: 10px; }
-.rev-text {
-  font-size: 13.5px;
-  color: var(--gray-700);
-  line-height: 1.6;
-  font-style: italic;
-  font-family: 'Merriweather', serif;
-  margin-bottom: 14px;
-  font-weight: 400;
+.review-reply-name::before {
+content: '↩';
+font-size: 13px;
+color: #1a4f8a;
 }
-.rev-author { display: flex; gap: 9px; align-items: center; }
-.rev-av {
-  width: 34px; height: 34px;
-  border-radius: 50%;
-  overflow: hidden;
-  flex-shrink: 0;
-  background: var(--gray-200);
-}
-.rev-av img { width: 100%; height: 100%; object-fit: cover; }
-.rev-name { font-size: 12.5px; font-weight: 600; color: var(--black); }
-.rev-meta { font-size: 11px; color: var(--gray-400); }
-.rev-verified { font-size: 10.5px; color: #00b67a; font-weight: 600; }
+.review-reply-text { font-size: 14px; line-height: 22px; color: #333; margin: 0; }
 
-/* ─── AUTHOR ─── */
-.author-wrap {
-  display: flex;
-  gap: 28px;
-  align-items: flex-start;
+@media (max-width: 600px) {
+h1 { font-size: 28px; line-height: 36px; }
+h2 { font-size: 24px; line-height: 30px; }
+.cta-btn { font-size: 18px; line-height: 24px; padding: 14px 10px 10px; }
+.cta-btn-price { font-size: 14px; }
+.page-wrap { padding: 0 15px 20px; }
+.trust-badges { gap: 8px 16px; }
 }
-@media(max-width:520px){.author-wrap{flex-direction:column}}
-.author-pic {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-  flex-shrink: 0;
-  border: 2px solid var(--border);
-}
-.author-name { font-family: 'Merriweather', serif; font-size: 18px; font-weight: 700; margin-bottom: 3px; }
-.author-title { font-size: 12px; color: var(--gray-600); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px; }
-.author-body { font-size: 14px; color: var(--gray-600); line-height: 1.65; }
-
-/* ─── CTA SECTION ─── */
-.cta-bg {
-  background: var(--black);
-  padding: 64px 20px;
-  text-align: center;
-}
-.cta-inner { max-width: 520px; margin: 0 auto; }
-.cta-bg h2 { color: var(--white); margin-bottom: 10px; }
-.cta-lead { color: #888; font-size: 15px; margin-bottom: 32px; line-height: 1.6; }
-
-.price-wrap {
-  background: #1a1a1a;
-  border: 1px solid #2a2a2a;
-  border-radius: 6px;
-  padding: 28px 24px;
-  margin-bottom: 24px;
-  text-align: left;
-}
-.price-old { font-size: 13px; color: #555; text-decoration: line-through; margin-bottom: 2px; }
-.price-now { font-size: 48px; font-weight: 700; color: var(--white); line-height: 1; margin-bottom: 4px; }
-.price-once { font-size: 12px; color: #555; margin-bottom: 20px; }
-.price-includes { list-style: none; display: flex; flex-direction: column; gap: 7px; }
-.price-includes li {
-  font-size: 13.5px;
-  color: #aaa;
-  display: flex;
-  gap: 8px;
-  align-items: flex-start;
-}
-.price-includes li::before {
-  content: '';
-  width: 14px; height: 14px;
-  border-radius: 50%;
-  background: #00b67a;
-  flex-shrink: 0;
-  margin-top: 3px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l3 3 5-5' stroke='white' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-/* the actual buy button */
-.btn-buy {
-  display: block;
-  width: 100%;
-  max-width: 380px;
-  margin: 0 auto;
-  background: var(--gr-pink);
-  color: var(--black);
-  font-size: 16px;
-  font-weight: 600;
-  padding: 16px 28px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  letter-spacing: 0.01em;
-  transition: background 0.15s, transform 0.1s;
-  text-align: center;
-}
-.btn-buy:hover { background: var(--gr-pink-dark); color: var(--white); transform: translateY(-1px); }
-
-.secure-line {
-  margin-top: 14px;
-  font-size: 12px;
-  color: #444;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-}
-
-.guarantee {
-  background: #111;
-  border-top: 1px solid #222;
-  padding: 16px 24px;
-  text-align: center;
-  font-size: 13px;
-  color: #555;
-}
-.guarantee strong { color: #888; }
-
-/* ─── FAQ ─── */
-.faq-wrap { max-width: 700px; margin: 0 auto; padding: 48px 20px; }
-.faq-item { border-bottom: 1px solid var(--border); }
-.faq-item:first-of-type { border-top: 1px solid var(--border); }
-.faq-q {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 0;
-  font-weight: 600;
-  font-size: 14.5px;
-  cursor: pointer;
-  user-select: none;
-}
-.faq-icon { color: var(--gray-400); font-size: 20px; font-weight: 300; transition: transform 0.2s; }
-.faq-a {
-  font-size: 14px;
-  color: var(--gray-600);
-  line-height: 1.65;
-  padding-bottom: 16px;
-  display: none;
-}
-.faq-item.open .faq-a { display: block; }
-.faq-item.open .faq-icon { transform: rotate(45deg); }
-
-/* ─── FOOTER ─── */
-footer {
-  border-top: 1px solid var(--border);
-  padding: 20px;
-  text-align: center;
-  font-size: 12px;
-  color: var(--gray-400);
-}
-footer a { color: var(--gray-400); text-decoration: underline; }
-
-/* ─── STICKY MOBILE ─── */
-.sticky-mob {
-  display: none;
-  position: fixed;
-  bottom: 0; left: 0; right: 0;
-  background: var(--white);
-  border-top: 1px solid var(--border);
-  padding: 12px 16px;
-  z-index: 100;
-}
-@media(max-width:600px){ .sticky-mob { display: block; } }
-.sticky-mob button {
-  width: 100%;
-  background: var(--gr-pink);
-  color: var(--black);
-  font-size: 15px;
-  font-weight: 600;
-  padding: 14px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-
-/* ═══════════════════════════════════════════════
-   GUMROAD CHECKOUT MODAL SIMULATION
-   Based on actual Gumroad overlay UI:
-   - White left panel (product info)
-   - Light grey right panel (payment form)
-   - Pink accent buttons
-   - Gumroad logo + "Secure" text
-   - Card / PayPal tabs
-═══════════════════════════════════════════════ */
-.gr-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.55);
-  z-index: 9999;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
-}
-.gr-overlay.open { display: flex; }
-
-.gr-modal {
-  background: var(--white);
-  border-radius: 8px;
-  width: 100%;
-  max-width: 760px;
-  max-height: 95vh;
-  overflow-y: auto;
-  display: flex;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-  position: relative;
-}
-@media(max-width:620px){ .gr-modal { flex-direction: column; } }
-
-/* LEFT — product summary */
-.gr-left {
-  width: 42%;
-  min-width: 240px;
-  border-right: 1px solid var(--border);
-  padding: 28px 24px;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-@media(max-width:620px){ .gr-left { width: 100%; border-right: none; border-bottom: 1px solid var(--border); } }
-
-.gr-product-img {
-  width: 100%;
-  height: 140px;
-  object-fit: cover;
-  border-radius: 4px;
-  border: 1px solid var(--border);
-}
-.gr-product-name {
-  font-family: 'Merriweather', serif;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1.3;
-  color: var(--black);
-}
-.gr-creator { font-size: 12px; color: var(--gray-600); }
-.gr-price-line {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-}
-.gr-price-big { font-size: 28px; font-weight: 700; }
-.gr-price-was { font-size: 13px; color: var(--gray-400); text-decoration: line-through; }
-.gr-summary-items {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  border-top: 1px solid var(--border);
-  padding-top: 14px;
-}
-.gr-summary-items li {
-  font-size: 12.5px;
-  color: var(--gray-600);
-  display: flex;
-  gap: 7px;
-}
-.gr-summary-items li::before {
-  content: '—';
-  color: var(--gray-400);
-  flex-shrink: 0;
-}
-.gr-guarantee-badge {
-  font-size: 11.5px;
-  color: var(--gray-600);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 8px 10px;
-  line-height: 1.5;
-}
-.gr-guarantee-badge strong { display: block; font-size: 12px; color: var(--black); margin-bottom: 2px; }
-
-/* RIGHT — payment form */
-.gr-right {
-  flex: 1;
-  background: #f7f7f5;
-  padding: 28px 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.gr-close {
-  position: absolute;
-  top: 14px; right: 16px;
-  background: none;
-  border: none;
-  font-size: 22px;
-  cursor: pointer;
-  color: var(--gray-400);
-  line-height: 1;
-  z-index: 1;
-}
-.gr-close:hover { color: var(--black); }
-
-/* payment method tabs */
-.gr-tabs {
-  display: flex;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  overflow: hidden;
-  background: var(--white);
-}
-.gr-tab {
-  flex: 1;
-  padding: 10px;
-  border: none;
-  background: none;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-  color: var(--gray-600);
-  border-bottom: 2px solid transparent;
-  transition: all 0.15s;
-}
-.gr-tab.active {
-  color: var(--black);
-  border-bottom-color: var(--gr-pink);
-  background: #fff;
-}
-
-/* form fields */
-.gr-field-group { display: flex; flex-direction: column; gap: 10px; }
-.gr-row { display: flex; gap: 10px; }
-.gr-row > * { flex: 1; }
-
-.gr-label {
-  display: block;
-  font-size: 11.5px;
-  font-weight: 600;
-  color: var(--gray-700);
-  margin-bottom: 4px;
-  letter-spacing: 0.02em;
-}
-.gr-input {
-  width: 100%;
-  padding: 10px 12px;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  font-size: 14px;
-  font-family: 'Inter', sans-serif;
-  background: var(--white);
-  color: var(--black);
-  outline: none;
-  transition: border-color 0.15s;
-}
-.gr-input:focus { border-color: var(--gr-pink); }
-.gr-input::placeholder { color: var(--gray-400); }
-
-.gr-card-row {
-  display: flex;
-  gap: 0;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  overflow: hidden;
-  background: var(--white);
-}
-.gr-card-row .gr-input {
-  border: none;
-  border-radius: 0;
-}
-.gr-card-row .gr-input + .gr-input { border-left: 1px solid var(--border); }
-.gr-card-num { flex: 2; }
-.gr-card-exp { flex: 1; }
-.gr-card-cvc { flex: 1; }
-
-/* card icons */
-.card-icons {
-  display: flex;
-  gap: 5px;
-  align-items: center;
-  margin-bottom: 6px;
-}
-.card-icon {
-  width: 32px;
-  height: 20px;
-  border: 1px solid var(--border);
-  border-radius: 3px;
-  background: var(--white);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 8px;
-  font-weight: 700;
-  color: var(--gray-600);
-}
-.card-icon.visa { color: #1a1f71; }
-.card-icon.mc { color: #eb001b; }
-.card-icon.amex { color: #2e77bc; }
-
-/* total line */
-.gr-total-line {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 14px;
-  border-top: 1px solid var(--border);
-  padding-top: 12px;
-}
-.gr-total-amount { font-size: 20px; font-weight: 700; }
-
-/* submit */
-.gr-submit {
-  width: 100%;
-  background: var(--gr-pink);
-  color: var(--black);
-  border: none;
-  border-radius: 4px;
-  font-size: 15px;
-  font-weight: 700;
-  padding: 14px;
-  cursor: pointer;
-  letter-spacing: 0.01em;
-  transition: background 0.15s;
-  font-family: 'Inter', sans-serif;
-}
-.gr-submit:hover { background: var(--gr-pink-dark); color: var(--white); }
-
-/* gumroad branding */
-.gr-branding {
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  font-size: 11px;
-  color: var(--gray-400);
-}
-.gr-logo-text {
-  font-weight: 700;
-  font-size: 12px;
-  color: var(--gray-600);
-  letter-spacing: 0.01em;
-}
-.gr-lock { font-size: 11px; }
-
-/* success screen */
-.gr-success {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 48px 32px;
-  text-align: center;
-  gap: 16px;
-  min-height: 300px;
-}
-.gr-success-icon {
-  width: 56px;
-  height: 56px;
-  background: #e8f8f0;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 26px;
-}
-.gr-success h3 { font-size: 20px; font-weight: 700; }
-.gr-success p { font-size: 14px; color: var(--gray-600); line-height: 1.6; }
-
-/* paypal panel */
-.gr-paypal-panel { display: none; }
-.gr-paypal-panel.active { display: flex; flex-direction: column; gap: 14px; }
-.gr-card-panel { display: flex; flex-direction: column; gap: 14px; }
-.gr-card-panel.hidden { display: none; }
-
-.paypal-btn {
-  width: 100%;
-  background: #ffc439;
-  border: none;
-  border-radius: 4px;
-  padding: 12px;
-  font-size: 15px;
-  font-weight: 700;
-  color: #003087;
-  cursor: pointer;
-  font-family: 'Inter', sans-serif;
-}
-.paypal-note { font-size: 12px; color: var(--gray-400); text-align: center; }
 </style>
 </head>
 <body>
-
-<!-- TOP STRIP -->
-<div class="top-strip">
-  Limited time: <strong>37% off</strong> — offer ends at midnight
+<header>
+<div class="header-inner">
+<div class="header-logo">Dr. Michael Harris's Blog</div>
+</div>
+</header>
+<div class="page-wrap">
+<h1>The Real Reason Your Face Hurts.</h1>
+<p class="deck">It's one tiny spot — and almost nobody knows it exists.</p>
+<div class="ratings">
+<span class="stars">
+<span class="star-full">★★★★</span><span class="star-half"></span>
+</span>
+<span>357 ratings</span>
+<a class="ratings-review-link" href="#reviews" onclick="document.getElementById('reviews').scrollIntoView({behavior:'smooth'});return false;">See reviews ↓</a>
+</div>
+<img class="product-img full" src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=1200&q=80" alt="">
+<div class="author">
+<div class="author-photo">
+<img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=80&q=80" alt="Dr. Harris">
+</div>
+<div>
+<div class="author-name">Dr. Michael Harris, MD</div>
+<div class="author-date">October 14, 2024 · 8 min read</div>
+</div>
 </div>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="eyebrow">Dog Training · Digital Program</div>
-  <h1>Your Dog Can Be <em>Calm, Obedient,</em> and a Joy to Live With</h1>
-  <p class="hero-lead">A step-by-step system that actually works — no expensive trainers, no shouting, no repeat failures. Results most owners see within 3 weeks.</p>
+<p>Let me ask you something.</p>
+<p>Do you ever wake up with a <strong>tight jaw</strong>?</p>
+<p>A dull headache that's just… there?</p>
+<p>That weird <strong>pressure in your ears</strong> that comes and goes?</p>
+<p>If you said yes to any of those —</p>
+<p>This might be the most important thing you read today.</p>
+<p>Because what I'm about to show you isn't taught in most <strong>medical schools</strong>.</p>
+<p>It's not something your GP will bring up.</p>
+<p>And yet — it's been documented for over 2,000 years.</p>
+<p>But before I tell you what it is — I need to tell you what's actually causing your pain.</p>
+<p>Because most people have no idea.</p>
+<p>And once you see it — you can't unsee it.</p>
+
+<h2>Something is going on with your face</h2>
+<img class="product-img" src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&q=80" alt="">
+<p>Here's something most people don't know.</p>
+<p>Your face has a <strong>hidden tension system</strong>.</p>
+<p>There's a joint — tiny, just in front of each ear — that controls everything.</p>
+<p>Your jaw. Your temples. Your neck. Your ears.</p>
+<p>When this joint gets <strong>overloaded</strong>...</p>
+<p>It doesn't send pain to one place.</p>
+<p>It sends it everywhere.</p>
+<p>That headache behind your eyes? Could be coming from your jaw.</p>
+<p>That ringing in your ear that showed up out of nowhere? Same joint.</p>
+<p>That neck stiffness every single morning? Still the same joint.</p>
+<p>It's called the <strong>TMJ</strong>.</p>
+<p>And here's the thing that shocked me when I first learned this —</p>
+<p>Almost nobody knows they have a problem with it.</p>
+<p>Because the pain never shows up where the problem actually is.</p>
+<p>But that's only half the story.</p>
+<p>The other half is why your doctor never looked for it.</p>
+<p>TMJ doesn't fall cleanly under any one specialty. It sits between dentistry and neurology — so most doctors simply don't check for it. The symptoms are too scattered. And so are the referrals.</p>
+<p>And that part — I'll get to in a moment.</p>
+
+<h2>I'm a doctor. And I almost missed this too.</h2>
+<img class="product-img" src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=1200&q=80" alt="">
+<p>I've been practicing medicine for years.</p>
+<p>And I'll be honest with you.</p>
+<p>We're not trained to look here.</p>
+<p>We prescribe <strong>painkillers</strong>. We say "reduce your stress." We send people home.</p>
+<p>And those people come back three months later with the same headache.</p>
+<p>The same tight jaw.</p>
+<p>The same unanswered question: why does my face feel like this?</p>
+<p>The turning point for me came when I started studying something my medical training never covered.</p>
+<p><strong>Ancient Chinese pressure point medicine.</strong></p>
+<p>Specifically — the way certain points on your face directly communicate with your <strong>nervous system</strong>.</p>
+<p>Not metaphorically.</p>
+<p>Literally — there are nerve pathways running through your face that, when you activate the right point, send a signal all the way to your brain saying:</p>
+<p>Release. Let go. Stop clenching.</p>
+<p>And one point in particular stopped me in my tracks.</p>
+<p>I'm going to tell you exactly what it is.</p>
+<p>But first — I need to explain why your fingers can never reach it properly.</p>
+<p>Because that's the part nobody talks about.</p>
+
+<h2>The point nobody told you about</h2>
+<img class="product-img" src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=1200&q=80" alt="">
+<p>It's called <strong>ST6</strong>.</p>
+<p>The "Jaw Chariot."</p>
+<p>It sits right at the <strong>angle of your jaw</strong> — the spot where your chewing muscle bunches up when you clench.</p>
+<p>Most people, when I press there for the first time, flinch.</p>
+<p>Not because I'm pressing hard.</p>
+<p>Because it's already that tender.</p>
+<p>That tenderness tells you everything.</p>
+<p>It means the <strong>muscle has been locked up</strong> for a long time.</p>
+<p>Possibly years.</p>
+<p>And your body got so used to it — you stopped noticing.</p>
+<p>When you properly activate ST6, something interesting happens.</p>
+<p>The muscle that's been clenching 24 hours a day finally gets the signal to stop.</p>
+<p>The tension that radiates up to your temple — starts to dissolve.</p>
+<p>The pressure behind your ear — fades.</p>
+<p>The grinding that happens at night while you sleep — begins to slow down.</p>
+<p>But here's the part that took me a while to figure out.</p>
+<p>And when I did — it changed everything about how I treat my patients.</p>
+
+<h2>Fingers aren't enough</h2>
+<img class="product-img" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&q=80" alt="">
+<p>For months, I was telling patients to press the point themselves.</p>
+<p>With their fingers. Every morning.</p>
+<p>Some of them got results.</p>
+<p>Most of them didn't.</p>
+<p>And I couldn't understand why — until I actually watched them do it.</p>
+<p>The problem wasn't the technique.</p>
+<p>The problem was <strong>precision</strong>.</p>
+<p>When you use a fingertip, you're covering an area the size of a coin.</p>
+<p>But the actual <strong>pressure point</strong>?</p>
+<p>It's smaller than a pencil tip.</p>
+<p>Miss it by a few <strong>millimeters</strong> — and you get nothing.</p>
+<p>You're pressing near the point.</p>
+<p>Not on it.</p>
+<p>That's the difference between results and frustration.</p>
+<p>And that's the exact problem this pen was designed to solve.</p>
+<p>But here's what I didn't expect.</p>
+<p>The pen does something else entirely — something I hadn't planned for.</p>
+<p>And it's the reason the results are so different.</p>
+
+<div class="cta-wrap">
+<div class="stock-badge"><span class="stock-dot"></span> Currently In Stock</div>
+<a class="cta-btn" href="#">
+<span>Relieve Jaw Pain Today →</span>
+<span class="cta-btn-price">Get The Acupressure Pen — $49.99</span>
+</a>
+<div class="trust-badges">
+<div class="trust-badge">
+<div class="trust-badge-icon">
+<svg viewBox="0 0 24 24"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/><circle cx="12" cy="16" r="1"/><circle cx="20" cy="16" r="1"/></svg>
+</div>
+<div>
+<span class="trust-badge-title">Free Shipping</span>
+<span class="trust-badge-sub">On all orders</span>
+</div>
+</div>
+<div class="trust-badge">
+<div class="trust-badge-icon">
+<svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.95"/></svg>
+</div>
+<div>
+<span class="trust-badge-title">Risk-Free Returns</span>
+<span class="trust-badge-sub">30-day guarantee</span>
+</div>
+</div>
+<div class="trust-badge">
+<div class="trust-badge-icon">
+<svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+</div>
+<div>
+<span class="trust-badge-title">Secure Checkout</span>
+<span class="trust-badge-sub">SSL encrypted</span>
+</div>
+</div>
+</div>
+<p class="cta-nudge">Not convinced? <a href="#reviews" onclick="document.getElementById('reviews').scrollIntoView({behavior:'smooth'});return false;">See reviews ↓</a></p>
 </div>
 
-<!-- HERO IMAGE -->
-<div class="hero-img">
-  <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=900&q=80" alt="Owner with calm, happy dog">
-  <p class="img-caption">Results from 4,800+ dog owners who completed the program</p>
+<h2>Why this tool is different from everything else</h2>
+<img class="product-img" src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1200&q=80" alt="">
+<p>The acupressure pen I use — and now recommend to every patient who comes to me with jaw tension, headaches, or facial pain — does something fingers physically cannot.</p>
+<p>It focuses the pressure to a <strong>single point</strong>.</p>
+<p>Exact. Precise. Every time.</p>
+<p>No guessing. No missing.</p>
+<p>And it combines that pressure with <strong>red light therapy</strong> — which penetrates the tissue, increases circulation, and amplifies the signal your nervous system receives.</p>
+<p>The first time I used it on myself, I felt the difference within about <strong>90 seconds</strong>.</p>
+<p>A warmth. Then a release.</p>
+<p>Like something I'd been carrying in my face for years — just let go.</p>
+<p>I want to be careful here, because I don't say things like that lightly.</p>
+<p>But that's what happened.</p>
+<p>And since then, I've seen it happen with patients over and over again.</p>
+<p>Over 800 of them in the last year alone.</p>
+<p>The results surprised even me.</p>
+<p>But what surprised me most — was what happened when people used it consistently.</p>
+
+<h2>The part that surprises people most</h2>
+<img class="product-img" src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1200&q=80" alt="">
+<p>They expect one session to fix everything.</p>
+<p>It doesn't work like that — and I want you to understand why.</p>
+<p>Your jaw has been clenching for a long time.</p>
+<p>The <strong>muscle memory</strong> is deep.</p>
+<p>The nervous system has learned that tense is the default.</p>
+<p>What the pen does — used consistently — is slowly <strong>rewrite that default</strong>.</p>
+<p>Two minutes. ST6. Every morning.</p>
+<p>Week one — most people notice the mornings feel different. Looser.</p>
+<p>Week two — the headaches start to come less often.</p>
+<p>Week three — some patients tell me the <strong>night grinding</strong> has almost stopped.</p>
+<p>Week four — they stop thinking about their jaw entirely.</p>
+<p>That's when you know it worked.</p>
+<p>But ST6 is only the beginning.</p>
+<p>There are three other points I haven't told you about yet.</p>
+<p>And one of them is in a place you'd never expect.</p>
+
+<h2>One more thing I need to tell you</h2>
+<img class="product-img" src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1200&q=80" alt="">
+<p>There are other pressure points involved.</p>
+<p>ST6 is the most important one for <strong>jaw tension</strong>.</p>
+<p>But there's a point behind your earlobe — <strong>SJ17</strong> — that handles the radiating pain.</p>
+<p>There's a point in front of your ear — ST7 — that unlocks the joint itself.</p>
+<p>And there's a point on the back of your hand — yes, your hand — that somehow reduces <strong>facial pain</strong> better than most things I've seen.</p>
+<p>I'll walk you through all of it when you get the pen.</p>
+<p>Because this isn't just a tool.</p>
+<p>It's a protocol.</p>
+<p>And the protocol is what makes it work.</p>
+<p>This is the exact pen I use in my practice.</p>
+<p>No waiting room. No consultation fee. No prescription needed.</p>
+<p>Order today and you'll get the pen, a full text guide walking you through all four points, and free shipping.</p>
+
+<div class="cta-wrap">
+<div class="stock-badge"><span class="stock-dot"></span> Currently In Stock</div>
+<a class="cta-btn" href="#">
+<span>Relieve Jaw Pain Today →</span>
+<span class="cta-btn-price">Get The Acupressure Pen — $49.99</span>
+</a>
+<div class="trust-badges">
+<div class="trust-badge">
+<div class="trust-badge-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="#2d7a3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/><circle cx="12" cy="16" r="1"/><circle cx="20" cy="16" r="1"/></svg>
+</div>
+<div>
+<span class="trust-badge-title">Free Shipping</span>
+<span class="trust-badge-sub">On all orders</span>
+</div>
+</div>
+<div class="trust-badge">
+<div class="trust-badge-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="#2d7a3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.95"/></svg>
+</div>
+<div>
+<span class="trust-badge-title">Risk-Free Returns</span>
+<span class="trust-badge-sub">30-day guarantee</span>
+</div>
+</div>
+<div class="trust-badge">
+<div class="trust-badge-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="#2d7a3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+</div>
+<div>
+<span class="trust-badge-title">Secure Checkout</span>
+<span class="trust-badge-sub">SSL encrypted</span>
+</div>
+</div>
+</div>
+<p class="cta-nudge">Not convinced? <a href="#reviews" onclick="document.getElementById('reviews').scrollIntoView({behavior:'smooth'});return false;">See reviews ↓</a></p>
 </div>
 
-<!-- STATS -->
-<div class="stats-row">
-  <div class="stats-inner">
-    <div class="stat">
-      <span class="stat-num">4,800+</span>
-      <span class="stat-label">owners trained</span>
-    </div>
-    <div class="stat-sep"></div>
-    <div class="stat">
-      <span class="stat-num">4.9 / 5</span>
-      <span class="stat-label">average rating</span>
-    </div>
-    <div class="stat-sep"></div>
-    <div class="stat">
-      <span class="stat-num">21 days</span>
-      <span class="stat-label">avg. to first results</span>
-    </div>
-    <div class="stat-sep"></div>
-    <div class="stat">
-      <span class="stat-num">30-day</span>
-      <span class="stat-label">money-back guarantee</span>
-    </div>
-  </div>
+<div class="reviews-section" id="reviews">
+<h2>What people are saying</h2>
+<div class="review-card">
+<div class="review-top">
+<div class="review-avatar"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&q=80" alt=""></div>
+<div class="review-meta">
+<span class="review-name">James T., 51</span>
+<span class="review-stars">★★★★☆</span>
+<span class="review-date">March 12, 2024</span>
+</div>
+</div>
+<p class="review-text">Thought it was nonsense. The 30-day return made it easy to just try. I did not send it back. Helped a lot.</p>
+<div class="review-reply">
+<div class="review-reply-name">Dr. Harris — Author</div>
+<p class="review-reply-text">James, that's all anyone can ask. Really glad it helped.</p>
+</div>
+</div>
+<div class="review-card">
+<div class="review-top">
+<div class="review-avatar"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&q=80" alt=""></div>
+<div class="review-meta">
+<span class="review-name">Rachel B., 29</span>
+<span class="review-stars">★★★★★</span>
+<span class="review-date">March 3, 2024</span>
+</div>
+</div>
+<p class="review-text">I ordered mostly because of the return policy — figured worst case I'm out nothing. By the end of the first week I felt something shifting. By week four I realized the thing I'd been dealing with for two years had just… quietly stopped being a problem. I don't know how else to describe it. Still using it every morning.</p>
+</div>
+<div class="review-card">
+<div class="review-top">
+<div class="review-avatar"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&q=80" alt=""></div>
+<div class="review-meta">
+<span class="review-name">Sandra M., 44</span>
+<span class="review-stars">★★★☆☆</span>
+<span class="review-date">February 28, 2024</span>
+</div>
+</div>
+<p class="review-text">I didn't get instant results — just to be upfront about that. Took a few weeks before I noticed anything. Probably some people do see it faster, I don't know. But it did work eventually so I can't really complain.</p>
+<div class="review-reply">
+<div class="review-reply-name">Dr. Harris — Author</div>
+<p class="review-reply-text">Sandra, that's fair — it does take consistency. Glad you stuck with it.</p>
+</div>
+</div>
+<div class="review-card">
+<div class="review-top">
+<div class="review-avatar"><img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=80&q=80" alt=""></div>
+<div class="review-meta">
+<span class="review-name">David K., 38</span>
+<span class="review-stars">★★★★★</span>
+<span class="review-date">January 19, 2024</span>
+</div>
+</div>
+<p class="review-text">Came in 5 days, looks and feels solid. The little guide that comes with it is hard to read, but figured it out. Works well.</p>
+<div class="review-reply">
+<div class="review-reply-name">Dr. Harris — Author</div>
+<p class="review-reply-text">David, noted on the guide. Glad you got there.</p>
+</div>
+</div>
+<div class="review-card">
+<div class="review-top">
+<div class="review-avatar"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&q=80" alt=""></div>
+<div class="review-meta">
+<span class="review-name">Robert H., 63</span>
+<span class="review-stars">★★★★☆</span>
+<span class="review-date">February 5, 2024</span>
+</div>
+</div>
+<p class="review-text">My wife talked me into it. I thought it was a waste of money. 30 days to return it so whatever. It wasn't a waste of money.</p>
+</div>
+<div class="review-card">
+<div class="review-top">
+<div class="review-avatar"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80" alt=""></div>
+<div class="review-meta">
+<span class="review-name">Mark C., 55</span>
+<span class="review-stars">★★★★★</span>
+<span class="review-date">January 31, 2024</span>
+</div>
+</div>
+<p class="review-text">Better quality than I expected. Showed up in four days. Started noticing a difference around week two. Really glad I tried it.</p>
+</div>
+</div>
 </div>
 
-<!-- PAIN -->
-<section>
-  <div class="eyebrow">Does this sound like you?</div>
-  <h2>You've Tried Everything — Nothing Sticks</h2>
-  <p class="sec-intro">Most dog owners aren't failing because they're bad owners. They're using advice that simply doesn't work long-term.</p>
-  <ul class="pain-list">
-    <li><span class="pain-x">X</span> Your dog pulls, barks, jumps — and ignores every "no"</li>
-    <li><span class="pain-x">X</span> YouTube videos and training books haven't changed anything lasting</li>
-    <li><span class="pain-x">X</span> You've spent money on trainers and still feel like you're starting from zero</li>
-    <li><span class="pain-x">X</span> Every walk is exhausting. Every guest visit is embarrassing</li>
-  </ul>
-</section>
-
-<!-- BENEFITS -->
-<section>
-  <div class="eyebrow">What changes</div>
-  <h2>What Your Life Looks Like After This Program</h2>
-  <p class="sec-intro">Real, lasting behavior change — not just treats-in-hand obedience that disappears the moment you stop bribing.</p>
-  <div class="ben-grid">
-    <div class="ben-card">
-      <h3>Commands that actually stick</h3>
-      <p>Sit, stay, come, leave it — learned for real, not just performed for treats in front of your face.</p>
-    </div>
-    <div class="ben-card">
-      <h3>Walks you'll look forward to</h3>
-      <p>No more yanking. No more apologizing to strangers. Calm leash walks within weeks.</p>
-    </div>
-    <div class="ben-card">
-      <h3>Peace at home</h3>
-      <p>No barking at the doorbell. No counter-surfing. No jumping on guests.</p>
-    </div>
-    <div class="ben-card">
-      <h3>15 minutes a day</h3>
-      <p>Short, structured sessions designed for busy people. No hour-long drilling required.</p>
-    </div>
-    <div class="ben-card">
-      <h3>Works for any breed or age</h3>
-      <p>Rescue dogs, stubborn terriers, anxious pups — the method adapts to your dog.</p>
-    </div>
-    <div class="ben-card">
-      <h3>A real bond, not just control</h3>
-      <p>When your dog understands you, the relationship transforms. That's what this is really about.</p>
-    </div>
-  </div>
-</section>
-
-<!-- MID IMAGE -->
-<div class="mid-img">
-  <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=900&q=80" alt="Dog training in progress">
+<footer class="site-footer">
+<div class="footer-disclaimer">
+<strong>MEDICAL &amp; HEALTH DISCLAIMER:</strong> The information on this page is not intended as medical advice and is not a substitute for professional medical expertise or treatment. This website is an advertorial. Results may vary. These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Always consult a qualified healthcare professional before starting any new health regimen.
 </div>
-
-<!-- WHAT YOU GET -->
-<section style="padding-top: 0;">
-  <div class="eyebrow">What's inside</div>
-  <h2>Everything Included — No Upsells</h2>
-  <p class="sec-intro">One payment, instant digital download, lifetime access.</p>
-  <ul class="get-list">
-    <li>
-      <span class="get-check"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></span>
-      <span><strong>The Calm Dog Method — Complete Guide</strong> (PDF, 120+ pages) — the full system, step-by-step</span>
-    </li>
-    <li>
-      <span class="get-check"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></span>
-      <span><strong>21-Day Training Calendar</strong> — know exactly what to do each day, zero guesswork</span>
-    </li>
-    <li>
-      <span class="get-check"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></span>
-      <span><strong>Behavior Fix Library</strong> — specific modules for barking, pulling, jumping, anxiety</span>
-    </li>
-    <li>
-      <span class="get-check"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></span>
-      <span><strong>30+ Training Demo Videos</strong> — short clips showing each technique in action</span>
-    </li>
-    <li>
-      <span class="get-check"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></span>
-      <span><strong>Quick Command Cheat Sheet</strong> — printable reference card for training sessions</span>
-    </li>
-    <li>
-      <span class="get-check"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></span>
-      <span><strong>Lifetime access</strong> — including all future updates, free of charge</span>
-    </li>
-  </ul>
-</section>
-
-<!-- REVIEWS -->
-<div class="reviews-bg">
-  <div class="reviews-inner">
-    <div class="eyebrow">Customer reviews</div>
-    <h2 style="margin-bottom: 16px;">What Dog Owners Say</h2>
-    <div class="tp-badge">
-      <span class="tp-stars">★★★★★</span>
-      <strong>4.9</strong> &nbsp;·&nbsp; 2,100 reviews
-    </div>
-    <div class="reviews-grid">
-      <div class="rev-card">
-        <div class="rev-stars">★★★★★</div>
-        <p class="rev-text">"After 2 years of chaos with our golden, I was close to giving up. Week 3 in and she actually sits when we ask. I cried. No joke."</p>
-        <div class="rev-author">
-          <div class="rev-av"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah M."></div>
-          <div>
-            <div class="rev-name">Sarah M.</div>
-            <div class="rev-meta">Golden Retriever owner, Texas</div>
-            <div class="rev-verified">Verified purchase</div>
-          </div>
-        </div>
-      </div>
-      <div class="rev-card">
-        <div class="rev-stars">★★★★★</div>
-        <p class="rev-text">"Bought this after spending $400 on a trainer with zero results. The leash pulling stopped in 8 days. Genuinely shocked."</p>
-        <div class="rev-author">
-          <div class="rev-av"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="James K."></div>
-          <div>
-            <div class="rev-name">James K.</div>
-            <div class="rev-meta">German Shepherd owner, UK</div>
-            <div class="rev-verified">Verified purchase</div>
-          </div>
-        </div>
-      </div>
-      <div class="rev-card">
-        <div class="rev-stars">★★★★★</div>
-        <p class="rev-text">"Our rescue had severe anxiety. This is the first thing that actually made a difference. Worth 10x the price — seriously."</p>
-        <div class="rev-author">
-          <div class="rev-av"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Maria L."></div>
-          <div>
-            <div class="rev-name">Maria L.</div>
-            <div class="rev-meta">Rescue dog owner, Australia</div>
-            <div class="rev-verified">Verified purchase</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div>
+<a href="#">Privacy Policy</a> -
+<a href="#">Terms of Service</a> -
+<a href="#">Contact Us</a>
 </div>
-
-<!-- AUTHOR -->
-<section>
-  <div class="eyebrow">About the author</div>
-  <div class="author-wrap">
-    <img class="author-pic" src="https://images.unsplash.com/photo-1545912453-7c2662b0a905?w=300&q=80" alt="Daniel Hartwell">
-    <div>
-      <div class="author-name">Daniel Hartwell</div>
-      <div class="author-title">Certified Dog Behavior Consultant · 14 years</div>
-      <p class="author-body">I've worked with over 3,000 dogs — from aggressive rescues to anxious puppies to stubborn terriers. I built The Calm Dog Method after realizing most training advice is either outdated, confusing, or not designed for real families with real lives. This is everything I wish existed when I started.</p>
-    </div>
-  </div>
-</section>
-
-<!-- CTA / PRICING -->
-<div class="cta-bg" id="get-access">
-  <div class="cta-inner">
-    <div class="eyebrow" style="color:#555;">Instant digital access</div>
-    <h2>Start Today</h2>
-    <p class="cta-lead">One-time payment. Instant download. 30-day money-back guarantee.</p>
-
-    <div class="price-wrap">
-      <div class="price-old">Regular price: $97</div>
-      <div class="price-now">$37</div>
-      <div class="price-once">One-time · No subscription · No upsells</div>
-      <ul class="price-includes">
-        <li>Complete Calm Dog Method Guide (PDF)</li>
-        <li>21-Day Training Calendar</li>
-        <li>Behavior Fix Library</li>
-        <li>30+ Training Demo Videos</li>
-        <li>Quick Command Cheat Sheet</li>
-        <li>Lifetime access + free updates</li>
-      </ul>
-    </div>
-
-    <button class="btn-buy" onclick="openGumroad()">
-      Get Instant Access — $37
-    </button>
-    <div class="secure-line">
-      <svg width="11" height="13" viewBox="0 0 11 13" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="5" width="9" height="8" rx="1.5" stroke="#555" stroke-width="1.2"/><path d="M3 5V3.5a2.5 2.5 0 015 0V5" stroke="#555" stroke-width="1.2"/></svg>
-      Secure checkout via Gumroad · All major cards + PayPal
-    </div>
-  </div>
-</div>
-
-<div class="guarantee">
-  <strong>30-Day Money-Back Guarantee.</strong> Follow the program. If you don't see a meaningful change, email us for a full refund. No questions asked.
-</div>
-
-<!-- FAQ -->
-<div class="faq-wrap">
-  <div class="eyebrow" style="text-align:center; margin-bottom:20px;">Frequently asked</div>
-  <div class="faq-item">
-    <div class="faq-q" onclick="toggleFaq(this)">How do I get access after purchase? <span class="faq-icon">+</span></div>
-    <div class="faq-a">Immediately after checkout you receive a download link via email. Everything is digital — no waiting, no shipping.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q" onclick="toggleFaq(this)">Will this work for my older dog? <span class="faq-icon">+</span></div>
-    <div class="faq-a">Yes. Older dogs may need slightly more repetition, but the method works for dogs of all ages. Many of our best results come from dogs 5 years and older.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q" onclick="toggleFaq(this)">I'm a complete beginner. Is this for me? <span class="faq-icon">+</span></div>
-    <div class="faq-a">Absolutely. It's written for everyday owners, not professionals. No jargon, no complicated theory — just clear, actionable steps.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q" onclick="toggleFaq(this)">What if it doesn't work for my dog? <span class="faq-icon">+</span></div>
-    <div class="faq-a">You're covered by a 30-day money-back guarantee. Follow the program and if you don't see results, contact us for a full refund.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q" onclick="toggleFaq(this)">Is this really a one-time payment? <span class="faq-icon">+</span></div>
-    <div class="faq-a">Yes. $37 once, and you own it forever — including all future updates. No subscriptions, no hidden charges.</div>
-  </div>
-</div>
-
-<footer>
-  &copy; 2025 The Calm Dog Method &nbsp;&middot;&nbsp;
-  <a href="#">Privacy Policy</a> &nbsp;&middot;&nbsp;
-  <a href="#">Contact</a>
+<div class="footer-copy">© Copyright Dr. Michael Harris MD 2024</div>
 </footer>
-
-<!-- STICKY MOBILE -->
-<div class="sticky-mob">
-  <button onclick="openGumroad()">Get Instant Access — $37</button>
-</div>
-
-
-<!-- ════════════════════════════════════
-     GUMROAD CHECKOUT MODAL (simulated)
-     Closely mirrors actual Gumroad overlay UI
-════════════════════════════════════ -->
-<div class="gr-overlay" id="grOverlay" onclick="handleOverlayClick(event)">
-  <div class="gr-modal" id="grModal">
-    <button class="gr-close" onclick="closeGumroad()" title="Close">&times;</button>
-
-    <!-- LEFT: product summary -->
-    <div class="gr-left">
-      <img class="gr-product-img"
-           src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=600&q=80"
-           alt="The Calm Dog Method">
-      <div>
-        <div class="gr-product-name">The Calm Dog Method — Complete Training Program</div>
-        <div class="gr-creator">by Daniel Hartwell</div>
-      </div>
-      <div class="gr-price-line">
-        <span class="gr-price-big">$37</span>
-        <span class="gr-price-was">$97</span>
-      </div>
-      <ul class="gr-summary-items">
-        <li>Complete Guide PDF (120+ pages)</li>
-        <li>21-Day Training Calendar</li>
-        <li>Behavior Fix Library</li>
-        <li>30+ Training Videos</li>
-        <li>Command Cheat Sheet</li>
-        <li>Lifetime access + updates</li>
-      </ul>
-      <div class="gr-guarantee-badge">
-        <strong>30-Day Money-Back Guarantee</strong>
-        If it doesn't work for your dog, you get a full refund.
-      </div>
-    </div>
-
-    <!-- RIGHT: payment form -->
-    <div class="gr-right" id="grFormSide">
-
-      <!-- method tabs -->
-      <div class="gr-tabs">
-        <button class="gr-tab active" id="tabCard" onclick="switchTab('card')">Credit card</button>
-        <button class="gr-tab" id="tabPaypal" onclick="switchTab('paypal')">PayPal</button>
-      </div>
-
-      <!-- CARD PANEL -->
-      <div class="gr-card-panel" id="cardPanel">
-
-        <div class="gr-field-group">
-          <label class="gr-label" for="gr-email">Email</label>
-          <input id="gr-email" class="gr-input" type="email" placeholder="you@example.com" autocomplete="email">
-        </div>
-
-        <div class="gr-field-group">
-          <div>
-            <div class="card-icons">
-              <div class="card-icon visa">VISA</div>
-              <div class="card-icon mc">MC</div>
-              <div class="card-icon amex">AMEX</div>
-            </div>
-            <label class="gr-label">Card details</label>
-          </div>
-          <div class="gr-card-row">
-            <input class="gr-input gr-card-num" type="text" placeholder="1234 5678 9012 3456" maxlength="19" id="gr-cardnum" oninput="fmtCard(this)">
-            <input class="gr-input gr-card-exp" type="text" placeholder="MM/YY" maxlength="5" id="gr-exp" oninput="fmtExp(this)">
-            <input class="gr-input gr-card-cvc" type="text" placeholder="CVC" maxlength="4" id="gr-cvc">
-          </div>
-        </div>
-
-        <div class="gr-field-group">
-          <label class="gr-label" for="gr-name">Name on card</label>
-          <input id="gr-name" class="gr-input" type="text" placeholder="Full name" autocomplete="cc-name">
-        </div>
-
-        <div class="gr-total-line">
-          <span>Total due today</span>
-          <span class="gr-total-amount">$37.00</span>
-        </div>
-
-        <button class="gr-submit" onclick="submitOrder()">
-          Pay $37.00
-        </button>
-      </div>
-
-      <!-- PAYPAL PANEL -->
-      <div class="gr-paypal-panel" id="paypalPanel">
-        <p style="font-size:13px;color:var(--gray-600)">You'll be redirected to PayPal to complete your payment securely.</p>
-        <div class="gr-total-line">
-          <span>Total due today</span>
-          <span class="gr-total-amount">$37.00</span>
-        </div>
-        <button class="paypal-btn" onclick="submitOrder()">
-          Pay with PayPal
-        </button>
-        <p class="paypal-note">You'll return to this page after payment</p>
-      </div>
-
-      <!-- branding -->
-      <div class="gr-branding">
-        <span class="gr-lock">&#128274;</span>
-        <span>Secured by</span>
-        <span class="gr-logo-text">Gumroad</span>
-      </div>
-
-    </div><!-- /gr-right -->
-
-    <!-- SUCCESS STATE (hidden until submit) -->
-    <div class="gr-success" id="grSuccess">
-      <div class="gr-success-icon">&#10003;</div>
-      <h3>Payment successful!</h3>
-      <p>Check your email — your download link and receipt are on their way. Welcome to The Calm Dog Method.</p>
-      <button onclick="closeGumroad()" style="margin-top:8px;padding:10px 24px;background:var(--gr-pink);border:none;border-radius:4px;font-weight:600;font-size:14px;cursor:pointer;">Close</button>
-    </div>
-
-  </div><!-- /gr-modal -->
-</div>
-
-
-<script>
-function openGumroad() {
-  document.getElementById('grOverlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-  // reset to form state
-  document.getElementById('grFormSide').style.display = '';
-  document.getElementById('grSuccess').style.display = 'none';
-}
-function closeGumroad() {
-  document.getElementById('grOverlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
-function handleOverlayClick(e) {
-  if (e.target === document.getElementById('grOverlay')) closeGumroad();
-}
-
-function switchTab(tab) {
-  const isCard = tab === 'card';
-  document.getElementById('tabCard').classList.toggle('active', isCard);
-  document.getElementById('tabPaypal').classList.toggle('active', !isCard);
-  document.getElementById('cardPanel').classList.toggle('hidden', !isCard);
-  document.getElementById('paypalPanel').classList.toggle('active', !isCard);
-}
-
-function fmtCard(el) {
-  let v = el.value.replace(/\D/g,'').slice(0,16);
-  el.value = v.replace(/(.{4})/g,'$1 ').trim();
-}
-function fmtExp(el) {
-  let v = el.value.replace(/\D/g,'').slice(0,4);
-  if (v.length >= 2) v = v.slice(0,2) + '/' + v.slice(2);
-  el.value = v;
-}
-
-function submitOrder() {
-  // basic validation
-  const email = document.getElementById('gr-email');
-  if (email && !email.value.includes('@')) {
-    email.focus();
-    email.style.borderColor = '#c0392b';
-    return;
-  }
-  // show success
-  document.getElementById('grFormSide').style.display = 'none';
-  const s = document.getElementById('grSuccess');
-  s.style.display = 'flex';
-}
-
-// FAQ toggle
-function toggleFaq(el) {
-  const item = el.closest('.faq-item');
-  item.classList.toggle('open');
-}
-
-// close on Escape
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeGumroad();
-});
-</script>
 </body>
 </html>
