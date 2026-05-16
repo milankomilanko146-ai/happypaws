@@ -36,20 +36,12 @@ html, body {
    HERO
 ══════════════════════ */
 #page-hero {
-  min-height: 100dvh;
+  min-height: 100vh;
   background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(16px, 3dvh, 40px) 24px;
-}
-
-@media (max-height: 750px) {
-  #page-hero {
-    align-items: flex-start;
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
+  padding: 40px 24px;
 }
 
 .hero-inner {
@@ -64,10 +56,10 @@ html, body {
   display: flex;
   align-items: center;
   gap: 14px;
-  margin-bottom: clamp(12px, 2dvh, 28px);
+  margin-bottom: 28px;
 }
 .dr-photo {
-  width: clamp(44px, 7dvh, 60px); height: clamp(44px, 7dvh, 60px);
+  width: 60px; height: 60px;
   border-radius: 50%;
   object-fit: cover;
   object-position: top center;
@@ -81,20 +73,28 @@ html, body {
 
 .hero-headline {
   font-family: 'DM Serif Display', serif;
-  font-size: clamp(24px, 5.5dvh, 46px);
+  font-size: clamp(28px, 7vw, 46px);
   color: var(--dark);
   line-height: 1.15;
-  margin-bottom: clamp(8px, 1.5dvh, 14px);
+  margin-bottom: 14px;
   letter-spacing: -0.3px;
 }
 .hero-headline em { font-style: italic; color: var(--green); }
 
 .hero-sub {
-  font-size: clamp(13px, 1.8dvh, 15px);
+  font-size: 15px;
   color: var(--mid);
   line-height: 1.65;
-  margin-bottom: clamp(12px, 2dvh, 24px);
+  margin-bottom: 24px;
   max-width: 520px;
+}
+
+@media (max-width: 480px) {
+  #page-hero { padding: 20px 20px; align-items: flex-start; }
+  .dr-row { margin-bottom: 16px; }
+  .dr-photo { width: 44px; height: 44px; }
+  .hero-headline { font-size: 26px; margin-bottom: 10px; }
+  .hero-sub { font-size: 14px; margin-bottom: 14px; line-height: 1.55; }
 }
 
 .cta-btn {
@@ -235,8 +235,8 @@ html, body {
   background: #fff;
   border: 2px solid var(--green);
   border-radius: 14px;
-  padding: clamp(14px, 2.5dvh, 22px);
-  margin-bottom: clamp(12px, 2dvh, 24px);
+  padding: 22px;
+  margin-bottom: 24px;
   box-shadow: 0 6px 32px rgba(26,92,58,0.15), 0 1px 4px rgba(26,92,58,0.08);
 }
 .hero-q-label {
@@ -245,7 +245,15 @@ html, body {
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--green);
-  margin-bottom: clamp(8px, 1.5dvh, 14px);
+  margin-bottom: 14px;
+}
+
+@media (max-width: 480px) {
+  .hero-q-box { padding: 14px; margin-bottom: 12px; }
+  .hero-q-label { margin-bottom: 8px; }
+  .hero-q-grid { gap: 6px; }
+  .hero-q-btn { padding: 10px 12px; font-size: 13px; }
+  .sp-row { margin-top: 0 !important; margin-bottom: 12px !important; }
 }
 .hero-q-grid {
   display: grid;
