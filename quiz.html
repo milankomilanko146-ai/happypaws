@@ -79,6 +79,14 @@ html, body {
   margin-bottom: 18px;
   letter-spacing: -0.5px;
 }
+@media (max-width: 600px) {
+  .hero-headline {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: clamp(26px, 7.5vw, 36px);
+    letter-spacing: -0.3px;
+  }
+}
 .hero-headline em { font-style: italic; color: var(--amber); }
 
 .hero-sub {
@@ -242,7 +250,7 @@ html, body {
     <p class="hero-sub">Most owners ignore it — until it becomes a dangerous compulsion. Grass can be treated with pesticides, harbor parasites, and mask a deeper health problem your vet hasn't caught yet. Take this free quiz and find out exactly what's driving your dog's behavior.</p>
 
     <button class="cta-btn" onclick="startQuiz()">Take the Free Quiz →</button>
-    <p class="cta-byline">Created by Dr. Sarah Mitchell, DVM · 20 questions · 100% Free</p>
+    <p class="cta-byline">Created by Dr. Sarah Mitchell, DVM</p>
 
     <div class="sp-row">
       <div class="sp-avatars">
