@@ -41,7 +41,7 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px 20px;
+  padding: 40px 24px;
 }
 
 .hero-inner {
@@ -56,10 +56,10 @@ html, body {
   display: flex;
   align-items: center;
   gap: 14px;
-  margin-bottom: 16px;
+  margin-bottom: 28px;
 }
 .dr-photo {
-  width: 48px; height: 48px;
+  width: 60px; height: 60px;
   border-radius: 50%;
   object-fit: cover;
   object-position: top center;
@@ -67,25 +67,25 @@ html, body {
   flex-shrink: 0;
   background: #e8f5ee;
 }
-.dr-name { font-weight: 700; font-size: 14px; color: var(--dark); line-height: 1.2; }
-.dr-cred { font-size: 11px; color: var(--green); margin-top: 2px; }
-.dr-cred2 { font-size: 10px; color: var(--mid); margin-top: 2px; }
+.dr-name { font-weight: 700; font-size: 15px; color: var(--dark); line-height: 1.2; }
+.dr-cred { font-size: 12px; color: var(--green); margin-top: 3px; }
+.dr-cred2 { font-size: 11px; color: var(--mid); margin-top: 2px; }
 
 .hero-headline {
   font-family: 'DM Serif Display', serif;
-  font-size: clamp(22px, 6vw, 46px);
+  font-size: clamp(28px, 7vw, 46px);
   color: var(--dark);
   line-height: 1.15;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
   letter-spacing: -0.3px;
 }
 .hero-headline em { font-style: italic; color: var(--green); }
 
 .hero-sub {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--mid);
-  line-height: 1.55;
-  margin-bottom: 16px;
+  line-height: 1.65;
+  margin-bottom: 24px;
   max-width: 520px;
 }
 
@@ -195,13 +195,11 @@ html, body {
 .micro-sell-title { font-weight: 700; font-size: 13px; color: #8b5a1a; margin-bottom: 2px; }
 .micro-sell-text { font-size: 12px; color: #7a5230; line-height: 1.5; }
 
-.next-wrap { margin-top: 14px; min-height: 52px; }
-.next-btn { width: 100%; padding: 15px; background: var(--green); color: #fff; border: none; border-radius: 8px; font-size: 15px; font-weight: 700; font-family: 'Inter', sans-serif; cursor: pointer; transition: background 0.15s, transform 0.15s; display: none; }
-.next-btn.show { display: block; }
+.next-wrap { margin-top: 14px; }
+.next-btn { width: 100%; padding: 15px; background: var(--green); color: #fff; border: none; border-radius: 8px; font-size: 15px; font-weight: 700; font-family: 'Inter', sans-serif; cursor: pointer; transition: background 0.15s, transform 0.15s; display: block; }
 .next-btn:hover { background: var(--green-mid); transform: translateY(-1px); }
 
-.quiz-byline { font-size: 11px; color: #bbb; margin-top: 8px; text-align: center; visibility: hidden; }
-.quiz-byline.show { visibility: visible; }
+.quiz-byline { font-size: 11px; color: #bbb; margin-top: 8px; text-align: center; display: block; }
 
 /* ══════════════════════
    LOADING
@@ -229,8 +227,8 @@ html, body {
   background: #fff;
   border: 2px solid var(--green);
   border-radius: 14px;
-  padding: 16px;
-  margin-bottom: 14px;
+  padding: 22px;
+  margin-bottom: 24px;
   box-shadow: 0 6px 32px rgba(26,92,58,0.15), 0 1px 4px rgba(26,92,58,0.08);
 }
 .hero-q-label {
@@ -239,7 +237,7 @@ html, body {
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--green);
-  margin-bottom: 10px;
+  margin-bottom: 14px;
 }
 .hero-q-grid {
   display: grid;
@@ -300,9 +298,9 @@ html, body {
       </div>
     </div>
 
-    <h1 class="hero-headline">Something Is Making Your Dog Eat Grass.<br><em>(Most Owners Never Figure Out What.)</em></h1>
+    <h1 class="hero-headline">Something Is Making Your Dog Eat Grass. <em>(Most Owners Never Figure Out What.)</em></h1>
 
-    <p class="hero-sub">Thousands of dogs die from it every year.<br>Answer this quick quiz and find out exactly what's driving yours — before it's too late.</p>
+    <p class="hero-sub">Thousands of dogs die from it every year. Answer this quick quiz and find out exactly what's driving yours before it's too late.</p>
 
     <div class="sp-row" style="margin-top:0;margin-bottom:20px;">
       <div class="sp-avatars">
