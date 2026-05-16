@@ -300,9 +300,16 @@ html, body {
       </div>
     </div>
 
-    <h1 class="hero-headline">Why Is Your Dog Eating Grass? <em>It Could Be Serious.</em></h1>
+    <h1 class="hero-headline">Something Is Making Your Dog Eat Grass. <em>(Most Owners Never Figure Out What.)</em></h1>
 
-    <p class="hero-sub">Most owners ignore it — until it becomes a dangerous compulsion. Pesticides, parasites, hidden illness. Take this free quiz and find out what's really going on.</p>
+    <p class="hero-sub">Thousands of dogs die from it every year. Answer this quick quiz and find out exactly what's driving yours before it's too late.</p>
+
+    <div class="sp-row" style="margin-top:0;margin-bottom:20px;">
+      <div class="sp-avatars">
+        <div class="sp-av">MJ</div><div class="sp-av">KL</div><div class="sp-av">SR</div><div class="sp-av">AP</div><div class="sp-av">TW</div>
+      </div>
+      <div class="sp-text"><strong>138 people</strong> took this today</div>
+    </div>
 
     <div class="hero-q-box">
       <div class="hero-q-label">Question 1 of 20 — How old is your dog?</div>
@@ -315,12 +322,6 @@ html, body {
       <p class="hero-q-byline">Created by Dr. Sarah Mitchell, DVM</p>
     </div>
 
-    <div class="sp-row">
-      <div class="sp-avatars">
-        <div class="sp-av">MJ</div><div class="sp-av">KL</div><div class="sp-av">SR</div><div class="sp-av">AP</div><div class="sp-av">TW</div>
-      </div>
-      <div class="sp-text"><strong>138 people</strong> took this today</div>
-    </div>
   </div>
 </section>
 
@@ -443,11 +444,11 @@ function finishQuiz() {
 
   // Inconsistent, realistic step timing
   const schedule = [
-    { id: 'ls1', pct: 18, delay: 900 },
-    { id: 'ls2', pct: 39, delay: 2800 },
-    { id: 'ls3', pct: 61, delay: 5200 },
-    { id: 'ls4', pct: 83, delay: 7100 },
-    { id: 'ls5', pct: 100, delay: 9400 },
+    { id: 'ls1', pct: 18, delay: 500 },
+    { id: 'ls2', pct: 39, delay: 1500 },
+    { id: 'ls3', pct: 61, delay: 2800 },
+    { id: 'ls4', pct: 83, delay: 4000 },
+    { id: 'ls5', pct: 100, delay: 5200 },
   ];
 
   schedule.forEach(({ id, pct, delay }) => {
@@ -457,7 +458,7 @@ function finishQuiz() {
     }, delay);
   });
 
-  setTimeout(() => { window.location.href = 'https://happypaws-sepia.vercel.app/result.html'; }, 10500);
+  setTimeout(() => { window.location.href = 'https://happypaws-sepia.vercel.app/result.html'; }, 6500);
 }
 </script>
 </body>
