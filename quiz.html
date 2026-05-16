@@ -30,25 +30,7 @@ html, body {
   overflow-x: hidden;
 }
 
-/* ── AD BANNER ── */
-.ad-banner {
-  background: #fff;
-  border-bottom: 1px solid #ddd;
-  padding: 8px 16px;
-  font-size: 12px;
-  color: #555;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  flex-wrap: wrap;
-  line-height: 1.4;
-}
-.ad-badge {
-  background: #e8f0fe; color: #1a73e8;
-  border: 1px solid #c5d4f7; border-radius: 3px;
-  padding: 1px 5px; font-size: 11px; font-weight: 700; flex-shrink: 0;
-}
-.ad-url { color: #1a5c3a; font-weight: 600; }
+
 
 /* ══════════════════════
    HERO
@@ -151,7 +133,8 @@ html, body {
   padding: 10px 16px; display: none;
 }
 .progress-wrap.visible { display: block; }
-.progress-top { display: flex; justify-content: flex-end; margin-bottom: 6px; }
+.progress-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+.progress-dr { font-size: 11px; color: var(--green); font-weight: 700; }
 .progress-pct { font-size: 11px; color: var(--mid); font-weight: 600; }
 .progress-bar { height: 5px; background: var(--green-pale); border-radius: 10px; overflow: hidden; }
 .progress-fill {
@@ -241,13 +224,6 @@ html, body {
 </head>
 <body>
 
-<div class="ad-banner" id="adBanner">
-  <span class="ad-badge">Ad</span>
-  <span class="ad-url">dogtrainingmd.com</span>
-  <span>·</span>
-  <span><strong>Why Does My Dog Always Eat Grass? Free Vet Assessment — Dr. Mitchell DVM</strong> · Discover the real cause + get your personalized fix plan. 97,000+ dogs helped.</span>
-</div>
-
 <section id="page-hero">
   <div class="hero-inner">
     <div class="dr-row">
@@ -259,11 +235,11 @@ html, body {
       </div>
     </div>
 
-    <h1 class="hero-headline">Your Dog Is Trying<br>to Tell You Something.<br><em>Find Out What.</em></h1>
+    <h1 class="hero-headline">Why Is Your Dog<br>Eating Grass?<br><em>It Could Be Serious.</em></h1>
 
-    <p class="hero-sub">Most dog owners guess wrong about why their dog eats grass — and every wrong response makes the habit harder to break. Take this 60-second assessment and get the real answer.</p>
+    <p class="hero-sub">Most owners ignore it — until it becomes a dangerous compulsion. Grass can be treated with pesticides, harbor parasites, and mask a deeper health problem your vet hasn't caught yet. Find out exactly what's driving your dog's behavior before it's too late.</p>
 
-    <button class="cta-btn" onclick="startQuiz()">Take the Free Assessment →</button>
+    <button class="cta-btn" onclick="startQuiz()">Find Out Now — Free Assessment →</button>
     <p class="cta-byline">Created by Dr. Sarah Mitchell, DVM · 20 questions · Free</p>
 
     <div class="sp-row">
@@ -276,7 +252,10 @@ html, body {
 </section>
 
 <div class="progress-wrap" id="progressWrap">
-  <div class="progress-top"><span class="progress-pct" id="progressPct">0%</span></div>
+  <div class="progress-top">
+    <span class="progress-dr">Dr. Sarah Mitchell, DVM</span>
+    <span class="progress-pct" id="progressPct">0%</span>
+  </div>
   <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
 </div>
 
@@ -345,7 +324,6 @@ html, body {
 const totalQ = 20;
 function startQuiz() {
   document.getElementById('page-hero').style.display = 'none';
-  document.getElementById('adBanner').style.display = 'none';
   document.getElementById('page-quiz').style.display = 'block';
   document.getElementById('progressWrap').classList.add('visible');
   showQuestion(1); updateProgress(0);
@@ -377,9 +355,9 @@ function finishQuiz() {
   const steps = ['ls1','ls2','ls3','ls4','ls5'];
   const pcts = [20, 42, 63, 84, 100];
   steps.forEach((id, i) => {
-    setTimeout(() => { document.getElementById(id).classList.add('done'); bar.style.width = pcts[i] + '%'; }, 600 + i * 700);
+    setTimeout(() => { document.getElementById(id).classList.add('done'); bar.style.width = pcts[i] + '%'; }, 800 + i * 1600);
   });
-  setTimeout(() => { window.location.href = 'https://happypaws-sepia.vercel.app/result.html'; }, 4500);
+  setTimeout(() => { window.location.href = 'https://happypaws-sepia.vercel.app/result.html'; }, 10000);
 }
 </script>
 </body>
