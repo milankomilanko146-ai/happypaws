@@ -195,9 +195,9 @@ html, body {
 .micro-sell-title { font-weight: 700; font-size: 13px; color: #8b5a1a; margin-bottom: 2px; }
 .micro-sell-text { font-size: 12px; color: #7a5230; line-height: 1.5; }
 
-.next-wrap { margin-top: 14px; }
-.next-btn { width: 100%; padding: 15px; background: var(--green); color: #fff; border: none; border-radius: 8px; font-size: 15px; font-weight: 700; font-family: 'Inter', sans-serif; cursor: pointer; transition: background 0.15s, transform 0.15s, opacity 0.15s; opacity: 0.3; pointer-events: none; }
-.next-btn.show { opacity: 1; pointer-events: auto; }
+.next-wrap { margin-top: 14px; min-height: 52px; }
+.next-btn { width: 100%; padding: 15px; background: var(--green); color: #fff; border: none; border-radius: 8px; font-size: 15px; font-weight: 700; font-family: 'Inter', sans-serif; cursor: pointer; transition: background 0.15s, transform 0.15s; display: none; }
+.next-btn.show { display: block; }
 .next-btn:hover { background: var(--green-mid); transform: translateY(-1px); }
 
 .quiz-byline { font-size: 11px; color: #bbb; margin-top: 8px; text-align: center; visibility: hidden; }
@@ -300,9 +300,9 @@ html, body {
       </div>
     </div>
 
-    <h1 class="hero-headline">Something Is Making Your Dog Eat Grass. <em>(Most Owners Never Figure Out What.)</em></h1>
+    <h1 class="hero-headline">Something Is Making Your Dog Eat Grass.<br><em>(Most Owners Never Figure Out What.)</em></h1>
 
-    <p class="hero-sub">Thousands of dogs die from it every year. Answer this quick quiz and find out exactly what's driving yours before it's too late.</p>
+    <p class="hero-sub">Thousands of dogs die from it every year.<br>Answer this quick quiz and find out exactly what's driving yours — before it's too late.</p>
 
     <div class="sp-row" style="margin-top:0;margin-bottom:20px;">
       <div class="sp-avatars">
@@ -425,7 +425,7 @@ function showQuestion(n) {
 function selectOption(btn, qNum) {
   btn.closest('.options-grid').querySelectorAll('.opt-btn').forEach(b => b.classList.remove('selected'));
   btn.classList.add('selected');
-  const ms = document.getElementById('ms' + qNum); if (ms) ms.classList.add('show');
+  const ms = document.getElementById('ms' + qNum); if (ms) { ms.classList.remove('show'); void ms.offsetWidth; ms.classList.add('show'); }
   const nb = document.getElementById('nb' + qNum); if (nb) nb.classList.add('show');
   const bl = document.getElementById('bl' + qNum); if (bl) bl.classList.add('show');
 }
