@@ -73,9 +73,9 @@ html, body {
 
 .hero-headline {
   font-family: 'DM Serif Display', serif;
-  font-size: clamp(30px, 5.8vw, 52px);
+  font-size: clamp(28px, 8vw, 52px);
   color: #fff;
-  line-height: 1.1;
+  line-height: 1.15;
   margin-bottom: 18px;
   letter-spacing: -0.5px;
 }
@@ -114,11 +114,13 @@ html, body {
 }
 .sp-avatars { display: flex; }
 .sp-av {
-  width: 30px; height: 30px; border-radius: 50%;
-  border: 2px solid rgba(255,255,255,0.22);
+  width: 32px; height: 32px; border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.3);
   background: linear-gradient(135deg, #6db88a, #2d7a52);
   display: flex; align-items: center; justify-content: center;
-  font-size: 13px; margin-left: -7px;
+  font-size: 10px; font-weight: 700; color: #fff;
+  letter-spacing: -0.5px;
+  margin-left: -8px;
 }
 .sp-av:first-child { margin-left: 0; }
 .sp-text { font-size: 13px; color: rgba(255,255,255,0.6); }
@@ -227,7 +229,7 @@ html, body {
 <section id="page-hero">
   <div class="hero-inner">
     <div class="dr-row">
-      <img class="dr-photo" src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=136&h=136&fit=crop&crop=face&auto=format&q=80" alt="Dr. Sarah Mitchell DVM" onerror="this.style.display='none'">
+      <img class="dr-photo" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=136&h=136&fit=crop&crop=face&auto=format&q=80" alt="Dr. Sarah Mitchell DVM" onerror="this.style.display='none'">
       <div>
         <div class="dr-name">Dr. Sarah Mitchell, DVM</div>
         <div class="dr-cred">Board-Certified Veterinary Behaviorist</div>
@@ -235,18 +237,18 @@ html, body {
       </div>
     </div>
 
-    <h1 class="hero-headline">Why Is Your Dog<br>Eating Grass?<br><em>It Could Be Serious.</em></h1>
+    <h1 class="hero-headline">Why Is Your Dog Eating Grass? <em>It Could Be Serious.</em></h1>
 
-    <p class="hero-sub">Most owners ignore it — until it becomes a dangerous compulsion. Grass can be treated with pesticides, harbor parasites, and mask a deeper health problem your vet hasn't caught yet. Find out exactly what's driving your dog's behavior before it's too late.</p>
+    <p class="hero-sub">Most owners ignore it — until it becomes a dangerous compulsion. Grass can be treated with pesticides, harbor parasites, and mask a deeper health problem your vet hasn't caught yet. Take this free quiz and find out exactly what's driving your dog's behavior.</p>
 
-    <button class="cta-btn" onclick="startQuiz()">Find Out Now — Free Assessment →</button>
-    <p class="cta-byline">Created by Dr. Sarah Mitchell, DVM · 20 questions · Free</p>
+    <button class="cta-btn" onclick="startQuiz()">Take the Free Quiz →</button>
+    <p class="cta-byline">Created by Dr. Sarah Mitchell, DVM · 20 questions · 100% Free</p>
 
     <div class="sp-row">
       <div class="sp-avatars">
-        <div class="sp-av">👩</div><div class="sp-av">👨</div><div class="sp-av">👩</div><div class="sp-av">👴</div><div class="sp-av">👩</div>
+        <div class="sp-av">MJ</div><div class="sp-av">KL</div><div class="sp-av">SR</div><div class="sp-av">AP</div><div class="sp-av">TW</div>
       </div>
-      <div class="sp-text"><strong>4,381 people</strong> took this today</div>
+      <div class="sp-text"><strong>138 people</strong> took this today</div>
     </div>
   </div>
 </section>
@@ -352,12 +354,24 @@ function finishQuiz() {
   const loading = document.getElementById('page-loading');
   loading.style.display = 'flex';
   const bar = document.getElementById('loadingBar');
-  const steps = ['ls1','ls2','ls3','ls4','ls5'];
-  const pcts = [20, 42, 63, 84, 100];
-  steps.forEach((id, i) => {
-    setTimeout(() => { document.getElementById(id).classList.add('done'); bar.style.width = pcts[i] + '%'; }, 800 + i * 1600);
+
+  // Inconsistent, realistic step timing
+  const schedule = [
+    { id: 'ls1', pct: 18, delay: 900 },
+    { id: 'ls2', pct: 39, delay: 2800 },
+    { id: 'ls3', pct: 61, delay: 5200 },
+    { id: 'ls4', pct: 83, delay: 7100 },
+    { id: 'ls5', pct: 100, delay: 9400 },
+  ];
+
+  schedule.forEach(({ id, pct, delay }) => {
+    setTimeout(() => {
+      document.getElementById(id).classList.add('done');
+      bar.style.width = pct + '%';
+    }, delay);
   });
-  setTimeout(() => { window.location.href = 'https://happypaws-sepia.vercel.app/result.html'; }, 10000);
+
+  setTimeout(() => { window.location.href = 'https://happypaws-sepia.vercel.app/result.html'; }, 10500);
 }
 </script>
 </body>
