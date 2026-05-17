@@ -2,825 +2,516 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Health Quiz</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Michael Harris, MD</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;0,800;1,400&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+background: #fff;
+font-family: 'Open Sans', sans-serif;
+font-size: 17px;
+font-weight: 400;
+line-height: 26px;
+color: #000;
+}
+header { background: #1a4f8a; width: 100%; }
+.header-inner { max-width: 860px; margin: 0 auto; padding: 20px 15px; text-align: center; }
+.header-logo {
+font-family: 'Montserrat', sans-serif;
+font-size: 18px;
+font-weight: 700;
+color: #fff;
+letter-spacing: 2px;
+text-transform: uppercase;
+}
+.page-wrap {
+max-width: 650px;
+margin: 0 auto;
+padding: 0 15px 20px;
+}
+h1 {
+font-family: 'Open Sans', sans-serif;
+font-size: 43px;
+font-weight: 700;
+line-height: 52px;
+margin-top: 36px;
+margin-bottom: 12px;
+color: #000;
+}
+p.deck {
+font-family: 'Open Sans', sans-serif;
+font-size: 18px;
+font-style: italic;
+font-weight: 400;
+line-height: 36px;
+color: #000;
+margin-bottom: 16px;
+}
+.ratings {
+display: flex;
+align-items: center;
+gap: 8px;
+margin-bottom: 16px;
+font-size: 14px;
+font-weight: 700;
+}
+.stars { font-size: 18px; letter-spacing: 2px; }
+.star-full { color: #f5a623; }
+.star-half {
+position: relative;
+display: inline-block;
+color: #ddd;
+}
+.star-half::before {
+content: '★';
+position: absolute;
+left: 0;
+width: 50%;
+overflow: hidden;
+color: #f5a623;
+}
+.star-half::after {
+content: '★';
+color: #ddd;
+}
+.author {
+display: flex;
+align-items: center;
+gap: 10px;
+margin-bottom: 24px;
+padding-bottom: 20px;
+border-bottom: 1px solid #ebebeb;
+}
+.author-photo {
+width: 46px;
+height: 46px;
+border-radius: 50%;
+overflow: hidden;
+flex-shrink: 0;
+}
+.author-photo img { width: 100%; height: 100%; object-fit: cover; }
+.author-name { font-size: 14px; font-weight: 600; }
+.author-date { font-size: 13px; color: #888; font-style: italic; }
+p {
+font-family: 'Open Sans', sans-serif;
+font-size: 17px;
+line-height: 26px;
+margin-bottom: 20px;
+color: #000;
+}
+h2 {
+font-family: 'Open Sans', sans-serif;
+font-size: 33px;
+font-weight: 800;
+line-height: 40px;
+color: #000;
+margin-top: 44px;
+margin-bottom: 16px;
+}
+img { max-width: 100%; height: auto; display: block; }
+.product-img {
+width: 100%;
+aspect-ratio: 16/9;
+object-fit: cover;
+border-radius: 6px;
+margin: 20px 0;
+}
+@media (min-width: 601px) {
+.product-img { width: 85%; margin-left: 0; margin-right: auto; }
+.product-img.full { width: 100%; }
+}
+footer.site-footer {
+background-color: #1a4f8a;
+color: #ccd6f0;
+text-align: center;
+padding: 24px 20px;
+font-size: 13px;
+line-height: 1.8;
+margin-top: 80px;
+}
+footer.site-footer a { color: #aabce8; text-decoration: none; margin: 0 8px; }
+footer.site-footer a:hover { text-decoration: underline; }
+.footer-disclaimer { font-size: 12px; color: #aabce8; margin: 0 auto 14px; max-width: 700px; line-height: 1.6; }
+.footer-copy { margin-top: 10px; font-size: 11px; color: #7788aa; }
 
-:root {
-  --teal: #00C4A7;
-  --teal-light: #E6FAF7;
-  --teal-mid: #4DD9C5;
-  --teal-dark: #009E86;
-  --teal-soft: #B2EDE6;
-  --g100: #F7F9FB;
-  --g200: #E8ECF2;
-  --g300: #D0D6E0;
-  --g400: #9AA3B2;
-  --g600: #5A6374;
-  --g700: #3D4555;
-  --g900: #161C2D;
-  --font: 'DM Sans', sans-serif;
-  --serif: 'Playfair Display', serif;
-  --max-w: 480px;
-  --nav-h: 49px;
+/* STOCK BADGE */
+.stock-badge {
+display: inline-flex;
+align-items: center;
+gap: 7px;
+font-size: 14px;
+font-weight: 700;
+color: #1a5c24;
+margin-bottom: 10px;
 }
-
-html, body {
-  height: 100%;
-  font-family: var(--font);
-  background: #fff;
-  color: var(--g900);
-  -webkit-font-smoothing: antialiased;
-  overscroll-behavior: none;
+@keyframes blink {
+0%, 100% { opacity: 1; }
+50% { opacity: 0.2; }
 }
-
-/* ═══════ NAV ═══════ */
-.top-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  height: var(--nav-h);
-  background: #fff;
-  border-bottom: 1px solid #F0F0F0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 200;
-}
-.nav-brand {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--g900);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-/* ═══════ PROGRESS BAR ═══════ */
-#progress-wrap {
-  position: fixed;
-  top: var(--nav-h);
-  left: 0; right: 0;
-  z-index: 150;
-  background: #fff;
-  display: none;
-}
-.progress-track { width: 100%; height: 4px; background: var(--g200); }
-.progress-fill {
-  height: 4px;
-  background: var(--teal);
-  border-radius: 0 2px 2px 0;
-  transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* ═══════ SCREENS ═══════ */
-/* Mobile: fixed, full-height panels below nav */
-.screen {
-  display: none;
-  position: fixed;
-  top: var(--nav-h);
-  left: 0; right: 0; bottom: 0;
-  background: #fff;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-}
-.screen.active { display: block; }
-
-/* Landing scrolls freely */
-#landing { overflow-y: auto; }
-
-/* Quiz: flex column, NO scroll — content fits screen */
-#quiz {
-  overflow: hidden;
-}
-#quiz.active {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Quiz top shifts down by progress bar height when visible */
-#quiz.has-progress {
-  top: calc(var(--nav-h) + 4px);
-}
-
-/* Loading scrolls */
-#loading { overflow-y: auto; background: var(--g100); }
-
-/* ═══════ LANDING ═══════ */
-.land-wrap {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 28px 20px 60px;
-  width: 100%;
-}
-.land-title {
-  font-family: var(--serif);
-  font-size: clamp(24px, 6vw, 38px);
-  line-height: 1.15;
-  color: var(--g900);
-  margin-bottom: 12px;
-  letter-spacing: -0.02em;
-}
-.land-title em { color: var(--teal); font-style: normal; }
-.land-sub {
-  font-size: 15px;
-  color: var(--g600);
-  line-height: 1.65;
-  margin-bottom: 18px;
-}
-.dr-row {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  margin-bottom: 20px;
-}
-.dr-photo {
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: top center;
-  border: 2px solid var(--teal-soft);
-  flex-shrink: 0;
-  background: var(--g200);
-}
-.dr-name-text { font-size: 13px; font-weight: 700; color: var(--g900); line-height: 1.3; }
-.dr-cred { font-size: 11px; color: var(--teal-dark); font-weight: 500; margin-top: 2px; }
-.sp-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 22px;
-}
-.sp-avatars { display: flex; }
-.sp-av {
-  width: 26px; height: 26px;
-  border-radius: 50%;
-  border: 2px solid #fff;
-  background: linear-gradient(135deg, var(--teal-mid), var(--teal-dark));
-  display: flex; align-items: center; justify-content: center;
-  font-size: 8px; font-weight: 700; color: #fff;
-  margin-left: -6px;
-}
-.sp-av:first-child { margin-left: 0; }
-.sp-text { font-size: 13px; color: var(--g600); }
-.sp-text strong { color: var(--g900); }
-.q-box {
-  background: #fff;
-  border: 2px solid var(--g900);
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 6px 24px rgba(0,0,0,0.08);
-}
-.q-box-title {
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1.4;
-  color: var(--g900);
-  margin-bottom: 14px;
-  letter-spacing: -0.01em;
-}
-.q-grid { display: flex; flex-direction: column; gap: 9px; }
-.q-option {
-  width: 100%;
-  padding: 13px 16px;
-  background: #fff;
-  border: 1.5px solid var(--g300);
-  border-radius: 11px;
-  cursor: pointer;
-  font-family: var(--font);
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--g900);
-  text-align: left;
-  line-height: 1.4;
-  transition: border-color 0.15s, background 0.15s;
-  -webkit-tap-highlight-color: transparent;
-  user-select: none;
-}
-.q-option:active { opacity: 0.8; }
-.q-option.flash-land {
-  border-color: var(--teal);
-  background: var(--teal);
-  color: #fff;
-  transition: all 0.1s;
+.stock-dot {
+width: 9px;
+height: 9px;
+border-radius: 50%;
+background: #2d7a3a;
+flex-shrink: 0;
+animation: blink 2.4s ease-in-out infinite;
 }
 
-/* ═══════ QUIZ LAYOUT ═══════ */
-.quiz-header {
-  flex-shrink: 0;
-  padding: 14px 20px 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: var(--max-w);
-  margin: 0 auto;
-  width: 100%;
+/* CTA */
+.cta-wrap { text-align: center; margin-top: 48px; margin-bottom: 20px; }
+.cta-btn {
+display: block;
+background: linear-gradient(180deg, #00a800 0%, #006f00 100%);
+color: #fff;
+font-family: 'Open Sans', sans-serif;
+font-size: 22px;
+font-weight: 700;
+line-height: 28px;
+padding: 18px 10px 14px;
+border-radius: 6px;
+box-shadow: rgba(0,0,0,.35) 0px 6px 18px;
+text-align: center;
+text-decoration: none;
+width: 100%;
+margin-bottom: 10px;
+border-bottom: 4px solid #004d00;
+transition: filter 0.15s;
 }
-.btn-back {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  background: var(--g100);
-  border: 1.5px solid var(--g200);
-  border-radius: 100px;
-  cursor: pointer;
-  color: var(--g700);
-  font-family: var(--font);
-  font-size: 13px;
-  font-weight: 600;
-  padding: 7px 14px 7px 9px;
-  -webkit-tap-highlight-color: transparent;
-  user-select: none;
-  visibility: hidden;
-}
-.btn-back.visible { visibility: visible; }
-.btn-back:active { opacity: 0.7; }
-.btn-back svg { width: 18px; height: 18px; flex-shrink: 0; }
-.q-counter {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--g900);
-  white-space: nowrap;
-}
-.q-counter .denom { font-size: 14px; font-weight: 400; color: var(--g400); }
-
-/* quiz-body: flex, fills space, no overflow */
-.quiz-body {
-  flex: 1;
-  overflow: hidden;
-  padding: 20px 20px 0;
-  max-width: var(--max-w);
-  margin: 0 auto;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+.cta-btn:hover { filter: brightness(1.08); }
+.cta-btn-price {
+display: block;
+font-size: 15px;
+font-weight: 400;
+opacity: 0.9;
+margin-top: 3px;
 }
 
-/* ── Question ── */
-.q-wrap {
-  display: flex;
-  flex-direction: column;
-  flex: 0 0 auto;
+/* TRUST BADGES */
+.trust-badges {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 10px 24px;
+padding: 16px 0 4px;
 }
-.q-text {
-  font-size: clamp(17px, 4vw, 22px);
-  font-weight: 700;
-  color: var(--g900);
-  line-height: 1.35;
-  margin-bottom: 14px;
-  letter-spacing: -0.01em;
-  flex-shrink: 0;
+.trust-badge {
+display: flex;
+align-items: center;
+gap: 8px;
 }
-.options-list {
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
-  flex: 0 0 auto;
+.trust-badge-icon {
+width: 36px;
+height: 36px;
+border-radius: 50%;
+background: #e6f4ea;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0;
 }
-.opt {
-  border: 1.5px solid var(--g300);
-  border-radius: 12px;
-  padding: 0 18px;
-  background: #fff;
-  font-family: var(--font);
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--g900);
-  cursor: pointer;
-  text-align: left;
-  transition: border-color 0.15s, background 0.15s;
-  line-height: 1.4;
-  -webkit-tap-highlight-color: transparent;
-  user-select: none;
-  flex: 0 0 auto;
-  display: flex;
-  align-items: center;
-  height: 56px;
+.trust-badge-icon svg {
+width: 18px;
+height: 18px;
+stroke: #2d7a3a;
+fill: none;
+stroke-width: 2;
+stroke-linecap: round;
+stroke-linejoin: round;
 }
-.opt:active { opacity: 0.8; }
-.opt.selected {
-  border-color: var(--teal);
-  background: var(--teal-light);
-  color: var(--teal-dark);
-  font-weight: 600;
+.trust-badge-title {
+font-size: 12px;
+font-weight: 700;
+color: #1a5c24;
+line-height: 1.3;
+display: block;
 }
-.opt.flash {
-  border-color: var(--teal);
-  background: var(--teal);
-  color: #fff;
-  transition: all 0.1s;
+.trust-badge-sub {
+font-size: 11px;
+color: #555;
+line-height: 1.2;
+display: block;
 }
+.ratings-review-link {
+font-size: 13px;
+font-weight: 600;
+color: #1a4f8a;
+text-decoration: underline;
+text-underline-offset: 2px;
+cursor: pointer;
+white-space: nowrap;
+}
+.ratings-review-link:hover { color: #0d3360; }
+.cta-nudge {
+margin-top: 14px;
+font-size: 13px;
+color: #888;
+margin-bottom: 0;
+}
+.cta-nudge a {
+color: #1a4f8a;
+font-weight: 600;
+text-decoration: underline;
+text-underline-offset: 2px;
+}
+.cta-nudge a:hover { color: #0d3360; }
 
-/* Multi */
-.opt.multi { padding-left: 50px; position: relative; }
-.opt-check {
-  position: absolute;
-  left: 14px; top: 50%;
-  transform: translateY(-50%);
-  width: 22px; height: 22px;
-  border-radius: 7px;
-  border: 2px solid var(--g300);
-  background: #fff;
-  display: flex; align-items: center; justify-content: center;
-  transition: border-color 0.15s, background 0.15s;
-  pointer-events: none;
+/* REVIEWS */
+.reviews-section {
+margin-top: 56px;
+border-top: 2px solid #ebebeb;
+padding-top: 36px;
+margin-bottom: 16px;
 }
-.opt.multi.selected .opt-check { border-color: var(--teal); background: var(--teal); }
-.opt.multi.selected .opt-check::after {
-  content: '';
-  display: block;
-  width: 6px; height: 10px;
-  border: 2.5px solid #fff;
-  border-top: none; border-left: none;
-  transform: rotate(45deg) translateY(-1px);
+.reviews-section h2 { margin-top: 0; margin-bottom: 28px; }
+.review-card {
+display: flex;
+flex-direction: column;
+gap: 10px;
+padding: 20px 0;
+border-bottom: 1px solid #ebebeb;
 }
+.review-card:last-child { border-bottom: none; }
+.review-top { display: flex; align-items: center; gap: 12px; }
+.review-avatar { width: 44px; height: 44px; border-radius: 50%; overflow: hidden; flex-shrink: 0; }
+.review-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.review-meta { display: flex; flex-direction: column; gap: 2px; }
+.review-name { font-size: 14px; font-weight: 700; }
+.review-stars { color: #f5a623; font-size: 14px; letter-spacing: 1px; }
+.review-date { font-size: 12px; color: #999; }
+.review-text { font-size: 15px; line-height: 24px; color: #222; margin: 0; }
+.review-reply {
+margin-top: 8px;
+margin-left: 56px;
+padding: 11px 14px;
+background: #f0f4fa;
+border-left: 3px solid #1a4f8a;
+border-radius: 0 6px 6px 0;
+position: relative;
+}
+.review-reply-name {
+font-size: 12px;
+font-weight: 700;
+color: #1a4f8a;
+margin-bottom: 4px;
+display: flex;
+align-items: center;
+gap: 5px;
+}
+.review-reply-name::before {
+content: '↩';
+font-size: 13px;
+color: #1a4f8a;
+}
+.review-reply-text { font-size: 14px; line-height: 22px; color: #333; margin: 0; }
 
-/* ── Slide ── */
-.slide-wrap {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  gap: 12px;
-}
-.slide-card {
-  flex: 1;
-  background: #fff;
-  border-radius: 16px;
-  border: 1.5px solid var(--g200);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-.slide-img {
-  width: 100%;
-  height: 155px;
-  object-fit: cover;
-  display: block;
-  background: var(--g100);
-  flex-shrink: 0;
-}
-.slide-content { padding: 16px 18px 18px; flex: 1; overflow-y: auto; }
-.slide-title { font-family: var(--serif); font-size: clamp(16px, 3vw, 20px); color: var(--g900); margin-bottom: 8px; line-height: 1.3; }
-.slide-text { font-size: 14px; color: var(--g600); line-height: 1.7; }
-.slide-hl { font-weight: 700; color: var(--teal-dark); }
-
-/* ── Continue button — inside quiz flex, not fixed-position ── */
-.fixed-bottom {
-  flex-shrink: 0;
-  padding: 10px 20px 16px;
-  background: #fff;
-  border-top: 1px solid #F0F0F0;
-  display: none;
-  width: 100%;
-  max-width: var(--max-w);
-  margin: 0 auto;
-}
-.btn-continue {
-  background: var(--teal);
-  color: #fff;
-  border: none;
-  border-radius: 100px;
-  font-family: var(--font);
-  font-size: 16px;
-  font-weight: 700;
-  padding: 15px 32px;
-  cursor: pointer;
-  width: 100%;
-  transition: background 0.15s, opacity 0.15s;
-  box-shadow: 0 4px 16px rgba(0,196,167,0.28);
-  -webkit-tap-highlight-color: transparent;
-}
-.btn-continue:active:not(:disabled) { opacity: 0.85; }
-.btn-continue:disabled { opacity: 0.3; cursor: not-allowed; box-shadow: none; }
-
-/* ═══════ LOADING ═══════ */
-.loading-inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 40px 20px 60px;
-}
-.loading-card {
-  background: #fff;
-  border-radius: 22px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-  padding: 28px 24px;
-}
-.loading-title { font-size: 19px; font-weight: 700; margin-bottom: 24px; line-height: 1.4; color: var(--g900); letter-spacing: -0.01em; }
-.circle-wrap {
-  position: relative;
-  width: 160px; height: 160px;
-  margin: 0 auto 28px;
-}
-.circle-wrap svg { transform: rotate(-90deg); }
-.circle-bg { fill: none; stroke: #E8ECF2; stroke-width: 14; }
-.circle-arc {
-  fill: none;
-  stroke: var(--teal);
-  stroke-width: 14;
-  stroke-linecap: round;
-  stroke-dasharray: 439.82;
-  stroke-dashoffset: 439.82;
-  transition: stroke-dashoffset 0.3s linear;
-}
-.circle-pct {
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 36px; font-weight: 700; color: var(--teal);
-}
-.check-item {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 13px 0;
-  border-bottom: 1px solid #F0F0F0;
-  font-size: 14px; color: var(--g700); font-weight: 500;
-}
-.check-item:last-child { border-bottom: none; }
-.check-box {
-  width: 22px; height: 22px;
-  border-radius: 6px;
-  border: 2px solid var(--g300);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-  transition: all 0.25s ease;
-}
-.check-box.done { background: var(--teal); border-color: var(--teal); }
-.check-box svg { display: none; }
-.check-box.done svg { display: block; }
-
-/* ── Transition ── */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-.q-anim { animation: fadeIn 0.22s ease both; }
-
-/* ── Desktop: screens become normal flow ── */
-@media (min-width: 640px) {
-  html, body { height: auto; }
-  .screen {
-    position: static;
-    display: none;
-    min-height: calc(100vh - var(--nav-h));
-    margin-top: var(--nav-h);
-    overflow-y: auto;
-  }
-  .screen.active { display: block; }
-  #quiz.active {
-    display: flex;
-    flex-direction: column;
-    min-height: calc(100vh - var(--nav-h));
-  }
-  #quiz.has-progress { top: unset; margin-top: calc(var(--nav-h) + 4px); }
-  .quiz-body { overflow-y: auto; flex: 1; }
-  .options-list { flex: 0 0 auto; gap: 10px; }
-  .opt { flex: 0 0 auto; min-height: 54px; }
-  .fixed-bottom { position: static; border-top: none; padding-top: 16px; }
-  .slide-img { height: 200px; }
-}
-
-@media (max-width: 380px) {
-  .q-text { font-size: 16px; margin-bottom: 10px; }
-  .opt { font-size: 14px; min-height: 44px; }
-  .quiz-header { padding: 10px 16px 8px; }
-  .quiz-body { padding: 2px 16px 0; }
-  .fixed-bottom { padding: 8px 16px 10px; }
-  .slide-img { height: 130px; }
+@media (max-width: 600px) {
+h1 { font-size: 28px; line-height: 36px; }
+h2 { font-size: 24px; line-height: 30px; }
+.cta-btn { font-size: 18px; line-height: 24px; padding: 14px 10px 10px; }
+.cta-btn-price { font-size: 14px; }
+.page-wrap { padding: 0 15px 20px; }
+.trust-badges { gap: 8px 16px; }
 }
 </style>
 </head>
 <body>
-
-<nav class="top-nav">
-  <span class="nav-brand">HEALTH ASSESSMENT</span>
-</nav>
-
-<div id="progress-wrap">
-  <div class="progress-track">
-    <div class="progress-fill" id="progress-fill"></div>
-  </div>
+<header>
+<div class="header-inner">
+<div class="header-logo">Dr. Michael Harris's Blog</div>
+</div>
+</header>
+<div class="page-wrap">
+<h1>The Real Reason Your Face Hurts.</h1>
+<p class="deck">It's one tiny spot — and almost nobody knows it exists.</p>
+<div class="ratings">
+<span class="stars">
+<span class="star-full">★★★★</span><span class="star-half"></span>
+</span>
+<span>357 ratings</span>
+</div>
+<img class="product-img full" src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=1200&q=80" alt="">
+<div class="author">
+<div class="author-photo">
+<img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=80&q=80" alt="Dr. Harris">
+</div>
+<div>
+<div class="author-name">Dr. Michael Harris, MD</div>
+<div class="author-date">October 14, 2024 · 8 min read</div>
+</div>
 </div>
 
-<!-- ══ LANDING ══ -->
-<div class="screen active" id="landing">
-  <div class="land-wrap">
-    <h1 class="land-title">Discover what your body<br>truly <em>needs</em></h1>
-    <p class="land-sub">14 quick questions. A personalized health profile built just for you — completely free.</p>
-    <div class="dr-row">
-      <img class="dr-photo" id="land-img" src="" alt="Dr. Katherine Mills" onerror="this.style.display='none'">
-      <div>
-        <div class="dr-name-text">Dr. Katherine Mills, MD</div>
-        <div class="dr-cred">Preventive Medicine · 11 yrs experience</div>
-      </div>
-    </div>
-    <div class="sp-row">
-      <div class="sp-avatars">
-        <div class="sp-av">MJ</div><div class="sp-av">KL</div><div class="sp-av">SR</div><div class="sp-av">AP</div><div class="sp-av">TW</div>
-      </div>
-      <div class="sp-text"><strong>1,842 people</strong> took this today</div>
-    </div>
-    <div class="q-box">
-      <div id="landing-question"></div>
-    </div>
-  </div>
+<p>Let me ask you something.</p>
+<p>Do you ever wake up with a <strong>tight jaw</strong>?</p>
+<p>A dull headache that's just… there?</p>
+<p>That weird <strong>pressure in your ears</strong> that comes and goes?</p>
+<p>If you said yes to any of those —</p>
+<p>This might be the most important thing you read today.</p>
+<p>Because what I'm about to show you isn't taught in most <strong>medical schools</strong>.</p>
+<p>It's not something your GP will bring up.</p>
+<p>And yet — it's been documented for over 2,000 years.</p>
+<p>But before I tell you what it is — I need to tell you what's actually causing your pain.</p>
+<p>Because most people have no idea.</p>
+<p>And once you see it — you can't unsee it.</p>
+
+<h2>Something is going on with your face</h2>
+<img class="product-img" src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&q=80" alt="">
+<p>Here's something most people don't know.</p>
+<p>Your face has a <strong>hidden tension system</strong>.</p>
+<p>There's a joint — tiny, just in front of each ear — that controls everything.</p>
+<p>Your jaw. Your temples. Your neck. Your ears.</p>
+<p>When this joint gets <strong>overloaded</strong>...</p>
+<p>It doesn't send pain to one place.</p>
+<p>It sends it everywhere.</p>
+<p>That headache behind your eyes? Could be coming from your jaw.</p>
+<p>That ringing in your ear that showed up out of nowhere? Same joint.</p>
+<p>That neck stiffness every single morning? Still the same joint.</p>
+<p>It's called the <strong>TMJ</strong>.</p>
+<p>And here's the thing that shocked me when I first learned this —</p>
+<p>Almost nobody knows they have a problem with it.</p>
+<p>Because the pain never shows up where the problem actually is.</p>
+<p>But that's only half the story.</p>
+<p>The other half is why your doctor never looked for it.</p>
+<p>TMJ doesn't fall cleanly under any one specialty. It sits between dentistry and neurology — so most doctors simply don't check for it. The symptoms are too scattered. And so are the referrals.</p>
+<p>And that part — I'll get to in a moment.</p>
+
+<h2>I'm a doctor. And I almost missed this too.</h2>
+<img class="product-img" src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=1200&q=80" alt="">
+<p>I've been practicing medicine for years.</p>
+<p>And I'll be honest with you.</p>
+<p>We're not trained to look here.</p>
+<p>We prescribe <strong>painkillers</strong>. We say "reduce your stress." We send people home.</p>
+<p>And those people come back three months later with the same headache.</p>
+<p>The same tight jaw.</p>
+<p>The same unanswered question: why does my face feel like this?</p>
+<p>The turning point for me came when I started studying something my medical training never covered.</p>
+<p><strong>Ancient Chinese pressure point medicine.</strong></p>
+<p>Specifically — the way certain points on your face directly communicate with your <strong>nervous system</strong>.</p>
+<p>Not metaphorically.</p>
+<p>Literally — there are nerve pathways running through your face that, when you activate the right point, send a signal all the way to your brain saying:</p>
+<p>Release. Let go. Stop clenching.</p>
+<p>And one point in particular stopped me in my tracks.</p>
+<p>I'm going to tell you exactly what it is.</p>
+<p>But first — I need to explain why your fingers can never reach it properly.</p>
+<p>Because that's the part nobody talks about.</p>
+
+<h2>The point nobody told you about</h2>
+<img class="product-img" src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=1200&q=80" alt="">
+<p>It's called <strong>ST6</strong>.</p>
+<p>The "Jaw Chariot."</p>
+<p>It sits right at the <strong>angle of your jaw</strong> — the spot where your chewing muscle bunches up when you clench.</p>
+<p>Most people, when I press there for the first time, flinch.</p>
+<p>Not because I'm pressing hard.</p>
+<p>Because it's already that tender.</p>
+<p>That tenderness tells you everything.</p>
+<p>It means the <strong>muscle has been locked up</strong> for a long time.</p>
+<p>Possibly years.</p>
+<p>And your body got so used to it — you stopped noticing.</p>
+<p>When you properly activate ST6, something interesting happens.</p>
+<p>The muscle that's been clenching 24 hours a day finally gets the signal to stop.</p>
+<p>The tension that radiates up to your temple — starts to dissolve.</p>
+<p>The pressure behind your ear — fades.</p>
+<p>The grinding that happens at night while you sleep — begins to slow down.</p>
+<p>But here's the part that took me a while to figure out.</p>
+<p>And when I did — it changed everything about how I treat my patients.</p>
+
+<h2>Fingers aren't enough</h2>
+<img class="product-img" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&q=80" alt="">
+<p>For months, I was telling patients to press the point themselves.</p>
+<p>With their fingers. Every morning.</p>
+<p>Some of them got results.</p>
+<p>Most of them didn't.</p>
+<p>And I couldn't understand why — until I actually watched them do it.</p>
+<p>The problem wasn't the technique.</p>
+<p>The problem was <strong>precision</strong>.</p>
+<p>When you use a fingertip, you're covering an area the size of a coin.</p>
+<p>But the actual <strong>pressure point</strong>?</p>
+<p>It's smaller than a pencil tip.</p>
+<p>Miss it by a few <strong>millimeters</strong> — and you get nothing.</p>
+<p>You're pressing near the point.</p>
+<p>Not on it.</p>
+<p>That's the difference between results and frustration.</p>
+<p>And that's the exact problem this pen was designed to solve.</p>
+<p>But here's what I didn't expect.</p>
+<p>The pen does something else entirely — something I hadn't planned for.</p>
+<p>And it's the reason the results are so different.</p>
+
+<div class="cta-wrap">
+<a class="cta-btn" href="checkout.html">
+<span>Relieve Jaw Pain Today →</span>
+<span class="cta-btn-price">Get The Acupressure Pen — $49.99</span>
+</a>
 </div>
 
-<!-- ══ QUIZ ══ -->
-<div class="screen" id="quiz">
-  <div class="quiz-header">
-    <button class="btn-back" id="btn-back" onclick="goBack()">
-      <svg viewBox="0 0 24 24" fill="currentColor">
-        <path d="M10.828 12L15.778 16.95L14.364 18.364L8 12L14.364 5.636L15.778 7.05L10.828 12Z"/>
-      </svg>
-      Back
-    </button>
-    <div class="q-counter"><span id="q-num">2</span><span class="denom"> / 14</span></div>
-  </div>
-  <div class="quiz-body" id="quiz-body"></div>
-  <div class="fixed-bottom" id="fixed-bottom">
-    <button class="btn-continue" id="btn-continue" disabled>Continue →</button>
-  </div>
+<h2>Why this tool is different from everything else</h2>
+<img class="product-img" src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1200&q=80" alt="">
+<p>The acupressure pen I use — and now recommend to every patient who comes to me with jaw tension, headaches, or facial pain — does something fingers physically cannot.</p>
+<p>It focuses the pressure to a <strong>single point</strong>.</p>
+<p>Exact. Precise. Every time.</p>
+<p>No guessing. No missing.</p>
+<p>And it combines that pressure with <strong>red light therapy</strong> — which penetrates the tissue, increases circulation, and amplifies the signal your nervous system receives.</p>
+<p>The first time I used it on myself, I felt the difference within about <strong>90 seconds</strong>.</p>
+<p>A warmth. Then a release.</p>
+<p>Like something I'd been carrying in my face for years — just let go.</p>
+<p>I want to be careful here, because I don't say things like that lightly.</p>
+<p>But that's what happened.</p>
+<p>And since then, I've seen it happen with patients over and over again.</p>
+<p>Over 800 of them in the last year alone.</p>
+<p>The results surprised even me.</p>
+<p>But what surprised me most — was what happened when people used it consistently.</p>
+
+<h2>The part that surprises people most</h2>
+<img class="product-img" src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1200&q=80" alt="">
+<p>They expect one session to fix everything.</p>
+<p>It doesn't work like that — and I want you to understand why.</p>
+<p>Your jaw has been clenching for a long time.</p>
+<p>The <strong>muscle memory</strong> is deep.</p>
+<p>The nervous system has learned that tense is the default.</p>
+<p>What the pen does — used consistently — is slowly <strong>rewrite that default</strong>.</p>
+<p>Two minutes. ST6. Every morning.</p>
+<p>Week one — most people notice the mornings feel different. Looser.</p>
+<p>Week two — the headaches start to come less often.</p>
+<p>Week three — some patients tell me the <strong>night grinding</strong> has almost stopped.</p>
+<p>Week four — they stop thinking about their jaw entirely.</p>
+<p>That's when you know it worked.</p>
+<p>But ST6 is only the beginning.</p>
+<p>There are three other points I haven't told you about yet.</p>
+<p>And one of them is in a place you'd never expect.</p>
+
+<h2>One more thing I need to tell you</h2>
+<img class="product-img" src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1200&q=80" alt="">
+<p>There are other pressure points involved.</p>
+<p>ST6 is the most important one for <strong>jaw tension</strong>.</p>
+<p>But there's a point behind your earlobe — <strong>SJ17</strong> — that handles the radiating pain.</p>
+<p>There's a point in front of your ear — ST7 — that unlocks the joint itself.</p>
+<p>And there's a point on the back of your hand — yes, your hand — that somehow reduces <strong>facial pain</strong> better than most things I've seen.</p>
+<p>I'll walk you through all of it when you get the pen.</p>
+<p>Because this isn't just a tool.</p>
+<p>It's a protocol.</p>
+<p>And the protocol is what makes it work.</p>
+<p>This is the exact pen I use in my practice.</p>
+<p>No waiting room. No consultation fee. No prescription needed.</p>
+<p>Order today and you'll get the pen, a full text guide walking you through all four points, and free shipping.</p>
+
+<div class="cta-wrap">
+<a class="cta-btn" href="checkout.html">
+<span>Relieve Jaw Pain Today →</span>
+<span class="cta-btn-price">Get The Acupressure Pen — $49.99</span>
+</a>
 </div>
 
-<!-- ══ LOADING ══ -->
-<div class="screen" id="loading">
-  <div class="loading-inner">
-    <div class="loading-card">
-      <div class="loading-title">Analysing your answers…</div>
-      <div class="circle-wrap">
-        <svg width="160" height="160" viewBox="0 0 160 160">
-          <circle class="circle-bg" cx="80" cy="80" r="70"/>
-          <circle class="circle-arc" id="circle-arc" cx="80" cy="80" r="70"/>
-        </svg>
-        <div class="circle-pct"><span id="pct-num">0</span>%</div>
-      </div>
-      <div>
-        <div class="check-item"><span>Energy &amp; sleep patterns</span>
-          <div class="check-box" id="check-1"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5L4.5 8.5L12 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        </div>
-        <div class="check-item"><span>Nutrition &amp; lifestyle</span>
-          <div class="check-box" id="check-2"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5L4.5 8.5L12 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        </div>
-        <div class="check-item"><span>Personal health goals</span>
-          <div class="check-box" id="check-3"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5L4.5 8.5L12 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        </div>
-        <div class="check-item"><span>Personalised plan</span>
-          <div class="check-box" id="check-4"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5L4.5 8.5L12 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        </div>
-      </div>
-    </div>
-  </div>
+<footer class="site-footer">
+<div class="footer-disclaimer">
+<strong>MEDICAL &amp; HEALTH DISCLAIMER:</strong> The information on this page is not intended as medical advice and is not a substitute for professional medical expertise or treatment. This website is an advertorial. Results may vary. These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Always consult a qualified healthcare professional before starting any new health regimen.
 </div>
-
-<script>
-const CIRCUMFERENCE = 2 * Math.PI * 70; // r=70 → 439.82
-
-const POOL = [
-  { type:'single', tag:'Energy', q:'How would you describe your energy levels throughout the day?',
-    opts:['Full of energy from morning','Energy dips after lunch','Tired most of the time','Completely exhausted'] },
-  { type:'single', tag:'Sleep', q:'How many hours of sleep do you get on average per night?',
-    opts:['Less than 5 hours','5–6 hours','7–8 hours','More than 9 hours'] },
-  { type:'slide', title:'Sleep & your immune system',
-    text:'Adults who sleep fewer than 7 hours per night are nearly <span class="slide-hl">3× more likely</span> to catch a cold compared to those who sleep 8 or more hours. Sleep is when your body does its most important repair work.',
-    imgQuery:'sleeping rest recovery' },
-  { type:'multi', tag:'Symptoms', q:'Which of these do you experience regularly? (Select all that apply)',
-    opts:['Headaches','Bloating or digestive issues','Skin problems','Mood swings','None of these'] },
-  { type:'single', tag:'Diet', q:'How would you describe your eating habits?',
-    opts:['Very healthy and consistent','I try, but not always possible','Mostly fast food or irregular','No routine at all'] },
-  { type:'multi', tag:'Movement', q:'What types of exercise do you do weekly? (Select all that apply)',
-    opts:['Walking or running','Gym or fitness','Yoga or stretching','Swimming','Barely any movement'] },
-  { type:'slide', title:'The gut–brain connection',
-    text:'Up to <span class="slide-hl">70% of your immune system</span> is located in your gut. A healthy microbiome directly influences your mood, energy levels, and how well you sleep — not just your digestion.',
-    imgQuery:'gut health nutrition microbiome food' },
-  { type:'single', tag:'Stress', q:'How well do you manage day-to-day stress?',
-    opts:['Very well — I have routines','Okay — I feel it sometimes','Poorly — it overwhelms me','I can\'t manage it at all'] },
-  { type:'single', tag:'Hydration', q:'How much water do you drink per day?',
-    opts:['Less than 1 liter','1–1.5 liters','1.5–2 liters','More than 2 liters'] },
-  { type:'multi', tag:'Goals', q:'What do you most want to improve? (Pick up to 3)',
-    opts:['More energy','Better sleep','Less stress','Healthy weight','Stronger immunity','Better digestion'] },
-  { type:'single', tag:'Supplements', q:'Do you currently take any supplements or vitamins?',
-    opts:['Yes, regularly and intentionally','Occasionally, but not systematic','No, never tried','I don\'t know what I should take'] },
-  { type:'single', tag:'Age Group', q:'Which age group do you belong to?',
-    opts:['18–29','30–44','45–59','60+'] },
-  { type:'multi', tag:'Nutrition', q:'Which of these do you eat regularly? (Select all that apply)',
-    opts:['Vegetables every day','Fruit every day','Whole grains','Legumes or nuts','Fermented foods (yogurt, kefir...)'] },
-  { type:'single', tag:'Motivation', q:'What motivates you most to take care of your health?',
-    opts:['Better appearance and fitness','Longer, higher-quality life','Disease prevention','More energy for family and work'] }
-];
-
-const DOC_PHOTOS = [
-  'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80',
-  'https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=200&q=80',
-  'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200&q=80',
-  'https://images.unsplash.com/photo-1651008376811-b90baee60c1f?w=200&q=80',
-];
-const SLIDE_IMGS = {
-  'sleeping rest recovery': [
-    'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=900&q=80',
-    'https://images.unsplash.com/photo-1520206183501-b80df61043c2?w=900&q=80',
-  ],
-  'gut health nutrition microbiome food': [
-    'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=900&q=80',
-    'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=900&q=80',
-  ]
-};
-function randFrom(a) { return a[Math.floor(Math.random()*a.length)]; }
-
-let idx = 0;
-let answers = new Array(POOL.length).fill(undefined);
-let selectedOptions = [];
-let busy = false;
-
-window.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('land-img').src = randFrom(DOC_PHOTOS);
-  renderLandingQuestion();
-});
-
-/* ── Landing ── */
-function renderLandingQuestion() {
-  const q = POOL[0];
-  const opts = q.opts.map((o, i) => {
-    const sel = answers[0] === i;
-    return `<button class="q-option${sel?' flash-land':''}" onclick="landingPick(this,${i})">${o}</button>`;
-  }).join('');
-  document.getElementById('landing-question').innerHTML =
-    `<h2 class="q-box-title">${q.q}</h2><div class="q-grid">${opts}</div>`;
-}
-
-function landingPick(btn, i) {
-  if (busy) return;
-  busy = true;
-  btn.closest('.q-grid').querySelectorAll('.q-option').forEach(b => b.disabled = true);
-  btn.classList.add('flash-land');
-  answers[0] = i;
-  setTimeout(() => {
-    idx = 1;
-    document.getElementById('progress-wrap').style.display = 'block';
-    document.getElementById('quiz').classList.add('has-progress');
-    show('quiz');
-    renderQuestion();
-    busy = false;
-  }, 300);
-}
-
-/* ── Quiz render ── */
-function renderQuestion() {
-  const q = POOL[idx];
-  const pct = (idx / (POOL.length - 1)) * 100;
-  document.getElementById('progress-fill').style.width = Math.max(pct, 2) + '%';
-  document.getElementById('q-num').textContent = idx + 1;
-  document.getElementById('btn-back').classList.toggle('visible', idx > 1);
-
-  const body = document.getElementById('quiz-body');
-  const fb = document.getElementById('fixed-bottom');
-  const btnC = document.getElementById('btn-continue');
-  body.innerHTML = '';
-
-  if (q.type === 'slide') {
-    fb.style.display = 'block';
-    btnC.disabled = false;
-    btnC.onclick = next;
-    renderSlide(q, body);
-  } else if (q.type === 'single') {
-    fb.style.display = 'none';
-    renderSingle(q, body);
-  } else {
-    fb.style.display = 'block';
-    const savedArr = Array.isArray(answers[idx]) ? answers[idx] : [];
-    btnC.disabled = savedArr.length === 0;
-    btnC.onclick = pickMulti;
-    renderMulti(q, body);
-  }
-
-  body.classList.remove('q-anim');
-  void body.offsetWidth;
-  body.classList.add('q-anim');
-}
-
-function renderSlide(q, body) {
-  const imgSrc = randFrom(SLIDE_IMGS[q.imgQuery]||[]) || '';
-  body.innerHTML = `<div class="slide-wrap">
-    <div class="slide-card">
-      ${imgSrc?`<img class="slide-img" src="${imgSrc}" alt="" loading="lazy">`:''}
-      <div class="slide-content">
-        <h2 class="slide-title">${q.title}</h2>
-        <p class="slide-text">${q.text}</p>
-      </div>
-    </div>
-  </div>`;
-}
-
-function renderSingle(q, body) {
-  const saved = answers[idx];
-  const opts = q.opts.map((o, i) => {
-    const sel = saved === i;
-    return `<button class="opt${sel?' selected':''}" onclick="pickSingle(this,${i})">${o}</button>`;
-  }).join('');
-  body.innerHTML = `<div class="q-wrap"><div class="q-text">${q.q}</div><div class="options-list">${opts}</div></div>`;
-}
-
-function renderMulti(q, body) {
-  const savedArr = Array.isArray(answers[idx]) ? answers[idx] : [];
-  selectedOptions = [...savedArr];
-  const opts = q.opts.map((o, i) => {
-    const sel = savedArr.includes(i);
-    return `<button class="opt multi${sel?' selected':''}" onclick="toggleMulti(this,${i})"><span class="opt-check"></span>${o}</button>`;
-  }).join('');
-  body.innerHTML = `<div class="q-wrap"><div class="q-text">${q.q}</div><div class="options-list">${opts}</div></div>`;
-}
-
-/* ── Interactions ── */
-function pickSingle(btn, i) {
-  if (busy) return;
-  busy = true;
-  // Immediately disable ALL options — prevents next-question buttons being pre-highlighted on mobile
-  const list = btn.closest('.options-list');
-  list.querySelectorAll('.opt').forEach(b => { b.disabled = true; b.classList.remove('selected','flash'); });
-  btn.classList.add('flash');
-  answers[idx] = i;
-  setTimeout(() => { next(); busy = false; }, 280);
-}
-
-function toggleMulti(btn, i) {
-  btn.classList.toggle('selected');
-  if (btn.classList.contains('selected')) selectedOptions.push(i);
-  else selectedOptions = selectedOptions.filter(x => x !== i);
-  document.getElementById('btn-continue').disabled = selectedOptions.length === 0;
-  answers[idx] = [...selectedOptions];
-}
-
-function pickMulti() {
-  answers[idx] = [...selectedOptions];
-  next();
-}
-
-function next() {
-  idx++;
-  if (idx >= POOL.length) { startLoading(); return; }
-  doTransition(renderQuestion);
-}
-
-function goBack() {
-  if (busy) return;
-  if (idx <= 1) {
-    idx = 0;
-    document.getElementById('progress-wrap').style.display = 'none';
-    document.getElementById('quiz').classList.remove('has-progress');
-    document.getElementById('fixed-bottom').style.display = 'none';
-    show('landing');
-    renderLandingQuestion();
-    return;
-  }
-  idx--;
-  doTransition(renderQuestion);
-}
-
-/* Smooth simple opacity fade, no translateY */
-function doTransition(fn) {
-  const body = document.getElementById('quiz-body');
-  body.style.transition = 'opacity 0.18s ease';
-  body.style.opacity = '0';
-  setTimeout(() => {
-    fn();
-    body.style.opacity = '1';
-    setTimeout(() => { body.style.transition = ''; }, 220);
-  }, 180);
-}
-
-/* ── Loading ── */
-function startLoading() {
-  document.getElementById('progress-fill').style.width = '100%';
-  document.getElementById('fixed-bottom').style.display = 'none';
-  show('loading');
-
-  const arc = document.getElementById('circle-arc');
-  const pctEl = document.getElementById('pct-num');
-  const checks = ['check-1','check-2','check-3','check-4'];
-  const checkTimes = [2200, 4200, 6200, 7800];
-
-  let pct = 0;
-  const iv = setInterval(() => {
-    pct = Math.min(pct + 1, 100);
-    pctEl.textContent = pct;
-    arc.style.strokeDashoffset = CIRCUMFERENCE - (CIRCUMFERENCE * pct / 100);
-    if (pct >= 100) clearInterval(iv);
-  }, 90);
-
-  checkTimes.forEach((t, i) => {
-    setTimeout(() => document.getElementById(checks[i]).classList.add('done'), t);
-  });
-
-  setTimeout(() => {
-    window.location.href = 'https://happypaws-sepia.vercel.app/checkout.html';
-  }, 9500);
-}
-
-/* ── Show screen ── */
-function show(id) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  window.scrollTo(0, 0);
-}
-</script>
+<div>
+<a href="#">Privacy Policy</a> -
+<a href="#">Terms of Service</a> -
+<a href="#">Contact Us</a>
+</div>
+<div class="footer-copy">© Copyright Dr. Michael Harris MD 2024</div>
+</footer>
 </body>
 </html>
