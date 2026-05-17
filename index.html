@@ -5,16 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Health Quiz</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --teal: #2563EB;
-  --teal-light: #EFF6FF;
-  --teal-mid: #60A5FA;
-  --teal-dark: #1D4ED8;
-  --teal-soft: #BFDBFE;
+  --teal: #00C4A7;
+  --teal-light: #E6FAF7;
+  --teal-mid: #4DD9C5;
+  --teal-dark: #009E86;
+  --teal-soft: #B2EDE6;
   --g100: #F7F9FB;
   --g200: #E8ECF2;
   --g300: #D0D6E0;
@@ -25,81 +25,118 @@
   --font: 'DM Sans', sans-serif;
   --serif: 'Playfair Display', serif;
   --max-w: 480px;
+  --nav-h: 49px;
 }
 
-html { scroll-behavior: smooth; }
-body {
+html, body {
+  height: 100%;
   font-family: var(--font);
   background: #fff;
   color: var(--g900);
   -webkit-font-smoothing: antialiased;
-  min-height: 100vh;
+  overscroll-behavior: none;
 }
 
-.screen { display: none; min-height: 100vh; flex-direction: column; }
-.screen.active { display: flex; }
-
-/* ═══════════════════════════
-   NAV
-═══════════════════════════ */
+/* ═══════ NAV ═══════ */
 .top-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
   background: #fff;
-  padding: 14px 20px;
   border-bottom: 1px solid #F0F0F0;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
 }
 .nav-brand {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   color: var(--g900);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
-/* ═══════════════════════════
-   LANDING
-═══════════════════════════ */
-#landing {
+/* ═══════ PROGRESS BAR ═══════ */
+#progress-wrap {
+  position: fixed;
+  top: var(--nav-h);
+  left: 0; right: 0;
+  z-index: 150;
   background: #fff;
+  display: none;
+}
+.progress-track { width: 100%; height: 4px; background: var(--g200); }
+.progress-fill {
+  height: 4px;
+  background: var(--teal);
+  border-radius: 0 2px 2px 0;
+  transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* ═══════ SCREENS ═══════ */
+/* Mobile: fixed, full-height panels below nav */
+.screen {
+  display: none;
+  position: fixed;
+  top: var(--nav-h);
+  left: 0; right: 0; bottom: 0;
+  background: #fff;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.screen.active { display: block; }
+
+/* Landing scrolls freely */
+#landing { overflow-y: auto; }
+
+/* Quiz: flex column, NO scroll — content fits screen */
+#quiz {
+  overflow: hidden;
+}
+#quiz.active {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Quiz top shifts down by progress bar height when visible */
+#quiz.has-progress {
+  top: calc(var(--nav-h) + 4px);
+}
+
+/* Loading scrolls */
+#loading { overflow-y: auto; background: var(--g100); }
+
+/* ═══════ LANDING ═══════ */
 .land-wrap {
   max-width: var(--max-w);
   margin: 0 auto;
-  padding: 32px 20px 64px;
+  padding: 28px 20px 60px;
   width: 100%;
 }
-
-
 .land-title {
   font-family: var(--serif);
-  font-size: clamp(26px, 6vw, 40px);
+  font-size: clamp(24px, 6vw, 38px);
   line-height: 1.15;
   color: var(--g900);
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   letter-spacing: -0.02em;
 }
 .land-title em { color: var(--teal); font-style: normal; }
-
 .land-sub {
   font-size: 15px;
   color: var(--g600);
   line-height: 1.65;
-  margin-bottom: 20px;
-  max-width: 380px;
+  margin-bottom: 18px;
 }
-
-/* Doctor row — small avatar + name */
 .dr-row {
   display: flex;
   align-items: center;
   gap: 11px;
-  margin-bottom: 28px;
+  margin-bottom: 20px;
 }
-
 .dr-photo {
-  width: 48px;
-  height: 48px;
+  width: 44px; height: 44px;
   border-radius: 50%;
   object-fit: cover;
   object-position: top center;
@@ -107,71 +144,49 @@ body {
   flex-shrink: 0;
   background: var(--g200);
 }
-
-.dr-name-text {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--g900);
-  line-height: 1.3;
-}
-.dr-cred {
-  font-size: 12px;
-  color: var(--teal-dark);
-  font-weight: 500;
-  margin-top: 2px;
-}
-
-/* Social proof row */
+.dr-name-text { font-size: 13px; font-weight: 700; color: var(--g900); line-height: 1.3; }
+.dr-cred { font-size: 11px; color: var(--teal-dark); font-weight: 500; margin-top: 2px; }
 .sp-row {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 28px;
+  margin-bottom: 22px;
 }
 .sp-avatars { display: flex; }
 .sp-av {
-  width: 28px; height: 28px;
+  width: 26px; height: 26px;
   border-radius: 50%;
   border: 2px solid #fff;
   background: linear-gradient(135deg, var(--teal-mid), var(--teal-dark));
   display: flex; align-items: center; justify-content: center;
-  font-size: 9px; font-weight: 700;
-  color: #fff;
-  margin-left: -7px;
-  letter-spacing: -0.5px;
+  font-size: 8px; font-weight: 700; color: #fff;
+  margin-left: -6px;
 }
 .sp-av:first-child { margin-left: 0; }
 .sp-text { font-size: 13px; color: var(--g600); }
 .sp-text strong { color: var(--g900); }
-
-/* Question box */
 .q-box {
-  width: 100%;
   background: #fff;
   border: 2px solid var(--g900);
   border-radius: 16px;
-  padding: 22px;
-  box-shadow: 0 8px 28px rgba(0,0,0,0.09);
+  padding: 20px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.08);
 }
 .q-box-title {
-  font-size: 19px;
+  font-size: 18px;
   font-weight: 700;
   line-height: 1.4;
   color: var(--g900);
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   letter-spacing: -0.01em;
 }
-.q-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+.q-grid { display: flex; flex-direction: column; gap: 9px; }
 .q-option {
   width: 100%;
-  padding: 13px 18px;
+  padding: 13px 16px;
   background: #fff;
   border: 1.5px solid var(--g300);
-  border-radius: 12px;
+  border-radius: 11px;
   cursor: pointer;
   font-family: var(--font);
   font-size: 15px;
@@ -179,129 +194,94 @@ body {
   color: var(--g900);
   text-align: left;
   line-height: 1.4;
-  transition: border-color 0.14s, background 0.14s, transform 0.10s;
+  transition: border-color 0.15s, background 0.15s;
   -webkit-tap-highlight-color: transparent;
+  user-select: none;
 }
-.q-option:hover { border-color: var(--teal); background: var(--teal-light); }
-.q-option:active { transform: scale(0.99); }
-.q-option.picked { border-color: var(--teal); background: var(--teal-light); font-weight: 600; pointer-events: none; }
-.q-option.flash-land { border-color: var(--teal); background: var(--teal); color: #fff; transform: scale(1.01); transition: all 0.12s; }
-
-@media (min-width: 640px) {
-  .land-wrap { padding-top: 48px; }
-}
-
-/* ═══════════════════════════
-   PROGRESS
-═══════════════════════════ */
-#progress-wrap {
-  background: #fff;
-  border-bottom: 1px solid #E8ECF2;
-}
-.progress-track {
-  width: 100%;
-  height: 5px;
-  background: var(--g200);
-}
-.progress-fill {
-  height: 5px;
+.q-option:active { opacity: 0.8; }
+.q-option.flash-land {
+  border-color: var(--teal);
   background: var(--teal);
-  border-radius: 0 3px 3px 0;
-  transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  color: #fff;
+  transition: all 0.1s;
 }
 
-/* ═══════════════════════════
-   QUIZ
-═══════════════════════════ */
-#quiz { background: #fff; }
-
+/* ═══════ QUIZ LAYOUT ═══════ */
 .quiz-header {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  width: 100%;
-  padding: 20px 20px 0;
+  flex-shrink: 0;
+  padding: 14px 20px 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 24px;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  width: 100%;
 }
-
-/* Back button — more visible now */
 .btn-back {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   background: var(--g100);
-  border: 2px solid var(--g200);
+  border: 1.5px solid var(--g200);
   border-radius: 100px;
   cursor: pointer;
   color: var(--g700);
   font-family: var(--font);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
-  padding: 8px 16px 8px 10px;
-  transition: border-color 0.14s, background 0.14s, color 0.14s, transform 0.10s;
-  user-select: none;
+  padding: 7px 14px 7px 9px;
   -webkit-tap-highlight-color: transparent;
+  user-select: none;
   visibility: hidden;
 }
 .btn-back.visible { visibility: visible; }
-.btn-back:hover { border-color: var(--teal); color: var(--teal); background: var(--teal-light); }
-.btn-back:active { transform: scale(0.96); }
-.btn-back svg { width: 20px; height: 20px; flex-shrink: 0; }
-
+.btn-back:active { opacity: 0.7; }
+.btn-back svg { width: 18px; height: 18px; flex-shrink: 0; }
 .q-counter {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
   color: var(--g900);
   white-space: nowrap;
 }
-.q-counter .denom {
-  font-size: 15px;
-  font-weight: 400;
-  color: var(--g400);
-}
+.q-counter .denom { font-size: 14px; font-weight: 400; color: var(--g400); }
 
+/* quiz-body: flex, fills space, no overflow */
 .quiz-body {
   flex: 1;
-  padding: 0 20px 140px;
+  overflow: hidden;
+  padding: 4px 20px 0;
   max-width: var(--max-w);
   margin: 0 auto;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-/* ——— QUESTION ——— */
-.q-wrap { display: flex; flex-direction: column; }
-
-.q-category {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.10em;
-  text-transform: uppercase;
-  color: var(--teal-dark);
-  background: var(--teal-light);
-  border-radius: 7px;
-  padding: 4px 10px;
-  display: inline-block;
-  margin-bottom: 14px;
-  align-self: flex-start;
+/* ── Question ── */
+.q-wrap {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
-
 .q-text {
-  font-size: clamp(19px, 4vw, 24px);
+  font-size: clamp(17px, 4vw, 22px);
   font-weight: 700;
   color: var(--g900);
   line-height: 1.35;
-  margin-bottom: 22px;
+  margin-bottom: 14px;
   letter-spacing: -0.01em;
+  flex-shrink: 0;
 }
-
-.options-list { display: flex; flex-direction: column; gap: 10px; }
-
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  flex: 1;
+}
 .opt {
   border: 1.5px solid var(--g300);
   border-radius: 12px;
-  padding: 14px 18px;
+  padding: 0 18px;
   background: #fff;
   font-family: var(--font);
   font-size: 15px;
@@ -309,17 +289,31 @@ body {
   color: var(--g900);
   cursor: pointer;
   text-align: left;
-  transition: border-color 0.14s, background 0.14s, transform 0.10s;
-  line-height: 1.45;
+  transition: border-color 0.15s, background 0.15s;
+  line-height: 1.4;
   -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  min-height: 50px;
 }
-.opt:hover { border-color: var(--teal); background: var(--teal-light); }
-.opt:active { transform: scale(0.99); }
-.opt.selected { border-color: var(--teal); background: var(--teal-light); color: var(--teal-dark); font-weight: 600; }
-.opt.flash { border-color: var(--teal); background: var(--teal); color: #fff; transform: scale(1.01); transition: all 0.12s; }
+.opt:active { opacity: 0.8; }
+.opt.selected {
+  border-color: var(--teal);
+  background: var(--teal-light);
+  color: var(--teal-dark);
+  font-weight: 600;
+}
+.opt.flash {
+  border-color: var(--teal);
+  background: var(--teal);
+  color: #fff;
+  transition: all 0.1s;
+}
 
 /* Multi */
-.opt.multi { padding-left: 52px; position: relative; }
+.opt.multi { padding-left: 50px; position: relative; }
 .opt-check {
   position: absolute;
   left: 14px; top: 50%;
@@ -329,7 +323,8 @@ body {
   border: 2px solid var(--g300);
   background: #fff;
   display: flex; align-items: center; justify-content: center;
-  transition: border-color 0.14s, background 0.14s;
+  transition: border-color 0.15s, background 0.15s;
+  pointer-events: none;
 }
 .opt.multi.selected .opt-check { border-color: var(--teal); background: var(--teal); }
 .opt.multi.selected .opt-check::after {
@@ -341,33 +336,46 @@ body {
   transform: rotate(45deg) translateY(-1px);
 }
 
-/* ——— SLIDE ——— */
-.slide-wrap { display: flex; flex-direction: column; gap: 20px; }
+/* ── Slide ── */
+.slide-wrap {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 12px;
+}
 .slide-card {
+  flex: 1;
   background: #fff;
-  border-radius: 18px;
+  border-radius: 16px;
   border: 1.5px solid var(--g200);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
-.slide-img { width: 100%; height: 190px; object-fit: cover; display: block; background: var(--g100); }
-.slide-content { padding: 22px 24px 26px; }
-.slide-title { font-family: var(--serif); font-size: clamp(18px, 3vw, 22px); color: var(--g900); margin-bottom: 10px; line-height: 1.3; }
-.slide-text { font-size: 15px; color: var(--g600); line-height: 1.7; }
+.slide-img {
+  width: 100%;
+  height: 155px;
+  object-fit: cover;
+  display: block;
+  background: var(--g100);
+  flex-shrink: 0;
+}
+.slide-content { padding: 16px 18px 18px; flex: 1; overflow-y: auto; }
+.slide-title { font-family: var(--serif); font-size: clamp(16px, 3vw, 20px); color: var(--g900); margin-bottom: 8px; line-height: 1.3; }
+.slide-text { font-size: 14px; color: var(--g600); line-height: 1.7; }
 .slide-hl { font-weight: 700; color: var(--teal-dark); }
 
-/* ── Fixed bottom next button ── */
+/* ── Continue button — inside quiz flex, not fixed-position ── */
 .fixed-bottom {
-  position: fixed;
-  bottom: 0; left: 0; right: 0;
+  flex-shrink: 0;
+  padding: 10px 20px 16px;
   background: #fff;
-  padding: 12px 20px 24px;
-  box-shadow: 0 -2px 16px rgba(0,0,0,0.07);
   border-top: 1px solid #F0F0F0;
-  z-index: 100;
   display: none;
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
 }
-.fixed-bottom-inner { max-width: var(--max-w); margin: 0 auto; }
-
 .btn-continue {
   background: var(--teal);
   color: #fff;
@@ -376,144 +384,127 @@ body {
   font-family: var(--font);
   font-size: 16px;
   font-weight: 700;
-  padding: 16px 32px;
+  padding: 15px 32px;
   cursor: pointer;
   width: 100%;
-  transition: background 0.14s, transform 0.10s, opacity 0.14s;
-  box-shadow: 0 4px 18px rgba(37,99,235,0.30);
-  letter-spacing: 0.01em;
+  transition: background 0.15s, opacity 0.15s;
+  box-shadow: 0 4px 16px rgba(0,196,167,0.28);
+  -webkit-tap-highlight-color: transparent;
 }
-.btn-continue:hover:not(:disabled) { background: var(--teal-dark); }
-.btn-continue:active:not(:disabled) { transform: scale(0.98); }
+.btn-continue:active:not(:disabled) { opacity: 0.85; }
 .btn-continue:disabled { opacity: 0.3; cursor: not-allowed; box-shadow: none; }
 
-/* ═══════════════════════════
-   LOADING SCREEN
-═══════════════════════════ */
-#loading {
-  background: var(--g100);
-  padding: 48px 20px;
-  justify-content: center;
-  align-items: flex-start;
-}
-
-.loading-card {
-  background: #fff;
-  border-radius: 24px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-  padding: 32px 28px;
-  width: 100%;
+/* ═══════ LOADING ═══════ */
+.loading-inner {
   max-width: var(--max-w);
   margin: 0 auto;
+  padding: 40px 20px 60px;
 }
-
-.loading-title {
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 28px;
-  line-height: 1.4;
-  color: var(--g900);
-  letter-spacing: -0.01em;
+.loading-card {
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  padding: 28px 24px;
 }
-
+.loading-title { font-size: 19px; font-weight: 700; margin-bottom: 24px; line-height: 1.4; color: var(--g900); letter-spacing: -0.01em; }
 .circle-wrap {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 32px;
   position: relative;
-  width: 180px;
-  height: 180px;
-  margin-left: auto;
-  margin-right: auto;
+  width: 160px; height: 160px;
+  margin: 0 auto 28px;
 }
 .circle-wrap svg { transform: rotate(-90deg); }
-.circle-bg  { fill: none; stroke: #E8ECF2; stroke-width: 16; }
+.circle-bg { fill: none; stroke: #E8ECF2; stroke-width: 14; }
 .circle-arc {
   fill: none;
   stroke: var(--teal);
-  stroke-width: 16;
+  stroke-width: 14;
   stroke-linecap: round;
-  stroke-dasharray: 502.65;
-  stroke-dashoffset: 502.65;
-  transition: stroke-dashoffset 0.25s linear;
+  stroke-dasharray: 439.82;
+  stroke-dashoffset: 439.82;
+  transition: stroke-dashoffset 0.3s linear;
 }
 .circle-pct {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 40px;
-  font-weight: 700;
-  color: var(--teal);
-  font-family: var(--font);
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 36px; font-weight: 700; color: var(--teal);
 }
-
 .check-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 0;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 13px 0;
   border-bottom: 1px solid #F0F0F0;
-  font-size: 15px;
-  color: var(--g700);
-  font-weight: 500;
+  font-size: 14px; color: var(--g700); font-weight: 500;
 }
 .check-item:last-child { border-bottom: none; }
-
 .check-box {
   width: 22px; height: 22px;
   border-radius: 6px;
   border: 2px solid var(--g300);
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
 }
 .check-box.done { background: var(--teal); border-color: var(--teal); }
 .check-box svg { display: none; }
 .check-box.done svg { display: block; }
 
-@keyframes fadeUp {
-  from { opacity:0; transform:translateY(18px); }
-  to { opacity:1; transform:translateY(0); }
+/* ── Transition ── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
-.fu { animation: fadeUp 0.35s cubic-bezier(0.22,1,0.36,1) both; }
+.q-anim { animation: fadeIn 0.22s ease both; }
 
+/* ── Desktop: screens become normal flow ── */
 @media (min-width: 640px) {
-  .quiz-header { padding: 28px 28px 0; }
-  .quiz-body { padding: 0 28px 140px; }
-  .loading-card { padding: 40px 36px; }
+  html, body { height: auto; }
+  .screen {
+    position: static;
+    display: none;
+    min-height: calc(100vh - var(--nav-h));
+    margin-top: var(--nav-h);
+    overflow-y: auto;
+  }
+  .screen.active { display: block; }
+  #quiz.active {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - var(--nav-h));
+  }
+  #quiz.has-progress { top: unset; margin-top: calc(var(--nav-h) + 4px); }
+  .quiz-body { overflow-y: auto; flex: 1; }
+  .options-list { flex: 0 0 auto; gap: 10px; }
+  .opt { flex: 0 0 auto; min-height: 54px; }
+  .fixed-bottom { position: static; border-top: none; padding-top: 16px; }
+  .slide-img { height: 200px; }
 }
-@media (max-width: 420px) {
-  .q-text { font-size: 18px; }
-  .opt { font-size: 14px; }
+
+@media (max-width: 380px) {
+  .q-text { font-size: 16px; margin-bottom: 10px; }
+  .opt { font-size: 14px; min-height: 44px; }
+  .quiz-header { padding: 10px 16px 8px; }
+  .quiz-body { padding: 2px 16px 0; }
+  .fixed-bottom { padding: 8px 16px 10px; }
+  .slide-img { height: 130px; }
 }
 </style>
 </head>
 <body>
 
-
-<!-- ═══════════════════════════════════════════════
-     NAV
-════════════════════════════════════════════════ -->
 <nav class="top-nav">
   <span class="nav-brand">HEALTH ASSESSMENT</span>
 </nav>
 
-<!-- ═══════════════════════════════════════════════
-     LANDING
-════════════════════════════════════════════════ -->
+<div id="progress-wrap">
+  <div class="progress-track">
+    <div class="progress-fill" id="progress-fill"></div>
+  </div>
+</div>
+
+<!-- ══ LANDING ══ -->
 <div class="screen active" id="landing">
   <div class="land-wrap">
-
-    <h1 class="land-title">
-      Discover what your body<br>truly <em>needs</em>
-    </h1>
-    <p class="land-sub">
-      14 quick questions. A personalized health profile built just for you — completely free.
-    </p>
-
-    <!-- Small doctor avatar LEFT of name -->
+    <h1 class="land-title">Discover what your body<br>truly <em>needs</em></h1>
+    <p class="land-sub">14 quick questions. A personalized health profile built just for you — completely free.</p>
     <div class="dr-row">
       <img class="dr-photo" id="land-img" src="" alt="Dr. Katherine Mills" onerror="this.style.display='none'">
       <div>
@@ -521,39 +512,19 @@ body {
         <div class="dr-cred">Preventive Medicine · 11 yrs experience</div>
       </div>
     </div>
-
-    <!-- Social proof -->
     <div class="sp-row">
       <div class="sp-avatars">
-        <div class="sp-av">MJ</div>
-        <div class="sp-av">KL</div>
-        <div class="sp-av">SR</div>
-        <div class="sp-av">AP</div>
-        <div class="sp-av">TW</div>
+        <div class="sp-av">MJ</div><div class="sp-av">KL</div><div class="sp-av">SR</div><div class="sp-av">AP</div><div class="sp-av">TW</div>
       </div>
       <div class="sp-text"><strong>1,842 people</strong> took this today</div>
     </div>
-
-    <!-- First question box -->
     <div class="q-box">
       <div id="landing-question"></div>
     </div>
-
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════
-     PROGRESS BAR
-════════════════════════════════════════════════ -->
-<div id="progress-wrap" style="display:none;">
-  <div class="progress-track">
-    <div class="progress-fill" id="progress-fill"></div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════
-     QUIZ
-════════════════════════════════════════════════ -->
+<!-- ══ QUIZ ══ -->
 <div class="screen" id="quiz">
   <div class="quiz-header">
     <button class="btn-back" id="btn-back" onclick="goBack()">
@@ -562,164 +533,78 @@ body {
       </svg>
       Back
     </button>
-    <div class="q-counter">
-      <span id="q-num">2</span><span class="denom"> / 14</span>
-    </div>
+    <div class="q-counter"><span id="q-num">2</span><span class="denom"> / 14</span></div>
   </div>
   <div class="quiz-body" id="quiz-body"></div>
-</div>
-
-<!-- Fixed bottom button for quiz -->
-<div class="fixed-bottom" id="fixed-bottom">
-  <div class="fixed-bottom-inner">
-    <button class="btn-continue" id="btn-continue" disabled onclick="handleContinue()">Continue →</button>
+  <div class="fixed-bottom" id="fixed-bottom">
+    <button class="btn-continue" id="btn-continue" disabled>Continue →</button>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════
-     LOADING
-════════════════════════════════════════════════ -->
+<!-- ══ LOADING ══ -->
 <div class="screen" id="loading">
-  <div class="loading-card">
-    <div class="loading-title">Analysing your answers…</div>
-    <div class="circle-wrap">
-      <svg width="180" height="180" viewBox="0 0 180 180">
-        <circle class="circle-bg" cx="90" cy="90" r="80"/>
-        <circle class="circle-arc" id="circle-arc" cx="90" cy="90" r="80"/>
-      </svg>
-      <div class="circle-pct"><span id="pct-num">0</span>%</div>
-    </div>
-    <div>
-      <div class="check-item">
-        <span>Energy & sleep patterns</span>
-        <div class="check-box" id="check-1">
-          <svg width="13" height="10" viewBox="0 0 13 10" fill="none">
-            <path d="M1 5L4.5 8.5L12 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
+  <div class="loading-inner">
+    <div class="loading-card">
+      <div class="loading-title">Analysing your answers…</div>
+      <div class="circle-wrap">
+        <svg width="160" height="160" viewBox="0 0 160 160">
+          <circle class="circle-bg" cx="80" cy="80" r="70"/>
+          <circle class="circle-arc" id="circle-arc" cx="80" cy="80" r="70"/>
+        </svg>
+        <div class="circle-pct"><span id="pct-num">0</span>%</div>
       </div>
-      <div class="check-item">
-        <span>Nutrition & lifestyle</span>
-        <div class="check-box" id="check-2">
-          <svg width="13" height="10" viewBox="0 0 13 10" fill="none">
-            <path d="M1 5L4.5 8.5L12 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+      <div>
+        <div class="check-item"><span>Energy &amp; sleep patterns</span>
+          <div class="check-box" id="check-1"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5L4.5 8.5L12 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         </div>
-      </div>
-      <div class="check-item">
-        <span>Personal health goals</span>
-        <div class="check-box" id="check-3">
-          <svg width="13" height="10" viewBox="0 0 13 10" fill="none">
-            <path d="M1 5L4.5 8.5L12 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+        <div class="check-item"><span>Nutrition &amp; lifestyle</span>
+          <div class="check-box" id="check-2"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5L4.5 8.5L12 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         </div>
-      </div>
-      <div class="check-item">
-        <span>Personalised plan</span>
-        <div class="check-box" id="check-4">
-          <svg width="13" height="10" viewBox="0 0 13 10" fill="none">
-            <path d="M1 5L4.5 8.5L12 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+        <div class="check-item"><span>Personal health goals</span>
+          <div class="check-box" id="check-3"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5L4.5 8.5L12 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="check-item"><span>Personalised plan</span>
+          <div class="check-box" id="check-4"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5L4.5 8.5L12 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 
 <script>
-const CIRCUMFERENCE = 2 * Math.PI * 80; // 502.65
+const CIRCUMFERENCE = 2 * Math.PI * 70; // r=70 → 439.82
 
-/* ═══════════════════════════════════════
-   DATA
-═══════════════════════════════════════ */
 const POOL = [
-  // Q0 — landing
-  {
-    type:'single', tag:'Energy',
-    q:'How would you describe your energy levels throughout the day?',
-    opts:['Full of energy from morning','Energy dips after lunch','Tired most of the time','Completely exhausted']
-  },
-  // Q1
-  {
-    type:'single', tag:'Sleep',
-    q:'How many hours of sleep do you get on average per night?',
-    opts:['Less than 5 hours','5–6 hours','7–8 hours','More than 9 hours']
-  },
-  // Q2 — slide
-  {
-    type:'slide',
-    title:'Sleep & your immune system',
+  { type:'single', tag:'Energy', q:'How would you describe your energy levels throughout the day?',
+    opts:['Full of energy from morning','Energy dips after lunch','Tired most of the time','Completely exhausted'] },
+  { type:'single', tag:'Sleep', q:'How many hours of sleep do you get on average per night?',
+    opts:['Less than 5 hours','5–6 hours','7–8 hours','More than 9 hours'] },
+  { type:'slide', title:'Sleep & your immune system',
     text:'Adults who sleep fewer than 7 hours per night are nearly <span class="slide-hl">3× more likely</span> to catch a cold compared to those who sleep 8 or more hours. Sleep is when your body does its most important repair work.',
-    imgQuery:'sleeping rest recovery'
-  },
-  // Q3
-  {
-    type:'multi', tag:'Symptoms',
-    q:'Which of these do you experience regularly? (Select all that apply)',
-    opts:['Headaches','Bloating or digestive issues','Skin problems','Mood swings','None of these']
-  },
-  // Q4
-  {
-    type:'single', tag:'Diet',
-    q:'How would you describe your eating habits?',
-    opts:['Very healthy and consistent','I try, but not always possible','Mostly fast food or irregular','No routine at all']
-  },
-  // Q5
-  {
-    type:'multi', tag:'Movement',
-    q:'What types of exercise do you do weekly? (Select all that apply)',
-    opts:['Walking or running','Gym or fitness','Yoga or stretching','Swimming','Barely any movement']
-  },
-  // Q6 — slide
-  {
-    type:'slide',
-    title:'The gut–brain connection',
+    imgQuery:'sleeping rest recovery' },
+  { type:'multi', tag:'Symptoms', q:'Which of these do you experience regularly? (Select all that apply)',
+    opts:['Headaches','Bloating or digestive issues','Skin problems','Mood swings','None of these'] },
+  { type:'single', tag:'Diet', q:'How would you describe your eating habits?',
+    opts:['Very healthy and consistent','I try, but not always possible','Mostly fast food or irregular','No routine at all'] },
+  { type:'multi', tag:'Movement', q:'What types of exercise do you do weekly? (Select all that apply)',
+    opts:['Walking or running','Gym or fitness','Yoga or stretching','Swimming','Barely any movement'] },
+  { type:'slide', title:'The gut–brain connection',
     text:'Up to <span class="slide-hl">70% of your immune system</span> is located in your gut. A healthy microbiome directly influences your mood, energy levels, and how well you sleep — not just your digestion.',
-    imgQuery:'gut health nutrition microbiome food'
-  },
-  // Q7
-  {
-    type:'single', tag:'Stress',
-    q:'How well do you manage day-to-day stress?',
-    opts:['Very well — I have routines','Okay — I feel it sometimes','Poorly — it overwhelms me','I can\'t manage it at all']
-  },
-  // Q8
-  {
-    type:'single', tag:'Hydration',
-    q:'How much water do you drink per day?',
-    opts:['Less than 1 liter','1–1.5 liters','1.5–2 liters','More than 2 liters']
-  },
-  // Q9
-  {
-    type:'multi', tag:'Goals',
-    q:'What do you most want to improve? (Pick up to 3)',
-    opts:['More energy','Better sleep','Less stress','Healthy weight','Stronger immunity','Better digestion']
-  },
-  // Q10
-  {
-    type:'single', tag:'Supplements',
-    q:'Do you currently take any supplements or vitamins?',
-    opts:['Yes, regularly and intentionally','Occasionally, but not systematic','No, never tried','I don\'t know what I should take']
-  },
-  // Q11
-  {
-    type:'single', tag:'Age Group',
-    q:'Which age group do you belong to?',
-    opts:['18–29','30–44','45–59','60+']
-  },
-  // Q12
-  {
-    type:'multi', tag:'Nutrition',
-    q:'Which of these do you eat regularly? (Select all that apply)',
-    opts:['Vegetables every day','Fruit every day','Whole grains','Legumes or nuts','Fermented foods (yogurt, kefir...)']
-  },
-  // Q13
-  {
-    type:'single', tag:'Motivation',
-    q:'What motivates you most to take care of your health?',
-    opts:['Better appearance and fitness','Longer, higher-quality life','Disease prevention','More energy for family and work']
-  }
+    imgQuery:'gut health nutrition microbiome food' },
+  { type:'single', tag:'Stress', q:'How well do you manage day-to-day stress?',
+    opts:['Very well — I have routines','Okay — I feel it sometimes','Poorly — it overwhelms me','I can\'t manage it at all'] },
+  { type:'single', tag:'Hydration', q:'How much water do you drink per day?',
+    opts:['Less than 1 liter','1–1.5 liters','1.5–2 liters','More than 2 liters'] },
+  { type:'multi', tag:'Goals', q:'What do you most want to improve? (Pick up to 3)',
+    opts:['More energy','Better sleep','Less stress','Healthy weight','Stronger immunity','Better digestion'] },
+  { type:'single', tag:'Supplements', q:'Do you currently take any supplements or vitamins?',
+    opts:['Yes, regularly and intentionally','Occasionally, but not systematic','No, never tried','I don\'t know what I should take'] },
+  { type:'single', tag:'Age Group', q:'Which age group do you belong to?',
+    opts:['18–29','30–44','45–59','60+'] },
+  { type:'multi', tag:'Nutrition', q:'Which of these do you eat regularly? (Select all that apply)',
+    opts:['Vegetables every day','Fruit every day','Whole grains','Legumes or nuts','Fermented foods (yogurt, kefir...)'] },
+  { type:'single', tag:'Motivation', q:'What motivates you most to take care of your health?',
+    opts:['Better appearance and fitness','Longer, higher-quality life','Disease prevention','More energy for family and work'] }
 ];
 
 const DOC_PHOTOS = [
@@ -728,7 +613,6 @@ const DOC_PHOTOS = [
   'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200&q=80',
   'https://images.unsplash.com/photo-1651008376811-b90baee60c1f?w=200&q=80',
 ];
-
 const SLIDE_IMGS = {
   'sleeping rest recovery': [
     'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=900&q=80',
@@ -739,155 +623,121 @@ const SLIDE_IMGS = {
     'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=900&q=80',
   ]
 };
+function randFrom(a) { return a[Math.floor(Math.random()*a.length)]; }
 
-function randFrom(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
-
-/* ═══════════════════════════════════════
-   STATE
-═══════════════════════════════════════ */
 let idx = 0;
 let answers = new Array(POOL.length).fill(undefined);
 let selectedOptions = [];
-let currentSlide = false;
+let busy = false;
 
-/* ═══════════════════════════════════════
-   INIT
-═══════════════════════════════════════ */
 window.addEventListener('DOMContentLoaded', () => {
   document.getElementById('land-img').src = randFrom(DOC_PHOTOS);
   renderLandingQuestion();
 });
 
-/* ═══════════════════════════════════════
-   LANDING
-═══════════════════════════════════════ */
+/* ── Landing ── */
 function renderLandingQuestion() {
   const q = POOL[0];
-  const container = document.getElementById('landing-question');
-  const saved = answers[0];
-
   const opts = q.opts.map((o, i) => {
-    const isSel = saved === i;
-    return `<button class="q-option${isSel ? ' picked' : ''}" onclick="landingPick(this,${i})">${o}</button>`;
+    const sel = answers[0] === i;
+    return `<button class="q-option${sel?' flash-land':''}" onclick="landingPick(this,${i})">${o}</button>`;
   }).join('');
-
-  container.innerHTML = `
-    <h2 class="q-box-title">${q.q}</h2>
-    <div class="q-grid">${opts}</div>
-  `;
+  document.getElementById('landing-question').innerHTML =
+    `<h2 class="q-box-title">${q.q}</h2><div class="q-grid">${opts}</div>`;
 }
 
 function landingPick(btn, i) {
-  const grid = btn.closest('.q-grid');
-  grid.querySelectorAll('.q-option').forEach(b => { b.classList.remove('picked'); b.style.pointerEvents = 'none'; });
-  btn.classList.add('picked', 'flash-land');
+  if (busy) return;
+  busy = true;
+  btn.closest('.q-grid').querySelectorAll('.q-option').forEach(b => b.disabled = true);
+  btn.classList.add('flash-land');
   answers[0] = i;
   setTimeout(() => {
     idx = 1;
-    show('quiz');
     document.getElementById('progress-wrap').style.display = 'block';
+    document.getElementById('quiz').classList.add('has-progress');
+    show('quiz');
     renderQuestion();
-  }, 360);
+    busy = false;
+  }, 300);
 }
 
-/* ═══════════════════════════════════════
-   QUIZ RENDER
-═══════════════════════════════════════ */
+/* ── Quiz render ── */
 function renderQuestion() {
   const q = POOL[idx];
-  const pct = ((idx - 1) / (POOL.length - 1)) * 100;
+  const pct = (idx / (POOL.length - 1)) * 100;
   document.getElementById('progress-fill').style.width = Math.max(pct, 2) + '%';
   document.getElementById('q-num').textContent = idx + 1;
-
-  const backBtn = document.getElementById('btn-back');
-  if (idx <= 1) backBtn.classList.remove('visible');
-  else backBtn.classList.add('visible');
+  document.getElementById('btn-back').classList.toggle('visible', idx > 1);
 
   const body = document.getElementById('quiz-body');
-  const fixedBottom = document.getElementById('fixed-bottom');
+  const fb = document.getElementById('fixed-bottom');
+  const btnC = document.getElementById('btn-continue');
   body.innerHTML = '';
-  currentSlide = false;
 
   if (q.type === 'slide') {
-    currentSlide = true;
+    fb.style.display = 'block';
+    btnC.disabled = false;
+    btnC.onclick = next;
     renderSlide(q, body);
-    fixedBottom.style.display = 'block';
-    const btn = document.getElementById('btn-continue');
-    btn.disabled = false;
-    btn.textContent = 'Continue →';
-    btn.onclick = next;
   } else if (q.type === 'single') {
+    fb.style.display = 'none';
     renderSingle(q, body);
-    fixedBottom.style.display = 'none';
   } else {
-    renderMulti(q, body);
-    fixedBottom.style.display = 'block';
-    const btn = document.getElementById('btn-continue');
+    fb.style.display = 'block';
     const savedArr = Array.isArray(answers[idx]) ? answers[idx] : [];
-    btn.disabled = savedArr.length === 0;
-    btn.textContent = 'Continue →';
-    btn.onclick = pickMulti;
+    btnC.disabled = savedArr.length === 0;
+    btnC.onclick = pickMulti;
+    renderMulti(q, body);
   }
 
-  // animate
-  body.querySelectorAll('.fu').forEach((el, i) => {
-    el.style.animationDelay = (i * 0.05) + 's';
-  });
+  body.classList.remove('q-anim');
+  void body.offsetWidth;
+  body.classList.add('q-anim');
 }
 
 function renderSlide(q, body) {
-  const imgs = SLIDE_IMGS[q.imgQuery] || [];
-  const imgSrc = randFrom(imgs) || '';
-  body.innerHTML = `
-    <div class="slide-wrap fu">
-      <div class="slide-card">
-        ${imgSrc ? `<img class="slide-img" src="${imgSrc}" alt="" loading="lazy">` : ''}
-        <div class="slide-content">
-          <h2 class="slide-title">${q.title}</h2>
-          <p class="slide-text">${q.text}</p>
-        </div>
+  const imgSrc = randFrom(SLIDE_IMGS[q.imgQuery]||[]) || '';
+  body.innerHTML = `<div class="slide-wrap">
+    <div class="slide-card">
+      ${imgSrc?`<img class="slide-img" src="${imgSrc}" alt="" loading="lazy">`:''}
+      <div class="slide-content">
+        <h2 class="slide-title">${q.title}</h2>
+        <p class="slide-text">${q.text}</p>
       </div>
-    </div>`;
+    </div>
+  </div>`;
 }
 
 function renderSingle(q, body) {
   const saved = answers[idx];
   const opts = q.opts.map((o, i) => {
-    const isSel = saved === i;
-    return `<button class="opt fu${isSel ? ' selected' : ''}" onclick="pickSingle(this,${i})">${o}</button>`;
+    const sel = saved === i;
+    return `<button class="opt${sel?' selected':''}" onclick="pickSingle(this,${i})">${o}</button>`;
   }).join('');
-  body.innerHTML = `
-    <div class="q-wrap">
-      <div class="q-text fu">${q.q}</div>
-      <div class="options-list">${opts}</div>
-    </div>`;
+  body.innerHTML = `<div class="q-wrap"><div class="q-text">${q.q}</div><div class="options-list">${opts}</div></div>`;
 }
 
 function renderMulti(q, body) {
   const savedArr = Array.isArray(answers[idx]) ? answers[idx] : [];
-  const opts = q.opts.map((o, i) => {
-    const isSel = savedArr.includes(i);
-    return `<button class="opt multi fu${isSel ? ' selected' : ''}" onclick="toggleMulti(this,${i})">
-      <span class="opt-check"></span>${o}
-    </button>`;
-  }).join('');
-  body.innerHTML = `
-    <div class="q-wrap">
-      <div class="q-text fu">${q.q}</div>
-      <div class="options-list">${opts}</div>
-    </div>`;
   selectedOptions = [...savedArr];
+  const opts = q.opts.map((o, i) => {
+    const sel = savedArr.includes(i);
+    return `<button class="opt multi${sel?' selected':''}" onclick="toggleMulti(this,${i})"><span class="opt-check"></span>${o}</button>`;
+  }).join('');
+  body.innerHTML = `<div class="q-wrap"><div class="q-text">${q.q}</div><div class="options-list">${opts}</div></div>`;
 }
 
-/* ═══════════════════════════════════════
-   INTERACTIONS
-═══════════════════════════════════════ */
+/* ── Interactions ── */
 function pickSingle(btn, i) {
+  if (busy) return;
+  busy = true;
+  // Immediately disable ALL options — prevents next-question buttons being pre-highlighted on mobile
   const list = btn.closest('.options-list');
-  list.querySelectorAll('.opt').forEach(b => { b.classList.remove('selected','flash'); b.style.pointerEvents='none'; });
+  list.querySelectorAll('.opt').forEach(b => { b.disabled = true; b.classList.remove('selected','flash'); });
   btn.classList.add('flash');
   answers[idx] = i;
-  setTimeout(next, 360);
+  setTimeout(() => { next(); busy = false; }, 280);
 }
 
 function toggleMulti(btn, i) {
@@ -903,45 +753,40 @@ function pickMulti() {
   next();
 }
 
-function handleContinue() {
-  // used for slides — bound via onclick in renderQuestion
-}
-
 function next() {
   idx++;
   if (idx >= POOL.length) { startLoading(); return; }
-  transition(renderQuestion);
+  doTransition(renderQuestion);
 }
 
 function goBack() {
+  if (busy) return;
   if (idx <= 1) {
     idx = 0;
-    show('landing');
     document.getElementById('progress-wrap').style.display = 'none';
+    document.getElementById('quiz').classList.remove('has-progress');
     document.getElementById('fixed-bottom').style.display = 'none';
+    show('landing');
     renderLandingQuestion();
     return;
   }
   idx--;
-  transition(renderQuestion);
+  doTransition(renderQuestion);
 }
 
-function transition(fn) {
+/* Smooth simple opacity fade, no translateY */
+function doTransition(fn) {
   const body = document.getElementById('quiz-body');
-  body.style.transition = 'opacity 0.16s, transform 0.16s';
+  body.style.transition = 'opacity 0.18s ease';
   body.style.opacity = '0';
-  body.style.transform = 'translateY(12px)';
   setTimeout(() => {
-    body.style.transition = '';
-    body.style.opacity = '';
-    body.style.transform = '';
     fn();
-  }, 200);
+    body.style.opacity = '1';
+    setTimeout(() => { body.style.transition = ''; }, 220);
+  }, 180);
 }
 
-/* ═══════════════════════════════════════
-   LOADING
-═══════════════════════════════════════ */
+/* ── Loading ── */
 function startLoading() {
   document.getElementById('progress-fill').style.width = '100%';
   document.getElementById('fixed-bottom').style.display = 'none';
@@ -952,7 +797,6 @@ function startLoading() {
   const checks = ['check-1','check-2','check-3','check-4'];
   const checkTimes = [2200, 4200, 6200, 7800];
 
-  // Animate circle
   let pct = 0;
   const iv = setInterval(() => {
     pct = Math.min(pct + 1, 100);
@@ -961,36 +805,19 @@ function startLoading() {
     if (pct >= 100) clearInterval(iv);
   }, 90);
 
-  // Check items
   checkTimes.forEach((t, i) => {
-    setTimeout(() => {
-      document.getElementById(checks[i]).classList.add('done');
-    }, t);
+    setTimeout(() => document.getElementById(checks[i]).classList.add('done'), t);
   });
 
-  // Redirect after loading
   setTimeout(() => {
     window.location.href = 'https://happypaws-sepia.vercel.app/checkout.html';
   }, 9500);
 }
 
-function restartQuiz() {
-  answers = new Array(POOL.length).fill(undefined);
-  idx = 0;
-  show('landing');
-  document.getElementById('progress-wrap').style.display = 'none';
-  document.getElementById('fixed-bottom').style.display = 'none';
-  document.getElementById('progress-fill').style.width = '0%';
-  renderLandingQuestion();
-}
-
-/* ═══════════════════════════════════════
-   HELPERS
-═══════════════════════════════════════ */
+/* ── Show screen ── */
 function show(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  const el = document.getElementById(id);
-  if (el) el.classList.add('active');
+  document.getElementById(id).classList.add('active');
   window.scrollTo(0, 0);
 }
 </script>
