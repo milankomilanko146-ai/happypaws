@@ -1,445 +1,528 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Alcohol Addiction Quiz</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Health Quiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root {
-      --primary: #006A62;
-      --primary-hover: #004F49;
-      --primary-light: #E0F0EE;
-      --bg: #FAFAFA;
-      --white: #FFFFFF;
-      --text: #1A1C1E;
-      --text-muted: #5F6368;
-      --border: #DEDEDE;
-      --disabled: #C5C5C5;
-      --max-w: 400px;
-      --hero-max-w: 560px;
-    }
+:root {
+  --teal: #2563EB;
+  --teal-light: #EFF6FF;
+  --teal-mid: #60A5FA;
+  --teal-dark: #1D4ED8;
+  --teal-soft: #BFDBFE;
+  --g100: #F7F9FB;
+  --g200: #E8ECF2;
+  --g300: #D0D6E0;
+  --g400: #9AA3B2;
+  --g600: #5A6374;
+  --g700: #3D4555;
+  --g900: #161C2D;
+  --font: 'DM Sans', sans-serif;
+  --serif: 'Playfair Display', serif;
+  --max-w: 480px;
+}
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: var(--white);
-      color: var(--text);
-      min-height: 100vh;
-      -webkit-font-smoothing: antialiased;
-    }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font);
+  background: #fff;
+  color: var(--g900);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
 
-    /* ── NAV ── */
-    nav {
-      background: var(--white);
-      padding: 14px 20px;
-      border-bottom: 1px solid #F0F0F0;
-    }
-    .doctor-name {
-      color: var(--text);
-      font-size: 15px;
-      font-weight: 600;
-      letter-spacing: 0.01em;
-    }
+.screen { display: none; min-height: 100vh; flex-direction: column; }
+.screen.active { display: flex; }
 
-    /* ════════════════════════════
-       INTRO PAGE
-    ════════════════════════════ */
-    #intro-section { display: block; }
+/* ═══════════════════════════
+   NAV
+═══════════════════════════ */
+.top-nav {
+  background: #fff;
+  padding: 14px 20px;
+  border-bottom: 1px solid #F0F0F0;
+  text-align: center;
+}
+.nav-brand {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--g900);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
 
-    .hero-wrap {
-      max-width: var(--hero-max-w);
-      margin: 0 auto;
-      padding: 28px 20px 60px;
-    }
+/* ═══════════════════════════
+   LANDING
+═══════════════════════════ */
+#landing {
+  background: #fff;
+}
 
-    .dr-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 24px;
-    }
-    .dr-photo {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: top center;
-      border: 2px solid var(--border);
-      flex-shrink: 0;
-      background: var(--border);
-    }
-    .dr-name-text {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text);
-      line-height: 1.3;
-    }
-    .dr-cred {
-      font-size: 12px;
-      color: var(--primary);
-      margin-top: 2px;
-      font-weight: 500;
-    }
+.land-wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 32px 20px 64px;
+  width: 100%;
+}
 
-    .hero-headline {
-      font-size: 26px;
-      font-weight: 700;
-      line-height: 1.3;
-      color: var(--text);
-      margin-bottom: 12px;
-      letter-spacing: -0.3px;
-    }
 
-    .hero-sub {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: 24px;
-    }
+.land-title {
+  font-family: var(--serif);
+  font-size: clamp(26px, 6vw, 40px);
+  line-height: 1.15;
+  color: var(--g900);
+  margin-bottom: 14px;
+  letter-spacing: -0.02em;
+}
+.land-title em { color: var(--teal); font-style: normal; }
 
-    .sp-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 24px;
-    }
-    .sp-avatars { display: flex; }
-    .sp-av {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      border: 2px solid var(--white);
-      background: linear-gradient(135deg, #4db8ad, var(--primary));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 9px;
-      font-weight: 700;
-      color: var(--white);
-      margin-left: -8px;
-      letter-spacing: -0.5px;
-    }
-    .sp-av:first-child { margin-left: 0; }
-    .sp-text { font-size: 13px; color: var(--text-muted); }
-    .sp-text strong { color: var(--text); }
+.land-sub {
+  font-size: 15px;
+  color: var(--g600);
+  line-height: 1.65;
+  margin-bottom: 20px;
+  max-width: 380px;
+}
 
-    .q-box {
-      width: 100%;
-      background: var(--white);
-      border: 2px solid var(--text);
-      border-radius: 16px;
-      padding: 24px;
-      box-shadow: 0 8px 28px rgba(0,0,0,0.10);
-      margin-top: 8px;
-    }
-    .q-box-title {
-      font-size: 20px;
-      font-weight: 600;
-      line-height: 1.45;
-      color: var(--text);
-      margin-bottom: 16px;
-    }
-    .q-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .q-option {
-      width: 100%;
-      padding: 14px 18px;
-      background: var(--white);
-      border: 1.5px solid var(--border);
-      border-radius: 12px;
-      cursor: pointer;
-      font-family: 'Poppins', sans-serif;
-      font-size: 15px;
-      font-weight: 400;
-      color: var(--text);
-      text-align: left;
-      line-height: 1.4;
-      transition: border-color 0.15s, background 0.15s;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .q-option:active { transform: scale(0.99); }
-    .q-option:hover  { border-color: var(--primary); background: var(--primary-light); }
-    .q-option.picked { border-color: var(--primary); background: var(--primary-light); font-weight: 500; pointer-events: none; }
+/* Doctor row — small avatar + name */
+.dr-row {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-bottom: 28px;
+}
 
-    @media (min-width: 640px) {
-      .hero-wrap { padding-top: 40px; }
-      .hero-headline { font-size: 28px; }
-    }
+.dr-photo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  border: 2px solid var(--teal-soft);
+  flex-shrink: 0;
+  background: var(--g200);
+}
 
-    /* ════════════════════════════
-       PROGRESS BAR
-    ════════════════════════════ */
-    .progress-track {
-      width: 100%;
-      height: 6px;
-      background: #E8E8E8;
-    }
-    .progress-fill {
-      height: 6px;
-      background: var(--primary);
-      border-radius: 0 3px 3px 0;
-      transition: width 0.5s ease;
-    }
+.dr-name-text {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--g900);
+  line-height: 1.3;
+}
+.dr-cred {
+  font-size: 12px;
+  color: var(--teal-dark);
+  font-weight: 500;
+  margin-top: 2px;
+}
 
-    /* ════════════════════════════
-       QUIZ
-    ════════════════════════════ */
-    #quiz-section { display: none; background: var(--white); }
+/* Social proof row */
+.sp-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.sp-avatars { display: flex; }
+.sp-av {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background: linear-gradient(135deg, var(--teal-mid), var(--teal-dark));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px; font-weight: 700;
+  color: #fff;
+  margin-left: -7px;
+  letter-spacing: -0.5px;
+}
+.sp-av:first-child { margin-left: 0; }
+.sp-text { font-size: 13px; color: var(--g600); }
+.sp-text strong { color: var(--g900); }
 
-    .quiz-wrap {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 20px 20px 120px;
-    }
+/* Question box */
+.q-box {
+  width: 100%;
+  background: #fff;
+  border: 2px solid var(--g900);
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.09);
+}
+.q-box-title {
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--g900);
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+.q-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.q-option {
+  width: 100%;
+  padding: 13px 18px;
+  background: #fff;
+  border: 1.5px solid var(--g300);
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--g900);
+  text-align: left;
+  line-height: 1.4;
+  transition: border-color 0.14s, background 0.14s, transform 0.10s;
+  -webkit-tap-highlight-color: transparent;
+}
+.q-option:hover { border-color: var(--teal); background: var(--teal-light); }
+.q-option:active { transform: scale(0.99); }
+.q-option.picked { border-color: var(--teal); background: var(--teal-light); font-weight: 600; pointer-events: none; }
+.q-option.flash-land { border-color: var(--teal); background: var(--teal); color: #fff; transform: scale(1.01); transition: all 0.12s; }
 
-    .q-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 28px;
-    }
+@media (min-width: 640px) {
+  .land-wrap { padding-top: 48px; }
+}
 
-    .back-btn {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: var(--text);
-      font-family: 'Poppins', sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      padding: 4px 0;
-      transition: color 0.2s;
-      visibility: hidden;
-    }
-    .back-btn.visible { visibility: visible; }
-    .back-btn:hover { color: var(--primary); }
-    .back-btn svg { width: 24px; height: 24px; flex-shrink: 0; }
+/* ═══════════════════════════
+   PROGRESS
+═══════════════════════════ */
+#progress-wrap {
+  background: #fff;
+  border-bottom: 1px solid #E8ECF2;
+}
+.progress-track {
+  width: 100%;
+  height: 5px;
+  background: var(--g200);
+}
+.progress-fill {
+  height: 5px;
+  background: var(--teal);
+  border-radius: 0 3px 3px 0;
+  transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
 
-    .q-counter {
-      font-size: 18px;
-      font-weight: 600;
-      text-align: right;
-      white-space: nowrap;
-    }
-    .q-counter .denom {
-      font-size: 16px;
-      font-weight: 400;
-      color: var(--text-muted);
-    }
+/* ═══════════════════════════
+   QUIZ
+═══════════════════════════ */
+#quiz { background: #fff; }
 
-    .q-title {
-      font-size: 20px;
-      font-weight: 600;
-      line-height: 1.45;
-      margin-bottom: 8px;
-    }
-    .q-desc {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-bottom: 22px;
-    }
+.quiz-header {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  width: 100%;
+  padding: 20px 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
 
-    .answers { display: flex; flex-direction: column; gap: 12px; }
+/* Back button — more visible now */
+.btn-back {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--g100);
+  border: 2px solid var(--g200);
+  border-radius: 100px;
+  cursor: pointer;
+  color: var(--g700);
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 16px 8px 10px;
+  transition: border-color 0.14s, background 0.14s, color 0.14s, transform 0.10s;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  visibility: hidden;
+}
+.btn-back.visible { visibility: visible; }
+.btn-back:hover { border-color: var(--teal); color: var(--teal); background: var(--teal-light); }
+.btn-back:active { transform: scale(0.96); }
+.btn-back svg { width: 20px; height: 20px; flex-shrink: 0; }
 
-    .answer-btn {
-      width: 100%;
-      padding: 14px 18px;
-      border: 1.5px solid var(--border);
-      border-radius: 12px;
-      background: var(--white);
-      font-family: 'Poppins', sans-serif;
-      font-size: 15px;
-      font-weight: 400;
-      color: var(--text);
-      cursor: pointer;
-      text-align: left;
-      line-height: 1.4;
-      transition: border-color 0.15s, background 0.15s;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .answer-btn:active { transform: scale(0.99); }
-    .answer-btn:hover,
-    .answer-btn.selected {
-      border-color: var(--primary);
-      background: var(--primary-light);
-    }
-    .answer-btn.selected { font-weight: 500; }
+.q-counter {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--g900);
+  white-space: nowrap;
+}
+.q-counter .denom {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--g400);
+}
 
-    .info-text {
-      font-size: 15px;
-      line-height: 1.75;
-      color: var(--text);
-      margin-bottom: 14px;
-    }
-    .info-text.strong { font-weight: 600; font-size: 16px; }
-    .info-img {
-      width: 100%;
-      border-radius: 64px 0 64px 0;
-      display: block;
-      margin: 20px 0;
-    }
+.quiz-body {
+  flex: 1;
+  padding: 0 20px 140px;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  width: 100%;
+}
 
-    /* ── FIXED BOTTOM NEXT BUTTON ── */
-    .fixed-bottom {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      background: var(--white);
-      padding: 12px 20px 20px;
-      box-shadow: 0 -2px 16px rgba(0,0,0,0.08);
-      border-top: 1px solid #F0F0F0;
-      z-index: 100;
-      display: none;
-    }
-    .fixed-bottom-inner {
-      max-width: var(--max-w);
-      margin: 0 auto;
-    }
-    .next-btn {
-      width: 100%;
-      padding: 16px;
-      background: var(--primary);
-      color: var(--white);
-      border: none;
-      border-radius: 100px;
-      font-family: 'Poppins', sans-serif;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s, opacity 0.2s;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .next-btn:hover:not(:disabled) { background: var(--primary-hover); }
-    .next-btn:disabled { background: var(--disabled); cursor: not-allowed; }
+/* ——— QUESTION ——— */
+.q-wrap { display: flex; flex-direction: column; }
 
-    /* ════════════════════════════
-       LOADING SCREEN
-    ════════════════════════════ */
-    #loading-screen {
-      display: none;
-      min-height: 100vh;
-      background: var(--bg);
-      padding: 48px 20px;
-      justify-content: center;
-      align-items: flex-start;
-    }
-    #loading-screen.active { display: flex; }
+.q-category {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--teal-dark);
+  background: var(--teal-light);
+  border-radius: 7px;
+  padding: 4px 10px;
+  display: inline-block;
+  margin-bottom: 14px;
+  align-self: flex-start;
+}
 
-    .loading-card {
-      background: var(--white);
-      border-radius: 24px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-      padding: 32px 28px;
-      width: 100%;
-      max-width: var(--max-w);
-    }
-    .loading-title {
-      font-size: 20px;
-      font-weight: 600;
-      margin-bottom: 28px;
-      line-height: 1.4;
-    }
+.q-text {
+  font-size: clamp(19px, 4vw, 24px);
+  font-weight: 700;
+  color: var(--g900);
+  line-height: 1.35;
+  margin-bottom: 22px;
+  letter-spacing: -0.01em;
+}
 
-    .circle-wrap {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 32px;
-      position: relative;
-      width: 180px;
-      height: 180px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .circle-wrap svg { transform: rotate(-90deg); }
-    .circle-bg  { fill: none; stroke: #E8E8E8; stroke-width: 16; }
-    .circle-arc {
-      fill: none;
-      stroke: var(--primary);
-      stroke-width: 16;
-      stroke-linecap: round;
-      stroke-dasharray: 502.65;
-      stroke-dashoffset: 502.65;
-      transition: stroke-dashoffset 0.25s linear;
-    }
-    .circle-pct {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 40px;
-      font-weight: 600;
-      color: var(--primary);
-    }
+.options-list { display: flex; flex-direction: column; gap: 10px; }
 
-    .check-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 0;
-      border-bottom: 1px solid #F0F0F0;
-      font-size: 15px;
-    }
-    .check-item:last-child { border-bottom: none; }
+.opt {
+  border: 1.5px solid var(--g300);
+  border-radius: 12px;
+  padding: 14px 18px;
+  background: #fff;
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--g900);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.14s, background 0.14s, transform 0.10s;
+  line-height: 1.45;
+  -webkit-tap-highlight-color: transparent;
+}
+.opt:hover { border-color: var(--teal); background: var(--teal-light); }
+.opt:active { transform: scale(0.99); }
+.opt.selected { border-color: var(--teal); background: var(--teal-light); color: var(--teal-dark); font-weight: 600; }
+.opt.flash { border-color: var(--teal); background: var(--teal); color: #fff; transform: scale(1.01); transition: all 0.12s; }
 
-    .check-box {
-      width: 22px;
-      height: 22px;
-      border-radius: 6px;
-      border: 2px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      transition: all 0.3s ease;
-    }
-    .check-box.done { background: var(--primary); border-color: var(--primary); }
-    .check-box svg { display: none; }
-    .check-box.done svg { display: block; }
+/* Multi */
+.opt.multi { padding-left: 52px; position: relative; }
+.opt-check {
+  position: absolute;
+  left: 14px; top: 50%;
+  transform: translateY(-50%);
+  width: 22px; height: 22px;
+  border-radius: 7px;
+  border: 2px solid var(--g300);
+  background: #fff;
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color 0.14s, background 0.14s;
+}
+.opt.multi.selected .opt-check { border-color: var(--teal); background: var(--teal); }
+.opt.multi.selected .opt-check::after {
+  content: '';
+  display: block;
+  width: 6px; height: 10px;
+  border: 2.5px solid #fff;
+  border-top: none; border-left: none;
+  transform: rotate(45deg) translateY(-1px);
+}
 
-    @media (min-width: 640px) {
-      .quiz-wrap { padding-top: 36px; }
-      .q-title { font-size: 22px; }
-      .loading-card { padding: 40px 36px; }
-    }
-  </style>
+/* ——— SLIDE ——— */
+.slide-wrap { display: flex; flex-direction: column; gap: 20px; }
+.slide-card {
+  background: #fff;
+  border-radius: 18px;
+  border: 1.5px solid var(--g200);
+  overflow: hidden;
+}
+.slide-img { width: 100%; height: 190px; object-fit: cover; display: block; background: var(--g100); }
+.slide-content { padding: 22px 24px 26px; }
+.slide-title { font-family: var(--serif); font-size: clamp(18px, 3vw, 22px); color: var(--g900); margin-bottom: 10px; line-height: 1.3; }
+.slide-text { font-size: 15px; color: var(--g600); line-height: 1.7; }
+.slide-hl { font-weight: 700; color: var(--teal-dark); }
+
+/* ── Fixed bottom next button ── */
+.fixed-bottom {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: #fff;
+  padding: 12px 20px 24px;
+  box-shadow: 0 -2px 16px rgba(0,0,0,0.07);
+  border-top: 1px solid #F0F0F0;
+  z-index: 100;
+  display: none;
+}
+.fixed-bottom-inner { max-width: var(--max-w); margin: 0 auto; }
+
+.btn-continue {
+  background: var(--teal);
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  font-family: var(--font);
+  font-size: 16px;
+  font-weight: 700;
+  padding: 16px 32px;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.14s, transform 0.10s, opacity 0.14s;
+  box-shadow: 0 4px 18px rgba(37,99,235,0.30);
+  letter-spacing: 0.01em;
+}
+.btn-continue:hover:not(:disabled) { background: var(--teal-dark); }
+.btn-continue:active:not(:disabled) { transform: scale(0.98); }
+.btn-continue:disabled { opacity: 0.3; cursor: not-allowed; box-shadow: none; }
+
+/* ═══════════════════════════
+   LOADING SCREEN
+═══════════════════════════ */
+#loading {
+  background: var(--g100);
+  padding: 48px 20px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.loading-card {
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  padding: 32px 28px;
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.loading-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 28px;
+  line-height: 1.4;
+  color: var(--g900);
+  letter-spacing: -0.01em;
+}
+
+.circle-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+  position: relative;
+  width: 180px;
+  height: 180px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.circle-wrap svg { transform: rotate(-90deg); }
+.circle-bg  { fill: none; stroke: #E8ECF2; stroke-width: 16; }
+.circle-arc {
+  fill: none;
+  stroke: var(--teal);
+  stroke-width: 16;
+  stroke-linecap: round;
+  stroke-dasharray: 502.65;
+  stroke-dashoffset: 502.65;
+  transition: stroke-dashoffset 0.25s linear;
+}
+.circle-pct {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--teal);
+  font-family: var(--font);
+}
+
+.check-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid #F0F0F0;
+  font-size: 15px;
+  color: var(--g700);
+  font-weight: 500;
+}
+.check-item:last-child { border-bottom: none; }
+
+.check-box {
+  width: 22px; height: 22px;
+  border-radius: 6px;
+  border: 2px solid var(--g300);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+.check-box.done { background: var(--teal); border-color: var(--teal); }
+.check-box svg { display: none; }
+.check-box.done svg { display: block; }
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(18px); }
+  to { opacity:1; transform:translateY(0); }
+}
+.fu { animation: fadeUp 0.35s cubic-bezier(0.22,1,0.36,1) both; }
+
+@media (min-width: 640px) {
+  .quiz-header { padding: 28px 28px 0; }
+  .quiz-body { padding: 0 28px 140px; }
+  .loading-card { padding: 40px 36px; }
+}
+@media (max-width: 420px) {
+  .q-text { font-size: 18px; }
+  .opt { font-size: 14px; }
+}
+</style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <span class="doctor-name">Dr Sarah Mitchell</span>
+
+<!-- ═══════════════════════════════════════════════
+     NAV
+════════════════════════════════════════════════ -->
+<nav class="top-nav">
+  <span class="nav-brand">HEALTH ASSESSMENT</span>
 </nav>
 
-<!-- ════════════════════════════
-     INTRO PAGE
-════════════════════════════ -->
-<div id="intro-section">
-  <div class="hero-wrap">
+<!-- ═══════════════════════════════════════════════
+     LANDING
+════════════════════════════════════════════════ -->
+<div class="screen active" id="landing">
+  <div class="land-wrap">
 
+    <h1 class="land-title">
+      Discover what your body<br>truly <em>needs</em>
+    </h1>
+    <p class="land-sub">
+      14 quick questions. A personalized health profile built just for you — completely free.
+    </p>
+
+    <!-- Small doctor avatar LEFT of name -->
     <div class="dr-row">
-      <img class="dr-photo"
-        src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=136&h=136&fit=crop&crop=face&auto=format&q=80"
-        alt="Dr. Sarah Mitchell"
-        onerror="this.style.display='none'">
+      <img class="dr-photo" id="land-img" src="" alt="Dr. Katherine Mills" onerror="this.style.display='none'">
       <div>
-        <div class="dr-name-text">Dr. Sarah Mitchell</div>
-        <div class="dr-cred">Board-Certified Addiction Specialist</div>
+        <div class="dr-name-text">Dr. Katherine Mills, MD</div>
+        <div class="dr-cred">Preventive Medicine · 11 yrs experience</div>
       </div>
     </div>
 
-    <h1 class="hero-headline">Find Out What's Really Behind Your Alcohol Craving</h1>
-    <p class="hero-sub">This 2-minute assessment identifies the root cause of your dependency so we can match you with the right personalised plan.</p>
-
+    <!-- Social proof -->
     <div class="sp-row">
       <div class="sp-avatars">
         <div class="sp-av">MJ</div>
@@ -448,64 +531,57 @@
         <div class="sp-av">AP</div>
         <div class="sp-av">TW</div>
       </div>
-      <div class="sp-text"><strong>247 people</strong> took this today</div>
+      <div class="sp-text"><strong>1,842 people</strong> took this today</div>
     </div>
 
+    <!-- First question box -->
     <div class="q-box">
-      <h2 class="q-box-title">What is your age group?</h2>
-      <div class="q-grid">
-        <button class="q-option" onclick="startQuiz(this, '18-30')">18–30 years</button>
-        <button class="q-option" onclick="startQuiz(this, '31-45')">31–45 years</button>
-        <button class="q-option" onclick="startQuiz(this, '46-60')">46–60 years</button>
-        <button class="q-option" onclick="startQuiz(this, '61+')">61 and above</button>
-      </div>
+      <div id="landing-question"></div>
     </div>
 
   </div>
 </div>
 
-<!-- ════════════════════════════
-     PROGRESS BAR (outside quiz section, own white bg)
-════════════════════════════ -->
-<div id="progress-wrap" style="display:none; background:var(--white); border-bottom: 1px solid #E8E8E8;">
+<!-- ═══════════════════════════════════════════════
+     PROGRESS BAR
+════════════════════════════════════════════════ -->
+<div id="progress-wrap" style="display:none;">
   <div class="progress-track">
-    <div class="progress-fill" id="progress-bar"></div>
+    <div class="progress-fill" id="progress-fill"></div>
   </div>
 </div>
 
-<!-- ════════════════════════════
-     QUIZ SECTION
-════════════════════════════ -->
-<div id="quiz-section">
-  <div class="quiz-wrap">
-    <div class="q-header">
-      <button class="back-btn" id="back-btn">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M10.828 12L15.778 16.95L14.364 18.364L8 12L14.364 5.636L15.778 7.05L10.828 12Z"/>
-        </svg>
-        Back
-      </button>
-      <div class="q-counter">
-        <span id="q-num">1</span><span class="denom"> / <span id="q-total"></span></span>
-      </div>
+<!-- ═══════════════════════════════════════════════
+     QUIZ
+════════════════════════════════════════════════ -->
+<div class="screen" id="quiz">
+  <div class="quiz-header">
+    <button class="btn-back" id="btn-back" onclick="goBack()">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M10.828 12L15.778 16.95L14.364 18.364L8 12L14.364 5.636L15.778 7.05L10.828 12Z"/>
+      </svg>
+      Back
+    </button>
+    <div class="q-counter">
+      <span id="q-num">2</span><span class="denom"> / 14</span>
     </div>
-    <div id="question-area"></div>
   </div>
+  <div class="quiz-body" id="quiz-body"></div>
 </div>
 
-<!-- FIXED BOTTOM BUTTON -->
-<div class="fixed-bottom" id="next-wrap">
+<!-- Fixed bottom button for quiz -->
+<div class="fixed-bottom" id="fixed-bottom">
   <div class="fixed-bottom-inner">
-    <button class="next-btn" id="next-btn">Next</button>
+    <button class="btn-continue" id="btn-continue" disabled onclick="handleContinue()">Continue →</button>
   </div>
 </div>
 
-<!-- ════════════════════════════
-     LOADING SCREEN
-════════════════════════════ -->
-<div id="loading-screen">
+<!-- ═══════════════════════════════════════════════
+     LOADING
+════════════════════════════════════════════════ -->
+<div class="screen" id="loading">
   <div class="loading-card">
-    <div class="loading-title">We are analysing your answers...</div>
+    <div class="loading-title">Analysing your answers…</div>
     <div class="circle-wrap">
       <svg width="180" height="180" viewBox="0 0 180 180">
         <circle class="circle-bg" cx="90" cy="90" r="80"/>
@@ -515,7 +591,7 @@
     </div>
     <div>
       <div class="check-item">
-        <span>Symptoms</span>
+        <span>Energy & sleep patterns</span>
         <div class="check-box" id="check-1">
           <svg width="13" height="10" viewBox="0 0 13 10" fill="none">
             <path d="M1 5L4.5 8.5L12 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -523,7 +599,7 @@
         </div>
       </div>
       <div class="check-item">
-        <span>Root cause</span>
+        <span>Nutrition & lifestyle</span>
         <div class="check-box" id="check-2">
           <svg width="13" height="10" viewBox="0 0 13 10" fill="none">
             <path d="M1 5L4.5 8.5L12 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -531,8 +607,16 @@
         </div>
       </div>
       <div class="check-item">
-        <span>Goals</span>
+        <span>Personal health goals</span>
         <div class="check-box" id="check-3">
+          <svg width="13" height="10" viewBox="0 0 13 10" fill="none">
+            <path d="M1 5L4.5 8.5L12 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+      <div class="check-item">
+        <span>Personalised plan</span>
+        <div class="check-box" id="check-4">
           <svg width="13" height="10" viewBox="0 0 13 10" fill="none">
             <path d="M1 5L4.5 8.5L12 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
@@ -542,271 +626,372 @@
   </div>
 </div>
 
-<script>
-const CIRCUMFERENCE = 2 * Math.PI * 80;
 
-// Q1 (age) is on the intro page — quiz starts from Q2 onward
-const questions = [
+<script>
+const CIRCUMFERENCE = 2 * Math.PI * 80; // 502.65
+
+/* ═══════════════════════════════════════
+   DATA
+═══════════════════════════════════════ */
+const POOL = [
+  // Q0 — landing
   {
-    type: 'select',
-    question: 'Why do you want to quit alcohol?',
-    description: 'You can select as many as you need.',
-    answers: ['Improve overall health','Lose weight','Sleep better','Boost energy levels','Improve mental clarity','Strengthen relationships','Save money','Other']
+    type:'single', tag:'Energy',
+    q:'How would you describe your energy levels throughout the day?',
+    opts:['Full of energy from morning','Energy dips after lunch','Tired most of the time','Completely exhausted']
   },
+  // Q1
   {
-    type: 'info',
-    text1: 'Hypnozio is designed to redefine your relationship with addictive behaviors by addressing and rectifying the dysfunction in your brain\'s reward and control mechanisms.',
-    text3: 'Let\'s begin by understanding more about you so we can evaluate if Hypnozio is the right fit to support your journey.',
-    image: 'https://hypnozio.com/hypnozio/quiz/glowing-nerve-cells.jpg'
+    type:'single', tag:'Sleep',
+    q:'How many hours of sleep do you get on average per night?',
+    opts:['Less than 5 hours','5–6 hours','7–8 hours','More than 9 hours']
   },
+  // Q2 — slide
   {
-    type: 'radio',
-    question: 'Have you tried to stop or reduce alcohol addiction before?',
-    answers: ['Never tried','Tried once','Tried multiple times without success','Successfully reduced but relapsed']
+    type:'slide',
+    title:'Sleep & your immune system',
+    text:'Adults who sleep fewer than 7 hours per night are nearly <span class="slide-hl">3× more likely</span> to catch a cold compared to those who sleep 8 or more hours. Sleep is when your body does its most important repair work.',
+    imgQuery:'sleeping rest recovery'
   },
+  // Q3
   {
-    type: 'select',
-    question: 'Has alcohol impacted any of these aspects of your life?',
-    description: 'You can select as many as you need.',
-    answers: ['Isolation and withdrawal from others','Libido and sexual health','Social relationships and connections','Self-esteem or self-worth','Poor eating habits and unhealthy lifestyle','Money','None']
+    type:'multi', tag:'Symptoms',
+    q:'Which of these do you experience regularly? (Select all that apply)',
+    opts:['Headaches','Bloating or digestive issues','Skin problems','Mood swings','None of these']
   },
+  // Q4
   {
-    type: 'select',
-    question: 'Which situations intensify your cravings or behavior?',
-    description: 'You can select as many as you want.',
-    answers: ['Social events or peer gatherings','Emotional distress or sadness','Boredom','Specific locations or environments','Certain times of the day','Other']
+    type:'single', tag:'Diet',
+    q:'How would you describe your eating habits?',
+    opts:['Very healthy and consistent','I try, but not always possible','Mostly fast food or irregular','No routine at all']
   },
+  // Q5
   {
-    type: 'info',
-    text1: 'While people have different reasons for struggling with addiction, one of the main factors is the dysfunction in the brain\'s reward and control mechanisms.',
-    text3: 'If you\'ve ever experienced \'cravings\' even when you know the substance or behavior is harmful, then you have felt the effects of this dysfunction.',
-    text4: 'Cutting out alcohol isn\'t just about willpower—it\'s influenced by deeper subconscious patterns.',
-    image: 'https://hypnozio.com/hypnozio/quiz/woman-with-headphones.jpg'
+    type:'multi', tag:'Movement',
+    q:'What types of exercise do you do weekly? (Select all that apply)',
+    opts:['Walking or running','Gym or fitness','Yoga or stretching','Swimming','Barely any movement']
   },
+  // Q6 — slide
   {
-    type: 'radio',
-    question: 'How long have you been struggling with alcohol addiction?',
-    answers: ['Less than a year','1-3 years','3-5 years','Over 5 years']
+    type:'slide',
+    title:'The gut–brain connection',
+    text:'Up to <span class="slide-hl">70% of your immune system</span> is located in your gut. A healthy microbiome directly influences your mood, energy levels, and how well you sleep — not just your digestion.',
+    imgQuery:'gut health nutrition microbiome food'
   },
+  // Q7
   {
-    type: 'radio',
-    question: 'How often do you engage in the addictive behavior or substance use?',
-    answers: ['Daily','Weekly','Monthly','Rarely but intensely']
+    type:'single', tag:'Stress',
+    q:'How well do you manage day-to-day stress?',
+    opts:['Very well — I have routines','Okay — I feel it sometimes','Poorly — it overwhelms me','I can\'t manage it at all']
   },
+  // Q8
   {
-    type: 'radio',
-    question: 'How much do you typically drink?',
-    answers: ['One glass','A few drinks','Often finish the whole bottle','Lose track of my consumption']
+    type:'single', tag:'Hydration',
+    q:'How much water do you drink per day?',
+    opts:['Less than 1 liter','1–1.5 liters','1.5–2 liters','More than 2 liters']
   },
+  // Q9
   {
-    type: 'select',
-    question: 'Which of these symptoms do you often experience?',
-    description: 'You can select as many as you want.',
-    answers: ['Shaking','Nausea','Difficulty sleeping','Headaches','Sweating','Feeling weak','Brain fog','Other']
+    type:'multi', tag:'Goals',
+    q:'What do you most want to improve? (Pick up to 3)',
+    opts:['More energy','Better sleep','Less stress','Healthy weight','Stronger immunity','Better digestion']
   },
+  // Q10
   {
-    type: 'info',
-    text1: 'Most addiction solutions focus on managing the symptoms or the external triggers without addressing the underlying cause, which is the dysfunction in the brain\'s reward and control mechanisms.',
-    text2: 'Hypnotherapy is different.',
-    text3: 'According to clinical studies, hypnotherapy has been found to address and resolve this fundamental dysfunction.',
-    image: 'https://hypnozio.com/hypnozio/quiz/senior-woman-with-headphones.jpg'
+    type:'single', tag:'Supplements',
+    q:'Do you currently take any supplements or vitamins?',
+    opts:['Yes, regularly and intentionally','Occasionally, but not systematic','No, never tried','I don\'t know what I should take']
   },
+  // Q11
   {
-    type: 'radio',
-    question: 'Were you recommended by a psychologist?',
-    answers: ['Yes','No']
+    type:'single', tag:'Age Group',
+    q:'Which age group do you belong to?',
+    opts:['18–29','30–44','45–59','60+']
   },
+  // Q12
   {
-    type: 'select',
-    question: 'What limiting beliefs are holding you back from quitting alcohol?',
-    description: 'You can select as many as you want.',
-    answers: [
-      '"I need alcohol to relax or handle stress."',
-      '"I can\'t enjoy myself or socialize without drinking."',
-      '"Why bother? I\'ll just fail anyway."',
-      '"Drinking is a part of who I am."',
-      '"I\'m afraid to face my emotions without alcohol."',
-      '"I don\'t deserve a better life."',
-      '"My friends or family expect me to drink."'
-    ]
+    type:'multi', tag:'Nutrition',
+    q:'Which of these do you eat regularly? (Select all that apply)',
+    opts:['Vegetables every day','Fruit every day','Whole grains','Legumes or nuts','Fermented foods (yogurt, kefir...)']
   },
+  // Q13
   {
-    type: 'radio',
-    question: 'What type of support do you currently have in place?',
-    answers: ['Friends/family','Professional help','Online communities','None']
+    type:'single', tag:'Motivation',
+    q:'What motivates you most to take care of your health?',
+    opts:['Better appearance and fitness','Longer, higher-quality life','Disease prevention','More energy for family and work']
   }
 ];
 
-const TOTAL = questions.length;
+const DOC_PHOTOS = [
+  'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80',
+  'https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=200&q=80',
+  'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200&q=80',
+  'https://images.unsplash.com/photo-1651008376811-b90baee60c1f?w=200&q=80',
+];
 
-let current = 0;
-let answers = questions.map(q => q.type === 'select' ? [] : null);
-let advancing = false;
+const SLIDE_IMGS = {
+  'sleeping rest recovery': [
+    'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=900&q=80',
+    'https://images.unsplash.com/photo-1520206183501-b80df61043c2?w=900&q=80',
+  ],
+  'gut health nutrition microbiome food': [
+    'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=900&q=80',
+    'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=900&q=80',
+  ]
+};
 
-const progressBar = document.getElementById('progress-bar');
-const qNum        = document.getElementById('q-num');
-const qTotal      = document.getElementById('q-total');
-const backBtn     = document.getElementById('back-btn');
-const area        = document.getElementById('question-area');
-const nextWrap    = document.getElementById('next-wrap');
-const nextBtn     = document.getElementById('next-btn');
+function randFrom(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
 
-qTotal.textContent = TOTAL;
+/* ═══════════════════════════════════════
+   STATE
+═══════════════════════════════════════ */
+let idx = 0;
+let answers = new Array(POOL.length).fill(undefined);
+let selectedOptions = [];
+let currentSlide = false;
 
-// ── INTRO → QUIZ transition ──────────────────────────────
-function startQuiz(btn, answer) {
-  btn.classList.add('picked');
-  sessionStorage.setItem('q1_answer', answer);
+/* ═══════════════════════════════════════
+   INIT
+═══════════════════════════════════════ */
+window.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('land-img').src = randFrom(DOC_PHOTOS);
+  renderLandingQuestion();
+});
+
+/* ═══════════════════════════════════════
+   LANDING
+═══════════════════════════════════════ */
+function renderLandingQuestion() {
+  const q = POOL[0];
+  const container = document.getElementById('landing-question');
+  const saved = answers[0];
+
+  const opts = q.opts.map((o, i) => {
+    const isSel = saved === i;
+    return `<button class="q-option${isSel ? ' picked' : ''}" onclick="landingPick(this,${i})">${o}</button>`;
+  }).join('');
+
+  container.innerHTML = `
+    <h2 class="q-box-title">${q.q}</h2>
+    <div class="q-grid">${opts}</div>
+  `;
+}
+
+function landingPick(btn, i) {
+  const grid = btn.closest('.q-grid');
+  grid.querySelectorAll('.q-option').forEach(b => { b.classList.remove('picked'); b.style.pointerEvents = 'none'; });
+  btn.classList.add('picked', 'flash-land');
+  answers[0] = i;
   setTimeout(() => {
-    document.getElementById('intro-section').style.display = 'none';
+    idx = 1;
+    show('quiz');
     document.getElementById('progress-wrap').style.display = 'block';
-    document.getElementById('quiz-section').style.display = 'block';
-    window.scrollTo({ top: 0, behavior: 'instant' });
-    render();
-  }, 350);
+    renderQuestion();
+  }, 360);
 }
 
-// ── RENDER ───────────────────────────────────────────────
-function render() {
-  advancing = false;
-  const q = questions[current];
+/* ═══════════════════════════════════════
+   QUIZ RENDER
+═══════════════════════════════════════ */
+function renderQuestion() {
+  const q = POOL[idx];
+  const pct = ((idx - 1) / (POOL.length - 1)) * 100;
+  document.getElementById('progress-fill').style.width = Math.max(pct, 2) + '%';
+  document.getElementById('q-num').textContent = idx + 1;
 
-  progressBar.style.width = ((current + 1) / TOTAL * 100) + '%';
-  qNum.textContent = current + 1;
+  const backBtn = document.getElementById('btn-back');
+  if (idx <= 1) backBtn.classList.remove('visible');
+  else backBtn.classList.add('visible');
 
-  backBtn.classList.toggle('visible', current > 0);
+  const body = document.getElementById('quiz-body');
+  const fixedBottom = document.getElementById('fixed-bottom');
+  body.innerHTML = '';
+  currentSlide = false;
 
-  if      (q.type === 'radio')  renderRadio(q);
-  else if (q.type === 'select') renderSelect(q);
-  else if (q.type === 'info')   renderInfo(q);
-
-  if (q.type === 'radio') {
-    nextWrap.style.display = 'none';
+  if (q.type === 'slide') {
+    currentSlide = true;
+    renderSlide(q, body);
+    fixedBottom.style.display = 'block';
+    const btn = document.getElementById('btn-continue');
+    btn.disabled = false;
+    btn.textContent = 'Continue →';
+    btn.onclick = next;
+  } else if (q.type === 'single') {
+    renderSingle(q, body);
+    fixedBottom.style.display = 'none';
   } else {
-    nextWrap.style.display = 'block';
-    nextBtn.disabled = q.type === 'select' && answers[current].length === 0;
+    renderMulti(q, body);
+    fixedBottom.style.display = 'block';
+    const btn = document.getElementById('btn-continue');
+    const savedArr = Array.isArray(answers[idx]) ? answers[idx] : [];
+    btn.disabled = savedArr.length === 0;
+    btn.textContent = 'Continue →';
+    btn.onclick = pickMulti;
   }
-}
 
-function renderRadio(q) {
-  let html = `<h1 class="q-title">${q.question}</h1>`;
-  if (q.description) html += `<p class="q-desc">${q.description}</p>`;
-  html += `<div class="answers">`;
-  q.answers.forEach((a, i) => {
-    const sel = answers[current] === a ? 'selected' : '';
-    html += `<button class="answer-btn ${sel}" data-i="${i}">${a}</button>`;
-  });
-  html += `</div>`;
-  area.innerHTML = html;
-
-  area.querySelectorAll('.answer-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      if (advancing) return;
-      const i = parseInt(btn.dataset.i);
-      answers[current] = q.answers[i];
-      area.querySelectorAll('.answer-btn').forEach(b => b.classList.remove('selected'));
-      btn.classList.add('selected');
-      advancing = true;
-      setTimeout(goNext, 300);
-    });
+  // animate
+  body.querySelectorAll('.fu').forEach((el, i) => {
+    el.style.animationDelay = (i * 0.05) + 's';
   });
 }
 
-function renderSelect(q) {
-  let html = `<h1 class="q-title">${q.question}</h1>`;
-  if (q.description) html += `<p class="q-desc">${q.description}</p>`;
-  html += `<div class="answers">`;
-  q.answers.forEach((a, i) => {
-    const sel = answers[current].includes(a) ? 'selected' : '';
-    html += `<button class="answer-btn ${sel}" data-i="${i}">${a}</button>`;
-  });
-  html += `</div>`;
-  area.innerHTML = html;
-
-  area.querySelectorAll('.answer-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const val = q.answers[parseInt(btn.dataset.i)];
-      const arr = answers[current];
-      const pos = arr.indexOf(val);
-      if (pos === -1) arr.push(val); else arr.splice(pos, 1);
-      btn.classList.toggle('selected', arr.includes(val));
-      nextBtn.disabled = arr.length === 0;
-    });
-  });
+function renderSlide(q, body) {
+  const imgs = SLIDE_IMGS[q.imgQuery] || [];
+  const imgSrc = randFrom(imgs) || '';
+  body.innerHTML = `
+    <div class="slide-wrap fu">
+      <div class="slide-card">
+        ${imgSrc ? `<img class="slide-img" src="${imgSrc}" alt="" loading="lazy">` : ''}
+        <div class="slide-content">
+          <h2 class="slide-title">${q.title}</h2>
+          <p class="slide-text">${q.text}</p>
+        </div>
+      </div>
+    </div>`;
 }
 
-function renderInfo(q) {
-  let html = '';
-  if (q.text1) html += `<p class="info-text">${q.text1}</p>`;
-  if (q.text2) html += `<p class="info-text strong">${q.text2}</p>`;
-  if (q.image) html += `<img class="info-img" src="${q.image}" alt="" loading="lazy">`;
-  if (q.text3) html += `<p class="info-text">${q.text3}</p>`;
-  if (q.text4) html += `<p class="info-text" style="margin-top:12px">${q.text4}</p>`;
-  area.innerHTML = html;
+function renderSingle(q, body) {
+  const saved = answers[idx];
+  const opts = q.opts.map((o, i) => {
+    const isSel = saved === i;
+    return `<button class="opt fu${isSel ? ' selected' : ''}" onclick="pickSingle(this,${i})">${o}</button>`;
+  }).join('');
+  body.innerHTML = `
+    <div class="q-wrap">
+      <div class="q-text fu">${q.q}</div>
+      <div class="options-list">${opts}</div>
+    </div>`;
 }
 
-// ── NAVIGATION ───────────────────────────────────────────
-function goNext() {
-  if (current < TOTAL - 1) {
-    current++;
-    render();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  } else {
-    showLoading();
-  }
+function renderMulti(q, body) {
+  const savedArr = Array.isArray(answers[idx]) ? answers[idx] : [];
+  const opts = q.opts.map((o, i) => {
+    const isSel = savedArr.includes(i);
+    return `<button class="opt multi fu${isSel ? ' selected' : ''}" onclick="toggleMulti(this,${i})">
+      <span class="opt-check"></span>${o}
+    </button>`;
+  }).join('');
+  body.innerHTML = `
+    <div class="q-wrap">
+      <div class="q-text fu">${q.q}</div>
+      <div class="options-list">${opts}</div>
+    </div>`;
+  selectedOptions = [...savedArr];
+}
+
+/* ═══════════════════════════════════════
+   INTERACTIONS
+═══════════════════════════════════════ */
+function pickSingle(btn, i) {
+  const list = btn.closest('.options-list');
+  list.querySelectorAll('.opt').forEach(b => { b.classList.remove('selected','flash'); b.style.pointerEvents='none'; });
+  btn.classList.add('flash');
+  answers[idx] = i;
+  setTimeout(next, 360);
+}
+
+function toggleMulti(btn, i) {
+  btn.classList.toggle('selected');
+  if (btn.classList.contains('selected')) selectedOptions.push(i);
+  else selectedOptions = selectedOptions.filter(x => x !== i);
+  document.getElementById('btn-continue').disabled = selectedOptions.length === 0;
+  answers[idx] = [...selectedOptions];
+}
+
+function pickMulti() {
+  answers[idx] = [...selectedOptions];
+  next();
+}
+
+function handleContinue() {
+  // used for slides — bound via onclick in renderQuestion
+}
+
+function next() {
+  idx++;
+  if (idx >= POOL.length) { startLoading(); return; }
+  transition(renderQuestion);
 }
 
 function goBack() {
-  if (current > 0) {
-    current--;
-    render();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  } else {
-    // back from first quiz question → return to intro
-    document.getElementById('quiz-section').style.display = 'none';
+  if (idx <= 1) {
+    idx = 0;
+    show('landing');
     document.getElementById('progress-wrap').style.display = 'none';
-    nextWrap.style.display = 'none';
-    document.getElementById('intro-section').style.display = 'block';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.getElementById('fixed-bottom').style.display = 'none';
+    renderLandingQuestion();
+    return;
   }
+  idx--;
+  transition(renderQuestion);
 }
 
-backBtn.addEventListener('click', goBack);
-nextBtn.addEventListener('click', goNext);
+function transition(fn) {
+  const body = document.getElementById('quiz-body');
+  body.style.transition = 'opacity 0.16s, transform 0.16s';
+  body.style.opacity = '0';
+  body.style.transform = 'translateY(12px)';
+  setTimeout(() => {
+    body.style.transition = '';
+    body.style.opacity = '';
+    body.style.transform = '';
+    fn();
+  }, 200);
+}
 
-// ── LOADING SCREEN ───────────────────────────────────────
-function showLoading() {
-  document.getElementById('quiz-section').style.display = 'none';
-  document.getElementById('progress-wrap').style.display = 'none';
-  nextWrap.style.display = 'none';
+/* ═══════════════════════════════════════
+   LOADING
+═══════════════════════════════════════ */
+function startLoading() {
+  document.getElementById('progress-fill').style.width = '100%';
+  document.getElementById('fixed-bottom').style.display = 'none';
+  show('loading');
 
-  const screen = document.getElementById('loading-screen');
-  const arc    = document.getElementById('circle-arc');
-  const pctNum = document.getElementById('pct-num');
-  const check1 = document.getElementById('check-1');
-  const check2 = document.getElementById('check-2');
-  const check3 = document.getElementById('check-3');
+  const arc = document.getElementById('circle-arc');
+  const pctEl = document.getElementById('pct-num');
+  const checks = ['check-1','check-2','check-3','check-4'];
+  const checkTimes = [2200, 4200, 6200, 7800];
 
-  screen.classList.add('active');
-
+  // Animate circle
   let pct = 0;
-  const STEP = 100 / (4000 / 50);
+  const iv = setInterval(() => {
+    pct = Math.min(pct + 1, 100);
+    pctEl.textContent = pct;
+    arc.style.strokeDashoffset = CIRCUMFERENCE - (CIRCUMFERENCE * pct / 100);
+    if (pct >= 100) clearInterval(iv);
+  }, 90);
 
-  const timer = setInterval(() => {
-    pct = Math.min(pct + STEP, 100);
-    arc.style.strokeDashoffset = CIRCUMFERENCE * (1 - pct / 100);
-    pctNum.textContent = Math.round(pct);
+  // Check items
+  checkTimes.forEach((t, i) => {
+    setTimeout(() => {
+      document.getElementById(checks[i]).classList.add('done');
+    }, t);
+  });
 
-    if (pct >= 33)  check1.classList.add('done');
-    if (pct >= 66)  check2.classList.add('done');
-    if (pct >= 100) {
-      check3.classList.add('done');
-      clearInterval(timer);
-      setTimeout(() => {
-        window.location.href = 'https://happypaws-sepia.vercel.app/checkout.html';
-      }, 400);
-    }
-  }, 50);
+  // Redirect after loading
+  setTimeout(() => {
+    window.location.href = 'https://happypaws-sepia.vercel.app/checkout.html';
+  }, 9500);
+}
+
+function restartQuiz() {
+  answers = new Array(POOL.length).fill(undefined);
+  idx = 0;
+  show('landing');
+  document.getElementById('progress-wrap').style.display = 'none';
+  document.getElementById('fixed-bottom').style.display = 'none';
+  document.getElementById('progress-fill').style.width = '0%';
+  renderLandingQuestion();
+}
+
+/* ═══════════════════════════════════════
+   HELPERS
+═══════════════════════════════════════ */
+function show(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  const el = document.getElementById(id);
+  if (el) el.classList.add('active');
+  window.scrollTo(0, 0);
 }
 </script>
 </body>
