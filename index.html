@@ -1,1121 +1,1007 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Free Skin Assessment</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Georgia:ital,wght@0,400;0,700;1,400&family=Times+New+Roman:wght@400;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Skin Quiz – Dr. Novak</title>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="180feb31-84e0-4773-993f-a76eb99a03b0"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-:root {
-  --blue: #1A3A5C;
-  --blue2: #0F2740;
-  --blue-light: #2A5080;
-  --blue-pale: #E8EFF6;
-  --blue-border: #C5D5E8;
-  --red: #C0392B;
-  --white: #ffffff;
-  --off: #F7F7F7;
-  --gray: #888;
-  --gray2: #555;
-  --text: #1A1A1A;
-  --border: 1px solid #CCCCCC;
-  --max-w: 600px;
-  --serif: Georgia, 'Times New Roman', Times, serif;
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --white:#ffffff;
+  --off:#f9f7f4;
+  --black:#0a0a0a;
+  --gray:#6b6b6b;
+  --light:#e8e4de;
+  --accent:#1a472a;
+  --accent-light:#edf4ef;
+  --red:#c0392b;
+  --red-light:#fdf0ef;
+  --gold:#b8860b;
+  --radius:14px;
+  --shadow:0 4px 32px rgba(0,0,0,0.08);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--white);
+  color:var(--black);
+  min-height:100vh;
+  overflow-x:hidden;
 }
 
-html, body {
-  height: 100%;
-  font-family: var(--serif);
-  background: var(--white);
-  color: var(--text);
-  -webkit-font-smoothing: antialiased;
-  overscroll-behavior: none;
-  font-size: 16px;
-  line-height: 1.6;
-}
+/* SCREENS */
+.screen{display:none;min-height:100vh;animation:fadeIn 0.4s ease}
+.screen.active{display:flex}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 
-/* ── SCREENS ── */
-.screen { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; overflow-y: auto; background: var(--white); }
-.screen.active { display: block; }
-#quiz.active { display: flex; flex-direction: column; overflow: hidden; }
-
-/* ── TOP BAR ── */
-.topbar {
-  background: var(--blue);
-  padding: 10px 24px;
-  text-align: center;
+/* ── INTRO ── */
+#intro{
+  flex-direction:column;
+  align-items:center;
+  background:var(--white);
+  padding:0;
 }
-.topbar-text {
-  color: var(--white);
-  font-size: 13px;
-  letter-spacing: 0.03em;
+.intro-body{
+  width:100%;
+  max-width:520px;
+  padding:28px 24px 56px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  gap:18px;
 }
-
-/* ── LANDING ── */
-.land-wrap {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 32px 24px 60px;
+.intro-img{
+  width:100%;
+  aspect-ratio:1/1;
+  overflow:hidden;
+  border-radius:4px;
 }
-
-.land-title {
-  font-size: clamp(24px, 5.5vw, 38px);
-  font-weight: 700;
-  color: var(--blue2);
-  line-height: 1.2;
-  margin-bottom: 14px;
+.intro-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center top;
+  display:block;
 }
-.land-sub {
-  font-size: 16px;
-  color: var(--gray2);
-  line-height: 1.7;
-  margin-bottom: 24px;
+.dr-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:var(--accent-light);
+  border:1px solid #c5ddc8;
+  border-radius:40px;
+  padding:6px 16px;
+  font-size:13px;
+  font-weight:500;
+  color:var(--accent);
 }
-
-/* divider */
-.divider {
-  border: none;
-  border-top: 1px solid #DDD;
-  margin: 20px 0;
+.dr-badge svg{width:16px;height:16px;fill:var(--accent)}
+.intro-title{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(28px,6vw,40px);
+  line-height:1.18;
+  color:var(--black);
 }
-
-/* Doctor row — simple, no card */
-.dr-row {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 16px 0;
-  border-top: 1px solid #DDD;
-  border-bottom: 1px solid #DDD;
-  margin-bottom: 24px;
+.intro-title em{font-style:italic;color:var(--accent)}
+.intro-sub{
+  font-size:16px;
+  line-height:1.65;
+  color:var(--black);
+  max-width:440px;
 }
-.dr-photo {
-  width: 60px; height: 60px;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: top;
-  flex-shrink: 0;
-  border: 2px solid var(--blue-border);
-  background: #eee;
+.intro-sub strong{color:var(--red)}
+.warning-box{
+  width:100%;
+  background:var(--red-light);
+  border:1px solid #f5c6c3;
+  border-radius:var(--radius);
+  padding:16px 20px;
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  text-align:left;
 }
-.dr-name { font-size: 15px; font-weight: 700; color: var(--blue2); margin-bottom: 2px; }
-.dr-cred { font-size: 13px; color: var(--gray); font-style: italic; }
-
-/* blue info box */
-.info-box {
-  background: var(--blue-pale);
-  border-left: 4px solid var(--blue);
-  padding: 14px 18px;
-  margin-bottom: 24px;
-  font-size: 14.5px;
-  color: var(--blue2);
-  line-height: 1.65;
+.warning-box svg{width:20px;height:20px;flex-shrink:0;margin-top:1px;fill:var(--red)}
+.warning-box p{font-size:14px;line-height:1.55;color:#8b2020}
+.warning-box strong{color:var(--red)}
+.trust-row{
+  display:flex;
+  gap:24px;
+  flex-wrap:wrap;
+  justify-content:center;
 }
-
-/* CTA */
-.btn-start {
-  display: block;
-  width: 100%;
-  background: var(--blue);
-  color: var(--white);
-  border: none;
-  font-family: var(--serif);
-  font-size: 18px;
-  font-weight: 700;
-  padding: 16px 24px;
-  cursor: pointer;
-  margin-bottom: 10px;
-  text-align: center;
-  transition: background 0.15s;
-  -webkit-tap-highlight-color: transparent;
+.trust-item{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:4px;
 }
-.btn-start:active { background: var(--blue2); }
-.btn-note { font-size: 12px; color: var(--gray); text-align: center; font-style: italic; }
-
-/* social proof */
-.sp-row {
-  margin-top: 20px;
-  padding-top: 16px;
-  border-top: 1px solid #DDD;
-  font-size: 13px;
-  color: var(--gray2);
-  text-align: center;
+.trust-num{font-family:'DM Serif Display',serif;font-size:22px;color:var(--accent)}
+.trust-label{font-size:12px;color:var(--gray);text-align:center}
+.btn-primary{
+  width:100%;
+  max-width:400px;
+  background:var(--accent);
+  color:var(--white);
+  border:none;
+  border-radius:var(--radius);
+  padding:18px 32px;
+  font-family:'DM Sans',sans-serif;
+  font-size:17px;
+  font-weight:600;
+  cursor:pointer;
+  transition:all 0.2s;
+  letter-spacing:0.01em;
 }
-.sp-row strong { color: var(--text); }
+.btn-primary:hover{background:#143d20;transform:translateY(-1px);box-shadow:0 8px 24px rgba(26,71,42,0.25)}
+.btn-primary:active{transform:translateY(0)}
+.intro-disclaimer{font-size:14px;color:var(--gray);max-width:360px;line-height:1.5}
+.intro-disclaimer strong{color:var(--black)}
 
 /* ── QUIZ ── */
-.quiz-topbar {
-  background: var(--blue);
-  padding: 8px 20px;
-  text-align: center;
-  flex-shrink: 0;
+#quiz{
+  flex-direction:column;
+  background:var(--off);
+  padding:0;
 }
-.quiz-topbar-text { color: rgba(255,255,255,0.8); font-size: 12px; letter-spacing: 0.04em; }
+.quiz-header{
+  width:100%;
+  background:var(--white);
+  padding:16px 24px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  border-bottom:1px solid var(--light);
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+.quiz-logo{
+  font-family:'DM Serif Display',serif;
+  font-size:17px;
+  color:var(--accent);
+  white-space:nowrap;
+}
+.progress-wrap{flex:1}
+.progress-bar{
+  height:6px;
+  background:var(--light);
+  border-radius:3px;
+  overflow:hidden;
+}
+.progress-fill{
+  height:100%;
+  background:var(--accent);
+  border-radius:3px;
+  transition:width 0.4s ease;
+}
+.progress-label{font-size:12px;color:var(--gray);margin-bottom:5px}
+.quiz-body{
+  width:100%;
+  max-width:580px;
+  margin:0 auto;
+  padding:32px 20px 60px;
+  display:flex;
+  flex-direction:column;
+  gap:28px;
+}
+.q-card{
+  background:var(--white);
+  border-radius:var(--radius);
+  padding:28px 24px;
+  box-shadow:var(--shadow);
+}
+.q-step{font-size:12px;color:var(--gray);font-weight:500;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.05em}
+.q-text{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(19px,4vw,24px);
+  line-height:1.3;
+  margin-bottom:6px;
+}
+.q-note{font-size:13px;color:var(--gray);margin-bottom:20px;line-height:1.5}
 
-.quiz-header {
-  flex-shrink: 0;
-  padding: 14px 20px 10px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  max-width: var(--max-w);
-  width: 100%;
-  margin: 0 auto;
-  border-bottom: 1px solid #EEE;
+/* single / multi choice */
+.options-grid{display:flex;flex-direction:column;gap:10px}
+.options-grid.two-col{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
 }
-.btn-back {
-  display: flex;
-  align-items: center;
-  background: transparent;
-  border: var(--border);
-  cursor: pointer;
-  color: var(--gray2);
-  font-family: var(--serif);
-  font-size: 13px;
-  padding: 5px 12px;
-  -webkit-tap-highlight-color: transparent;
-  user-select: none;
-  flex-shrink: 0;
-  visibility: hidden;
+.opt{
+  border:1.5px solid var(--light);
+  border-radius:10px;
+  padding:13px 16px;
+  cursor:pointer;
+  transition:all 0.18s;
+  background:var(--white);
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:15px;
+  color:var(--black);
+  text-align:left;
 }
-.btn-back.visible { visibility: visible; }
-.btn-back:active { opacity: 0.6; }
+.opt:hover{border-color:var(--accent);background:var(--accent-light)}
+.opt.selected{border-color:var(--accent);background:var(--accent-light);font-weight:500}
+.opt .check{
+  width:20px;height:20px;min-width:20px;
+  border-radius:50%;
+  border:2px solid var(--light);
+  display:flex;align-items:center;justify-content:center;
+  transition:all 0.18s;
+}
+.opt.selected .check{background:var(--accent);border-color:var(--accent)}
+.opt.selected .check::after{content:'✓';color:white;font-size:11px;font-weight:700}
+.opt-multi .check{border-radius:4px}
 
-.progress-track {
-  flex: 1;
-  height: 6px;
-  background: #E0E0E0;
-  border-radius: 3px;
-  overflow: hidden;
+/* text input */
+.q-input{
+  width:100%;
+  border:1.5px solid var(--light);
+  border-radius:10px;
+  padding:14px 16px;
+  font-family:'DM Sans',sans-serif;
+  font-size:16px;
+  color:var(--black);
+  background:var(--white);
+  transition:border 0.18s;
+  resize:vertical;
+  min-height:80px;
 }
-.progress-fill {
-  height: 6px;
-  background: var(--blue);
-  border-radius: 3px;
-  transition: width 0.4s ease;
-  width: 2%;
-}
-.q-counter {
-  font-size: 13px;
-  color: var(--gray);
-  white-space: nowrap;
-  flex-shrink: 0;
-  font-style: italic;
-}
+.q-input:focus{outline:none;border-color:var(--accent)}
 
-/* quiz body */
-.quiz-body {
-  flex: 1;
-  overflow: hidden;
-  padding: 20px 20px 0;
-  max-width: var(--max-w);
-  margin: 0 auto;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+.btn-next{
+  width:100%;
+  background:var(--accent);
+  color:var(--white);
+  border:none;
+  border-radius:var(--radius);
+  padding:16px;
+  font-family:'DM Sans',sans-serif;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  transition:all 0.2s;
+  opacity:0.4;
+  pointer-events:none;
 }
-.q-wrap { display: flex; flex-direction: column; flex: 1; }
-.q-text {
-  font-size: clamp(17px, 4vw, 22px);
-  font-weight: 700;
-  color: var(--blue2);
-  line-height: 1.3;
-  margin-bottom: 20px;
-  flex-shrink: 0;
-}
-.options-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  flex: 1;
-  overflow: hidden;
-}
-.opt {
-  border: 1px solid #BBBBBB;
-  padding: 13px 16px;
-  background: var(--white);
-  font-family: var(--serif);
-  font-size: 15px;
-  color: var(--text);
-  cursor: pointer;
-  text-align: left;
-  transition: border-color 0.12s, background 0.12s;
-  line-height: 1.4;
-  -webkit-tap-highlight-color: transparent;
-  user-select: none;
-  flex: 0 0 auto;
-  min-height: 50px;
-  display: flex;
-  align-items: center;
-}
-.options-list.many .opt { font-size: 14px; min-height: 44px; }
-.opt:hover { border-color: var(--blue); }
-.opt.selected, .opt.flash {
-  border-color: var(--blue);
-  background: var(--blue-pale);
-  color: var(--blue2);
-  font-weight: 700;
-}
-.opt.multi {
-  padding-left: 48px;
-  position: relative;
-}
-.opt-check {
-  position: absolute;
-  left: 14px; top: 50%;
-  transform: translateY(-50%);
-  width: 20px; height: 20px;
-  border: 1.5px solid #BBBBBB;
-  background: var(--white);
-  display: flex; align-items: center; justify-content: center;
-  pointer-events: none;
-  flex-shrink: 0;
-}
-.opt.multi.selected .opt-check {
-  border-color: var(--blue);
-  background: var(--blue);
-}
-.opt.multi.selected .opt-check::after {
-  content: '';
-  display: block;
-  width: 5px; height: 9px;
-  border: 2px solid var(--white);
-  border-top: none; border-left: none;
-  transform: rotate(45deg) translateY(-1px);
-}
-.opt.multi:not(.selected) { border-color: #BBBBBB; background: var(--white); color: var(--text); font-weight: 400; }
-
-/* slide */
-.slide-wrap { display: flex; flex-direction: column; flex: 1; }
-.slide-card { flex: 1; background: var(--white); overflow: hidden; display: flex; flex-direction: column; border: 1px solid #DDD; }
-.slide-img { width: 100%; height: 160px; object-fit: cover; display: block; background: #EEE; flex-shrink: 0; filter: saturate(0.85); }
-.slide-content { padding: 18px 20px 20px; flex: 1; overflow-y: auto; }
-.slide-ref { font-size: 11px; color: var(--gray); font-style: italic; margin-bottom: 6px; }
-.slide-title { font-size: clamp(16px, 3.5vw, 20px); font-weight: 700; color: var(--blue2); margin-bottom: 10px; line-height: 1.3; }
-.slide-text { font-size: 14px; color: var(--gray2); line-height: 1.75; }
-.slide-hl { font-weight: 700; color: var(--blue2); }
-
-/* fixed bottom */
-.fixed-bottom {
-  flex-shrink: 0;
-  padding: 12px 20px 18px;
-  background: var(--white);
-  border-top: 1px solid #DDD;
-  display: none;
-  width: 100%;
-  max-width: var(--max-w);
-  margin: 0 auto;
-}
-.btn-continue {
-  background: var(--blue);
-  color: var(--white);
-  border: none;
-  font-family: var(--serif);
-  font-size: 16px;
-  font-weight: 700;
-  padding: 14px 32px;
-  cursor: pointer;
-  width: 100%;
-  transition: background 0.15s;
-  -webkit-tap-highlight-color: transparent;
-}
-.btn-continue:active:not(:disabled) { background: var(--blue2); }
-.btn-continue:disabled { opacity: 0.35; cursor: not-allowed; }
+.btn-next.enabled{opacity:1;pointer-events:auto}
+.btn-next.enabled:hover{background:#143d20;transform:translateY(-1px)}
 
 /* ── LOADING ── */
-.loading-inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 60px 24px;
-  text-align: center;
+#loading{
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  background:var(--white);
+  padding:40px 24px;
+  text-align:center;
+  gap:32px;
 }
-.loading-title {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--blue2);
-  margin-bottom: 36px;
+.loading-icon{
+  width:80px;height:80px;
+  border-radius:50%;
+  background:var(--accent-light);
+  display:flex;align-items:center;justify-content:center;
+  animation:pulse 2s infinite;
 }
-.circle-wrap {
-  position: relative;
-  width: 140px; height: 140px;
-  margin: 0 auto 36px;
+.loading-icon svg{width:40px;height:40px;fill:var(--accent)}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.loading-title{
+  font-family:'DM Serif Display',serif;
+  font-size:26px;
+  color:var(--black);
 }
-.circle-wrap svg { transform: rotate(-90deg); }
-.circle-bg { fill: none; stroke: #E0E0E0; stroke-width: 10; }
-.circle-arc {
-  fill: none;
-  stroke: var(--blue);
-  stroke-width: 10;
-  stroke-linecap: butt;
-  stroke-dasharray: 439.82;
-  stroke-dashoffset: 439.82;
-  transition: stroke-dashoffset 0.3s linear;
+.loading-sub{font-size:15px;color:var(--gray);max-width:320px;line-height:1.6}
+.loading-steps{display:flex;flex-direction:column;gap:12px;width:100%;max-width:340px}
+.loading-step{
+  display:flex;align-items:center;gap:12px;
+  background:var(--off);
+  border-radius:10px;
+  padding:12px 16px;
+  font-size:14px;
+  color:var(--gray);
+  opacity:0;
+  transform:translateX(-10px);
+  transition:all 0.4s;
 }
-.circle-pct {
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 30px; font-weight: 700; color: var(--blue2);
+.loading-step.show{opacity:1;transform:translateX(0)}
+.loading-step.done{color:var(--accent);font-weight:500}
+.step-dot{
+  width:8px;height:8px;min-width:8px;
+  border-radius:50%;
+  background:var(--light);
+  transition:background 0.3s;
 }
-.check-list { text-align: left; max-width: 320px; margin: 0 auto; }
-.check-item {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 12px 0;
-  border-bottom: 1px solid #EEE;
-  font-size: 14px; color: var(--gray2);
-}
-.check-item:last-child { border-bottom: none; }
-.check-box {
-  width: 22px; height: 22px;
-  border: 1.5px solid #CCC;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-  transition: all 0.25s;
-}
-.check-box.done { background: var(--blue); border-color: var(--blue); }
-.check-box svg { display: none; }
-.check-box.done svg { display: block; }
+.loading-step.done .step-dot{background:var(--accent)}
+.loading-bar-wrap{width:100%;max-width:340px}
+.loading-bar{height:6px;background:var(--light);border-radius:3px;overflow:hidden}
+.loading-fill{height:100%;background:var(--accent);border-radius:3px;width:0%;transition:width 0.6s ease}
+.loading-pct{font-size:13px;color:var(--gray);margin-top:8px;text-align:right}
 
-/* ── RESULT / ADVERTORIAL ── */
-.result-wrap {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0 0 80px;
+/* ── RESULTS / SALES PAGE ── */
+#results{
+  flex-direction:column;
+  background:var(--white);
+  padding:0;
 }
-
-/* Top result bar */
-.result-topbar {
-  background: var(--blue);
-  padding: 14px 24px;
-  text-align: center;
+.results-hero{
+  background:var(--accent);
+  padding:40px 24px 48px;
+  text-align:center;
+  color:var(--white);
 }
-.result-topbar-text {
-  color: var(--white);
-  font-size: 14px;
+.results-hero-label{
+  font-size:13px;font-weight:500;
+  opacity:0.75;letter-spacing:0.06em;text-transform:uppercase;
+  margin-bottom:12px;
 }
-
-/* advertorial header */
-.adv-header {
-  padding: 28px 24px 20px;
-  border-bottom: 3px double #CCC;
+.results-hero-title{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(26px,5vw,36px);
+  line-height:1.2;
+  margin-bottom:12px;
 }
-.adv-kicker {
-  font-size: 11px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--gray);
-  margin-bottom: 10px;
-}
-.adv-title {
-  font-size: clamp(22px, 5.5vw, 34px);
-  font-weight: 700;
-  color: var(--text);
-  line-height: 1.2;
-  margin-bottom: 10px;
-}
-.adv-title em { color: var(--red); font-style: italic; }
-.adv-deck {
-  font-size: 16px;
-  color: var(--gray2);
-  line-height: 1.7;
-  font-style: italic;
+.results-hero-title em{font-style:italic;opacity:0.85}
+.results-hero-sub{font-size:15px;line-height:1.6;opacity:0.85;max-width:420px;margin:0 auto}
+.results-body{
+  max-width:580px;
+  margin:0 auto;
+  padding:36px 20px 80px;
+  display:flex;
+  flex-direction:column;
+  gap:32px;
+  width:100%;
 }
 
-/* doctor byline */
-.byline {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 24px;
-  border-bottom: 1px solid #DDD;
-  background: var(--off);
+/* skin score */
+.score-card{
+  background:var(--off);
+  border-radius:var(--radius);
+  padding:24px;
+  display:flex;
+  align-items:center;
+  gap:20px;
 }
-.byline-photo {
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: top;
-  flex-shrink: 0;
-  border: 1px solid #CCC;
-  background: #EEE;
+.score-circle{
+  width:80px;height:80px;min-width:80px;
+  border-radius:50%;
+  background:var(--white);
+  border:3px solid var(--accent);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
 }
-.byline-text { font-size: 13px; color: var(--gray2); }
-.byline-text strong { color: var(--text); font-size: 14px; display: block; margin-bottom: 1px; }
+.score-num{font-family:'DM Serif Display',serif;font-size:26px;color:var(--accent);line-height:1}
+.score-label{font-size:10px;color:var(--gray);text-transform:uppercase;letter-spacing:0.05em}
+.score-info h3{font-size:16px;font-weight:600;margin-bottom:4px}
+.score-info p{font-size:14px;color:var(--gray);line-height:1.5}
 
-/* advertorial body */
-.adv-body {
-  padding: 24px 24px;
-  border-bottom: 1px solid #DDD;
+/* issues */
+.issues-title{font-family:'DM Serif Display',serif;font-size:20px;margin-bottom:16px}
+.issue-item{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:16px 0;
+  border-bottom:1px solid var(--light);
 }
-.adv-body p {
-  font-size: 15.5px;
-  color: var(--text);
-  line-height: 1.78;
-  margin-bottom: 16px;
+.issue-item:last-child{border-bottom:none}
+.issue-icon{
+  width:36px;height:36px;min-width:36px;
+  border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;
 }
-.adv-body p:last-child { margin-bottom: 0; }
-.adv-body strong { font-weight: 700; }
-.adv-body em { font-style: italic; }
+.issue-icon.red{background:var(--red-light)}
+.issue-icon.amber{background:#fef9e7}
+.issue-text h4{font-size:15px;font-weight:600;margin-bottom:3px}
+.issue-text p{font-size:13px;color:var(--gray);line-height:1.5}
 
-/* pull quote */
-.pull-quote {
-  margin: 0 24px 0;
-  padding: 18px 20px;
-  border-left: 5px solid var(--blue);
-  background: var(--blue-pale);
-  font-size: 17px;
-  font-style: italic;
-  color: var(--blue2);
-  line-height: 1.6;
+/* fear section */
+.fear-box{
+  background:var(--red-light);
+  border:1px solid #f5c6c3;
+  border-radius:var(--radius);
+  padding:24px;
 }
+.fear-box h3{
+  font-family:'DM Serif Display',serif;
+  font-size:19px;color:var(--red);
+  margin-bottom:12px;
+  display:flex;align-items:center;gap:8px;
+}
+.fear-box ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.fear-box li{
+  display:flex;gap:10px;align-items:flex-start;
+  font-size:14px;line-height:1.55;color:#7a1f1f;
+}
+.fear-box li::before{content:'⚠';flex-shrink:0;margin-top:1px}
 
-/* result box */
-.result-box {
-  margin: 0;
-  padding: 20px 24px;
-  background: var(--off);
-  border-top: 1px solid #DDD;
-  border-bottom: 1px solid #DDD;
+/* benefits */
+.benefits-title{font-family:'DM Serif Display',serif;font-size:20px;margin-bottom:16px}
+.benefit-item{
+  display:flex;gap:12px;align-items:flex-start;
+  padding:14px 0;
+  border-bottom:1px solid var(--light);
 }
-.result-box-title {
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--blue);
-  margin-bottom: 14px;
-}
-.result-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 0;
-  border-bottom: 1px solid #DDD;
-  font-size: 14px;
-}
-.result-row:last-child { border-bottom: none; }
-.result-label { color: var(--gray2); }
-.result-value { font-weight: 700; }
-.result-value.bad { color: var(--red); }
-.result-value.ok { color: #2A7A3A; }
-.result-value.warn { color: #B06800; }
+.benefit-item:last-child{border-bottom:none}
+.benefit-item .icon{font-size:20px;margin-top:1px}
+.benefit-item h4{font-size:15px;font-weight:600;margin-bottom:3px}
+.benefit-item p{font-size:13px;color:var(--gray);line-height:1.5}
 
-/* product section */
-.product-section {
-  padding: 24px 24px;
-  border-bottom: 1px solid #DDD;
+/* product reveal */
+.product-reveal{
+  background:var(--off);
+  border-radius:var(--radius);
+  padding:28px 24px;
+  text-align:center;
 }
-.product-section-title {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--blue2);
-  margin-bottom: 6px;
-  line-height: 1.2;
+.product-reveal h3{
+  font-family:'DM Serif Display',serif;
+  font-size:22px;margin-bottom:6px;
 }
-.product-section-sub {
-  font-size: 15px;
-  color: var(--gray2);
-  line-height: 1.65;
-  margin-bottom: 20px;
-  font-style: italic;
+.product-reveal p{font-size:14px;color:var(--gray);margin-bottom:20px;line-height:1.5}
+.product-price{
+  display:flex;align-items:baseline;gap:8px;
+  justify-content:center;margin-bottom:6px;
 }
-.benefit-list { list-style: none; margin-bottom: 20px; }
-.benefit-list li {
-  padding: 10px 0;
-  border-bottom: 1px solid #EEE;
-  font-size: 15px;
-  color: var(--text);
-  display: flex;
-  gap: 12px;
-  line-height: 1.5;
+.price-main{font-family:'DM Serif Display',serif;font-size:40px;color:var(--accent)}
+.price-old{font-size:18px;color:#bbb;text-decoration:line-through}
+.price-save{font-size:13px;color:var(--red);font-weight:600}
+.price-note{font-size:12px;color:var(--gray);margin-bottom:20px}
+.btn-checkout{
+  width:100%;
+  background:var(--accent);
+  color:var(--white);
+  border:none;
+  border-radius:var(--radius);
+  padding:20px 32px;
+  font-family:'DM Sans',sans-serif;
+  font-size:18px;
+  font-weight:600;
+  cursor:pointer;
+  transition:all 0.2s;
+  letter-spacing:0.01em;
+  display:block;
+  text-decoration:none;
+  text-align:center;
 }
-.benefit-list li:last-child { border-bottom: none; }
-.b-check { color: var(--blue); font-weight: 700; font-size: 15px; flex-shrink: 0; }
-.b-text strong { font-weight: 700; }
-
-/* before/after */
-.before-after {
-  border: 1px solid #DDD;
-  margin-bottom: 20px;
+.btn-checkout:hover{background:#143d20;transform:translateY(-1px);box-shadow:0 10px 28px rgba(26,71,42,0.3)}
+.guarantee{
+  display:flex;align-items:center;gap:8px;
+  justify-content:center;
+  font-size:13px;color:var(--gray);
+  margin-top:14px;
 }
-.ba-head {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border-bottom: 1px solid #DDD;
-}
-.ba-head-cell {
-  padding: 10px 14px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-align: center;
-  color: var(--gray2);
-}
-.ba-head-cell:first-child { border-right: 1px solid #DDD; }
-.ba-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border-bottom: 1px solid #EEE;
-  font-size: 14px;
-}
-.ba-row:last-child { border-bottom: none; }
-.ba-cell {
-  padding: 10px 14px;
-  line-height: 1.45;
-  color: var(--gray2);
-}
-.ba-cell:first-child { border-right: 1px solid #EEE; }
-.ba-cell.after { color: #2A7A3A; font-weight: 600; }
-.ba-cell.before { color: var(--red); }
 
 /* testimonials */
-.testimonials-section {
-  padding: 20px 24px;
-  border-bottom: 1px solid #DDD;
-  background: var(--off);
+.testimonials-title{font-family:'DM Serif Display',serif;font-size:20px;margin-bottom:16px}
+.testimonial{
+  background:var(--off);
+  border-radius:var(--radius);
+  padding:20px;
+  margin-bottom:12px;
 }
-.test-item {
-  padding: 16px 0;
-  border-bottom: 1px solid #DDD;
-}
-.test-item:last-child { border-bottom: none; padding-bottom: 0; }
-.test-stars { color: #C4891A; font-size: 13px; margin-bottom: 6px; letter-spacing: 2px; }
-.test-text {
-  font-size: 15px;
-  font-style: italic;
-  color: var(--text);
-  line-height: 1.6;
-  margin-bottom: 8px;
-}
-.test-author { font-size: 12px; color: var(--gray); }
+.testimonial-stars{color:#f4a01c;font-size:14px;margin-bottom:8px}
+.testimonial-text{font-size:14px;line-height:1.6;color:var(--black);margin-bottom:10px;font-style:italic}
+.testimonial-author{font-size:13px;font-weight:600;color:var(--gray)}
 
-/* guarantee */
-.guarantee-section {
-  padding: 18px 24px;
-  border-bottom: 1px solid #DDD;
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
+/* FAQ */
+.faq-title{font-family:'DM Serif Display',serif;font-size:20px;margin-bottom:16px}
+.faq-item{border-bottom:1px solid var(--light);padding:14px 0}
+.faq-q{
+  font-size:15px;font-weight:500;cursor:pointer;
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
 }
-.guarantee-icon { font-size: 32px; flex-shrink: 0; }
-.guarantee-title { font-size: 16px; font-weight: 700; color: #2A7A3A; margin-bottom: 4px; }
-.guarantee-text { font-size: 13.5px; color: var(--gray2); line-height: 1.65; }
+.faq-q::after{content:'＋';font-size:18px;color:var(--gray);transition:transform 0.2s;flex-shrink:0}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-size:14px;color:var(--gray);line-height:1.6;max-height:0;overflow:hidden;transition:max-height 0.3s ease,padding 0.3s}
+.faq-item.open .faq-a{max-height:200px;padding-top:10px}
 
-/* CTA section */
-.cta-section {
-  padding: 24px 24px 32px;
+/* sticky CTA */
+.sticky-cta{
+  position:fixed;
+  bottom:0;left:0;right:0;
+  background:var(--white);
+  border-top:1px solid var(--light);
+  padding:14px 20px;
+  display:none;
+  z-index:100;
+  box-shadow:0 -4px 20px rgba(0,0,0,0.08);
 }
-.urgency-text {
-  font-size: 13px;
-  color: var(--red);
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 16px;
-  padding: 10px;
-  border: 1px solid #E0A0A0;
-  background: #FDF0F0;
+.sticky-cta.show{display:block}
+.sticky-cta a{
+  display:block;
+  width:100%;
+  max-width:480px;
+  margin:0 auto;
+  background:var(--accent);
+  color:var(--white);
+  border-radius:var(--radius);
+  padding:15px;
+  text-align:center;
+  font-size:16px;
+  font-weight:600;
+  text-decoration:none;
+  transition:all 0.2s;
 }
-.price-row {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-  margin-bottom: 4px;
-}
-.price-big {
-  font-size: 38px;
-  font-weight: 700;
-  color: var(--blue2);
-}
-.price-old {
-  font-size: 20px;
-  color: var(--gray);
-  text-decoration: line-through;
-}
-.price-save {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--red);
-}
-.price-note {
-  font-size: 13px;
-  color: var(--gray);
-  font-style: italic;
-  margin-bottom: 20px;
-}
-.btn-cta {
-  display: block;
-  width: 100%;
-  background: var(--blue);
-  color: var(--white);
-  border: none;
-  font-family: var(--serif);
-  font-size: 19px;
-  font-weight: 700;
-  padding: 18px 24px;
-  cursor: pointer;
-  text-align: center;
-  margin-bottom: 10px;
-  transition: background 0.15s;
-  -webkit-tap-highlight-color: transparent;
-  line-height: 1.25;
-}
-.btn-cta:active { background: var(--blue2); }
-.btn-cta small { display: block; font-size: 12px; font-weight: 400; margin-top: 3px; opacity: 0.85; font-style: italic; }
-.trust-row {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-top: 12px;
-}
-.trust-item {
-  font-size: 12px;
-  color: var(--gray);
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
+.sticky-cta a:hover{background:#143d20}
 
-/* ── ANIMATIONS ── */
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-.q-anim { animation: fadeIn 0.2s ease both; }
-
-@media (min-width: 640px) {
-  html, body { height: auto; }
-  .screen { position: static; display: none; min-height: 100vh; }
-  .screen.active { display: block; }
-  #quiz.active { display: flex; flex-direction: column; min-height: 100vh; }
-  .quiz-body { overflow-y: auto; flex: 1; }
-  .options-list { flex: 0 0 auto; }
-  .fixed-bottom { position: static; border-top: none; padding-top: 16px; }
-  .slide-img { height: 200px; }
-}
-@media (max-width: 380px) {
-  .q-text { font-size: 17px; }
-  .opt { font-size: 14px; min-height: 46px; }
-  .quiz-body { padding: 16px 16px 0; }
-  .fixed-bottom { padding: 10px 16px 14px; }
+/* RESPONSIVE */
+@media(max-width:480px){
+  .options-grid.two-col{grid-template-columns:1fr}
+  .score-card{flex-direction:column;text-align:center}
+  .trust-row{gap:16px}
 }
 </style>
 </head>
 <body>
 
-<!-- ───────── LANDING ───────── -->
-<div class="screen active" id="landing">
-  <div class="topbar">
-    <div class="topbar-text">Free Dermatological Skin Assessment — Results in 3 Minutes</div>
-  </div>
-  <div class="land-wrap">
-    <h1 class="land-title">Are you unknowingly damaging your skin every day?</h1>
-    <p class="land-sub">Most women don't realise that common skincare products — even those marketed as "gentle" — can silently break down the skin barrier and accelerate aging. A quick 14-question assessment can identify whether this is happening to you.</p>
-
-    <div class="dr-row">
-      <img class="dr-photo" id="land-img" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200&q=80" alt="Dr. Marta Novak">
-      <div>
-        <div class="dr-name">Dr. Marta Novak, MD</div>
-        <div class="dr-cred">Board-certified dermatologist · 17 years of clinical practice</div>
-      </div>
+<!-- ══════════════ INTRO ══════════════ -->
+<section id="intro" class="screen active">
+  <div class="intro-body">
+    <div class="intro-img">
+      <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=800&q=80" alt="Dr. Anna Novak, MD – Dermatologist"/>
     </div>
-
-    <div class="info-box">
-      <strong>What this assessment identifies:</strong> Based on your answers, the assessment reveals your skin barrier status, inflammation triggers, and the specific product ingredients that may be working against your skin — completely free of charge.
+    <div class="dr-badge">
+      <svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 1 1 0 10A5 5 0 0 1 12 2zm0 12c5.33 0 8 2.67 8 4v2H4v-2c0-1.33 2.67-4 8-4z"/></svg>
+      Dr. Anna Novak, MD · Board-Certified Dermatologist
     </div>
-
-    <button class="btn-start" onclick="startQuiz()">Begin Free Assessment →</button>
-    <p class="btn-note">14 questions · No email required · Immediate results</p>
-
-    <div class="sp-row">
-      <strong id="sp-count">68 women</strong> completed this assessment today
+    <h1 class="intro-title">Your Skin Is Sending <em>Warning Signs.</em> Are You Listening?</h1>
+    <p class="intro-sub"><strong>Most women over 25 are unknowingly accelerating their skin aging by 3–5 years</strong> through incorrect routines — and they won't notice until the damage is already visible. This quiz reveals exactly what's happening to your skin right now.</p>
+    <div class="trust-row">
+      <div class="trust-item"><span class="trust-num">14,000+</span><span class="trust-label">women helped</span></div>
+      <div class="trust-item"><span class="trust-num">15 yrs</span><span class="trust-label">clinical experience</span></div>
+      <div class="trust-item"><span class="trust-num">2 min</span><span class="trust-label">to your results</span></div>
     </div>
+    <button class="btn-primary" onclick="startQuiz()">Take the Free Skin Quiz →</button>
+    <p class="intro-disclaimer" id="todayCount">🟢 <strong>247 women</strong> took this quiz today</p>
   </div>
-</div>
+</section>
 
-<!-- ───────── QUIZ ───────── -->
-<div class="screen" id="quiz">
-  <div class="quiz-topbar">
-    <div class="quiz-topbar-text">Dermatological Skin Assessment</div>
-  </div>
+<!-- ══════════════ QUIZ ══════════════ -->
+<section id="quiz" class="screen">
   <div class="quiz-header">
-    <button class="btn-back" id="btn-back" onclick="goBack()">← Back</button>
-    <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
-    <div class="q-counter">Question <span id="q-num">1</span><span id="q-denom"> of 14</span></div>
-  </div>
-  <div class="quiz-body" id="quiz-body"></div>
-  <div class="fixed-bottom" id="fixed-bottom">
-    <button class="btn-continue" id="btn-continue" disabled>Continue →</button>
-  </div>
-</div>
-
-<!-- ───────── LOADING ───────── -->
-<div class="screen" id="loading">
-  <div class="topbar">
-    <div class="topbar-text">Analysing your answers…</div>
-  </div>
-  <div class="loading-inner">
-    <div class="loading-title">Evaluating your skin profile</div>
-    <div class="circle-wrap">
-      <svg width="140" height="140" viewBox="0 0 160 160">
-        <circle class="circle-bg" cx="80" cy="80" r="70"/>
-        <circle class="circle-arc" id="circle-arc" cx="80" cy="80" r="70"/>
-      </svg>
-      <div class="circle-pct"><span id="pct-num">0</span>%</div>
-    </div>
-    <div class="check-list">
-      <div class="check-item">
-        <span>Assessing skin barrier integrity</span>
-        <div class="check-box" id="check-1"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5L4.5 8.5L12 1" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      </div>
-      <div class="check-item">
-        <span>Identifying inflammation patterns</span>
-        <div class="check-box" id="check-2"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5L4.5 8.5L12 1" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      </div>
-      <div class="check-item">
-        <span>Matching to clinical protocol</span>
-        <div class="check-box" id="check-3"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5L4.5 8.5L12 1" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      </div>
-      <div class="check-item">
-        <span>Preparing your personalised plan</span>
-        <div class="check-box" id="check-4"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5L4.5 8.5L12 1" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      </div>
+    <div class="quiz-logo">Dr. Novak</div>
+    <div class="progress-wrap">
+      <div class="progress-label" id="progressLabel">Question 1 of 12</div>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:8%"></div></div>
     </div>
   </div>
-</div>
+  <div class="quiz-body" id="quizBody"></div>
+</section>
 
-<!-- ───────── RESULT / ADVERTORIAL ───────── -->
-<div class="screen" id="result">
-  <div class="result-wrap">
+<!-- ══════════════ LOADING ══════════════ -->
+<section id="loading" class="screen">
+  <div class="loading-icon">
+    <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.93V15a1 1 0 0 0-2 0v1.93A8 8 0 0 1 4.07 11H6a1 1 0 0 0 0-2H4.07A8 8 0 0 1 11 4.07V6a1 1 0 0 0 2 0V4.07A8 8 0 0 1 19.93 11H18a1 1 0 0 0 0 2h1.93A8 8 0 0 1 13 16.93z"/></svg>
+  </div>
+  <div>
+    <div class="loading-title">Analyzing Your Skin Profile…</div>
+    <p class="loading-sub">Our dermatology algorithm is building your personalized routine</p>
+  </div>
+  <div class="loading-steps" id="loadingSteps">
+    <div class="loading-step" id="ls1"><div class="step-dot"></div>Identifying skin type & damage pattern</div>
+    <div class="loading-step" id="ls2"><div class="step-dot"></div>Mapping your top 3 skin concerns</div>
+    <div class="loading-step" id="ls3"><div class="step-dot"></div>Cross-referencing clinical database</div>
+    <div class="loading-step" id="ls4"><div class="step-dot"></div>Building personalized routine</div>
+  </div>
+  <div class="loading-bar-wrap">
+    <div class="loading-bar"><div class="loading-fill" id="loadingFill"></div></div>
+    <div class="loading-pct" id="loadingPct">0%</div>
+  </div>
+</section>
 
-    <div class="result-topbar">
-      <div class="result-topbar-text">Your skin assessment is complete — please read carefully</div>
-    </div>
+<!-- ══════════════ RESULTS ══════════════ -->
+<section id="results" class="screen">
+  <div class="results-hero">
+    <div class="results-hero-label">Your Personalized Skin Report</div>
+    <h2 class="results-hero-title">Your Skin Needs <em>Urgent Attention</em> in 3 Areas</h2>
+    <p class="results-hero-sub">Based on your answers, Dr. Novak has identified specific patterns that are aging your skin faster than necessary.</p>
+  </div>
+  <div class="results-body">
 
-    <!-- Advertorial header -->
-    <div class="adv-header">
-      <div class="adv-kicker">Personalised Skin Report · Prepared by Dr. Novak Dermatology</div>
-      <h1 class="adv-title">Your skin is showing signs of <em>barrier disruption</em> — here is what that means and what to do about it</h1>
-      <p class="adv-deck">Based on your answers, your skin is experiencing a pattern seen in the majority of women who visit dermatology clinics — a problem caused not by age or genetics, but by the wrong products.</p>
-    </div>
-
-    <!-- Byline -->
-    <div class="byline">
-      <img class="byline-photo" id="result-dr-img" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200&q=80" alt="Dr. Novak">
-      <div class="byline-text">
-        <strong>Written by Dr. Marta Novak, MD</strong>
-        Board-certified dermatologist · Skin barrier & inflammation specialist
+    <!-- Skin Score -->
+    <div class="score-card">
+      <div class="score-circle">
+        <div class="score-num" id="skinScore">42</div>
+        <div class="score-label">/ 100</div>
+      </div>
+      <div class="score-info">
+        <h3>Your Skin Health Score</h3>
+        <p id="scoreDesc">Your skin barrier is compromised. Without intervention, visible aging will accelerate significantly over the next 12–18 months.</p>
       </div>
     </div>
 
-    <!-- Body text — advertorial style -->
-    <div class="adv-body">
-      <p>Every week in my clinic, I see the same pattern. A woman comes in frustrated. She has tried cleanser after cleanser, moisturiser after moisturiser — often expensive, always "dermatologist tested." Her skin keeps reacting: redness that won't settle, breakouts with no clear cause, tightness that gets worse despite applying more cream.</p>
-
-      <p>The cause is almost always the same thing: <strong>she has been unknowingly damaging her skin's protective barrier.</strong> And the products she is using to fix the problem are, in many cases, the very products making it worse.</p>
-
-      <p>The skin barrier is a thin protective layer — the outermost surface — that keeps moisture in and irritants out. When it is intact, skin looks calm, even, and hydrated. When it is disrupted, <strong>skin becomes reactive, inflamed, and visibly damaged over time.</strong> Crucially, barrier disruption does not always feel dramatic. It often starts with mild sensitivity, then progresses slowly — until one day the skin simply stops responding to anything.</p>
-    </div>
-
-    <!-- Pull quote -->
-    <div class="pull-quote">
-      "The barrier can be repaired. In most cases, it takes between 3 and 6 weeks of using the right formulations consistently. I have seen this happen hundreds of times in clinical practice."
-      <br><br><em style="font-size:13px; color: var(--blue); font-style:normal;">— Dr. Marta Novak, MD</em>
-    </div>
-
-    <!-- More body text -->
-    <div class="adv-body">
-      <p>Your assessment results indicate that you are currently in a phase of <strong>active barrier disruption with underlying inflammation.</strong> This does not mean your skin is permanently damaged. It means the current routine is not working — and a different approach will produce measurable results within weeks.</p>
-
-      <p>The good news: repairing the barrier does not require an expensive dermatologist appointment or a complicated 10-step routine. It requires removing what is damaging and replacing it with a small number of well-formulated, clinically proven ingredients.</p>
-    </div>
-
-    <!-- Assessment results table -->
-    <div class="result-box">
-      <div class="result-box-title">Your Assessment Results</div>
-      <div class="result-row">
-        <span class="result-label">Skin barrier status</span>
-        <span class="result-value bad">Compromised</span>
+    <!-- Issues -->
+    <div>
+      <div class="issues-title">Your 3 Critical Skin Issues</div>
+      <div class="issue-item">
+        <div class="issue-icon red">🔴</div>
+        <div class="issue-text">
+          <h4>Compromised Skin Barrier</h4>
+          <p>Your answers indicate a weakened lipid barrier — the #1 cause of premature wrinkles, sensitivity, and chronic dehydration. This worsens every year without targeted treatment.</p>
+        </div>
       </div>
-      <div class="result-row">
-        <span class="result-label">Inflammation level</span>
-        <span class="result-value bad">Elevated</span>
+      <div class="issue-item">
+        <div class="issue-icon red">🟠</div>
+        <div class="issue-text">
+          <h4>Oxidative Stress Accumulation</h4>
+          <p>UV exposure and lifestyle factors have triggered oxidative damage at the cellular level. This is the silent driver of dark spots, uneven tone, and loss of elasticity.</p>
+        </div>
       </div>
-      <div class="result-row">
-        <span class="result-label">UV protection</span>
-        <span class="result-value warn">Insufficient</span>
-      </div>
-      <div class="result-row">
-        <span class="result-label">Hydration baseline</span>
-        <span class="result-value ok">Adequate</span>
-      </div>
-      <div class="result-row">
-        <span class="result-label">Recommended protocol</span>
-        <span class="result-value" style="color:var(--blue2);">Barrier Repair · 30 days</span>
+      <div class="issue-item">
+        <div class="issue-icon amber">🟡</div>
+        <div class="issue-text">
+          <h4>Collagen Loss – Early Stage</h4>
+          <p>You're in the early window where intervention is still highly effective. After 35, collagen declines at 1–2% per year. Your current routine is not compensating for this loss.</p>
+        </div>
       </div>
     </div>
 
-    <!-- Product section -->
-    <div class="product-section">
-      <h2 class="product-section-title">The 30-Day Barrier Repair Protocol</h2>
-      <p class="product-section-sub">This is the exact protocol I recommend to patients presenting with your assessment results. It works in three steps: remove the damage, repair the barrier, protect it from recurring.</p>
-
-      <ul class="benefit-list">
-        <li>
-          <span class="b-check">✓</span>
-          <div class="b-text"><strong>Barrier Repair Concentrate</strong> — A ceramide and niacinamide formula that restores the skin's lipid structure. Clinical results show visible improvement in barrier function within 10–14 days. No fragrance, no alcohol, no silicones.</div>
-        </li>
-        <li>
-          <span class="b-check">✓</span>
-          <div class="b-text"><strong>Anti-Inflammatory Serum</strong> — Centella asiatica extract and bisabolol reduce subclinical redness and calm reactive skin without the risks of topical steroids. Suitable for daily use, morning and evening.</div>
-        </li>
-        <li>
-          <span class="b-check">✓</span>
-          <div class="b-text"><strong>Broad-Spectrum SPF 50</strong> — Non-comedogenic, fragrance-free mineral filter. Stops further UV-driven collagen degradation. Formulated without oxybenzone. Wears under makeup without residue.</div>
-        </li>
-        <li>
-          <span class="b-check">✓</span>
-          <div class="b-text"><strong>pH-Balanced Gentle Cleanser</strong> — Removes impurities without disrupting the acid mantle. No surfactants that strip the barrier. The most overlooked step in most routines.</div>
-        </li>
-        <li>
-          <span class="b-check">✓</span>
-          <div class="b-text"><strong>Written 30-Day Care Plan</strong> — Exact morning and evening application sequence, timing, and ingredient notes. Sent with the kit. No guessing, no conflicting advice.</div>
-        </li>
+    <!-- Fear section -->
+    <div class="fear-box">
+      <h3>⚠ What Happens If You Ignore This</h3>
+      <ul>
+        <li>Wrinkles deepen permanently — topical products can no longer reverse structural damage</li>
+        <li>Dark spots spread and merge, requiring expensive laser treatments ($800–$2,000+)</li>
+        <li>Skin loses plumpness and bounce — a process that begins invisibly, then appears suddenly</li>
+        <li>Over-the-counter products without the right actives do nothing — or make it worse</li>
       </ul>
+    </div>
 
-      <!-- Before / After -->
-      <div class="before-after">
-        <div class="ba-head">
-          <div class="ba-head-cell">Without the protocol</div>
-          <div class="ba-head-cell">After 30 days</div>
-        </div>
-        <div class="ba-row">
-          <div class="ba-cell before">Recurring redness and irritation</div>
-          <div class="ba-cell after">Calm, settled, even-toned skin</div>
-        </div>
-        <div class="ba-row">
-          <div class="ba-cell before">Breakouts without a clear cause</div>
-          <div class="ba-cell after">Significantly fewer breakouts</div>
-        </div>
-        <div class="ba-row">
-          <div class="ba-cell before">Tightness and dryness despite cream</div>
-          <div class="ba-cell after">Comfortable hydration throughout the day</div>
-        </div>
-        <div class="ba-row">
-          <div class="ba-cell before">Continued UV and aging damage</div>
-          <div class="ba-cell after">Protected and visibly more youthful</div>
+    <!-- Benefits -->
+    <div>
+      <div class="benefits-title">What a Correct Routine Changes</div>
+      <div class="benefit-item">
+        <span class="icon">✨</span>
+        <div>
+          <h4>Visibly smoother skin in 14 days</h4>
+          <p>Clinical-grade actives begin repairing the barrier within the first two weeks of consistent use.</p>
         </div>
       </div>
+      <div class="benefit-item">
+        <span class="icon">🛡</span>
+        <div>
+          <h4>Stops accelerated aging in its tracks</h4>
+          <p>The right antioxidant complex neutralizes daily oxidative damage before it compounds into visible aging.</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <span class="icon">📋</span>
+        <div>
+          <h4>A clear, science-backed routine — not guesswork</h4>
+          <p>No more wasting money on products that don't work for your skin type. Every step is explained with clinical reasoning.</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <span class="icon">💊</span>
+        <div>
+          <h4>Dermatologist-formulated, not influencer-marketed</h4>
+          <p>Built from 15 years of clinical practice. Ingredient percentages are exactly what the research supports — nothing more, nothing less.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product / CTA -->
+    <div class="product-reveal">
+      <h3>Your Complete Skin Protocol</h3>
+      <p>A step-by-step digital guide with your personalized morning & evening routine, ingredient glossary, and a 30-day progress tracker — designed for your exact skin profile.</p>
+      <div class="product-price">
+        <span class="price-main">$39.99</span>
+        <span class="price-old">$79</span>
+      </div>
+      <div class="price-save">You save $39 today only</div>
+      <p class="price-note">One-time payment · Instant digital download · No subscription</p>
+      <a href="YOUR_CHECKOUT_LINK_HERE" class="btn-checkout" onclick="trackCheckout()">Get My Personalized Routine → $39.99</a>
+      <div class="guarantee">🔒 &nbsp;30-day money-back guarantee · Secure checkout</div>
     </div>
 
     <!-- Testimonials -->
-    <div class="testimonials-section">
-      <div class="test-item">
-        <div class="test-stars">★★★★★</div>
-        <div class="test-text">"After three years of trying everything, my skin finally stopped reacting. Within two weeks on the barrier protocol, the redness was gone. I only wish someone had explained this to me sooner."</div>
-        <div class="test-author">K. M., age 34 — Prague</div>
+    <div>
+      <div class="testimonials-title">What Women Are Saying</div>
+      <div class="testimonial">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"I've spent thousands on skincare over the years. This guide gave me more clarity in 20 pages than a decade of trial and error. My skin looks genuinely different after 3 weeks."</p>
+        <div class="testimonial-author">Sarah M., 34 · Verified Purchase</div>
       </div>
-      <div class="test-item">
-        <div class="test-stars">★★★★★</div>
-        <div class="test-text">"My own dermatologist had never explained the connection between my cleanser and my chronic inflammation. Four weeks later, my skin looks completely different. I get asked if I changed something."</div>
-        <div class="test-author">L. B., age 41 — Bratislava</div>
+      <div class="testimonial">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"I was skeptical of another digital guide. But the ingredient science in here is real — I showed it to my own GP and she was impressed. Worth every penny."</p>
+        <div class="testimonial-author">Petra K., 41 · Verified Purchase</div>
       </div>
-      <div class="test-item">
-        <div class="test-stars">★★★★★</div>
-        <div class="test-text">"Sceptical at first, especially about the price. Now I would pay three times as much. The SPF alone has changed my complexion. The whole kit is genuinely worth it."</div>
-        <div class="test-author">T. H., age 29 — Vienna</div>
-      </div>
-    </div>
-
-    <!-- Guarantee -->
-    <div class="guarantee-section">
-      <div class="guarantee-icon">🛡</div>
-      <div>
-        <div class="guarantee-title">60-Day Money-Back Guarantee</div>
-        <div class="guarantee-text">If you do not see a measurable improvement in your skin within 60 days of following the protocol, we will refund you in full. No questions, no conditions. This guarantee exists because the protocol works when used as directed.</div>
+      <div class="testimonial">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"The quiz results described my skin so accurately it was almost unsettling. The routine cleared my texture issues in 2 weeks. I've already recommended it to 4 friends."</p>
+        <div class="testimonial-author">Jessica T., 29 · Verified Purchase</div>
       </div>
     </div>
 
-    <!-- CTA -->
-    <div class="cta-section">
-      <div class="urgency-text">⚠ Assessment discount expires when you leave this page</div>
-      <div class="price-row">
-        <span class="price-big">€47</span>
-        <span class="price-old">€94</span>
-        <span class="price-save">50% off</span>
+    <!-- FAQ -->
+    <div>
+      <div class="faq-title">Common Questions</div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Is this a physical product?</div>
+        <div class="faq-a">No — it's a comprehensive digital guide delivered instantly after purchase. You can read it on any device, print it, or save it for offline access.</div>
       </div>
-      <div class="price-note">Full 30-day kit · Free tracked delivery · One payment, no subscription</div>
-      <button class="btn-cta" onclick="goToCheckout()">
-        Get my personalised kit
-        <small>Secure checkout · 60-day money-back guarantee</small>
-      </button>
-      <div class="trust-row">
-        <span class="trust-item">🔒 Secure payment</span>
-        <span class="trust-item">📦 Free delivery</span>
-        <span class="trust-item">✓ Dermatologist formulated</span>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What if it doesn't work for my skin?</div>
+        <div class="faq-a">Every guide comes with a 30-day money-back guarantee. If you follow the protocol and don't see improvement, email us for a full refund — no questions asked.</div>
       </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Is this only for certain skin types?</div>
+        <div class="faq-a">The guide is personalized based on your quiz answers. It covers all skin types — dry, oily, combination, sensitive — and includes specific sections for each concern you identified.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Do I need expensive products to follow this?</div>
+        <div class="faq-a">No. The guide includes both premium and budget-friendly product recommendations for every step. Many effective options cost under $20.</div>
+      </div>
+    </div>
+
+    <!-- Final CTA -->
+    <div style="text-align:center">
+      <p style="font-size:14px;color:var(--gray);margin-bottom:16px">Your skin starts aging faster every day without the right routine. Don't wait.</p>
+      <a href="YOUR_CHECKOUT_LINK_HERE" class="btn-checkout" onclick="trackCheckout()">Yes, I Want My Skin Protocol → $39.99</a>
+      <div class="guarantee" style="margin-top:12px">🔒 &nbsp;Secure · Instant Access · 30-Day Guarantee</div>
     </div>
 
   </div>
+</section>
+
+<!-- Sticky CTA -->
+<div class="sticky-cta" id="stickyCta">
+  <a href="YOUR_CHECKOUT_LINK_HERE" onclick="trackCheckout()">Get My Personalized Routine → $39.99</a>
 </div>
 
 <script>
-const CIRCUMFERENCE = 2 * Math.PI * 70;
-const CHECKOUT_URL = 'https://happypaws-sepia.vercel.app/checkout.html';
-
-const POOL = [
-  { type:'single', q:'How does your skin feel when you wake up in the morning?',
-    opts:['Oily, especially on the forehead and nose','Dry and tight, sometimes with flaking','Balanced — neither oily nor dry','Variable: oily in some areas, dry in others'] },
-  { type:'single', q:'How often do you experience redness, irritation, or unexpected breakouts?',
-    opts:['Almost every week','Around my cycle or during periods of stress','Occasionally — once or twice a month','Rarely or never'] },
-  { type:'slide', source:'Journal of Clinical Dermatology, 2021',
-    title:'Your moisturiser may be working against you',
-    text:'A major review found that <span class="slide-hl">over 70% of commercially available moisturisers</span> contain at least one ingredient that can disrupt the skin barrier — including fragrances, certain emulsifiers, and common preservatives. Many carry "sensitive skin" or "dermatologist tested" labels. The study concluded that label claims are not a reliable indicator of formulation safety.',
-    img:'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=900&q=80' },
-  { type:'multi', q:'Which of the following do you currently use? (select all that apply)',
-    opts:['Micellar water or cleansing gel','Day and/or night moisturiser','Vitamin C or antioxidant serum','SPF protection (daily)','Retinol or AHA/BHA exfoliant','Sheet masks or clay masks'] },
-  { type:'single', q:'How does your skin feel immediately after washing your face?',
-    opts:['Very tight and dry — I need cream immediately','Slightly dry but manageable','Normal and comfortable','Oily again within 15–20 minutes'] },
-  { type:'single', q:'How much water do you typically drink per day?',
-    opts:['Less than 1 litre','1 to 1.5 litres','1.5 to 2 litres','More than 2 litres'] },
-  { type:'slide', source:'Photodermatology, Photoimmunology & Photomedicine',
-    title:'UV damage accumulates invisibly for years before it shows',
-    text:'Research confirms that <span class="slide-hl">up to 80% of visible skin aging</span> is caused by ultraviolet exposure — not the natural passage of time. UVA rays penetrate window glass and are present year-round regardless of cloud cover or season. The cellular damage accumulates silently and only becomes visible as pigmentation, textural change, or loss of elasticity — often a decade after the exposure occurred.',
-    img:'https://images.unsplash.com/photo-1526758097130-bab247274f58?w=900&q=80' },
-  { type:'single', q:'Do you apply SPF every day — including indoors and during winter?',
-    opts:['Yes, without exception','Only when I expect to be outside','Inconsistently — sometimes','No, it is not part of my routine'] },
-  { type:'multi', q:'Which skin concerns are most relevant to you right now?',
-    opts:['Uneven skin tone or dark spots','Enlarged pores or excess oiliness','Persistent dryness or tightness','Fine lines or loss of radiance','Redness or sensitivity reactions','Recurring breakouts or acne'] },
-  { type:'single', q:'How would you describe your sleep quality over the past month?',
-    opts:['Poor — irregular and insufficient','Adequate — around 5 to 6 hours','Good — 7 to 8 hours most nights','Excellent — I consistently feel rested'] },
-  { type:'single', q:'How much time does your daily skincare routine take?',
-    opts:['Under 2 minutes — very minimal','About 5 minutes','10 to 15 minutes — several steps','I do not have a consistent routine'] },
-  { type:'multi', q:'What would a meaningful result look like to you after 30 days?',
-    opts:['Clearer, more even skin','Fewer breakouts and less redness','Better hydration and comfort','More youthful and rested appearance','Knowing which products are right for my skin','A simple routine I can actually maintain'] },
-  { type:'single', q:'How would you describe your typical diet?',
-    opts:['Mostly whole foods — vegetables and lean protein','A mix of healthy and less healthy choices','Mostly processed or convenience food','No consistent eating pattern'] },
-  { type:'single', q:'Which age group do you belong to?',
-    opts:['18–29','30–44','45–59','60 or older'] }
+// ── QUESTIONS ──
+const questions = [
+  {
+    id:'q1', type:'single',
+    text:'How old are you?',
+    note:'Age is the #1 factor in determining your skin\'s needs.',
+    options:['Under 25','25–34','35–44','45–54','55+']
+  },
+  {
+    id:'q2', type:'single',
+    text:'How would you describe your skin type?',
+    options:['Dry – tight, flaky, dull','Oily – shiny, enlarged pores','Combination – oily T-zone, dry cheeks','Normal – balanced, few issues','Sensitive – reacts easily to products']
+  },
+  {
+    id:'q3', type:'single',
+    text:'What is your biggest skin concern right now?',
+    options:['Fine lines & wrinkles','Dark spots & uneven tone','Acne & breakouts','Dryness & dehydration','Loss of firmness & elasticity']
+  },
+  {
+    id:'q4', type:'single',
+    text:'How much water do you drink per day?',
+    options:['Less than 1 liter','1–1.5 liters','1.5–2 liters','More than 2 liters']
+  },
+  {
+    id:'q5', type:'single',
+    text:'How would you rate your sleep quality?',
+    options:['Poor – under 5 hours','Fair – 5–6 hours','Good – 7–8 hours','Excellent – 8+ hours, consistent']
+  },
+  {
+    id:'q6', type:'multi',
+    text:'Which of these do you currently use? Select all that apply.',
+    note:'Select everything in your current routine.',
+    options:['SPF / Sunscreen daily','Vitamin C serum','Retinol / Retinoid','Hyaluronic acid','Exfoliant (AHA/BHA)','None of the above']
+  },
+  {
+    id:'q7', type:'single',
+    text:'How often do you wear SPF on your face?',
+    options:['Every day, year-round','Only in summer / sunny days','Rarely or never','Only when I remember']
+  },
+  {
+    id:'q8', type:'single',
+    text:'How stressed are you on a typical week?',
+    options:['Low – I manage stress well','Moderate – some stressful weeks','High – frequently stressed','Very high – chronic stress']
+  },
+  {
+    id:'q9', type:'single',
+    text:'How would you describe your diet?',
+    options:['Mostly whole foods, vegetables, lean protein','Balanced but inconsistent','Processed foods, irregular meals','High sugar / high dairy intake']
+  },
+  {
+    id:'q10', type:'multi',
+    text:'Which skin symptoms do you notice most? Select all that apply.',
+    note:'Be honest — this directly affects your results.',
+    options:['Redness or irritation','Visible pores','Dullness / no glow','Rough texture','Breakouts or congestion','Tightness after washing']
+  },
+  {
+    id:'q11', type:'single',
+    text:'Have you noticed any changes in your skin over the past 12 months?',
+    options:['Yes – it\'s visibly worse','Slightly – small changes','Not really – about the same','Yes – it\'s actually improved']
+  },
+  {
+    id:'q12', type:'text',
+    text:'In one or two sentences, what is the #1 thing you wish you could fix about your skin?',
+    note:'This helps personalize your final recommendations.',
+    placeholder:'e.g. "I want to get rid of dark spots and look more rested..."'
+  }
 ];
 
-let idx = 0;
-let answers = new Array(POOL.length).fill(undefined);
+let currentQ = 0;
+let answers = {};
 let selectedOptions = [];
-let busy = false;
 
-window.addEventListener('DOMContentLoaded', () => {
-  const photos = [
-    'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200&q=80',
-    'https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=200&q=80',
-  ];
-  const photo = photos[Math.floor(Math.random() * photos.length)];
-  document.getElementById('land-img').src = photo;
-  document.getElementById('result-dr-img').src = photo;
-  document.getElementById('q-denom').textContent = ' of ' + POOL.length;
-  const counts = [23,31,38,44,52,61,68,74];
-  document.getElementById('sp-count').textContent = counts[Math.floor(Math.random()*counts.length)] + ' women';
-});
-
-function startQuiz() { idx = 0; show('quiz'); renderQuestion(); }
-
-function renderQuestion() {
-  const q = POOL[idx];
-  const pct = ((idx + 1) / POOL.length) * 100;
-  document.getElementById('progress-fill').style.width = pct + '%';
-  document.getElementById('q-num').textContent = idx + 1;
-  document.getElementById('btn-back').classList.toggle('visible', idx > 0);
-
-  const body = document.getElementById('quiz-body');
-  const fb = document.getElementById('fixed-bottom');
-  const btnC = document.getElementById('btn-continue');
-  body.innerHTML = '';
-
-  if (q.type === 'slide') {
-    fb.style.display = 'block';
-    btnC.disabled = false;
-    btnC.textContent = 'Continue →';
-    btnC.onclick = next;
-    body.innerHTML = `<div class="slide-wrap"><div class="slide-card">
-      ${q.img ? `<img class="slide-img" src="${q.img}" alt="" loading="lazy">` : ''}
-      <div class="slide-content">
-        <div class="slide-ref">Source: ${q.source}</div>
-        <h2 class="slide-title">${q.title}</h2>
-        <p class="slide-text">${q.text}</p>
-      </div>
-    </div></div>`;
-  } else if (q.type === 'single') {
-    fb.style.display = 'none';
-    const saved = answers[idx];
-    const opts = q.opts.map((o, i) =>
-      `<button class="opt${saved===i?' selected':''}" onclick="pickSingle(this,${i})">${o}</button>`
-    ).join('');
-    const many = q.opts.length >= 5 ? ' many' : '';
-    body.innerHTML = `<div class="q-wrap"><div class="q-text">${q.q}</div><div class="options-list${many}">${opts}</div></div>`;
-  } else {
-    fb.style.display = 'block';
-    const savedArr = Array.isArray(answers[idx]) ? answers[idx] : [];
-    selectedOptions = [...savedArr];
-    btnC.disabled = savedArr.length === 0;
-    btnC.textContent = 'Continue →';
-    btnC.onclick = pickMulti;
-    const opts = q.opts.map((o, i) => {
-      const sel = savedArr.includes(i);
-      return `<button class="opt multi${sel?' selected':''}" onclick="toggleMulti(this,${i})"><span class="opt-check"></span>${o}</button>`;
-    }).join('');
-    const many = q.opts.length >= 5 ? ' many' : '';
-    body.innerHTML = `<div class="q-wrap"><div class="q-text">${q.q}</div><div class="options-list${many}">${opts}</div></div>`;
-  }
-
-  body.classList.remove('q-anim');
-  void body.offsetWidth;
-  body.classList.add('q-anim');
-}
-
-function pickSingle(btn, i) {
-  if (busy) return; busy = true;
-  btn.closest('.options-list').querySelectorAll('.opt').forEach(b => { b.disabled = true; b.classList.remove('selected','flash'); });
-  btn.classList.add('flash');
-  answers[idx] = i;
-  setTimeout(() => { next(); busy = false; }, 300);
-}
-function toggleMulti(btn, i) {
-  btn.classList.toggle('selected');
-  if (btn.classList.contains('selected')) selectedOptions.push(i);
-  else selectedOptions = selectedOptions.filter(x => x !== i);
-  document.getElementById('btn-continue').disabled = selectedOptions.length === 0;
-  answers[idx] = [...selectedOptions];
-}
-function pickMulti() { answers[idx] = [...selectedOptions]; next(); }
-function next() { idx++; if (idx >= POOL.length) { startLoading(); return; } doTransition(renderQuestion); }
-function goBack() { if (busy) return; if (idx <= 0) { show('landing'); return; } idx--; doTransition(renderQuestion); }
-function doTransition(fn) {
-  const body = document.getElementById('quiz-body');
-  body.style.transition = 'opacity 0.15s';
-  body.style.opacity = '0';
-  setTimeout(() => { fn(); body.style.opacity = '1'; setTimeout(() => body.style.transition = '', 180); }, 150);
-}
-function startLoading() {
-  show('loading');
-  const arc = document.getElementById('circle-arc');
-  const pctEl = document.getElementById('pct-num');
-  let pct = 0;
-  const iv = setInterval(() => {
-    pct = Math.min(pct + 1, 100);
-    pctEl.textContent = pct;
-    arc.style.strokeDashoffset = CIRCUMFERENCE - (CIRCUMFERENCE * pct / 100);
-    if (pct >= 100) clearInterval(iv);
-  }, 130);
-  [3000,5800,8500,10800].forEach((t, i) => {
-    setTimeout(() => document.getElementById('check-'+(i+1)).classList.add('done'), t);
-  });
-  setTimeout(() => { show('result'); window.scrollTo(0,0); }, 13500);
-}
-function goToCheckout() { window.location.href = CHECKOUT_URL; }
-function show(id) {
+function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   window.scrollTo(0,0);
 }
+
+function startQuiz() {
+  umami.track('quiz_started');
+  showScreen('quiz');
+  renderQuestion(0);
+}
+
+function renderQuestion(idx) {
+  const q = questions[idx];
+  const body = document.getElementById('quizBody');
+  selectedOptions = answers[q.id] ? (Array.isArray(answers[q.id]) ? [...answers[q.id]] : [answers[q.id]]) : [];
+
+  const pct = Math.round(((idx) / questions.length) * 100) + 8;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressLabel').textContent = `Question ${idx+1} of ${questions.length}`;
+
+  let optionsHTML = '';
+  if (q.type === 'single' || q.type === 'multi') {
+    const cls = q.type === 'multi' ? 'opt opt-multi' : 'opt';
+    const twoCol = q.options.length >= 4 && q.type === 'single' && q.options[0].length < 20;
+    optionsHTML = `<div class="options-grid${twoCol?' two-col':''}">` +
+      q.options.map(opt => {
+        const sel = selectedOptions.includes(opt) ? ' selected' : '';
+        return `<button class="${cls}${sel}" onclick="selectOpt(this,'${q.type}','${opt.replace(/'/g,"\\'")}')">
+          <div class="check"></div><span>${opt}</span>
+        </button>`;
+      }).join('') +
+    `</div>`;
+  } else {
+    const val = answers[q.id] || '';
+    optionsHTML = `<textarea class="q-input" id="textInput" placeholder="${q.placeholder || ''}" oninput="onTextInput(this)">${val}</textarea>`;
+  }
+
+  const btnEnabled = selectedOptions.length > 0 || (q.type === 'text' && answers[q.id]) ? ' enabled' : '';
+
+  body.innerHTML = `
+    <div class="q-card">
+      <div class="q-step">Question ${idx+1} of ${questions.length}</div>
+      <div class="q-text">${q.text}</div>
+      ${q.note ? `<div class="q-note">${q.note}</div>` : ''}
+      ${optionsHTML}
+    </div>
+    <button class="btn-next${btnEnabled}" id="btnNext" onclick="nextQuestion()">
+      ${idx < questions.length - 1 ? 'Continue →' : 'See My Results →'}
+    </button>
+  `;
+}
+
+function selectOpt(el, type, val) {
+  if (type === 'single') {
+    document.querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedOptions = [val];
+  } else {
+    el.classList.toggle('selected');
+    if (selectedOptions.includes(val)) {
+      selectedOptions = selectedOptions.filter(v => v !== val);
+    } else {
+      selectedOptions.push(val);
+    }
+  }
+  const btn = document.getElementById('btnNext');
+  if (selectedOptions.length > 0) btn.classList.add('enabled');
+  else btn.classList.remove('enabled');
+}
+
+function onTextInput(el) {
+  const btn = document.getElementById('btnNext');
+  if (el.value.trim().length > 2) btn.classList.add('enabled');
+  else btn.classList.remove('enabled');
+}
+
+function nextQuestion() {
+  const q = questions[currentQ];
+  if (q.type === 'text') {
+    const val = document.getElementById('textInput').value.trim();
+    if (!val) return;
+    answers[q.id] = val;
+  } else {
+    if (selectedOptions.length === 0) return;
+    answers[q.id] = q.type === 'multi' ? [...selectedOptions] : selectedOptions[0];
+  }
+
+  umami.track('quiz_question_answered', { question: q.id, step: currentQ + 1 });
+
+  currentQ++;
+  if (currentQ >= questions.length) {
+    startLoading();
+  } else {
+    renderQuestion(currentQ);
+  }
+}
+
+function startLoading() {
+  umami.track('quiz_completed');
+  showScreen('loading');
+  const steps = ['ls1','ls2','ls3','ls4'];
+  const fill = document.getElementById('loadingFill');
+  const pct = document.getElementById('loadingPct');
+  let progress = 0;
+  let stepIdx = 0;
+
+  const interval = setInterval(() => {
+    progress += 2;
+    fill.style.width = progress + '%';
+    pct.textContent = progress + '%';
+
+    if (progress === 20) { document.getElementById('ls1').classList.add('show'); }
+    if (progress === 35) { document.getElementById('ls1').classList.add('done'); document.getElementById('ls2').classList.add('show'); }
+    if (progress === 55) { document.getElementById('ls2').classList.add('done'); document.getElementById('ls3').classList.add('show'); }
+    if (progress === 75) { document.getElementById('ls3').classList.add('done'); document.getElementById('ls4').classList.add('show'); }
+    if (progress === 92) { document.getElementById('ls4').classList.add('done'); }
+
+    if (progress >= 100) {
+      clearInterval(interval);
+      setTimeout(showResults, 400);
+    }
+  }, 50);
+}
+
+function showResults() {
+  // Customize score based on answers
+  const age = answers['q1'] || '25–34';
+  const spf = answers['q7'] || '';
+  let score = 68;
+  if (age === '45–54' || age === '55+') score -= 14;
+  if (age === 'Under 25') score += 10;
+  if (spf.includes('never') || spf.includes('Rarely')) score -= 12;
+  if (spf.includes('Every day')) score += 8;
+  score = Math.max(28, Math.min(74, score));
+
+  document.getElementById('skinScore').textContent = score;
+  if (score < 45) {
+    document.getElementById('scoreDesc').textContent = 'Your skin barrier is significantly compromised. Without a targeted routine, visible aging will accelerate over the next 6–12 months.';
+  } else if (score < 60) {
+    document.getElementById('scoreDesc').textContent = 'Your skin shows early signs of damage accumulation. Now is the critical window to intervene before changes become permanent.';
+  } else {
+    document.getElementById('scoreDesc').textContent = 'Your skin is in fair condition, but specific issues need addressing before they compound. The right routine will make a visible difference within weeks.';
+  }
+
+  showScreen('results');
+  umami.track('results_viewed', { score: score });
+
+  // Show sticky CTA after scrolling
+  setTimeout(() => {
+    window.addEventListener('scroll', handleScroll);
+  }, 1000);
+}
+
+function handleScroll() {
+  const sticky = document.getElementById('stickyCta');
+  if (window.scrollY > 400) sticky.classList.add('show');
+  else sticky.classList.remove('show');
+}
+
+function trackCheckout() {
+  umami.track('checkout_clicked');
+}
+
+function toggleFaq(el) {
+  const item = el.parentElement;
+  item.classList.toggle('open');
+// Random today count for social proof
+(function(){
+  const base = 180 + Math.floor(Math.random() * 120);
+  document.getElementById('todayCount').innerHTML =
+    '🟢 <strong>' + base + ' women</strong> took this quiz today';
+})();
 </script>
 </body>
 </html>
