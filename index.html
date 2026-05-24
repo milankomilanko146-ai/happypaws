@@ -836,7 +836,7 @@ function showScreen(id) {
 }
 
 function startQuiz() {
-  umami.track('quiz_started');
+  if(window.umami)umami.track('quiz_started');
   showScreen('quiz');
   renderQuestion(0);
 }
@@ -917,7 +917,7 @@ function nextQuestion() {
     answers[q.id] = q.type === 'multi' ? [...selectedOptions] : selectedOptions[0];
   }
 
-  umami.track('quiz_question_answered', { question: q.id, step: currentQ + 1 });
+  if(window.umami)umami.track('quiz_question_answered', { question: q.id, step: currentQ + 1 });
 
   currentQ++;
   if (currentQ >= questions.length) {
@@ -928,7 +928,7 @@ function nextQuestion() {
 }
 
 function startLoading() {
-  umami.track('quiz_completed');
+  if(window.umami)umami.track('quiz_completed');
   showScreen('loading');
   const steps = ['ls1','ls2','ls3','ls4'];
   const fill = document.getElementById('loadingFill');
@@ -975,7 +975,7 @@ function showResults() {
   }
 
   showScreen('results');
-  umami.track('results_viewed', { score: score });
+  if(window.umami)umami.track('results_viewed', { score: score });
 
   // Show sticky CTA after scrolling
   setTimeout(() => {
@@ -990,7 +990,7 @@ function handleScroll() {
 }
 
 function trackCheckout() {
-  umami.track('checkout_clicked');
+  if(window.umami)umami.track('checkout_clicked');
 }
 
 function toggleFaq(el) {
