@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Health Quiz</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -23,7 +23,7 @@
   --g700: #3D4555;
   --g900: #1A1A1A;
   --font: 'Nunito', sans-serif;
-  --serif: 'Nunito', sans-serif;
+  --serif: 'Playfair Display', serif;
   --max-w: 560px;
   --nav-h: 0px;
 }
@@ -119,17 +119,18 @@ html, body {
   text-align: center;
 }
 .land-title {
-  font-family: var(--font);
-  font-size: clamp(22px, 5vw, 30px);
-  line-height: 1.25;
+  font-family: var(--serif);
+  font-size: clamp(24px, 5.5vw, 34px);
+  line-height: 1.2;
   color: var(--g900);
   margin-bottom: 14px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   max-width: 460px;
 }
-.land-title em { color: var(--teal); font-style: normal; background: var(--teal-light); padding: 0 4px; border-radius: 4px; }
+.land-title em { color: var(--teal); font-style: normal; }
 .land-sub {
+  font-family: var(--font);
   font-size: 15px;
   color: var(--g600);
   line-height: 1.6;
@@ -495,7 +496,7 @@ html, body {
     <h1 class="land-title">Discover your path to earning <em>R$2,554 per week</em> by becoming my partner in TikTok Shop.</h1>
     <p class="land-sub">Without needing to show your face, without investing in ads, and <u>even if you don't have any followers.</u></p>
 
-    <img class="land-hero-img" id="land-img" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80" alt="Partner">
+    <img class="land-hero-img" id="land-img" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&q=80" alt="Doctor">
 
     <button class="btn-start" onclick="startQuiz()">START NOW –&gt;</button>
 
@@ -634,8 +635,8 @@ function startQuiz() {
 function renderQuestion() {
   const q = POOL[idx];
 
-  // Progress: based on idx position across all pool items
-  const pct = 4 + ((idx / (POOL.length - 1)) * 96);
+  // Progress: landing=4%, questions fill 10%→100%
+  const pct = 10 + ((idx / (POOL.length - 1)) * 90);
   document.getElementById('progress-fill').style.width = pct + '%';
 
   // Counter: only count non-slide questions
