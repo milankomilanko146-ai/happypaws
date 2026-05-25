@@ -83,7 +83,7 @@ html, body {
   text-align: center;
 }
 .land-title {
-  font-size: clamp(22px, 5vw, 30px);  /* pôvodná veľkosť */
+  font-size: clamp(22px, 5vw, 30px);
   line-height: 1.25;
   color: var(--g900);
   margin-bottom: 14px;
@@ -356,7 +356,7 @@ html, body {
 
 <div id="progress-wrap">
   <div class="progress-track">
-    <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+    <div class="progress-fill" id="progress-fill" style="width:4%"></div>
   </div>
 </div>
 
@@ -477,8 +477,13 @@ let answers = new Array(POOL.length).fill(undefined);
 let selectedOptions = [];
 let busy = false;
 
+const TOTAL_SCREENS = POOL.length; // 14 (12 otázok + 2 slide)
+const INITIAL_PROGRESS = 4; // percent na landing page
+const PROGRESS_STEP = (100 - INITIAL_PROGRESS) / TOTAL_SCREENS; // 96/14 ≈ 6.857%
+
+// Pre čítač otázok (zobrazuje len reálne otázky, nie slide)
 const REAL_INDICES = POOL.map((q, i) => q.type !== 'slide' ? i : null).filter(i => i !== null);
-const TOTAL_REAL = REAL_INDICES.length;
+const TOTAL_REAL = REAL_INDICES.length; // 12
 
 function getCurrentRealNumber() {
   let realCountBefore = 0;
@@ -497,31 +502,33 @@ function updateHeaderCounter() {
   document.getElementById('q-total').textContent = TOTAL_REAL;
 }
 
+// Progress bar sa počíta z aktuálneho indexu idx (0 = prvá obrazovka v kvíze)
+// Po spustení kvízu (idx=0) je progress = INITIAL_PROGRESS + (idx+1)*PROGRESS_STEP??
+// Aby sa posunul hneď pri prechode z landing na prvú otázku, použijeme (idx+1).
+// Pri idx=0 -> 4 + 1*step ≈ 10.86%
+// Pri idx=13 (posledná) -> 4 + 14*step = 100%
 function updateProgressFill() {
-  let answeredReal = 0;
-  for (let i = 0; i < POOL.length; i++) {
-    if (POOL[i].type === 'slide') continue;
-    const ans = answers[i];
-    if (ans !== undefined && (!Array.isArray(ans) || ans.length > 0)) answeredReal++;
-  }
-  let percent = (answeredReal / TOTAL_REAL) * 100;
-  percent = Math.min(100, Math.max(0, percent));
+  let percent = INITIAL_PROGRESS + ((idx + 1) * PROGRESS_STEP);
+  percent = Math.min(100, Math.max(INITIAL_PROGRESS, percent));
   document.getElementById('progress-fill').style.width = percent + '%';
 }
 
 window.addEventListener('DOMContentLoaded', () => {
   document.getElementById('q-total').textContent = TOTAL_REAL;
+  // Progress bar na landing je už v HTML nastavený na 4%
 });
 
 function startQuiz() {
   idx = 0;
   document.getElementById('quiz').classList.add('has-progress');
+  updateProgressFill();  // nastaví sa podľa idx=0 (napr. 10.86%)
+  updateHeaderCounter();
   show('quiz');
   renderQuestion();
 }
 
 function renderQuestion() {
-  updateProgressFill();
+  updateProgressFill(); // pre istotu pri každom rendri (napr. pri back)
   updateHeaderCounter();
 
   const q = POOL[idx];
@@ -533,7 +540,7 @@ function renderQuestion() {
   if (q.type === 'slide') {
     fb.style.display = 'block';
     btnC.disabled = false;
-    btnC.onclick = next;
+    btnC.onclick = () => { next(); };
     renderSlide(q, body);
   } else if (q.type === 'single') {
     fb.style.display = 'none';
@@ -543,7 +550,10 @@ function renderQuestion() {
     const savedArr = Array.isArray(answers[idx]) ? answers[idx] : [];
     selectedOptions = [...savedArr];
     btnC.disabled = savedArr.length === 0;
-    btnC.onclick = () => { answers[idx] = [...selectedOptions]; updateProgressFill(); next(); };
+    btnC.onclick = () => {
+      answers[idx] = [...selectedOptions];
+      next();
+    };
     renderMulti(q, body);
   }
 
@@ -575,7 +585,7 @@ function renderSingle(q, body) {
       btn.closest('.options-list').querySelectorAll('.opt').forEach(b => { b.disabled = true; b.classList.remove('selected','flash'); });
       btn.classList.add('flash');
       answers[idx] = val;
-      updateProgressFill();
+      // Progress bar sa posunie až pri next()
       setTimeout(() => { next(); busy = false; }, 200);
     });
   });
@@ -598,23 +608,27 @@ function renderMulti(q, body) {
         selectedOptions = selectedOptions.filter(v => v !== i);
       }
       document.getElementById('btn-continue').disabled = selectedOptions.length === 0;
-      answers[idx] = [...selectedOptions];
-      updateProgressFill();
+      // neukladáme do answers až do continue, neposúvame progress
     });
   });
 }
 
 function next() {
-  idx++;
-  if (idx >= POOL.length) { startLoading(); return; }
-  doTransition(renderQuestion);
+  if (idx + 1 < TOTAL_SCREENS) {
+    idx++;
+    doTransition(renderQuestion);
+  } else {
+    // koniec kvízu
+    startLoading();
+  }
 }
 
 function goBack() {
   if (busy) return;
   if (idx <= 0) {
+    // návrat na landing
     idx = 0;
-    document.getElementById('progress-fill').style.width = '0%';
+    document.getElementById('progress-fill').style.width = INITIAL_PROGRESS + '%';
     document.getElementById('quiz').classList.remove('has-progress');
     document.getElementById('fixed-bottom').style.display = 'none';
     show('landing');
