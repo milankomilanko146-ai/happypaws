@@ -2,19 +2,18 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
 <title>Health Quiz</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Nunito:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --teal: #2BA84A;
-  --teal-light: #E8F5EC;
-  --teal-mid: #4DC96A;
-  --teal-dark: #1E7A35;
-  --teal-soft: #B2DFB9;
+  --teal: #4A7FC1;
+  --teal-light: #EEF4FB;
+  --teal-mid: #7AAAD8;
+  --teal-dark: #2E5F96;
   --g100: #F5F5F5;
   --g200: #E8ECF2;
   --g300: #D0D6E0;
@@ -23,9 +22,9 @@
   --g700: #3D4555;
   --g900: #1A1A1A;
   --font: 'Nunito', sans-serif;
-  --serif: 'Playfair Display', serif;
   --max-w: 560px;
-  --nav-h: 0px;
+  --bar-h: 7px;
+  --bar-top: 16px;
 }
 
 html, body {
@@ -37,89 +36,50 @@ html, body {
   overscroll-behavior: none;
 }
 
-/* ═══════ NAV ═══════ */
-.top-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  height: var(--nav-h);
-  background: #fff;
-  border-bottom: 1px solid #F0F0F0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 200;
-}
-.nav-brand {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--g900);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-/* ═══════ PROGRESS BAR ═══════ */
+/* PROGRESS BAR */
 #progress-wrap {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0; right: 0;
   z-index: 150;
+  padding-top: var(--bar-top);
   background: #fff;
 }
-.progress-track { width: 100%; height: 7px; background: var(--g200); }
+.progress-track { width: 100%; height: var(--bar-h); background: var(--g200); }
 .progress-fill {
-  height: 7px;
+  height: var(--bar-h);
   background: var(--teal);
   border-radius: 0 4px 4px 0;
   transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ═══════ SCREENS ═══════ */
-/* Mobile: fixed, full-height panels below progress bar */
+/* SCREENS */
 .screen {
   display: none;
   position: fixed;
-  top: 7px;
-  left: 0; right: 0; bottom: 0;
+  top: 0; left: 0; right: 0; bottom: 0;
   background: #fff;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
 .screen.active { display: block; }
-
-/* Landing scrolls freely */
-#landing { overflow-y: auto; background: var(--g100); padding-top: 7px; }
-
-/* Quiz: flex column, full screen */
-#quiz {
-  overflow: hidden;
-  top: 0;
-}
-#quiz.active {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Quiz top shifts down by progress bar height when visible */
-#quiz.has-progress {
-  top: 7px;
-}
-
-/* Loading scrolls */
+#landing { background: var(--g100); }
+#quiz { overflow: hidden; }
+#quiz.active { display: flex; flex-direction: column; }
+#quiz.has-progress { padding-top: 0; }
 #loading { overflow-y: auto; background: var(--g100); }
 
-/* ═══════ LANDING ═══════ */
+/* LANDING */
 .land-wrap {
   max-width: var(--max-w);
   margin: 0 auto;
   padding: 48px 24px 64px;
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
 .land-title {
-  font-family: var(--font);
   font-size: clamp(22px, 5vw, 30px);
   line-height: 1.25;
   color: var(--g900);
@@ -128,33 +88,24 @@ html, body {
   letter-spacing: -0.02em;
   max-width: 460px;
 }
-.land-title em { color: var(--teal); font-style: normal; background: var(--teal-light); padding: 0 4px; border-radius: 4px; }
+.land-title em { color: var(--g900); font-style: normal; }
 .land-sub {
-  font-family: var(--font);
   font-size: 15px;
   color: var(--g600);
   line-height: 1.6;
   margin-bottom: 22px;
   max-width: 400px;
 }
-
-/* Hero image — true square, all sides equal */
 .land-hero-img {
   display: block;
   width: min(100%, 440px);
-  height: min(100%, 440px);
-  max-width: 440px;
-  max-height: 440px;
-  aspect-ratio: 1 / 1;
+  height: 260px;
   object-fit: cover;
   object-position: top center;
   border-radius: 12px;
   margin: 0 auto 22px;
   background: var(--g200);
-  flex-shrink: 0;
 }
-
-/* START NOW button */
 .btn-start {
   width: 100%;
   max-width: 440px;
@@ -167,23 +118,15 @@ html, body {
   font-size: 17px;
   font-weight: 700;
   cursor: pointer;
-  letter-spacing: 0.01em;
-  box-shadow: 0 6px 24px rgba(43,168,74,0.35);
-  transition: background 0.15s, transform 0.10s, box-shadow 0.15s;
+  box-shadow: 0 6px 24px rgba(37,99,235,0.35);
+  transition: background 0.15s, transform 0.10s;
   -webkit-tap-highlight-color: transparent;
   margin-bottom: 20px;
 }
-.btn-start:hover { background: var(--teal-dark); box-shadow: 0 8px 28px rgba(43,168,74,0.45); }
+.btn-start:hover { background: var(--teal-dark); }
 .btn-start:active { transform: scale(0.98); }
-
-/* Social proof below button */
-.sp-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-.sp-avatars { display: flex; align-items: center; flex-shrink: 0; }
+.sp-row { display: flex; align-items: center; justify-content: center; gap: 10px; }
+.sp-avatars { display: flex; align-items: center; }
 .sp-av {
   width: 30px; height: 30px;
   border-radius: 50%;
@@ -192,14 +135,12 @@ html, body {
   display: flex; align-items: center; justify-content: center;
   font-size: 8px; font-weight: 700; color: #fff;
   margin-left: -8px;
-  letter-spacing: -0.5px;
-  flex-shrink: 0;
 }
 .sp-av:first-child { margin-left: 0; }
 .sp-text { font-size: 13px; color: var(--g600); line-height: 1.3; }
 .sp-text strong { color: var(--g900); font-weight: 700; }
 
-/* ═══════ QUIZ LAYOUT ═══════ */
+/* QUIZ HEADER - jediná zmena: pridaný margin-top */
 .quiz-header {
   flex-shrink: 0;
   padding: 14px 24px 10px;
@@ -209,19 +150,17 @@ html, body {
   max-width: 468px;
   margin: 0 auto;
   width: 100%;
+  margin-top: 14px;   /* <-- posunie hlavičku pod progress bar */
 }
 .btn-back {
-  display: flex;
-  align-items: center;
-  gap: 5px;
+  display: flex; align-items: center; gap: 5px;
   background: var(--g100);
   border: 1.5px solid var(--g200);
   border-radius: 100px;
   cursor: pointer;
   color: var(--g700);
   font-family: var(--font);
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 15px; font-weight: 600;
   padding: 9px 18px 9px 12px;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
@@ -229,41 +168,25 @@ html, body {
 }
 .btn-back.visible { visibility: visible; }
 .btn-back:active { opacity: 0.7; }
-.btn-back svg { width: 20px; height: 20px; flex-shrink: 0; }
-.q-counter {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--g900);
-  white-space: nowrap;
-}
+.btn-back svg { width: 20px; height: 20px; }
+.q-counter { font-size: 18px; font-weight: 700; color: var(--g900); white-space: nowrap; }
 .q-counter .denom { font-size: 16px; font-weight: 400; color: var(--g400); }
 
-/* quiz-body: flex, fills space */
 .quiz-body {
   flex: 1;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   padding: 24px 24px 0;
   max-width: 468px;
   margin: 0 auto;
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
 }
 
-/* ── Question ── */
-.q-wrap {
-  display: flex;
-  flex-direction: column;
-}
-.q-hint {
-  font-size: 12px;
-  color: var(--g400);
-  font-weight: 400;
-  margin-top: -8px;
-  margin-bottom: 12px;
-  text-align: center;
-}
+/* QUESTION */
+.q-wrap { display: flex; flex-direction: column; }
+.q-hint { font-size: 12px; color: var(--g400); margin-top: -8px; margin-bottom: 12px; text-align: center; }
 .q-text {
   font-size: clamp(20px, 4.5vw, 26px);
   font-weight: 700;
@@ -271,23 +194,16 @@ html, body {
   line-height: 1.35;
   margin-bottom: 14px;
   letter-spacing: -0.02em;
-  flex-shrink: 0;
-  font-family: var(--font);
   text-align: center;
 }
-.options-list {
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
-}
+.options-list { display: flex; flex-direction: column; gap: 9px; }
 .opt {
   border: 1.5px solid var(--g300);
   border-radius: 12px;
   padding: 15px 20px;
   background: #fff;
   font-family: var(--font);
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 16px; font-weight: 500;
   color: var(--g900);
   cursor: pointer;
   text-align: left;
@@ -295,34 +211,19 @@ html, body {
   line-height: 1.4;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
-  display: flex;
-  align-items: center;
+  display: flex; align-items: center;
   min-height: 54px;
 }
 .opt:active { opacity: 0.8; }
-.opt.selected {
-  border-color: var(--teal);
-  background: var(--teal-light);
-  color: var(--teal-dark);
-  font-weight: 600;
-}
-.opt.flash {
-  border-color: var(--teal);
-  background: var(--teal);
-  color: #fff;
-  transition: all 0.1s;
-}
+.opt.selected { border-color: var(--teal); background: var(--teal-light); color: var(--teal-dark); font-weight: 600; }
+.opt.flash { border-color: var(--teal); background: var(--teal); color: #fff; transition: all 0.08s; }
 
-/* Multi */
-.opt.multi { padding-left: 50px; padding-right: 18px; position: relative; text-align: left; justify-content: flex-start; }
+/* Multi-select */
+.opt.multi { padding-left: 50px; padding-right: 18px; position: relative; }
 .opt-check {
-  position: absolute;
-  left: 14px; top: 50%;
-  transform: translateY(-50%);
-  width: 22px; height: 22px;
-  border-radius: 7px;
-  border: 2px solid var(--g300);
-  background: #fff;
+  position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+  width: 22px; height: 22px; border-radius: 7px;
+  border: 2px solid var(--g300); background: #fff;
   display: flex; align-items: center; justify-content: center;
   transition: border-color 0.15s, background 0.15s;
   pointer-events: none;
@@ -337,34 +238,24 @@ html, body {
   transform: rotate(45deg) translateY(-1px);
 }
 
-/* ── Slide ── */
-.slide-wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.slide-card {
-  background: #fff;
-  border-radius: 16px;
-  border: 1.5px solid var(--g200);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
+/* SLIDE */
+.slide-wrap { display: flex; flex-direction: column; gap: 16px; padding-bottom: 24px; }
 .slide-img {
-  width: 100%;
-  height: 155px;
+  width: 100%; height: 210px;
   object-fit: cover;
-  display: block;
+  border-radius: 12px;
   background: var(--g100);
-  flex-shrink: 0;
+  display: block;
 }
-.slide-content { padding: 16px 18px 18px; flex: 1; overflow-y: auto; }
-.slide-title { font-family: var(--font); font-size: clamp(16px, 3vw, 20px); font-weight: 700; color: var(--g900); margin-bottom: 8px; line-height: 1.3; }
-.slide-text { font-size: 14px; color: var(--g600); line-height: 1.7; }
-.slide-hl { font-weight: 700; color: var(--teal-dark); }
+.slide-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--g700);
+  line-height: 1.75;
+}
 
-/* ── Continue button ── */
+/* CONTINUE BUTTON */
 .fixed-bottom {
   flex-shrink: 0;
   padding: 10px 24px 16px;
@@ -381,45 +272,33 @@ html, body {
   border: none;
   border-radius: 10px;
   font-family: var(--font);
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 16px; font-weight: 700;
   padding: 15px 32px;
   cursor: pointer;
   width: 100%;
-  transition: background 0.15s, opacity 0.15s;
-  box-shadow: 0 4px 16px rgba(43,168,74,0.28);
+  transition: opacity 0.15s;
+  box-shadow: 0 4px 16px rgba(37,99,235,0.28);
   -webkit-tap-highlight-color: transparent;
 }
 .btn-continue:active:not(:disabled) { opacity: 0.85; }
 .btn-continue:disabled { opacity: 0.3; cursor: not-allowed; box-shadow: none; }
 
-/* ═══════ LOADING ═══════ */
-.loading-inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 40px 20px 60px;
-}
+/* LOADING */
+.loading-inner { max-width: var(--max-w); margin: 0 auto; padding: 40px 20px 60px; }
 .loading-card {
   background: #fff;
   border-radius: 22px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.08);
   padding: 28px 24px;
 }
-.loading-title { font-size: 19px; font-weight: 700; margin-bottom: 24px; line-height: 1.4; color: var(--g900); letter-spacing: -0.01em; }
-.circle-wrap {
-  position: relative;
-  width: 160px; height: 160px;
-  margin: 0 auto 28px;
-}
+.loading-title { font-size: 19px; font-weight: 700; margin-bottom: 24px; line-height: 1.4; color: var(--g900); }
+.circle-wrap { position: relative; width: 160px; height: 160px; margin: 0 auto 28px; }
 .circle-wrap svg { transform: rotate(-90deg); }
 .circle-bg { fill: none; stroke: #E8ECF2; stroke-width: 14; }
 .circle-arc {
-  fill: none;
-  stroke: var(--teal);
-  stroke-width: 14;
+  fill: none; stroke: var(--teal); stroke-width: 14;
   stroke-linecap: round;
-  stroke-dasharray: 439.82;
-  stroke-dashoffset: 439.82;
+  stroke-dasharray: 439.82; stroke-dashoffset: 439.82;
   transition: stroke-dashoffset 0.3s linear;
 }
 .circle-pct {
@@ -429,14 +308,12 @@ html, body {
 }
 .check-item {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 13px 0;
-  border-bottom: 1px solid #F0F0F0;
+  padding: 13px 0; border-bottom: 1px solid #F0F0F0;
   font-size: 14px; color: var(--g700); font-weight: 500;
 }
 .check-item:last-child { border-bottom: none; }
 .check-box {
-  width: 22px; height: 22px;
-  border-radius: 6px;
+  width: 22px; height: 22px; border-radius: 6px;
   border: 2px solid var(--g300);
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
@@ -446,46 +323,32 @@ html, body {
 .check-box svg { display: none; }
 .check-box.done svg { display: block; }
 
-/* ── Transition ── */
-@keyframes slideIn {
-  from { opacity: 0; transform: translateY(16px); }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-.q-anim { animation: slideIn 0.3s ease-out both; }
+.q-anim { animation: fadeUp 0.16s ease-out both; }
 
-/* ── Desktop ── */
+/* Desktop */
 @media (min-width: 640px) {
   html, body { height: auto; }
-  .screen {
-    position: static;
-    display: none;
-    min-height: 100vh;
-    overflow-y: auto;
-  }
+  .screen { position: static; display: none; min-height: 100vh; overflow-y: auto; }
   .screen.active { display: block; }
-  #quiz.active {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  #quiz.has-progress { top: unset; margin-top: 4px; }
+  #quiz.active { display: flex; flex-direction: column; min-height: 100vh; }
+  #quiz.has-progress { padding-top: 0; }
   .quiz-body { overflow-y: auto; }
   .fixed-bottom { position: static; border-top: none; padding-top: 16px; }
-  .slide-img { height: 200px; }
 }
-
 @media (max-width: 380px) {
-  .q-text { font-size: 16px; margin-bottom: 10px; }
+  .q-text { font-size: 16px; }
   .opt { font-size: 14px; min-height: 44px; }
-  .quiz-header { padding: 10px 16px 8px; }
+  .quiz-header { padding: 10px 16px 8px; margin-top: 10px; }
   .quiz-body { padding: 2px 16px 0; }
   .fixed-bottom { padding: 8px 16px 10px; }
-  .slide-img { height: 130px; }
-}</style>
+}
+</style>
 </head>
 <body>
-
-
 
 <div id="progress-wrap">
   <div class="progress-track">
@@ -493,52 +356,43 @@ html, body {
   </div>
 </div>
 
-<!-- ══ LANDING ══ -->
+<!-- LANDING -->
 <div class="screen active" id="landing">
   <div class="land-wrap">
     <h1 class="land-title">Discover your path to earning <em>R$2,554 per week</em> by becoming my partner in TikTok Shop.</h1>
     <p class="land-sub">Without needing to show your face, without investing in ads, and <u>even if you don't have any followers.</u></p>
-
-    <img class="land-hero-img" id="land-img" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&q=80" alt="Doctor">
-
-    <button class="btn-start" onclick="startQuiz()">START NOW –&gt;</button>
-
+    <img class="land-hero-img" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&q=80" alt="Doctor">
+    <button class="btn-start" onclick="startQuiz()">START NOW &rarr;</button>
     <div class="sp-row">
       <div class="sp-avatars">
-        <div class="sp-av">SH</div>
-        <div class="sp-av">MR</div>
-        <div class="sp-av">JL</div>
-        <div class="sp-av">AP</div>
-        <div class="sp-av">TW</div>
-        <div class="sp-av">KD</div>
+        <div class="sp-av">SH</div><div class="sp-av">MR</div><div class="sp-av">JL</div>
+        <div class="sp-av">AP</div><div class="sp-av">TW</div><div class="sp-av">KD</div>
       </div>
       <div class="sp-text"><strong>3,533</strong> already joined</div>
     </div>
   </div>
 </div>
 
-<!-- ══ QUIZ ══ -->
+<!-- QUIZ -->
 <div class="screen" id="quiz">
   <div class="quiz-header">
     <button class="btn-back" id="btn-back" onclick="goBack()">
-      <svg viewBox="0 0 24 24" fill="currentColor">
-        <path d="M10.828 12L15.778 16.95L14.364 18.364L8 12L14.364 5.636L15.778 7.05L10.828 12Z"/>
-      </svg>
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10.828 12L15.778 16.95L14.364 18.364L8 12L14.364 5.636L15.778 7.05L10.828 12Z"/></svg>
       Back
     </button>
     <div class="q-counter"><span id="q-num">1</span><span class="denom"> / <span id="q-total"></span></span></div>
   </div>
   <div class="quiz-body" id="quiz-body"></div>
   <div class="fixed-bottom" id="fixed-bottom">
-    <button class="btn-continue" id="btn-continue" disabled>Continue →</button>
+    <button class="btn-continue" id="btn-continue" disabled>Continue &rarr;</button>
   </div>
 </div>
 
-<!-- ══ LOADING ══ -->
+<!-- LOADING -->
 <div class="screen" id="loading">
   <div class="loading-inner">
     <div class="loading-card">
-      <div class="loading-title">Analysing your answers…</div>
+      <div class="loading-title">Analysing your answers&hellip;</div>
       <div class="circle-wrap">
         <svg width="160" height="160" viewBox="0 0 160 160">
           <circle class="circle-bg" cx="80" cy="80" r="70"/>
@@ -565,36 +419,38 @@ html, body {
 </div>
 
 <script>
-const CIRCUMFERENCE = 2 * Math.PI * 70; // r=70 → 439.82
+const CIRCUMFERENCE = 2 * Math.PI * 70;
 
 const POOL = [
   { type:'single', tag:'Energy', q:'How would you describe your energy levels throughout the day?',
     opts:['Full of energy from morning','Energy dips after lunch','Tired most of the time','Completely exhausted'] },
   { type:'single', tag:'Sleep', q:'How many hours of sleep do you get on average per night?',
     opts:['Less than 5 hours','5–6 hours','7–8 hours','More than 9 hours'] },
-  { type:'slide', title:'Sleep & your immune system',
-    text:'Adults who sleep fewer than 7 hours per night are nearly <span class="slide-hl">3× more likely</span> to catch a cold compared to those who sleep 8 or more hours. Sleep is when your body does its most important repair work.',
+  { type:'slide',
+    text:'Most people know that sleep is important — but few realise just how directly it affects their immune system. During deep sleep, your body produces cytokines, proteins that help fight off infections and inflammation. Without enough of them, your defences weaken fast.',
+    text2:'Sleep is also when your brain clears out waste products, your muscles repair, and your hormones reset. It\'s not downtime — it\'s the most productive part of your day.',
     imgQuery:'sleeping rest recovery' },
-  { type:'multi', tag:'Symptoms', q:'Which of these do you experience regularly? (Select all that apply)',
+  { type:'multi', tag:'Symptoms', q:'Which of these do you experience regularly?',
     opts:['Headaches','Bloating or digestive issues','Skin problems','Mood swings','None of these'] },
   { type:'single', tag:'Diet', q:'How would you describe your eating habits?',
     opts:['Very healthy and consistent','I try, but not always possible','Mostly fast food or irregular','No routine at all'] },
-  { type:'multi', tag:'Movement', q:'What types of exercise do you do weekly? (Select all that apply)',
+  { type:'multi', tag:'Movement', q:'What types of exercise do you do weekly?',
     opts:['Walking or running','Gym or fitness','Yoga or stretching','Swimming','Barely any movement'] },
-  { type:'slide', title:'The gut–brain connection',
-    text:'Up to <span class="slide-hl">70% of your immune system</span> is located in your gut. A healthy microbiome directly influences your mood, energy levels, and how well you sleep — not just your digestion.',
+  { type:'slide',
+    text:'Your gut is often called the "second brain" — and for good reason. It contains over 100 million nerve cells and produces around 95% of your body\'s serotonin, the chemical most associated with mood and wellbeing.',
+    text2:'When your gut bacteria are out of balance, the effects show up everywhere — brain fog, low energy, poor sleep, bloating, skin issues. The good news: small changes to your diet can shift your microbiome noticeably within just a few weeks.',
     imgQuery:'gut health nutrition microbiome food' },
   { type:'single', tag:'Stress', q:'How well do you manage day-to-day stress?',
     opts:['Very well — I have routines','Okay — I feel it sometimes','Poorly — it overwhelms me','I can\'t manage it at all'] },
   { type:'single', tag:'Hydration', q:'How much water do you drink per day?',
     opts:['Less than 1 liter','1–1.5 liters','1.5–2 liters','More than 2 liters'] },
-  { type:'multi', tag:'Goals', q:'What do you most want to improve? (Pick up to 3)',
+  { type:'multi', tag:'Goals', q:'What do you most want to improve?',
     opts:['More energy','Better sleep','Less stress','Healthy weight','Stronger immunity','Better digestion'] },
   { type:'single', tag:'Supplements', q:'Do you currently take any supplements or vitamins?',
     opts:['Yes, regularly and intentionally','Occasionally, but not systematic','No, never tried','I don\'t know what I should take'] },
   { type:'single', tag:'Age Group', q:'Which age group do you belong to?',
     opts:['18–29','30–44','45–59','60+'] },
-  { type:'multi', tag:'Nutrition', q:'Which of these do you eat regularly? (Select all that apply)',
+  { type:'multi', tag:'Nutrition', q:'Which of these do you eat regularly?',
     opts:['Vegetables every day','Fruit every day','Whole grains','Legumes or nuts','Fermented foods (yogurt, kefir...)'] },
   { type:'single', tag:'Motivation', q:'What motivates you most to take care of your health?',
     opts:['Better appearance and fitness','Longer, higher-quality life','Disease prevention','More energy for family and work'] }
@@ -617,16 +473,13 @@ let answers = new Array(POOL.length).fill(undefined);
 let selectedOptions = [];
 let busy = false;
 
-window.addEventListener('DOMContentLoaded', () => {
-  const el = document.getElementById('q-total');
-  if (el) el.textContent = TOTAL_QUESTIONS;
-});
-
-// Pre-compute question numbers (slides don't count)
 const QUESTION_INDICES = POOL.map((q, i) => q.type !== 'slide' ? i : null).filter(i => i !== null);
 const TOTAL_QUESTIONS = QUESTION_INDICES.length;
 
-/* ── Start quiz from landing button ── */
+window.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('q-total').textContent = TOTAL_QUESTIONS;
+});
+
 function startQuiz() {
   idx = 0;
   document.getElementById('quiz').classList.add('has-progress');
@@ -634,26 +487,18 @@ function startQuiz() {
   renderQuestion();
 }
 
-/* ── Quiz render ── */
 function renderQuestion() {
   const q = POOL[idx];
-
-  // Progress: landing=4%, questions fill 10%→100%
   const pct = 10 + ((idx / (POOL.length - 1)) * 90);
   document.getElementById('progress-fill').style.width = pct + '%';
 
-  // Counter: only count non-slide questions
   const qNum = QUESTION_INDICES.indexOf(idx);
   if (qNum >= 0) {
     document.getElementById('q-num').textContent = qNum + 1;
-    document.getElementById('q-total').textContent = TOTAL_QUESTIONS;
   } else {
-    // slide — show prev question number
-    const prevQ = QUESTION_INDICES.filter(i => i < idx);
-    document.getElementById('q-num').textContent = prevQ.length;
-    document.getElementById('q-total').textContent = TOTAL_QUESTIONS;
+    document.getElementById('q-num').textContent = QUESTION_INDICES.filter(i => i < idx).length;
   }
-
+  document.getElementById('q-total').textContent = TOTAL_QUESTIONS;
   document.getElementById('btn-back').classList.add('visible');
 
   const body = document.getElementById('quiz-body');
@@ -683,48 +528,38 @@ function renderQuestion() {
 }
 
 function renderSlide(q, body) {
-  const imgSrc = randFrom(SLIDE_IMGS[q.imgQuery]||[]) || '';
+  const imgSrc = randFrom(SLIDE_IMGS[q.imgQuery] || []) || '';
   body.innerHTML = `<div class="slide-wrap">
-    <div class="slide-card">
-      ${imgSrc?`<img class="slide-img" src="${imgSrc}" alt="" loading="lazy">`:''}
-      <div class="slide-content">
-        <h2 class="slide-title">${q.title}</h2>
-        <p class="slide-text">${q.text}</p>
-      </div>
-    </div>
+    <p class="slide-text">${q.text}</p>
+    ${imgSrc ? `<img class="slide-img" src="${imgSrc}" alt="" loading="lazy">` : ''}
+    ${q.text2 ? `<p class="slide-text">${q.text2}</p>` : ''}
   </div>`;
 }
 
 function renderSingle(q, body) {
   const saved = answers[idx];
-  const opts = q.opts.map((o, i) => {
-    const sel = saved === i;
-    return `<button class="opt${sel?' selected':''}" onclick="pickSingle(this,${i})">${o}</button>`;
-  }).join('');
+  const opts = q.opts.map((o, i) =>
+    `<button class="opt${saved === i ? ' selected' : ''}" onclick="pickSingle(this,${i})">${o}</button>`
+  ).join('');
   body.innerHTML = `<div class="q-wrap"><div class="q-text">${q.q}</div><div class="options-list">${opts}</div></div>`;
 }
 
 function renderMulti(q, body) {
   const savedArr = Array.isArray(answers[idx]) ? answers[idx] : [];
   selectedOptions = [...savedArr];
-  const opts = q.opts.map((o, i) => {
-    const sel = savedArr.includes(i);
-    return `<button class="opt multi${sel?' selected':''}" onclick="toggleMulti(this,${i})"><span class="opt-check"></span>${o}</button>`;
-  }).join('');
-  const cleanQ = q.q.replace(/\s*\(.*?\)/g, '');
-  body.innerHTML = `<div class="q-wrap"><div class="q-text">${cleanQ}</div><div class="q-hint">Select all that apply</div><div class="options-list">${opts}</div></div>`;
+  const opts = q.opts.map((o, i) =>
+    `<button class="opt multi${savedArr.includes(i) ? ' selected' : ''}" onclick="toggleMulti(this,${i})"><span class="opt-check"></span>${o}</button>`
+  ).join('');
+  body.innerHTML = `<div class="q-wrap"><div class="q-text">${q.q}</div><div class="q-hint">Select all that apply</div><div class="options-list">${opts}</div></div>`;
 }
 
-/* ── Interactions ── */
 function pickSingle(btn, i) {
   if (busy) return;
   busy = true;
-  // Immediately disable ALL options — prevents next-question buttons being pre-highlighted on mobile
-  const list = btn.closest('.options-list');
-  list.querySelectorAll('.opt').forEach(b => { b.disabled = true; b.classList.remove('selected','flash'); });
+  btn.closest('.options-list').querySelectorAll('.opt').forEach(b => { b.disabled = true; b.classList.remove('selected','flash'); });
   btn.classList.add('flash');
   answers[idx] = i;
-  setTimeout(() => { next(); busy = false; }, 280);
+  setTimeout(() => { next(); busy = false; }, 200);
 }
 
 function toggleMulti(btn, i) {
@@ -762,16 +597,15 @@ function goBack() {
 
 function doTransition(fn) {
   const body = document.getElementById('quiz-body');
-  body.style.transition = 'opacity 0.12s ease';
+  body.style.transition = 'opacity 0.1s ease';
   body.style.opacity = '0';
   setTimeout(() => {
     fn();
-    body.style.transition = '';
+    body.style.transition = 'opacity 0.14s ease';
     body.style.opacity = '1';
-  }, 120);
+  }, 100);
 }
 
-/* ── Loading ── */
 function startLoading() {
   document.getElementById('progress-fill').style.width = '100%';
   document.getElementById('fixed-bottom').style.display = 'none';
@@ -795,7 +629,6 @@ function startLoading() {
   });
 }
 
-/* ── Show screen ── */
 function show(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
