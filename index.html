@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
 <title>Health Quiz</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Nunito:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
@@ -36,7 +36,7 @@ html, body {
   overscroll-behavior: none;
 }
 
-/* PROGRESS BAR */
+/* PROGRESS BAR - HLADKÁ ANIMÁCIA NA MOBILE */
 #progress-wrap {
   position: sticky;
   top: 0;
@@ -50,7 +50,10 @@ html, body {
   height: var(--bar-h);
   background: var(--teal);
   border-radius: 0 4px 4px 0;
-  transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 0%;
+  transition: width 0.25s ease-out;
+  will-change: width;
+  transform: translateZ(0);
 }
 
 /* SCREENS */
@@ -88,7 +91,6 @@ html, body {
   letter-spacing: -0.02em;
   max-width: 460px;
 }
-/* FIX: R$2,554 same color as rest of text */
 .land-title em { color: var(--g900); font-style: normal; }
 .land-sub {
   font-size: 15px;
@@ -97,7 +99,6 @@ html, body {
   margin-bottom: 22px;
   max-width: 400px;
 }
-/* FIX: shorter hero image */
 .land-hero-img {
   display: block;
   width: min(100%, 440px);
@@ -142,7 +143,7 @@ html, body {
 .sp-text { font-size: 13px; color: var(--g600); line-height: 1.3; }
 .sp-text strong { color: var(--g900); font-weight: 700; }
 
-/* QUIZ HEADER */
+/* QUIZ HEADER – posunuté o 22px nižšie */
 .quiz-header {
   flex-shrink: 0;
   padding: 14px 24px 10px;
@@ -152,6 +153,7 @@ html, body {
   max-width: 468px;
   margin: 0 auto;
   width: 100%;
+  margin-top: 22px;   /* <-- presne 22px */
 }
 .btn-back {
   display: flex; align-items: center; gap: 5px;
@@ -239,7 +241,7 @@ html, body {
   transform: rotate(45deg) translateY(-1px);
 }
 
-/* FIX: Slide — text / image / text, no fact boxes */
+/* SLIDE */
 .slide-wrap { display: flex; flex-direction: column; gap: 16px; padding-bottom: 24px; }
 .slide-img {
   width: 100%; height: 210px;
@@ -324,7 +326,6 @@ html, body {
 .check-box svg { display: none; }
 .check-box.done svg { display: block; }
 
-/* FIX: fast, clean fade-up transition */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -344,7 +345,7 @@ html, body {
 @media (max-width: 380px) {
   .q-text { font-size: 16px; }
   .opt { font-size: 14px; min-height: 44px; }
-  .quiz-header { padding: 10px 16px 8px; }
+  .quiz-header { padding: 10px 16px 8px; margin-top: 22px; }
   .quiz-body { padding: 2px 16px 0; }
   .fixed-bottom { padding: 8px 16px 10px; }
 }
@@ -531,7 +532,6 @@ function renderQuestion() {
 
 function renderSlide(q, body) {
   const imgSrc = randFrom(SLIDE_IMGS[q.imgQuery] || []) || '';
-  // FIX: text → image → text2 layout, no fact boxes
   body.innerHTML = `<div class="slide-wrap">
     <p class="slide-text">${q.text}</p>
     ${imgSrc ? `<img class="slide-img" src="${imgSrc}" alt="" loading="lazy">` : ''}
