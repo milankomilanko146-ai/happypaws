@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Health Quiz</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -22,8 +22,8 @@
   --g600: #5A6374;
   --g700: #3D4555;
   --g900: #1A1A1A;
-  --font: 'Inter', sans-serif;
-  --serif: 'Inter', sans-serif;
+  --font: 'Nunito', sans-serif;
+  --serif: 'Nunito', sans-serif;
   --max-w: 560px;
   --nav-h: 0px;
 }
@@ -522,7 +522,7 @@ html, body {
       </svg>
       Back
     </button>
-    <div class="q-counter"><span id="q-num">1</span><span class="denom"> / 13</span></div>
+    <div class="q-counter"><span id="q-num">1</span><span class="denom"> / <span id="q-total"></span></span></div>
   </div>
   <div class="quiz-body" id="quiz-body"></div>
   <div class="fixed-bottom" id="fixed-bottom">
@@ -614,8 +614,13 @@ let selectedOptions = [];
 let busy = false;
 
 window.addEventListener('DOMContentLoaded', () => {
-  // nothing needed on landing now
+  const el = document.getElementById('q-total');
+  if (el) el.textContent = TOTAL_QUESTIONS;
 });
+
+// Pre-compute question numbers (slides don't count)
+const QUESTION_INDICES = POOL.map((q, i) => q.type !== 'slide' ? i : null).filter(i => i !== null);
+const TOTAL_QUESTIONS = QUESTION_INDICES.length;
 
 /* ── Start quiz from landing button ── */
 function startQuiz() {
@@ -628,10 +633,24 @@ function startQuiz() {
 /* ── Quiz render ── */
 function renderQuestion() {
   const q = POOL[idx];
-  const pct = (idx / (POOL.length - 1)) * 100;
-  document.getElementById('progress-fill').style.width = Math.max(pct, 2) + '%';
-  document.getElementById('q-num').textContent = idx + 1;
-  document.getElementById('btn-back').classList.toggle('visible', true);
+
+  // Progress: based on idx position across all pool items
+  const pct = 4 + ((idx / (POOL.length - 1)) * 96);
+  document.getElementById('progress-fill').style.width = pct + '%';
+
+  // Counter: only count non-slide questions
+  const qNum = QUESTION_INDICES.indexOf(idx);
+  if (qNum >= 0) {
+    document.getElementById('q-num').textContent = qNum + 1;
+    document.getElementById('q-total').textContent = TOTAL_QUESTIONS;
+  } else {
+    // slide — show prev question number
+    const prevQ = QUESTION_INDICES.filter(i => i < idx);
+    document.getElementById('q-num').textContent = prevQ.length;
+    document.getElementById('q-total').textContent = TOTAL_QUESTIONS;
+  }
+
+  document.getElementById('btn-back').classList.add('visible');
 
   const body = document.getElementById('quiz-body');
   const fb = document.getElementById('fixed-bottom');
