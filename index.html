@@ -341,28 +341,44 @@ html, body {
 .slide-wrap {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 0;
+  padding-bottom: 24px;
 }
-.slide-card {
-  background: #fff;
-  border-radius: 16px;
-  border: 1.5px solid var(--g200);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
+.slide-title {
+  font-family: var(--font);
+  font-size: clamp(20px, 4vw, 26px);
+  font-weight: 800;
+  color: var(--g900);
+  margin-bottom: 16px;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
 }
 .slide-img {
   width: 100%;
-  height: 155px;
+  height: 200px;
   object-fit: cover;
   display: block;
+  border-radius: 12px;
   background: var(--g100);
+  margin-bottom: 20px;
   flex-shrink: 0;
 }
-.slide-content { padding: 16px 18px 18px; flex: 1; overflow-y: auto; }
-.slide-title { font-family: var(--font); font-size: clamp(16px, 3vw, 20px); font-weight: 700; color: var(--g900); margin-bottom: 8px; line-height: 1.3; }
-.slide-text { font-size: 14px; color: var(--g600); line-height: 1.7; }
+.slide-body { display: flex; flex-direction: column; gap: 12px; }
+.slide-text {
+  font-size: 15px;
+  color: var(--g700);
+  line-height: 1.75;
+}
 .slide-hl { font-weight: 700; color: var(--teal-dark); }
+.slide-fact {
+  background: var(--teal-light);
+  border-left: 3px solid var(--teal);
+  border-radius: 0 8px 8px 0;
+  padding: 12px 14px;
+  font-size: 14px;
+  color: var(--g700);
+  line-height: 1.6;
+}
 
 /* ── Continue button ── */
 .fixed-bottom {
@@ -573,7 +589,9 @@ const POOL = [
   { type:'single', tag:'Sleep', q:'How many hours of sleep do you get on average per night?',
     opts:['Less than 5 hours','5–6 hours','7–8 hours','More than 9 hours'] },
   { type:'slide', title:'Sleep & your immune system',
-    text:'Adults who sleep fewer than 7 hours per night are nearly <span class="slide-hl">3× more likely</span> to catch a cold compared to those who sleep 8 or more hours. Sleep is when your body does its most important repair work.',
+    text:'Most people know that sleep is important — but few realise just how directly it affects their immune system. During deep sleep, your body produces cytokines, proteins that help fight off infections and inflammation. Without enough of them, your defences weaken fast.',
+    fact:'Adults who sleep fewer than 7 hours per night are nearly <strong>3× more likely</strong> to catch a cold compared to those who sleep 8 or more hours.',
+    text2:'Sleep is also when your brain clears out waste products, your muscles repair, and your hormones reset. It\'s not downtime — it\'s the most productive part of your day.',
     imgQuery:'sleeping rest recovery' },
   { type:'multi', tag:'Symptoms', q:'Which of these do you experience regularly? (Select all that apply)',
     opts:['Headaches','Bloating or digestive issues','Skin problems','Mood swings','None of these'] },
@@ -582,7 +600,9 @@ const POOL = [
   { type:'multi', tag:'Movement', q:'What types of exercise do you do weekly? (Select all that apply)',
     opts:['Walking or running','Gym or fitness','Yoga or stretching','Swimming','Barely any movement'] },
   { type:'slide', title:'The gut–brain connection',
-    text:'Up to <span class="slide-hl">70% of your immune system</span> is located in your gut. A healthy microbiome directly influences your mood, energy levels, and how well you sleep — not just your digestion.',
+    text:'Your gut is often called the "second brain" — and for good reason. It contains over 100 million nerve cells and produces around 95% of your body\'s serotonin, the chemical most associated with mood and wellbeing.',
+    fact:'Up to <strong>70% of your immune system</strong> lives in your gut. A healthy microbiome directly influences your mood, energy levels, sleep quality, and how well you digest food.',
+    text2:'When your gut bacteria are out of balance, the effects show up everywhere — brain fog, low energy, poor sleep, bloating, skin issues. The good news: small changes to your diet can shift your microbiome noticeably within just a few weeks.',
     imgQuery:'gut health nutrition microbiome food' },
   { type:'single', tag:'Stress', q:'How well do you manage day-to-day stress?',
     opts:['Very well — I have routines','Okay — I feel it sometimes','Poorly — it overwhelms me','I can\'t manage it at all'] },
@@ -685,12 +705,12 @@ function renderQuestion() {
 function renderSlide(q, body) {
   const imgSrc = randFrom(SLIDE_IMGS[q.imgQuery]||[]) || '';
   body.innerHTML = `<div class="slide-wrap">
-    <div class="slide-card">
-      ${imgSrc?`<img class="slide-img" src="${imgSrc}" alt="" loading="lazy">`:''}
-      <div class="slide-content">
-        <h2 class="slide-title">${q.title}</h2>
-        <p class="slide-text">${q.text}</p>
-      </div>
+    <h2 class="slide-title">${q.title}</h2>
+    ${imgSrc ? `<img class="slide-img" src="${imgSrc}" alt="" loading="lazy">` : ''}
+    <div class="slide-body">
+      <p class="slide-text">${q.text}</p>
+      ${q.fact ? `<div class="slide-fact">${q.fact}</div>` : ''}
+      ${q.text2 ? `<p class="slide-text">${q.text2}</p>` : ''}
     </div>
   </div>`;
 }
