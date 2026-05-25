@@ -64,22 +64,21 @@ html, body {
   left: 0; right: 0;
   z-index: 150;
   background: #fff;
-  display: none;
 }
-.progress-track { width: 100%; height: 4px; background: var(--g200); }
+.progress-track { width: 100%; height: 7px; background: var(--g200); }
 .progress-fill {
-  height: 4px;
+  height: 7px;
   background: var(--teal);
-  border-radius: 0 2px 2px 0;
+  border-radius: 0 4px 4px 0;
   transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ═══════ SCREENS ═══════ */
-/* Mobile: fixed, full-height panels below nav */
+/* Mobile: fixed, full-height panels below progress bar */
 .screen {
   display: none;
   position: fixed;
-  top: 0;
+  top: 7px;
   left: 0; right: 0; bottom: 0;
   background: #fff;
   overflow-y: auto;
@@ -88,7 +87,7 @@ html, body {
 .screen.active { display: block; }
 
 /* Landing scrolls freely */
-#landing { overflow-y: auto; background: var(--g100); padding-top: 4px; }
+#landing { overflow-y: auto; background: var(--g100); padding-top: 7px; }
 
 /* Quiz: flex column, full screen */
 #quiz {
@@ -102,7 +101,7 @@ html, body {
 
 /* Quiz top shifts down by progress bar height when visible */
 #quiz.has-progress {
-  top: 4px;
+  top: 7px;
 }
 
 /* Loading scrolls */
@@ -138,13 +137,14 @@ html, body {
   max-width: 400px;
 }
 
-/* Hero image — square */
+/* Hero image — perfect square */
 .land-hero-img {
   width: 100%;
   max-width: 440px;
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  border-radius: 16px;
+  object-position: center;
+  border-radius: 12px;
   display: block;
   margin: 0 auto 22px;
   background: var(--g200);
@@ -216,23 +216,23 @@ html, body {
   cursor: pointer;
   color: var(--g700);
   font-family: var(--font);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
-  padding: 7px 14px 7px 9px;
+  padding: 9px 18px 9px 12px;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
   visibility: hidden;
 }
 .btn-back.visible { visibility: visible; }
 .btn-back:active { opacity: 0.7; }
-.btn-back svg { width: 18px; height: 18px; flex-shrink: 0; }
+.btn-back svg { width: 20px; height: 20px; flex-shrink: 0; }
 .q-counter {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
   color: var(--g900);
   white-space: nowrap;
 }
-.q-counter .denom { font-size: 14px; font-weight: 400; color: var(--g400); }
+.q-counter .denom { font-size: 16px; font-weight: 400; color: var(--g400); }
 
 /* quiz-body: flex, fills space */
 .quiz-body {
@@ -261,7 +261,7 @@ html, body {
   text-align: center;
 }
 .q-text {
-  font-size: clamp(17px, 4vw, 22px);
+  font-size: clamp(20px, 4.5vw, 26px);
   font-weight: 700;
   color: var(--g900);
   line-height: 1.35;
@@ -279,22 +279,21 @@ html, body {
 .opt {
   border: 1.5px solid var(--g300);
   border-radius: 12px;
-  padding: 14px 18px;
+  padding: 15px 20px;
   background: #fff;
   font-family: var(--font);
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
   color: var(--g900);
   cursor: pointer;
-  text-align: center;
+  text-align: left;
   transition: border-color 0.15s, background 0.15s;
   line-height: 1.4;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
   display: flex;
   align-items: center;
-  justify-content: center;
-  min-height: 50px;
+  min-height: 54px;
 }
 .opt:active { opacity: 0.8; }
 .opt.selected {
@@ -484,7 +483,7 @@ html, body {
 
 
 
-<div id="progress-wrap" style="display:block;">
+<div id="progress-wrap">
   <div class="progress-track">
     <div class="progress-fill" id="progress-fill" style="width:4%"></div>
   </div>
@@ -632,7 +631,7 @@ function renderQuestion() {
   const pct = (idx / (POOL.length - 1)) * 100;
   document.getElementById('progress-fill').style.width = Math.max(pct, 2) + '%';
   document.getElementById('q-num').textContent = idx + 1;
-  document.getElementById('btn-back').classList.toggle('visible', idx > 0);
+  document.getElementById('btn-back').classList.toggle('visible', true);
 
   const body = document.getElementById('quiz-body');
   const fb = document.getElementById('fixed-bottom');
@@ -772,10 +771,6 @@ function startLoading() {
   checkTimes.forEach((t, i) => {
     setTimeout(() => document.getElementById(checks[i]).classList.add('done'), t);
   });
-
-  setTimeout(() => {
-    window.location.href = 'https://happypaws-sepia.vercel.app/checkout.html';
-  }, 9500);
 }
 
 /* ── Show screen ── */
