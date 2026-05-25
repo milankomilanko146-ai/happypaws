@@ -38,10 +38,12 @@ html, body {
 
 /* PROGRESS BAR */
 #progress-wrap {
-  position: fixed;
-  top: var(--bar-top);
+  position: sticky;
+  top: 0;
   left: 0; right: 0;
   z-index: 150;
+  padding-top: var(--bar-top);
+  background: #fff;
 }
 .progress-track { width: 100%; height: var(--bar-h); background: var(--g200); }
 .progress-fill {
@@ -64,8 +66,7 @@ html, body {
 #landing { background: var(--g100); }
 #quiz { overflow: hidden; }
 #quiz.active { display: flex; flex-direction: column; }
-/* FIX: push quiz content below progress bar */
-#quiz.has-progress { padding-top: calc(var(--bar-top) + var(--bar-h) + 4px); }
+#quiz.has-progress { padding-top: 0; }
 #loading { overflow-y: auto; background: var(--g100); }
 
 /* LANDING */
@@ -336,7 +337,7 @@ html, body {
   .screen { position: static; display: none; min-height: 100vh; overflow-y: auto; }
   .screen.active { display: block; }
   #quiz.active { display: flex; flex-direction: column; min-height: 100vh; }
-  #quiz.has-progress { padding-top: calc(var(--bar-top) + var(--bar-h) + 4px); }
+  #quiz.has-progress { padding-top: 0; }
   .quiz-body { overflow-y: auto; }
   .fixed-bottom { position: static; border-top: none; padding-top: 16px; }
 }
