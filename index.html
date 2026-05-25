@@ -1,535 +1,789 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Skin Quiz – Dr. Novak</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Health Quiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --white:#fff;--off:#f9f7f4;--off2:#f3efe8;
-  --black:#18181b;--dark:#2d2d32;--gray:#64646e;--lgray:#9a9aa8;
-  --border:#e4dfd7;
-  --green:#2a5a3c;--green2:#336b49;--green-bg:#edf4ef;--green-light:#c8e0d0;
-  --red:#b03530;--red-bg:#fdf1f0;--red-dark:#8a2520;
-  --amber:#c47c1a;--amber-bg:#fef6e8;
-  --radius:10px;
-  --shadow:0 2px 18px rgba(0,0,0,0.07);
-  --shadow-lg:0 8px 40px rgba(0,0,0,0.11);
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --teal: #2BA84A;
+  --teal-light: #E8F5EC;
+  --teal-mid: #4DC96A;
+  --teal-dark: #1E7A35;
+  --teal-soft: #B2DFB9;
+  --g100: #F5F5F5;
+  --g200: #E8ECF2;
+  --g300: #D0D6E0;
+  --g400: #9AA3B2;
+  --g600: #5A6374;
+  --g700: #3D4555;
+  --g900: #1A1A1A;
+  --font: 'Inter', sans-serif;
+  --serif: 'Inter', sans-serif;
+  --max-w: 560px;
+  --nav-h: 0px;
 }
-html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--black);min-height:100vh;font-size:16px;line-height:1.6}
-.screen{display:none;flex-direction:column;min-height:100vh}
-.screen.active{display:flex}
-#intro{align-items:center;background:var(--white)}
-.intro-wrap{width:100%;max-width:500px;margin:0 auto;padding:28px 20px 60px;display:flex;flex-direction:column;align-items:center;gap:22px;text-align:center}
-.intro-img{width:100%;aspect-ratio:4/3;border-radius:14px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow-lg)}
-.intro-img img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
-.dr-line{font-size:12.5px;color:var(--gray);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:10px 0;width:100%;letter-spacing:.03em}
-.intro-title{font-family:'Playfair Display',serif;font-size:clamp(26px,6vw,36px);font-weight:700;line-height:1.2;color:var(--black)}
-.intro-title em{font-style:italic;color:var(--red)}
-.intro-sub{font-size:15px;line-height:1.75;color:var(--dark);max-width:420px}
-.intro-sub strong{color:var(--red)}
-.btn-start{width:100%;background:var(--green);color:#fff;border:none;border-radius:var(--radius);padding:18px 24px;font-family:'DM Sans',sans-serif;font-size:17px;font-weight:600;cursor:pointer;transition:background .2s,transform .1s}
-.btn-start:hover{background:var(--green2)}
-.btn-start:active{transform:scale(.99)}
-.social-proof{font-size:13px;color:var(--gray);display:flex;align-items:center;gap:7px}
-.dot-pulse{width:8px;height:8px;border-radius:50%;background:#27ae60;display:inline-block;flex-shrink:0;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-#quiz{background:var(--off)}
-.quiz-top{background:var(--white);border-bottom:1px solid var(--border);padding:13px 20px;position:sticky;top:0;z-index:10}
-.quiz-top-inner{max-width:500px;margin:0 auto;display:flex;flex-direction:column;gap:7px}
-.progress-meta{display:flex;justify-content:space-between;font-size:12px;color:var(--lgray);font-weight:500}
-.pbar{height:4px;background:var(--border);border-radius:4px;overflow:hidden}
-.pbar-fill{height:100%;background:var(--green);border-radius:4px;transition:width .4s ease}
-.quiz-body{max-width:500px;width:100%;margin:0 auto;padding:24px 20px 72px;display:flex;flex-direction:column;gap:16px}
-.q-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:24px 20px;box-shadow:var(--shadow)}
-.q-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--lgray);margin-bottom:12px}
-.q-text{font-family:'Playfair Display',serif;font-size:clamp(18px,4vw,22px);font-weight:600;line-height:1.3;color:var(--black);margin-bottom:18px}
-.q-note{font-size:13px;color:var(--lgray);margin-bottom:14px;font-style:italic}
-.opts{display:flex;flex-direction:column;gap:8px}
-.opt{display:flex;align-items:center;gap:12px;border:1.5px solid var(--border);border-radius:var(--radius);padding:13px 14px;cursor:pointer;background:var(--white);transition:border-color .15s,background .15s;font-size:15px;color:var(--black);text-align:left;width:100%;font-family:'DM Sans',sans-serif}
-.opt:hover{border-color:#a8c4b0;background:#f7faf8}
-.opt.sel{border-color:var(--green);background:var(--green-bg)}
-.opt-mark{width:20px;height:20px;min-width:20px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0}
-.opt.sel .opt-mark{background:var(--green);border-color:var(--green)}
-.opt-mark-sq{border-radius:5px}
-.opt.sel .opt-mark::after{content:'checkmark';color:#fff;font-size:11px;font-weight:700;line-height:1}
-.slide-hero{width:100%;border-radius:10px;overflow:hidden;margin-bottom:16px;max-height:200px}
-.slide-hero img{width:100%;height:200px;object-fit:cover;display:block}
-.slide-headline{font-family:'Playfair Display',serif;font-size:clamp(18px,4vw,21px);font-weight:700;line-height:1.3;color:var(--black);margin-bottom:12px}
-.slide-body{font-size:14.5px;line-height:1.7;color:var(--dark);margin-bottom:4px}
-.slide-fear{background:var(--red-bg);border:1px solid #e8c4c1;border-radius:10px;padding:16px;margin-top:14px}
-.slide-fear-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--red);margin-bottom:10px}
-.slide-fear ul{list-style:none;display:flex;flex-direction:column;gap:8px}
-.slide-fear li{font-size:14px;color:var(--red-dark);line-height:1.55;display:flex;gap:9px;align-items:flex-start}
-.slide-fear li::before{content:'arrow';flex-shrink:0;font-weight:700;color:var(--red)}
-.slide-stat-row{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
-.slide-stat{flex:1;min-width:110px;background:var(--off2);border:1px solid var(--border);border-radius:10px;padding:14px 10px;text-align:center}
-.slide-stat-n{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--green);display:block;line-height:1}
-.slide-stat-l{font-size:12px;color:var(--gray);display:block;margin-top:4px;line-height:1.4}
-.btn-next{width:100%;background:var(--green);color:#fff;border:none;border-radius:var(--radius);padding:16px;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:600;cursor:pointer;transition:background .2s,opacity .2s;opacity:.3;pointer-events:none}
-.btn-next.on{opacity:1;pointer-events:auto}
-.btn-next.on:hover{background:var(--green2)}
-#loading{align-items:center;justify-content:center;background:var(--white);padding:48px 20px;gap:26px;text-align:center}
-.load-spinner{width:72px;height:72px;border-radius:50%;border:3px solid var(--green-light);border-top-color:var(--green);animation:spin 1.1s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-.load-title{font-family:'Playfair Display',serif;font-size:23px;font-weight:600;color:var(--black)}
-.load-sub{font-size:14px;color:var(--gray);max-width:300px;line-height:1.65}
-.load-list{width:100%;max-width:360px;display:flex;flex-direction:column;gap:10px}
-.load-item{display:flex;align-items:center;gap:10px;background:var(--off);border:1px solid var(--border);border-radius:8px;padding:11px 14px;font-size:13.5px;color:var(--lgray);opacity:0;transform:translateY(8px);transition:opacity .5s,transform .5s,color .4s}
-.load-item.show{opacity:1;transform:translateY(0)}
-.load-item.done{color:var(--green);font-weight:500}
-.load-dot{width:7px;height:7px;min-width:7px;border-radius:50%;background:var(--border);transition:background .4s;flex-shrink:0}
-.load-item.done .load-dot{background:var(--green)}
-.load-bar-wrap{width:100%;max-width:360px}
-.load-bar{height:5px;background:var(--border);border-radius:4px;overflow:hidden}
-.load-fill{height:100%;background:var(--green);border-radius:4px;width:0%;transition:width .6s ease}
-.load-pct{font-size:12px;color:var(--lgray);text-align:right;margin-top:6px;font-weight:500}
-#results{background:var(--white)}
-.rh-banner{width:100%;height:280px;position:relative;overflow:hidden}
-.rh-banner img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;opacity:.35;background:#1e3828}
-.rh-banner-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(25,55,35,.3) 0%,rgba(18,42,28,.88) 100%)}
-.rh-banner-content{position:absolute;bottom:0;left:0;right:0;padding:22px 20px;max-width:500px;margin:0 auto;color:#fff}
-.rh-eye{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;opacity:.65;margin-bottom:8px}
-.rh-title{font-family:'Playfair Display',serif;font-size:clamp(21px,5.5vw,30px);font-weight:700;line-height:1.2}
-.rh-title em{font-style:italic}
-.dr-strip{display:flex;align-items:center;gap:14px;padding:18px 20px;background:var(--off);border-bottom:1px solid var(--border);max-width:500px;margin:0 auto;width:100%}
-.dr-strip-av{width:52px;height:52px;min-width:52px;border-radius:50%;overflow:hidden;border:2px solid var(--green-light);flex-shrink:0}
-.dr-strip-av img{width:100%;height:100%;object-fit:cover;object-position:center top}
-.dr-strip-name{font-size:14px;font-weight:600;color:var(--black)}
-.dr-strip-cred{font-size:12px;color:var(--green);font-weight:500}
-.dr-strip-note{font-size:12px;color:var(--gray);line-height:1.45;margin-top:2px}
-.sp-body{max-width:500px;margin:0 auto;padding:28px 20px 96px;display:flex;flex-direction:column;gap:34px}
-.result-headline-block{background:var(--off2);border-radius:14px;padding:20px;border-left:4px solid var(--red)}
-.result-headline-block h2{font-family:'Playfair Display',serif;font-size:clamp(17px,4vw,21px);font-weight:700;line-height:1.3;color:var(--black);margin-bottom:10px}
-.result-headline-block p{font-size:14px;color:var(--dark);line-height:1.65}
-.score-card{border:1px solid var(--border);border-radius:14px;padding:22px 20px;box-shadow:var(--shadow)}
-.score-top{display:flex;align-items:center;gap:18px;margin-bottom:20px}
-.score-ring-wrap{position:relative;width:82px;height:82px;min-width:82px;flex-shrink:0}
-.score-ring-wrap svg{width:82px;height:82px;transform:rotate(-90deg)}
-.score-ring-bg{fill:none;stroke:var(--border);stroke-width:6}
-.score-ring-fill{fill:none;stroke-width:6;stroke-linecap:round;transition:stroke-dashoffset 1.3s cubic-bezier(.4,0,.2,1)}
-.score-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;line-height:1;text-align:center}
-.score-n{font-family:'Playfair Display',serif;font-size:24px;font-weight:700}
-.score-of{font-size:9px;color:var(--lgray);text-transform:uppercase;letter-spacing:.04em;margin-top:2px}
-.score-label{font-size:13px;font-weight:700;margin-bottom:4px}
-.score-desc-text{font-size:13px;color:var(--gray);line-height:1.55}
-.bars-block{display:flex;flex-direction:column;gap:13px}
-.bar-row{display:flex;flex-direction:column;gap:5px}
-.bar-meta{display:flex;justify-content:space-between;font-size:13px;font-weight:500}
-.bar-meta span:last-child{font-weight:600}
-.bar-track{height:8px;background:var(--off2);border-radius:6px;overflow:hidden}
-.bar-fill{height:100%;border-radius:6px;transition:width 1.3s cubic-bezier(.4,0,.2,1)}
-.bar-sub{font-size:12px;color:var(--lgray);line-height:1.45}
-.sec-h{font-family:'Playfair Display',serif;font-size:20px;font-weight:600;color:var(--black);margin-bottom:16px}
-.sec-h em{font-style:italic}
-.issue{padding:16px 0;border-bottom:1px solid var(--border);display:flex;gap:14px;align-items:flex-start}
-.issue:last-child{border-bottom:none}
-.issue-icon{width:38px;height:38px;min-width:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.issue h4{font-size:15px;font-weight:600;margin-bottom:3px}
-.issue p{font-size:13px;color:var(--gray);line-height:1.55}
-.issue-sev{display:inline-block;font-size:11px;font-weight:600;border-radius:4px;padding:2px 7px;margin-top:5px}
-.timeline{display:flex;flex-direction:column;position:relative;padding-left:4px}
-.timeline::before{content:'';position:absolute;left:17px;top:22px;bottom:22px;width:2px;background:linear-gradient(to bottom,var(--red),var(--amber),#ccc);border-radius:2px}
-.tl-item{display:flex;gap:14px;align-items:flex-start;padding:12px 0;position:relative}
-.tl-dot{width:36px;height:36px;min-width:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;position:relative;z-index:1;flex-shrink:0;text-align:center}
-.tl-item h4{font-size:14.5px;font-weight:600;margin-bottom:2px}
-.tl-item p{font-size:13px;color:var(--gray);line-height:1.5}
-.get-item{padding:15px 0;border-bottom:1px solid var(--border);display:flex;gap:13px;align-items:flex-start}
-.get-item:last-child{border-bottom:none}
-.get-check{width:22px;height:22px;min-width:22px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-size:11px;font-weight:700;color:#fff}
-.get-item h4{font-size:15px;font-weight:600;margin-bottom:2px}
-.get-item p{font-size:13px;color:var(--gray);line-height:1.55}
-.dr-full{border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
-.dr-full-img{width:100%;height:220px;object-fit:cover;object-position:center top;display:block}
-.dr-full-body{padding:20px}
-.dr-full-name{font-size:17px;font-weight:700;margin-bottom:2px}
-.dr-full-cred{font-size:13px;color:var(--green);font-weight:500;margin-bottom:12px}
-.dr-full-body p{font-size:14px;color:var(--gray);line-height:1.65}
-.dr-quote{border-left:3px solid var(--green);padding:10px 14px;margin-top:12px;background:var(--off);border-radius:0 6px 6px 0}
-.dr-quote p{font-size:14px;color:var(--dark);font-style:italic;line-height:1.6}
-.cta-box{border:2px solid var(--green);border-radius:16px;padding:26px 22px;background:linear-gradient(160deg,#edf6f1 0%,#fff 100%);display:flex;flex-direction:column;gap:16px;box-shadow:0 4px 28px rgba(42,90,60,.12)}
-.cta-box h3{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--black);line-height:1.25}
-.cta-desc{font-size:14px;color:var(--gray);line-height:1.65}
-.cta-consult{display:flex;align-items:center;gap:10px;background:var(--amber-bg);border:1px solid #f0d49a;border-radius:8px;padding:12px 14px;font-size:13.5px;color:#7a5010;line-height:1.5}
-.cta-consult strong{color:#5a3a08}
-.what-inside{background:var(--off);border-radius:10px;padding:16px}
-.wi-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--lgray);margin-bottom:10px}
-.wi-item{display:flex;align-items:center;gap:9px;font-size:14px;color:var(--dark);padding:4px 0}
-.wi-item::before{content:'check';color:var(--green);font-weight:700;font-size:13px;flex-shrink:0}
-.price-section{text-align:center}
-.price-row{display:flex;align-items:baseline;gap:10px;justify-content:center;margin-bottom:5px}
-.price-main{font-family:'Playfair Display',serif;font-size:48px;font-weight:700;color:var(--green)}
-.price-old{font-size:22px;color:#bbb;text-decoration:line-through}
-.price-tag{font-size:12px;font-weight:700;color:#fff;background:var(--red);border-radius:5px;padding:3px 9px}
-.price-note{font-size:12.5px;color:var(--lgray)}
-.urgency{font-size:13px;color:var(--red);font-weight:500;text-align:center;background:var(--red-bg);border-radius:8px;padding:10px 14px;display:flex;align-items:center;gap:6px;justify-content:center}
-.btn-checkout{display:block;width:100%;background:var(--green);color:#fff;border:none;border-radius:var(--radius);padding:19px 24px;font-family:'DM Sans',sans-serif;font-size:17px;font-weight:600;cursor:pointer;text-decoration:none;text-align:center;transition:background .2s,transform .1s}
-.btn-checkout:hover{background:var(--green2)}
-.btn-checkout:active{transform:scale(.99)}
-.trust-strip{display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--lgray)}
-.trust-strip span{display:flex;align-items:center;gap:4px}
-.testi-grid{display:flex;flex-direction:column;gap:12px}
-.testi{background:var(--off);border:1px solid var(--border);border-radius:12px;padding:18px}
-.testi-stars{color:#e0a82e;font-size:14px;margin-bottom:8px;letter-spacing:2px}
-.testi-text{font-size:14px;line-height:1.65;color:var(--dark);margin-bottom:10px}
-.testi-author{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--lgray);font-weight:500}
-.testi-av{width:28px;height:28px;border-radius:50%;background:var(--green-light);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--green);flex-shrink:0}
-.testi-v{font-size:11px;color:var(--green);font-weight:600;background:var(--green-bg);border-radius:4px;padding:2px 7px;margin-left:auto}
-.faq-item{border-bottom:1px solid var(--border);padding:14px 0}
-.faq-item:first-child{border-top:1px solid var(--border)}
-.faq-q{font-size:15px;font-weight:500;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px}
-.faq-arr{font-size:18px;color:var(--lgray);transition:transform .2s;flex-shrink:0}
-.faq-item.open .faq-arr{transform:rotate(45deg)}
-.faq-a{font-size:14px;color:var(--gray);line-height:1.65;max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s}
-.faq-item.open .faq-a{max-height:300px;padding-top:10px}
-.div-line{height:1px;background:var(--border);width:100%}
-.sticky{position:fixed;bottom:0;left:0;right:0;background:var(--white);border-top:1px solid var(--border);padding:12px 16px 16px;display:none;z-index:50;box-shadow:0 -4px 20px rgba(0,0,0,.08)}
-.sticky.show{display:block}
-.sticky-inner{max-width:480px;margin:0 auto;display:flex;flex-direction:column;gap:4px}
-.sticky-label{font-size:12px;color:var(--gray);text-align:center}
-.sticky a{display:block;background:var(--green);color:#fff;border-radius:var(--radius);padding:14px;text-align:center;font-size:15px;font-weight:600;text-decoration:none;transition:background .2s}
-.sticky a:hover{background:var(--green2)}
-@media(max-width:400px){.score-top{flex-direction:column;align-items:center;text-align:center}.dr-strip{flex-direction:column;text-align:center;align-items:center}}
-</style>
+
+html, body {
+  height: 100%;
+  font-family: var(--font);
+  background: #fff;
+  color: var(--g900);
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+}
+
+/* ═══════ NAV ═══════ */
+.top-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  background: #fff;
+  border-bottom: 1px solid #F0F0F0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+.nav-brand {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--g900);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* ═══════ PROGRESS BAR ═══════ */
+#progress-wrap {
+  position: fixed;
+  top: 0;
+  left: 0; right: 0;
+  z-index: 150;
+  background: #fff;
+  display: none;
+}
+.progress-track { width: 100%; height: 4px; background: var(--g200); }
+.progress-fill {
+  height: 4px;
+  background: var(--teal);
+  border-radius: 0 2px 2px 0;
+  transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ═══════ SCREENS ═══════ */
+/* Mobile: fixed, full-height panels below nav */
+.screen {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0; right: 0; bottom: 0;
+  background: #fff;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.screen.active { display: block; }
+
+/* Landing scrolls freely */
+#landing { overflow-y: auto; background: var(--g100); padding-top: 4px; }
+
+/* Quiz: flex column, full screen */
+#quiz {
+  overflow: hidden;
+  top: 0;
+}
+#quiz.active {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Quiz top shifts down by progress bar height when visible */
+#quiz.has-progress {
+  top: 4px;
+}
+
+/* Loading scrolls */
+#loading { overflow-y: auto; background: var(--g100); }
+
+/* ═══════ LANDING ═══════ */
+.land-wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 48px 24px 64px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.land-title {
+  font-family: var(--font);
+  font-size: clamp(22px, 5vw, 30px);
+  line-height: 1.25;
+  color: var(--g900);
+  margin-bottom: 14px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  max-width: 460px;
+}
+.land-title em { color: var(--teal); font-style: normal; background: var(--teal-light); padding: 0 4px; border-radius: 4px; }
+.land-sub {
+  font-size: 15px;
+  color: var(--g600);
+  line-height: 1.6;
+  margin-bottom: 22px;
+  max-width: 400px;
+}
+
+/* Hero image — square */
+.land-hero-img {
+  width: 100%;
+  max-width: 440px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+  margin: 0 auto 22px;
+  background: var(--g200);
+}
+
+/* START NOW button */
+.btn-start {
+  width: 100%;
+  max-width: 440px;
+  padding: 18px 24px;
+  background: var(--teal);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-family: var(--font);
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  box-shadow: 0 6px 24px rgba(43,168,74,0.35);
+  transition: background 0.15s, transform 0.10s, box-shadow 0.15s;
+  -webkit-tap-highlight-color: transparent;
+  margin-bottom: 20px;
+}
+.btn-start:hover { background: var(--teal-dark); box-shadow: 0 8px 28px rgba(43,168,74,0.45); }
+.btn-start:active { transform: scale(0.98); }
+
+/* Social proof below button */
+.sp-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.sp-avatars { display: flex; align-items: center; flex-shrink: 0; }
+.sp-av {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background: linear-gradient(135deg, var(--teal-mid), var(--teal-dark));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 8px; font-weight: 700; color: #fff;
+  margin-left: -8px;
+  letter-spacing: -0.5px;
+  flex-shrink: 0;
+}
+.sp-av:first-child { margin-left: 0; }
+.sp-text { font-size: 13px; color: var(--g600); line-height: 1.3; }
+.sp-text strong { color: var(--g900); font-weight: 700; }
+
+/* ═══════ QUIZ LAYOUT ═══════ */
+.quiz-header {
+  flex-shrink: 0;
+  padding: 14px 24px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 468px;
+  margin: 0 auto;
+  width: 100%;
+}
+.btn-back {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--g100);
+  border: 1.5px solid var(--g200);
+  border-radius: 100px;
+  cursor: pointer;
+  color: var(--g700);
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 7px 14px 7px 9px;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  visibility: hidden;
+}
+.btn-back.visible { visibility: visible; }
+.btn-back:active { opacity: 0.7; }
+.btn-back svg { width: 18px; height: 18px; flex-shrink: 0; }
+.q-counter {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--g900);
+  white-space: nowrap;
+}
+.q-counter .denom { font-size: 14px; font-weight: 400; color: var(--g400); }
+
+/* quiz-body: flex, fills space */
+.quiz-body {
+  flex: 1;
+  overflow: hidden;
+  padding: 24px 24px 0;
+  max-width: 468px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* ── Question ── */
+.q-wrap {
+  display: flex;
+  flex-direction: column;
+}
+.q-hint {
+  font-size: 12px;
+  color: var(--g400);
+  font-weight: 400;
+  margin-top: -8px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+.q-text {
+  font-size: clamp(17px, 4vw, 22px);
+  font-weight: 700;
+  color: var(--g900);
+  line-height: 1.35;
+  margin-bottom: 14px;
+  letter-spacing: -0.02em;
+  flex-shrink: 0;
+  font-family: var(--font);
+  text-align: center;
+}
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.opt {
+  border: 1.5px solid var(--g300);
+  border-radius: 12px;
+  padding: 14px 18px;
+  background: #fff;
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--g900);
+  cursor: pointer;
+  text-align: center;
+  transition: border-color 0.15s, background 0.15s;
+  line-height: 1.4;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+}
+.opt:active { opacity: 0.8; }
+.opt.selected {
+  border-color: var(--teal);
+  background: var(--teal-light);
+  color: var(--teal-dark);
+  font-weight: 600;
+}
+.opt.flash {
+  border-color: var(--teal);
+  background: var(--teal);
+  color: #fff;
+  transition: all 0.1s;
+}
+
+/* Multi */
+.opt.multi { padding-left: 50px; padding-right: 18px; position: relative; text-align: left; justify-content: flex-start; }
+.opt-check {
+  position: absolute;
+  left: 14px; top: 50%;
+  transform: translateY(-50%);
+  width: 22px; height: 22px;
+  border-radius: 7px;
+  border: 2px solid var(--g300);
+  background: #fff;
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color 0.15s, background 0.15s;
+  pointer-events: none;
+}
+.opt.multi.selected .opt-check { border-color: var(--teal); background: var(--teal); }
+.opt.multi.selected .opt-check::after {
+  content: '';
+  display: block;
+  width: 6px; height: 10px;
+  border: 2.5px solid #fff;
+  border-top: none; border-left: none;
+  transform: rotate(45deg) translateY(-1px);
+}
+
+/* ── Slide ── */
+.slide-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.slide-card {
+  background: #fff;
+  border-radius: 16px;
+  border: 1.5px solid var(--g200);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.slide-img {
+  width: 100%;
+  height: 155px;
+  object-fit: cover;
+  display: block;
+  background: var(--g100);
+  flex-shrink: 0;
+}
+.slide-content { padding: 16px 18px 18px; flex: 1; overflow-y: auto; }
+.slide-title { font-family: var(--font); font-size: clamp(16px, 3vw, 20px); font-weight: 700; color: var(--g900); margin-bottom: 8px; line-height: 1.3; }
+.slide-text { font-size: 14px; color: var(--g600); line-height: 1.7; }
+.slide-hl { font-weight: 700; color: var(--teal-dark); }
+
+/* ── Continue button ── */
+.fixed-bottom {
+  flex-shrink: 0;
+  padding: 10px 24px 16px;
+  background: #fff;
+  border-top: 1px solid #F0F0F0;
+  display: none;
+  width: 100%;
+  max-width: 468px;
+  margin: 0 auto;
+}
+.btn-continue {
+  background: var(--teal);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-family: var(--font);
+  font-size: 16px;
+  font-weight: 700;
+  padding: 15px 32px;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.15s, opacity 0.15s;
+  box-shadow: 0 4px 16px rgba(43,168,74,0.28);
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-continue:active:not(:disabled) { opacity: 0.85; }
+.btn-continue:disabled { opacity: 0.3; cursor: not-allowed; box-shadow: none; }
+
+/* ═══════ LOADING ═══════ */
+.loading-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 40px 20px 60px;
+}
+.loading-card {
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  padding: 28px 24px;
+}
+.loading-title { font-size: 19px; font-weight: 700; margin-bottom: 24px; line-height: 1.4; color: var(--g900); letter-spacing: -0.01em; }
+.circle-wrap {
+  position: relative;
+  width: 160px; height: 160px;
+  margin: 0 auto 28px;
+}
+.circle-wrap svg { transform: rotate(-90deg); }
+.circle-bg { fill: none; stroke: #E8ECF2; stroke-width: 14; }
+.circle-arc {
+  fill: none;
+  stroke: var(--teal);
+  stroke-width: 14;
+  stroke-linecap: round;
+  stroke-dasharray: 439.82;
+  stroke-dashoffset: 439.82;
+  transition: stroke-dashoffset 0.3s linear;
+}
+.circle-pct {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 36px; font-weight: 700; color: var(--teal);
+}
+.check-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 13px 0;
+  border-bottom: 1px solid #F0F0F0;
+  font-size: 14px; color: var(--g700); font-weight: 500;
+}
+.check-item:last-child { border-bottom: none; }
+.check-box {
+  width: 22px; height: 22px;
+  border-radius: 6px;
+  border: 2px solid var(--g300);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.25s ease;
+}
+.check-box.done { background: var(--teal); border-color: var(--teal); }
+.check-box svg { display: none; }
+.check-box.done svg { display: block; }
+
+/* ── Transition ── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.q-anim { animation: fadeIn 0.22s ease both; }
+
+/* ── Desktop ── */
+@media (min-width: 640px) {
+  html, body { height: auto; }
+  .screen {
+    position: static;
+    display: none;
+    min-height: 100vh;
+    overflow-y: auto;
+  }
+  .screen.active { display: block; }
+  #quiz.active {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  #quiz.has-progress { top: unset; margin-top: 4px; }
+  .quiz-body { overflow-y: auto; }
+  .fixed-bottom { position: static; border-top: none; padding-top: 16px; }
+  .slide-img { height: 200px; }
+}
+
+@media (max-width: 380px) {
+  .q-text { font-size: 16px; margin-bottom: 10px; }
+  .opt { font-size: 14px; min-height: 44px; }
+  .quiz-header { padding: 10px 16px 8px; }
+  .quiz-body { padding: 2px 16px 0; }
+  .fixed-bottom { padding: 8px 16px 10px; }
+  .slide-img { height: 130px; }
+}</style>
 </head>
 <body>
 
-<section id="intro" class="screen active">
-<div class="intro-wrap">
-  <div class="intro-img"><img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=700&q=80" alt="Dr. Anna Novak"/></div>
-  <div class="dr-line">Dr. Anna Novak, MD &nbsp;·&nbsp; Board-Certified Dermatologist &nbsp;·&nbsp; 15 Years Clinical Practice</div>
-  <h1 class="intro-title">Your Skin Is Aging Faster Than It Should. <em>Here's Why.</em></h1>
-  <p class="intro-sub"><strong>Most women unknowingly accelerate skin aging by 3–5 years</strong> through the wrong routine — and won't notice until the damage is already visible. This free quiz identifies exactly what's happening to your skin right now.</p>
-  <button class="btn-start" onclick="startQuiz()">Take the Free Skin Quiz &rarr;</button>
-  <div class="social-proof"><span class="dot-pulse"></span><span id="todayCount">247 women took this quiz today</span></div>
+
+
+<div id="progress-wrap" style="display:block;">
+  <div class="progress-track">
+    <div class="progress-fill" id="progress-fill" style="width:4%"></div>
+  </div>
 </div>
-</section>
 
-<section id="quiz" class="screen">
-  <div class="quiz-top">
-    <div class="quiz-top-inner">
-      <div class="progress-meta"><span id="pLabel">Question 1 of 12</span><span id="pPct">0%</span></div>
-      <div class="pbar"><div class="pbar-fill" id="pFill" style="width:0%"></div></div>
-    </div>
-  </div>
-  <div class="quiz-body" id="quizBody"></div>
-</section>
+<!-- ══ LANDING ══ -->
+<div class="screen active" id="landing">
+  <div class="land-wrap">
+    <h1 class="land-title">Discover your path to earning <em>R$2,554 per week</em> by becoming my partner in TikTok Shop.</h1>
+    <p class="land-sub">Without needing to show your face, without investing in ads, and <u>even if you don't have any followers.</u></p>
 
-<section id="loading" class="screen">
-  <div class="load-spinner"></div>
-  <div class="load-title">Analyzing Your Skin Profile&hellip;</div>
-  <p class="load-sub">Cross-referencing your answers with our clinical database of 14,000+ profiles.</p>
-  <div class="load-list">
-    <div class="load-item" id="li1"><div class="load-dot"></div>Identifying skin type &amp; barrier condition</div>
-    <div class="load-item" id="li2"><div class="load-dot"></div>Mapping environmental &amp; lifestyle damage factors</div>
-    <div class="load-item" id="li3"><div class="load-dot"></div>Calculating biological skin age score</div>
-    <div class="load-item" id="li4"><div class="load-dot"></div>Detecting hidden accelerators in your routine</div>
-    <div class="load-item" id="li5"><div class="load-dot"></div>Matching clinical protocol to your profile</div>
-    <div class="load-item" id="li6"><div class="load-dot"></div>Generating personalized ingredient list</div>
-    <div class="load-item" id="li7"><div class="load-dot"></div>Finalizing your results report</div>
-  </div>
-  <div class="load-bar-wrap">
-    <div class="load-bar"><div class="load-fill" id="lFill"></div></div>
-    <div class="load-pct" id="lPct">0%</div>
-  </div>
-</section>
+    <img class="land-hero-img" id="land-img" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80" alt="Partner">
 
-<section id="results" class="screen">
-  <div style="background:linear-gradient(160deg,#1a3828,#2a5a3c)">
-    <div class="rh-banner">
-      <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=700&q=80" alt=""/>
-      <div class="rh-banner-overlay"></div>
-      <div class="rh-banner-content">
-        <div class="rh-eye">Your Personalized Skin Report &mdash; Dr. Novak</div>
-        <h2 class="rh-title" id="rhTitle">Your Skin Needs Attention<br><em>Before It's Too Late to Reverse</em></h2>
+    <button class="btn-start" onclick="startQuiz()">START NOW –&gt;</button>
+
+    <div class="sp-row">
+      <div class="sp-avatars">
+        <div class="sp-av">SH</div>
+        <div class="sp-av">MR</div>
+        <div class="sp-av">JL</div>
+        <div class="sp-av">AP</div>
+        <div class="sp-av">TW</div>
+        <div class="sp-av">KD</div>
       </div>
+      <div class="sp-text"><strong>3,533</strong> already joined</div>
     </div>
   </div>
-  <div class="dr-strip">
-    <div class="dr-strip-av"><img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=200&q=80" alt="Dr. Anna Novak"/></div>
-    <div>
-      <div class="dr-strip-name">Dr. Anna Novak, MD</div>
-      <div class="dr-strip-cred">Board-Certified Dermatologist &middot; 15 yrs clinical practice</div>
-      <div class="dr-strip-note">I reviewed your answers. Here is what I found.</div>
-    </div>
+</div>
+
+<!-- ══ QUIZ ══ -->
+<div class="screen" id="quiz">
+  <div class="quiz-header">
+    <button class="btn-back" id="btn-back" onclick="goBack()">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M10.828 12L15.778 16.95L14.364 18.364L8 12L14.364 5.636L15.778 7.05L10.828 12Z"/>
+      </svg>
+      Back
+    </button>
+    <div class="q-counter"><span id="q-num">1</span><span class="denom"> / 13</span></div>
   </div>
+  <div class="quiz-body" id="quiz-body"></div>
+  <div class="fixed-bottom" id="fixed-bottom">
+    <button class="btn-continue" id="btn-continue" disabled>Continue →</button>
+  </div>
+</div>
 
-  <div class="sp-body">
-
-    <div class="result-headline-block">
-      <h2 id="resultHeadline">Your skin is aging faster than it should.</h2>
-      <p id="resultSubline">Based on your answers, there are specific, identifiable patterns driving this — and most of them are reversible if you act now.</p>
-    </div>
-
-    <div class="score-card">
-      <div class="score-top">
-        <div class="score-ring-wrap">
-          <svg viewBox="0 0 82 82"><circle class="score-ring-bg" cx="41" cy="41" r="34"/><circle class="score-ring-fill" id="scoreRing" cx="41" cy="41" r="34" stroke-dasharray="214" stroke-dashoffset="214"/></svg>
-          <div class="score-center"><span class="score-n" id="scoreNum">-</span><span class="score-of">/ 100</span></div>
+<!-- ══ LOADING ══ -->
+<div class="screen" id="loading">
+  <div class="loading-inner">
+    <div class="loading-card">
+      <div class="loading-title">Analysing your answers…</div>
+      <div class="circle-wrap">
+        <svg width="160" height="160" viewBox="0 0 160 160">
+          <circle class="circle-bg" cx="80" cy="80" r="70"/>
+          <circle class="circle-arc" id="circle-arc" cx="80" cy="80" r="70"/>
+        </svg>
+        <div class="circle-pct"><span id="pct-num">0</span>%</div>
+      </div>
+      <div>
+        <div class="check-item"><span>Energy &amp; sleep patterns</span>
+          <div class="check-box" id="check-1"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5L4.5 8.5L12 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         </div>
-        <div><div class="score-label" id="scoreLabel">Skin Health Score</div><div class="score-desc-text" id="scoreDesc">Analyzing&hellip;</div></div>
-      </div>
-      <div class="bars-block" id="barsBlock"></div>
-    </div>
-
-    <div>
-      <div class="sec-h">What We Found <em>In Your Skin</em></div>
-      <div id="issueList"></div>
-    </div>
-
-    <div class="div-line"></div>
-
-    <div>
-      <div class="sec-h">What Happens <em>If You Wait</em></div>
-      <div class="timeline">
-        <div class="tl-item"><div class="tl-dot" style="background:var(--red)">3m</div><div><h4>Months 1&ndash;3: Invisible damage compounds</h4><p>The barrier continues to weaken. Oxidative stress accumulates beneath the surface. No visible changes yet &mdash; but the foundation is already cracking.</p></div></div>
-        <div class="tl-item"><div class="tl-dot" style="background:var(--amber)">6m</div><div><h4>Months 4&ndash;6: First visible signs emerge</h4><p>Fine lines deepen. Skin looks duller. Texture becomes uneven. Most women attribute this to tiredness &mdash; it is actually structural damage becoming visible.</p></div></div>
-        <div class="tl-item"><div class="tl-dot" style="background:#8a8a8a">1y</div><div><h4>12 months: Increasingly hard to reverse</h4><p>Wrinkles begin setting into creases. Dark spots spread. Skin loses bounce. At this stage, correction requires professional treatments costing &euro;600&ndash;&euro;2,000+.</p></div></div>
+        <div class="check-item"><span>Nutrition &amp; lifestyle</span>
+          <div class="check-box" id="check-2"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5L4.5 8.5L12 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="check-item"><span>Personal health goals</span>
+          <div class="check-box" id="check-3"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5L4.5 8.5L12 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="check-item"><span>Personalised plan</span>
+          <div class="check-box" id="check-4"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5L4.5 8.5L12 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
       </div>
     </div>
-
-    <div class="div-line"></div>
-
-    <div>
-      <div class="sec-h">What the <em>Right Routine</em> Does</div>
-      <div class="get-item"><div class="get-check">&#10003;</div><div><h4>Repairs the barrier in 14 days</h4><p>Clinical-grade actives begin rebuilding the lipid barrier within two weeks. Skin holds moisture again. Sensitivity decreases. Redness calms.</p></div></div>
-      <div class="get-item"><div class="get-check">&#10003;</div><div><h4>Stops daily oxidative damage</h4><p>The right antioxidant complex neutralizes free radicals before they compound. Your skin stops aging faster than it should.</p></div></div>
-      <div class="get-item"><div class="get-check">&#10003;</div><div><h4>Stimulates collagen production</h4><p>Retinoid and peptide combinations at the right concentrations clinically slow &mdash; and partially reverse &mdash; collagen loss.</p></div></div>
-      <div class="get-item"><div class="get-check">&#10003;</div><div><h4>A clear, no-guesswork routine</h4><p>Every step explained with the clinical reason behind it. No more money wasted on products that do not work for your skin type.</p></div></div>
-    </div>
-
-    <div class="div-line"></div>
-
-    <div class="dr-full">
-      <img class="dr-full-img" src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=700&q=80" alt="Dr. Anna Novak"/>
-      <div class="dr-full-body">
-        <div class="dr-full-name">Dr. Anna Novak, MD</div>
-        <div class="dr-full-cred">Board-Certified Dermatologist &middot; 15 Years Clinical Practice</div>
-        <p>I created this protocol because I kept watching patients spend hundreds on products that were either doing nothing &mdash; or actively making their skin worse. The science on what works is clear. Most people just never get told.</p>
-        <div class="dr-quote"><p>&ldquo;A single consultation in my clinic costs &euro;150. This guide gives you the same clinical clarity &mdash; built around your specific skin profile &mdash; for &euro;39.&rdquo;</p></div>
-      </div>
-    </div>
-
-    <div class="div-line"></div>
-
-    <div class="cta-box">
-      <h3>Your Complete Personalized Skin Protocol</h3>
-      <p class="cta-desc">A step-by-step digital guide built specifically around your skin profile, quiz answers, and the damage patterns identified above.</p>
-      <div class="cta-consult">&#128161; <span>A dermatologist consultation costs <strong>&euro;150+</strong>. This protocol delivers the same clinical clarity &mdash; personalized to your skin &mdash; for <strong>&euro;39</strong>.</span></div>
-      <div class="what-inside">
-        <div class="wi-title">What's inside</div>
-        <div class="wi-item">Your personalized morning &amp; evening routine</div>
-        <div class="wi-item">Ingredient guide with clinical percentages</div>
-        <div class="wi-item">30-day skin tracker &amp; progress milestones</div>
-        <div class="wi-item">Budget &amp; premium alternatives for every step</div>
-        <div class="wi-item">Common mistakes for your skin type to avoid</div>
-        <div class="wi-item">When to add, layer, or remove products safely</div>
-      </div>
-      <div class="price-section">
-        <div class="price-row"><span class="price-main">&euro;39</span><span class="price-old">&euro;79</span><span class="price-tag">50% off</span></div>
-        <div class="price-note">One-time payment &middot; Instant digital download &middot; No subscription</div>
-      </div>
-      <div class="urgency">&#9201; This price expires when you leave this page.</div>
-      <a href="YOUR_CHECKOUT_LINK" class="btn-checkout" onclick="trackCTA()">Get My Skin Protocol &mdash; &euro;39 &rarr;</a>
-      <div class="trust-strip"><span>&#128274; Secure checkout</span><span>&#10003; Instant access</span><span>&#8617; 30-day guarantee</span></div>
-    </div>
-
-    <div class="div-line"></div>
-
-    <div>
-      <div class="sec-h">What Women Are <em>Saying</em></div>
-      <div class="testi-grid">
-        <div class="testi"><div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="testi-text">"I've spent years and hundreds of euros trying different products. This guide gave me more clarity than all of it combined. My skin genuinely looks different after three weeks."</div><div class="testi-author"><div class="testi-av">S</div>Sarah M., 34<span class="testi-v">&#10003; Verified</span></div></div>
-        <div class="testi"><div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="testi-text">"The ingredient explanations alone are worth the price. I finally understand why certain things were making my skin worse. My texture cleared up in two weeks."</div><div class="testi-author"><div class="testi-av">J</div>Jessica T., 29<span class="testi-v">&#10003; Verified</span></div></div>
-        <div class="testi"><div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="testi-text">"I was skeptical. But the quiz result described my skin so accurately that I trusted it. The protocol is simple, science-based, and it works. I've already sent it to three friends."</div><div class="testi-author"><div class="testi-av">P</div>Petra K., 41<span class="testi-v">&#10003; Verified</span></div></div>
-      </div>
-    </div>
-
-    <div class="div-line"></div>
-
-    <div>
-      <div class="sec-h">Common <em>Questions</em></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is this a physical product? <span class="faq-arr">+</span></div><div class="faq-a">No &mdash; it is a comprehensive digital guide delivered instantly after purchase. You can read it on any device, save it, or print it.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What if it does not work for my skin? <span class="faq-arr">+</span></div><div class="faq-a">30-day money-back guarantee, no questions asked. If you follow the protocol and do not see improvement, email us and you will get a full refund &mdash; same day.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do I need expensive products? <span class="faq-arr">+</span></div><div class="faq-a">No. The guide includes both budget and premium alternatives for every step. Many of the most effective options cost under &euro;15.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How is this different from generic advice? <span class="faq-arr">+</span></div><div class="faq-a">Generic advice gives you averages. This is built on your specific skin type, damage patterns, lifestyle factors, and age group &mdash; the same information used in clinical consultations that cost &euro;150 per session.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">When will I see results? <span class="faq-arr">+</span></div><div class="faq-a">Most women notice a difference in skin texture and hydration within 10&ndash;14 days. Significant improvements in tone and firmness typically appear at the 4&ndash;6 week mark when the protocol is followed consistently.</div></div>
-    </div>
-
-    <div class="cta-box" style="border-color:var(--border);background:var(--off)">
-      <p style="font-size:15px;font-weight:500;color:var(--dark);line-height:1.6">Your skin does not wait. Every day without the right routine compounds the damage silently &mdash; until it is visible and much harder to reverse.</p>
-      <a href="YOUR_CHECKOUT_LINK" class="btn-checkout" onclick="trackCTA()">Yes, I Want My Skin Protocol &mdash; &euro;39 &rarr;</a>
-      <div class="trust-strip"><span>&#128274; Secure</span><span>&#10003; Instant access</span><span>&#8617; 30-day guarantee</span></div>
-    </div>
-
-  </div>
-</section>
-
-<div class="sticky" id="stickyCta">
-  <div class="sticky-inner">
-    <div class="sticky-label">Limited-time &middot; &euro;39 (reg. &euro;79) &middot; 30-day guarantee</div>
-    <a href="YOUR_CHECKOUT_LINK" onclick="trackCTA()">Get My Skin Protocol &rarr;</a>
   </div>
 </div>
 
 <script>
-var Qs=[
-  {id:'q1',type:'single',text:'How old are you?',opts:['Under 25','25\u201334','35\u201344','45\u201354','55 or older']},
-  {id:'q2',type:'single',text:'How would you describe your skin right now?',opts:['Dry \u2014 tight, flaky, dull','Oily \u2014 shiny, enlarged pores','Combination \u2014 oily T-zone','Sensitive \u2014 reacts easily','Normal \u2014 mostly balanced']},
-  {id:'q3',type:'slide',variant:'fear',headline:'Most women start noticing the damage too late.',img:'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=700&q=80',body:'Skin aging is invisible for years before it surfaces. By the time wrinkles, dark spots, or sagging appear \u2014 the underlying damage is already 10\u201315 years old.',fears:['The products you are using right now may be silently damaging your barrier','Every day without SPF adds months of UV damage that compounds invisibly','Collagen loss that begins at 25 cannot be reversed \u2014 only slowed if caught early']},
-  {id:'q4',type:'multi',text:'Which of these do you notice on your skin? Select all that apply.',note:'Be honest \u2014 this directly shapes your results.',opts:['Fine lines or wrinkles','Dark spots or uneven tone','Dryness or dehydration','Redness or irritation','Dull skin, no glow','Acne or congestion','Loss of firmness or bounce']},
-  {id:'q5',type:'single',text:'How often do you wear SPF on your face?',opts:['Every day, year-round','Only in summer or sunny days','Rarely or never','Only when I remember']},
-  {id:'q6',type:'slide',variant:'stat',headline:'SPF is the #1 evidence-based anti-aging tool.',img:'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=700&q=80',body:'80% of visible skin aging is caused by UV exposure \u2014 not time. Most of it accumulates before age 40, often on days that do not feel sunny.',stats:[{n:'80%',label:'of visible aging caused by UV'},{n:'1 in 4',label:'women use SPF year-round'},{n:'20 yrs',label:'damage appears after exposure'}]},
-  {id:'q7',type:'single',text:'How would you describe your sleep and stress levels?',opts:['Good sleep, low stress','Good sleep, high stress','Poor sleep, low stress','Poor sleep, high stress']},
-  {id:'q8',type:'multi',text:'What are you currently using? Select everything in your routine.',opts:['SPF daily','Vitamin C serum','Retinol or retinoid','Hyaluronic acid','Exfoliant \u2014 AHA or BHA','Basic moisturizer only','Nothing consistent']},
-  {id:'q9',type:'slide',variant:'fear',headline:'Your routine may be aging you faster.',img:'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=700&q=80',body:'Many popular products \u2014 even expensive ones \u2014 contain ingredients that strip the barrier, increase sensitivity, and cause long-term dehydration.',fears:['Fragrance in moisturizers is the #1 cause of chronic barrier damage','Over-exfoliation with AHAs without barrier support accelerates aging','Layering actives without knowing the correct order reduces their effectiveness']},
-  {id:'q10',type:'single',text:'How much water do you drink daily on average?',opts:['Less than 1 litre','1\u20131.5 litres','1.5\u20132 litres','More than 2 litres']},
-  {id:'q11',type:'slide',variant:'stat',headline:'After 25, your skin loses 1\u20132% of its collagen every year.',img:'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=700&q=80',body:'This loss is cumulative and mostly silent. By the time sagging or deepening lines appear, years of collagen loss have already occurred.',stats:[{n:'1\u20132%',label:'collagen lost per year after 25'},{n:'30%',label:'lost by age 50 without intervention'},{n:'6 wks',label:'for retinoids to begin reversing loss'}]},
-  {id:'q12',type:'multi',text:'What is your main skin goal for the next 90 days?',note:'Select all that apply.',opts:['Reduce fine lines & wrinkles','Even out skin tone & dark spots','Get more hydration & glow','Control breakouts','Calm redness & sensitivity','Firm & lift skin appearance','Build a routine I can actually stick to']}
+const CIRCUMFERENCE = 2 * Math.PI * 70; // r=70 → 439.82
+
+const POOL = [
+  { type:'single', tag:'Energy', q:'How would you describe your energy levels throughout the day?',
+    opts:['Full of energy from morning','Energy dips after lunch','Tired most of the time','Completely exhausted'] },
+  { type:'single', tag:'Sleep', q:'How many hours of sleep do you get on average per night?',
+    opts:['Less than 5 hours','5–6 hours','7–8 hours','More than 9 hours'] },
+  { type:'slide', title:'Sleep & your immune system',
+    text:'Adults who sleep fewer than 7 hours per night are nearly <span class="slide-hl">3× more likely</span> to catch a cold compared to those who sleep 8 or more hours. Sleep is when your body does its most important repair work.',
+    imgQuery:'sleeping rest recovery' },
+  { type:'multi', tag:'Symptoms', q:'Which of these do you experience regularly? (Select all that apply)',
+    opts:['Headaches','Bloating or digestive issues','Skin problems','Mood swings','None of these'] },
+  { type:'single', tag:'Diet', q:'How would you describe your eating habits?',
+    opts:['Very healthy and consistent','I try, but not always possible','Mostly fast food or irregular','No routine at all'] },
+  { type:'multi', tag:'Movement', q:'What types of exercise do you do weekly? (Select all that apply)',
+    opts:['Walking or running','Gym or fitness','Yoga or stretching','Swimming','Barely any movement'] },
+  { type:'slide', title:'The gut–brain connection',
+    text:'Up to <span class="slide-hl">70% of your immune system</span> is located in your gut. A healthy microbiome directly influences your mood, energy levels, and how well you sleep — not just your digestion.',
+    imgQuery:'gut health nutrition microbiome food' },
+  { type:'single', tag:'Stress', q:'How well do you manage day-to-day stress?',
+    opts:['Very well — I have routines','Okay — I feel it sometimes','Poorly — it overwhelms me','I can\'t manage it at all'] },
+  { type:'single', tag:'Hydration', q:'How much water do you drink per day?',
+    opts:['Less than 1 liter','1–1.5 liters','1.5–2 liters','More than 2 liters'] },
+  { type:'multi', tag:'Goals', q:'What do you most want to improve? (Pick up to 3)',
+    opts:['More energy','Better sleep','Less stress','Healthy weight','Stronger immunity','Better digestion'] },
+  { type:'single', tag:'Supplements', q:'Do you currently take any supplements or vitamins?',
+    opts:['Yes, regularly and intentionally','Occasionally, but not systematic','No, never tried','I don\'t know what I should take'] },
+  { type:'single', tag:'Age Group', q:'Which age group do you belong to?',
+    opts:['18–29','30–44','45–59','60+'] },
+  { type:'multi', tag:'Nutrition', q:'Which of these do you eat regularly? (Select all that apply)',
+    opts:['Vegetables every day','Fruit every day','Whole grains','Legumes or nuts','Fermented foods (yogurt, kefir...)'] },
+  { type:'single', tag:'Motivation', q:'What motivates you most to take care of your health?',
+    opts:['Better appearance and fitness','Longer, higher-quality life','Disease prevention','More energy for family and work'] }
 ];
 
-var cur=0,answers={},selOpts=[];
+const SLIDE_IMGS = {
+  'sleeping rest recovery': [
+    'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=900&q=80',
+    'https://images.unsplash.com/photo-1520206183501-b80df61043c2?w=900&q=80',
+  ],
+  'gut health nutrition microbiome food': [
+    'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=900&q=80',
+    'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=900&q=80',
+  ]
+};
+function randFrom(a) { return a[Math.floor(Math.random()*a.length)]; }
 
-function showScreen(id){document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active')});document.getElementById(id).classList.add('active');window.scrollTo(0,0)}
+let idx = 0;
+let answers = new Array(POOL.length).fill(undefined);
+let selectedOptions = [];
+let busy = false;
 
-function startQuiz(){showScreen('quiz');render(0);var n=180+Math.floor(Math.random()*120);document.getElementById('todayCount').textContent=n+' women took this quiz today'}
+window.addEventListener('DOMContentLoaded', () => {
+  // nothing needed on landing now
+});
 
-function render(idx){
-  var q=Qs[idx];
-  selOpts=answers[q.id]?(Array.isArray(answers[q.id])?answers[q.id].slice():[answers[q.id]]):[];
-  var pct=Math.round((idx/Qs.length)*100);
-  document.getElementById('pFill').style.width=pct+'%';
-  document.getElementById('pPct').textContent=pct+'%';
-  document.getElementById('pLabel').textContent='Question '+(idx+1)+' of '+Qs.length;
-  var badges={single:'Choose one',multi:'Select all that apply',slide:'Read'};
-  var inner='<div class="q-badge">'+badges[q.type]+'</div>';
-  if(q.type==='single'){
-    inner+='<div class="q-text">'+q.text+'</div><div class="opts">';
-    q.opts.forEach(function(o){var sel=selOpts.indexOf(o)>=0?' sel':'';var s=o.replace(/'/g,"\\'");inner+='<button class="opt'+sel+'" onclick="pickSingle(this,\''+s+'\')"><div class="opt-mark"></div><span>'+o+'</span></button>';});
-    inner+='</div>';
-  } else if(q.type==='multi'){
-    inner+='<div class="q-text">'+q.text+'</div>';
-    if(q.note)inner+='<div class="q-note">'+q.note+'</div>';
-    inner+='<div class="opts">';
-    q.opts.forEach(function(o){var sel=selOpts.indexOf(o)>=0?' sel':'';var s=o.replace(/'/g,"\\'");inner+='<button class="opt'+sel+'" onclick="toggleOpt(this,\''+s+'\')"><div class="opt-mark opt-mark-sq"></div><span>'+o+'</span></button>';});
-    inner+='</div>';
+/* ── Start quiz from landing button ── */
+function startQuiz() {
+  idx = 0;
+  document.getElementById('quiz').classList.add('has-progress');
+  show('quiz');
+  renderQuestion();
+}
+
+/* ── Quiz render ── */
+function renderQuestion() {
+  const q = POOL[idx];
+  const pct = (idx / (POOL.length - 1)) * 100;
+  document.getElementById('progress-fill').style.width = Math.max(pct, 2) + '%';
+  document.getElementById('q-num').textContent = idx + 1;
+  document.getElementById('btn-back').classList.toggle('visible', idx > 0);
+
+  const body = document.getElementById('quiz-body');
+  const fb = document.getElementById('fixed-bottom');
+  const btnC = document.getElementById('btn-continue');
+  body.innerHTML = '';
+
+  if (q.type === 'slide') {
+    fb.style.display = 'block';
+    btnC.disabled = false;
+    btnC.onclick = next;
+    renderSlide(q, body);
+  } else if (q.type === 'single') {
+    fb.style.display = 'none';
+    renderSingle(q, body);
   } else {
-    if(q.img)inner+='<div class="slide-hero"><img src="'+q.img+'" alt=""/></div>';
-    inner+='<div class="slide-headline">'+q.headline+'</div>';
-    inner+='<div class="slide-body">'+q.body+'</div>';
-    if(q.variant==='fear'&&q.fears){inner+='<div class="slide-fear"><div class="slide-fear-title">What this means for you</div><ul>';q.fears.forEach(function(f){inner+='<li>'+f+'</li>';});inner+='</ul></div>';}
-    if(q.variant==='stat'&&q.stats){inner+='<div class="slide-stat-row">';q.stats.forEach(function(s){inner+='<div class="slide-stat"><span class="slide-stat-n">'+s.n+'</span><span class="slide-stat-l">'+s.label+'</span></div>';});inner+='</div>';}
+    fb.style.display = 'block';
+    const savedArr = Array.isArray(answers[idx]) ? answers[idx] : [];
+    btnC.disabled = savedArr.length === 0;
+    btnC.onclick = pickMulti;
+    renderMulti(q, body);
   }
-  var needsBtn=q.type==='multi'||q.type==='slide';
-  var btnHTML='';
-  if(needsBtn){var on=(q.type==='slide'||selOpts.length>0)?' on':'';var lbl=idx<Qs.length-1?'Continue \u2192':'Show My Results \u2192';btnHTML='<button class="btn-next'+on+'" id="btnNext" onclick="advance()">'+lbl+'</button>';}
-  document.getElementById('quizBody').innerHTML='<div class="q-card">'+inner+'</div>'+btnHTML;
+
+  body.classList.remove('q-anim');
+  void body.offsetWidth;
+  body.classList.add('q-anim');
 }
 
-function pickSingle(el,val){document.querySelectorAll('.opt').forEach(function(o){o.classList.remove('sel')});el.classList.add('sel');selOpts=[val];answers[Qs[cur].id]=val;setTimeout(function(){cur++;cur>=Qs.length?beginLoading():render(cur);},280);}
-function toggleOpt(el,val){el.classList.toggle('sel');var i=selOpts.indexOf(val);if(i>=0)selOpts.splice(i,1);else selOpts.push(val);var btn=document.getElementById('btnNext');if(btn)btn.className='btn-next'+(selOpts.length>0?' on':'');}
-function advance(){var q=Qs[cur];if(q.type==='multi'){if(selOpts.length===0)return;answers[q.id]=selOpts.slice();}else if(q.type==='slide'){answers[q.id]='seen';}cur++;cur>=Qs.length?beginLoading():render(cur);}
-
-function beginLoading(){
-  showScreen('loading');
-  var fill=document.getElementById('lFill'),pct=document.getElementById('lPct');
-  var items=['li1','li2','li3','li4','li5','li6','li7'];
-  var shows=[8,18,30,44,58,70,84],dones=[16,26,40,54,67,79,94];
-  var p=0;
-  var iv=setInterval(function(){
-    p+=0.45;if(p>100)p=100;
-    fill.style.width=p+'%';pct.textContent=Math.round(p)+'%';
-    items.forEach(function(id,i){var el=document.getElementById(id);if(p>=shows[i])el.classList.add('show');if(p>=dones[i])el.classList.add('done');});
-    if(p>=100){clearInterval(iv);setTimeout(showResults,700);}
-  },40);
+function renderSlide(q, body) {
+  const imgSrc = randFrom(SLIDE_IMGS[q.imgQuery]||[]) || '';
+  body.innerHTML = `<div class="slide-wrap">
+    <div class="slide-card">
+      ${imgSrc?`<img class="slide-img" src="${imgSrc}" alt="" loading="lazy">`:''}
+      <div class="slide-content">
+        <h2 class="slide-title">${q.title}</h2>
+        <p class="slide-text">${q.text}</p>
+      </div>
+    </div>
+  </div>`;
 }
 
-function showResults(){
-  var age=answers['q1']||'',skin=answers['q2']||'',spf=answers['q5']||'',sleep=answers['q7']||'';
-  var issues=answers['q4']||[],routine=answers['q8']||[];
-  var noSpf=spf.indexOf('never')>=0||spf.indexOf('Rarely')>=0;
-  var hasRetinol=Array.isArray(routine)&&routine.indexOf('Retinol or retinoid')>=0;
-  var nothingConsistent=Array.isArray(routine)&&routine.indexOf('Nothing consistent')>=0;
-  var poorSleep=sleep.indexOf('Poor')>=0;
-  var older=age==='45\u201354'||age==='55 or older';
-  var mid=age==='35\u201344';
-
-  var score=68;
-  if(older)score-=18; else if(mid)score-=9; else if(age==='Under 25')score+=7;
-  if(noSpf)score-=14; else if(spf.indexOf('Every day')>=0)score+=8;
-  if(hasRetinol)score+=6;
-  if(nothingConsistent)score-=10;
-  if(poorSleep)score-=8;
-  if(Array.isArray(issues))score-=issues.length*3;
-  score=Math.max(20,Math.min(75,score));
-
-  var ring=document.getElementById('scoreRing');
-  var offset=214-(score/100)*214;
-  var col=score>=60?'var(--green)':score>=40?'var(--amber)':'var(--red)';
-  ring.style.stroke=col;
-  setTimeout(function(){ring.style.strokeDashoffset=offset;},200);
-  document.getElementById('scoreNum').textContent=score;
-  document.getElementById('scoreNum').style.color=col;
-
-  var lbl,desc;
-  if(score<35){lbl='Skin Health: At Risk';desc='Your skin shows multiple signs of accelerated aging. Without targeted intervention, visible damage will compound significantly over the next 6\u201312 months.';}
-  else if(score<52){lbl='Skin Health: Needs Attention';desc='Your skin shows early patterns of accelerated aging. The right routine now can prevent most of this from becoming permanent.';}
-  else{lbl='Skin Health: Fair \u2014 At Risk';desc='Your skin is maintaining, but specific damage patterns are building silently. Without addressing them, the decline will accelerate.';}
-  document.getElementById('scoreLabel').textContent=lbl;
-  document.getElementById('scoreDesc').textContent=desc;
-
-  var barrierVal=Math.max(18,Math.min(92,score+(noSpf?-15:10)));
-  var oxVal=Math.max(15,Math.min(90,score-(noSpf?22:5)));
-  var colVal=Math.max(18,Math.min(88,score-(older?28:mid?14:2)+(hasRetinol?6:-8)));
-  var routineVal=Math.max(18,Math.min(92,score+(hasRetinol?10:-12)+(poorSleep?-8:0)));
-  var bars=[
-    {label:'Skin Barrier Health',val:barrierVal,sub:noSpf?'Daily SPF is missing \u2014 UV damage is compounding':'Barrier is partially protected by your SPF habit'},
-    {label:'Oxidative Stress Control',val:oxVal,sub:noSpf?'Without antioxidant + SPF, oxidative damage is unchecked':'Continue antioxidant support'},
-    {label:'Collagen Status',val:colVal,sub:!hasRetinol?'No retinoid detected \u2014 collagen loss is not being addressed':'Retinoid use is supporting collagen maintenance'},
-    {label:'Routine Effectiveness',val:routineVal,sub:poorSleep?'Stress & sleep quality are reducing skin repair capacity':'Keep optimizing your routine consistency'},
-  ];
-  document.getElementById('barsBlock').innerHTML=bars.map(function(b){
-    var c2=b.val>=65?'var(--green)':b.val>=45?'var(--amber)':'var(--red)';
-    var vl=b.val>=65?'Good':b.val>=45?'Moderate':'At Risk';
-    return '<div class="bar-row"><div class="bar-meta"><span>'+b.label+'</span><span style="color:'+c2+'">'+vl+' ('+b.val+'/100)</span></div><div class="bar-track"><div class="bar-fill" style="width:0%;background:'+c2+'" data-t="'+b.val+'"></div></div><div class="bar-sub">'+b.sub+'</div></div>';
+function renderSingle(q, body) {
+  const saved = answers[idx];
+  const opts = q.opts.map((o, i) => {
+    const sel = saved === i;
+    return `<button class="opt${sel?' selected':''}" onclick="pickSingle(this,${i})">${o}</button>`;
   }).join('');
-  setTimeout(function(){document.querySelectorAll('.bar-fill').forEach(function(el){el.style.width=el.dataset.t+'%';});},400);
-
-  var heroTitle='Your Skin Needs Attention<br><em>Before It\u2019s Too Late to Reverse</em>';
-  if(skin.indexOf('Dry')>=0&&noSpf)heroTitle='Your Skin Is Dehydrating<br><em>And Aging Faster Than It Should</em>';
-  else if(skin.indexOf('Sensitive')>=0)heroTitle='Your Skin Barrier Is Compromised<br><em>And Getting Worse Without You Knowing</em>';
-  else if(skin.indexOf('Oily')>=0)heroTitle='Your Oily Skin Is Still Aging \u2014<br><em>Just Differently Than You Think</em>';
-  else if(older)heroTitle='The Window to Reverse This<br><em>Is Narrowing \u2014 But Still Open</em>';
-  else if(score<38)heroTitle='Your Skin Is In the Danger Zone<br><em>Here\u2019s How to Get It Back</em>';
-  document.getElementById('rhTitle').innerHTML=heroTitle;
-
-  var rh,rs;
-  if(skin.indexOf('Dry')>=0&&Array.isArray(issues)&&issues.indexOf('Dryness or dehydration')>=0){rh='Your skin is chronically dehydrated \u2014 and your routine isn\u2019t fixing it.';rs='Chronic dehydration is not just about water. It is a barrier issue. Your quiz answers show the lipid layer that keeps moisture in is compromised \u2014 and without addressing it directly, no amount of moisturizer will fix it long-term.';}
-  else if(skin.indexOf('Sensitive')>=0){rh='Your skin is in a reactive state \u2014 and it is not going to calm down on its own.';rs='Sensitivity that does not resolve usually means the barrier is broken. Your answers suggest your current products may be maintaining the inflammation rather than resolving it \u2014 a very common and fixable pattern.';}
-  else if(score<38){rh='Your skin is showing multiple signs of accelerated aging \u2014 most of them avoidable.';rs='Based on your answers, several separate damage patterns are compounding simultaneously. The good news: identified early, these patterns respond quickly to targeted intervention.';}
-  else{rh='Your skin is aging faster than your age would predict \u2014 and there are clear, specific reasons why.';rs='Based on your answers, there are identifiable patterns driving this. Most of them are preventable and reversible \u2014 if addressed before they compound further.';}
-  document.getElementById('resultHeadline').textContent=rh;
-  document.getElementById('resultSubline').textContent=rs;
-
-  var issueData=[];
-  issueData.push({icon:'&#128737;',bg:'#fdecea',title:'Weakened Skin Barrier',sev:'High Priority',sevCol:'var(--red)',sevBg:'var(--red-bg)',desc:'The outermost lipid layer of your skin is compromised. This is the root cause of dehydration, premature wrinkles, and product sensitivity \u2014 and it worsens every year without targeted treatment.'});
-  issueData.push({icon:'&#9889;',bg:'#fef6e8',title:'Oxidative Stress Accumulation',sev:noSpf?'Severe':'Moderate',sevCol:noSpf?'var(--red)':'var(--amber)',sevBg:noSpf?'var(--red-bg)':'var(--amber-bg)',desc:'Daily UV and environmental exposure builds oxidative damage at the cellular level. '+(noSpf?'Your answers show you are not protected daily \u2014 this is accumulating rapidly.':'Even with some protection, oxidative stress builds over time without antioxidant support.')});
-  if(older||mid){issueData.push({icon:'&#128201;',bg:'#edf4ef',title:'Active Collagen Decline',sev:!hasRetinol?'Not Being Treated':'Partially Managed',sevCol:!hasRetinol?'var(--red)':'var(--amber)',sevBg:!hasRetinol?'var(--red-bg)':'var(--amber-bg)',desc:'At your age, collagen is declining at 1\u20132% per year. '+(!hasRetinol?'Your routine contains no retinoid \u2014 the most clinically validated ingredient to slow this process.':'Your retinoid use is helping, but concentration and timing matter greatly.')});}
-  else{issueData.push({icon:'&#128201;',bg:'#edf4ef',title:'Early Collagen Prevention Window',sev:'Act Now',sevCol:'var(--amber)',sevBg:'var(--amber-bg)',desc:'Collagen loss begins at 25. You are in the optimal window where prevention is far more effective than repair. Establishing the right actives now will pay dividends for the next 20 years.'});}
-  document.getElementById('issueList').innerHTML=issueData.map(function(i){return '<div class="issue"><div class="issue-icon" style="background:'+i.bg+'">'+i.icon+'</div><div><h4>'+i.title+'</h4><p>'+i.desc+'</p><span class="issue-sev" style="color:'+i.sevCol+';background:'+i.sevBg+'">'+i.sev+'</span></div></div>';}).join('');
-
-  showScreen('results');
-  setTimeout(function(){window.addEventListener('scroll',onScroll);},800);
+  body.innerHTML = `<div class="q-wrap"><div class="q-text">${q.q}</div><div class="options-list">${opts}</div></div>`;
 }
 
-function onScroll(){var s=document.getElementById('stickyCta');window.scrollY>500?s.classList.add('show'):s.classList.remove('show');}
-function toggleFaq(el){el.parentElement.classList.toggle('open');}
-function trackCTA(){}
+function renderMulti(q, body) {
+  const savedArr = Array.isArray(answers[idx]) ? answers[idx] : [];
+  selectedOptions = [...savedArr];
+  const opts = q.opts.map((o, i) => {
+    const sel = savedArr.includes(i);
+    return `<button class="opt multi${sel?' selected':''}" onclick="toggleMulti(this,${i})"><span class="opt-check"></span>${o}</button>`;
+  }).join('');
+  const cleanQ = q.q.replace(/\s*\(.*?\)/g, '');
+  body.innerHTML = `<div class="q-wrap"><div class="q-text">${cleanQ}</div><div class="q-hint">Select all that apply</div><div class="options-list">${opts}</div></div>`;
+}
+
+/* ── Interactions ── */
+function pickSingle(btn, i) {
+  if (busy) return;
+  busy = true;
+  // Immediately disable ALL options — prevents next-question buttons being pre-highlighted on mobile
+  const list = btn.closest('.options-list');
+  list.querySelectorAll('.opt').forEach(b => { b.disabled = true; b.classList.remove('selected','flash'); });
+  btn.classList.add('flash');
+  answers[idx] = i;
+  setTimeout(() => { next(); busy = false; }, 280);
+}
+
+function toggleMulti(btn, i) {
+  btn.classList.toggle('selected');
+  if (btn.classList.contains('selected')) selectedOptions.push(i);
+  else selectedOptions = selectedOptions.filter(x => x !== i);
+  document.getElementById('btn-continue').disabled = selectedOptions.length === 0;
+  answers[idx] = [...selectedOptions];
+}
+
+function pickMulti() {
+  answers[idx] = [...selectedOptions];
+  next();
+}
+
+function next() {
+  idx++;
+  if (idx >= POOL.length) { startLoading(); return; }
+  doTransition(renderQuestion);
+}
+
+function goBack() {
+  if (busy) return;
+  if (idx <= 0) {
+    idx = 0;
+    document.getElementById('progress-fill').style.width = '4%';
+    document.getElementById('quiz').classList.remove('has-progress');
+    document.getElementById('fixed-bottom').style.display = 'none';
+    show('landing');
+    return;
+  }
+  idx--;
+  doTransition(renderQuestion);
+}
+
+/* Smooth simple opacity fade, no translateY */
+function doTransition(fn) {
+  const body = document.getElementById('quiz-body');
+  body.style.transition = 'opacity 0.18s ease';
+  body.style.opacity = '0';
+  setTimeout(() => {
+    fn();
+    body.style.opacity = '1';
+    setTimeout(() => { body.style.transition = ''; }, 220);
+  }, 180);
+}
+
+/* ── Loading ── */
+function startLoading() {
+  document.getElementById('progress-fill').style.width = '100%';
+  document.getElementById('fixed-bottom').style.display = 'none';
+  show('loading');
+
+  const arc = document.getElementById('circle-arc');
+  const pctEl = document.getElementById('pct-num');
+  const checks = ['check-1','check-2','check-3','check-4'];
+  const checkTimes = [2200, 4200, 6200, 7800];
+
+  let pct = 0;
+  const iv = setInterval(() => {
+    pct = Math.min(pct + 1, 100);
+    pctEl.textContent = pct;
+    arc.style.strokeDashoffset = CIRCUMFERENCE - (CIRCUMFERENCE * pct / 100);
+    if (pct >= 100) clearInterval(iv);
+  }, 90);
+
+  checkTimes.forEach((t, i) => {
+    setTimeout(() => document.getElementById(checks[i]).classList.add('done'), t);
+  });
+
+  setTimeout(() => {
+    window.location.href = 'https://happypaws-sepia.vercel.app/checkout.html';
+  }, 9500);
+}
+
+/* ── Show screen ── */
+function show(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+}
 </script>
 </body>
 </html>
-HTMLEOF
-echo "OK"
