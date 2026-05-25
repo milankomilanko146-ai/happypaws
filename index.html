@@ -10,11 +10,11 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --teal: #2BA84A;
-  --teal-light: #E8F5EC;
-  --teal-mid: #4DC96A;
-  --teal-dark: #1E7A35;
-  --teal-soft: #B2DFB9;
+  --teal: #4A7FC1;
+  --teal-light: #EEF4FB;
+  --teal-mid: #7AAAD8;
+  --teal-dark: #2E5F96;
+  --teal-soft: #C5D9EF;
   --g100: #F5F5F5;
   --g200: #E8ECF2;
   --g300: #D0D6E0;
@@ -26,6 +26,9 @@
   --serif: 'Playfair Display', serif;
   --max-w: 560px;
   --nav-h: 0px;
+  --top-gap: 24px;
+  --bar-h: 7px;
+  --progress-total: calc(var(--top-gap) + var(--bar-h));
 }
 
 html, body {
@@ -37,30 +40,10 @@ html, body {
   overscroll-behavior: none;
 }
 
-/* ═══════ NAV ═══════ */
-.top-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  height: var(--nav-h);
-  background: #fff;
-  border-bottom: 1px solid #F0F0F0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 200;
-}
-.nav-brand {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--g900);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
 /* ═══════ PROGRESS BAR ═══════ */
 #progress-wrap {
   position: fixed;
-  top: 0;
+  top: var(--top-gap);
   left: 0; right: 0;
   z-index: 150;
   background: #fff;
@@ -74,11 +57,10 @@ html, body {
 }
 
 /* ═══════ SCREENS ═══════ */
-/* Mobile: fixed, full-height panels below progress bar */
 .screen {
   display: none;
   position: fixed;
-  top: 7px;
+  top: calc(var(--top-gap) + 7px);
   left: 0; right: 0; bottom: 0;
   background: #fff;
   overflow-y: auto;
@@ -86,10 +68,8 @@ html, body {
 }
 .screen.active { display: block; }
 
-/* Landing scrolls freely */
 #landing { overflow-y: auto; background: var(--g100); padding-top: 7px; }
 
-/* Quiz: flex column, full screen */
 #quiz {
   overflow: hidden;
   top: 0;
@@ -99,12 +79,10 @@ html, body {
   flex-direction: column;
 }
 
-/* Quiz top shifts down by progress bar height when visible */
 #quiz.has-progress {
-  top: 7px;
+  top: calc(var(--top-gap) + 7px);
 }
 
-/* Loading scrolls */
 #loading { overflow-y: auto; background: var(--g100); }
 
 /* ═══════ LANDING ═══════ */
@@ -138,7 +116,6 @@ html, body {
   max-width: 400px;
 }
 
-/* Hero image — true square, all sides equal */
 .land-hero-img {
   display: block;
   width: min(100%, 440px);
@@ -154,7 +131,6 @@ html, body {
   flex-shrink: 0;
 }
 
-/* START NOW button */
 .btn-start {
   width: 100%;
   max-width: 440px;
@@ -168,15 +144,14 @@ html, body {
   font-weight: 700;
   cursor: pointer;
   letter-spacing: 0.01em;
-  box-shadow: 0 6px 24px rgba(43,168,74,0.35);
+  box-shadow: 0 6px 24px rgba(37,99,235,0.35);
   transition: background 0.15s, transform 0.10s, box-shadow 0.15s;
   -webkit-tap-highlight-color: transparent;
   margin-bottom: 20px;
 }
-.btn-start:hover { background: var(--teal-dark); box-shadow: 0 8px 28px rgba(43,168,74,0.45); }
+.btn-start:hover { background: var(--teal-dark); box-shadow: 0 8px 28px rgba(37,99,235,0.45); }
 .btn-start:active { transform: scale(0.98); }
 
-/* Social proof below button */
 .sp-row {
   display: flex;
   align-items: center;
@@ -238,7 +213,6 @@ html, body {
 }
 .q-counter .denom { font-size: 16px; font-weight: 400; color: var(--g400); }
 
-/* quiz-body: flex, fills space */
 .quiz-body {
   flex: 1;
   overflow: hidden;
@@ -344,23 +318,14 @@ html, body {
   gap: 0;
   padding-bottom: 24px;
 }
-.slide-title {
-  font-family: var(--font);
-  font-size: clamp(20px, 4vw, 26px);
-  font-weight: 800;
-  color: var(--g900);
-  margin-bottom: 16px;
-  line-height: 1.25;
-  letter-spacing: -0.02em;
-}
 .slide-img {
   width: 100%;
-  height: 200px;
+  height: 220px;
   object-fit: cover;
   display: block;
   border-radius: 12px;
   background: var(--g100);
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   flex-shrink: 0;
 }
 .slide-body { display: flex; flex-direction: column; gap: 12px; }
@@ -403,7 +368,7 @@ html, body {
   cursor: pointer;
   width: 100%;
   transition: background 0.15s, opacity 0.15s;
-  box-shadow: 0 4px 16px rgba(43,168,74,0.28);
+  box-shadow: 0 4px 16px rgba(37,99,235,0.28);
   -webkit-tap-highlight-color: transparent;
 }
 .btn-continue:active:not(:disabled) { opacity: 0.85; }
@@ -487,7 +452,7 @@ html, body {
   #quiz.has-progress { top: unset; margin-top: 4px; }
   .quiz-body { overflow-y: auto; }
   .fixed-bottom { position: static; border-top: none; padding-top: 16px; }
-  .slide-img { height: 200px; }
+  .slide-img { height: 220px; }
 }
 
 @media (max-width: 380px) {
@@ -496,12 +461,11 @@ html, body {
   .quiz-header { padding: 10px 16px 8px; }
   .quiz-body { padding: 2px 16px 0; }
   .fixed-bottom { padding: 8px 16px 10px; }
-  .slide-img { height: 130px; }
-}</style>
+  .slide-img { height: 160px; }
+}
+</style>
 </head>
 <body>
-
-
 
 <div id="progress-wrap">
   <div class="progress-track">
@@ -517,7 +481,7 @@ html, body {
 
     <img class="land-hero-img" id="land-img" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&q=80" alt="Doctor">
 
-    <button class="btn-start" onclick="startQuiz()">START NOW –&gt;</button>
+    <button class="btn-start" onclick="startQuiz()">START NOW &rarr;</button>
 
     <div class="sp-row">
       <div class="sp-avatars">
@@ -546,7 +510,7 @@ html, body {
   </div>
   <div class="quiz-body" id="quiz-body"></div>
   <div class="fixed-bottom" id="fixed-bottom">
-    <button class="btn-continue" id="btn-continue" disabled>Continue →</button>
+    <button class="btn-continue" id="btn-continue" disabled>Continue &rarr;</button>
   </div>
 </div>
 
@@ -554,7 +518,7 @@ html, body {
 <div class="screen" id="loading">
   <div class="loading-inner">
     <div class="loading-card">
-      <div class="loading-title">Analysing your answers…</div>
+      <div class="loading-title">Analysing your answers&hellip;</div>
       <div class="circle-wrap">
         <svg width="160" height="160" viewBox="0 0 160 160">
           <circle class="circle-bg" cx="80" cy="80" r="70"/>
@@ -581,14 +545,14 @@ html, body {
 </div>
 
 <script>
-const CIRCUMFERENCE = 2 * Math.PI * 70; // r=70 → 439.82
+const CIRCUMFERENCE = 2 * Math.PI * 70;
 
 const POOL = [
   { type:'single', tag:'Energy', q:'How would you describe your energy levels throughout the day?',
     opts:['Full of energy from morning','Energy dips after lunch','Tired most of the time','Completely exhausted'] },
   { type:'single', tag:'Sleep', q:'How many hours of sleep do you get on average per night?',
     opts:['Less than 5 hours','5–6 hours','7–8 hours','More than 9 hours'] },
-  { type:'slide', title:'Sleep & your immune system',
+  { type:'slide',
     text:'Most people know that sleep is important — but few realise just how directly it affects their immune system. During deep sleep, your body produces cytokines, proteins that help fight off infections and inflammation. Without enough of them, your defences weaken fast.',
     fact:'Adults who sleep fewer than 7 hours per night are nearly <strong>3× more likely</strong> to catch a cold compared to those who sleep 8 or more hours.',
     text2:'Sleep is also when your brain clears out waste products, your muscles repair, and your hormones reset. It\'s not downtime — it\'s the most productive part of your day.',
@@ -599,7 +563,7 @@ const POOL = [
     opts:['Very healthy and consistent','I try, but not always possible','Mostly fast food or irregular','No routine at all'] },
   { type:'multi', tag:'Movement', q:'What types of exercise do you do weekly? (Select all that apply)',
     opts:['Walking or running','Gym or fitness','Yoga or stretching','Swimming','Barely any movement'] },
-  { type:'slide', title:'The gut–brain connection',
+  { type:'slide',
     text:'Your gut is often called the "second brain" — and for good reason. It contains over 100 million nerve cells and produces around 95% of your body\'s serotonin, the chemical most associated with mood and wellbeing.',
     fact:'Up to <strong>70% of your immune system</strong> lives in your gut. A healthy microbiome directly influences your mood, energy levels, sleep quality, and how well you digest food.',
     text2:'When your gut bacteria are out of balance, the effects show up everywhere — brain fog, low energy, poor sleep, bloating, skin issues. The good news: small changes to your diet can shift your microbiome noticeably within just a few weeks.',
@@ -642,11 +606,9 @@ window.addEventListener('DOMContentLoaded', () => {
   if (el) el.textContent = TOTAL_QUESTIONS;
 });
 
-// Pre-compute question numbers (slides don't count)
 const QUESTION_INDICES = POOL.map((q, i) => q.type !== 'slide' ? i : null).filter(i => i !== null);
 const TOTAL_QUESTIONS = QUESTION_INDICES.length;
 
-/* ── Start quiz from landing button ── */
 function startQuiz() {
   idx = 0;
   document.getElementById('quiz').classList.add('has-progress');
@@ -654,21 +616,17 @@ function startQuiz() {
   renderQuestion();
 }
 
-/* ── Quiz render ── */
 function renderQuestion() {
   const q = POOL[idx];
 
-  // Progress: landing=4%, questions fill 10%→100%
   const pct = 10 + ((idx / (POOL.length - 1)) * 90);
   document.getElementById('progress-fill').style.width = pct + '%';
 
-  // Counter: only count non-slide questions
   const qNum = QUESTION_INDICES.indexOf(idx);
   if (qNum >= 0) {
     document.getElementById('q-num').textContent = qNum + 1;
     document.getElementById('q-total').textContent = TOTAL_QUESTIONS;
   } else {
-    // slide — show prev question number
     const prevQ = QUESTION_INDICES.filter(i => i < idx);
     document.getElementById('q-num').textContent = prevQ.length;
     document.getElementById('q-total').textContent = TOTAL_QUESTIONS;
@@ -705,7 +663,6 @@ function renderQuestion() {
 function renderSlide(q, body) {
   const imgSrc = randFrom(SLIDE_IMGS[q.imgQuery]||[]) || '';
   body.innerHTML = `<div class="slide-wrap">
-    <h2 class="slide-title">${q.title}</h2>
     ${imgSrc ? `<img class="slide-img" src="${imgSrc}" alt="" loading="lazy">` : ''}
     <div class="slide-body">
       <p class="slide-text">${q.text}</p>
@@ -735,11 +692,9 @@ function renderMulti(q, body) {
   body.innerHTML = `<div class="q-wrap"><div class="q-text">${cleanQ}</div><div class="q-hint">Select all that apply</div><div class="options-list">${opts}</div></div>`;
 }
 
-/* ── Interactions ── */
 function pickSingle(btn, i) {
   if (busy) return;
   busy = true;
-  // Immediately disable ALL options — prevents next-question buttons being pre-highlighted on mobile
   const list = btn.closest('.options-list');
   list.querySelectorAll('.opt').forEach(b => { b.disabled = true; b.classList.remove('selected','flash'); });
   btn.classList.add('flash');
@@ -791,7 +746,6 @@ function doTransition(fn) {
   }, 120);
 }
 
-/* ── Loading ── */
 function startLoading() {
   document.getElementById('progress-fill').style.width = '100%';
   document.getElementById('fixed-bottom').style.display = 'none';
@@ -815,7 +769,6 @@ function startLoading() {
   });
 }
 
-/* ── Show screen ── */
 function show(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
