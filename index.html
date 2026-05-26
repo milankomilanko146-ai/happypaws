@@ -22,7 +22,7 @@
   --g700: #3D4555;
   --g900: #1A1A1A;
   --font: 'Nunito', sans-serif;
-  --max-w: 560px;
+  --max-w: 480px;
   --bar-h: 7px;
   --bar-top: 16px;
 }
@@ -36,57 +36,42 @@ html, body {
   overscroll-behavior: none;
 }
 
-/* PROGRESS BAR */
-#progress-wrap {
-  position: sticky;
-  top: 0;
-  left: 0; right: 0;
-  z-index: 150;
-  padding-top: var(--bar-top);
-  background: #fff;
-}
-@media (min-width: 640px) {
-  #progress-wrap {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-  }
-  body { padding-top: calc(var(--bar-top) + var(--bar-h)); }
-}
-.progress-track { width: 100%; height: var(--bar-h); background: var(--g200); }
-.progress-fill {
+/* PROGRESS BAR - inside quiz only */
+.quiz-progress {
+  width: 100%;
   height: var(--bar-h);
+  background: var(--g200);
+  border-radius: 4px;
+  margin: 10px 0 0;
+  overflow: hidden;
+}
+.quiz-progress-fill {
+  height: 100%;
   background: var(--teal);
-  border-radius: 0 4px 4px 0;
-  width: 0%;
-  transition: width 0.25s ease-out;
-  will-change: width;
-  transform: translateZ(0);
+  border-radius: 4px;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.3s ease-out;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 /* SCREENS */
 .screen {
   display: none;
-  min-height: 100vh;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
   background: #fff;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
 .screen.active { display: block; }
 #landing { background: #fff; }
-#quiz.active { display: flex; flex-direction: column; min-height: 100vh; }
+#quiz { overflow-y: auto; }
 #quiz.has-progress { padding-top: 0; }
 #loading { overflow-y: auto; background: var(--g100); }
-
-/* Mobile: fixed full-screen layout */
-@media (max-width: 639px) {
-  .screen {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    min-height: unset;
-  }
-  #quiz.active { min-height: unset; height: 100%; }
-  .quiz-body { overflow-y: auto; }
-}
 
 /* LANDING */
 .land-wrap {
@@ -98,10 +83,6 @@ html, body {
   align-items: center;
   text-align: center;
 }
-@media (max-width: 639px) {
-  #landing { overflow-y: auto; }
-  .land-wrap { padding: 32px 20px 48px; }
-}
 .land-title {
   font-size: clamp(22px, 5vw, 30px);
   line-height: 1.25;
@@ -109,7 +90,7 @@ html, body {
   margin-bottom: 14px;
   font-weight: 800;
   letter-spacing: -0.02em;
-  max-width: 460px;
+  width: 100%;
 }
 .land-title em { color: var(--g900); font-style: normal; }
 .land-sub {
@@ -165,97 +146,97 @@ html, body {
 .sp-text { font-size: 13px; color: var(--g600); line-height: 1.3; }
 .sp-text strong { color: var(--g900); font-weight: 700; }
 
+/* QUIZ WRAP - single centered container matching landing width */
+.quiz-wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  min-height: 100vh;
+}
+
 /* QUIZ HEADER */
 .quiz-header {
   flex-shrink: 0;
-  padding: 14px 24px 10px;
+  padding: 18px 24px 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.quiz-header-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 468px;
-  margin: 0 auto;
-  width: 100%;
-  margin-top: 22px;
+  margin-bottom: 12px;
 }
 .btn-back {
-  display: flex; align-items: center; gap: 5px;
-  background: var(--g100);
-  border: 1.5px solid var(--g200);
-  border-radius: 100px;
+  display: flex; align-items: center;
+  background: none;
+  border: none;
   cursor: pointer;
   color: var(--g700);
   font-family: var(--font);
   font-size: 15px; font-weight: 600;
-  padding: 9px 18px 9px 12px;
+  padding: 4px 8px 4px 0;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
-  visibility: visible;
 }
-.btn-back:active { opacity: 0.7; }
-.btn-back svg { width: 20px; height: 20px; }
-.q-counter { font-size: 18px; font-weight: 700; color: var(--g900); white-space: nowrap; }
-.q-counter .denom { font-size: 16px; font-weight: 400; color: var(--g400); }
+.btn-back:active { opacity: 0.6; }
+.btn-back svg { width: 24px; height: 24px; }
+.q-counter { font-size: 17px; font-weight: 600; color: var(--g700); white-space: nowrap; }
+.q-counter .denom { font-size: 17px; font-weight: 400; color: var(--g400); }
 
 .quiz-body {
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 24px 24px 0;
-  max-width: 468px;
-  margin: 0 auto;
+  padding: 28px 24px 0;
   width: 100%;
   display: flex;
   flex-direction: column;
-  -webkit-overflow-scrolling: touch;
-}
-
-/* On mobile the fixed-bottom is sticky at bottom of flex container */
-@media (max-width: 639px) {
-  .fixed-bottom {
-    position: sticky;
-    bottom: 0;
-  }
 }
 
 /* QUESTION */
 .q-wrap { display: flex; flex-direction: column; }
-.q-hint { font-size: 12px; color: var(--g400); margin-top: -8px; margin-bottom: 12px; text-align: center; }
+.q-hint { font-size: 15px; color: var(--g400); margin-bottom: 14px; text-align: center; }
 .q-text {
-  font-size: clamp(20px, 4.5vw, 26px);
-  font-weight: 700;
+  font-size: clamp(22px, 5vw, 30px);
+  font-weight: 800;
   color: var(--g900);
-  line-height: 1.35;
-  margin-bottom: 14px;
+  line-height: 1.25;
+  margin-bottom: 22px;
   letter-spacing: -0.02em;
   text-align: center;
 }
-.options-list { display: flex; flex-direction: column; gap: 9px; }
+.options-list { display: flex; flex-direction: column; gap: 12px; }
 .opt {
-  border: 1.5px solid var(--g300);
-  border-radius: 12px;
-  padding: 15px 20px;
-  background: #fff;
+  border: 2px solid var(--g200);
+  border-radius: 16px;
+  padding: 20px 22px;
+  background: var(--g100);
   font-family: var(--font);
-  font-size: 16px; font-weight: 500;
+  font-size: 17px; font-weight: 600;
   color: var(--g900);
   cursor: pointer;
-  text-align: left;
+  text-align: center;
   transition: border-color 0.15s, background 0.15s;
   line-height: 1.4;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
-  display: flex; align-items: center;
-  min-height: 54px;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 64px;
 }
 .opt:active { opacity: 0.8; }
-.opt.selected { border-color: var(--teal); background: var(--teal-light); color: var(--teal-dark); font-weight: 600; }
+.opt.selected { border-color: var(--teal); background: var(--teal-light); color: var(--teal-dark); font-weight: 700; }
 .opt.flash { border-color: var(--teal); background: var(--teal); color: #fff; transition: all 0.08s; }
 
 /* Multi-select */
-.opt.multi { padding-left: 50px; padding-right: 18px; position: relative; }
+.opt.multi { padding-left: 56px; padding-right: 22px; position: relative; justify-content: flex-start; text-align: left; }
 .opt-check {
-  position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
-  width: 22px; height: 22px; border-radius: 7px;
+  position: absolute; left: 16px; top: 50%; transform: translateY(-50%);
+  width: 24px; height: 24px; border-radius: 7px;
   border: 2px solid var(--g300); background: #fff;
   display: flex; align-items: center; justify-content: center;
   transition: border-color 0.15s, background 0.15s;
@@ -296,8 +277,6 @@ html, body {
   border-top: 1px solid #F0F0F0;
   display: none;
   width: 100%;
-  max-width: 468px;
-  margin: 0 auto;
 }
 .btn-continue {
   background: var(--teal);
@@ -364,28 +343,23 @@ html, body {
 
 /* Desktop */
 @media (min-width: 640px) {
-  .fixed-bottom { position: static; border-top: none; padding-top: 16px; }
+  html, body { height: auto; }
+  .screen { position: static; display: none; min-height: 100vh; overflow-y: auto; }
+  .screen.active { display: block; }
   .quiz-body { overflow-y: visible; }
+  .fixed-bottom { position: static; border-top: none; padding-top: 16px; }
 }
 @media (max-width: 380px) {
-  .q-text { font-size: 16px; }
-  .opt { font-size: 14px; min-height: 44px; }
-  .quiz-header { padding: 10px 16px 8px; margin-top: 14px; }
-  .quiz-body { padding: 2px 16px 0; }
+  .q-text { font-size: 20px; }
+  .opt { font-size: 15px; min-height: 56px; }
+  .quiz-header { padding: 14px 16px 0; }
+  .quiz-body { padding: 20px 16px 0; }
   .fixed-bottom { padding: 8px 16px 10px; }
-  .land-wrap { padding: 24px 16px 40px; }
-  .land-hero-img { height: 200px; }
-  .loading-inner { padding: 24px 16px 40px; }
 }
 </style>
 </head>
 <body>
 
-<div id="progress-wrap">
-  <div class="progress-track">
-    <div class="progress-fill" id="progress-fill" style="width:4%"></div>
-  </div>
-</div>
 
 <!-- LANDING -->
 <div class="screen active" id="landing">
@@ -406,16 +380,20 @@ html, body {
 
 <!-- QUIZ -->
 <div class="screen" id="quiz">
-  <div class="quiz-header">
-    <button class="btn-back" id="btn-back" onclick="goBack()">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10.828 12L15.778 16.95L14.364 18.364L8 12L14.364 5.636L15.778 7.05L10.828 12Z"/></svg>
-      Back
-    </button>
-    <div class="q-counter"><span id="q-num">1</span><span class="denom"> / <span id="q-total">12</span></span></div>
-  </div>
-  <div class="quiz-body" id="quiz-body"></div>
-  <div class="fixed-bottom" id="fixed-bottom">
-    <button class="btn-continue" id="btn-continue" disabled>Continue &rarr;</button>
+  <div class="quiz-wrap">
+    <div class="quiz-header">
+      <div class="quiz-header-row">
+        <button class="btn-back" id="btn-back" onclick="goBack()">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10.828 12L15.778 16.95L14.364 18.364L8 12L14.364 5.636L15.778 7.05L10.828 12Z"/></svg>
+        </button>
+        <div class="q-counter"><span id="q-num">1</span><span class="denom"> / <span id="q-total">12</span></span></div>
+      </div>
+      <div class="quiz-progress"><div class="quiz-progress-fill" id="progress-fill"></div></div>
+    </div>
+    <div class="quiz-body" id="quiz-body"></div>
+    <div class="fixed-bottom" id="fixed-bottom">
+      <button class="btn-continue" id="btn-continue" disabled>Continue &rarr;</button>
+    </div>
   </div>
 </div>
 
@@ -504,24 +482,16 @@ let answers = new Array(POOL.length).fill(undefined);
 let selectedOptions = [];
 let busy = false;
 
-const TOTAL_SCREENS = POOL.length; // 14 (12 otázok + 2 slide)
-const INITIAL_PROGRESS = 4; // percent na landing page
-const PROGRESS_STEP = (100 - INITIAL_PROGRESS) / TOTAL_SCREENS; // 96/14 ≈ 6.857%
-
-// Pre čítač otázok (zobrazuje len reálne otázky, nie slide)
 const REAL_INDICES = POOL.map((q, i) => q.type !== 'slide' ? i : null).filter(i => i !== null);
-const TOTAL_REAL = REAL_INDICES.length; // 12
+const TOTAL_REAL = REAL_INDICES.length;
 
 function getCurrentRealNumber() {
-  let realCountBefore = 0;
-  for (let i = 0; i < idx; i++) {
-    if (POOL[i].type !== 'slide') realCountBefore++;
+  // Count real (non-slide) questions up to and including current idx
+  let count = 0;
+  for (let i = 0; i <= idx; i++) {
+    if (POOL[i].type !== 'slide') count++;
   }
-  if (POOL[idx].type === 'slide') {
-    return Math.min(realCountBefore + 1, TOTAL_REAL);
-  } else {
-    return realCountBefore + 1;
-  }
+  return Math.min(count, TOTAL_REAL);
 }
 
 function updateHeaderCounter() {
@@ -529,33 +499,39 @@ function updateHeaderCounter() {
   document.getElementById('q-total').textContent = TOTAL_REAL;
 }
 
-// Progress bar sa počíta z aktuálneho indexu idx (0 = prvá obrazovka v kvíze)
-// Po spustení kvízu (idx=0) je progress = INITIAL_PROGRESS + (idx+1)*PROGRESS_STEP??
-// Aby sa posunul hneď pri prechode z landing na prvú otázku, použijeme (idx+1).
-// Pri idx=0 -> 4 + 1*step ≈ 10.86%
-// Pri idx=13 (posledná) -> 4 + 14*step = 100%
 function updateProgressFill() {
-  let percent = INITIAL_PROGRESS + ((idx + 1) * PROGRESS_STEP);
-  percent = Math.min(100, Math.max(INITIAL_PROGRESS, percent));
-  document.getElementById('progress-fill').style.width = percent + '%';
+  let answeredReal = 0;
+  for (let i = 0; i < POOL.length; i++) {
+    if (POOL[i].type === 'slide') continue;
+    const ans = answers[i];
+    if (ans !== undefined && (!Array.isArray(ans) || ans.length > 0)) answeredReal++;
+  }
+  // Use index-based progress (how far we've gotten) rather than answered count
+  // so going back also moves the bar back
+  let realSoFar = 0;
+  for (let i = 0; i <= idx && i < POOL.length; i++) {
+    if (POOL[i].type !== 'slide') realSoFar++;
+  }
+  // Progress = whichever is higher: answered count or current position
+  // Actually use current position for forward/back feel
+  const posPercent = (realSoFar / TOTAL_REAL) * 100;
+  const percent = Math.min(100, Math.max(0, posPercent));
+  document.getElementById('progress-fill').style.transform = `scaleX(${percent / 100})`;
 }
 
 window.addEventListener('DOMContentLoaded', () => {
   document.getElementById('q-total').textContent = TOTAL_REAL;
-  // Progress bar na landing je už v HTML nastavený na 4%
 });
 
 function startQuiz() {
   idx = 0;
   document.getElementById('quiz').classList.add('has-progress');
-  updateProgressFill();  // nastaví sa podľa idx=0 (napr. 10.86%)
-  updateHeaderCounter();
   show('quiz');
   renderQuestion();
 }
 
 function renderQuestion() {
-  updateProgressFill(); // pre istotu pri každom rendri (napr. pri back)
+  updateProgressFill();
   updateHeaderCounter();
 
   const q = POOL[idx];
@@ -567,7 +543,7 @@ function renderQuestion() {
   if (q.type === 'slide') {
     fb.style.display = 'block';
     btnC.disabled = false;
-    btnC.onclick = () => { next(); };
+    btnC.onclick = next;
     renderSlide(q, body);
   } else if (q.type === 'single') {
     fb.style.display = 'none';
@@ -577,10 +553,7 @@ function renderQuestion() {
     const savedArr = Array.isArray(answers[idx]) ? answers[idx] : [];
     selectedOptions = [...savedArr];
     btnC.disabled = savedArr.length === 0;
-    btnC.onclick = () => {
-      answers[idx] = [...selectedOptions];
-      next();
-    };
+    btnC.onclick = () => { answers[idx] = [...selectedOptions]; updateProgressFill(); next(); };
     renderMulti(q, body);
   }
 
@@ -612,7 +585,7 @@ function renderSingle(q, body) {
       btn.closest('.options-list').querySelectorAll('.opt').forEach(b => { b.disabled = true; b.classList.remove('selected','flash'); });
       btn.classList.add('flash');
       answers[idx] = val;
-      // Progress bar sa posunie až pri next()
+      updateProgressFill();
       setTimeout(() => { next(); busy = false; }, 200);
     });
   });
@@ -635,27 +608,23 @@ function renderMulti(q, body) {
         selectedOptions = selectedOptions.filter(v => v !== i);
       }
       document.getElementById('btn-continue').disabled = selectedOptions.length === 0;
-      // neukladáme do answers až do continue, neposúvame progress
+      answers[idx] = [...selectedOptions];
+      updateProgressFill();
     });
   });
 }
 
 function next() {
-  if (idx + 1 < TOTAL_SCREENS) {
-    idx++;
-    doTransition(renderQuestion);
-  } else {
-    // koniec kvízu
-    startLoading();
-  }
+  idx++;
+  if (idx >= POOL.length) { startLoading(); return; }
+  doTransition(renderQuestion);
 }
 
 function goBack() {
   if (busy) return;
   if (idx <= 0) {
-    // návrat na landing
     idx = 0;
-    document.getElementById('progress-fill').style.width = INITIAL_PROGRESS + '%';
+    document.getElementById('progress-fill').style.transform = 'scaleX(0)';
     document.getElementById('quiz').classList.remove('has-progress');
     document.getElementById('fixed-bottom').style.display = 'none';
     show('landing');
@@ -677,7 +646,7 @@ function doTransition(fn) {
 }
 
 function startLoading() {
-  document.getElementById('progress-fill').style.width = '100%';
+  document.getElementById('progress-fill').style.transform = 'scaleX(1)';
   document.getElementById('fixed-bottom').style.display = 'none';
   show('loading');
 
