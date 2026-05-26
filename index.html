@@ -500,22 +500,7 @@ function updateHeaderCounter() {
 }
 
 function updateProgressFill() {
-  let answeredReal = 0;
-  for (let i = 0; i < POOL.length; i++) {
-    if (POOL[i].type === 'slide') continue;
-    const ans = answers[i];
-    if (ans !== undefined && (!Array.isArray(ans) || ans.length > 0)) answeredReal++;
-  }
-  // Use index-based progress (how far we've gotten) rather than answered count
-  // so going back also moves the bar back
-  let realSoFar = 0;
-  for (let i = 0; i <= idx && i < POOL.length; i++) {
-    if (POOL[i].type !== 'slide') realSoFar++;
-  }
-  // Progress = whichever is higher: answered count or current position
-  // Actually use current position for forward/back feel
-  const posPercent = (realSoFar / TOTAL_REAL) * 100;
-  const percent = Math.min(100, Math.max(0, posPercent));
+  const percent = (idx / POOL.length) * 100;
   document.getElementById('progress-fill').style.transform = `scaleX(${percent / 100})`;
 }
 
