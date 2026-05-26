@@ -625,6 +625,9 @@ function doTransition(fn) {
   body.style.opacity = '0';
   setTimeout(() => {
     fn();
+    body.scrollTop = 0;
+    document.getElementById('quiz').scrollTop = 0;
+    window.scrollTo(0, 0);
     body.style.transition = 'opacity 0.14s ease';
     body.style.opacity = '1';
   }, 100);
