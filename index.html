@@ -71,7 +71,7 @@ html, body {
 #landing { background: #fff; }
 #quiz { overflow-y: auto; }
 #quiz.has-progress { padding-top: 0; }
-#loading { overflow-y: auto; background: var(--g100); }
+#loading { overflow-y: auto; background: #fff; }
 
 /* LANDING */
 .land-wrap {
@@ -192,7 +192,7 @@ html, body {
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 28px 24px 0;
+  padding: 28px 24px 100px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -271,12 +271,19 @@ html, body {
 
 /* CONTINUE BUTTON */
 .fixed-bottom {
-  flex-shrink: 0;
-  padding: 10px 24px 16px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 24px 24px;
   background: #fff;
   border-top: 1px solid #F0F0F0;
   display: none;
-  width: 100%;
+  z-index: 100;
+}
+.fixed-bottom-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
 }
 .btn-continue {
   background: var(--teal);
@@ -346,15 +353,15 @@ html, body {
   html, body { height: auto; }
   .screen { position: static; display: none; min-height: 100vh; overflow-y: auto; }
   .screen.active { display: block; }
+  .quiz-wrap { min-height: 100vh; }
   .quiz-body { overflow-y: visible; }
-  .fixed-bottom { position: static; border-top: none; padding-top: 16px; }
 }
 @media (max-width: 380px) {
   .q-text { font-size: 20px; }
   .opt { font-size: 15px; min-height: 56px; }
   .quiz-header { padding: 14px 16px 0; }
-  .quiz-body { padding: 20px 16px 0; }
-  .fixed-bottom { padding: 8px 16px 10px; }
+  .quiz-body { padding: 20px 16px 90px; }
+  .fixed-bottom { padding: 8px 16px 16px; }
 }
 </style>
 </head>
@@ -392,7 +399,9 @@ html, body {
     </div>
     <div class="quiz-body" id="quiz-body"></div>
     <div class="fixed-bottom" id="fixed-bottom">
-      <button class="btn-continue" id="btn-continue" disabled>Continue &rarr;</button>
+      <div class="fixed-bottom-inner">
+        <button class="btn-continue" id="btn-continue" disabled>Continue &rarr;</button>
+      </div>
     </div>
   </div>
 </div>
