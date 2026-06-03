@@ -3,53 +3,49 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Free Report</title>
+<title>Your Report Is Ready</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,800;1,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html,body{min-height:100%;background:#fff;color:#111;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
-.page{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:48px 20px;}
-.card{width:100%;max-width:420px;opacity:0;transform:translateY(16px);animation:rise .45s cubic-bezier(.22,1,.36,1) .08s forwards;}
-@keyframes rise{to{opacity:1;transform:translateY(0);}}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { min-height: 100%; background: #ffffff; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; color: #1a1a1a; }
+  .page { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 32px 20px; }
+  .card { width: 100%; max-width: 420px; opacity: 0; transform: translateY(16px); animation: up 0.45s cubic-bezier(0.22,1,0.36,1) 0.05s forwards; }
+  @keyframes up { to { opacity:1; transform:translateY(0); } }
 
-h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,15vw,84px);line-height:.92;letter-spacing:.01em;color:#111;margin-bottom:12px;}
-h1 em{color:#e03120;font-style:normal;}
+  .author { display: inline-flex; align-items: center; gap: 9px; margin-bottom: 32px; }
+  .avatar { width: 36px; height: 36px; border-radius: 50%; overflow: hidden; flex-shrink: 0; border: 1.5px solid #e8e8e6; }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .author-name { font-size: 13px; font-weight: 500; color: #888; }
 
-.sub{font-size:16px;color:#666;line-height:1.65;margin-bottom:36px;}
+  h1 { font-family: 'Playfair Display', serif; font-size: clamp(32px, 7vw, 46px); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; color: #1a1a1a; margin-bottom: 16px; }
+  h1 em { font-style: italic; color: #c0392b; }
 
-.rule{height:1px;background:#e8e8e6;margin-bottom:28px;}
+  .sub { font-size: 16px; line-height: 1.75; color: #444; margin-bottom: 36px; }
 
-.bullets{list-style:none;margin-bottom:32px;}
-.bullets li{display:flex;align-items:flex-start;gap:11px;font-size:14px;color:#444;line-height:1.55;margin-bottom:13px;}
-.chk{width:17px;height:17px;border-radius:3px;background:#e03120;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;}
-.chk svg{width:10px;height:10px;stroke:#fff;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+  .where-label { font-size: 13px; color: #aaa; margin-bottom: 8px; }
 
-input[type="email"]{display:block;width:100%;padding:15px 16px;background:#f7f7f5;border:1.5px solid #e2e2e0;border-radius:6px;font-family:'DM Sans',sans-serif;font-size:16px;color:#111;outline:none;transition:border-color .18s;-webkit-appearance:none;margin-bottom:10px;}
-input[type="email"]::placeholder{color:#bbb;}
-input[type="email"]:focus{border-color:#aaa;background:#fff;}
-input[type="email"].err{border-color:#e03120;}
-.err-msg{font-size:12px;color:#e03120;margin-bottom:10px;display:none;}
+  input[type="email"] { width: 100%; padding: 17px 18px; font-size: 16px; font-family: 'Inter', sans-serif; background: #fff; border: 1.5px solid #ddd; border-radius: 12px; color: #1a1a1a; outline: none; transition: border-color 0.18s; -webkit-appearance: none; display: block; margin-bottom: 10px; }
+  input[type="email"]::placeholder { color: #ccc; }
+  input[type="email"]:focus { border-color: #1a1a1a; }
+  input[type="email"].err { border-color: #e53e3e; }
+  .err-msg { font-size: 12px; color: #e53e3e; margin-bottom: 10px; display: none; }
 
-button{width:100%;padding:15px;background:#111;color:#fff;border:none;border-radius:6px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;cursor:pointer;transition:background .15s,transform .1s;-webkit-tap-highlight-color:transparent;margin-bottom:12px;}
-button:hover{background:#2a2a2a;}
-button:active{transform:scale(.98);}
+  button { width: 100%; padding: 17px; background: #1a1a1a; color: #fff; border: none; border-radius: 12px; font-size: 16px; font-weight: 600; font-family: 'Inter', sans-serif; cursor: pointer; transition: background 0.15s, transform 0.12s; -webkit-tap-highlight-color: transparent; margin-bottom: 14px; }
+  button:hover { background: #333; }
+  button:active { transform: scale(0.98); }
 
-.privacy{font-size:11px;color:#bbb;text-align:center;}
+  .proof { display: flex; align-items: center; gap: 8px; }
+  .faces { display: flex; }
+  .face { width: 24px; height: 24px; border-radius: 50%; background: #e8e8e6; border: 2px solid #fff; display: flex; align-items: center; justify-content: center; font-size: 8px; font-weight: 600; color: #888; margin-left: -6px; }
+  .face:first-child { margin-left: 0; }
+  .proof-txt { font-size: 12px; color: #bbb; }
+  .proof-txt b { color: #888; font-weight: 500; }
 
-.proof{display:flex;align-items:center;gap:10px;margin-top:24px;padding-top:20px;border-top:1px solid #e8e8e6;}
-.faces{display:flex;}
-.face{width:26px;height:26px;border-radius:50%;background:#e8e8e6;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:500;color:#888;margin-left:-7px;}
-.face:first-child{margin-left:0;}
-.proof-txt{font-size:12px;color:#999;}
-.proof-txt b{color:#555;font-weight:500;}
-
-.success{display:none;text-align:center;padding:20px 0;}
-.success h2{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:.02em;color:#111;margin-bottom:10px;}
-.success p{font-size:15px;color:#888;line-height:1.65;}
-.success-icon{font-size:44px;margin-bottom:16px;}
-
-@media(max-width:380px){h1{font-size:52px;}.page{padding:32px 16px;}}
+  .success { display: none; text-align: left; }
+  .success-emoji { font-size: 44px; margin-bottom: 18px; }
+  .success h2 { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 10px; }
+  .success p { font-size: 15px; color: #888; line-height: 1.6; }
 </style>
 </head>
 <body>
@@ -58,63 +54,62 @@ button:active{transform:scale(.98);}
 
   <div id="main">
 
-    <h1>Stop<br>wasting<br><em>ad spend.</em></h1>
-    <p class="sub">Most advertisers throw away 40% of their budget on 3 fixable mistakes. Here's exactly what they are — and how to stop.</p>
+    <div class="author">
+      <div class="avatar">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/YellowLabradorLooking_new.jpg/320px-YellowLabradorLooking_new.jpg" alt="avatar">
+      </div>
+      <span class="author-name">A report by James Reed</span>
+    </div>
 
-    <div class="rule"></div>
+    <h1>The <em>exact mistakes</em><br>bleeding your ad budget dry.</h1>
 
-    <ul class="bullets">
-      <li><span class="chk"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Why your CPM spikes after day 3 — and the simple fix</li>
-      <li><span class="chk"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>The targeting mistake 91% of beginners make</li>
-      <li><span class="chk"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>One bid change that cuts wasted spend by 34%</li>
-    </ul>
+    <p class="sub">3 fixable errors costing advertisers $300+ a week — and the step-by-step fix for each one.</p>
 
-    <input type="email" id="email" placeholder="your@email.com" autocomplete="email" inputmode="email"/>
-    <div class="err-msg" id="err">Please enter a valid email address.</div>
+    <p class="where-label">Where should we send it?</p>
+
+    <input type="email" id="email" placeholder="your@email.com" autocomplete="email" inputmode="email" />
+    <div class="err-msg" id="err">Please enter a valid email.</div>
+
     <button id="btn" onclick="go()">Send Me the Free Report →</button>
-    <p class="privacy">🔒 No spam. Unsubscribe anytime.</p>
 
     <div class="proof">
       <div class="faces">
-        <div class="face">JK</div>
-        <div class="face">ML</div>
-        <div class="face">RT</div>
+        <div class="face">AK</div>
+        <div class="face">MR</div>
+        <div class="face">JT</div>
         <div class="face">+</div>
       </div>
-      <span class="proof-txt">Downloaded by <b>18,420 advertisers</b> this month</span>
+      <span class="proof-txt">Already downloaded by <b>17,843 people</b></span>
     </div>
 
   </div>
 
   <div class="success" id="success">
-    <div class="success-icon">✉️</div>
-    <h2>Check your inbox</h2>
+    <div class="success-emoji">✉️</div>
+    <h2>Check your inbox!</h2>
     <p>Your report is on the way.<br>Arrives in under 2 minutes.</p>
   </div>
 
 </div>
 </div>
 <script>
-function go(){
-  const el=document.getElementById('email');
-  const err=document.getElementById('err');
-  const val=el.value.trim();
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)){
-    err.style.display='block';el.classList.add('err');el.focus();return;
+  function go(){
+    const el=document.getElementById('email');
+    const err=document.getElementById('err');
+    const val=el.value.trim();
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)){
+      err.style.display='block'; el.classList.add('err'); el.focus(); return;
+    }
+    err.style.display='none'; el.classList.remove('err');
+    const btn=document.getElementById('btn');
+    btn.textContent='Sending…'; btn.style.opacity='0.5'; btn.style.pointerEvents='none';
+    setTimeout(function(){
+      document.getElementById('main').style.display='none';
+      document.getElementById('success').style.display='block';
+    },700);
   }
-  err.style.display='none';el.classList.remove('err');
-  const btn=document.getElementById('btn');
-  btn.textContent='Sending…';btn.style.opacity='.5';btn.style.pointerEvents='none';
-  setTimeout(()=>{
-    document.getElementById('main').style.display='none';
-    document.getElementById('success').style.display='block';
-  },600);
-}
-document.getElementById('email').addEventListener('keydown',e=>{if(e.key==='Enter')go();});
-document.getElementById('email').addEventListener('input',()=>{
-  document.getElementById('err').style.display='none';
-  document.getElementById('email').classList.remove('err');
-});
+  document.getElementById('email').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
+  document.getElementById('email').addEventListener('input',function(){ document.getElementById('err').style.display='none'; this.classList.remove('err'); });
 </script>
 </body>
 </html>
