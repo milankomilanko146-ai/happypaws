@@ -1,115 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Your Report Is Ready</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,800;1,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+<title>Why the Scale Stops Moving After Week 3</title>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { min-height: 100%; background: #ffffff; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; color: #1a1a1a; }
-  .page { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 32px 20px; }
-  .card { width: 100%; max-width: 420px; opacity: 0; transform: translateY(16px); animation: up 0.45s cubic-bezier(0.22,1,0.36,1) 0.05s forwards; }
-  @keyframes up { to { opacity:1; transform:translateY(0); } }
-
-  .author { display: inline-flex; align-items: center; gap: 9px; margin-bottom: 32px; }
-  .avatar { width: 36px; height: 36px; border-radius: 50%; overflow: hidden; flex-shrink: 0; border: 1.5px solid #e8e8e6; }
-  .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .author-name { font-size: 13px; font-weight: 500; color: #888; }
-
-  h1 { font-family: 'Playfair Display', serif; font-size: clamp(32px, 7vw, 46px); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; color: #1a1a1a; margin-bottom: 16px; }
-  h1 em { font-style: italic; color: #c0392b; }
-
-  .sub { font-size: 16px; line-height: 1.75; color: #444; margin-bottom: 36px; }
-
-  .where-label { font-size: 13px; color: #aaa; margin-bottom: 8px; }
-
-  input[type="email"] { width: 100%; padding: 17px 18px; font-size: 16px; font-family: 'Inter', sans-serif; background: #fff; border: 1.5px solid #ddd; border-radius: 12px; color: #1a1a1a; outline: none; transition: border-color 0.18s; -webkit-appearance: none; display: block; margin-bottom: 10px; }
-  input[type="email"]::placeholder { color: #ccc; }
-  input[type="email"]:focus { border-color: #1a1a1a; }
-  input[type="email"].err { border-color: #e53e3e; }
-  .err-msg { font-size: 12px; color: #e53e3e; margin-bottom: 10px; display: none; }
-
-  button { width: 100%; padding: 17px; background: #1a1a1a; color: #fff; border: none; border-radius: 12px; font-size: 16px; font-weight: 600; font-family: 'Inter', sans-serif; cursor: pointer; transition: background 0.15s, transform 0.12s; -webkit-tap-highlight-color: transparent; margin-bottom: 14px; }
-  button:hover { background: #333; }
-  button:active { transform: scale(0.98); }
-
-  .proof { display: flex; align-items: center; gap: 8px; }
-  .faces { display: flex; }
-  .face { width: 24px; height: 24px; border-radius: 50%; background: #e8e8e6; border: 2px solid #fff; display: flex; align-items: center; justify-content: center; font-size: 8px; font-weight: 600; color: #888; margin-left: -6px; }
-  .face:first-child { margin-left: 0; }
-  .proof-txt { font-size: 12px; color: #bbb; }
-  .proof-txt b { color: #888; font-weight: 500; }
-
-  .success { display: none; text-align: left; }
-  .success-emoji { font-size: 44px; margin-bottom: 18px; }
-  .success h2 { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 10px; }
-  .success p { font-size: 15px; color: #888; line-height: 1.6; }
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#fff;color:#111;font-family:'Open Sans',Arial,sans-serif;font-size:18px;line-height:1.8}
+.ph{background:#eef1f4;border:1px dashed #aab3bb;color:#667;font:13px Arial,sans-serif;display:flex;align-items:center;justify-content:center;text-align:center;padding:14px;border-radius:8px}
+a{color:inherit}
+/* ---------- ADVERTORIAL ---------- */
+#adv .bar{background:#1a3560;text-align:center;padding:14px 20px;color:#fff;font-size:14px;font-weight:700;letter-spacing:3px;text-transform:uppercase}
+#adv .wrap{max-width:620px;margin:0 auto;padding:0 22px 70px}
+#adv .lab{font-size:11px;color:#aaa;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:18px 0 8px}
+#adv h1{font-size:34px;font-weight:800;line-height:1.2;margin:8px 0 16px}
+#adv h2{font-size:24px;font-weight:800;line-height:1.25;margin:44px 0 16px}
+#adv .sub{font-size:17px;font-style:italic;color:#555;line-height:1.65;margin-bottom:20px;border-left:3px solid #1a3560;padding-left:14px}
+#adv .by{font-size:13px;color:#777;padding-bottom:20px;margin-bottom:26px;border-bottom:1px solid #eee}
+#adv p{margin-bottom:22px}
+#adv .ph{min-height:230px;margin:0 0 26px}
+#adv ul{margin:0 0 24px 22px}#adv li{margin-bottom:10px}
+.cta{display:block;background:#FFE400;color:#000!important;text-align:center;font-size:21px;font-weight:800;line-height:1.3;padding:18px 16px;border-radius:6px;text-decoration:none;margin:36px 0;box-shadow:0 2px 10px rgba(0,0,0,.12)}
+.cta:hover{background:#f2d800}
+.note{background:#f4f6f9;border-left:4px solid #1a3560;padding:16px 18px;margin:0 0 24px}
+.foot{background:#1a3560;color:#aabce8;text-align:center;padding:28px 20px;font-size:12px;line-height:1.7}
+.foot a{margin:0 5px}
+/* ---------- SALES PAGE ---------- */
+#sales{display:none;font-family:Roboto,Arial,sans-serif;font-size:16px;line-height:1.6;color:#333}
+#sales .in{max-width:1000px;margin:0 auto;padding:0 20px}
+#sales .top{background:#f3f4f6;font-size:12px;font-weight:700;padding:7px 0;color:#111}
+#sales nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0}
+#sales .logo{font:900 26px Roboto,Arial,sans-serif;font-style:italic;color:#16375a}
+#sales nav a{margin-left:20px;font-size:12px;font-weight:700;text-transform:uppercase;text-decoration:none;color:#111}
+#sales h2{font-size:28px;font-weight:700;color:#16375a;text-align:center;line-height:1.25}
+#sales h2:after{content:"";display:block;width:60px;height:4px;background:#16375a;margin:12px auto 0;border-radius:2px}
+#sales .lead{text-align:center;color:#666;margin-top:10px}
+#sales .sec{padding:56px 0}
+#sales .alt{background:#f4f7fa}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;padding:34px 0 50px;background:#fafafa}
+.hero h1{font-size:34px;font-weight:700;line-height:1.2;color:#111;margin-bottom:14px}
+.hero .p{color:#666;margin-bottom:14px}
+.chk{list-style:none;margin:0 0 22px}
+.chk li{padding-left:28px;position:relative;margin-bottom:8px;font-size:15px;color:#555}
+.chk li:before{content:"\2713";position:absolute;left:0;top:1px;width:19px;height:19px;border-radius:50%;background:#16375a;color:#fff;font-size:12px;text-align:center;line-height:19px}
+.btn{display:block;background:#000;color:#fff!important;text-align:center;text-decoration:none;font-weight:700;font-size:17px;padding:16px 20px;border-radius:6px}
+.btn:hover{background:#222}
+.mini{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:16px;text-align:center;font-size:11px;font-weight:700;text-transform:uppercase;color:#666}
+.hero .ph{min-height:340px}
+.band{background:#16375a;color:#fff;padding:22px 0}
+.band .in{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;text-align:center;font-weight:700;font-size:15px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-top:34px}
+.card{background:#fff;border:1px solid #e6eaee;border-radius:12px;padding:24px 20px;text-align:center}
+.card b{display:block;color:#111;margin-bottom:8px;font-size:16px}
+.card p{font-size:14px;color:#666}
+.ico{width:46px;height:46px;border-radius:50%;background:#eef2f6;margin:0 auto 12px;color:#16375a;font-weight:900;line-height:46px;font-size:18px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-top:40px}
+.split.r .ph{order:-1}
+.split h3{font-size:24px;color:#16375a;margin-bottom:8px}
+.split p{color:#666;margin-bottom:16px}
+.split .ph{min-height:260px}
+.step .ph{min-height:170px;border-radius:12px 12px 0 0}
+.step{padding:0;overflow:hidden;text-align:left}
+.step div.t{padding:16px 18px}
+.mq{background:#16375a;color:#fff;text-align:center;padding:18px 10px;font-weight:700;font-size:18px}
+.team{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.team .ph{min-height:280px}
+details{background:#fafafa;border:1px solid #e6eaee;border-radius:6px;margin-bottom:8px;padding:14px 18px}
+summary{cursor:pointer;font-weight:700;font-size:15px;color:#222}
+details p{margin-top:10px;font-size:15px;color:#666}
+.gbox{display:flex;gap:20px;align-items:center;background:#fafafa;border:1px solid #e6eaee;border-radius:12px;padding:24px;margin-top:28px}
+.seal{flex:0 0 96px;height:96px;border-radius:50%;border:4px double #16375a;color:#16375a;font-weight:900;text-align:center;font-size:13px;line-height:1.2;display:flex;align-items:center;justify-content:center}
+.offer{max-width:520px;margin:30px auto 0;border:2px solid #16375a;border-radius:12px;padding:30px 24px;text-align:center;background:#fff}
+.price{font-size:50px;font-weight:900;color:#111;line-height:1.1}
+.mo{font-weight:700;color:#16375a;margin:6px 0 4px}
+.fine{font-size:12px;color:#777}
+#sales footer{background:#000;color:#bbb;padding:30px 0;font-size:12px;line-height:1.7;text-align:center}
+@media(max-width:760px){
+#adv h1{font-size:26px}#adv h2{font-size:21px}body{font-size:17px}.cta{font-size:18px}
+.hero,.split,.team,.grid3{grid-template-columns:1fr}.band .in{grid-template-columns:1fr 1fr}.split.r .ph{order:0}
+#sales nav a{display:none}.hero h1{font-size:27px}.gbox{flex-direction:column;text-align:center}.hero .ph{min-height:220px}}
 </style>
 </head>
 <body>
-<div class="page">
-<div class="card">
 
-  <div id="main">
+<!-- ================= PAGE 1: ADVERTORIAL ================= -->
+<div id="adv">
+<div class="bar">Steady Plan Learn</div>
+<div class="wrap">
+<div class="lab">Advertisement</div>
+<h1>Why the Scale Stops Moving After Week 3 (and What to Change When It Does)</h1>
+<p class="sub">It usually isn't willpower, and it isn't your metabolism being "broken." Here is what is actually going on.</p>
+<div class="by"><b>By the Steady Plan team</b> · 8 min read</div>
 
-    <div class="author">
-      <div class="avatar">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/YellowLabradorLooking_new.jpg/320px-YellowLabradorLooking_new.jpg" alt="avatar">
-      </div>
-      <span class="author-name">A report by James Reed</span>
-    </div>
+<div class="ph" role="img" aria-label="Photo">IMAGE: person standing on a scale, thoughtful expression, natural light</div>
 
-    <h1>The <em>exact mistakes</em><br>bleeding your ad budget dry.</h1>
+<p>Picture week one of a new diet.</p>
+<p>You are motivated. You cut back, you stay on track, and the scale drops. By the second week your clothes feel looser and you are telling people about it.</p>
+<p>Then, around week three, the number stops moving.</p>
+<p>You did not slip. You are eating the same meals and putting in the same effort, maybe more. But the scale sits there. So you cut a little more. You skip a snack. You add a walk. A week later it has moved half a pound, then crept back up.</p>
+<p>This is the point where most people decide the diet "stopped working," or that something is wrong with them.</p>
+<p>There is a more useful question to ask: <strong>what if the plan stayed the same while your body changed?</strong></p>
 
-    <p class="sub">3 fixable errors costing advertisers $300+ a week — and the step-by-step fix for each one.</p>
+<h2>The calorie number you started with is already out of date</h2>
+<p>A smaller body burns less energy, every day, just by existing. That is simple physics, and it is easy to forget when you are focused on the scale.</p>
+<p>Most plans give you one calorie target on day one and never touch it again. It was calculated for the body you had at the start, not the one you have in week eight.</p>
+<p>So the gap between what you eat and what you burn slowly shrinks. Nothing went wrong. The math moved underneath you.</p>
 
-    <p class="where-label">Where should we send it?</p>
+<div class="note"><strong>The short version:</strong> your calorie target is a moving number. A plan that never updates it will eventually stall, no matter how disciplined you are.</div>
 
-    <input type="email" id="email" placeholder="your@email.com" autocomplete="email" inputmode="email" />
-    <div class="err-msg" id="err">Please enter a valid email.</div>
+<h2>Three more things that hide your progress</h2>
+<div class="ph" role="img" aria-label="Photo">IMAGE: home kitchen, simple meal, notebook</div>
+<p><strong>1. Water.</strong> Salt, poor sleep, stress and hormones can move the scale a kilogram or more in either direction. You can lose fat for weeks while the number stays flat.</p>
+<p><strong>2. Small tracking gaps.</strong> A weekend dinner, a few drinks, snacks while cooking. Each seems minor. Together they can quietly cancel the deficit you thought you had.</p>
+<p><strong>3. Strict eating with no breaks.</strong> Hunger rises and willpower fades the longer you stay in a hard deficit. That is why so many people lose for two months and then regain. The plan asked for something nobody can keep doing.</p>
 
-    <button id="btn" onclick="go()">Send Me the Free Report →</button>
+<a href="#plan" class="cta">SEE HOW THE 6-MONTH PLAN WORKS</a>
 
-    <div class="proof">
-      <div class="faces">
-        <div class="face">AK</div>
-        <div class="face">MR</div>
-        <div class="face">JT</div>
-        <div class="face">+</div>
-      </div>
-      <span class="proof-txt">Already downloaded by <b>17,843 people</b></span>
-    </div>
+<h2>What actually fixes it: recalculating as you go</h2>
+<p>The fix is not a trick. We call it the <strong>Recalculation Method</strong>, and it has three parts:</p>
+<ul>
+<li><strong>Recheck every two weeks.</strong> Your calorie and protein targets are recalculated for your current weight, so the deficit stays real.</li>
+<li><strong>Plan the plateau.</strong> Around month three the plan includes a maintenance week and a recheck. A planned pause keeps you going. An unplanned one usually ends the diet.</li>
+<li><strong>Build around what derails you.</strong> Evening cravings, stress eating, no time to cook, not knowing what to eat. The plan is set up around your one biggest obstacle, so you are not relying on motivation alone.</li>
+</ul>
 
-  </div>
+<h2>What a realistic six months looks like</h2>
+<div class="ph" role="img" aria-label="Photo">IMAGE: person walking outdoors, relaxed</div>
+<p>Steady fat loss is usually about 0.5 to 1 kg (1 to 2 lb) per week, depending on where you start. Anyone promising much faster is selling water loss or a plan you will not be able to keep.</p>
+<p>Over six months that pace adds up to a real change. More important, it is a pace most people can actually sustain, which is what decides whether the weight stays off.</p>
 
-  <div class="success" id="success">
-    <div class="success-emoji">✉️</div>
-    <h2>Check your inbox!</h2>
-    <p>Your report is on the way.<br>Arrives in under 2 minutes.</p>
-  </div>
+<h2>Where the Steady Plan fits</h2>
+<p>We built the Steady Plan around this exact problem. You answer a short set of questions about your body, your routine and what gets in your way. You get daily calorie and protein targets, a month-by-month structure, and a check-in every two weeks that updates your numbers as your weight changes.</p>
+<p>It is one payment of <strong>$124.99</strong> for the full six months. That works out to about <strong>$20.83 a month</strong>, with nothing to renew.</p>
 
+<h2>Who it is not for</h2>
+<p>It is not for anyone under 18, anyone pregnant or breastfeeding, or anyone with a history of an eating disorder. If you have diabetes, a thyroid or heart condition, or take medication, talk to your doctor first.</p>
+
+<h2>You are covered for 30 days</h2>
+<p>Use the plan for 30 days. If it is not for you, ask for a full refund. That is the whole policy.</p>
+
+<a href="#plan" class="cta">YES, SHOW ME THE 6-MONTH PLAN</a>
 </div>
+<div class="foot"><div style="max-width:600px;margin:0 auto">
+<b>DISCLAIMER:</b> This page is an advertisement. It is general information, not medical advice, and is not a substitute for professional medical care. Results vary and depend on following the plan. Talk to a qualified professional before changing how you eat.
+<div style="margin-top:10px"><a href="#">Privacy Policy</a> · <a href="#">Terms</a> · <a href="#">Contact</a></div></div></div>
 </div>
+
+<!-- ================= PAGE 2: SALES PAGE ================= -->
+<div id="sales">
+<div class="top"><div class="in">SECURE CHECKOUT &nbsp;&nbsp;·&nbsp;&nbsp; 30-DAY MONEY-BACK GUARANTEE</div></div>
+<div class="in"><nav><span class="logo">STEADY PLAN</span><div><a href="#features">Features</a><a href="#how">How it works</a><a href="#faq">FAQ</a></div></nav></div>
+
+<div style="background:#fafafa"><div class="in hero">
+<div>
+<h1>A 6-Month Weight Loss Plan That Keeps Up With Your Body</h1>
+<p class="p">Built from your own numbers, then updated every two weeks so it keeps working after the first month.</p>
+<ul class="chk"><li>Daily calorie and protein targets for your body</li><li>Meal plan and shopping list built around your schedule</li><li>A plan for your biggest obstacle and for plateaus</li></ul>
+<a class="btn" href="#checkout">GET MY 6-MONTH PLAN</a>
+<div class="mini"><div>Personal<br>targets</div><div>Biweekly<br>updates</div><div>30-day<br>refund</div><div>One<br>payment</div></div>
+</div>
+<div class="ph" role="img" aria-label="Photo">HERO IMAGE: your real photo of the app on a phone, or a person using it</div>
+</div></div>
+
+<div class="band"><div class="in"><div>Your own calorie target</div><div>Updated every 2 weeks</div><div>Plateau steps built in</div><div>30-day refund</div></div></div>
+
+<div class="sec" id="features"><div class="in">
+<h2>Everything You Need, Built Around You</h2>
+<p class="lead">No generic template. Your targets come from your measurements and your answers.</p>
+<div class="grid3">
+<div class="card"><div class="ico">1</div><b>Your daily targets</b><p>Calories and protein calculated for your height, weight, age and activity level.</p></div>
+<div class="card"><div class="ico">2</div><b>Meals that fit your day</b><p>Repeat meals and a shopping list matched to the time you actually have.</p></div>
+<div class="card"><div class="ico">3</div><b>Biweekly recalculation</b><p>Enter your weight and your targets update, so the deficit does not quietly fade.</p></div>
+<div class="card"><div class="ico">4</div><b>Plateau steps</b><p>A planned maintenance week and a recheck for the weeks the scale stalls.</p></div>
+<div class="card"><div class="ico">5</div><b>Built around your obstacle</b><p>Cravings, stress eating, no time, no ideas. The plan targets the one that trips you up.</p></div>
+<div class="card"><div class="ico">6</div><b>Six months of structure</b><p>From week one to maintenance, so you know what comes next.</p></div>
+</div></div></div>
+
+<div class="sec alt"><div class="in">
+<h2>Why Most Plans Stop Working</h2>
+<div class="split"><div><h3>The target never changes</h3><p>As you lose weight, your body burns less. A plan stuck on your day-one number slowly stops working, and you end up blaming yourself.</p><a class="btn" href="#checkout" style="max-width:260px">GET MY PLAN</a></div><div class="ph" role="img" aria-label="Photo">IMAGE: person looking at a scale, puzzled</div></div>
+<div class="split r"><div><h3>The scale hides real progress</h3><p>Water can move the scale a kilogram or more. The plan tells you what to look at beyond the number, so you do not quit right before it moves.</p></div><div class="ph" role="img" aria-label="Photo">IMAGE: person measuring or tracking progress</div></div>
+<div class="split"><div><h3>Hard dieting is hard to keep</h3><p>A steady pace with planned breaks is easier to follow. That is what keeps weight off after month six.</p></div><div class="ph" role="img" aria-label="Photo">IMAGE: relaxed meal at home</div></div>
+</div></div>
+
+<div class="sec" id="how"><div class="in">
+<h2>Start in 3 Easy Steps</h2>
+<div class="grid3">
+<div class="card step"><div class="ph">IMAGE: person entering details on phone</div><div class="t"><b>1. Tell us about you</b><p>Height, weight, goal, routine, sleep and what gets in your way.</p></div></div>
+<div class="card step"><div class="ph">IMAGE: plan screen with calorie target</div><div class="t"><b>2. Get your targets</b><p>Calories, protein, a safe weekly pace and your first month.</p></div></div>
+<div class="card step"><div class="ph">IMAGE: weekly check-in screen</div><div class="t"><b>3. Check in every 2 weeks</b><p>Add your weight. The plan updates with you.</p></div></div>
+</div></div></div>
+
+<div class="sec alt"><div class="in"><h2>Your Six Months</h2>
+<div class="grid3" style="grid-template-columns:1fr 1fr 1fr">
+<div class="card"><b>Month 1</b><p>Measure your usual intake and set your targets.</p></div>
+<div class="card"><b>Month 2</b><p>Build repeat meals and fix meal timing.</p></div>
+<div class="card"><b>Month 3</b><p>Recheck at your new weight and take a planned maintenance week.</p></div>
+<div class="card"><b>Month 4</b><p>Add steps or short workouts that fit your time.</p></div>
+<div class="card"><b>Month 5</b><p>Practice weekends, eating out and travel.</p></div>
+<div class="card"><b>Month 6</b><p>Set your maintenance level and keep your routine.</p></div>
+</div></div></div>
+
+<div class="mq">30-Day Money-Back Guarantee &nbsp;·&nbsp; One Payment &nbsp;·&nbsp; No Subscription</div>
+
+<div class="sec"><div class="in team">
+<div><h2 style="text-align:left">Why We Built This</h2>
+<p style="margin-top:18px;color:#666">WRITE THIS IN YOUR OWN WORDS: who you are, why the plan updates as you lose weight, and what you saw that made you build it. Use your real name, real role and real photo. Do not invent credentials.</p>
+<p style="color:#444;font-weight:700;margin-top:10px">Your name, your real role</p></div>
+<div class="ph" role="img" aria-label="Photo">YOUR REAL PHOTO</div>
+</div></div>
+
+<div class="sec alt"><div class="in"><h2>What Results to Expect</h2>
+<p class="lead" style="max-width:640px;margin-left:auto;margin-right:auto">Safe fat loss is usually about 0.5 to 1 kg (1 to 2 lb) per week. Your result depends on your starting point and on following the plan. We cannot promise a specific number. We can promise the plan will keep adjusting to your body.</p>
+<div class="ph" style="min-height:160px;margin-top:26px">REAL CUSTOMER STORIES: add photo, first name and their own words only once you have permission. Leave this out until then.</div>
+</div></div>
+
+<div class="sec" id="faq"><div class="in" style="max-width:760px"><h2>Questions</h2><div style="margin-top:30px">
+<details><summary>Is the plan really personalized?</summary><p>Yes. Your targets, pace and month-by-month focus come from the measurements and answers you enter, and they update at each check-in.</p></details>
+<details><summary>Is this a subscription?</summary><p>No. One payment of $124.99 covers the full six months.</p></details>
+<details><summary>How much weight will I lose?</summary><p>It depends on your starting point and how closely you follow the plan. We design for a safe pace of about 0.5 to 1 kg per week. Results vary.</p></details>
+<details><summary>What if the scale stalls?</summary><p>It probably will at some point. Month 3 includes a maintenance week and a recalculation for exactly this.</p></details>
+<details><summary>Is this medical advice?</summary><p>No. It is general nutrition guidance. Talk to your doctor before you start, especially if you take medication or have a health condition.</p></details>
+<details><summary>Who should not use it?</summary><p>Anyone under 18, anyone pregnant or breastfeeding, and anyone with a history of an eating disorder.</p></details>
+</div>
+<div class="gbox"><div class="seal">30-DAY<br>MONEY-BACK<br>GUARANTEE</div><div><b style="color:#111">30-Day Money-Back Guarantee</b><p style="color:#666;font-size:15px;margin-top:4px">Try it for 30 days. If it is not for you, ask for a full refund.</p></div></div>
+</div></div>
+
+<div class="sec alt" id="buy"><div class="in"><h2>Get Your 6-Month Plan</h2>
+<div class="offer">
+<div class="fine">Six-month plan and app access</div>
+<div class="price">$124.99</div>
+<div class="mo">About $20.83 a month for six months</div>
+<p class="fine" style="margin-bottom:18px">You pay once. Nothing renews.</p>
+<a class="btn" href="#checkout">GET MY 6-MONTH PLAN</a>
+<p class="fine" style="margin-top:12px">30-day money-back guarantee</p>
+</div></div></div>
+
+<footer><div class="in"><b>DISCLAIMER:</b> General information, not medical advice. Results vary and depend on following the plan. Talk to a qualified professional before changing how you eat.
+<div style="margin-top:10px"><a href="#" style="margin:0 6px">Privacy Policy</a><a href="#" style="margin:0 6px">Terms</a><a href="#" style="margin:0 6px">Contact</a></div></div></footer>
+</div>
+
 <script>
-  function go(){
-    const el=document.getElementById('email');
-    const err=document.getElementById('err');
-    const val=el.value.trim();
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)){
-      err.style.display='block'; el.classList.add('err'); el.focus(); return;
-    }
-    err.style.display='none'; el.classList.remove('err');
-    const btn=document.getElementById('btn');
-    btn.textContent='Sending…'; btn.style.opacity='0.5'; btn.style.pointerEvents='none';
-    setTimeout(function(){
-      document.getElementById('main').style.display='none';
-      document.getElementById('success').style.display='block';
-    },700);
-  }
-  document.getElementById('email').addEventListener('keydown',function(e){ if(e.key==='Enter') go(); });
-  document.getElementById('email').addEventListener('input',function(){ document.getElementById('err').style.display='none'; this.classList.remove('err'); });
+function route(){
+  var h=location.hash,a=document.getElementById('adv'),s=document.getElementById('sales');
+  if(h==='#plan'){a.style.display='none';s.style.display='block';window.scrollTo(0,0)}
+  else if(h===''||h==='#top'){a.style.display='block';s.style.display='none'}
+}
+window.addEventListener('hashchange',route);route();
+/* Replace every href="#checkout" with your payment link. Replace each .ph box with an <img> or your own photo. */
 </script>
 </body>
 </html>
