@@ -1,255 +1,141 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
-<title>Why the Scale Stops Moving After Week 3</title>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Body Age Quiz</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:#fff;color:#111;font-family:'Open Sans',Arial,sans-serif;font-size:18px;line-height:1.8}
-.ph{background:#eef1f4;border:1px dashed #aab3bb;color:#667;font:13px Arial,sans-serif;display:flex;align-items:center;justify-content:center;text-align:center;padding:14px;border-radius:8px}
-a{color:inherit}
-/* ---------- ADVERTORIAL ---------- */
-#adv .bar{background:#1a3560;text-align:center;padding:14px 20px;color:#fff;font-size:14px;font-weight:700;letter-spacing:3px;text-transform:uppercase}
-#adv .wrap{max-width:620px;margin:0 auto;padding:0 22px 70px}
-#adv .lab{font-size:11px;color:#aaa;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:18px 0 8px}
-#adv h1{font-size:34px;font-weight:800;line-height:1.2;margin:8px 0 16px}
-#adv h2{font-size:24px;font-weight:800;line-height:1.25;margin:44px 0 16px}
-#adv .sub{font-size:17px;font-style:italic;color:#555;line-height:1.65;margin-bottom:20px;border-left:3px solid #1a3560;padding-left:14px}
-#adv .by{font-size:13px;color:#777;padding-bottom:20px;margin-bottom:26px;border-bottom:1px solid #eee}
-#adv p{margin-bottom:22px}
-#adv .ph{min-height:230px;margin:0 0 26px}
-#adv ul{margin:0 0 24px 22px}#adv li{margin-bottom:10px}
-.cta{display:block;background:#FFE400;color:#000!important;text-align:center;font-size:21px;font-weight:800;line-height:1.3;padding:18px 16px;border-radius:6px;text-decoration:none;margin:36px 0;box-shadow:0 2px 10px rgba(0,0,0,.12)}
-.cta:hover{background:#f2d800}
-.note{background:#f4f6f9;border-left:4px solid #1a3560;padding:16px 18px;margin:0 0 24px}
-.foot{background:#1a3560;color:#aabce8;text-align:center;padding:28px 20px;font-size:12px;line-height:1.7}
-.foot a{margin:0 5px}
-/* ---------- SALES PAGE ---------- */
-#sales{display:none;font-family:Roboto,Arial,sans-serif;font-size:16px;line-height:1.6;color:#333}
-#sales .in{max-width:1000px;margin:0 auto;padding:0 20px}
-#sales .top{background:#f3f4f6;font-size:12px;font-weight:700;padding:7px 0;color:#111}
-#sales nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0}
-#sales .logo{font:900 26px Roboto,Arial,sans-serif;font-style:italic;color:#16375a}
-#sales nav a{margin-left:20px;font-size:12px;font-weight:700;text-transform:uppercase;text-decoration:none;color:#111}
-#sales h2{font-size:28px;font-weight:700;color:#16375a;text-align:center;line-height:1.25}
-#sales h2:after{content:"";display:block;width:60px;height:4px;background:#16375a;margin:12px auto 0;border-radius:2px}
-#sales .lead{text-align:center;color:#666;margin-top:10px}
-#sales .sec{padding:56px 0}
-#sales .alt{background:#f4f7fa}
-.hero{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;padding:34px 0 50px;background:#fafafa}
-.hero h1{font-size:34px;font-weight:700;line-height:1.2;color:#111;margin-bottom:14px}
-.hero .p{color:#666;margin-bottom:14px}
-.chk{list-style:none;margin:0 0 22px}
-.chk li{padding-left:28px;position:relative;margin-bottom:8px;font-size:15px;color:#555}
-.chk li:before{content:"\2713";position:absolute;left:0;top:1px;width:19px;height:19px;border-radius:50%;background:#16375a;color:#fff;font-size:12px;text-align:center;line-height:19px}
-.btn{display:block;background:#000;color:#fff!important;text-align:center;text-decoration:none;font-weight:700;font-size:17px;padding:16px 20px;border-radius:6px}
-.btn:hover{background:#222}
-.mini{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:16px;text-align:center;font-size:11px;font-weight:700;text-transform:uppercase;color:#666}
-.hero .ph{min-height:340px}
-.band{background:#16375a;color:#fff;padding:22px 0}
-.band .in{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;text-align:center;font-weight:700;font-size:15px}
-.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-top:34px}
-.card{background:#fff;border:1px solid #e6eaee;border-radius:12px;padding:24px 20px;text-align:center}
-.card b{display:block;color:#111;margin-bottom:8px;font-size:16px}
-.card p{font-size:14px;color:#666}
-.ico{width:46px;height:46px;border-radius:50%;background:#eef2f6;margin:0 auto 12px;color:#16375a;font-weight:900;line-height:46px;font-size:18px}
-.split{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-top:40px}
-.split.r .ph{order:-1}
-.split h3{font-size:24px;color:#16375a;margin-bottom:8px}
-.split p{color:#666;margin-bottom:16px}
-.split .ph{min-height:260px}
-.step .ph{min-height:170px;border-radius:12px 12px 0 0}
-.step{padding:0;overflow:hidden;text-align:left}
-.step div.t{padding:16px 18px}
-.mq{background:#16375a;color:#fff;text-align:center;padding:18px 10px;font-weight:700;font-size:18px}
-.team{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-.team .ph{min-height:280px}
-details{background:#fafafa;border:1px solid #e6eaee;border-radius:6px;margin-bottom:8px;padding:14px 18px}
-summary{cursor:pointer;font-weight:700;font-size:15px;color:#222}
-details p{margin-top:10px;font-size:15px;color:#666}
-.gbox{display:flex;gap:20px;align-items:center;background:#fafafa;border:1px solid #e6eaee;border-radius:12px;padding:24px;margin-top:28px}
-.seal{flex:0 0 96px;height:96px;border-radius:50%;border:4px double #16375a;color:#16375a;font-weight:900;text-align:center;font-size:13px;line-height:1.2;display:flex;align-items:center;justify-content:center}
-.offer{max-width:520px;margin:30px auto 0;border:2px solid #16375a;border-radius:12px;padding:30px 24px;text-align:center;background:#fff}
-.price{font-size:50px;font-weight:900;color:#111;line-height:1.1}
-.mo{font-weight:700;color:#16375a;margin:6px 0 4px}
-.fine{font-size:12px;color:#777}
-#sales footer{background:#000;color:#bbb;padding:30px 0;font-size:12px;line-height:1.7;text-align:center}
-@media(max-width:760px){
-#adv h1{font-size:26px}#adv h2{font-size:21px}body{font-size:17px}.cta{font-size:18px}
-.hero,.split,.team,.grid3{grid-template-columns:1fr}.band .in{grid-template-columns:1fr 1fr}.split.r .ph{order:0}
-#sales nav a{display:none}.hero h1{font-size:27px}.gbox{flex-direction:column;text-align:center}.hero .ph{min-height:220px}}
-</style>
-</head>
-<body>
-
-<!-- ================= PAGE 1: ADVERTORIAL ================= -->
-<div id="adv">
-<div class="bar">Steady Plan Learn</div>
-<div class="wrap">
-<div class="lab">Advertisement</div>
-<h1>Why the Scale Stops Moving After Week 3 (and What to Change When It Does)</h1>
-<p class="sub">It usually isn't willpower, and it isn't your metabolism being "broken." Here is what is actually going on.</p>
-<div class="by"><b>By the Steady Plan team</b> · 8 min read</div>
-
-<div class="ph" role="img" aria-label="Photo">IMAGE: person standing on a scale, thoughtful expression, natural light</div>
-
-<p>Picture week one of a new diet.</p>
-<p>You are motivated. You cut back, you stay on track, and the scale drops. By the second week your clothes feel looser and you are telling people about it.</p>
-<p>Then, around week three, the number stops moving.</p>
-<p>You did not slip. You are eating the same meals and putting in the same effort, maybe more. But the scale sits there. So you cut a little more. You skip a snack. You add a walk. A week later it has moved half a pound, then crept back up.</p>
-<p>This is the point where most people decide the diet "stopped working," or that something is wrong with them.</p>
-<p>There is a more useful question to ask: <strong>what if the plan stayed the same while your body changed?</strong></p>
-
-<h2>The calorie number you started with is already out of date</h2>
-<p>A smaller body burns less energy, every day, just by existing. That is simple physics, and it is easy to forget when you are focused on the scale.</p>
-<p>Most plans give you one calorie target on day one and never touch it again. It was calculated for the body you had at the start, not the one you have in week eight.</p>
-<p>So the gap between what you eat and what you burn slowly shrinks. Nothing went wrong. The math moved underneath you.</p>
-
-<div class="note"><strong>The short version:</strong> your calorie target is a moving number. A plan that never updates it will eventually stall, no matter how disciplined you are.</div>
-
-<h2>Three more things that hide your progress</h2>
-<div class="ph" role="img" aria-label="Photo">IMAGE: home kitchen, simple meal, notebook</div>
-<p><strong>1. Water.</strong> Salt, poor sleep, stress and hormones can move the scale a kilogram or more in either direction. You can lose fat for weeks while the number stays flat.</p>
-<p><strong>2. Small tracking gaps.</strong> A weekend dinner, a few drinks, snacks while cooking. Each seems minor. Together they can quietly cancel the deficit you thought you had.</p>
-<p><strong>3. Strict eating with no breaks.</strong> Hunger rises and willpower fades the longer you stay in a hard deficit. That is why so many people lose for two months and then regain. The plan asked for something nobody can keep doing.</p>
-
-<a href="#plan" class="cta">SEE HOW THE 6-MONTH PLAN WORKS</a>
-
-<h2>What actually fixes it: recalculating as you go</h2>
-<p>The fix is not a trick. We call it the <strong>Recalculation Method</strong>, and it has three parts:</p>
-<ul>
-<li><strong>Recheck every two weeks.</strong> Your calorie and protein targets are recalculated for your current weight, so the deficit stays real.</li>
-<li><strong>Plan the plateau.</strong> Around month three the plan includes a maintenance week and a recheck. A planned pause keeps you going. An unplanned one usually ends the diet.</li>
-<li><strong>Build around what derails you.</strong> Evening cravings, stress eating, no time to cook, not knowing what to eat. The plan is set up around your one biggest obstacle, so you are not relying on motivation alone.</li>
-</ul>
-
-<h2>What a realistic six months looks like</h2>
-<div class="ph" role="img" aria-label="Photo">IMAGE: person walking outdoors, relaxed</div>
-<p>Steady fat loss is usually about 0.5 to 1 kg (1 to 2 lb) per week, depending on where you start. Anyone promising much faster is selling water loss or a plan you will not be able to keep.</p>
-<p>Over six months that pace adds up to a real change. More important, it is a pace most people can actually sustain, which is what decides whether the weight stays off.</p>
-
-<h2>Where the Steady Plan fits</h2>
-<p>We built the Steady Plan around this exact problem. You answer a short set of questions about your body, your routine and what gets in your way. You get daily calorie and protein targets, a month-by-month structure, and a check-in every two weeks that updates your numbers as your weight changes.</p>
-<p>It is one payment of <strong>$124.99</strong> for the full six months. That works out to about <strong>$20.83 a month</strong>, with nothing to renew.</p>
-
-<h2>Who it is not for</h2>
-<p>It is not for anyone under 18, anyone pregnant or breastfeeding, or anyone with a history of an eating disorder. If you have diabetes, a thyroid or heart condition, or take medication, talk to your doctor first.</p>
-
-<h2>You are covered for 30 days</h2>
-<p>Use the plan for 30 days. If it is not for you, ask for a full refund. That is the whole policy.</p>
-
-<a href="#plan" class="cta">YES, SHOW ME THE 6-MONTH PLAN</a>
-</div>
-<div class="foot"><div style="max-width:600px;margin:0 auto">
-<b>DISCLAIMER:</b> This page is an advertisement. It is general information, not medical advice, and is not a substitute for professional medical care. Results vary and depend on following the plan. Talk to a qualified professional before changing how you eat.
-<div style="margin-top:10px"><a href="#">Privacy Policy</a> · <a href="#">Terms</a> · <a href="#">Contact</a></div></div></div>
-</div>
-
-<!-- ================= PAGE 2: SALES PAGE ================= -->
-<div id="sales">
-<div class="top"><div class="in">SECURE CHECKOUT &nbsp;&nbsp;·&nbsp;&nbsp; 30-DAY MONEY-BACK GUARANTEE</div></div>
-<div class="in"><nav><span class="logo">STEADY PLAN</span><div><a href="#features">Features</a><a href="#how">How it works</a><a href="#faq">FAQ</a></div></nav></div>
-
-<div style="background:#fafafa"><div class="in hero">
-<div>
-<h1>A 6-Month Weight Loss Plan That Keeps Up With Your Body</h1>
-<p class="p">Built from your own numbers, then updated every two weeks so it keeps working after the first month.</p>
-<ul class="chk"><li>Daily calorie and protein targets for your body</li><li>Meal plan and shopping list built around your schedule</li><li>A plan for your biggest obstacle and for plateaus</li></ul>
-<a class="btn" href="#checkout">GET MY 6-MONTH PLAN</a>
-<div class="mini"><div>Personal<br>targets</div><div>Biweekly<br>updates</div><div>30-day<br>refund</div><div>One<br>payment</div></div>
-</div>
-<div class="ph" role="img" aria-label="Photo">HERO IMAGE: your real photo of the app on a phone, or a person using it</div>
-</div></div>
-
-<div class="band"><div class="in"><div>Your own calorie target</div><div>Updated every 2 weeks</div><div>Plateau steps built in</div><div>30-day refund</div></div></div>
-
-<div class="sec" id="features"><div class="in">
-<h2>Everything You Need, Built Around You</h2>
-<p class="lead">No generic template. Your targets come from your measurements and your answers.</p>
-<div class="grid3">
-<div class="card"><div class="ico">1</div><b>Your daily targets</b><p>Calories and protein calculated for your height, weight, age and activity level.</p></div>
-<div class="card"><div class="ico">2</div><b>Meals that fit your day</b><p>Repeat meals and a shopping list matched to the time you actually have.</p></div>
-<div class="card"><div class="ico">3</div><b>Biweekly recalculation</b><p>Enter your weight and your targets update, so the deficit does not quietly fade.</p></div>
-<div class="card"><div class="ico">4</div><b>Plateau steps</b><p>A planned maintenance week and a recheck for the weeks the scale stalls.</p></div>
-<div class="card"><div class="ico">5</div><b>Built around your obstacle</b><p>Cravings, stress eating, no time, no ideas. The plan targets the one that trips you up.</p></div>
-<div class="card"><div class="ico">6</div><b>Six months of structure</b><p>From week one to maintenance, so you know what comes next.</p></div>
-</div></div></div>
-
-<div class="sec alt"><div class="in">
-<h2>Why Most Plans Stop Working</h2>
-<div class="split"><div><h3>The target never changes</h3><p>As you lose weight, your body burns less. A plan stuck on your day-one number slowly stops working, and you end up blaming yourself.</p><a class="btn" href="#checkout" style="max-width:260px">GET MY PLAN</a></div><div class="ph" role="img" aria-label="Photo">IMAGE: person looking at a scale, puzzled</div></div>
-<div class="split r"><div><h3>The scale hides real progress</h3><p>Water can move the scale a kilogram or more. The plan tells you what to look at beyond the number, so you do not quit right before it moves.</p></div><div class="ph" role="img" aria-label="Photo">IMAGE: person measuring or tracking progress</div></div>
-<div class="split"><div><h3>Hard dieting is hard to keep</h3><p>A steady pace with planned breaks is easier to follow. That is what keeps weight off after month six.</p></div><div class="ph" role="img" aria-label="Photo">IMAGE: relaxed meal at home</div></div>
-</div></div>
-
-<div class="sec" id="how"><div class="in">
-<h2>Start in 3 Easy Steps</h2>
-<div class="grid3">
-<div class="card step"><div class="ph">IMAGE: person entering details on phone</div><div class="t"><b>1. Tell us about you</b><p>Height, weight, goal, routine, sleep and what gets in your way.</p></div></div>
-<div class="card step"><div class="ph">IMAGE: plan screen with calorie target</div><div class="t"><b>2. Get your targets</b><p>Calories, protein, a safe weekly pace and your first month.</p></div></div>
-<div class="card step"><div class="ph">IMAGE: weekly check-in screen</div><div class="t"><b>3. Check in every 2 weeks</b><p>Add your weight. The plan updates with you.</p></div></div>
-</div></div></div>
-
-<div class="sec alt"><div class="in"><h2>Your Six Months</h2>
-<div class="grid3" style="grid-template-columns:1fr 1fr 1fr">
-<div class="card"><b>Month 1</b><p>Measure your usual intake and set your targets.</p></div>
-<div class="card"><b>Month 2</b><p>Build repeat meals and fix meal timing.</p></div>
-<div class="card"><b>Month 3</b><p>Recheck at your new weight and take a planned maintenance week.</p></div>
-<div class="card"><b>Month 4</b><p>Add steps or short workouts that fit your time.</p></div>
-<div class="card"><b>Month 5</b><p>Practice weekends, eating out and travel.</p></div>
-<div class="card"><b>Month 6</b><p>Set your maintenance level and keep your routine.</p></div>
-</div></div></div>
-
-<div class="mq">30-Day Money-Back Guarantee &nbsp;·&nbsp; One Payment &nbsp;·&nbsp; No Subscription</div>
-
-<div class="sec"><div class="in team">
-<div><h2 style="text-align:left">Why We Built This</h2>
-<p style="margin-top:18px;color:#666">WRITE THIS IN YOUR OWN WORDS: who you are, why the plan updates as you lose weight, and what you saw that made you build it. Use your real name, real role and real photo. Do not invent credentials.</p>
-<p style="color:#444;font-weight:700;margin-top:10px">Your name, your real role</p></div>
-<div class="ph" role="img" aria-label="Photo">YOUR REAL PHOTO</div>
-</div></div>
-
-<div class="sec alt"><div class="in"><h2>What Results to Expect</h2>
-<p class="lead" style="max-width:640px;margin-left:auto;margin-right:auto">Safe fat loss is usually about 0.5 to 1 kg (1 to 2 lb) per week. Your result depends on your starting point and on following the plan. We cannot promise a specific number. We can promise the plan will keep adjusting to your body.</p>
-<div class="ph" style="min-height:160px;margin-top:26px">REAL CUSTOMER STORIES: add photo, first name and their own words only once you have permission. Leave this out until then.</div>
-</div></div>
-
-<div class="sec" id="faq"><div class="in" style="max-width:760px"><h2>Questions</h2><div style="margin-top:30px">
-<details><summary>Is the plan really personalized?</summary><p>Yes. Your targets, pace and month-by-month focus come from the measurements and answers you enter, and they update at each check-in.</p></details>
-<details><summary>Is this a subscription?</summary><p>No. One payment of $124.99 covers the full six months.</p></details>
-<details><summary>How much weight will I lose?</summary><p>It depends on your starting point and how closely you follow the plan. We design for a safe pace of about 0.5 to 1 kg per week. Results vary.</p></details>
-<details><summary>What if the scale stalls?</summary><p>It probably will at some point. Month 3 includes a maintenance week and a recalculation for exactly this.</p></details>
-<details><summary>Is this medical advice?</summary><p>No. It is general nutrition guidance. Talk to your doctor before you start, especially if you take medication or have a health condition.</p></details>
-<details><summary>Who should not use it?</summary><p>Anyone under 18, anyone pregnant or breastfeeding, and anyone with a history of an eating disorder.</p></details>
-</div>
-<div class="gbox"><div class="seal">30-DAY<br>MONEY-BACK<br>GUARANTEE</div><div><b style="color:#111">30-Day Money-Back Guarantee</b><p style="color:#666;font-size:15px;margin-top:4px">Try it for 30 days. If it is not for you, ask for a full refund.</p></div></div>
-</div></div>
-
-<div class="sec alt" id="buy"><div class="in"><h2>Get Your 6-Month Plan</h2>
-<div class="offer">
-<div class="fine">Six-month plan and app access</div>
-<div class="price">$124.99</div>
-<div class="mo">About $20.83 a month for six months</div>
-<p class="fine" style="margin-bottom:18px">You pay once. Nothing renews.</p>
-<a class="btn" href="#checkout">GET MY 6-MONTH PLAN</a>
-<p class="fine" style="margin-top:12px">30-day money-back guarantee</p>
-</div></div></div>
-
-<footer><div class="in"><b>DISCLAIMER:</b> General information, not medical advice. Results vary and depend on following the plan. Talk to a qualified professional before changing how you eat.
-<div style="margin-top:10px"><a href="#" style="margin:0 6px">Privacy Policy</a><a href="#" style="margin:0 6px">Terms</a><a href="#" style="margin:0 6px">Contact</a></div></div></footer>
-</div>
-
+:root{color-scheme:light;--b:#0b63c4;--bd:#08498f;--bl:#eaf3fc;--tx:#10212e;--mu:#44566a;--ln:#cddbe8;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{margin:0;background:#fff;color:var(--tx);font:17px/1.5 -apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+.top{border-bottom:1px solid var(--ln);padding:10px 16px;display:flex;justify-content:space-between;font-size:12px;color:var(--mu)}.top b{color:var(--bd);font-size:14px;letter-spacing:.4px}
+#app{max-width:500px;margin:0 auto;padding:12px 18px 110px}
+.bar{height:7px;background:var(--bl);border-radius:9px;overflow:hidden;margin:2px 0 16px}.bar i{display:block;height:100%;width:0;background:var(--b);transition:width .5s}
+h1{font-size:24px;line-height:1.25;margin:0 0 10px}h2{font-size:19px;margin:24px 0 8px}p{margin:0 0 12px}.mu{color:var(--mu);font-size:15px}
+.opt,.btn{display:block;width:100%;text-align:left;font:inherit;background:#fff;color:var(--tx);border:2px solid var(--ln);border-radius:12px;padding:15px 16px;margin:10px 0;cursor:pointer;transition:.12s}
+.opt.on{border-color:var(--b);background:var(--bl);font-weight:600;transform:scale(.99)}
+.btn{background:var(--b);color:#fff;border:0;text-align:center;font-weight:700;font-size:18px;text-decoration:none;box-shadow:0 3px 0 var(--bd)}
+.fade{animation:f .3s}@keyframes f{from{opacity:0;transform:translateY(8px)}to{opacity:1}}
+.rx{background:var(--bl);border-left:4px solid var(--b);padding:11px 14px;border-radius:6px;margin-top:12px;font-size:15px}
+.ph{width:100%;aspect-ratio:16/10;border-radius:14px;margin:0 0 14px;overflow:hidden;background:radial-gradient(circle at 25% 30%,#fff 0,#dcebf8 22%,transparent 23%),radial-gradient(circle at 72% 62%,#bcd8f2 0,#cfe3f6 30%,transparent 31%),linear-gradient(135deg,#eaf3fc,#9fc4e8)}.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px}.tile{border:2px solid var(--ln);border-radius:12px;overflow:hidden;background:#fff;font:inherit;color:var(--tx);cursor:pointer;padding:0}.tile .ph{aspect-ratio:1/1;border-radius:0;margin:0}.tile span{display:block;padding:8px 6px;font-size:14px;font-weight:600}.tile.on{border-color:var(--b);background:var(--bl)}
+.yn{display:grid;grid-template-columns:1fr 1fr;gap:10px}.yn .opt{text-align:center;font-weight:700}
+.big{font-size:21px;font-weight:700;margin:6px 0 16px}
+.row{margin:14px 0}.row b{display:flex;justify-content:space-between;font-size:15px;margin-bottom:4px}.row div{height:14px;background:var(--bl);border-radius:9px;overflow:hidden}.row i{display:block;height:100%;width:0;background:var(--b);transition:width 1.2s}
+input[type=range]{width:100%;accent-color:var(--b);margin:14px 0 2px}.sl b{display:flex;justify-content:space-between;font-size:15px}
+.card{border:1px solid var(--ln);border-radius:12px;padding:14px 16px;margin:12px 0}.card.bl{background:var(--bl);border-color:#b9d4ee}
+.st{color:#d79a00;letter-spacing:2px}.tag{background:var(--b);color:#fff;font-size:12px;padding:2px 9px;border-radius:9px;font-weight:700}
+details{border-bottom:1px solid var(--ln);padding:11px 0}summary{font-weight:700;cursor:pointer}
+.sp{width:46px;height:46px;border:5px solid var(--bl);border-top-color:var(--b);border-radius:50%;margin:26px auto;animation:r 1s linear infinite}@keyframes r{to{transform:rotate(360deg)}}
+table{width:100%;border-collapse:collapse;font-size:14px}th,td{padding:8px 5px;border-bottom:1px solid var(--ln);text-align:center}td:first-child,th:first-child{text-align:left}th:last-child,td:last-child{background:var(--bl);font-weight:700;color:var(--bd)}
+small{display:block;color:var(--mu);font-size:12px;margin-top:22px;line-height:1.4}
+</style></head><body>
+<div class="top"><b>VITALIS HEALTH</b><span>Women's Wellness Quiz</span></div>
+<div id="app"></div>
 <script>
-function route(){
-  var h=location.hash,a=document.getElementById('adv'),s=document.getElementById('sales');
-  if(h==='#plan'){a.style.display='none';s.style.display='block';window.scrollTo(0,0)}
-  else if(h===''||h==='#top'){a.style.display='block';s.style.display='none'}
+/* ===== CONFIG ===== */
+const CFG={brand:"Lumera",product:"Marine Collagen Complex",checkout:"https://YOUR-STORE.com/checkout",
+ count:"128,400", /* REPLACE with real number */
+ img:{a:"",b:"",c:"",d:""}, /* your photo URLs (own domain) or data URIs */
+ tiles:["","","",""],goals:["","","",""], /* optional photo URLs for scenario + goal tiles */
+ packs:[{id:1,n:"1 month",p:"$39",o:"$49",s:"Starter"},{id:3,n:"3 months",p:"$89",o:"$147",s:"Most popular",best:1},{id:6,n:"6 months",p:"$149",o:"$294",s:"Best value"}],
+ rev:[["Karen M., 52","I'd tried every cream. This was the first routine I actually stuck with. I feel more like myself."],["Diane R., 47","No taste, takes 10 seconds. After two months my hands and nails look better to me."],["Susan L., 58","I was skeptical. The guarantee made me try it. I've reordered twice."]] /* REPLACE with real reviews */
+};
+const AREA={skin:"skin firmness",hair:"hair and nails",joints:"joint comfort"};
+let A={},i=0;const $=document.getElementById("app");
+try{const s=JSON.parse(sessionStorage.q||"null");if(s&&s.i>0&&s.i<24){A=s.A;i=s.i}}catch(e){}
+const ev=(n,d)=>{try{fbq("trackCustom",n,d||{})}catch(e){}}; /* steps only, never answers */
+const art=n=>{const P=[["#dcebf8","#7fb2e5"],["#e6f4f1","#8cc9bd"],["#fdeee4","#f0b997"],["#eaf0fb","#9ab0e8"],["#f3ecf8","#c5a6e0"],["#e8f6ff","#6cc3e8"]][n%6],u="g"+n+Math.random().toString(36).slice(2,6);let s='<svg viewBox="0 0 160 100" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;display:block"><defs><linearGradient id="'+u+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="'+P[0]+'"/><stop offset="1" stop-color="'+P[1]+'"/></linearGradient><filter id="'+u+'b"><feGaussianBlur stdDeviation="'+(3+n%3)+'"/></filter></defs><rect width="160" height="100" fill="url(#'+u+')"/><g filter="url(#'+u+'b)" fill="#fff">';for(let k=0;k<7;k++){s+='<circle cx="'+((n*37+k*53)%160)+'" cy="'+((n*29+k*41)%100)+'" r="'+(8+(k*7+n*5)%18)+'" opacity="'+(.25+((k+n)%4)*.12)+'"/>'}return s+'</g><path d="M0 '+(70+n%4*4)+' Q40 '+(55+n%3*6)+' 80 72 T160 66 V100 H0Z" fill="#fff" opacity=".35"/></svg>'};
+const im=k=>'<div class="ph">'+(CFG.img[k]?'<img src="'+CFG.img[k]+'" alt="">':art("abcd".indexOf(k)+1))+'</div>';
+const FIN=()=>'<div style="margin-top:30px;padding:28px 18px;border-radius:18px;background:linear-gradient(135deg,#0b63c4,#08498f);color:#fff;text-align:center"><div style="font-size:13px;letter-spacing:1.5px;opacity:.85">YOUR PLAN IS WAITING</div><div style="font-size:27px;line-height:1.2;font-weight:800;margin:10px 0 12px">Ninety days from now, you could be looking back at today as the day you started</div><p style="opacity:.95">You told us you want <b>'+(A.goal||"to feel like yourself").toLowerCase()+'</b>. One small scoop a day is how it starts.</p><div style="text-align:left;background:rgba(255,255,255,.12);border-radius:12px;padding:12px 16px;margin:14px 0;font-size:15px;line-height:1.9">✔ Personal plan for your '+AREA[topA()]+' profile<br>✔ 10 seconds a day<br>✔ 90-day money-back guarantee<br>✔ Free shipping on 3+ months</div><a class="btn" style="background:#fff;color:#08498f;font-size:20px;padding:20px;box-shadow:0 4px 0 #b9d4ee" href="#packs">Get my plan now</a><p style="font-size:13px;opacity:.85;margin:12px 0 0">Secure checkout · Full refund within 90 days</p></div><div style="position:fixed;left:0;right:0;bottom:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:#fff;border-top:1px solid var(--ln);z-index:9"><a class="btn" style="max-width:468px;margin:0 auto" href="#packs">Get my plan</a></div>';
+const sv=()=>{try{sessionStorage.q=JSON.stringify({i,A})}catch(e){}};
+const age=()=>A.age||"your age group";
+const topA=()=>{const a=(A.areas||[]).filter(x=>AREA[x]);return a[0]||"skin"};
+const S=(k,q,o,r)=>({t:"s",k,q,o,r}),M=(k,q,o,r)=>({t:"m",k,q,o,r});
+/* ===== 24 CARDS ===== */
+const C=[
+{t:"s",k:"guess",q:"At what age do you think the body really starts to change?",o:["25","35","45","55"],r:"Earlier than most women guess. It starts quietly in the mid-20s, long before anything shows."},
+S("age","How old are you?",["35–44","45–54","55–64","65+"],"Thanks. We'll use this to personalize everything that follows."),
+{t:"qf",q:["Photos of me look different than they did 5 years ago.","My mornings feel stiffer than they used to.","I spend more on skincare every year.","My hair or nails feel different than before.","I notice it a bit more each year."]},
+{t:"n",img:"a",h:"You're not imagining it.",x:"Over "+CFG.count+" women have taken this quiz. Most noticed the same quiet changes and never knew they were connected. In a few minutes you'll see how."},
+M("areas","Where do you notice it most?",[["Skin","skin"],["Hair","hair"],["Nails","hair"],["Joints","joints"],["Not sure yet","none"]],"Different places, one common root. Remember this."),
+{t:"mf",q:"Drinking more water keeps skin firm.",a:"myth",x:"Mostly a myth. Water hydrates, but skin's firmness comes from structural proteins. That's the part that quietly declines with age."},
+{t:"ti",k:"scene",q:"Which morning looks most like yours?",o:["Checking the mirror","Taking the stairs","Looking at old photos","Getting dressed"],r:"Many women say the same. Small moments add up."},
+{t:"n",chart:1,h:"Here's what the body does after 25.",x:"Natural collagen production slowly declines with age. It's gradual, so most women connect it to what they see only years later. It isn't your fault. It's biology."},
+{t:"sl",k:"chg",q:"How much has changed in the last 3 years?",l:["Barely","Slightly","Noticeably","Quite a lot","A great deal"]},
+M("tried","What have you already tried?",[["Creams and serums","x"],["General vitamins","x"],["Drinking more water","x"],["Salon or clinic treatments","x"],["Nothing yet","none"]],"Most of these work on the surface or in general. Keep that in mind."),
+{t:"n",surf:1,h:"Why most routines go halfway.",x:"Creams act on the surface. General vitamins don't supply the structural building blocks. Support that works from the inside, every day, is the missing piece for many women."},
+{t:"mf",q:"Collagen creams add collagen to your skin.",a:"myth",x:"Mostly a myth. Collagen molecules in creams are too large to reach deep layers. They mainly moisturize the surface."},
+S("skep","Be honest: do you doubt that anything really works?",["Yes, I've been let down","A little","Not really"],"Fair, and common. That's why your results are based on your answers, not on promises."),
+S("diet","How often do you eat collagen-rich foods like bone broth or fish with skin?",["Almost never","Sometimes","Often"],"Most modern diets contain very little. That's one reason many women look into support."),
+{t:"ms",q:"Three quick sliders. Watch your profile fill in.",o:[["Sleep quality","Poor","Great"],["Sun over the years","A lot","Little"],["Stress level","High","Low"]]},
+S("future","If nothing changes, how do you expect to feel in 5 years?",["Worse than today","About the same","Not sure"],"A small daily habit started now matters more than a big effort later."),
+{t:"ti",k:"goal",q:"What would you most like back?",o:["Confidence in the mirror","Easy movement","Photos without filters","My younger self"],g:1},
+S("commit","Could you commit 10 seconds a day?",["Yes, easily","Yes, if it's simple"],"Great. The plan we're building takes exactly that."),
+{t:"a"},{t:"r"},{t:"p"},
+S("obj","What has held you back from acting on this so far?",["Price","Not sure it works","No time","Didn't know what to choose"],0),
+{t:"b"},{t:"o"}];
+C[20].rx=0;
+const RX={"Price":"Fair. Most women spend more on creams in a month than this plan costs per day.","Not sure it works":"Fair. That's why every order has a 90-day money-back guarantee.","No time":"It takes 10 seconds. One scoop in coffee or water.","Didn't know what to choose":"That's what your profile solves. Your plan is ready."};
+/* ===== RENDER ===== */
+function shell(h,p){$.innerHTML=(p==null?'':'<div class="bar"><i style="width:'+p+'%"></i></div>')+'<div class="fade">'+h+'</div>';scrollTo(0,0)}
+const btn=t=>'<button class="btn" id="go">'+t+'</button>';
+const nx=()=>{i++;sv();draw()};
+const rxh=r=>'<div class="rx fade">'+r+'</div>';
+function draw(){
+ const c=C[i],p=Math.round(10+i/(C.length-1)*90);ev("QuizStep",{step:i+1});if(i==0)ev("QuizStart");
+ const hd=c.q&&typeof c.q=="string"?'<h1>'+c.q+'</h1>':'';
+ if(c.t=="s"){
+  shell(hd+c.o.map((o,n)=>'<button class="opt" data-n="'+n+'">'+o+'</button>').join('')+'<div id="rx"></div>',p);
+  const ob=[...$.querySelectorAll(".opt")];
+  ob.forEach(b=>b.onclick=()=>{const o=c.o[b.dataset.n];A[c.k]=o;b.classList.add("on");ob.forEach(x=>x.onclick=null);const r=c.r===0?RX[o]:c.r;if(r)rx.innerHTML=rxh(r);setTimeout(nx,r?2100:350)});
+ }else if(c.t=="m"){
+  A[c.k]=[];shell(hd+'<p class="mu">Tap all that apply</p>'+c.o.map((o,n)=>'<button class="opt" data-n="'+n+'">'+o[0]+'</button>').join('')+'<div id="rx"></div>'+btn("Continue"),p);
+  const ob=[...$.querySelectorAll(".opt")];
+  ob.forEach(b=>b.onclick=()=>{const v=c.o[b.dataset.n][1];b.classList.toggle("on");if(v=="none")ob.forEach(x=>x!=b&&x.classList.remove("on"));else ob[ob.length-1].classList.remove("on");A[c.k]=ob.filter(x=>x.classList.contains("on")).map(x=>c.o[x.dataset.n][1])});
+  go.onclick=()=>{if(!c.d){c.d=1;rx.innerHTML=rxh(c.r);go.textContent="Continue";setTimeout(nx,1900)}};
+ }else if(c.t=="qf"){
+  let n=0,y=0;const show=()=>{shell('<p class="mu">Statement '+(n+1)+' of '+c.q.length+'</p><div class="big">'+c.q[n]+'</div><div class="yn"><button class="opt" data-v="1">Yes</button><button class="opt" data-v="0">No</button></div>',p);
+   $.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{b.classList.add("on");y+=+b.dataset.v;n++;setTimeout(()=>{if(n<c.q.length)show();else{A.qf=y;shell('<div class="big">'+y+' of '+c.q.length+'</div><div class="rx">Women with this pattern very often share one thing in common. You\'re about to find out what.</div>',p);setTimeout(nx,2200)}},280)})};show();
+ }else if(c.t=="mf"){
+  shell('<span class="tag">MYTH OR FACT?</span><div class="big" style="margin-top:10px">'+c.q+'</div><div class="yn"><button class="opt" data-v="myth">Myth</button><button class="opt" data-v="fact">Fact</button></div><div id="rx"></div>',p);
+  const ob=[...$.querySelectorAll(".opt")];ob.forEach(b=>b.onclick=()=>{b.classList.add("on");ob.forEach(x=>x.onclick=null);rx.innerHTML=rxh((b.dataset.v==c.a?"Correct. ":"Most women guess wrong. ")+c.x);setTimeout(nx,3200)});
+ }else if(c.t=="ti"){
+  const arr=c.g?CFG.goals:CFG.tiles;shell(hd+'<div class="tiles">'+c.o.map((o,n)=>'<button class="tile" data-n="'+n+'"><div class="ph">'+(arr[n]?'<img src="'+arr[n]+'" alt="">':art(n+(c.g?3:0)))+'</div><span>'+o+'</span></button>').join('')+'</div><div id="rx"></div>',p);
+  const ob=[...$.querySelectorAll(".tile")];ob.forEach(b=>b.onclick=()=>{A[c.k]=c.o[b.dataset.n];b.classList.add("on");ob.forEach(x=>x.onclick=null);if(c.r)rx.innerHTML=rxh(c.r);setTimeout(nx,c.r?1800:350)});
+ }else if(c.t=="sl"){
+  A[c.k]=3;shell(hd+'<input type="range" min="1" max="5" value="3" id="sl"><p id="lb" style="text-align:center;font-weight:700">'+c.l[2]+'</p>'+btn("Continue"),p);sl.oninput=()=>{A[c.k]=+sl.value;lb.textContent=c.l[sl.value-1]};go.onclick=nx;
+ }else if(c.t=="ms"){
+  shell(hd+c.o.map((o,n)=>'<div class="sl"><b><span>'+o[0]+'</span></b><input type="range" min="1" max="5" value="3" data-n="'+n+'"><b class="mu"><span>'+o[1]+'</span><span>'+o[2]+'</span></b></div>').join('')+'<div class="row"><b><span>Profile completeness</span><span id="pc">40%</span></b><div><i id="pb" style="width:40%"></i></div></div>'+btn("Continue"),p);
+  const up=()=>{let m=0;$.querySelectorAll("input").forEach(e=>m+=e.dataset.touched?1:0);const v=40+m*20;pc.textContent=v+"%";pb.style.width=v+"%"};
+  $.querySelectorAll("input").forEach(e=>e.oninput=()=>{e.dataset.touched=1;A["ms"+e.dataset.n]=+e.value;up()});go.onclick=nx;
+ }else if(c.t=="n"){
+  const vis=c.chart?'<div class="card bl"><svg viewBox="0 0 300 140" style="width:100%"><line x1="30" y1="10" x2="30" y2="115" stroke="#cddbe8"/><line x1="30" y1="115" x2="290" y2="115" stroke="#cddbe8"/><path d="M30 20C100 22 160 55 290 100L290 115L30 115Z" fill="#cfe3f6"/><path d="M30 20C100 22 160 55 290 100" fill="none" stroke="#0b63c4" stroke-width="4"/><g font-size="11" fill="#44566a"><text x="30" y="132">25</text><text x="105" y="132">35</text><text x="175" y="132">45</text><text x="245" y="132">60+</text><text x="34" y="8">Collagen production (illustrative)</text></g></svg></div>':c.surf?'<div class="card bl"><svg viewBox="0 0 300 120" style="width:100%"><rect x="10" y="10" width="280" height="26" rx="6" fill="#bcd8f2"/><text x="20" y="28" font-size="12" fill="#10212e">Surface: creams work here</text><rect x="10" y="44" width="280" height="64" rx="6" fill="#0b63c4"/><text x="20" y="70" font-size="12" fill="#fff">Inside: where structure is built</text><text x="20" y="90" font-size="12" fill="#fff">Daily support starts here</text></svg></div>':c.img?im(c.img):'';
+  shell(vis+'<h1>'+c.h+'</h1><p>'+c.x+'</p>'+btn("Continue"),p);go.onclick=nx;
+ }else if(c.t=="a"){
+  const st=["Comparing you with women aged "+age()+"…","Mapping skin, hair and joint areas…","Checking sleep, sun and stress factors…","Building your personal profile…"];
+  shell('<h1 style="text-align:center">Analyzing your answers</h1><div class="sp"></div><p class="mu" id="st" style="text-align:center">'+st[0]+'</p>',p);st.forEach((s,n)=>setTimeout(()=>{const e=document.getElementById("st");if(e)e.textContent=s},n*1500));setTimeout(nx,6200);
+ }else if(c.t=="r"){
+  const ag=["35–44","45–54","55–64","65+"].indexOf(A.age),n=A.areas||[];
+  const sc=a=>Math.min(96,46+(n.includes(a)?20:0)+ag*4+Math.min(A.qf||0,5)*2+(A.diet=="Almost never"?4:0)+(a=="joints"&&A.ms0&&A.ms0<3?4:0));
+  const rows=[["Skin firmness",sc("skin")],["Hair & nails",sc("hair")],["Joint comfort",sc("joints")]];
+  shell(im("d")+'<span class="tag">YOUR RESULT</span><h1 style="margin-top:10px">The Quiet Decline Profile</h1><p>Your answers suggest your body may benefit from <b>collagen support</b>. Highest match:</p>'+rows.map(r=>'<div class="row"><b><span>'+r[0]+'</span><span>'+r[1]+'%</span></b><div><i data-w="'+r[1]+'"></i></div></div>').join('')+'<p class="mu">Compared with women aged '+age()+' reporting similar patterns. Informational only, not a diagnosis.</p>'+btn("What does this mean for me?"),p);
+  setTimeout(()=>$.querySelectorAll("i[data-w]").forEach(e=>e.style.width=e.dataset.w+"%"),150);go.onclick=nx;ev("QuizResult");
+ }else if(c.t=="p"){
+  const tr=(A.tried||[]).filter(x=>x!="none").length;
+  shell(im("b")+'<h1>Here is what your answers say</h1><p>At <b>'+age()+'</b>, with changes in <b>'+AREA[topA()]+'</b>'+(tr?' and '+tr+' approach'+(tr>1?'es':'')+' already tried':'')+', your profile fits a common pattern: the body makes less collagen over time, and surface routines can only do so much.</p><p>Women with a similar profile often describe the same thing: <i>they stopped looking for one more product and started supporting their body from within.</i></p><div class="card"><div class="st">★★★★★</div><p style="margin:4px 0">“'+CFG.rev[0][1]+'”</p><p class="mu" style="margin:0">— '+CFG.rev[0][0]+'</p></div>'+btn("Continue"),p);go.onclick=nx;
+ }else if(c.t=="b"){
+  shell(im("c")+'<h1>What your plan looks like</h1><div class="card bl"><p><b>Collagen peptides</b> supply the building blocks the body uses for skin, hair, nails and joints.</p><p><b>Vitamin C</b> supports the body\'s own collagen formation.</p><p style="margin:0"><b>One scoop a day.</b> No taste, 10 seconds, in water or coffee.</p></div><p class="mu">Different from creams (surface only) and generic vitamins (no structural building blocks).</p>'+btn("See my plan"),p);go.onclick=nx;
+ }else if(c.t=="o"){
+  const qs=location.search,o=A.obj||"";
+  const cmp='<h2>How it compares</h2><div class="card"><table><tr><th></th><th>Creams</th><th>Vitamins</th><th>'+CFG.brand+'</th></tr><tr><td>Works from inside</td><td>✗</td><td>✓</td><td>✓</td></tr><tr><td>Collagen building blocks</td><td>✗</td><td>✗</td><td>✓</td></tr><tr><td>Skin, hair, joints</td><td>Skin</td><td>General</td><td>All three</td></tr><tr><td>10 seconds a day</td><td>✗</td><td>✓</td><td>✓</td></tr></table></div>';
+  const rev='<h2>What women say</h2>'+CFG.rev.map(r=>'<div class="card"><div class="st">★★★★★</div><p style="margin:4px 0">“'+r[1]+'”</p><p class="mu" style="margin:0">— '+r[0]+' · Verified buyer</p></div>').join('');
+  const gu='<div class="card bl" style="margin-top:20px"><b>90-day money-back guarantee.</b><p class="mu" style="margin:6px 0 0">Use it for up to 90 days. If you are not happy, contact us for a full refund.</p></div>';
+  const order=o=="Price"?gu+cmp+rev:o=="Not sure it works"?rev+gu+cmp:gu+rev+cmp;
+  shell('<span class="tag">YOUR PLAN IS READY</span><h1 style="margin-top:10px">Your personal daily plan</h1><p class="mu">Based on your '+AREA[topA()]+' profile at '+age()+'.</p>'+
+  '<h2 id="packs" style="margin-top:6px">Choose your plan</h2>'+CFG.packs.map(k=>'<a class="btn" style="text-align:left;'+(k.best?'':'background:#fff;color:var(--tx);border:2px solid var(--b);box-shadow:none')+'" href="'+CFG.checkout+qs+(qs?'&':'?')+'pack='+k.id+'" data-p="'+k.id+'"><span class="tag" style="'+(k.best?'background:#fff;color:var(--b)':'')+'">'+k.s+'</span><br>'+k.n+' — '+k.p+' <s style="opacity:.7;font-weight:400">'+k.o+'</s></a>').join('')+
+  '<p class="mu" style="text-align:center">Free shipping on 3+ months · Secure checkout · 90-day guarantee</p>'+order+
+  '<details><summary>When will I notice something?</summary><p class="mu">It is a daily habit. Most people take it consistently for 8–12 weeks before judging.</p></details><details><summary>How do I take it?</summary><p class="mu">One scoop in water, coffee or a smoothie.</p></details><details><summary>Is it safe?</summary><p class="mu">Made with food-grade ingredients. Ask your doctor if you are pregnant, nursing or on medication.</p></details><details><summary>What if it does not work for me?</summary><p class="mu">Contact us within 90 days for a full refund.</p></details>'+
+  FIN()+'<small>'+CFG.product+' is a food supplement, not intended to diagnose, treat, cure or prevent any disease. Quiz results are informational only, not medical advice. Individual results vary. © '+CFG.brand+'</small>',100);
+  $.querySelectorAll("a[data-p]").forEach(a=>a.onclick=()=>ev("InitiateCheckoutClick",{pack:a.dataset.p}));
+ }
 }
-window.addEventListener('hashchange',route);route();
-/* Replace every href="#checkout" with your payment link. Replace each .ph box with an <img> or your own photo. */
-</script>
-</body>
-</html>
+draw();
+</script></body></html>
